@@ -20,7 +20,8 @@
     <title>Python Dokümantasyon içeriği &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=2d3badd06fe70b34b68db01f99471ce1624ffe4a" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -51,35 +52,47 @@
         }
       }
     </style>
-<link rel="shortcut icon" type="image/png" href="_static/py.svg" />
+<link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg" />
             <script type="text/javascript" src="_static/copybutton.js"></script>
-            <script type="text/javascript" src="_static/menu.js"></script> 
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
 
   </head>
 <body>
 <div class="mobile-nav">
     <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
            aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
-    <label for="menuToggler" class="toggler__label">
-        <span></span>
-    </label>
     <nav class="nav-content" role="navigation">
-         <a href="https://www.python.org/" class="nav-logo">
-             <img src="_static/py.svg" alt="Logo"/>
-         </a>
-        <div class="version_switcher_placeholder"></div>
-        <form role="search" class="search" action="search.html" method="get">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
-                <path fill-rule="nonzero"
-                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
-            </svg>
-            <input type="text" name="q" aria-label="Hızlı Arama"/>
-            <input type="submit" value="Git"/>
-        </form>
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
+                <input type="submit" value="Git"/>
+            </form>
+        </span>
     </nav>
     <div class="menu-wrapper">
         <nav class="menu" role="navigation" aria-label="main navigation">
             <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
   <div>
     <h4>Sonraki konu</h4>
     <p class="topless"><a href="whatsnew/index.html"
@@ -133,14 +146,21 @@
 
     <div class="inline-search" role="search">
         <form class="inline-search" action="search.html" method="get">
-          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="text" name="q" />
+          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
           <input type="submit" value="Git" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
         </form>
     </div>
                      |
                 </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
             
       </ul>
     </div>    
@@ -3487,14 +3507,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="library/math.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> — Mathematical functions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#number-theoretic-and-representation-functions">Number-theoretic and representation functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#power-and-logarithmic-functions">Power and logarithmic functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#trigonometric-functions">Trigonometric functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#angular-conversion">Angular conversion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#hyperbolic-functions">Hyperbolic functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#special-functions">Special functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="library/math.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library/math.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code> — Matematiksel fonksiyonlar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#number-theoretic-and-representation-functions">Sayı teorisi ve temsil fonksiyonları</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#power-and-logarithmic-functions">Güç ve logaritmik fonksiyonlar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#trigonometric-functions">Trigonometrik fonksiyonlar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#angular-conversion">Açısal dönüşüm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#hyperbolic-functions">Hiberbolik fonksiyonlar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#special-functions">Özel fonksiyonlar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="library/math.html#constants">Sabitler</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="library/cmath.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code> — Mathematical functions for complex numbers</a><ul>
@@ -6630,15 +6650,15 @@
 <li class="toctree-l3"><a class="reference internal" href="howto/sockets.html#non-blocking-sockets">Non-blocking Sockets</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="howto/sorting.html">Sorting HOW TO</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#sorting-basics">Sorting Basics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#key-functions">Key Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#operator-module-functions">Operator Module Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#ascending-and-descending">Ascending and Descending</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#sort-stability-and-complex-sorts">Sort Stability and Complex Sorts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#decorate-sort-undecorate">Decorate-Sort-Undecorate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#comparison-functions">Comparison Functions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#odds-and-ends">Odds and Ends</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/sorting.html">Sıralama NASIL YAPILIR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#sorting-basics">Sıralama Temelleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#key-functions">Anahtar Fonksiyonları</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#operator-module-functions">Operatör Modülü İşlevleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#ascending-and-descending">Yükselen ve Alçalan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#sort-stability-and-complex-sorts">Sıralama Kararlılığı ve Karmaşık Sıralamalar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#decorate-sort-undecorate">Süsle-Sırala-Boz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#comparison-functions">Karşılaştırma Fonksiyonları</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/sorting.html#odds-and-ends">Tuhaflıklar ve Sonlar</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="howto/unicode.html">Unicode HOWTO</a><ul>
@@ -6730,33 +6750,33 @@
 <li class="toctree-l3"><a class="reference internal" href="howto/ipaddress.html#getting-more-detail-when-instance-creation-fails">Getting more detail when instance creation fails</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="howto/clinic.html">Argument Clinic How-To</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#the-goals-of-argument-clinic">The Goals Of Argument Clinic</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#basic-concepts-and-usage">Basic Concepts And Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#converting-your-first-function">Converting Your First Function</a></li>
-<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#advanced-topics">Advanced Topics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#symbolic-default-values">Symbolic default values</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#renaming-the-c-functions-and-variables-generated-by-argument-clinic">Renaming the C functions and variables generated by Argument Clinic</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#converting-functions-using-pyarg-unpacktuple">Converting functions using PyArg_UnpackTuple</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#optional-groups">Optional Groups</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-real-argument-clinic-converters-instead-of-legacy-converters">Using real Argument Clinic converters, instead of “legacy converters”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/clinic.html">Argüman Kliniği Nasıl Yapılır</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#the-goals-of-argument-clinic">Argüman Kliniğinin Hedefleri</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#basic-concepts-and-usage">Temel Kavramlar ve Kullanım</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#converting-your-first-function">İlk Fonksiyonunuzu Dönüştürme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="howto/clinic.html#advanced-topics">İleri Düzey Konular</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#symbolic-default-values">Sembolik varsayılan değerler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#renaming-the-c-functions-and-variables-generated-by-argument-clinic">Argüman Kliniği tarafından oluşturulan C işlevlerini ve değişkenlerini yeniden adlandırma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#converting-functions-using-pyarg-unpacktuple">PyArg_UnpackTuple kullanarak fonksiyonları dönüştürme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#optional-groups">İsteğe Bağlı Gruplar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-real-argument-clinic-converters-instead-of-legacy-converters">“Eski dönüştürücüler” yerine gerçek Argüman Kliniği dönüştürücülerinin kullanılması</a></li>
 <li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#py-buffer">Py_buffer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#advanced-converters">Advanced converters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#parameter-default-values">Parameter default values</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#the-null-default-value">The <code class="docutils literal notranslate"><span class="pre">NULL</span></code> default value</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#expressions-specified-as-default-values">Expressions specified as default values</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-return-converter">Using a return converter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#cloning-existing-functions">Cloning existing functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#calling-python-code">Calling Python code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-self-converter">Using a “self converter”</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-defining-class-converter">Using a “defining class” converter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#writing-a-custom-converter">Writing a custom converter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#writing-a-custom-return-converter">Writing a custom return converter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#meth-o-and-meth-noargs">METH_O and METH_NOARGS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#tp-new-and-tp-init-functions">tp_new and tp_init functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#changing-and-redirecting-clinic-s-output">Changing and redirecting Clinic’s output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#the-ifdef-trick">The #ifdef trick</a></li>
-<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-argument-clinic-in-python-files">Using Argument Clinic in Python files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#advanced-converters">Gelişmiş dönüştürücüler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#parameter-default-values">Parametre varsayılan değerleri</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#the-null-default-value">Varsayılan değer <code class="docutils literal notranslate"><span class="pre">NULL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#expressions-specified-as-default-values">Varsayılan değerler olarak belirtilen ifadeler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-return-converter">Dönüş dönüştürücüsü kullanma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#cloning-existing-functions">Mevcut fonksiyonları klonlama</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#calling-python-code">Python kodunu çağırma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-self-converter">“Kendi kendine dönüştürücü” kullanma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-a-defining-class-converter">“Sınıf tanımlama” dönüştürücüsü kullanma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#writing-a-custom-converter">Özel bir dönüştürücü yazma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#writing-a-custom-return-converter">Özel bir dönüş dönüştürücü yazma</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#meth-o-and-meth-noargs">METH_O ve METH_NOARGS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#tp-new-and-tp-init-functions">tp_new ve tp_init fonksiyonları</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#changing-and-redirecting-clinic-s-output">Kliniğin çıktısını değiştirme ve yönlendirme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#the-ifdef-trick">#ifdef hilesi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="howto/clinic.html#using-argument-clinic-in-python-files">Python dosyalarında Argüman Kliniği kullanma</a></li>
 </ul>
 </li>
 </ul>
@@ -7026,14 +7046,21 @@
 
     <div class="inline-search" role="search">
         <form class="inline-search" action="search.html" method="get">
-          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="text" name="q" />
+          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
           <input type="submit" value="Git" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
         </form>
     </div>
                      |
                 </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
             
       </ul>
     </div>  
@@ -7052,7 +7079,7 @@
 <br />
     <br />
 
-    Son güncelleme: Mar 29, 2023.
+    Son güncelleme: May 20, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 

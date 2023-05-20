@@ -8,7 +8,8 @@
     <title>Dizin &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=2d3badd06fe70b34b68db01f99471ce1624ffe4a" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -38,35 +39,47 @@
         }
       }
     </style>
-<link rel="shortcut icon" type="image/png" href="_static/py.svg" />
+<link rel="stylesheet" href="_static/pydoctheme_dark.css" media="(prefers-color-scheme: dark)" id="pydoctheme_dark_css">
+    <link rel="shortcut icon" type="image/png" href="_static/py.svg" />
             <script type="text/javascript" src="_static/copybutton.js"></script>
-            <script type="text/javascript" src="_static/menu.js"></script> 
+            <script type="text/javascript" src="_static/menu.js"></script>
+            <script type="text/javascript" src="_static/themetoggle.js"></script> 
 
   </head>
 <body>
 <div class="mobile-nav">
     <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
            aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
-    <label for="menuToggler" class="toggler__label">
-        <span></span>
-    </label>
     <nav class="nav-content" role="navigation">
-         <a href="https://www.python.org/" class="nav-logo">
-             <img src="_static/py.svg" alt="Logo"/>
-         </a>
-        <div class="version_switcher_placeholder"></div>
-        <form role="search" class="search" action="search.html" method="get">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
-                <path fill-rule="nonzero"
-                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
-            </svg>
-            <input type="text" name="q" aria-label="Hızlı Arama"/>
-            <input type="submit" value="Git"/>
-        </form>
+        <label for="menuToggler" class="toggler__label">
+            <span></span>
+        </label>
+        <span class="nav-items-wrapper">
+            <a href="https://www.python.org/" class="nav-logo">
+                <img src="_static/py.svg" alt="Logo"/>
+            </a>
+            <span class="version_switcher_placeholder"></span>
+            <form role="search" class="search" action="search.html" method="get">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                    <path fill-rule="nonzero" fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+                <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
+                <input type="submit" value="Git"/>
+            </form>
+        </span>
     </nav>
     <div class="menu-wrapper">
         <nav class="menu" role="navigation" aria-label="main navigation">
             <div class="language_switcher_placeholder"></div>
+            
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label>
         </nav>
     </div>
 </div>
@@ -101,14 +114,21 @@
 
     <div class="inline-search" role="search">
         <form class="inline-search" action="search.html" method="get">
-          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="text" name="q" />
+          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
           <input type="submit" value="Git" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
         </form>
     </div>
                      |
                 </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
             
       </ul>
     </div>    
@@ -26155,7 +26175,7 @@
 </li>
         <li><a href="whatsnew/3.11.html#index-16">PEP 484#annotating-instance-and-class-methods</a>
 </li>
-        <li><a href="library/cmath.html#index-0">PEP 485</a>, <a href="library/math.html#index-0">[1]</a>, <a href="whatsnew/3.5.html#index-19">[2]</a>, <a href="whatsnew/3.5.html#index-20">[3]</a>, <a href="whatsnew/changelog.html#index-252">[4]</a>
+        <li><a href="library/cmath.html#index-0">PEP 485</a>, <a href="library/math.html#index-2">[1]</a>, <a href="whatsnew/3.5.html#index-19">[2]</a>, <a href="whatsnew/3.5.html#index-20">[3]</a>, <a href="whatsnew/changelog.html#index-252">[4]</a>
 </li>
         <li><a href="whatsnew/3.5.html#index-21">PEP 486</a>, <a href="whatsnew/3.5.html#index-23">[1]</a>, <a href="whatsnew/changelog.html#index-257">[2]</a>
 </li>
@@ -26237,7 +26257,7 @@
 </li>
         <li><a href="faq/design.html#index-0">PEP 572</a>, <a href="reference/compound_stmts.html#index-24">[1]</a>, <a href="reference/expressions.html#index-21">[2]</a>, <a href="reference/expressions.html#index-87">[3]</a>, <a href="whatsnew/3.8.html#index-50">[4]</a>, <a href="whatsnew/3.8.html#index-74">[5]</a>, <a href="whatsnew/changelog.html#index-149">[6]</a>, <a href="whatsnew/changelog.html#index-162">[7]</a>, <a href="whatsnew/changelog.html#index-172">[8]</a>
 </li>
-        <li><a href="howto/clinic.html#index-1">PEP 573</a>, <a href="whatsnew/3.9.html#index-62">[1]</a>, <a href="whatsnew/3.9.html#index-79">[2]</a>, <a href="whatsnew/changelog.html#index-115">[3]</a>, <a href="whatsnew/changelog.html#index-120">[4]</a>
+        <li><a href="howto/clinic.html#index-5">PEP 573</a>, <a href="whatsnew/3.9.html#index-62">[1]</a>, <a href="whatsnew/3.9.html#index-79">[2]</a>, <a href="whatsnew/changelog.html#index-115">[3]</a>, <a href="whatsnew/changelog.html#index-120">[4]</a>
 </li>
         <li><a href="library/pickle.html#index-4">PEP 574</a>, <a href="library/pickle.html#index-8">[1]</a>, <a href="whatsnew/3.8.html#index-59">[2]</a>
 </li>
@@ -26383,7 +26403,7 @@
 </li>
         <li><a href="c-api/intro.html#index-0">PEP 7</a>, <a href="c-api/intro.html#index-6">[1]</a>, <a href="c-api/intro.html#index-7">[2]</a>, <a href="whatsnew/3.6.html#index-34">[3]</a>
 </li>
-        <li><a href="faq/programming.html#index-0">PEP 8</a>, <a href="faq/programming.html#index-2">[1]</a>, <a href="faq/windows.html#index-0">[2]</a>, <a href="howto/clinic.html#index-0">[3]</a>, <a href="library/functions.html#index-21">[4]</a>, <a href="reference/expressions.html#index-79">[5]</a>, <a href="tutorial/controlflow.html#index-18">[6]</a>, <a href="using/editors.html#index-0">[7]</a>, <a href="whatsnew/3.0.html#index-21">[8]</a>, <a href="whatsnew/changelog.html#index-197">[9]</a>, <a href="whatsnew/changelog.html#index-259">[10]</a>
+        <li><a href="faq/programming.html#index-0">PEP 8</a>, <a href="faq/programming.html#index-2">[1]</a>, <a href="faq/windows.html#index-0">[2]</a>, <a href="howto/clinic.html#index-4">[3]</a>, <a href="library/functions.html#index-21">[4]</a>, <a href="reference/expressions.html#index-79">[5]</a>, <a href="tutorial/controlflow.html#index-18">[6]</a>, <a href="using/editors.html#index-0">[7]</a>, <a href="whatsnew/3.0.html#index-21">[8]</a>, <a href="whatsnew/changelog.html#index-197">[9]</a>, <a href="whatsnew/changelog.html#index-259">[10]</a>
 </li>
       </ul></li>
       <li><a href="distributing/index.html#index-1">Python Package Index (PyPI)</a>
@@ -36091,14 +36111,21 @@
 
     <div class="inline-search" role="search">
         <form class="inline-search" action="search.html" method="get">
-          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="text" name="q" />
+          <input placeholder="Hızlı Arama" aria-label="Hızlı Arama" type="search" name="q" />
           <input type="submit" value="Git" />
-          <input type="hidden" name="check_keywords" value="yes" />
-          <input type="hidden" name="area" value="default" />
         </form>
     </div>
                      |
                 </li>
+            <li class="right">
+<label class="theme-selector-label">
+    Theme
+    <select class="theme-selector" oninput="activateTheme(this.value)">
+        <option value="auto" selected>Auto</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+    </select>
+</label> |</li>
             
       </ul>
     </div>  
@@ -36117,7 +36144,7 @@
 <br />
     <br />
 
-    Son güncelleme: Mar 29, 2023.
+    Son güncelleme: May 20, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
