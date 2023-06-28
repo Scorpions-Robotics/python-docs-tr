@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="C API Stability" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/stable.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -197,7 +196,7 @@
           <div class="body" role="main">
             
   <section id="c-api-stability">
-<span id="stable"></span><h1>C API Stability<a class="headerlink" href="#c-api-stability" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="stable"></span><h1>C API Stability<a class="headerlink" href="#c-api-stability" title="Permalink to this heading">¶</a></h1>
 <p>Python’s C API is covered by the Backwards Compatibility Policy, <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0387/"><strong>PEP 387</strong></a>.
 While the C API will change with every minor release (e.g. from 3.9 to 3.10),
 most changes will be source-compatible, typically by only adding new API.
@@ -211,7 +210,7 @@ but will need to be compiled separately for 3.9.x and 3.10.x.</p>
 <p>Names prefixed by an underscore, such as <code class="docutils literal notranslate"><span class="pre">_Py_InternalState</span></code>,
 are private API that can change without notice even in patch releases.</p>
 <section id="stable-application-binary-interface">
-<h2>Stable Application Binary Interface<a class="headerlink" href="#stable-application-binary-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Stable Application Binary Interface<a class="headerlink" href="#stable-application-binary-interface" title="Permalink to this heading">¶</a></h2>
 <p>Python 3.2 introduced the <em>Limited API</em>, a subset of Python’s C API.
 Extensions that only use the Limited API can be
 compiled once and work with multiple versions of Python.
@@ -253,7 +252,7 @@ versions of Python.</p>
 library, not solely as macros. This makes them usable from languages that don’t
 use the C preprocessor.</p>
 <section id="limited-api-scope-and-performance">
-<h3>Limited API Scope and Performance<a class="headerlink" href="#limited-api-scope-and-performance" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Limited API Scope and Performance<a class="headerlink" href="#limited-api-scope-and-performance" title="Permalink to this heading">¶</a></h3>
 <p>The goal for the Limited API is to allow everything that is possible with the
 full C API, but possibly with a performance penalty.</p>
 <p>For example, while <a class="reference internal" href="list.html#c.PyList_GetItem" title="PyList_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_GetItem()</span></code></a> is available, its “unsafe” macro
@@ -272,7 +271,7 @@ distributed where a version-specific one is not available – for example,
 for prereleases of an upcoming Python version.</p>
 </section>
 <section id="limited-api-caveats">
-<h3>Limited API Caveats<a class="headerlink" href="#limited-api-caveats" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Limited API Caveats<a class="headerlink" href="#limited-api-caveats" title="Permalink to this heading">¶</a></h3>
 <p>Note that compiling with <code class="docutils literal notranslate"><span class="pre">Py_LIMITED_API</span></code> is <em>not</em> a complete guarantee that
 code conforms to the Limited API or the Stable ABI. <code class="docutils literal notranslate"><span class="pre">Py_LIMITED_API</span></code> only
 covers definitions, but an API also includes other issues, such as expected
@@ -299,7 +298,7 @@ provided that the Stable ABI stays stable.</p>
 </section>
 </section>
 <section id="platform-considerations">
-<span id="stable-abi-platform"></span><h2>Platform Considerations<a class="headerlink" href="#platform-considerations" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="stable-abi-platform"></span><h2>Platform Considerations<a class="headerlink" href="#platform-considerations" title="Permalink to this heading">¶</a></h2>
 <p>ABI stability depends not only on Python, but also on the compiler used,
 lower-level libraries and compiler options. For the purposes of the Stable ABI,
 these details define a “platform”. They usually depend on the OS
@@ -311,7 +310,7 @@ This is the case with Windows and macOS releases from <code class="docutils lite
 third-party distributors.</p>
 </section>
 <section id="contents-of-limited-api">
-<span id="stable-abi-list"></span><h2>Contents of Limited API<a class="headerlink" href="#contents-of-limited-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="stable-abi-list"></span><h2>Contents of Limited API<a class="headerlink" href="#contents-of-limited-api" title="Permalink to this heading">¶</a></h2>
 <p>Currently, the Limited API includes the following items:</p>
 <p><ul class="simple">
 <li><p><a class="reference internal" href="iter.html#c.PyAIter_Check" title="PyAIter_Check"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyAIter_Check()</span></code></a></p></li>
@@ -1250,6 +1249,10 @@ third-party distributors.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1322,11 +1325,11 @@ third-party distributors.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

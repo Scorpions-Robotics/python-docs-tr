@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="xml.sax.handler — Base classes for SAX handlers" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/xml.sax.handler.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,11 +97,62 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code> — Base classes for SAX handlers</a><ul>
-<li><a class="reference internal" href="#contenthandler-objects">ContentHandler Objects</a></li>
-<li><a class="reference internal" href="#dtdhandler-objects">DTDHandler Objects</a></li>
-<li><a class="reference internal" href="#entityresolver-objects">EntityResolver Objects</a></li>
-<li><a class="reference internal" href="#errorhandler-objects">ErrorHandler Objects</a></li>
-<li><a class="reference internal" href="#lexicalhandler-objects">LexicalHandler Objects</a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler"><code class="docutils literal notranslate"><span class="pre">ContentHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler"><code class="docutils literal notranslate"><span class="pre">DTDHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.EntityResolver"><code class="docutils literal notranslate"><span class="pre">EntityResolver</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler"><code class="docutils literal notranslate"><span class="pre">ErrorHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler"><code class="docutils literal notranslate"><span class="pre">LexicalHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_namespaces"><code class="docutils literal notranslate"><span class="pre">feature_namespaces</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_namespace_prefixes"><code class="docutils literal notranslate"><span class="pre">feature_namespace_prefixes</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_string_interning"><code class="docutils literal notranslate"><span class="pre">feature_string_interning</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_validation"><code class="docutils literal notranslate"><span class="pre">feature_validation</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_external_ges"><code class="docutils literal notranslate"><span class="pre">feature_external_ges</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_external_pes"><code class="docutils literal notranslate"><span class="pre">feature_external_pes</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.all_features"><code class="docutils literal notranslate"><span class="pre">all_features</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_lexical_handler"><code class="docutils literal notranslate"><span class="pre">property_lexical_handler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_declaration_handler"><code class="docutils literal notranslate"><span class="pre">property_declaration_handler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_dom_node"><code class="docutils literal notranslate"><span class="pre">property_dom_node</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_xml_string"><code class="docutils literal notranslate"><span class="pre">property_xml_string</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.all_properties"><code class="docutils literal notranslate"><span class="pre">all_properties</span></code></a></li>
+<li><a class="reference internal" href="#contenthandler-objects">ContentHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.setDocumentLocator"><code class="docutils literal notranslate"><span class="pre">ContentHandler.setDocumentLocator()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startDocument"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startDocument()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endDocument"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endDocument()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startPrefixMapping"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startPrefixMapping()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endPrefixMapping"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endPrefixMapping()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startElement"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startElement()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endElement"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endElement()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startElementNS"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startElementNS()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endElementNS"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endElementNS()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.characters"><code class="docutils literal notranslate"><span class="pre">ContentHandler.characters()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.ignorableWhitespace"><code class="docutils literal notranslate"><span class="pre">ContentHandler.ignorableWhitespace()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.processingInstruction"><code class="docutils literal notranslate"><span class="pre">ContentHandler.processingInstruction()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.skippedEntity"><code class="docutils literal notranslate"><span class="pre">ContentHandler.skippedEntity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dtdhandler-objects">DTDHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler.notationDecl"><code class="docutils literal notranslate"><span class="pre">DTDHandler.notationDecl()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler.unparsedEntityDecl"><code class="docutils literal notranslate"><span class="pre">DTDHandler.unparsedEntityDecl()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#entityresolver-objects">EntityResolver Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.EntityResolver.resolveEntity"><code class="docutils literal notranslate"><span class="pre">EntityResolver.resolveEntity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#errorhandler-objects">ErrorHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.error"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.error()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.fatalError"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.fatalError()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.warning"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.warning()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lexicalhandler-objects">LexicalHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.comment"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.comment()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.startDTD"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.startDTD()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.endDTD"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.endDTD()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.startCDATA"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.startCDATA()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.endCDATA"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.endCDATA()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -196,7 +246,7 @@
           <div class="body" role="main">
             
   <section id="module-xml.sax.handler">
-<span id="xml-sax-handler-base-classes-for-sax-handlers"></span><h1><a class="reference internal" href="#module-xml.sax.handler" title="xml.sax.handler: Base classes for SAX event handlers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code></a> — Base classes for SAX handlers<a class="headerlink" href="#module-xml.sax.handler" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="xml-sax-handler-base-classes-for-sax-handlers"></span><h1><a class="reference internal" href="#module-xml.sax.handler" title="xml.sax.handler: Base classes for SAX event handlers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code></a> — Base classes for SAX handlers<a class="headerlink" href="#module-xml.sax.handler" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/xml/sax/handler.py">Lib/xml/sax/handler.py</a></p>
 <hr class="docutils" />
 <p>The SAX API defines five kinds of handlers: content handlers, DTD handlers,
@@ -380,7 +430,7 @@ current event.</div>
 </dd></dl>
 
 <section id="contenthandler-objects">
-<span id="content-handler-objects"></span><h2>ContentHandler Objects<a class="headerlink" href="#contenthandler-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="content-handler-objects"></span><h2>ContentHandler Objects<a class="headerlink" href="#contenthandler-objects" title="Permalink to this heading">¶</a></h2>
 <p>Users are expected to subclass <a class="reference internal" href="#xml.sax.handler.ContentHandler" title="xml.sax.handler.ContentHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContentHandler</span></code></a> to support their
 application.  The following methods are called by the parser on the appropriate
 events in the input document:</p>
@@ -559,7 +609,7 @@ may skip external entities, depending on the values of the
 
 </section>
 <section id="dtdhandler-objects">
-<span id="dtd-handler-objects"></span><h2>DTDHandler Objects<a class="headerlink" href="#dtdhandler-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="dtd-handler-objects"></span><h2>DTDHandler Objects<a class="headerlink" href="#dtdhandler-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#xml.sax.handler.DTDHandler" title="xml.sax.handler.DTDHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">DTDHandler</span></code></a> instances provide the following methods:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="xml.sax.handler.DTDHandler.notationDecl">
@@ -575,7 +625,7 @@ may skip external entities, depending on the values of the
 
 </section>
 <section id="entityresolver-objects">
-<span id="entity-resolver-objects"></span><h2>EntityResolver Objects<a class="headerlink" href="#entityresolver-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="entity-resolver-objects"></span><h2>EntityResolver Objects<a class="headerlink" href="#entityresolver-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="xml.sax.handler.EntityResolver.resolveEntity">
 <span class="sig-prename descclassname"><span class="pre">EntityResolver.</span></span><span class="sig-name descname"><span class="pre">resolveEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">publicId</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">systemId</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xml.sax.handler.EntityResolver.resolveEntity" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -586,7 +636,7 @@ implementation returns <em>systemId</em>.</p>
 
 </section>
 <section id="errorhandler-objects">
-<span id="sax-error-handler"></span><h2>ErrorHandler Objects<a class="headerlink" href="#errorhandler-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="sax-error-handler"></span><h2>ErrorHandler Objects<a class="headerlink" href="#errorhandler-objects" title="Permalink to this heading">¶</a></h2>
 <p>Objects with this interface are used to receive error and warning information
 from the <a class="reference internal" href="xml.sax.reader.html#xml.sax.xmlreader.XMLReader" title="xml.sax.xmlreader.XMLReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">XMLReader</span></code></a>.  If you create an object that
 implements this interface, then register the object with your
@@ -623,7 +673,7 @@ in this method will cause parsing to end.</p>
 
 </section>
 <section id="lexicalhandler-objects">
-<span id="lexical-handler-objects"></span><h2>LexicalHandler Objects<a class="headerlink" href="#lexicalhandler-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="lexical-handler-objects"></span><h2>LexicalHandler Objects<a class="headerlink" href="#lexicalhandler-objects" title="Permalink to this heading">¶</a></h2>
 <p>Optional SAX2 handler for lexical events.</p>
 <p>This handler is used to obtain lexical information about an XML
 document. Lexical information includes information describing the
@@ -681,11 +731,62 @@ the characters handler.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.sax.handler</span></code> — Base classes for SAX handlers</a><ul>
-<li><a class="reference internal" href="#contenthandler-objects">ContentHandler Objects</a></li>
-<li><a class="reference internal" href="#dtdhandler-objects">DTDHandler Objects</a></li>
-<li><a class="reference internal" href="#entityresolver-objects">EntityResolver Objects</a></li>
-<li><a class="reference internal" href="#errorhandler-objects">ErrorHandler Objects</a></li>
-<li><a class="reference internal" href="#lexicalhandler-objects">LexicalHandler Objects</a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler"><code class="docutils literal notranslate"><span class="pre">ContentHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler"><code class="docutils literal notranslate"><span class="pre">DTDHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.EntityResolver"><code class="docutils literal notranslate"><span class="pre">EntityResolver</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler"><code class="docutils literal notranslate"><span class="pre">ErrorHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler"><code class="docutils literal notranslate"><span class="pre">LexicalHandler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_namespaces"><code class="docutils literal notranslate"><span class="pre">feature_namespaces</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_namespace_prefixes"><code class="docutils literal notranslate"><span class="pre">feature_namespace_prefixes</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_string_interning"><code class="docutils literal notranslate"><span class="pre">feature_string_interning</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_validation"><code class="docutils literal notranslate"><span class="pre">feature_validation</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_external_ges"><code class="docutils literal notranslate"><span class="pre">feature_external_ges</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.feature_external_pes"><code class="docutils literal notranslate"><span class="pre">feature_external_pes</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.all_features"><code class="docutils literal notranslate"><span class="pre">all_features</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_lexical_handler"><code class="docutils literal notranslate"><span class="pre">property_lexical_handler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_declaration_handler"><code class="docutils literal notranslate"><span class="pre">property_declaration_handler</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_dom_node"><code class="docutils literal notranslate"><span class="pre">property_dom_node</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.property_xml_string"><code class="docutils literal notranslate"><span class="pre">property_xml_string</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.all_properties"><code class="docutils literal notranslate"><span class="pre">all_properties</span></code></a></li>
+<li><a class="reference internal" href="#contenthandler-objects">ContentHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.setDocumentLocator"><code class="docutils literal notranslate"><span class="pre">ContentHandler.setDocumentLocator()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startDocument"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startDocument()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endDocument"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endDocument()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startPrefixMapping"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startPrefixMapping()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endPrefixMapping"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endPrefixMapping()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startElement"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startElement()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endElement"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endElement()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.startElementNS"><code class="docutils literal notranslate"><span class="pre">ContentHandler.startElementNS()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.endElementNS"><code class="docutils literal notranslate"><span class="pre">ContentHandler.endElementNS()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.characters"><code class="docutils literal notranslate"><span class="pre">ContentHandler.characters()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.ignorableWhitespace"><code class="docutils literal notranslate"><span class="pre">ContentHandler.ignorableWhitespace()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.processingInstruction"><code class="docutils literal notranslate"><span class="pre">ContentHandler.processingInstruction()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ContentHandler.skippedEntity"><code class="docutils literal notranslate"><span class="pre">ContentHandler.skippedEntity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dtdhandler-objects">DTDHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler.notationDecl"><code class="docutils literal notranslate"><span class="pre">DTDHandler.notationDecl()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.DTDHandler.unparsedEntityDecl"><code class="docutils literal notranslate"><span class="pre">DTDHandler.unparsedEntityDecl()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#entityresolver-objects">EntityResolver Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.EntityResolver.resolveEntity"><code class="docutils literal notranslate"><span class="pre">EntityResolver.resolveEntity()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#errorhandler-objects">ErrorHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.error"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.error()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.fatalError"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.fatalError()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.ErrorHandler.warning"><code class="docutils literal notranslate"><span class="pre">ErrorHandler.warning()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lexicalhandler-objects">LexicalHandler Objects</a><ul>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.comment"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.comment()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.startDTD"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.startDTD()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.endDTD"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.endDTD()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.startCDATA"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.startCDATA()</span></code></a></li>
+<li><a class="reference internal" href="#xml.sax.handler.LexicalHandler.endCDATA"><code class="docutils literal notranslate"><span class="pre">LexicalHandler.endCDATA()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -713,6 +814,10 @@ the characters handler.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -786,11 +891,11 @@ the characters handler.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

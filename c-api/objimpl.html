@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Object Implementation Support" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/objimpl.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -181,7 +180,7 @@
           <div class="body" role="main">
             
   <section id="object-implementation-support">
-<span id="newtypes"></span><h1>Object Implementation Support<a class="headerlink" href="#object-implementation-support" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="newtypes"></span><h1>Object Implementation Support<a class="headerlink" href="#object-implementation-support" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes the functions, types, and macros used when defining new
 object types.</p>
 <div class="toctree-wrapper compound">
@@ -189,7 +188,16 @@ object types.</p>
 <li class="toctree-l1"><a class="reference internal" href="allocation.html">Allocating Objects on the Heap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="structures.html">Common Object Structures</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="structures.html#base-object-types-and-macros">Base object types and macros</a></li>
-<li class="toctree-l2"><a class="reference internal" href="structures.html#implementing-functions-and-methods">Implementing functions and methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structures.html#implementing-functions-and-methods">Implementing functions and methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_VARARGS"><code class="docutils literal notranslate"><span class="pre">METH_VARARGS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_FASTCALL"><code class="docutils literal notranslate"><span class="pre">METH_FASTCALL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_NOARGS"><code class="docutils literal notranslate"><span class="pre">METH_NOARGS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_O"><code class="docutils literal notranslate"><span class="pre">METH_O</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_CLASS"><code class="docutils literal notranslate"><span class="pre">METH_CLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_STATIC"><code class="docutils literal notranslate"><span class="pre">METH_STATIC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html#METH_COEXIST"><code class="docutils literal notranslate"><span class="pre">METH_COEXIST</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="structures.html#accessing-attributes-of-extension-types">Accessing attributes of extension types</a></li>
 </ul>
 </li>
@@ -203,7 +211,30 @@ object types.</p>
 <li class="toctree-l2"><a class="reference internal" href="typeobj.html#pytypeobject-definition">PyTypeObject Definition</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typeobj.html#pyobject-slots">PyObject Slots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typeobj.html#pyvarobject-slots">PyVarObject Slots</a></li>
-<li class="toctree-l2"><a class="reference internal" href="typeobj.html#pytypeobject-slots">PyTypeObject Slots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="typeobj.html#pytypeobject-slots">PyTypeObject Slots</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_HEAPTYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_BASETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASETYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_READY"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_READYING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READYING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_HAVE_GC"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DEFAULT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_METHOD_DESCRIPTOR"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_METHOD_DESCRIPTOR</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_LONG_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LONG_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_LIST_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LIST_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_TUPLE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TUPLE_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_BYTES_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BYTES_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_UNICODE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_UNICODE_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_DICT_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DICT_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_BASE_EXC_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASE_EXC_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_TYPE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TYPE_SUBCLASS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_HAVE_FINALIZE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_FINALIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_HAVE_VECTORCALL"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_VECTORCALL</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_IMMUTABLETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_DISALLOW_INSTANTIATION"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_MAPPING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_MAPPING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="typeobj.html#Py_TPFLAGS_SEQUENCE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_SEQUENCE</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="typeobj.html#static-types">Static Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="typeobj.html#heap-types">Heap Types</a></li>
 </ul>
@@ -252,6 +283,10 @@ object types.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -324,11 +359,11 @@ object types.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

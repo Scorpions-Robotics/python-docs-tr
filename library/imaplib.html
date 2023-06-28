@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="imaplib — IMAP4 protocol client" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/imaplib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,73 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code> — IMAP4 protocol client</a><ul>
-<li><a class="reference internal" href="#imap4-objects">IMAP4 Objects</a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4"><code class="docutils literal notranslate"><span class="pre">IMAP4</span></code></a><ul>
+<li><a class="reference internal" href="#imaplib.IMAP4.error"><code class="docutils literal notranslate"><span class="pre">IMAP4.error</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.abort"><code class="docutils literal notranslate"><span class="pre">IMAP4.abort</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.readonly"><code class="docutils literal notranslate"><span class="pre">IMAP4.readonly</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#imaplib.IMAP4_SSL"><code class="docutils literal notranslate"><span class="pre">IMAP4_SSL</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4_stream"><code class="docutils literal notranslate"><span class="pre">IMAP4_stream</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Internaldate2tuple"><code class="docutils literal notranslate"><span class="pre">Internaldate2tuple()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Int2AP"><code class="docutils literal notranslate"><span class="pre">Int2AP()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.ParseFlags"><code class="docutils literal notranslate"><span class="pre">ParseFlags()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Time2Internaldate"><code class="docutils literal notranslate"><span class="pre">Time2Internaldate()</span></code></a></li>
+<li><a class="reference internal" href="#imap4-objects">IMAP4 Objects</a><ul>
+<li><a class="reference internal" href="#imaplib.IMAP4.append"><code class="docutils literal notranslate"><span class="pre">IMAP4.append()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.authenticate"><code class="docutils literal notranslate"><span class="pre">IMAP4.authenticate()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.check"><code class="docutils literal notranslate"><span class="pre">IMAP4.check()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.close"><code class="docutils literal notranslate"><span class="pre">IMAP4.close()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.copy"><code class="docutils literal notranslate"><span class="pre">IMAP4.copy()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.create"><code class="docutils literal notranslate"><span class="pre">IMAP4.create()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.delete"><code class="docutils literal notranslate"><span class="pre">IMAP4.delete()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.deleteacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.deleteacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.enable"><code class="docutils literal notranslate"><span class="pre">IMAP4.enable()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.expunge"><code class="docutils literal notranslate"><span class="pre">IMAP4.expunge()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.fetch"><code class="docutils literal notranslate"><span class="pre">IMAP4.fetch()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.getacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getannotation"><code class="docutils literal notranslate"><span class="pre">IMAP4.getannotation()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getquota"><code class="docutils literal notranslate"><span class="pre">IMAP4.getquota()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getquotaroot"><code class="docutils literal notranslate"><span class="pre">IMAP4.getquotaroot()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.list"><code class="docutils literal notranslate"><span class="pre">IMAP4.list()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.login"><code class="docutils literal notranslate"><span class="pre">IMAP4.login()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.login_cram_md5"><code class="docutils literal notranslate"><span class="pre">IMAP4.login_cram_md5()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.logout"><code class="docutils literal notranslate"><span class="pre">IMAP4.logout()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.lsub"><code class="docutils literal notranslate"><span class="pre">IMAP4.lsub()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.myrights"><code class="docutils literal notranslate"><span class="pre">IMAP4.myrights()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.namespace"><code class="docutils literal notranslate"><span class="pre">IMAP4.namespace()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.noop"><code class="docutils literal notranslate"><span class="pre">IMAP4.noop()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.open"><code class="docutils literal notranslate"><span class="pre">IMAP4.open()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.partial"><code class="docutils literal notranslate"><span class="pre">IMAP4.partial()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.proxyauth"><code class="docutils literal notranslate"><span class="pre">IMAP4.proxyauth()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.read"><code class="docutils literal notranslate"><span class="pre">IMAP4.read()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.readline"><code class="docutils literal notranslate"><span class="pre">IMAP4.readline()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.recent"><code class="docutils literal notranslate"><span class="pre">IMAP4.recent()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.rename"><code class="docutils literal notranslate"><span class="pre">IMAP4.rename()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.response"><code class="docutils literal notranslate"><span class="pre">IMAP4.response()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.search"><code class="docutils literal notranslate"><span class="pre">IMAP4.search()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.select"><code class="docutils literal notranslate"><span class="pre">IMAP4.select()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.send"><code class="docutils literal notranslate"><span class="pre">IMAP4.send()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.setacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setannotation"><code class="docutils literal notranslate"><span class="pre">IMAP4.setannotation()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setquota"><code class="docutils literal notranslate"><span class="pre">IMAP4.setquota()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.shutdown"><code class="docutils literal notranslate"><span class="pre">IMAP4.shutdown()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.socket"><code class="docutils literal notranslate"><span class="pre">IMAP4.socket()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.sort"><code class="docutils literal notranslate"><span class="pre">IMAP4.sort()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.starttls"><code class="docutils literal notranslate"><span class="pre">IMAP4.starttls()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.status"><code class="docutils literal notranslate"><span class="pre">IMAP4.status()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.store"><code class="docutils literal notranslate"><span class="pre">IMAP4.store()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.subscribe"><code class="docutils literal notranslate"><span class="pre">IMAP4.subscribe()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.thread"><code class="docutils literal notranslate"><span class="pre">IMAP4.thread()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.uid"><code class="docutils literal notranslate"><span class="pre">IMAP4.uid()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.unsubscribe"><code class="docutils literal notranslate"><span class="pre">IMAP4.unsubscribe()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.unselect"><code class="docutils literal notranslate"><span class="pre">IMAP4.unselect()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.xatom"><code class="docutils literal notranslate"><span class="pre">IMAP4.xatom()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.PROTOCOL_VERSION"><code class="docutils literal notranslate"><span class="pre">IMAP4.PROTOCOL_VERSION</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.debug"><code class="docutils literal notranslate"><span class="pre">IMAP4.debug</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.utf8_enabled"><code class="docutils literal notranslate"><span class="pre">IMAP4.utf8_enabled</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#imap4-example">IMAP4 Example</a></li>
 </ul>
 </li>
@@ -193,7 +258,7 @@
           <div class="body" role="main">
             
   <section id="module-imaplib">
-<span id="imaplib-imap4-protocol-client"></span><h1><a class="reference internal" href="#module-imaplib" title="imaplib: IMAP4 protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code></a> — IMAP4 protocol client<a class="headerlink" href="#module-imaplib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="imaplib-imap4-protocol-client"></span><h1><a class="reference internal" href="#module-imaplib" title="imaplib: IMAP4 protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code></a> — IMAP4 protocol client<a class="headerlink" href="#module-imaplib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/imaplib.py">Lib/imaplib.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>This module defines three classes, <a class="reference internal" href="#imaplib.IMAP4" title="imaplib.IMAP4"><code class="xref py py-class docutils literal notranslate"><span class="pre">IMAP4</span></code></a>, <a class="reference internal" href="#imaplib.IMAP4_SSL" title="imaplib.IMAP4_SSL"><code class="xref py py-class docutils literal notranslate"><span class="pre">IMAP4_SSL</span></code></a> and
@@ -357,7 +422,7 @@ implementing it, by the University of Washington’s IMAP Information Center
 can all be found at (<strong>Source Code</strong>) <a class="reference external" href="https://github.com/uw-imap/imap">https://github.com/uw-imap/imap</a> (<strong>Not Maintained</strong>).</p>
 </div>
 <section id="imap4-objects">
-<span id="id1"></span><h2>IMAP4 Objects<a class="headerlink" href="#imap4-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>IMAP4 Objects<a class="headerlink" href="#imap4-objects" title="Permalink to this heading">¶</a></h2>
 <p>All IMAP4rev1 commands are represented by methods of the same name, either
 upper-case or lower-case.</p>
 <p>All arguments to commands are converted to strings, except for <code class="docutils literal notranslate"><span class="pre">AUTHENTICATE</span></code>,
@@ -839,7 +904,7 @@ capability.</p>
 
 </section>
 <section id="imap4-example">
-<span id="id2"></span><h2>IMAP4 Example<a class="headerlink" href="#imap4-example" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>IMAP4 Example<a class="headerlink" href="#imap4-example" title="Permalink to this heading">¶</a></h2>
 <p>Here is a minimal example (without error checking) that opens a mailbox and
 retrieves and prints all messages:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span><span class="o">,</span> <span class="nn">imaplib</span>
@@ -869,7 +934,73 @@ retrieves and prints all messages:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imaplib</span></code> — IMAP4 protocol client</a><ul>
-<li><a class="reference internal" href="#imap4-objects">IMAP4 Objects</a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4"><code class="docutils literal notranslate"><span class="pre">IMAP4</span></code></a><ul>
+<li><a class="reference internal" href="#imaplib.IMAP4.error"><code class="docutils literal notranslate"><span class="pre">IMAP4.error</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.abort"><code class="docutils literal notranslate"><span class="pre">IMAP4.abort</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.readonly"><code class="docutils literal notranslate"><span class="pre">IMAP4.readonly</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#imaplib.IMAP4_SSL"><code class="docutils literal notranslate"><span class="pre">IMAP4_SSL</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4_stream"><code class="docutils literal notranslate"><span class="pre">IMAP4_stream</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Internaldate2tuple"><code class="docutils literal notranslate"><span class="pre">Internaldate2tuple()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Int2AP"><code class="docutils literal notranslate"><span class="pre">Int2AP()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.ParseFlags"><code class="docutils literal notranslate"><span class="pre">ParseFlags()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.Time2Internaldate"><code class="docutils literal notranslate"><span class="pre">Time2Internaldate()</span></code></a></li>
+<li><a class="reference internal" href="#imap4-objects">IMAP4 Objects</a><ul>
+<li><a class="reference internal" href="#imaplib.IMAP4.append"><code class="docutils literal notranslate"><span class="pre">IMAP4.append()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.authenticate"><code class="docutils literal notranslate"><span class="pre">IMAP4.authenticate()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.check"><code class="docutils literal notranslate"><span class="pre">IMAP4.check()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.close"><code class="docutils literal notranslate"><span class="pre">IMAP4.close()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.copy"><code class="docutils literal notranslate"><span class="pre">IMAP4.copy()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.create"><code class="docutils literal notranslate"><span class="pre">IMAP4.create()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.delete"><code class="docutils literal notranslate"><span class="pre">IMAP4.delete()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.deleteacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.deleteacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.enable"><code class="docutils literal notranslate"><span class="pre">IMAP4.enable()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.expunge"><code class="docutils literal notranslate"><span class="pre">IMAP4.expunge()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.fetch"><code class="docutils literal notranslate"><span class="pre">IMAP4.fetch()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.getacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getannotation"><code class="docutils literal notranslate"><span class="pre">IMAP4.getannotation()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getquota"><code class="docutils literal notranslate"><span class="pre">IMAP4.getquota()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.getquotaroot"><code class="docutils literal notranslate"><span class="pre">IMAP4.getquotaroot()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.list"><code class="docutils literal notranslate"><span class="pre">IMAP4.list()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.login"><code class="docutils literal notranslate"><span class="pre">IMAP4.login()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.login_cram_md5"><code class="docutils literal notranslate"><span class="pre">IMAP4.login_cram_md5()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.logout"><code class="docutils literal notranslate"><span class="pre">IMAP4.logout()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.lsub"><code class="docutils literal notranslate"><span class="pre">IMAP4.lsub()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.myrights"><code class="docutils literal notranslate"><span class="pre">IMAP4.myrights()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.namespace"><code class="docutils literal notranslate"><span class="pre">IMAP4.namespace()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.noop"><code class="docutils literal notranslate"><span class="pre">IMAP4.noop()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.open"><code class="docutils literal notranslate"><span class="pre">IMAP4.open()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.partial"><code class="docutils literal notranslate"><span class="pre">IMAP4.partial()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.proxyauth"><code class="docutils literal notranslate"><span class="pre">IMAP4.proxyauth()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.read"><code class="docutils literal notranslate"><span class="pre">IMAP4.read()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.readline"><code class="docutils literal notranslate"><span class="pre">IMAP4.readline()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.recent"><code class="docutils literal notranslate"><span class="pre">IMAP4.recent()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.rename"><code class="docutils literal notranslate"><span class="pre">IMAP4.rename()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.response"><code class="docutils literal notranslate"><span class="pre">IMAP4.response()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.search"><code class="docutils literal notranslate"><span class="pre">IMAP4.search()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.select"><code class="docutils literal notranslate"><span class="pre">IMAP4.select()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.send"><code class="docutils literal notranslate"><span class="pre">IMAP4.send()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setacl"><code class="docutils literal notranslate"><span class="pre">IMAP4.setacl()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setannotation"><code class="docutils literal notranslate"><span class="pre">IMAP4.setannotation()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.setquota"><code class="docutils literal notranslate"><span class="pre">IMAP4.setquota()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.shutdown"><code class="docutils literal notranslate"><span class="pre">IMAP4.shutdown()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.socket"><code class="docutils literal notranslate"><span class="pre">IMAP4.socket()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.sort"><code class="docutils literal notranslate"><span class="pre">IMAP4.sort()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.starttls"><code class="docutils literal notranslate"><span class="pre">IMAP4.starttls()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.status"><code class="docutils literal notranslate"><span class="pre">IMAP4.status()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.store"><code class="docutils literal notranslate"><span class="pre">IMAP4.store()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.subscribe"><code class="docutils literal notranslate"><span class="pre">IMAP4.subscribe()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.thread"><code class="docutils literal notranslate"><span class="pre">IMAP4.thread()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.uid"><code class="docutils literal notranslate"><span class="pre">IMAP4.uid()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.unsubscribe"><code class="docutils literal notranslate"><span class="pre">IMAP4.unsubscribe()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.unselect"><code class="docutils literal notranslate"><span class="pre">IMAP4.unselect()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.xatom"><code class="docutils literal notranslate"><span class="pre">IMAP4.xatom()</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.PROTOCOL_VERSION"><code class="docutils literal notranslate"><span class="pre">IMAP4.PROTOCOL_VERSION</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.debug"><code class="docutils literal notranslate"><span class="pre">IMAP4.debug</span></code></a></li>
+<li><a class="reference internal" href="#imaplib.IMAP4.utf8_enabled"><code class="docutils literal notranslate"><span class="pre">IMAP4.utf8_enabled</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#imap4-example">IMAP4 Example</a></li>
 </ul>
 </li>
@@ -898,6 +1029,10 @@ retrieves and prints all messages:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -971,11 +1106,11 @@ retrieves and prints all messages:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

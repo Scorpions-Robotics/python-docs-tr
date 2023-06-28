@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="resource — Resource usage information" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/resource.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,44 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">resource</span></code> — Resource usage information</a><ul>
-<li><a class="reference internal" href="#resource-limits">Resource Limits</a></li>
-<li><a class="reference internal" href="#resource-usage">Resource Usage</a></li>
+<li><a class="reference internal" href="#resource.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#resource-limits">Resource Limits</a><ul>
+<li><a class="reference internal" href="#resource.RLIM_INFINITY"><code class="docutils literal notranslate"><span class="pre">RLIM_INFINITY</span></code></a></li>
+<li><a class="reference internal" href="#resource.getrlimit"><code class="docutils literal notranslate"><span class="pre">getrlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.setrlimit"><code class="docutils literal notranslate"><span class="pre">setrlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.prlimit"><code class="docutils literal notranslate"><span class="pre">prlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_CORE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CORE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_CPU"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CPU</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_FSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_FSIZE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_DATA"><code class="docutils literal notranslate"><span class="pre">RLIMIT_DATA</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_STACK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_STACK</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RSS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RSS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NPROC"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPROC</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NOFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NOFILE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_OFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_OFILE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_MEMLOCK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MEMLOCK</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_VMEM"><code class="docutils literal notranslate"><span class="pre">RLIMIT_VMEM</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_AS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_AS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_MSGQUEUE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MSGQUEUE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NICE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NICE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RTPRIO"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTPRIO</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RTTIME"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTTIME</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SIGPENDING"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SIGPENDING</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SBSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SBSIZE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SWAP"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SWAP</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NPTS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPTS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_KQUEUES"><code class="docutils literal notranslate"><span class="pre">RLIMIT_KQUEUES</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resource-usage">Resource Usage</a><ul>
+<li><a class="reference internal" href="#resource.getrusage"><code class="docutils literal notranslate"><span class="pre">getrusage()</span></code></a></li>
+<li><a class="reference internal" href="#resource.getpagesize"><code class="docutils literal notranslate"><span class="pre">getpagesize()</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_SELF"><code class="docutils literal notranslate"><span class="pre">RUSAGE_SELF</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_CHILDREN"><code class="docutils literal notranslate"><span class="pre">RUSAGE_CHILDREN</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_BOTH"><code class="docutils literal notranslate"><span class="pre">RUSAGE_BOTH</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_THREAD"><code class="docutils literal notranslate"><span class="pre">RUSAGE_THREAD</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -193,7 +228,7 @@
           <div class="body" role="main">
             
   <section id="module-resource">
-<span id="resource-resource-usage-information"></span><h1><a class="reference internal" href="#module-resource" title="resource: An interface to provide resource usage information on the current process. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">resource</span></code></a> — Resource usage information<a class="headerlink" href="#module-resource" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="resource-resource-usage-information"></span><h1><a class="reference internal" href="#module-resource" title="resource: An interface to provide resource usage information on the current process. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">resource</span></code></a> — Resource usage information<a class="headerlink" href="#module-resource" title="Permalink to this heading">¶</a></h1>
 <hr class="docutils" />
 <p>This module provides basic mechanisms for measuring and controlling system
 resources utilized by a program.</p>
@@ -216,7 +251,7 @@ request usage information about either the current process or its children.</p>
 </dd></dl>
 
 <section id="resource-limits">
-<h2>Resource Limits<a class="headerlink" href="#resource-limits" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Resource Limits<a class="headerlink" href="#resource-limits" title="Permalink to this heading">¶</a></h2>
 <p>Resources usage can be limited using the <a class="reference internal" href="#resource.setrlimit" title="resource.setrlimit"><code class="xref py py-func docutils literal notranslate"><span class="pre">setrlimit()</span></code></a> function described
 below. Each resource is controlled by a pair of limits: a soft limit and a hard
 limit. The soft limit is the current limit, and may be lowered or raised by a
@@ -491,7 +526,7 @@ for a complete description of this sysctl.</p>
 
 </section>
 <section id="resource-usage">
-<h2>Resource Usage<a class="headerlink" href="#resource-usage" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Resource Usage<a class="headerlink" href="#resource-usage" title="Permalink to this heading">¶</a></h2>
 <p>These functions are used to retrieve resource usage information:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="resource.getrusage">
@@ -526,11 +561,6 @@ mode and the amount of time spent executing in system mode, respectively. The
 remaining values are integers. Consult the <em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/getrusage(2)">getrusage(2)</a></em> man page for
 detailed information about these values. A brief summary is presented here:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 31%" />
-<col style="width: 57%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Index</p></th>
 <th class="head"><p>Field</p></th>
@@ -662,8 +692,44 @@ thread.  May not be available on all systems.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">resource</span></code> — Resource usage information</a><ul>
-<li><a class="reference internal" href="#resource-limits">Resource Limits</a></li>
-<li><a class="reference internal" href="#resource-usage">Resource Usage</a></li>
+<li><a class="reference internal" href="#resource.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#resource-limits">Resource Limits</a><ul>
+<li><a class="reference internal" href="#resource.RLIM_INFINITY"><code class="docutils literal notranslate"><span class="pre">RLIM_INFINITY</span></code></a></li>
+<li><a class="reference internal" href="#resource.getrlimit"><code class="docutils literal notranslate"><span class="pre">getrlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.setrlimit"><code class="docutils literal notranslate"><span class="pre">setrlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.prlimit"><code class="docutils literal notranslate"><span class="pre">prlimit()</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_CORE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CORE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_CPU"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CPU</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_FSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_FSIZE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_DATA"><code class="docutils literal notranslate"><span class="pre">RLIMIT_DATA</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_STACK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_STACK</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RSS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RSS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NPROC"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPROC</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NOFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NOFILE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_OFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_OFILE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_MEMLOCK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MEMLOCK</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_VMEM"><code class="docutils literal notranslate"><span class="pre">RLIMIT_VMEM</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_AS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_AS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_MSGQUEUE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MSGQUEUE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NICE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NICE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RTPRIO"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTPRIO</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_RTTIME"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTTIME</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SIGPENDING"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SIGPENDING</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SBSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SBSIZE</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_SWAP"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SWAP</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_NPTS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPTS</span></code></a></li>
+<li><a class="reference internal" href="#resource.RLIMIT_KQUEUES"><code class="docutils literal notranslate"><span class="pre">RLIMIT_KQUEUES</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#resource-usage">Resource Usage</a><ul>
+<li><a class="reference internal" href="#resource.getrusage"><code class="docutils literal notranslate"><span class="pre">getrusage()</span></code></a></li>
+<li><a class="reference internal" href="#resource.getpagesize"><code class="docutils literal notranslate"><span class="pre">getpagesize()</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_SELF"><code class="docutils literal notranslate"><span class="pre">RUSAGE_SELF</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_CHILDREN"><code class="docutils literal notranslate"><span class="pre">RUSAGE_CHILDREN</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_BOTH"><code class="docutils literal notranslate"><span class="pre">RUSAGE_BOTH</span></code></a></li>
+<li><a class="reference internal" href="#resource.RUSAGE_THREAD"><code class="docutils literal notranslate"><span class="pre">RUSAGE_THREAD</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -691,6 +757,10 @@ thread.  May not be available on all systems.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -764,11 +834,11 @@ thread.  May not be available on all systems.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

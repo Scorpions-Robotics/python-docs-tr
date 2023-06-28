@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="bisect — Array bisection algorithm" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/bisect.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,6 +97,12 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code> — Array bisection algorithm</a><ul>
+<li><a class="reference internal" href="#bisect.bisect_left"><code class="docutils literal notranslate"><span class="pre">bisect_left()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.bisect_right"><code class="docutils literal notranslate"><span class="pre">bisect_right()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.bisect"><code class="docutils literal notranslate"><span class="pre">bisect()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort_left"><code class="docutils literal notranslate"><span class="pre">insort_left()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort_right"><code class="docutils literal notranslate"><span class="pre">insort_right()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort"><code class="docutils literal notranslate"><span class="pre">insort()</span></code></a></li>
 <li><a class="reference internal" href="#performance-notes">Performance Notes</a></li>
 <li><a class="reference internal" href="#searching-sorted-lists">Searching Sorted Lists</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
@@ -194,7 +199,7 @@
           <div class="body" role="main">
             
   <section id="module-bisect">
-<span id="bisect-array-bisection-algorithm"></span><h1><a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code></a> — Array bisection algorithm<a class="headerlink" href="#module-bisect" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="bisect-array-bisection-algorithm"></span><h1><a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code></a> — Array bisection algorithm<a class="headerlink" href="#module-bisect" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/bisect.py">Lib/bisect.py</a></p>
 <hr class="docutils" />
 <p>This module provides support for maintaining a list in sorted order without
@@ -282,7 +287,7 @@ insertion step.</p>
 </dd></dl>
 
 <section id="performance-notes">
-<h2>Performance Notes<a class="headerlink" href="#performance-notes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Performance Notes<a class="headerlink" href="#performance-notes" title="Permalink to this heading">¶</a></h2>
 <p>When writing time sensitive code using <em>bisect()</em> and <em>insort()</em>, keep these
 thoughts in mind:</p>
 <ul class="simple">
@@ -311,7 +316,7 @@ unnecessary calls to the key function during searches.</p></li>
 </div>
 </section>
 <section id="searching-sorted-lists">
-<h2>Searching Sorted Lists<a class="headerlink" href="#searching-sorted-lists" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Searching Sorted Lists<a class="headerlink" href="#searching-sorted-lists" title="Permalink to this heading">¶</a></h2>
 <p>The above <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> functions are useful for finding insertion points but
 can be tricky or awkward to use for common searching tasks. The following five
 functions show how to transform them into the standard lookups for sorted
@@ -354,7 +359,7 @@ lists:</p>
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p id="bisect-example">The <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> function can be useful for numeric table lookups. This
 example uses <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> to look up a letter grade for an exam score (say)
 based on a set of ordered numeric breakpoints: 90 and up is an ‘A’, 80 to 89 is
@@ -430,6 +435,12 @@ calls by searching a list of precomputed keys to find the index of a record:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code> — Array bisection algorithm</a><ul>
+<li><a class="reference internal" href="#bisect.bisect_left"><code class="docutils literal notranslate"><span class="pre">bisect_left()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.bisect_right"><code class="docutils literal notranslate"><span class="pre">bisect_right()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.bisect"><code class="docutils literal notranslate"><span class="pre">bisect()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort_left"><code class="docutils literal notranslate"><span class="pre">insort_left()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort_right"><code class="docutils literal notranslate"><span class="pre">insort_right()</span></code></a></li>
+<li><a class="reference internal" href="#bisect.insort"><code class="docutils literal notranslate"><span class="pre">insort()</span></code></a></li>
 <li><a class="reference internal" href="#performance-notes">Performance Notes</a></li>
 <li><a class="reference internal" href="#searching-sorted-lists">Searching Sorted Lists</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
@@ -460,6 +471,10 @@ calls by searching a list of precomputed keys to find the index of a record:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -533,11 +548,11 @@ calls by searching a list of precomputed keys to find the index of a record:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

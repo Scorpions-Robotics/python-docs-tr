@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="logging.config — Logging configuration" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/logging.config.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,13 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.config</span></code> — Logging configuration</a><ul>
-<li><a class="reference internal" href="#configuration-functions">Configuration functions</a></li>
+<li><a class="reference internal" href="#configuration-functions">Configuration functions</a><ul>
+<li><a class="reference internal" href="#logging.config.dictConfig"><code class="docutils literal notranslate"><span class="pre">dictConfig()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.fileConfig"><code class="docutils literal notranslate"><span class="pre">fileConfig()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.listen"><code class="docutils literal notranslate"><span class="pre">listen()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.stopListening"><code class="docutils literal notranslate"><span class="pre">stopListening()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#security-considerations">Security considerations</a></li>
 <li><a class="reference internal" href="#configuration-dictionary-schema">Configuration dictionary schema</a><ul>
 <li><a class="reference internal" href="#dictionary-schema-details">Dictionary Schema Details</a></li>
@@ -205,7 +210,7 @@
           <div class="body" role="main">
             
   <section id="module-logging.config">
-<span id="logging-config-logging-configuration"></span><h1><a class="reference internal" href="#module-logging.config" title="logging.config: Configuration of the logging module."><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.config</span></code></a> — Logging configuration<a class="headerlink" href="#module-logging.config" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="logging-config-logging-configuration"></span><h1><a class="reference internal" href="#module-logging.config" title="logging.config: Configuration of the logging module."><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.config</span></code></a> — Logging configuration<a class="headerlink" href="#module-logging.config" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/logging/config.py">Lib/logging/config.py</a></p>
 <aside class="sidebar">
 <p class="sidebar-title">Important</p>
@@ -220,7 +225,7 @@ please see</p>
 <hr class="docutils" />
 <p>This section describes the API for configuring the logging module.</p>
 <section id="configuration-functions">
-<span id="logging-config-api"></span><h2>Configuration functions<a class="headerlink" href="#configuration-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="logging-config-api"></span><h2>Configuration functions<a class="headerlink" href="#configuration-functions" title="Permalink to this heading">¶</a></h2>
 <p>The following functions configure the logging module. They are located in the
 <a class="reference internal" href="#module-logging.config" title="logging.config: Configuration of the logging module."><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.config</span></code></a> module.  Their use is optional — you can configure the
 logging module using these functions or by making calls to the main API (defined
@@ -282,7 +287,7 @@ end user to select from various pre-canned configurations (if the developer
 provides a mechanism to present the choices and load the chosen
 configuration).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parametreler</dt>
+<dt class="field-odd">Parametreler<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fname</strong> – A filename, or a file-like object, or an instance derived
 from <a class="reference internal" href="configparser.html#configparser.RawConfigParser" title="configparser.RawConfigParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">RawConfigParser</span></code></a>. If a
@@ -307,7 +312,7 @@ in the logging configuration.</p>
 </dd>
 </dl>
 <dl class="field-list simple">
-<dt class="field-odd">param encoding</dt>
+<dt class="field-odd">param encoding<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The encoding used to open file when <em>fname</em> is filename.</p>
 </dd>
 </dl>
@@ -398,7 +403,7 @@ This is typically called before calling <code class="xref py py-meth docutils li
 
 </section>
 <section id="security-considerations">
-<h2>Security considerations<a class="headerlink" href="#security-considerations" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Security considerations<a class="headerlink" href="#security-considerations" title="Permalink to this heading">¶</a></h2>
 <p>The logging configuration functionality tries to offer convenience, and in part this
 is done by offering the ability to convert text in configuration files into Python
 objects used in logging configuration - for example, as described in
@@ -410,7 +415,7 @@ satisfy yourself that nothing bad can happen if you load them, before actually l
 them.</p>
 </section>
 <section id="configuration-dictionary-schema">
-<span id="logging-config-dictschema"></span><h2>Configuration dictionary schema<a class="headerlink" href="#configuration-dictionary-schema" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="logging-config-dictschema"></span><h2>Configuration dictionary schema<a class="headerlink" href="#configuration-dictionary-schema" title="Permalink to this heading">¶</a></h2>
 <p>Describing a logging configuration requires listing the various
 objects to create and the connections between them; for example, you
 may create a handler named ‘console’ and then say that the logger
@@ -422,7 +427,7 @@ objects such as <code class="docutils literal notranslate"><span class="pre">sys
 objects and connections is defined in <a class="reference internal" href="#logging-config-dict-connections"><span class="std std-ref">Object connections</span></a>
 below.</p>
 <section id="dictionary-schema-details">
-<h3>Dictionary Schema Details<a class="headerlink" href="#dictionary-schema-details" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Dictionary Schema Details<a class="headerlink" href="#dictionary-schema-details" title="Permalink to this heading">¶</a></h3>
 <p>The dictionary passed to <a class="reference internal" href="#logging.config.dictConfig" title="logging.config.dictConfig"><code class="xref py py-func docutils literal notranslate"><span class="pre">dictConfig()</span></code></a> must contain the following
 keys:</p>
 <ul class="simple">
@@ -545,7 +550,7 @@ This value is ignored if <em>incremental</em> is <code class="docutils literal n
 </ul>
 </section>
 <section id="incremental-configuration">
-<span id="logging-config-dict-incremental"></span><h3>Incremental Configuration<a class="headerlink" href="#incremental-configuration" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-config-dict-incremental"></span><h3>Incremental Configuration<a class="headerlink" href="#incremental-configuration" title="Permalink to this heading">¶</a></h3>
 <p>It is difficult to provide complete flexibility for incremental
 configuration.  For example, because objects such as filters
 and formatters are anonymous, once a configuration is set up, it is
@@ -570,7 +575,7 @@ verbosity of a long-running application can be altered over time with
 no need to stop and restart the application.</p>
 </section>
 <section id="object-connections">
-<span id="logging-config-dict-connections"></span><h3>Object connections<a class="headerlink" href="#object-connections" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-config-dict-connections"></span><h3>Object connections<a class="headerlink" href="#object-connections" title="Permalink to this heading">¶</a></h3>
 <p>The schema describes a set of logging objects - loggers,
 handlers, formatters, filters - which are connected to each other in
 an object graph.  Thus, the schema needs to represent connections
@@ -619,7 +624,7 @@ ids <code class="docutils literal notranslate"><span class="pre">h1</span></code
 <code class="docutils literal notranslate"><span class="pre">precise</span></code>.</p>
 </section>
 <section id="user-defined-objects">
-<span id="logging-config-dict-userdef"></span><h3>User-defined objects<a class="headerlink" href="#user-defined-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-config-dict-userdef"></span><h3>User-defined objects<a class="headerlink" href="#user-defined-objects" title="Permalink to this heading">¶</a></h3>
 <p>The schema supports user-defined objects for handlers, filters and
 formatters.  (Loggers do not need to have different types for
 different instances, so there is no support in this configuration
@@ -736,7 +741,7 @@ configuration machinery, but set as attribute values as-is.</p>
 </div>
 </section>
 <section id="handler-configuration-order">
-<span id="handler-config-dict-order"></span><h3>Handler configuration order<a class="headerlink" href="#handler-configuration-order" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="handler-config-dict-order"></span><h3>Handler configuration order<a class="headerlink" href="#handler-configuration-order" title="Permalink to this heading">¶</a></h3>
 <p>Handlers are configured in alphabetical order of their keys, and a configured
 handler replaces the configuration dictionary in (a working copy of) the
 <code class="docutils literal notranslate"><span class="pre">handlers</span></code> dictionary in the schema. If you use a construct such as
@@ -755,7 +760,7 @@ after <code class="docutils literal notranslate"><span class="pre">foo</span></c
 configured handler <code class="docutils literal notranslate"><span class="pre">foo</span></code>, and not its configuration dictionary.</p>
 </section>
 <section id="access-to-external-objects">
-<span id="logging-config-dict-externalobj"></span><h3>Access to external objects<a class="headerlink" href="#access-to-external-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-config-dict-externalobj"></span><h3>Access to external objects<a class="headerlink" href="#access-to-external-objects" title="Permalink to this heading">¶</a></h3>
 <p>There are times where a configuration needs to refer to objects
 external to the configuration, for example <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code>.  If the
 configuration dict is constructed using Python code, this is
@@ -777,7 +782,7 @@ the string value.  If the prefix is not recognised, then the string
 value will be left as-is.</p>
 </section>
 <section id="access-to-internal-objects">
-<span id="logging-config-dict-internalobj"></span><h3>Access to internal objects<a class="headerlink" href="#access-to-internal-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-config-dict-internalobj"></span><h3>Access to internal objects<a class="headerlink" href="#access-to-internal-objects" title="Permalink to this heading">¶</a></h3>
 <p>As well as external objects, there is sometimes also a need to refer
 to objects in the configuration.  This will be done implicitly by the
 configuration system for things that it knows about.  For example, the
@@ -843,7 +848,7 @@ to <code class="docutils literal notranslate"><span class="pre">config_dict['han
 fails.</p>
 </section>
 <section id="import-resolution-and-custom-importers">
-<span id="logging-import-resolution"></span><h3>Import resolution and custom importers<a class="headerlink" href="#import-resolution-and-custom-importers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="logging-import-resolution"></span><h3>Import resolution and custom importers<a class="headerlink" href="#import-resolution-and-custom-importers" title="Permalink to this heading">¶</a></h3>
 <p>Import resolution, by default, uses the builtin <a class="reference internal" href="functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a> function
 to do its importing. You may want to replace this with your own importing
 mechanism: if so, you can replace the <code class="xref py py-attr docutils literal notranslate"><span class="pre">importer</span></code> attribute of the
@@ -864,7 +869,7 @@ callable on a configurator <em>instance</em>.</p>
 </section>
 </section>
 <section id="configuration-file-format">
-<span id="logging-config-fileformat"></span><h2>Configuration file format<a class="headerlink" href="#configuration-file-format" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="logging-config-fileformat"></span><h2>Configuration file format<a class="headerlink" href="#configuration-file-format" title="Permalink to this heading">¶</a></h2>
 <p>The configuration file format understood by <a class="reference internal" href="#logging.config.fileConfig" title="logging.config.fileConfig"><code class="xref py py-func docutils literal notranslate"><span class="pre">fileConfig()</span></code></a> is based on
 <a class="reference internal" href="configparser.html#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> functionality. The file must contain sections called
 <code class="docutils literal notranslate"><span class="pre">[loggers]</span></code>, <code class="docutils literal notranslate"><span class="pre">[handlers]</span></code> and <code class="docutils literal notranslate"><span class="pre">[formatters]</span></code> which identify by name the
@@ -1049,7 +1054,13 @@ multiple users with no mutual trust run code on the same machine; see the
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.config</span></code> — Logging configuration</a><ul>
-<li><a class="reference internal" href="#configuration-functions">Configuration functions</a></li>
+<li><a class="reference internal" href="#configuration-functions">Configuration functions</a><ul>
+<li><a class="reference internal" href="#logging.config.dictConfig"><code class="docutils literal notranslate"><span class="pre">dictConfig()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.fileConfig"><code class="docutils literal notranslate"><span class="pre">fileConfig()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.listen"><code class="docutils literal notranslate"><span class="pre">listen()</span></code></a></li>
+<li><a class="reference internal" href="#logging.config.stopListening"><code class="docutils literal notranslate"><span class="pre">stopListening()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#security-considerations">Security considerations</a></li>
 <li><a class="reference internal" href="#configuration-dictionary-schema">Configuration dictionary schema</a><ul>
 <li><a class="reference internal" href="#dictionary-schema-details">Dictionary Schema Details</a></li>
@@ -1090,6 +1101,10 @@ multiple users with no mutual trust run code on the same machine; see the
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1163,11 +1178,11 @@ multiple users with no mutual trust run code on the same machine; see the
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="symtable — Access to the compiler’s symbol tables" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/symtable.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,56 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code> — Access to the compiler’s symbol tables</a><ul>
-<li><a class="reference internal" href="#generating-symbol-tables">Generating Symbol Tables</a></li>
-<li><a class="reference internal" href="#examining-symbol-tables">Examining Symbol Tables</a></li>
+<li><a class="reference internal" href="#generating-symbol-tables">Generating Symbol Tables</a><ul>
+<li><a class="reference internal" href="#symtable.symtable"><code class="docutils literal notranslate"><span class="pre">symtable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examining-symbol-tables">Examining Symbol Tables</a><ul>
+<li><a class="reference internal" href="#symtable.SymbolTable"><code class="docutils literal notranslate"><span class="pre">SymbolTable</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_type"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_type()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_id"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_id()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_name"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_name()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_lineno"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_lineno()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.is_optimized"><code class="docutils literal notranslate"><span class="pre">SymbolTable.is_optimized()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.is_nested"><code class="docutils literal notranslate"><span class="pre">SymbolTable.is_nested()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.has_children"><code class="docutils literal notranslate"><span class="pre">SymbolTable.has_children()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_identifiers"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_identifiers()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.lookup"><code class="docutils literal notranslate"><span class="pre">SymbolTable.lookup()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_symbols"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_symbols()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_children"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_children()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Function"><code class="docutils literal notranslate"><span class="pre">Function</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Function.get_parameters"><code class="docutils literal notranslate"><span class="pre">Function.get_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_locals"><code class="docutils literal notranslate"><span class="pre">Function.get_locals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_globals"><code class="docutils literal notranslate"><span class="pre">Function.get_globals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_nonlocals"><code class="docutils literal notranslate"><span class="pre">Function.get_nonlocals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_frees"><code class="docutils literal notranslate"><span class="pre">Function.get_frees()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Class"><code class="docutils literal notranslate"><span class="pre">Class</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Class.get_methods"><code class="docutils literal notranslate"><span class="pre">Class.get_methods()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Symbol"><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Symbol.get_name"><code class="docutils literal notranslate"><span class="pre">Symbol.get_name()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_referenced"><code class="docutils literal notranslate"><span class="pre">Symbol.is_referenced()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_imported"><code class="docutils literal notranslate"><span class="pre">Symbol.is_imported()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_parameter"><code class="docutils literal notranslate"><span class="pre">Symbol.is_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_global"><code class="docutils literal notranslate"><span class="pre">Symbol.is_global()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_nonlocal"><code class="docutils literal notranslate"><span class="pre">Symbol.is_nonlocal()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_declared_global"><code class="docutils literal notranslate"><span class="pre">Symbol.is_declared_global()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_local"><code class="docutils literal notranslate"><span class="pre">Symbol.is_local()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_annotated"><code class="docutils literal notranslate"><span class="pre">Symbol.is_annotated()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_free"><code class="docutils literal notranslate"><span class="pre">Symbol.is_free()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_assigned"><code class="docutils literal notranslate"><span class="pre">Symbol.is_assigned()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_namespace"><code class="docutils literal notranslate"><span class="pre">Symbol.is_namespace()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.get_namespaces"><code class="docutils literal notranslate"><span class="pre">Symbol.get_namespaces()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.get_namespace"><code class="docutils literal notranslate"><span class="pre">Symbol.get_namespace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -193,7 +240,7 @@
           <div class="body" role="main">
             
   <section id="module-symtable">
-<span id="symtable-access-to-the-compiler-s-symbol-tables"></span><h1><a class="reference internal" href="#module-symtable" title="symtable: Interface to the compiler's internal symbol tables."><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code></a> — Access to the compiler’s symbol tables<a class="headerlink" href="#module-symtable" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="symtable-access-to-the-compiler-s-symbol-tables"></span><h1><a class="reference internal" href="#module-symtable" title="symtable: Interface to the compiler's internal symbol tables."><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code></a> — Access to the compiler’s symbol tables<a class="headerlink" href="#module-symtable" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/symtable.py">Lib/symtable.py</a></p>
 <hr class="docutils" />
 <p>Symbol tables are generated by the compiler from AST just before bytecode is
@@ -201,7 +248,7 @@ generated.  The symbol table is responsible for calculating the scope of every
 identifier in the code.  <a class="reference internal" href="#module-symtable" title="symtable: Interface to the compiler's internal symbol tables."><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code></a> provides an interface to examine these
 tables.</p>
 <section id="generating-symbol-tables">
-<h2>Generating Symbol Tables<a class="headerlink" href="#generating-symbol-tables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Generating Symbol Tables<a class="headerlink" href="#generating-symbol-tables" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="symtable.symtable">
 <span class="sig-prename descclassname"><span class="pre">symtable.</span></span><span class="sig-name descname"><span class="pre">symtable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compile_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#symtable.symtable" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -212,7 +259,7 @@ like the <em>mode</em> argument to <a class="reference internal" href="functions
 
 </section>
 <section id="examining-symbol-tables">
-<h2>Examining Symbol Tables<a class="headerlink" href="#examining-symbol-tables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examining Symbol Tables<a class="headerlink" href="#examining-symbol-tables" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="symtable.SymbolTable">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">symtable.</span></span><span class="sig-name descname"><span class="pre">SymbolTable</span></span><a class="headerlink" href="#symtable.SymbolTable" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -460,8 +507,56 @@ is bound to this name, a <a class="reference internal" href="exceptions.html#Val
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code> — Access to the compiler’s symbol tables</a><ul>
-<li><a class="reference internal" href="#generating-symbol-tables">Generating Symbol Tables</a></li>
-<li><a class="reference internal" href="#examining-symbol-tables">Examining Symbol Tables</a></li>
+<li><a class="reference internal" href="#generating-symbol-tables">Generating Symbol Tables</a><ul>
+<li><a class="reference internal" href="#symtable.symtable"><code class="docutils literal notranslate"><span class="pre">symtable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#examining-symbol-tables">Examining Symbol Tables</a><ul>
+<li><a class="reference internal" href="#symtable.SymbolTable"><code class="docutils literal notranslate"><span class="pre">SymbolTable</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_type"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_type()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_id"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_id()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_name"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_name()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_lineno"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_lineno()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.is_optimized"><code class="docutils literal notranslate"><span class="pre">SymbolTable.is_optimized()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.is_nested"><code class="docutils literal notranslate"><span class="pre">SymbolTable.is_nested()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.has_children"><code class="docutils literal notranslate"><span class="pre">SymbolTable.has_children()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_identifiers"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_identifiers()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.lookup"><code class="docutils literal notranslate"><span class="pre">SymbolTable.lookup()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_symbols"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_symbols()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.SymbolTable.get_children"><code class="docutils literal notranslate"><span class="pre">SymbolTable.get_children()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Function"><code class="docutils literal notranslate"><span class="pre">Function</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Function.get_parameters"><code class="docutils literal notranslate"><span class="pre">Function.get_parameters()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_locals"><code class="docutils literal notranslate"><span class="pre">Function.get_locals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_globals"><code class="docutils literal notranslate"><span class="pre">Function.get_globals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_nonlocals"><code class="docutils literal notranslate"><span class="pre">Function.get_nonlocals()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Function.get_frees"><code class="docutils literal notranslate"><span class="pre">Function.get_frees()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Class"><code class="docutils literal notranslate"><span class="pre">Class</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Class.get_methods"><code class="docutils literal notranslate"><span class="pre">Class.get_methods()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#symtable.Symbol"><code class="docutils literal notranslate"><span class="pre">Symbol</span></code></a><ul>
+<li><a class="reference internal" href="#symtable.Symbol.get_name"><code class="docutils literal notranslate"><span class="pre">Symbol.get_name()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_referenced"><code class="docutils literal notranslate"><span class="pre">Symbol.is_referenced()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_imported"><code class="docutils literal notranslate"><span class="pre">Symbol.is_imported()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_parameter"><code class="docutils literal notranslate"><span class="pre">Symbol.is_parameter()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_global"><code class="docutils literal notranslate"><span class="pre">Symbol.is_global()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_nonlocal"><code class="docutils literal notranslate"><span class="pre">Symbol.is_nonlocal()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_declared_global"><code class="docutils literal notranslate"><span class="pre">Symbol.is_declared_global()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_local"><code class="docutils literal notranslate"><span class="pre">Symbol.is_local()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_annotated"><code class="docutils literal notranslate"><span class="pre">Symbol.is_annotated()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_free"><code class="docutils literal notranslate"><span class="pre">Symbol.is_free()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_assigned"><code class="docutils literal notranslate"><span class="pre">Symbol.is_assigned()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.is_namespace"><code class="docutils literal notranslate"><span class="pre">Symbol.is_namespace()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.get_namespaces"><code class="docutils literal notranslate"><span class="pre">Symbol.get_namespaces()</span></code></a></li>
+<li><a class="reference internal" href="#symtable.Symbol.get_namespace"><code class="docutils literal notranslate"><span class="pre">Symbol.get_namespace()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -489,6 +584,10 @@ is bound to this name, a <a class="reference internal" href="exceptions.html#Val
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -562,11 +661,11 @@ is bound to this name, a <a class="reference internal" href="exceptions.html#Val
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

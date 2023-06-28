@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="importlib.resources.abc – Abstract base classes for resources" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/importlib.resources.abc.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,38 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources.abc</span></code> – Abstract base classes for resources</a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader"><code class="docutils literal notranslate"><span class="pre">ResourceReader</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.open_resource"><code class="docutils literal notranslate"><span class="pre">ResourceReader.open_resource()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.resource_path"><code class="docutils literal notranslate"><span class="pre">ResourceReader.resource_path()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.is_resource"><code class="docutils literal notranslate"><span class="pre">ResourceReader.is_resource()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.contents"><code class="docutils literal notranslate"><span class="pre">ResourceReader.contents()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable"><code class="docutils literal notranslate"><span class="pre">Traversable</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.name"><code class="docutils literal notranslate"><span class="pre">Traversable.name</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.iterdir"><code class="docutils literal notranslate"><span class="pre">Traversable.iterdir()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.is_dir"><code class="docutils literal notranslate"><span class="pre">Traversable.is_dir()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.is_file"><code class="docutils literal notranslate"><span class="pre">Traversable.is_file()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.joinpath"><code class="docutils literal notranslate"><span class="pre">Traversable.joinpath()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.__truediv__"><code class="docutils literal notranslate"><span class="pre">Traversable.__truediv__()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.open"><code class="docutils literal notranslate"><span class="pre">Traversable.open()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.read_bytes"><code class="docutils literal notranslate"><span class="pre">Traversable.read_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.read_text"><code class="docutils literal notranslate"><span class="pre">Traversable.read_text()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importlib.resources.abc.TraversableResources"><code class="docutils literal notranslate"><span class="pre">TraversableResources</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.TraversableResources.files"><code class="docutils literal notranslate"><span class="pre">TraversableResources.files()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="importlib.resources.html"
@@ -182,7 +213,7 @@
           <div class="body" role="main">
             
   <section id="module-importlib.resources.abc">
-<span id="importlib-resources-abc-abstract-base-classes-for-resources"></span><h1><a class="reference internal" href="#module-importlib.resources.abc" title="importlib.resources.abc: Abstract base classes for resources"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources.abc</span></code></a> – Abstract base classes for resources<a class="headerlink" href="#module-importlib.resources.abc" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="importlib-resources-abc-abstract-base-classes-for-resources"></span><h1><a class="reference internal" href="#module-importlib.resources.abc" title="importlib.resources.abc: Abstract base classes for resources"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources.abc</span></code></a> – Abstract base classes for resources<a class="headerlink" href="#module-importlib.resources.abc" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/importlib/resources/abc.py">Lib/importlib/resources/abc.py</a></p>
 <hr class="docutils" />
 <div class="versionadded">
@@ -366,6 +397,38 @@ package.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources.abc</span></code> – Abstract base classes for resources</a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader"><code class="docutils literal notranslate"><span class="pre">ResourceReader</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.open_resource"><code class="docutils literal notranslate"><span class="pre">ResourceReader.open_resource()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.resource_path"><code class="docutils literal notranslate"><span class="pre">ResourceReader.resource_path()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.is_resource"><code class="docutils literal notranslate"><span class="pre">ResourceReader.is_resource()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.ResourceReader.contents"><code class="docutils literal notranslate"><span class="pre">ResourceReader.contents()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable"><code class="docutils literal notranslate"><span class="pre">Traversable</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.name"><code class="docutils literal notranslate"><span class="pre">Traversable.name</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.iterdir"><code class="docutils literal notranslate"><span class="pre">Traversable.iterdir()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.is_dir"><code class="docutils literal notranslate"><span class="pre">Traversable.is_dir()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.is_file"><code class="docutils literal notranslate"><span class="pre">Traversable.is_file()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.joinpath"><code class="docutils literal notranslate"><span class="pre">Traversable.joinpath()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.__truediv__"><code class="docutils literal notranslate"><span class="pre">Traversable.__truediv__()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.open"><code class="docutils literal notranslate"><span class="pre">Traversable.open()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.read_bytes"><code class="docutils literal notranslate"><span class="pre">Traversable.read_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#importlib.resources.abc.Traversable.read_text"><code class="docutils literal notranslate"><span class="pre">Traversable.read_text()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importlib.resources.abc.TraversableResources"><code class="docutils literal notranslate"><span class="pre">TraversableResources</span></code></a><ul>
+<li><a class="reference internal" href="#importlib.resources.abc.TraversableResources.files"><code class="docutils literal notranslate"><span class="pre">TraversableResources.files()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="importlib.resources.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> – Resources</a></p>
@@ -387,6 +450,10 @@ package.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -460,11 +527,11 @@ package.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

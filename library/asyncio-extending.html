@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Extending" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/asyncio-extending.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -99,8 +98,18 @@
     <ul>
 <li><a class="reference internal" href="#">Extending</a><ul>
 <li><a class="reference internal" href="#writing-a-custom-event-loop">Writing a Custom Event Loop</a></li>
-<li><a class="reference internal" href="#future-and-task-private-constructors">Future and Task private constructors</a></li>
-<li><a class="reference internal" href="#task-lifetime-support">Task lifetime support</a></li>
+<li><a class="reference internal" href="#future-and-task-private-constructors">Future and Task private constructors</a><ul>
+<li><a class="reference internal" href="#asyncio.Future.__init__"><code class="docutils literal notranslate"><span class="pre">Future.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Task.__init__"><code class="docutils literal notranslate"><span class="pre">Task.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task-lifetime-support">Task lifetime support</a><ul>
+<li><a class="reference internal" href="#asyncio._register_task"><code class="docutils literal notranslate"><span class="pre">_register_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._unregister_task"><code class="docutils literal notranslate"><span class="pre">_unregister_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._enter_task"><code class="docutils literal notranslate"><span class="pre">_enter_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._leave_task"><code class="docutils literal notranslate"><span class="pre">_leave_task()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -195,7 +204,7 @@
           <div class="body" role="main">
             
   <section id="extending">
-<h1>Extending<a class="headerlink" href="#extending" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Extending<a class="headerlink" href="#extending" title="Permalink to this heading">¶</a></h1>
 <p>The main direction for <a class="reference internal" href="asyncio.html#module-asyncio" title="asyncio: Asynchronous I/O."><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> extending is writing custom <em>event loop</em>
 classes. Asyncio has helpers that could be used to simplify this task.</p>
 <div class="admonition note">
@@ -205,7 +214,7 @@ a new Python version is free to break backward compatibility
 in <em>internal</em> part of API.</p>
 </div>
 <section id="writing-a-custom-event-loop">
-<h2>Writing a Custom Event Loop<a class="headerlink" href="#writing-a-custom-event-loop" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Writing a Custom Event Loop<a class="headerlink" href="#writing-a-custom-event-loop" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="asyncio-eventloop.html#asyncio.AbstractEventLoop" title="asyncio.AbstractEventLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.AbstractEventLoop</span></code></a> declares very many methods.  Implementing all them
 from scratch is a tedious job.</p>
 <p>A loop can get many common methods implementation for free by inheriting from
@@ -218,7 +227,7 @@ The <code class="docutils literal notranslate"><span class="pre">_make_socket_tr
 <em>internal</em> API.</p>
 </section>
 <section id="future-and-task-private-constructors">
-<h2>Future and Task private constructors<a class="headerlink" href="#future-and-task-private-constructors" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Future and Task private constructors<a class="headerlink" href="#future-and-task-private-constructors" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="asyncio-future.html#asyncio.Future" title="asyncio.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Future</span></code></a> and <a class="reference internal" href="asyncio-task.html#asyncio.Task" title="asyncio.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">asyncio.Task</span></code></a> should be never created directly,
 please use corresponding <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_future" title="asyncio.loop.create_future"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_future()</span></code></a> and <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_task" title="asyncio.loop.create_task"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_task()</span></code></a>,
 or <a class="reference internal" href="asyncio-task.html#asyncio.create_task" title="asyncio.create_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.create_task()</span></code></a> factories instead.</p>
@@ -245,7 +254,7 @@ for the sake of getting a complex and highly optimized code for free.</p>
 
 </section>
 <section id="task-lifetime-support">
-<h2>Task lifetime support<a class="headerlink" href="#task-lifetime-support" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Task lifetime support<a class="headerlink" href="#task-lifetime-support" title="Permalink to this heading">¶</a></h2>
 <p>A third party task implementation should call the following functions to keep a task
 visible by <code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.get_tasks()</span></code> and <a class="reference internal" href="asyncio-task.html#asyncio.current_task" title="asyncio.current_task"><code class="xref py py-func docutils literal notranslate"><span class="pre">asyncio.current_task()</span></code></a>:</p>
 <dl class="py function">
@@ -293,8 +302,18 @@ execution.</p>
     <ul>
 <li><a class="reference internal" href="#">Extending</a><ul>
 <li><a class="reference internal" href="#writing-a-custom-event-loop">Writing a Custom Event Loop</a></li>
-<li><a class="reference internal" href="#future-and-task-private-constructors">Future and Task private constructors</a></li>
-<li><a class="reference internal" href="#task-lifetime-support">Task lifetime support</a></li>
+<li><a class="reference internal" href="#future-and-task-private-constructors">Future and Task private constructors</a><ul>
+<li><a class="reference internal" href="#asyncio.Future.__init__"><code class="docutils literal notranslate"><span class="pre">Future.__init__()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Task.__init__"><code class="docutils literal notranslate"><span class="pre">Task.__init__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#task-lifetime-support">Task lifetime support</a><ul>
+<li><a class="reference internal" href="#asyncio._register_task"><code class="docutils literal notranslate"><span class="pre">_register_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._unregister_task"><code class="docutils literal notranslate"><span class="pre">_unregister_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._enter_task"><code class="docutils literal notranslate"><span class="pre">_enter_task()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio._leave_task"><code class="docutils literal notranslate"><span class="pre">_leave_task()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -322,6 +341,10 @@ execution.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -396,11 +419,11 @@ execution.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="tempfile — Generate temporary files and directories" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/tempfile.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,22 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code> — Generate temporary files and directories</a><ul>
+<li><a class="reference internal" href="#tempfile.TemporaryFile"><code class="docutils literal notranslate"><span class="pre">TemporaryFile()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.NamedTemporaryFile"><code class="docutils literal notranslate"><span class="pre">NamedTemporaryFile()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.SpooledTemporaryFile"><code class="docutils literal notranslate"><span class="pre">SpooledTemporaryFile</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.TemporaryDirectory"><code class="docutils literal notranslate"><span class="pre">TemporaryDirectory</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.mkstemp"><code class="docutils literal notranslate"><span class="pre">mkstemp()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.mkdtemp"><code class="docutils literal notranslate"><span class="pre">mkdtemp()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempdir"><code class="docutils literal notranslate"><span class="pre">gettempdir()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempdirb"><code class="docutils literal notranslate"><span class="pre">gettempdirb()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempprefix"><code class="docutils literal notranslate"><span class="pre">gettempprefix()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempprefixb"><code class="docutils literal notranslate"><span class="pre">gettempprefixb()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.tempdir"><code class="docutils literal notranslate"><span class="pre">tempdir</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
-<li><a class="reference internal" href="#deprecated-functions-and-variables">Deprecated functions and variables</a></li>
+<li><a class="reference internal" href="#deprecated-functions-and-variables">Deprecated functions and variables</a><ul>
+<li><a class="reference internal" href="#tempfile.mktemp"><code class="docutils literal notranslate"><span class="pre">mktemp()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -193,7 +206,7 @@
           <div class="body" role="main">
             
   <section id="module-tempfile">
-<span id="tempfile-generate-temporary-files-and-directories"></span><h1><a class="reference internal" href="#module-tempfile" title="tempfile: Generate temporary files and directories."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code></a> — Generate temporary files and directories<a class="headerlink" href="#module-tempfile" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tempfile-generate-temporary-files-and-directories"></span><h1><a class="reference internal" href="#module-tempfile" title="tempfile: Generate temporary files and directories."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code></a> — Generate temporary files and directories<a class="headerlink" href="#module-tempfile" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/tempfile.py">Lib/tempfile.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>This module creates temporary files and directories.  It works on all
@@ -212,7 +225,7 @@ is recommended to use keyword arguments for clarity.</p>
 <p>The module defines the following user-callable items:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="tempfile.TemporaryFile">
-<span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">TemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.TemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">TemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.TemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return a <a class="reference internal" href="../glossary.html#term-file-like-object"><span class="xref std std-term">file-like object</span></a> that can be used as a temporary storage area.
 The file is created securely, using the same rules as <a class="reference internal" href="#tempfile.mkstemp" title="tempfile.mkstemp"><code class="xref py py-func docutils literal notranslate"><span class="pre">mkstemp()</span></code></a>. It will be destroyed as soon
 as it is closed (including an implicit close when the object is garbage
@@ -249,7 +262,7 @@ for NamedTemporaryFile.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="tempfile.NamedTemporaryFile">
-<span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">NamedTemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.NamedTemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">NamedTemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.NamedTemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>This function operates exactly as <a class="reference internal" href="#tempfile.TemporaryFile" title="tempfile.TemporaryFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">TemporaryFile()</span></code></a> does, except that
 the file is guaranteed to have a visible name in the file system (on
 Unix, the directory entry is not unlinked).  That name can be retrieved
@@ -272,7 +285,7 @@ cannot automatically delete any NamedTemporaryFiles it created.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="tempfile.SpooledTemporaryFile">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">SpooledTemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.SpooledTemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tempfile.</span></span><span class="sig-name descname"><span class="pre">SpooledTemporaryFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'w+b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tempfile.SpooledTemporaryFile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>This class operates exactly as <a class="reference internal" href="#tempfile.TemporaryFile" title="tempfile.TemporaryFile"><code class="xref py py-func docutils literal notranslate"><span class="pre">TemporaryFile()</span></code></a> does, except that
 data is spooled in memory until the file size exceeds <em>max_size</em>, or
 until the file’s <code class="xref py py-func docutils literal notranslate"><span class="pre">fileno()</span></code> method is called, at which point the
@@ -483,7 +496,7 @@ compatibility with the historical implementation.</p>
 </dd></dl>
 
 <section id="examples">
-<span id="tempfile-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tempfile-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Here are some examples of typical usage of the <a class="reference internal" href="#module-tempfile" title="tempfile: Generate temporary files and directories."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code></a> module:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tempfile</span>
 
@@ -515,7 +528,7 @@ compatibility with the historical implementation.</p>
 </div>
 </section>
 <section id="deprecated-functions-and-variables">
-<span id="tempfile-mktemp-deprecated"></span><h2>Deprecated functions and variables<a class="headerlink" href="#deprecated-functions-and-variables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tempfile-mktemp-deprecated"></span><h2>Deprecated functions and variables<a class="headerlink" href="#deprecated-functions-and-variables" title="Permalink to this heading">¶</a></h2>
 <p>A historical way to create temporary files was to first generate a
 file name with the <a class="reference internal" href="#tempfile.mktemp" title="tempfile.mktemp"><code class="xref py py-func docutils literal notranslate"><span class="pre">mktemp()</span></code></a> function and then create a file
 using this name. Unfortunately this is not secure, because a different
@@ -569,8 +582,22 @@ be replaced easily with <a class="reference internal" href="#tempfile.NamedTempo
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code> — Generate temporary files and directories</a><ul>
+<li><a class="reference internal" href="#tempfile.TemporaryFile"><code class="docutils literal notranslate"><span class="pre">TemporaryFile()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.NamedTemporaryFile"><code class="docutils literal notranslate"><span class="pre">NamedTemporaryFile()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.SpooledTemporaryFile"><code class="docutils literal notranslate"><span class="pre">SpooledTemporaryFile</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.TemporaryDirectory"><code class="docutils literal notranslate"><span class="pre">TemporaryDirectory</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.mkstemp"><code class="docutils literal notranslate"><span class="pre">mkstemp()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.mkdtemp"><code class="docutils literal notranslate"><span class="pre">mkdtemp()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempdir"><code class="docutils literal notranslate"><span class="pre">gettempdir()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempdirb"><code class="docutils literal notranslate"><span class="pre">gettempdirb()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempprefix"><code class="docutils literal notranslate"><span class="pre">gettempprefix()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.gettempprefixb"><code class="docutils literal notranslate"><span class="pre">gettempprefixb()</span></code></a></li>
+<li><a class="reference internal" href="#tempfile.tempdir"><code class="docutils literal notranslate"><span class="pre">tempdir</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
-<li><a class="reference internal" href="#deprecated-functions-and-variables">Deprecated functions and variables</a></li>
+<li><a class="reference internal" href="#deprecated-functions-and-variables">Deprecated functions and variables</a><ul>
+<li><a class="reference internal" href="#tempfile.mktemp"><code class="docutils literal notranslate"><span class="pre">mktemp()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -598,6 +625,10 @@ be replaced easily with <a class="reference internal" href="#tempfile.NamedTempo
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -671,11 +702,11 @@ be replaced easily with <a class="reference internal" href="#tempfile.NamedTempo
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

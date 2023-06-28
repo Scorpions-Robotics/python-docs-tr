@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Parsing arguments and building values" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/arg.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -199,7 +198,7 @@
           <div class="body" role="main">
             
   <section id="parsing-arguments-and-building-values">
-<span id="arg-parsing"></span><h1>Parsing arguments and building values<a class="headerlink" href="#parsing-arguments-and-building-values" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="arg-parsing"></span><h1>Parsing arguments and building values<a class="headerlink" href="#parsing-arguments-and-building-values" title="Permalink to this heading">¶</a></h1>
 <p>These functions are useful when creating your own extensions functions and
 methods.  Additional information and examples are available in
 <a class="reference internal" href="../extending/index.html#extending-index"><span class="std std-ref">Python Yorumlayıcısını Genişletme ve Gömme</span></a>.</p>
@@ -208,7 +207,7 @@ methods.  Additional information and examples are available in
 strings</em> which are used to tell the function about the expected arguments.  The
 format strings use the same syntax for each of these functions.</p>
 <section id="parsing-arguments">
-<h2>Parsing arguments<a class="headerlink" href="#parsing-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Parsing arguments<a class="headerlink" href="#parsing-arguments" title="Permalink to this heading">¶</a></h2>
 <p>A format string consists of zero or more “format units.”  A format unit
 describes one Python object; it is usually a single character or a parenthesized
 sequence of format units.  With a few exceptions, a format unit that is not a
@@ -218,7 +217,7 @@ unit; the entry in (round) parentheses is the Python object type that matches
 the format unit; and the entry in [square] brackets is the type of the C
 variable(s) whose address should be passed.</p>
 <section id="strings-and-buffers">
-<h3>Strings and buffers<a class="headerlink" href="#strings-and-buffers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Strings and buffers<a class="headerlink" href="#strings-and-buffers" title="Permalink to this heading">¶</a></h3>
 <p>These formats allow accessing an object as a contiguous chunk of memory.
 You don’t have to provide raw storage for the returned unicode or bytes
 area.</p>
@@ -420,7 +419,7 @@ encoding passed in as parameter.</p>
 </dl>
 </section>
 <section id="numbers">
-<h3>Numbers<a class="headerlink" href="#numbers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Numbers<a class="headerlink" href="#numbers" title="Permalink to this heading">¶</a></h3>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">b</span></code> (<a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) [unsigned char]</dt><dd><p>Convert a nonnegative Python integer to an unsigned tiny int, stored in a C
 <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span></span>.</p>
@@ -468,7 +467,7 @@ length 1, to a C <span class="c-expr sig sig-inline c"><span class="kt">int</spa
 </dl>
 </section>
 <section id="other-objects">
-<h3>Other objects<a class="headerlink" href="#other-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Other objects<a class="headerlink" href="#other-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">O</span></code> (object) [PyObject *]</dt><dd><p>Store a Python object (without any conversion) in a C object pointer.  The C
 program thus receives the actual object that was passed.  The object’s reference
@@ -565,7 +564,7 @@ of the format units, the variables at the addresses corresponding to that
 and the following format units are left untouched.</p>
 </section>
 <section id="api-functions">
-<h3>API Functions<a class="headerlink" href="#api-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>API Functions<a class="headerlink" href="#api-functions" title="Permalink to this heading">¶</a></h3>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyArg_ParseTuple">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyArg_ParseTuple</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyArg_ParseTuple" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -668,7 +667,7 @@ this call to <a class="reference internal" href="#c.PyArg_ParseTuple" title="PyA
 </section>
 </section>
 <section id="building-values">
-<h2>Building values<a class="headerlink" href="#building-values" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Building values<a class="headerlink" href="#building-values" title="Permalink to this heading">¶</a></h2>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.Py_BuildValue">
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Py_BuildValue</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_BuildValue" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -845,6 +844,10 @@ rather than a variable number of arguments.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -918,11 +921,11 @@ rather than a variable number of arguments.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

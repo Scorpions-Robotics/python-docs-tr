@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="os.path — Common pathname manipulations" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/os.path.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,45 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code> — Common pathname manipulations</a><ul>
+<li><a class="reference internal" href="#os.path.abspath"><code class="docutils literal notranslate"><span class="pre">abspath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.basename"><code class="docutils literal notranslate"><span class="pre">basename()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.commonpath"><code class="docutils literal notranslate"><span class="pre">commonpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.commonprefix"><code class="docutils literal notranslate"><span class="pre">commonprefix()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.dirname"><code class="docutils literal notranslate"><span class="pre">dirname()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.lexists"><code class="docutils literal notranslate"><span class="pre">lexists()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.expanduser"><code class="docutils literal notranslate"><span class="pre">expanduser()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.expandvars"><code class="docutils literal notranslate"><span class="pre">expandvars()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getatime"><code class="docutils literal notranslate"><span class="pre">getatime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getmtime"><code class="docutils literal notranslate"><span class="pre">getmtime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getctime"><code class="docutils literal notranslate"><span class="pre">getctime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getsize"><code class="docutils literal notranslate"><span class="pre">getsize()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isabs"><code class="docutils literal notranslate"><span class="pre">isabs()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isfile"><code class="docutils literal notranslate"><span class="pre">isfile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isdir"><code class="docutils literal notranslate"><span class="pre">isdir()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.islink"><code class="docutils literal notranslate"><span class="pre">islink()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.ismount"><code class="docutils literal notranslate"><span class="pre">ismount()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.join"><code class="docutils literal notranslate"><span class="pre">join()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.normcase"><code class="docutils literal notranslate"><span class="pre">normcase()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.normpath"><code class="docutils literal notranslate"><span class="pre">normpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.realpath"><code class="docutils literal notranslate"><span class="pre">realpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.relpath"><code class="docutils literal notranslate"><span class="pre">relpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.samefile"><code class="docutils literal notranslate"><span class="pre">samefile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.sameopenfile"><code class="docutils literal notranslate"><span class="pre">sameopenfile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.samestat"><code class="docutils literal notranslate"><span class="pre">samestat()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.splitdrive"><code class="docutils literal notranslate"><span class="pre">splitdrive()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.splitext"><code class="docutils literal notranslate"><span class="pre">splitext()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.supports_unicode_filenames"><code class="docutils literal notranslate"><span class="pre">supports_unicode_filenames</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="pathlib.html"
@@ -182,7 +220,7 @@
           <div class="body" role="main">
             
   <section id="module-os.path">
-<span id="os-path-common-pathname-manipulations"></span><h1><a class="reference internal" href="#module-os.path" title="os.path: Operations on pathnames."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code></a> — Common pathname manipulations<a class="headerlink" href="#module-os.path" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="os-path-common-pathname-manipulations"></span><h1><a class="reference internal" href="#module-os.path" title="os.path: Operations on pathnames."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code></a> — Common pathname manipulations<a class="headerlink" href="#module-os.path" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/posixpath.py">Lib/posixpath.py</a> (for POSIX) and
 <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/ntpath.py">Lib/ntpath.py</a> (for Windows).</p>
 <hr class="docutils" id="index-0" />
@@ -721,6 +759,45 @@ imposed by the file system).</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code> — Common pathname manipulations</a><ul>
+<li><a class="reference internal" href="#os.path.abspath"><code class="docutils literal notranslate"><span class="pre">abspath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.basename"><code class="docutils literal notranslate"><span class="pre">basename()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.commonpath"><code class="docutils literal notranslate"><span class="pre">commonpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.commonprefix"><code class="docutils literal notranslate"><span class="pre">commonprefix()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.dirname"><code class="docutils literal notranslate"><span class="pre">dirname()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.exists"><code class="docutils literal notranslate"><span class="pre">exists()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.lexists"><code class="docutils literal notranslate"><span class="pre">lexists()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.expanduser"><code class="docutils literal notranslate"><span class="pre">expanduser()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.expandvars"><code class="docutils literal notranslate"><span class="pre">expandvars()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getatime"><code class="docutils literal notranslate"><span class="pre">getatime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getmtime"><code class="docutils literal notranslate"><span class="pre">getmtime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getctime"><code class="docutils literal notranslate"><span class="pre">getctime()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.getsize"><code class="docutils literal notranslate"><span class="pre">getsize()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isabs"><code class="docutils literal notranslate"><span class="pre">isabs()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isfile"><code class="docutils literal notranslate"><span class="pre">isfile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.isdir"><code class="docutils literal notranslate"><span class="pre">isdir()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.islink"><code class="docutils literal notranslate"><span class="pre">islink()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.ismount"><code class="docutils literal notranslate"><span class="pre">ismount()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.join"><code class="docutils literal notranslate"><span class="pre">join()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.normcase"><code class="docutils literal notranslate"><span class="pre">normcase()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.normpath"><code class="docutils literal notranslate"><span class="pre">normpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.realpath"><code class="docutils literal notranslate"><span class="pre">realpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.relpath"><code class="docutils literal notranslate"><span class="pre">relpath()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.samefile"><code class="docutils literal notranslate"><span class="pre">samefile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.sameopenfile"><code class="docutils literal notranslate"><span class="pre">sameopenfile()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.samestat"><code class="docutils literal notranslate"><span class="pre">samestat()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.splitdrive"><code class="docutils literal notranslate"><span class="pre">splitdrive()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.splitext"><code class="docutils literal notranslate"><span class="pre">splitext()</span></code></a></li>
+<li><a class="reference internal" href="#os.path.supports_unicode_filenames"><code class="docutils literal notranslate"><span class="pre">supports_unicode_filenames</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="pathlib.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code> — Object-oriented filesystem paths</a></p>
@@ -742,6 +819,10 @@ imposed by the file system).</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -815,11 +896,11 @@ imposed by the file system).</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

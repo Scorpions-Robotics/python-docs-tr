@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Argparse Tutorial" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/howto/argparse.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -203,9 +202,9 @@
           <div class="body" role="main">
             
   <section id="argparse-tutorial">
-<h1>Argparse Tutorial<a class="headerlink" href="#argparse-tutorial" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Argparse Tutorial<a class="headerlink" href="#argparse-tutorial" title="Permalink to this heading">¶</a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">author</dt>
+<dt class="field-odd">author<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Tshepang Lekhonkhobe</p>
 </dd>
 </dl>
@@ -220,7 +219,7 @@ Note also that <a class="reference internal" href="../library/argparse.html#modu
 and therefore very similar in terms of usage.</p>
 </div>
 <section id="concepts">
-<h2>Concepts<a class="headerlink" href="#concepts" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Concepts<a class="headerlink" href="#concepts" title="Permalink to this heading">¶</a></h2>
 <p>Let’s show the sort of functionality that we are going to explore in this
 introductory tutorial by making use of the <strong class="command">ls</strong> command:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ls
@@ -262,7 +261,7 @@ how it works simply by reading its help text.</p></li>
 </ul>
 </section>
 <section id="the-basics">
-<h2>The basics<a class="headerlink" href="#the-basics" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>The basics<a class="headerlink" href="#the-basics" title="Permalink to this heading">¶</a></h2>
 <p>Let us start with a very simple example which does (almost) nothing:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
@@ -297,7 +296,7 @@ also for free.</p></li>
 </ul>
 </section>
 <section id="introducing-positional-arguments">
-<h2>Introducing Positional arguments<a class="headerlink" href="#introducing-positional-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Introducing Positional arguments<a class="headerlink" href="#introducing-positional-arguments" title="Permalink to this heading">¶</a></h2>
 <p>An example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
@@ -396,7 +395,7 @@ give it as strings, unless we tell it otherwise. So, let’s tell
 before proceeding.</p>
 </section>
 <section id="introducing-optional-arguments">
-<h2>Introducing Optional arguments<a class="headerlink" href="#introducing-optional-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Introducing Optional arguments<a class="headerlink" href="#introducing-optional-arguments" title="Permalink to this heading">¶</a></h2>
 <p>So far we have been playing with positional arguments. Let us
 have a look on how to add optional ones:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
@@ -475,7 +474,7 @@ actually are.</p></li>
 <li><p>Notice the different help text.</p></li>
 </ul>
 <section id="short-options">
-<h3>Short options<a class="headerlink" href="#short-options" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Short options<a class="headerlink" href="#short-options" title="Permalink to this heading">¶</a></h3>
 <p>If you are familiar with command line usage,
 you will notice that I haven’t yet touched on the topic of short
 versions of the options. It’s quite simple:</p>
@@ -503,7 +502,7 @@ versions of the options. It’s quite simple:</p>
 </section>
 </section>
 <section id="combining-positional-and-optional-arguments">
-<h2>Combining Positional and Optional arguments<a class="headerlink" href="#combining-positional-and-optional-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Combining Positional and Optional arguments<a class="headerlink" href="#combining-positional-and-optional-arguments" title="Permalink to this heading">¶</a></h2>
 <p>Our program keeps growing in complexity:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
@@ -733,7 +732,7 @@ The <a class="reference internal" href="../library/argparse.html#module-argparse
 and we’ll explore a bit more of it before we end this tutorial.</p>
 </section>
 <section id="getting-a-little-more-advanced">
-<h2>Getting a little more advanced<a class="headerlink" href="#getting-a-little-more-advanced" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Getting a little more advanced<a class="headerlink" href="#getting-a-little-more-advanced" title="Permalink to this heading">¶</a></h2>
 <p>What if we wanted to expand our tiny program to perform other powers,
 not just squares:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">argparse</span>
@@ -797,7 +796,7 @@ to display <em>more</em> text instead:</p>
 </pre></div>
 </div>
 <section id="conflicting-options">
-<h3>Conflicting options<a class="headerlink" href="#conflicting-options" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Conflicting options<a class="headerlink" href="#conflicting-options" title="Permalink to this heading">¶</a></h3>
 <p>So far, we have been working with two methods of an
 <a class="reference internal" href="../library/argparse.html#argparse.ArgumentParser" title="argparse.ArgumentParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></a> instance. Let’s introduce a third one,
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">add_mutually_exclusive_group()</span></code>. It allows for us to specify options that
@@ -885,7 +884,7 @@ but not both at the same time:</p>
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="../library/argparse.html#module-argparse" title="argparse: Command-line option and argument parsing library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">argparse</span></code></a> module offers a lot more than shown here.
 Its docs are quite detailed and thorough, and full of examples.
 Having gone through this tutorial, you should easily digest them
@@ -944,6 +943,10 @@ without feeling overwhelmed.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1016,11 +1019,11 @@ without feeling overwhelmed.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

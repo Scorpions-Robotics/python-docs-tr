@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Hatalarla Başa Çıkmak" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/bugs.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     
     <script src="_static/sidebar.js"></script>
@@ -192,11 +191,11 @@
           <div class="body" role="main">
             
   <section id="dealing-with-bugs">
-<span id="reporting-bugs"></span><h1>Hatalarla Başa Çıkmak<a class="headerlink" href="#dealing-with-bugs" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="reporting-bugs"></span><h1>Hatalarla Başa Çıkmak<a class="headerlink" href="#dealing-with-bugs" title="Permalink to this heading">¶</a></h1>
 <p>Python, istikrar konusunda kendini kanıtlamış olgun bir programlama dilidir.  Bu itibarı korumak için, geliştiriciler Python’da bulduğunuz eksiklikleri bilmek isterler.</p>
 <p>Bazen hataları kendiniz düzeltmek ve değişikliklerinizi Python’a yama yaparak katkı sağlamak süreci daha az insan dahil olduğu için hızlandrabilir. Nasıl katkı sağlayacağınızı <a class="reference internal" href="#contributing-to-python"><span class="std std-ref">öğrenin</span></a>.</p>
 <section id="documentation-bugs">
-<h2>Dokümantasyon hataları<a class="headerlink" href="#documentation-bugs" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Dokümantasyon hataları<a class="headerlink" href="#documentation-bugs" title="Permalink to this heading">¶</a></h2>
 <p>Bu dokümantasyonda bir hata bulursanız veya bir geliştirme önermek istiyorsanız, lütfen <a class="reference internal" href="#using-the-tracker"><span class="std std-ref">bir hata raporu gönderin</span></a>.   Nasıl düzeltebileceğiniz hakkında bir öneriniz varsa, bunu da ekleyin.</p>
 <p>Ayrıca <a class="reference external" href="https://discuss.python.org/c/documentation/26">Dokümantasyon Discourse forumumuzda</a> bir tartışma öğesi açabilirsiniz.</p>
 <p>Zamanınız kısıtlıysa, dokümantasyon hata raporlarını <a class="reference external" href="mailto:docs&#37;&#52;&#48;python&#46;org">docs<span>&#64;</span>python<span>&#46;</span>org</a> adresine de gönderebilirsiniz (davranış hataları <a class="reference external" href="mailto:python-list&#37;&#52;&#48;python&#46;org">python-list<span>&#64;</span>python<span>&#46;</span>org</a> adresine gönderebilirsiniz). ‘docs&#64;’, gönüllüler tarafından yürütülen bir posta listesidir; talebiniz fark edilecektir, ancak işlenmesi biraz zaman alabilir.</p>
@@ -215,7 +214,7 @@
 </div>
 </section>
 <section id="using-the-python-issue-tracker">
-<span id="using-the-tracker"></span><h2>Python hata takipçisini kullanmak<a class="headerlink" href="#using-the-python-issue-tracker" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="using-the-tracker"></span><h2>Python hata takipçisini kullanmak<a class="headerlink" href="#using-the-python-issue-tracker" title="Permalink to this heading">¶</a></h2>
 <p>Python’un kendisi için olan hata raporları GitHub issues (<a class="reference external" href="https://github.com/python/cpython/issues">https://github.com/python/cpython/issues</a>) aracılığıyla gönderilmelidir.  Hata takipçisi, ilgili bilgilerin girilmesini ve geliştiricilere gönderilmesini sağlayan bir web formu sunar.</p>
 <p>Rapor göndermenin ilk adımı, sorunun zaten bildirilmiş olup olmadığını belirlemektir.  Bunu yapmanın avantajı, geliştiricilere zaman kazandırarak, düzeltmek için neler yapıldığını öğrenmenizdir; sorun bir sonraki sürüm için zaten düzeltilmiş olabilir veya ek bilgilere ihtiyaç duyulabilir (eğer mümkünse bilgileri sağlayabilirsiniz!). Bunu yapmak için, sayfanın üst kısmındaki arama kutusunu kullanarak hata veritabanında arama yapın.</p>
 <p>Bildirdiğiniz sorun listede değilse, GitHub’da oturum açın.  Bir GitHub hesabınız, “Kayıt Ol” bağlantısına tıklayın.  Hata raporunu anonim olarak göndermek mümkün değildir.</p>
@@ -235,7 +234,7 @@
 </div>
 </section>
 <section id="getting-started-contributing-to-python-yourself">
-<span id="contributing-to-python"></span><h2>Python’a kendiniz katkıda bulunmaya başlayın<a class="headerlink" href="#getting-started-contributing-to-python-yourself" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="contributing-to-python"></span><h2>Python’a kendiniz katkıda bulunmaya başlayın<a class="headerlink" href="#getting-started-contributing-to-python-yourself" title="Permalink to this heading">¶</a></h2>
 <p>Bulduğunuz hataları bildirmenin ötesinde, bunları düzeltmek için yamalar gönderebilirsiniz.  Python’a yama yapma hakkında daha fazla bilgiyi <a class="reference external" href="https://devguide.python.org/">Python Geliştirici Kılavuzu’nda</a> bulabilirsiniz.  Sorularınız varsa, <a class="reference external" href="https://mail.python.org/mailman3/lists/core-mentorship.python.org/">core-mentorship posta listesi</a> Python’daki sorunları çözmeyle ilgili tüm soruların yanıtlarını almak için arkadaş canlısı bir yerdir.</p>
 </section>
 </section>
@@ -281,6 +280,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -352,11 +355,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

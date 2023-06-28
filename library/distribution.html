@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Software Packaging and Distribution" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/distribution.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -181,7 +180,7 @@
           <div class="body" role="main">
             
   <section id="software-packaging-and-distribution">
-<h1>Software Packaging and Distribution<a class="headerlink" href="#software-packaging-and-distribution" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Software Packaging and Distribution<a class="headerlink" href="#software-packaging-and-distribution" title="Permalink to this heading">¶</a></h1>
 <p>These libraries help you with publishing and installing Python software.
 While these modules are designed to work in conjunction with the
 <a class="reference external" href="https://pypi.org">Python Package Index</a>, they can also be used
@@ -191,20 +190,42 @@ with a local index server, or without any index server at all.</p>
 <li class="toctree-l1"><a class="reference internal" href="distutils.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code> — Building and installing Python modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ensurepip.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Bootstrapping the <code class="docutils literal notranslate"><span class="pre">pip</span></code> installer</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="ensurepip.html#command-line-interface">Command line interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ensurepip.html#module-api">Module API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ensurepip.html#module-api">Module API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ensurepip.html#ensurepip.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="ensurepip.html#ensurepip.bootstrap"><code class="docutils literal notranslate"><span class="pre">bootstrap()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="venv.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code> — Creation of virtual environments</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#creating-virtual-environments">Creating virtual environments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#how-venvs-work">How venvs work</a></li>
-<li class="toctree-l2"><a class="reference internal" href="venv.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="venv.html#api">API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="venv.html#venv.EnvBuilder"><code class="docutils literal notranslate"><span class="pre">EnvBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.create"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.ensure_directories"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.ensure_directories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.create_configuration"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.create_configuration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.setup_python"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.setup_python()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.setup_scripts"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.setup_scripts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.upgrade_dependencies"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.upgrade_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.post_setup"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.post_setup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="venv.html#venv.EnvBuilder.install_scripts"><code class="docutils literal notranslate"><span class="pre">EnvBuilder.install_scripts()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="venv.html#venv.create"><code class="docutils literal notranslate"><span class="pre">create()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="venv.html#an-example-of-extending-envbuilder">An example of extending <code class="docutils literal notranslate"><span class="pre">EnvBuilder</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="zipapp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipapp</span></code> — Manage executable Python zip archives</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="zipapp.html#basic-example">Basic Example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zipapp.html#command-line-interface">Command-Line Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="zipapp.html#python-api">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="zipapp.html#python-api">Python API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="zipapp.html#zipapp.create_archive"><code class="docutils literal notranslate"><span class="pre">create_archive()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="zipapp.html#zipapp.get_interpreter"><code class="docutils literal notranslate"><span class="pre">get_interpreter()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="zipapp.html#examples">Examples</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zipapp.html#specifying-the-interpreter">Specifying the Interpreter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="zipapp.html#creating-standalone-applications-with-zipapp">Creating Standalone Applications with zipapp</a><ul>
@@ -248,6 +269,10 @@ with a local index server, or without any index server at all.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -320,11 +345,11 @@ with a local index server, or without any index server at all.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

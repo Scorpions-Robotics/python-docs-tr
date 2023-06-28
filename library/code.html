@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="code — Interpreter base classes" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/code.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,25 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code> — Interpreter base classes</a><ul>
-<li><a class="reference internal" href="#interactive-interpreter-objects">Interactive Interpreter Objects</a></li>
-<li><a class="reference internal" href="#interactive-console-objects">Interactive Console Objects</a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a></li>
+<li><a class="reference internal" href="#code.interact"><code class="docutils literal notranslate"><span class="pre">interact()</span></code></a></li>
+<li><a class="reference internal" href="#code.compile_command"><code class="docutils literal notranslate"><span class="pre">compile_command()</span></code></a></li>
+<li><a class="reference internal" href="#interactive-interpreter-objects">Interactive Interpreter Objects</a><ul>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.runsource"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.runsource()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.runcode"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.runcode()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.showsyntaxerror"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.showsyntaxerror()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.showtraceback"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.showtraceback()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.write"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.write()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interactive-console-objects">Interactive Console Objects</a><ul>
+<li><a class="reference internal" href="#code.InteractiveConsole.interact"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.interact()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.push"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.push()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.resetbuffer"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.resetbuffer()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.raw_input"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.raw_input()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -193,7 +209,7 @@
           <div class="body" role="main">
             
   <section id="module-code">
-<span id="code-interpreter-base-classes"></span><h1><a class="reference internal" href="#module-code" title="code: Facilities to implement read-eval-print loops."><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code></a> — Interpreter base classes<a class="headerlink" href="#module-code" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="code-interpreter-base-classes"></span><h1><a class="reference internal" href="#module-code" title="code: Facilities to implement read-eval-print loops."><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code></a> — Interpreter base classes<a class="headerlink" href="#module-code" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/code.py">Lib/code.py</a></p>
 <hr class="docutils" />
 <p>The <code class="docutils literal notranslate"><span class="pre">code</span></code> module provides facilities to implement read-eval-print loops in
@@ -255,7 +271,7 @@ invalid literal.</p>
 </dd></dl>
 
 <section id="interactive-interpreter-objects">
-<span id="interpreter-objects"></span><h2>Interactive Interpreter Objects<a class="headerlink" href="#interactive-interpreter-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="interpreter-objects"></span><h2>Interactive Interpreter Objects<a class="headerlink" href="#interactive-interpreter-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="code.InteractiveInterpreter.runsource">
 <span class="sig-prename descclassname"><span class="pre">InteractiveInterpreter.</span></span><span class="sig-name descname"><span class="pre">runsource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'&lt;input&gt;'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'single'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#code.InteractiveInterpreter.runsource" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -319,7 +335,7 @@ should override this to provide the appropriate output handling as needed.</p>
 
 </section>
 <section id="interactive-console-objects">
-<span id="console-objects"></span><h2>Interactive Console Objects<a class="headerlink" href="#interactive-console-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="console-objects"></span><h2>Interactive Console Objects<a class="headerlink" href="#interactive-console-objects" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#code.InteractiveConsole" title="code.InteractiveConsole"><code class="xref py py-class docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a> class is a subclass of
 <a class="reference internal" href="#code.InteractiveInterpreter" title="code.InteractiveInterpreter"><code class="xref py py-class docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a>, and so offers all the methods of the
 interpreter objects as well as the following additions.</p>
@@ -384,8 +400,25 @@ with a different implementation.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code> — Interpreter base classes</a><ul>
-<li><a class="reference internal" href="#interactive-interpreter-objects">Interactive Interpreter Objects</a></li>
-<li><a class="reference internal" href="#interactive-console-objects">Interactive Console Objects</a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole</span></code></a></li>
+<li><a class="reference internal" href="#code.interact"><code class="docutils literal notranslate"><span class="pre">interact()</span></code></a></li>
+<li><a class="reference internal" href="#code.compile_command"><code class="docutils literal notranslate"><span class="pre">compile_command()</span></code></a></li>
+<li><a class="reference internal" href="#interactive-interpreter-objects">Interactive Interpreter Objects</a><ul>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.runsource"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.runsource()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.runcode"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.runcode()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.showsyntaxerror"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.showsyntaxerror()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.showtraceback"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.showtraceback()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveInterpreter.write"><code class="docutils literal notranslate"><span class="pre">InteractiveInterpreter.write()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interactive-console-objects">Interactive Console Objects</a><ul>
+<li><a class="reference internal" href="#code.InteractiveConsole.interact"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.interact()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.push"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.push()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.resetbuffer"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.resetbuffer()</span></code></a></li>
+<li><a class="reference internal" href="#code.InteractiveConsole.raw_input"><code class="docutils literal notranslate"><span class="pre">InteractiveConsole.raw_input()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -413,6 +446,10 @@ with a different implementation.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -486,11 +523,11 @@ with a different implementation.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

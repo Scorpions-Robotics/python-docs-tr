@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="crypt — Function to check Unix passwords" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/crypt.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,9 +97,23 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code> — Function to check Unix passwords</a><ul>
-<li><a class="reference internal" href="#hashing-methods">Hashing Methods</a></li>
-<li><a class="reference internal" href="#module-attributes">Module Attributes</a></li>
-<li><a class="reference internal" href="#module-functions">Module Functions</a></li>
+<li><a class="reference internal" href="#hashing-methods">Hashing Methods</a><ul>
+<li><a class="reference internal" href="#crypt.METHOD_SHA512"><code class="docutils literal notranslate"><span class="pre">METHOD_SHA512</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_SHA256"><code class="docutils literal notranslate"><span class="pre">METHOD_SHA256</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_BLOWFISH"><code class="docutils literal notranslate"><span class="pre">METHOD_BLOWFISH</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_MD5"><code class="docutils literal notranslate"><span class="pre">METHOD_MD5</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_CRYPT"><code class="docutils literal notranslate"><span class="pre">METHOD_CRYPT</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-attributes">Module Attributes</a><ul>
+<li><a class="reference internal" href="#crypt.methods"><code class="docutils literal notranslate"><span class="pre">methods</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-functions">Module Functions</a><ul>
+<li><a class="reference internal" href="#crypt.crypt"><code class="docutils literal notranslate"><span class="pre">crypt()</span></code></a></li>
+<li><a class="reference internal" href="#crypt.mksalt"><code class="docutils literal notranslate"><span class="pre">mksalt()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -195,7 +208,7 @@
           <div class="body" role="main">
             
   <section id="module-crypt">
-<span id="crypt-function-to-check-unix-passwords"></span><h1><a class="reference internal" href="#module-crypt" title="crypt: The crypt() function used to check Unix passwords. (kullanım dışı) (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code></a> — Function to check Unix passwords<a class="headerlink" href="#module-crypt" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="crypt-function-to-check-unix-passwords"></span><h1><a class="reference internal" href="#module-crypt" title="crypt: The crypt() function used to check Unix passwords. (kullanım dışı) (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code></a> — Function to check Unix passwords<a class="headerlink" href="#module-crypt" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/crypt.py">Lib/crypt.py</a></p>
 <div class="deprecated-removed" id="index-0">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-crypt" title="crypt: The crypt() function used to check Unix passwords. (kullanım dışı) (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code></a> module is deprecated
@@ -222,7 +235,7 @@ this module.</p>
 <a class="reference internal" href="intro.html#wasm-availability"><span class="std std-ref">WebAssembly platforms</span></a> for more information.</p>
 </div>
 <section id="hashing-methods">
-<h2>Hashing Methods<a class="headerlink" href="#hashing-methods" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Hashing Methods<a class="headerlink" href="#hashing-methods" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
@@ -268,7 +281,7 @@ hash.  This is the weakest method.</p>
 
 </section>
 <section id="module-attributes">
-<h2>Module Attributes<a class="headerlink" href="#module-attributes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module Attributes<a class="headerlink" href="#module-attributes" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
@@ -282,7 +295,7 @@ weakest.</p>
 
 </section>
 <section id="module-functions">
-<h2>Module Functions<a class="headerlink" href="#module-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module Functions<a class="headerlink" href="#module-functions" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-crypt" title="crypt: The crypt() function used to check Unix passwords. (kullanım dışı) (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code></a> module defines the following functions:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="crypt.crypt">
@@ -336,7 +349,7 @@ and <code class="docutils literal notranslate"><span class="pre">2_147_483_648</
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>A simple example illustrating typical use (a constant-time comparison
 operation is needed to limit exposure to timing attacks.
 <a class="reference internal" href="hmac.html#hmac.compare_digest" title="hmac.compare_digest"><code class="xref py py-func docutils literal notranslate"><span class="pre">hmac.compare_digest()</span></code></a> is suitable for this purpose):</p>
@@ -381,9 +394,23 @@ check it against the original:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code> — Function to check Unix passwords</a><ul>
-<li><a class="reference internal" href="#hashing-methods">Hashing Methods</a></li>
-<li><a class="reference internal" href="#module-attributes">Module Attributes</a></li>
-<li><a class="reference internal" href="#module-functions">Module Functions</a></li>
+<li><a class="reference internal" href="#hashing-methods">Hashing Methods</a><ul>
+<li><a class="reference internal" href="#crypt.METHOD_SHA512"><code class="docutils literal notranslate"><span class="pre">METHOD_SHA512</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_SHA256"><code class="docutils literal notranslate"><span class="pre">METHOD_SHA256</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_BLOWFISH"><code class="docutils literal notranslate"><span class="pre">METHOD_BLOWFISH</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_MD5"><code class="docutils literal notranslate"><span class="pre">METHOD_MD5</span></code></a></li>
+<li><a class="reference internal" href="#crypt.METHOD_CRYPT"><code class="docutils literal notranslate"><span class="pre">METHOD_CRYPT</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-attributes">Module Attributes</a><ul>
+<li><a class="reference internal" href="#crypt.methods"><code class="docutils literal notranslate"><span class="pre">methods</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-functions">Module Functions</a><ul>
+<li><a class="reference internal" href="#crypt.crypt"><code class="docutils literal notranslate"><span class="pre">crypt()</span></code></a></li>
+<li><a class="reference internal" href="#crypt.mksalt"><code class="docutils literal notranslate"><span class="pre">mksalt()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -412,6 +439,10 @@ check it against the original:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -485,11 +516,11 @@ check it against the original:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

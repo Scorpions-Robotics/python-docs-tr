@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Gömülü Fonksiyonlar" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/functions.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,76 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Gömülü Fonksiyonlar</a><ul>
+<li><a class="reference internal" href="#abs"><code class="docutils literal notranslate"><span class="pre">abs()</span></code></a></li>
+<li><a class="reference internal" href="#aiter"><code class="docutils literal notranslate"><span class="pre">aiter()</span></code></a></li>
+<li><a class="reference internal" href="#all"><code class="docutils literal notranslate"><span class="pre">all()</span></code></a></li>
+<li><a class="reference internal" href="#anext"><code class="docutils literal notranslate"><span class="pre">anext()</span></code></a></li>
+<li><a class="reference internal" href="#any"><code class="docutils literal notranslate"><span class="pre">any()</span></code></a></li>
+<li><a class="reference internal" href="#ascii"><code class="docutils literal notranslate"><span class="pre">ascii()</span></code></a></li>
+<li><a class="reference internal" href="#bin"><code class="docutils literal notranslate"><span class="pre">bin()</span></code></a></li>
+<li><a class="reference internal" href="#bool"><code class="docutils literal notranslate"><span class="pre">bool</span></code></a></li>
+<li><a class="reference internal" href="#breakpoint"><code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code></a></li>
+<li><a class="reference internal" href="#callable"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a></li>
+<li><a class="reference internal" href="#chr"><code class="docutils literal notranslate"><span class="pre">chr()</span></code></a></li>
+<li><a class="reference internal" href="#classmethod"><code class="docutils literal notranslate"><span class="pre">classmethod()</span></code></a></li>
+<li><a class="reference internal" href="#compile"><code class="docutils literal notranslate"><span class="pre">compile()</span></code></a></li>
+<li><a class="reference internal" href="#complex"><code class="docutils literal notranslate"><span class="pre">complex</span></code></a></li>
+<li><a class="reference internal" href="#delattr"><code class="docutils literal notranslate"><span class="pre">delattr()</span></code></a></li>
+<li><a class="reference internal" href="#dir"><code class="docutils literal notranslate"><span class="pre">dir()</span></code></a></li>
+<li><a class="reference internal" href="#divmod"><code class="docutils literal notranslate"><span class="pre">divmod()</span></code></a></li>
+<li><a class="reference internal" href="#enumerate"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code></a></li>
+<li><a class="reference internal" href="#eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
+<li><a class="reference internal" href="#exec"><code class="docutils literal notranslate"><span class="pre">exec()</span></code></a></li>
+<li><a class="reference internal" href="#filter"><code class="docutils literal notranslate"><span class="pre">filter()</span></code></a></li>
+<li><a class="reference internal" href="#float"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li><a class="reference internal" href="#format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
+<li><a class="reference internal" href="#getattr"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li><a class="reference internal" href="#globals"><code class="docutils literal notranslate"><span class="pre">globals()</span></code></a></li>
+<li><a class="reference internal" href="#hasattr"><code class="docutils literal notranslate"><span class="pre">hasattr()</span></code></a></li>
+<li><a class="reference internal" href="#hash"><code class="docutils literal notranslate"><span class="pre">hash()</span></code></a></li>
+<li><a class="reference internal" href="#help"><code class="docutils literal notranslate"><span class="pre">help()</span></code></a></li>
+<li><a class="reference internal" href="#hex"><code class="docutils literal notranslate"><span class="pre">hex()</span></code></a></li>
+<li><a class="reference internal" href="#id"><code class="docutils literal notranslate"><span class="pre">id()</span></code></a></li>
+<li><a class="reference internal" href="#input"><code class="docutils literal notranslate"><span class="pre">input()</span></code></a></li>
+<li><a class="reference internal" href="#int"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></li>
+<li><a class="reference internal" href="#isinstance"><code class="docutils literal notranslate"><span class="pre">isinstance()</span></code></a></li>
+<li><a class="reference internal" href="#issubclass"><code class="docutils literal notranslate"><span class="pre">issubclass()</span></code></a></li>
+<li><a class="reference internal" href="#iter"><code class="docutils literal notranslate"><span class="pre">iter()</span></code></a></li>
+<li><a class="reference internal" href="#len"><code class="docutils literal notranslate"><span class="pre">len()</span></code></a></li>
+<li><a class="reference internal" href="#locals"><code class="docutils literal notranslate"><span class="pre">locals()</span></code></a></li>
+<li><a class="reference internal" href="#map"><code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li><a class="reference internal" href="#max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#min"><code class="docutils literal notranslate"><span class="pre">min()</span></code></a></li>
+<li><a class="reference internal" href="#next"><code class="docutils literal notranslate"><span class="pre">next()</span></code></a></li>
+<li><a class="reference internal" href="#object"><code class="docutils literal notranslate"><span class="pre">object</span></code></a></li>
+<li><a class="reference internal" href="#oct"><code class="docutils literal notranslate"><span class="pre">oct()</span></code></a></li>
+<li><a class="reference internal" href="#open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li><a class="reference internal" href="#ord"><code class="docutils literal notranslate"><span class="pre">ord()</span></code></a></li>
+<li><a class="reference internal" href="#pow"><code class="docutils literal notranslate"><span class="pre">pow()</span></code></a></li>
+<li><a class="reference internal" href="#print"><code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+<li><a class="reference internal" href="#property"><code class="docutils literal notranslate"><span class="pre">property</span></code></a></li>
+<li><a class="reference internal" href="#repr"><code class="docutils literal notranslate"><span class="pre">repr()</span></code></a></li>
+<li><a class="reference internal" href="#reversed"><code class="docutils literal notranslate"><span class="pre">reversed()</span></code></a></li>
+<li><a class="reference internal" href="#round"><code class="docutils literal notranslate"><span class="pre">round()</span></code></a></li>
+<li><a class="reference internal" href="#setattr"><code class="docutils literal notranslate"><span class="pre">setattr()</span></code></a></li>
+<li><a class="reference internal" href="#slice"><code class="docutils literal notranslate"><span class="pre">slice</span></code></a></li>
+<li><a class="reference internal" href="#sorted"><code class="docutils literal notranslate"><span class="pre">sorted()</span></code></a></li>
+<li><a class="reference internal" href="#staticmethod"><code class="docutils literal notranslate"><span class="pre">staticmethod()</span></code></a></li>
+<li><a class="reference internal" href="#sum"><code class="docutils literal notranslate"><span class="pre">sum()</span></code></a></li>
+<li><a class="reference internal" href="#super"><code class="docutils literal notranslate"><span class="pre">super</span></code></a></li>
+<li><a class="reference internal" href="#type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
+<li><a class="reference internal" href="#vars"><code class="docutils literal notranslate"><span class="pre">vars()</span></code></a></li>
+<li><a class="reference internal" href="#zip"><code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
+<li><a class="reference internal" href="#import__"><code class="docutils literal notranslate"><span class="pre">__import__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="intro.html"
@@ -181,15 +250,9 @@
           <div class="body" role="main">
             
   <section id="built-in-functions">
-<span id="built-in-funcs"></span><h1>Gömülü Fonksiyonlar<a class="headerlink" href="#built-in-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="built-in-funcs"></span><h1>Gömülü Fonksiyonlar<a class="headerlink" href="#built-in-functions" title="Permalink to this heading">¶</a></h1>
 <p>Python yorumlayıcısı, içinde gömülü olarak gelen ve her zaman kullanılabilen bir dizi fonksiyon ve tür barındırır. Burada alfabetik sıraya göre listelenmiştir.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 24%" />
-<col style="width: 24%" />
-<col style="width: 26%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>Gömülü Fonksiyonlar</p></th>
 </tr>
@@ -496,7 +559,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="compile">
-<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dont_inherit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#compile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">compile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dont_inherit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#compile" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p><em>source</em> ‘ı bir koda veya AST nesnesine derler. Kod nesneleri <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a> veya <a class="reference internal" href="#eval" title="eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a> fonksiyonları kullanılarak çalıştırılabilir. <em>source</em> normal bir dize, bayt dizesi veya bir AST nesnesi olabilir. AST nesneleriyle nasıl çalışılacağını öğrenmek için <a class="reference internal" href="ast.html#module-ast" title="ast: Abstract Syntax Tree classes and manipulation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code></a> modülüne bkz.</p>
 <p><em>filename</em> argümanı kodun okunduğu dosyayı vermelidir; eğer bir dosyadan okunmuyorsa ayırtedilebilir bir değer verebilirsin (genellikle <code class="docutils literal notranslate"><span class="pre">'&lt;string&gt;'</span></code> kullanılır).</p>
 <p><em>mode</em> argümanı hangi türden kodun derleneceğini belirtir; eğer <em>source</em> bir dizi ifadeden oluşuyorsa <code class="docutils literal notranslate"><span class="pre">'exec'</span></code> , eğer tek bir ifadeden oluşuyorsa <code class="docutils literal notranslate"><span class="pre">'eval'</span></code> , veya tek bir etkileşimli ifadeden oluşuyorsa <code class="docutils literal notranslate"><span class="pre">'single'</span></code> olabilir (ikinci durumda, “None” dışında bir değere sahip ifadeler yazdırılacaktır).</p>
@@ -647,7 +710,7 @@
 <span class="target" id="index-1"></span><dl class="py function">
 <dt class="sig sig-object py" id="exec">
 <span class="sig-name descname"><span class="pre">exec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closure</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#exec" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Bu fonksiyon Python kodunun dinamik çalıştırılmasını destekler. <em>object</em> bir kod objesi veya dize olmalıdır. Dize ise, dize daha sonra yürütülen bir Python ifadeleri paketi olarak ayrıştırılır (bir sözdizimi hatası olmadıkça). <a class="footnote-reference brackets" href="#id2" id="id1">1</a> eğer bir kod objesiyse, sadece çalıştırılır. Her durumda, çalıştırılacak kodun dosya girişi olarak geçerli olması beklenir (Referans Kılavuzundaki <a class="reference internal" href="../reference/toplevel_components.html#file-input"><span class="std std-ref">File input</span></a> kısmına bakınız). <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a>, <a class="reference internal" href="../reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a>, ve <a class="reference internal" href="../reference/simple_stmts.html#return"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">return</span></code></a> ifadelerinin <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a> fonksiyonuna geçirilen kod kaynağında bile fonksiyonlar dışında kullanılamayacağını unutmayınız. Döndürülen değer <code class="docutils literal notranslate"><span class="pre">None</span></code> ‘dır.</p>
+<dd><p>Bu fonksiyon Python kodunun dinamik çalıştırılmasını destekler. <em>object</em> bir kod objesi veya dize olmalıdır. Dize ise, dize daha sonra yürütülen bir Python ifadeleri paketi olarak ayrıştırılır (bir sözdizimi hatası olmadıkça). <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> eğer bir kod objesiyse, sadece çalıştırılır. Her durumda, çalıştırılacak kodun dosya girişi olarak geçerli olması beklenir (Referans Kılavuzundaki <a class="reference internal" href="../reference/toplevel_components.html#file-input"><span class="std std-ref">File input</span></a> kısmına bakınız). <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a>, <a class="reference internal" href="../reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a>, ve <a class="reference internal" href="../reference/simple_stmts.html#return"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">return</span></code></a> ifadelerinin <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a> fonksiyonuna geçirilen kod kaynağında bile fonksiyonlar dışında kullanılamayacağını unutmayınız. Döndürülen değer <code class="docutils literal notranslate"><span class="pre">None</span></code> ‘dır.</p>
 <p>Her durumda eğer opsiyonal kısımlar atlandıysa, kod mevcut kapsamda çalıştırılır. Eğer sadece <em>globals</em> sağlandıysa, global ve yerel değişkenler için kullanılacak bir sözlük olmalıdır (bir sözlüğün alt sınıfı değil).  Eğer <em>globals</em> ve <em>locals</em> sağlandıysa, global ve yerel değişkenler için sırasıyla kullanılırlar. Eğer sağlandıysa, <em>locals</em> herhangi bir haritalama objesi olabilir. Modül seviyesinde global ve yerel değişkenlerin aynı sözlükte bulunduğunu unutmayın. Eğer exec <em>globals</em> ve <em>locals</em> olarak iki ayrı nesne alırsa, kod bir sınıf tanımına gömülmüş gibi çalıştırılacaktır.</p>
 <p>Eğer <em>globals</em> sözlüğü <code class="docutils literal notranslate"><span class="pre">__builtins__</span></code> anahtarı için bir değer içermiyorsa, bu anahtarın altına bir referans yerleşik modül <a class="reference internal" href="builtins.html#module-builtins" title="builtins: The module that provides the built-in namespace."><code class="xref py py-mod docutils literal notranslate"><span class="pre">builtins</span></code></a> ‘in sözlüğüne eklenir. Bu şekilde, kendi <code class="docutils literal notranslate"><span class="pre">__builtins__</span></code> sözlüğünüzü <a class="reference internal" href="#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a> ‘e geçirmeden önce <em>globals</em> içine ekleyerek yürütülen kod için hangi yerleşiklerin mevcut olduğunu kontrol edebilirsiniz.</p>
 <p><em>closure</em> argümanı, bir hücre değişkenleri demeti olan bir kapatmayı belirtir. Yalnızca <em>nesne</em> serbest değişkenler içeren bir kod nesnesi olduğunda geçerlidir. Demetin uzunluğu, kod nesnesi tarafından başvurulan serbest değişkenlerin sayısıyla tam olarak eşleşmelidir.</p>
@@ -679,14 +742,14 @@
 <dd><p id="index-2">Bir numara veya string <em>x</em> ‘ten oluşturulan bir reel sayı döndürür.</p>
 <p>Eğer argüman dize ise, bir ondalık sayı içermelidir, isteğe bağlı olarak önünde bir işaret bulunabilir veya boşluk içine gömülebilir. Opsiyonel işaret <code class="docutils literal notranslate"><span class="pre">'+'</span></code> veya <code class="docutils literal notranslate"><span class="pre">'-'</span></code> olabilir; <code class="docutils literal notranslate"><span class="pre">'+'</span></code> işareti üretilen değerde bir etkisi yoktur. Argüman ayrıca NaN (not-a-number), pozitif sonsuz veya negatif sonsuzu  temsil eden bir dize olabilir. Daha açık olmak gerekirse, baştaki ve sondaki boşluk karakterleri kaldırıldıktan sonra veri girişi aşağıdaki dilbilgisindeki <code class="docutils literal notranslate"><span class="pre">floatvalue</span></code> üretim kuralına uygun olmalıdır:</p>
 <pre>
-<strong id="grammar-token-float-sign"><span id="grammar-token-sign"></span>sign       </strong> ::=  &quot;+&quot; | &quot;-&quot;
-<strong id="grammar-token-float-infinity"><span id="grammar-token-infinity"></span>infinity   </strong> ::=  &quot;Infinity&quot; | &quot;inf&quot;
-<strong id="grammar-token-float-nan"><span id="grammar-token-nan"></span>nan        </strong> ::=  &quot;nan&quot;
-<strong id="grammar-token-float-digitpart"><span id="grammar-token-digitpart"></span>digitpart  </strong> ::=  <code class="xref docutils literal notranslate"><span class="pre">digit</span></code> ([&quot;_&quot;] <code class="xref docutils literal notranslate"><span class="pre">digit</span></code>)*
-<strong id="grammar-token-float-number"><span id="grammar-token-number"></span>number     </strong> ::=  [<a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a>] &quot;.&quot; <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a> | <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a> [&quot;.&quot;]
-<strong id="grammar-token-float-exponent"><span id="grammar-token-exponent"></span>exponent   </strong> ::=  (&quot;e&quot; | &quot;E&quot;) [&quot;+&quot; | &quot;-&quot;] <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a>
-<strong id="grammar-token-float-floatnumber"><span id="grammar-token-floatnumber"></span>floatnumber</strong> ::=  number [<a class="reference internal" href="#grammar-token-float-exponent"><code class="xref docutils literal notranslate"><span class="pre">exponent</span></code></a>]
-<strong id="grammar-token-float-floatvalue"><span id="grammar-token-floatvalue"></span>floatvalue </strong> ::=  [<a class="reference internal" href="#grammar-token-float-sign"><code class="xref docutils literal notranslate"><span class="pre">sign</span></code></a>] (<a class="reference internal" href="#grammar-token-float-floatnumber"><code class="xref docutils literal notranslate"><span class="pre">floatnumber</span></code></a> | <a class="reference internal" href="#grammar-token-float-infinity"><code class="xref docutils literal notranslate"><span class="pre">infinity</span></code></a> | <a class="reference internal" href="#grammar-token-float-nan"><code class="xref docutils literal notranslate"><span class="pre">nan</span></code></a>)
+<strong id="grammar-token-float-sign">sign       </strong> ::=  &quot;+&quot; | &quot;-&quot;
+<strong id="grammar-token-float-infinity">infinity   </strong> ::=  &quot;Infinity&quot; | &quot;inf&quot;
+<strong id="grammar-token-float-nan">nan        </strong> ::=  &quot;nan&quot;
+<strong id="grammar-token-float-digitpart">digitpart  </strong> ::=  <code class="xref docutils literal notranslate"><span class="pre">digit</span></code> ([&quot;_&quot;] <code class="xref docutils literal notranslate"><span class="pre">digit</span></code>)*
+<strong id="grammar-token-float-number">number     </strong> ::=  [<a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a>] &quot;.&quot; <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a> | <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a> [&quot;.&quot;]
+<strong id="grammar-token-float-exponent">exponent   </strong> ::=  (&quot;e&quot; | &quot;E&quot;) [&quot;+&quot; | &quot;-&quot;] <a class="reference internal" href="#grammar-token-float-digitpart"><code class="xref docutils literal notranslate"><span class="pre">digitpart</span></code></a>
+<strong id="grammar-token-float-floatnumber">floatnumber</strong> ::=  number [<a class="reference internal" href="#grammar-token-float-exponent"><code class="xref docutils literal notranslate"><span class="pre">exponent</span></code></a>]
+<strong id="grammar-token-float-floatvalue">floatvalue </strong> ::=  [<a class="reference internal" href="#grammar-token-float-sign"><code class="xref docutils literal notranslate"><span class="pre">sign</span></code></a>] (<a class="reference internal" href="#grammar-token-float-floatnumber"><code class="xref docutils literal notranslate"><span class="pre">floatnumber</span></code></a> | <a class="reference internal" href="#grammar-token-float-infinity"><code class="xref docutils literal notranslate"><span class="pre">infinity</span></code></a> | <a class="reference internal" href="#grammar-token-float-nan"><code class="xref docutils literal notranslate"><span class="pre">nan</span></code></a>)
 </pre>
 <p>Burada <code class="docutils literal notranslate"><span class="pre">digit</span></code> bir Unicode ondalık basamağıdır (Unicode genel kategorisi <code class="docutils literal notranslate"><span class="pre">Nd</span></code> ‘deki karakter). Büyük/küçük harf önemli değildir, bu nedenle, örneğin, “inf”, “Inf”, “INFINITY” ve “iNfINity” pozitif sonsuzluk için kabul edilebilir yazımlardır.</p>
 <p>Aksi takdirde, argüman bir tam sayı veya reel sayıysa, aynı değerde reel sayı döndürülür. Eğer argüman Python reel sayı aralığının dışındaysa, <a class="reference internal" href="exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> hatası ortaya çıkar.</p>
@@ -1020,15 +1083,11 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="open">
-<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closefd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opener</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#open" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closefd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opener</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#open" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p><em>file</em> ‘ı açar ve buna karşılık gelen <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">file object</span></a> ‘i döndürür. Eğer dosya açılamazsa, <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> hatası ortaya çıkar. Bu fonksiyonun nasıl kullanıldığına dair daha fazla örnek için <a class="reference internal" href="../tutorial/inputoutput.html#tut-files"><span class="std std-ref">Dosyaları Okuma ve Yazma</span></a> bkz.</p>
 <p><em>file</em>, açılan dosyanın açılması veya dosyanın bir tam sayı dosya tanımlayıcısının paketlenmesi için bir yol adını (mutlak veya geçerli çalışma dizinine göre) veren <a class="reference internal" href="../glossary.html#term-path-like-object"><span class="xref std std-term">path-like object</span></a> ‘dir. (Eğer bir dosya açıklayıcısı veirldiyse, <em>closefd</em>, <code class="docutils literal notranslate"><span class="pre">False</span></code> ‘a ayarlanmadığı sürece I/O nesnesi kapatıldığında kapatılır.</p>
 <p><em>mode</em> dosyanın açılacağı modu belirten opsiyonel bir dizedir. Varsayılan olarak metin modunda okuma anlamına gelen <code class="docutils literal notranslate"><span class="pre">'r'</span></code> değerini alır. Diğer sıradan değerler yazmak için (dosya zaten varsa kesilir) <code class="docutils literal notranslate"><span class="pre">'w'</span></code>, ayrıcalıklı oluşturma için <code class="docutils literal notranslate"><span class="pre">'x'</span></code> ve dosyaya ekleme yapmak için (<em>bazı</em> Unix sistemlerinde, <em>hepsi</em> o anki imleç pozisyonundan bağımsız dosyanın sonuna ekleme anlamına gelir). Metin modunda, <em>encoding</em> belirtilmemiş ise kullanılan kodlayıcı platforma bağlıdır: <code class="xref py py-func docutils literal notranslate"><span class="pre">locale.getpreferredencoding(False)()</span></code> geçerli kodlayıcıyı getirmek için çağırılır. (İşlenmemiş baytlar okumak veya yazmak için ikili modu kullanın ve <em>encoding</em> ‘i boş bırakın. Geçerli modlar:</p>
 <span class="target" id="filemodes"></span><table class="docutils align-default" id="index-5">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 88%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Karakter</p></th>
 <th class="head"><p>Anlam</p></th>
@@ -1491,7 +1550,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py" id="import__">
-<span id="__import__"></span><span class="sig-name descname"><span class="pre">__import__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__import__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">locals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fromlist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#import__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><div class="admonition note" id="index-12">
 <p class="admonition-title">Not</p>
 <p>Bu <a class="reference internal" href="importlib.html#importlib.import_module" title="importlib.import_module"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.import_module()</span></code></a> ‘un aksine günlük Python programlamasında genel olarak kullanılmayan gelişmiş bir fonksiyondur.</p>
@@ -1526,11 +1585,12 @@
 </dd></dl>
 
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Ayrıştırıcının yalnızca Unix stili satır sonu kuralını kabul ettiğini unutmayın. Eğer bir dosyadan kod okuyorsanız, Windows veya Mac tarzı yeni satırları dönüştürmek için yeni satır dönüştürme modunu kullandığınızdan emin olun.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Ayrıştırıcının yalnızca Unix stili satır sonu kuralını kabul ettiğini unutmayın. Eğer bir dosyadan kod okuyorsanız, Windows veya Mac tarzı yeni satırları dönüştürmek için yeni satır dönüştürme modunu kullandığınızdan emin olun.</p>
+</aside>
+</aside>
 </section>
 
 
@@ -1540,6 +1600,76 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Gömülü Fonksiyonlar</a><ul>
+<li><a class="reference internal" href="#abs"><code class="docutils literal notranslate"><span class="pre">abs()</span></code></a></li>
+<li><a class="reference internal" href="#aiter"><code class="docutils literal notranslate"><span class="pre">aiter()</span></code></a></li>
+<li><a class="reference internal" href="#all"><code class="docutils literal notranslate"><span class="pre">all()</span></code></a></li>
+<li><a class="reference internal" href="#anext"><code class="docutils literal notranslate"><span class="pre">anext()</span></code></a></li>
+<li><a class="reference internal" href="#any"><code class="docutils literal notranslate"><span class="pre">any()</span></code></a></li>
+<li><a class="reference internal" href="#ascii"><code class="docutils literal notranslate"><span class="pre">ascii()</span></code></a></li>
+<li><a class="reference internal" href="#bin"><code class="docutils literal notranslate"><span class="pre">bin()</span></code></a></li>
+<li><a class="reference internal" href="#bool"><code class="docutils literal notranslate"><span class="pre">bool</span></code></a></li>
+<li><a class="reference internal" href="#breakpoint"><code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code></a></li>
+<li><a class="reference internal" href="#callable"><code class="docutils literal notranslate"><span class="pre">callable()</span></code></a></li>
+<li><a class="reference internal" href="#chr"><code class="docutils literal notranslate"><span class="pre">chr()</span></code></a></li>
+<li><a class="reference internal" href="#classmethod"><code class="docutils literal notranslate"><span class="pre">classmethod()</span></code></a></li>
+<li><a class="reference internal" href="#compile"><code class="docutils literal notranslate"><span class="pre">compile()</span></code></a></li>
+<li><a class="reference internal" href="#complex"><code class="docutils literal notranslate"><span class="pre">complex</span></code></a></li>
+<li><a class="reference internal" href="#delattr"><code class="docutils literal notranslate"><span class="pre">delattr()</span></code></a></li>
+<li><a class="reference internal" href="#dir"><code class="docutils literal notranslate"><span class="pre">dir()</span></code></a></li>
+<li><a class="reference internal" href="#divmod"><code class="docutils literal notranslate"><span class="pre">divmod()</span></code></a></li>
+<li><a class="reference internal" href="#enumerate"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code></a></li>
+<li><a class="reference internal" href="#eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
+<li><a class="reference internal" href="#exec"><code class="docutils literal notranslate"><span class="pre">exec()</span></code></a></li>
+<li><a class="reference internal" href="#filter"><code class="docutils literal notranslate"><span class="pre">filter()</span></code></a></li>
+<li><a class="reference internal" href="#float"><code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li><a class="reference internal" href="#format"><code class="docutils literal notranslate"><span class="pre">format()</span></code></a></li>
+<li><a class="reference internal" href="#getattr"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li><a class="reference internal" href="#globals"><code class="docutils literal notranslate"><span class="pre">globals()</span></code></a></li>
+<li><a class="reference internal" href="#hasattr"><code class="docutils literal notranslate"><span class="pre">hasattr()</span></code></a></li>
+<li><a class="reference internal" href="#hash"><code class="docutils literal notranslate"><span class="pre">hash()</span></code></a></li>
+<li><a class="reference internal" href="#help"><code class="docutils literal notranslate"><span class="pre">help()</span></code></a></li>
+<li><a class="reference internal" href="#hex"><code class="docutils literal notranslate"><span class="pre">hex()</span></code></a></li>
+<li><a class="reference internal" href="#id"><code class="docutils literal notranslate"><span class="pre">id()</span></code></a></li>
+<li><a class="reference internal" href="#input"><code class="docutils literal notranslate"><span class="pre">input()</span></code></a></li>
+<li><a class="reference internal" href="#int"><code class="docutils literal notranslate"><span class="pre">int</span></code></a></li>
+<li><a class="reference internal" href="#isinstance"><code class="docutils literal notranslate"><span class="pre">isinstance()</span></code></a></li>
+<li><a class="reference internal" href="#issubclass"><code class="docutils literal notranslate"><span class="pre">issubclass()</span></code></a></li>
+<li><a class="reference internal" href="#iter"><code class="docutils literal notranslate"><span class="pre">iter()</span></code></a></li>
+<li><a class="reference internal" href="#len"><code class="docutils literal notranslate"><span class="pre">len()</span></code></a></li>
+<li><a class="reference internal" href="#locals"><code class="docutils literal notranslate"><span class="pre">locals()</span></code></a></li>
+<li><a class="reference internal" href="#map"><code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li><a class="reference internal" href="#max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#min"><code class="docutils literal notranslate"><span class="pre">min()</span></code></a></li>
+<li><a class="reference internal" href="#next"><code class="docutils literal notranslate"><span class="pre">next()</span></code></a></li>
+<li><a class="reference internal" href="#object"><code class="docutils literal notranslate"><span class="pre">object</span></code></a></li>
+<li><a class="reference internal" href="#oct"><code class="docutils literal notranslate"><span class="pre">oct()</span></code></a></li>
+<li><a class="reference internal" href="#open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li><a class="reference internal" href="#ord"><code class="docutils literal notranslate"><span class="pre">ord()</span></code></a></li>
+<li><a class="reference internal" href="#pow"><code class="docutils literal notranslate"><span class="pre">pow()</span></code></a></li>
+<li><a class="reference internal" href="#print"><code class="docutils literal notranslate"><span class="pre">print()</span></code></a></li>
+<li><a class="reference internal" href="#property"><code class="docutils literal notranslate"><span class="pre">property</span></code></a></li>
+<li><a class="reference internal" href="#repr"><code class="docutils literal notranslate"><span class="pre">repr()</span></code></a></li>
+<li><a class="reference internal" href="#reversed"><code class="docutils literal notranslate"><span class="pre">reversed()</span></code></a></li>
+<li><a class="reference internal" href="#round"><code class="docutils literal notranslate"><span class="pre">round()</span></code></a></li>
+<li><a class="reference internal" href="#setattr"><code class="docutils literal notranslate"><span class="pre">setattr()</span></code></a></li>
+<li><a class="reference internal" href="#slice"><code class="docutils literal notranslate"><span class="pre">slice</span></code></a></li>
+<li><a class="reference internal" href="#sorted"><code class="docutils literal notranslate"><span class="pre">sorted()</span></code></a></li>
+<li><a class="reference internal" href="#staticmethod"><code class="docutils literal notranslate"><span class="pre">staticmethod()</span></code></a></li>
+<li><a class="reference internal" href="#sum"><code class="docutils literal notranslate"><span class="pre">sum()</span></code></a></li>
+<li><a class="reference internal" href="#super"><code class="docutils literal notranslate"><span class="pre">super</span></code></a></li>
+<li><a class="reference internal" href="#type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
+<li><a class="reference internal" href="#vars"><code class="docutils literal notranslate"><span class="pre">vars()</span></code></a></li>
+<li><a class="reference internal" href="#zip"><code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
+<li><a class="reference internal" href="#import__"><code class="docutils literal notranslate"><span class="pre">__import__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="intro.html"
@@ -1562,6 +1692,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1634,11 +1768,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

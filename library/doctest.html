@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="doctest — Test interactive Python examples" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/doctest.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -105,23 +104,122 @@
 <li><a class="reference internal" href="#how-are-docstring-examples-recognized">How are Docstring Examples Recognized?</a></li>
 <li><a class="reference internal" href="#what-s-the-execution-context">What’s the Execution Context?</a></li>
 <li><a class="reference internal" href="#what-about-exceptions">What About Exceptions?</a></li>
-<li><a class="reference internal" href="#option-flags">Option Flags</a></li>
+<li><a class="reference internal" href="#option-flags">Option Flags</a><ul>
+<li><a class="reference internal" href="#doctest.DONT_ACCEPT_TRUE_FOR_1"><code class="docutils literal notranslate"><span class="pre">DONT_ACCEPT_TRUE_FOR_1</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DONT_ACCEPT_BLANKLINE"><code class="docutils literal notranslate"><span class="pre">DONT_ACCEPT_BLANKLINE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.NORMALIZE_WHITESPACE"><code class="docutils literal notranslate"><span class="pre">NORMALIZE_WHITESPACE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.ELLIPSIS"><code class="docutils literal notranslate"><span class="pre">ELLIPSIS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL"><code class="docutils literal notranslate"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></code></a></li>
+<li><a class="reference internal" href="#doctest.SKIP"><code class="docutils literal notranslate"><span class="pre">SKIP</span></code></a></li>
+<li><a class="reference internal" href="#doctest.COMPARISON_FLAGS"><code class="docutils literal notranslate"><span class="pre">COMPARISON_FLAGS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_UDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_UDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_CDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_CDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_NDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_NDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_ONLY_FIRST_FAILURE"><code class="docutils literal notranslate"><span class="pre">REPORT_ONLY_FIRST_FAILURE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.FAIL_FAST"><code class="docutils literal notranslate"><span class="pre">FAIL_FAST</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORTING_FLAGS"><code class="docutils literal notranslate"><span class="pre">REPORTING_FLAGS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.register_optionflag"><code class="docutils literal notranslate"><span class="pre">register_optionflag()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#directives">Directives</a></li>
 <li><a class="reference internal" href="#warnings">Warnings</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#basic-api">Basic API</a></li>
-<li><a class="reference internal" href="#unittest-api">Unittest API</a></li>
-<li><a class="reference internal" href="#advanced-api">Advanced API</a><ul>
-<li><a class="reference internal" href="#doctest-objects">DocTest Objects</a></li>
-<li><a class="reference internal" href="#example-objects">Example Objects</a></li>
-<li><a class="reference internal" href="#doctestfinder-objects">DocTestFinder objects</a></li>
-<li><a class="reference internal" href="#doctestparser-objects">DocTestParser objects</a></li>
-<li><a class="reference internal" href="#doctestrunner-objects">DocTestRunner objects</a></li>
-<li><a class="reference internal" href="#outputchecker-objects">OutputChecker objects</a></li>
+<li><a class="reference internal" href="#basic-api">Basic API</a><ul>
+<li><a class="reference internal" href="#doctest.testfile"><code class="docutils literal notranslate"><span class="pre">testfile()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.testmod"><code class="docutils literal notranslate"><span class="pre">testmod()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.run_docstring_examples"><code class="docutils literal notranslate"><span class="pre">run_docstring_examples()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#unittest-api">Unittest API</a><ul>
+<li><a class="reference internal" href="#doctest.DocFileSuite"><code class="docutils literal notranslate"><span class="pre">DocFileSuite()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestSuite"><code class="docutils literal notranslate"><span class="pre">DocTestSuite()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.set_unittest_reportflags"><code class="docutils literal notranslate"><span class="pre">set_unittest_reportflags()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-api">Advanced API</a><ul>
+<li><a class="reference internal" href="#doctest-objects">DocTest Objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTest"><code class="docutils literal notranslate"><span class="pre">DocTest</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTest.examples"><code class="docutils literal notranslate"><span class="pre">DocTest.examples</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.globs"><code class="docutils literal notranslate"><span class="pre">DocTest.globs</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.name"><code class="docutils literal notranslate"><span class="pre">DocTest.name</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.filename"><code class="docutils literal notranslate"><span class="pre">DocTest.filename</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.lineno"><code class="docutils literal notranslate"><span class="pre">DocTest.lineno</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.docstring"><code class="docutils literal notranslate"><span class="pre">DocTest.docstring</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-objects">Example Objects</a><ul>
+<li><a class="reference internal" href="#doctest.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.Example.source"><code class="docutils literal notranslate"><span class="pre">Example.source</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.want"><code class="docutils literal notranslate"><span class="pre">Example.want</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.exc_msg"><code class="docutils literal notranslate"><span class="pre">Example.exc_msg</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.lineno"><code class="docutils literal notranslate"><span class="pre">Example.lineno</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.indent"><code class="docutils literal notranslate"><span class="pre">Example.indent</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.options"><code class="docutils literal notranslate"><span class="pre">Example.options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestfinder-objects">DocTestFinder objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFinder"><code class="docutils literal notranslate"><span class="pre">DocTestFinder</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFinder.find"><code class="docutils literal notranslate"><span class="pre">DocTestFinder.find()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestparser-objects">DocTestParser objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestParser"><code class="docutils literal notranslate"><span class="pre">DocTestParser</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestParser.get_doctest"><code class="docutils literal notranslate"><span class="pre">DocTestParser.get_doctest()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestParser.get_examples"><code class="docutils literal notranslate"><span class="pre">DocTestParser.get_examples()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestParser.parse"><code class="docutils literal notranslate"><span class="pre">DocTestParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestrunner-objects">DocTestRunner objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestRunner"><code class="docutils literal notranslate"><span class="pre">DocTestRunner</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_start"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_start()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_success"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_success()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_failure"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_failure()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_unexpected_exception"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_unexpected_exception()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.run"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.run()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.summarize"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.summarize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#outputchecker-objects">OutputChecker objects</a><ul>
+<li><a class="reference internal" href="#doctest.OutputChecker"><code class="docutils literal notranslate"><span class="pre">OutputChecker</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.OutputChecker.check_output"><code class="docutils literal notranslate"><span class="pre">OutputChecker.check_output()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.OutputChecker.output_difference"><code class="docutils literal notranslate"><span class="pre">OutputChecker.output_difference()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li><a class="reference internal" href="#doctest.script_from_examples"><code class="docutils literal notranslate"><span class="pre">script_from_examples()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.testsource"><code class="docutils literal notranslate"><span class="pre">testsource()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.debug_src"><code class="docutils literal notranslate"><span class="pre">debug_src()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DebugRunner"><code class="docutils literal notranslate"><span class="pre">DebugRunner</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure"><code class="docutils literal notranslate"><span class="pre">DocTestFailure</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFailure.test"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.test</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure.example"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.example</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure.got"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.got</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctest.UnexpectedException"><code class="docutils literal notranslate"><span class="pre">UnexpectedException</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.UnexpectedException.test"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.test</span></code></a></li>
+<li><a class="reference internal" href="#doctest.UnexpectedException.example"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.example</span></code></a></li>
+<li><a class="reference internal" href="#doctest.UnexpectedException.exc_info"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.exc_info</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#soapbox">Soapbox</a></li>
 </ul>
 </li>
@@ -216,7 +314,7 @@
           <div class="body" role="main">
             
   <section id="module-doctest">
-<span id="doctest-test-interactive-python-examples"></span><h1><a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> — Test interactive Python examples<a class="headerlink" href="#module-doctest" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="doctest-test-interactive-python-examples"></span><h1><a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> — Test interactive Python examples<a class="headerlink" href="#module-doctest" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/doctest.py">Lib/doctest.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> module searches for pieces of text that look like interactive
@@ -334,7 +432,7 @@ examples of doctests in the standard Python test suite and libraries.
 Especially useful examples can be found in the standard test file
 <code class="file docutils literal notranslate"><span class="pre">Lib/test/test_doctest.py</span></code>.</p>
 <section id="simple-usage-checking-examples-in-docstrings">
-<span id="doctest-simple-testmod"></span><h2>Simple Usage: Checking Examples in Docstrings<a class="headerlink" href="#simple-usage-checking-examples-in-docstrings" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-simple-testmod"></span><h2>Simple Usage: Checking Examples in Docstrings<a class="headerlink" href="#simple-usage-checking-examples-in-docstrings" title="Permalink to this heading">¶</a></h2>
 <p>The simplest way to start using doctest (but not necessarily the way you’ll
 continue to do it) is to end each module <code class="xref py py-mod docutils literal notranslate"><span class="pre">M</span></code> with:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -374,7 +472,7 @@ part of a package and imports other submodules from that package.</p>
 <p>For more information on <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">testmod()</span></code></a>, see section <a class="reference internal" href="#doctest-basic-api"><span class="std std-ref">Basic API</span></a>.</p>
 </section>
 <section id="simple-usage-checking-examples-in-a-text-file">
-<span id="doctest-simple-testfile"></span><h2>Simple Usage: Checking Examples in a Text File<a class="headerlink" href="#simple-usage-checking-examples-in-a-text-file" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-simple-testfile"></span><h2>Simple Usage: Checking Examples in a Text File<a class="headerlink" href="#simple-usage-checking-examples-in-a-text-file" title="Permalink to this heading">¶</a></h2>
 <p>Another simple application of doctest is testing interactive examples in a text
 file.  This can be done with the <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">testfile()</span></code></a> function:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">doctest</span>
@@ -434,7 +532,7 @@ it must be run with <a class="reference internal" href="#doctest.testfile" title
 <p>For more information on <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">testfile()</span></code></a>, see section <a class="reference internal" href="#doctest-basic-api"><span class="std std-ref">Basic API</span></a>.</p>
 </section>
 <section id="how-it-works">
-<span id="doctest-how-it-works"></span><h2>How It Works<a class="headerlink" href="#how-it-works" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-how-it-works"></span><h2>How It Works<a class="headerlink" href="#how-it-works" title="Permalink to this heading">¶</a></h2>
 <p>This section examines in detail how doctest works: which docstrings it looks at,
 how it finds interactive examples, what execution context it uses, how it
 handles exceptions, and how option flags can be used to control its behavior.
@@ -442,7 +540,7 @@ This is the information that you need to know to write doctest examples; for
 information about actually running doctest on these examples, see the following
 sections.</p>
 <section id="which-docstrings-are-examined">
-<span id="doctest-which-docstrings"></span><h3>Which Docstrings Are Examined?<a class="headerlink" href="#which-docstrings-are-examined" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-which-docstrings"></span><h3>Which Docstrings Are Examined?<a class="headerlink" href="#which-docstrings-are-examined" title="Permalink to this heading">¶</a></h3>
 <p>The module docstring, and all function, class and method docstrings are
 searched.  Objects imported into the module are not searched.</p>
 <p>In addition, if <code class="docutils literal notranslate"><span class="pre">M.__test__</span></code> exists and “is true”, it must be a dict, and each
@@ -457,7 +555,7 @@ strings are treated as if they were docstrings.  In output, a key <code class="d
 their contained methods and nested classes.</p>
 </section>
 <section id="how-are-docstring-examples-recognized">
-<span id="doctest-finding-examples"></span><h3>How are Docstring Examples Recognized?<a class="headerlink" href="#how-are-docstring-examples-recognized" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-finding-examples"></span><h3>How are Docstring Examples Recognized?<a class="headerlink" href="#how-are-docstring-examples-recognized" title="Permalink to this heading">¶</a></h3>
 <p>In most cases a copy-and-paste of an interactive console session works fine,
 but doctest isn’t trying to do an exact emulation of any specific Python shell.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># comments are ignored</span>
@@ -531,7 +629,7 @@ as appeared in the initial <code class="docutils literal notranslate"><span clas
 </ul>
 </section>
 <section id="what-s-the-execution-context">
-<span id="doctest-execution-context"></span><h3>What’s the Execution Context?<a class="headerlink" href="#what-s-the-execution-context" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-execution-context"></span><h3>What’s the Execution Context?<a class="headerlink" href="#what-s-the-execution-context" title="Permalink to this heading">¶</a></h3>
 <p>By default, each time <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> finds a docstring to test, it uses a
 <em>shallow copy</em> of <code class="xref py py-mod docutils literal notranslate"><span class="pre">M</span></code>’s globals, so that running tests doesn’t change the
 module’s real globals, and so that one test in <code class="xref py py-mod docutils literal notranslate"><span class="pre">M</span></code> can’t leave behind
@@ -543,9 +641,9 @@ docstrings.</p>
 <code class="docutils literal notranslate"><span class="pre">globs=your_dict</span></code> to <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">testmod()</span></code></a> or <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">testfile()</span></code></a> instead.</p>
 </section>
 <section id="what-about-exceptions">
-<span id="doctest-exceptions"></span><h3>What About Exceptions?<a class="headerlink" href="#what-about-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-exceptions"></span><h3>What About Exceptions?<a class="headerlink" href="#what-about-exceptions" title="Permalink to this heading">¶</a></h3>
 <p>No problem, provided that the traceback is the only output produced by the
-example:  just paste in the traceback. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> Since tracebacks contain details
+example:  just paste in the traceback. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Since tracebacks contain details
 that are likely to change rapidly (for example, exact file paths and line
 numbers), this is one case where doctest works hard to be flexible in what it
 accepts.</p>
@@ -643,7 +741,7 @@ would pass, even though it puts the <code class="docutils literal notranslate"><
 </ul>
 </section>
 <section id="option-flags">
-<span id="doctest-options"></span><span id="option-flags-and-directives"></span><h3>Option Flags<a class="headerlink" href="#option-flags" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-options"></span><span id="option-flags-and-directives"></span><h3>Option Flags<a class="headerlink" href="#option-flags" title="Permalink to this heading">¶</a></h3>
 <p>A number of option flags control various aspects of doctest’s behavior.
 Symbolic names for the flags are supplied as module constants, which can be
 <a class="reference internal" href="../reference/expressions.html#bitwise"><span class="std std-ref">bitwise ORed</span></a> together and passed to various functions.
@@ -823,15 +921,15 @@ called using the following idiom:</p>
 
 </section>
 <section id="directives">
-<span id="doctest-directives"></span><span id="index-4"></span><h3>Directives<a class="headerlink" href="#directives" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-directives"></span><span id="index-4"></span><h3>Directives<a class="headerlink" href="#directives" title="Permalink to this heading">¶</a></h3>
 <p>Doctest directives may be used to modify the <a class="reference internal" href="#doctest-options"><span class="std std-ref">option flags</span></a> for an individual example.  Doctest directives are
 special Python comments following an example’s source code:</p>
 <pre>
-<strong id="grammar-token-doctest-directive"><span id="grammar-token-directive"></span>directive            </strong> ::=  &quot;#&quot; &quot;doctest:&quot; <a class="reference internal" href="#grammar-token-doctest-directive_options"><code class="xref docutils literal notranslate"><span class="pre">directive_options</span></code></a>
-<strong id="grammar-token-doctest-directive_options"><span id="grammar-token-directive-options"></span>directive_options    </strong> ::=  <a class="reference internal" href="#grammar-token-doctest-directive_option"><code class="xref docutils literal notranslate"><span class="pre">directive_option</span></code></a> (&quot;,&quot; <a class="reference internal" href="#grammar-token-doctest-directive_option"><code class="xref docutils literal notranslate"><span class="pre">directive_option</span></code></a>)*
-<strong id="grammar-token-doctest-directive_option"><span id="grammar-token-directive-option"></span>directive_option     </strong> ::=  <a class="reference internal" href="#grammar-token-doctest-on_or_off"><code class="xref docutils literal notranslate"><span class="pre">on_or_off</span></code></a> <a class="reference internal" href="#grammar-token-doctest-directive_option_name"><code class="xref docutils literal notranslate"><span class="pre">directive_option_name</span></code></a>
-<strong id="grammar-token-doctest-on_or_off"><span id="grammar-token-on-or-off"></span>on_or_off            </strong> ::=  &quot;+&quot; | &quot;-&quot;
-<strong id="grammar-token-doctest-directive_option_name"><span id="grammar-token-directive-option-name"></span>directive_option_name</strong> ::=  &quot;DONT_ACCEPT_BLANKLINE&quot; | &quot;NORMALIZE_WHITESPACE&quot; | ...
+<strong id="grammar-token-doctest-directive">directive            </strong> ::=  &quot;#&quot; &quot;doctest:&quot; <a class="reference internal" href="#grammar-token-doctest-directive_options"><code class="xref docutils literal notranslate"><span class="pre">directive_options</span></code></a>
+<strong id="grammar-token-doctest-directive_options">directive_options    </strong> ::=  <a class="reference internal" href="#grammar-token-doctest-directive_option"><code class="xref docutils literal notranslate"><span class="pre">directive_option</span></code></a> (&quot;,&quot; <a class="reference internal" href="#grammar-token-doctest-directive_option"><code class="xref docutils literal notranslate"><span class="pre">directive_option</span></code></a>)*
+<strong id="grammar-token-doctest-directive_option">directive_option     </strong> ::=  <a class="reference internal" href="#grammar-token-doctest-on_or_off"><code class="xref docutils literal notranslate"><span class="pre">on_or_off</span></code></a> <a class="reference internal" href="#grammar-token-doctest-directive_option_name"><code class="xref docutils literal notranslate"><span class="pre">directive_option_name</span></code></a>
+<strong id="grammar-token-doctest-on_or_off">on_or_off            </strong> ::=  &quot;+&quot; | &quot;-&quot;
+<strong id="grammar-token-doctest-directive_option_name">directive_option_name</strong> ::=  &quot;DONT_ACCEPT_BLANKLINE&quot; | &quot;NORMALIZE_WHITESPACE&quot; | ...
 </pre>
 <p>Whitespace is not allowed between the <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">-</span></code> and the directive option
 name.  The directive option name can be any of the option flag names explained
@@ -839,7 +937,7 @@ above.</p>
 <p>An example’s doctest directives modify doctest’s behavior for that single
 example.  Use <code class="docutils literal notranslate"><span class="pre">+</span></code> to enable the named behavior, or <code class="docutils literal notranslate"><span class="pre">-</span></code> to disable it.</p>
 <p>For example, this test passes:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
 <span class="go">[0,   1,  2,  3,  4,  5,  6,  7,  8,  9,</span>
 <span class="go">10,  11, 12, 13, 14, 15, 16, 17, 18, 19]</span>
 </pre></div>
@@ -848,19 +946,19 @@ example.  Use <code class="docutils literal notranslate"><span class="pre">+</sp
 two blanks before the single-digit list elements, and because the actual output
 is on a single line.  This test also passes, and also requires a directive to do
 so:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS</span>
 <span class="go">[0, 1, ..., 18, 19]</span>
 </pre></div>
 </div>
 <p>Multiple directives can be used on a single physical line, separated by
 commas:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS, +NORMALIZE_WHITESPACE</span>
 <span class="go">[0,    1, ...,   18,    19]</span>
 </pre></div>
 </div>
 <p>If multiple directive comments are used for a single example, then they are
 combined:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>  <span class="c1"># doctest: +ELLIPSIS</span>
 <span class="gp">... </span>                        <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
 <span class="go">[0,    1, ...,   18,    19]</span>
 </pre></div>
@@ -868,7 +966,7 @@ combined:</p>
 <p>As the previous example shows, you can add <code class="docutils literal notranslate"><span class="pre">...</span></code> lines to your example
 containing only directives.  This can be useful when an example is too long for
 a directive to comfortably fit on the same line:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)))</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)))</span>
 <span class="gp">... </span><span class="c1"># doctest: +ELLIPSIS</span>
 <span class="go">[0, ..., 4, 10, ..., 19, 30, ..., 39]</span>
 </pre></div>
@@ -880,7 +978,7 @@ functions that run doctests, establishing different defaults.  In such cases,
 disabling an option via <code class="docutils literal notranslate"><span class="pre">-</span></code> in a directive can be useful.</p>
 </section>
 <section id="warnings">
-<span id="doctest-warnings"></span><h3>Warnings<a class="headerlink" href="#warnings" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-warnings"></span><h3>Warnings<a class="headerlink" href="#warnings" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> is serious about requiring exact matches in expected output.  If
 even a single character doesn’t match, the test fails.  This will probably
 surprise you a few times, as you learn exactly what Python does and doesn’t
@@ -903,7 +1001,7 @@ guarantee that the element is printed in any particular order, so a test like</p
 </div>
 <p>There are others, but you get the idea.</p>
 <p>Another bad idea is to print things that embed an object address, like</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># certain to fail some of the time  </span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">id</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>  <span class="c1"># certain to fail some of the time  </span>
 <span class="go">7948648</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">C</span><span class="p">:</span> <span class="k">pass</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">()</span>  <span class="c1"># the default repr() for instances embeds an address   </span>
@@ -911,7 +1009,7 @@ guarantee that the element is printed in any particular order, so a test like</p
 </pre></div>
 </div>
 <p>The <a class="reference internal" href="#doctest.ELLIPSIS" title="doctest.ELLIPSIS"><code class="xref py py-const docutils literal notranslate"><span class="pre">ELLIPSIS</span></code></a> directive gives a nice approach for the last example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">()</span>  <span class="c1"># doctest: +ELLIPSIS</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">()</span>  <span class="c1"># doctest: +ELLIPSIS</span>
 <span class="go">&lt;C object at 0x...&gt;</span>
 </pre></div>
 </div>
@@ -937,7 +1035,7 @@ better documentation.</p>
 </section>
 </section>
 <section id="basic-api">
-<span id="doctest-basic-api"></span><h2>Basic API<a class="headerlink" href="#basic-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-basic-api"></span><h2>Basic API<a class="headerlink" href="#basic-api" title="Permalink to this heading">¶</a></h2>
 <p>The functions <a class="reference internal" href="#doctest.testmod" title="doctest.testmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">testmod()</span></code></a> and <a class="reference internal" href="#doctest.testfile" title="doctest.testfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">testfile()</span></code></a> provide a simple interface to
 doctest that should be sufficient for most basic uses.  For a less formal
 introduction to these two functions, see sections <a class="reference internal" href="#doctest-simple-testmod"><span class="std std-ref">Simple Usage: Checking Examples in Docstrings</span></a>
@@ -1046,7 +1144,7 @@ flags are deduced corresponding to the set of future features found in <em>globs
 
 </section>
 <section id="unittest-api">
-<span id="doctest-unittest-api"></span><h2>Unittest API<a class="headerlink" href="#unittest-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-unittest-api"></span><h2>Unittest API<a class="headerlink" href="#unittest-api" title="Permalink to this heading">¶</a></h2>
 <p>As your collection of doctest’ed modules grows, you’ll want a way to run all
 their doctests systematically.  <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> provides two functions that can
 be used to create <a class="reference internal" href="unittest.html#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a> test suites from modules and text files
@@ -1188,7 +1286,7 @@ was called is returned by the function.</p>
 
 </section>
 <section id="advanced-api">
-<span id="doctest-advanced-api"></span><h2>Advanced API<a class="headerlink" href="#advanced-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-advanced-api"></span><h2>Advanced API<a class="headerlink" href="#advanced-api" title="Permalink to this heading">¶</a></h2>
 <p>The basic API is a simple wrapper that’s intended to make doctest easy to use.
 It is fairly flexible, and should meet most users’ needs; however, if you
 require more fine-grained control over testing, or wish to extend doctest’s
@@ -1227,7 +1325,7 @@ diagram:</p>
 </pre></div>
 </div>
 <section id="doctest-objects">
-<span id="doctest-doctest"></span><h3>DocTest Objects<a class="headerlink" href="#doctest-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-doctest"></span><h3>DocTest Objects<a class="headerlink" href="#doctest-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.DocTest">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">DocTest</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">examples</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">docstring</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doctest.DocTest" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1285,7 +1383,7 @@ unavailable, or if the test was not extracted from a string.</p>
 
 </section>
 <section id="example-objects">
-<span id="doctest-example"></span><h3>Example Objects<a class="headerlink" href="#example-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-example"></span><h3>Example Objects<a class="headerlink" href="#example-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.Example">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">Example</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">want</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exc_msg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doctest.Example" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1349,7 +1447,7 @@ in this dictionary are left at their default value (as specified by the
 
 </section>
 <section id="doctestfinder-objects">
-<span id="doctest-doctestfinder"></span><h3>DocTestFinder objects<a class="headerlink" href="#doctestfinder-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-doctestfinder"></span><h3>DocTestFinder objects<a class="headerlink" href="#doctestfinder-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.DocTestFinder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">DocTestFinder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parser</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">DocTestParser()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_empty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doctest.DocTestFinder" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1402,7 +1500,7 @@ defaults to <code class="docutils literal notranslate"><span class="pre">{}</spa
 
 </section>
 <section id="doctestparser-objects">
-<span id="doctest-doctestparser"></span><h3>DocTestParser objects<a class="headerlink" href="#doctestparser-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-doctestparser"></span><h3>DocTestParser objects<a class="headerlink" href="#doctestparser-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.DocTestParser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">DocTestParser</span></span><a class="headerlink" href="#doctest.DocTestParser" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1440,7 +1538,7 @@ identifying this string, and is only used for error messages.</p>
 
 </section>
 <section id="doctestrunner-objects">
-<span id="doctest-doctestrunner"></span><h3>DocTestRunner objects<a class="headerlink" href="#doctestrunner-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-doctestrunner"></span><h3>DocTestRunner objects<a class="headerlink" href="#doctestrunner-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.DocTestRunner">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">DocTestRunner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">checker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optionflags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#doctest.DocTestRunner" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1546,7 +1644,7 @@ used.</p>
 
 </section>
 <section id="outputchecker-objects">
-<span id="doctest-outputchecker"></span><h3>OutputChecker objects<a class="headerlink" href="#outputchecker-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="doctest-outputchecker"></span><h3>OutputChecker objects<a class="headerlink" href="#outputchecker-objects" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="doctest.OutputChecker">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">doctest.</span></span><span class="sig-name descname"><span class="pre">OutputChecker</span></span><a class="headerlink" href="#doctest.OutputChecker" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1579,7 +1677,7 @@ set of option flags used to compare <em>want</em> and <em>got</em>.</p>
 </section>
 </section>
 <section id="debugging">
-<span id="doctest-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-debugging"></span><h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this heading">¶</a></h2>
 <p>Doctest provides several mechanisms for debugging doctest examples:</p>
 <ul>
 <li><p>Several functions convert doctests to executable Python programs, which can be
@@ -1799,7 +1897,7 @@ to initialize the attributes of the same names.</p>
 
 </section>
 <section id="soapbox">
-<span id="doctest-soapbox"></span><h2>Soapbox<a class="headerlink" href="#soapbox" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="doctest-soapbox"></span><h2>Soapbox<a class="headerlink" href="#soapbox" title="Permalink to this heading">¶</a></h2>
 <p>As mentioned in the introduction, <a class="reference internal" href="#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> has grown to have three primary
 uses:</p>
 <ol class="arabic simple">
@@ -1868,13 +1966,14 @@ such a test runner:</p>
 </pre></div>
 </div>
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Examples containing both expected output and an exception are not supported.
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Examples containing both expected output and an exception are not supported.
 Trying to guess where one ends and the other begins is too error-prone, and that
 also makes for a confusing test.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1896,23 +1995,122 @@ also makes for a confusing test.</p>
 <li><a class="reference internal" href="#how-are-docstring-examples-recognized">How are Docstring Examples Recognized?</a></li>
 <li><a class="reference internal" href="#what-s-the-execution-context">What’s the Execution Context?</a></li>
 <li><a class="reference internal" href="#what-about-exceptions">What About Exceptions?</a></li>
-<li><a class="reference internal" href="#option-flags">Option Flags</a></li>
+<li><a class="reference internal" href="#option-flags">Option Flags</a><ul>
+<li><a class="reference internal" href="#doctest.DONT_ACCEPT_TRUE_FOR_1"><code class="docutils literal notranslate"><span class="pre">DONT_ACCEPT_TRUE_FOR_1</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DONT_ACCEPT_BLANKLINE"><code class="docutils literal notranslate"><span class="pre">DONT_ACCEPT_BLANKLINE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.NORMALIZE_WHITESPACE"><code class="docutils literal notranslate"><span class="pre">NORMALIZE_WHITESPACE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.ELLIPSIS"><code class="docutils literal notranslate"><span class="pre">ELLIPSIS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.IGNORE_EXCEPTION_DETAIL"><code class="docutils literal notranslate"><span class="pre">IGNORE_EXCEPTION_DETAIL</span></code></a></li>
+<li><a class="reference internal" href="#doctest.SKIP"><code class="docutils literal notranslate"><span class="pre">SKIP</span></code></a></li>
+<li><a class="reference internal" href="#doctest.COMPARISON_FLAGS"><code class="docutils literal notranslate"><span class="pre">COMPARISON_FLAGS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_UDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_UDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_CDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_CDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_NDIFF"><code class="docutils literal notranslate"><span class="pre">REPORT_NDIFF</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORT_ONLY_FIRST_FAILURE"><code class="docutils literal notranslate"><span class="pre">REPORT_ONLY_FIRST_FAILURE</span></code></a></li>
+<li><a class="reference internal" href="#doctest.FAIL_FAST"><code class="docutils literal notranslate"><span class="pre">FAIL_FAST</span></code></a></li>
+<li><a class="reference internal" href="#doctest.REPORTING_FLAGS"><code class="docutils literal notranslate"><span class="pre">REPORTING_FLAGS</span></code></a></li>
+<li><a class="reference internal" href="#doctest.register_optionflag"><code class="docutils literal notranslate"><span class="pre">register_optionflag()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#directives">Directives</a></li>
 <li><a class="reference internal" href="#warnings">Warnings</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#basic-api">Basic API</a></li>
-<li><a class="reference internal" href="#unittest-api">Unittest API</a></li>
-<li><a class="reference internal" href="#advanced-api">Advanced API</a><ul>
-<li><a class="reference internal" href="#doctest-objects">DocTest Objects</a></li>
-<li><a class="reference internal" href="#example-objects">Example Objects</a></li>
-<li><a class="reference internal" href="#doctestfinder-objects">DocTestFinder objects</a></li>
-<li><a class="reference internal" href="#doctestparser-objects">DocTestParser objects</a></li>
-<li><a class="reference internal" href="#doctestrunner-objects">DocTestRunner objects</a></li>
-<li><a class="reference internal" href="#outputchecker-objects">OutputChecker objects</a></li>
+<li><a class="reference internal" href="#basic-api">Basic API</a><ul>
+<li><a class="reference internal" href="#doctest.testfile"><code class="docutils literal notranslate"><span class="pre">testfile()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.testmod"><code class="docutils literal notranslate"><span class="pre">testmod()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.run_docstring_examples"><code class="docutils literal notranslate"><span class="pre">run_docstring_examples()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#debugging">Debugging</a></li>
+<li><a class="reference internal" href="#unittest-api">Unittest API</a><ul>
+<li><a class="reference internal" href="#doctest.DocFileSuite"><code class="docutils literal notranslate"><span class="pre">DocFileSuite()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestSuite"><code class="docutils literal notranslate"><span class="pre">DocTestSuite()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.set_unittest_reportflags"><code class="docutils literal notranslate"><span class="pre">set_unittest_reportflags()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#advanced-api">Advanced API</a><ul>
+<li><a class="reference internal" href="#doctest-objects">DocTest Objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTest"><code class="docutils literal notranslate"><span class="pre">DocTest</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTest.examples"><code class="docutils literal notranslate"><span class="pre">DocTest.examples</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.globs"><code class="docutils literal notranslate"><span class="pre">DocTest.globs</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.name"><code class="docutils literal notranslate"><span class="pre">DocTest.name</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.filename"><code class="docutils literal notranslate"><span class="pre">DocTest.filename</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.lineno"><code class="docutils literal notranslate"><span class="pre">DocTest.lineno</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTest.docstring"><code class="docutils literal notranslate"><span class="pre">DocTest.docstring</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-objects">Example Objects</a><ul>
+<li><a class="reference internal" href="#doctest.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.Example.source"><code class="docutils literal notranslate"><span class="pre">Example.source</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.want"><code class="docutils literal notranslate"><span class="pre">Example.want</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.exc_msg"><code class="docutils literal notranslate"><span class="pre">Example.exc_msg</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.lineno"><code class="docutils literal notranslate"><span class="pre">Example.lineno</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.indent"><code class="docutils literal notranslate"><span class="pre">Example.indent</span></code></a></li>
+<li><a class="reference internal" href="#doctest.Example.options"><code class="docutils literal notranslate"><span class="pre">Example.options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestfinder-objects">DocTestFinder objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFinder"><code class="docutils literal notranslate"><span class="pre">DocTestFinder</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFinder.find"><code class="docutils literal notranslate"><span class="pre">DocTestFinder.find()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestparser-objects">DocTestParser objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestParser"><code class="docutils literal notranslate"><span class="pre">DocTestParser</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestParser.get_doctest"><code class="docutils literal notranslate"><span class="pre">DocTestParser.get_doctest()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestParser.get_examples"><code class="docutils literal notranslate"><span class="pre">DocTestParser.get_examples()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestParser.parse"><code class="docutils literal notranslate"><span class="pre">DocTestParser.parse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctestrunner-objects">DocTestRunner objects</a><ul>
+<li><a class="reference internal" href="#doctest.DocTestRunner"><code class="docutils literal notranslate"><span class="pre">DocTestRunner</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_start"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_start()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_success"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_success()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_failure"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_failure()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.report_unexpected_exception"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.report_unexpected_exception()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.run"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.run()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestRunner.summarize"><code class="docutils literal notranslate"><span class="pre">DocTestRunner.summarize()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#outputchecker-objects">OutputChecker objects</a><ul>
+<li><a class="reference internal" href="#doctest.OutputChecker"><code class="docutils literal notranslate"><span class="pre">OutputChecker</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.OutputChecker.check_output"><code class="docutils literal notranslate"><span class="pre">OutputChecker.check_output()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.OutputChecker.output_difference"><code class="docutils literal notranslate"><span class="pre">OutputChecker.output_difference()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#debugging">Debugging</a><ul>
+<li><a class="reference internal" href="#doctest.script_from_examples"><code class="docutils literal notranslate"><span class="pre">script_from_examples()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.testsource"><code class="docutils literal notranslate"><span class="pre">testsource()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.debug"><code class="docutils literal notranslate"><span class="pre">debug()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.debug_src"><code class="docutils literal notranslate"><span class="pre">debug_src()</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DebugRunner"><code class="docutils literal notranslate"><span class="pre">DebugRunner</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure"><code class="docutils literal notranslate"><span class="pre">DocTestFailure</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.DocTestFailure.test"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.test</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure.example"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.example</span></code></a></li>
+<li><a class="reference internal" href="#doctest.DocTestFailure.got"><code class="docutils literal notranslate"><span class="pre">DocTestFailure.got</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#doctest.UnexpectedException"><code class="docutils literal notranslate"><span class="pre">UnexpectedException</span></code></a><ul>
+<li><a class="reference internal" href="#doctest.UnexpectedException.test"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.test</span></code></a></li>
+<li><a class="reference internal" href="#doctest.UnexpectedException.example"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.example</span></code></a></li>
+<li><a class="reference internal" href="#doctest.UnexpectedException.exc_info"><code class="docutils literal notranslate"><span class="pre">UnexpectedException.exc_info</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#soapbox">Soapbox</a></li>
 </ul>
 </li>
@@ -1941,6 +2139,10 @@ also makes for a confusing test.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -2014,11 +2216,11 @@ also makes for a confusing test.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

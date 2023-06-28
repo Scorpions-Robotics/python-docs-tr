@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="http.cookies — HTTP state management" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/http.cookies.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,34 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code> — HTTP state management</a><ul>
-<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a></li>
-<li><a class="reference internal" href="#morsel-objects">Morsel Objects</a></li>
+<li><a class="reference internal" href="#http.cookies.CookieError"><code class="docutils literal notranslate"><span class="pre">CookieError</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie"><code class="docutils literal notranslate"><span class="pre">BaseCookie</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.SimpleCookie"><code class="docutils literal notranslate"><span class="pre">SimpleCookie</span></code></a></li>
+<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a><ul>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.value_decode"><code class="docutils literal notranslate"><span class="pre">BaseCookie.value_decode()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.value_encode"><code class="docutils literal notranslate"><span class="pre">BaseCookie.value_encode()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.output"><code class="docutils literal notranslate"><span class="pre">BaseCookie.output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.js_output"><code class="docutils literal notranslate"><span class="pre">BaseCookie.js_output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.load"><code class="docutils literal notranslate"><span class="pre">BaseCookie.load()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#morsel-objects">Morsel Objects</a><ul>
+<li><a class="reference internal" href="#http.cookies.Morsel"><code class="docutils literal notranslate"><span class="pre">Morsel</span></code></a><ul>
+<li><a class="reference internal" href="#http.cookies.Morsel.value"><code class="docutils literal notranslate"><span class="pre">Morsel.value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.coded_value"><code class="docutils literal notranslate"><span class="pre">Morsel.coded_value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.key"><code class="docutils literal notranslate"><span class="pre">Morsel.key</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.set"><code class="docutils literal notranslate"><span class="pre">Morsel.set()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.isReservedKey"><code class="docutils literal notranslate"><span class="pre">Morsel.isReservedKey()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.output"><code class="docutils literal notranslate"><span class="pre">Morsel.output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.js_output"><code class="docutils literal notranslate"><span class="pre">Morsel.js_output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.OutputString"><code class="docutils literal notranslate"><span class="pre">Morsel.OutputString()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.update"><code class="docutils literal notranslate"><span class="pre">Morsel.update()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.copy"><code class="docutils literal notranslate"><span class="pre">Morsel.copy()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.setdefault"><code class="docutils literal notranslate"><span class="pre">Morsel.setdefault()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -194,7 +219,7 @@
           <div class="body" role="main">
             
   <section id="module-http.cookies">
-<span id="http-cookies-http-state-management"></span><h1><a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> — HTTP state management<a class="headerlink" href="#module-http.cookies" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="http-cookies-http-state-management"></span><h1><a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> — HTTP state management<a class="headerlink" href="#module-http.cookies" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/http/cookies.py">Lib/http/cookies.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> module defines classes for abstracting the concept of
@@ -254,7 +279,7 @@ the value to a string. Values received from HTTP are kept as strings.</p>
 </dl>
 </div>
 <section id="cookie-objects">
-<span id="id1"></span><h2>Cookie Objects<a class="headerlink" href="#cookie-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Cookie Objects<a class="headerlink" href="#cookie-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="http.cookies.BaseCookie.value_decode">
 <span class="sig-prename descclassname"><span class="pre">BaseCookie.</span></span><span class="sig-name descname"><span class="pre">value_decode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#http.cookies.BaseCookie.value_decode" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -304,7 +329,7 @@ found there as <a class="reference internal" href="#http.cookies.Morsel" title="
 
 </section>
 <section id="morsel-objects">
-<span id="id2"></span><h2>Morsel Objects<a class="headerlink" href="#morsel-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>Morsel Objects<a class="headerlink" href="#morsel-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="http.cookies.Morsel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">http.cookies.</span></span><span class="sig-name descname"><span class="pre">Morsel</span></span><a class="headerlink" href="#http.cookies.Morsel" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -427,9 +452,9 @@ behave the same as <a class="reference internal" href="stdtypes.html#dict.setdef
 
 </section>
 <section id="example">
-<span id="cookie-example"></span><h2>Example<a class="headerlink" href="#example" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="cookie-example"></span><h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
 <p>The following example demonstrates how to use the <a class="reference internal" href="#module-http.cookies" title="http.cookies: Support for HTTP state management (cookies)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code></a> module.</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">cookies</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">http</span> <span class="kn">import</span> <span class="n">cookies</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">cookies</span><span class="o">.</span><span class="n">SimpleCookie</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">[</span><span class="s2">&quot;fig&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;newton&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="p">[</span><span class="s2">&quot;sugar&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;wafer&quot;</span>
@@ -490,8 +515,34 @@ behave the same as <a class="reference internal" href="stdtypes.html#dict.setdef
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookies</span></code> — HTTP state management</a><ul>
-<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a></li>
-<li><a class="reference internal" href="#morsel-objects">Morsel Objects</a></li>
+<li><a class="reference internal" href="#http.cookies.CookieError"><code class="docutils literal notranslate"><span class="pre">CookieError</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie"><code class="docutils literal notranslate"><span class="pre">BaseCookie</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.SimpleCookie"><code class="docutils literal notranslate"><span class="pre">SimpleCookie</span></code></a></li>
+<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a><ul>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.value_decode"><code class="docutils literal notranslate"><span class="pre">BaseCookie.value_decode()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.value_encode"><code class="docutils literal notranslate"><span class="pre">BaseCookie.value_encode()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.output"><code class="docutils literal notranslate"><span class="pre">BaseCookie.output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.js_output"><code class="docutils literal notranslate"><span class="pre">BaseCookie.js_output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.BaseCookie.load"><code class="docutils literal notranslate"><span class="pre">BaseCookie.load()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#morsel-objects">Morsel Objects</a><ul>
+<li><a class="reference internal" href="#http.cookies.Morsel"><code class="docutils literal notranslate"><span class="pre">Morsel</span></code></a><ul>
+<li><a class="reference internal" href="#http.cookies.Morsel.value"><code class="docutils literal notranslate"><span class="pre">Morsel.value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.coded_value"><code class="docutils literal notranslate"><span class="pre">Morsel.coded_value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.key"><code class="docutils literal notranslate"><span class="pre">Morsel.key</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.set"><code class="docutils literal notranslate"><span class="pre">Morsel.set()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.isReservedKey"><code class="docutils literal notranslate"><span class="pre">Morsel.isReservedKey()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.output"><code class="docutils literal notranslate"><span class="pre">Morsel.output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.js_output"><code class="docutils literal notranslate"><span class="pre">Morsel.js_output()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.OutputString"><code class="docutils literal notranslate"><span class="pre">Morsel.OutputString()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.update"><code class="docutils literal notranslate"><span class="pre">Morsel.update()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.copy"><code class="docutils literal notranslate"><span class="pre">Morsel.copy()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookies.Morsel.setdefault"><code class="docutils literal notranslate"><span class="pre">Morsel.setdefault()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
@@ -520,6 +571,10 @@ behave the same as <a class="reference internal" href="stdtypes.html#dict.setdef
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -593,11 +648,11 @@ behave the same as <a class="reference internal" href="stdtypes.html#dict.setdef
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

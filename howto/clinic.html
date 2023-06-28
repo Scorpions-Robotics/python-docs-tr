@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Argüman Kliniği Nasıl Yapılır" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/howto/clinic.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -218,19 +217,19 @@
           <div class="body" role="main">
             
   <section id="argument-clinic-how-to">
-<span id="howto-clinic"></span><h1>Argüman Kliniği Nasıl Yapılır<a class="headerlink" href="#argument-clinic-how-to" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="howto-clinic"></span><h1>Argüman Kliniği Nasıl Yapılır<a class="headerlink" href="#argument-clinic-how-to" title="Permalink to this heading">¶</a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">yazar</dt>
+<dt class="field-odd">yazar<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Larry Hastings</p>
 </dd>
 </dl>
-<div class="topic">
+<aside class="topic">
 <p class="topic-title">Soyut</p>
 <p>Argüman Kliniği CPython C dosyaları için bir ön işlemcidir. Amacı, “builtins” için argüman ayrıştırma kodunun yazılmasıyla ilgili tüm boilerplate’i otomatikleştirmektir. Bu dokümantasyon size ilk C fonksiyonunuzu Argüman Kliniği ile çalışacak şekilde nasıl dönüştüreceğinizi gösterir ve ardından Argüman Kliniği kullanımıyla ilgili bazı ileri düzey konuları tanıtır.</p>
 <p>Şu anda Argüman Kliniği CPython için dahili olarak kabul edilmektedir.  CPython dışındaki dosyalar için kullanımı desteklenmemektedir ve gelecek sürümler için geriye dönük uyumluluk konusunda herhangi bir garanti verilmemektedir.  Başka bir deyişle: CPython için harici bir C uzantısına sahipseniz, Argüman Kliniği’ni kendi kodunuzda deneyebilirsiniz.  Ancak CPython’un bir sonraki sürümüyle birlikte gelen Argüman Kliniği sürümü * tamamen uyumsuz olabilir ve tüm kodunuzu bozabilir.</p>
-</div>
+</aside>
 <section id="the-goals-of-argument-clinic">
-<h2>Argüman Kliniğinin Hedefleri<a class="headerlink" href="#the-goals-of-argument-clinic" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Argüman Kliniğinin Hedefleri<a class="headerlink" href="#the-goals-of-argument-clinic" title="Permalink to this heading">¶</a></h2>
 <p>Argüman Kliniği’nin birincil amacı CPython içindeki tüm argüman ayrıştırma kodunun sorumluluğunu üstlenmektir.  Bu, bir fonksiyonu Argüman Kliniği ile çalışacak şekilde dönüştürdüğünüzde, bu fonksiyonun artık kendi argüman ayrıştırmasını yapmaması gerektiği anlamına gelir - Argüman Kliniği tarafından üretilen kod sizin için bir “kara kutu” olmalıdır, CPython üstte çağırır ve kodunuz altta çağrılır, <code class="docutils literal notranslate"><span class="pre">PyObject</span> <span class="pre">*args</span></code> (ve belki <code class="docutils literal notranslate"><span class="pre">PyObject</span> <span class="pre">*kwargs</span></code>) sihirli bir şekilde ihtiyacınız olan C değişkenlerine ve türlerine dönüştürülür.</p>
 <p>Argüman Kliniği’nin birincil amacına ulaşabilmesi için kullanımının kolay olması gerekir.  Şu anda, CPython’un argüman ayrıştırma kütüphanesi ile çalışmak, şaşırtıcı sayıda yerde gereksiz bilgileri korumayı gerektiren bir angarya. Argüman Kliniği’ni kullandığınızda, kendinizi tekrar etmek zorunda kalmazsınız.</p>
 <p>Açıkçası, hiç kimse Argüman Kliniği’ni kendi sorununu çözmedikçe ve kendi başına yeni sorunlar yaratmadıkça kullanmak istemeyecektir. Bu yüzden Argüman Kliniği’nin doğru kod üretmesi çok önemlidir. Kodun daha hızlı olması da güzel olurdu, ancak en azından büyük bir hız gerilemesi getirmemelidir.  (Sonunda Argüman Kliniği <em>büyük bir hızlanmayı mümkün kılmalıdır</em> - genel amaçlı CPython argüman ayrıştırma kütüphanesini çağırmak yerine, özel argüman ayrıştırma kodu üretmek için kod oluşturucusunu yeniden yazabiliriz.  Bu, mümkün olan en hızlı argüman ayrıştırmasını sağlayacaktır!)</p>
@@ -239,7 +238,7 @@
 <p>Argüman Kliniği ile çalışırken aklınızda tutmanız gereken bir fikir var: Ona ne kadar çok bilgi verirseniz, o kadar iyi iş çıkaracaktır. Argüman Kliniği kuşkusuz şu anda nispeten basittir.  Ancak geliştikçe daha sofistike hale gelecek ve ona verdiğiniz tüm bilgilerle birçok ilginç ve akıllıca şey yapabilecektir.</p>
 </section>
 <section id="basic-concepts-and-usage">
-<h2>Temel Kavramlar ve Kullanım<a class="headerlink" href="#basic-concepts-and-usage" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Temel Kavramlar ve Kullanım<a class="headerlink" href="#basic-concepts-and-usage" title="Permalink to this heading">¶</a></h2>
 <p>Argüman Kliniği CPython ile birlikte gelir; <code class="docutils literal notranslate"><span class="pre">Tools/clinic/clinic.py</span></code> içinde bulabilirsiniz. Bu dizeyi çalıştırırsanız, argüman olarak bir C dosyası belirtirseniz:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>Tools/clinic/clinic.py<span class="w"> </span>foo.c
 </pre></div>
@@ -274,7 +273,7 @@
 </ul>
 </section>
 <section id="converting-your-first-function">
-<h2>İlk Fonksiyonunuzu Dönüştürme<a class="headerlink" href="#converting-your-first-function" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>İlk Fonksiyonunuzu Dönüştürme<a class="headerlink" href="#converting-your-first-function" title="Permalink to this heading">¶</a></h2>
 <p>Argüman Kliniği’nin nasıl çalıştığını anlamanın en iyi yolu, bir fonksiyonu onunla çalışacak şekilde dönüştürmektir.  O halde burada, bir fonksiyonu Argüman Kliniği ile çalışacak şekilde dönüştürmek için izlemeniz gereken asgari adımlar yer almaktadır.  CPython’da kontrol etmeyi planladığınız kod için, belgede daha sonra göreceğiniz bazı gelişmiş kavramları (“dönüş dönüştürücüler” ve “öz dönüştürücüler” gibi) kullanarak dönüştürmeyi gerçekten daha ileri götürmeniz gerektiğini unutmayın. Ancak öğrenebilmeniz için bu kılavuz için basit tutacağız.</p>
 <p>Hadi dalalım!</p>
 <ol class="arabic" start="0">
@@ -516,10 +515,10 @@ et#
 </ol>
 </section>
 <section id="advanced-topics">
-<h2>İleri Düzey Konular<a class="headerlink" href="#advanced-topics" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>İleri Düzey Konular<a class="headerlink" href="#advanced-topics" title="Permalink to this heading">¶</a></h2>
 <p>Argüman Kliniği ile çalışma konusunda biraz deneyim kazandığınıza göre, bazı ileri düzey konuların zamanı geldi.</p>
 <section id="symbolic-default-values">
-<h3>Sembolik varsayılan değerler<a class="headerlink" href="#symbolic-default-values" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Sembolik varsayılan değerler<a class="headerlink" href="#symbolic-default-values" title="Permalink to this heading">¶</a></h3>
 <p>Bir parametre için sağladığınız varsayılan değer rastgele bir ifade olamaz.  Şu anda aşağıdakiler açıkça desteklenmektedir:</p>
 <ul class="simple">
 <li><p>Sayısal sabitler (integer ve float)</p></li>
@@ -530,7 +529,7 @@ et#
 <p>(Gelecekte, <code class="docutils literal notranslate"><span class="pre">CONSTANT</span> <span class="pre">-</span> <span class="pre">1</span></code> gibi tam ifadelere izin vermek için bunun daha da ayrıntılı hale getirilmesi gerekebilir.)</p>
 </section>
 <section id="renaming-the-c-functions-and-variables-generated-by-argument-clinic">
-<h3>Argüman Kliniği tarafından oluşturulan C işlevlerini ve değişkenlerini yeniden adlandırma<a class="headerlink" href="#renaming-the-c-functions-and-variables-generated-by-argument-clinic" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Argüman Kliniği tarafından oluşturulan C işlevlerini ve değişkenlerini yeniden adlandırma<a class="headerlink" href="#renaming-the-c-functions-and-variables-generated-by-argument-clinic" title="Permalink to this heading">¶</a></h3>
 <p>Argüman Kliniği sizin için ürettiği fonksiyonlara otomatik olarak isim verir. Bazen, oluşturulan ad mevcut bir C işlevinin adıyla çakışırsa bu bir soruna neden olabilir.  Bunun kolay bir çözümü vardır: C fonksiyonları için kullanılan isimleri geçersiz kılın.  Fonksiyon bildirim satırınıza <code class="docutils literal notranslate"><span class="pre">&quot;as&quot;</span></code> anahtar sözcüğünü ve ardından kullanmak istediğiniz fonksiyon adını eklemeniz yeterlidir. Argument Clinic, temel (oluşturulan) işlev için bu işlev adını kullanacak, ardından sonuna <code class="docutils literal notranslate"><span class="pre">&quot;_impl&quot;</span></code> ekleyecek ve impl işlevinin adı için bunu kullanacaktır.</p>
 <p>Örneğin, <code class="docutils literal notranslate"><span class="pre">pickle.Pickler.dump</span></code> için oluşturulan C fonksiyon adlarını yeniden adlandırmak istersek, şöyle görünecektir:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*[clinic input]</span>
@@ -555,12 +554,12 @@ et#
 <p>Bunu <code class="docutils literal notranslate"><span class="pre">self</span></code> parametresini yeniden adlandırmak için de kullanabilirsiniz!</p>
 </section>
 <section id="converting-functions-using-pyarg-unpacktuple">
-<h3>PyArg_UnpackTuple kullanarak fonksiyonları dönüştürme<a class="headerlink" href="#converting-functions-using-pyarg-unpacktuple" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>PyArg_UnpackTuple kullanarak fonksiyonları dönüştürme<a class="headerlink" href="#converting-functions-using-pyarg-unpacktuple" title="Permalink to this heading">¶</a></h3>
 <p>Argümanlarını <a class="reference internal" href="../c-api/arg.html#c.PyArg_UnpackTuple" title="PyArg_UnpackTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_UnpackTuple()</span></code></a> ile ayrıştıran bir fonksiyonu dönüştürmek için, her birini bir <code class="docutils literal notranslate"><span class="pre">object</span></code> olarak belirterek tüm argümanları yazmanız yeterlidir.  Türü uygun şekilde dökmek için <code class="docutils literal notranslate"><span class="pre">type</span></code> argümanını belirtebilirsiniz.  Tüm argümanlar sadece konumsal olarak işaretlenmelidir (son argümandan sonra kendi başına bir satıra <code class="docutils literal notranslate"><span class="pre">/</span></code> ekleyin).</p>
 <p>Şu anda oluşturulan kod <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a> kullanacaktır, ancak bu yakında değişecektir.</p>
 </section>
 <section id="optional-groups">
-<h3>İsteğe Bağlı Gruplar<a class="headerlink" href="#optional-groups" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>İsteğe Bağlı Gruplar<a class="headerlink" href="#optional-groups" title="Permalink to this heading">¶</a></h3>
 <p>Bazı eski fonksiyonların argümanlarını ayrıştırmak için zor bir yaklaşımı vardır: konumsal argümanların sayısını sayarlar, ardından kaç tane konumsal argüman olduğuna bağlı olarak birkaç farklı <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a> çağrısından birini çağırmak için bir <code class="docutils literal notranslate"><span class="pre">switch</span></code> deyimi kullanırlar.  (Bu fonksiyonlar sadece anahtar kelime argümanlarını kabul edemez.) Bu yaklaşım <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTupleAndKeywords" title="PyArg_ParseTupleAndKeywords"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTupleAndKeywords()</span></code></a> oluşturulmadan önce isteğe bağlı argümanları simüle etmek için kullanılıyordu.</p>
 <p>Bu yaklaşımı kullanan fonksiyonlar genellikle <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTupleAndKeywords" title="PyArg_ParseTupleAndKeywords"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTupleAndKeywords()</span></code></a>, isteğe bağlı argümanlar ve varsayılan değerleri kullanacak şekilde dönüştürülebilse de, bu her zaman mümkün değildir.  Bu eski fonksiyonlardan bazıları <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTupleAndKeywords" title="PyArg_ParseTupleAndKeywords"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTupleAndKeywords()</span></code></a> fonksiyonunun doğrudan desteklemediği davranışlara sahiptir. En bariz örnek, gerekli argümanının <em>sol</em> tarafında isteğe bağlı bir argümana sahip olan yerleşik <code class="docutils literal notranslate"><span class="pre">range()</span></code> fonksiyonudur! Diğer bir örnek ise her zaman birlikte belirtilmesi gereken iki argümandan oluşan bir gruba sahip olan <code class="docutils literal notranslate"><span class="pre">curses.window.addch()</span></code> fonksiyonudur.  (Argümanlar <code class="docutils literal notranslate"><span class="pre">x</span></code> ve <code class="docutils literal notranslate"><span class="pre">y</span></code> olarak adlandırılır; fonksiyonu <code class="docutils literal notranslate"><span class="pre">x</span></code> değerini girerek çağırırsanız, <code class="docutils literal notranslate"><span class="pre">y</span></code> değerini de girmeniz gerekir ve <code class="docutils literal notranslate"><span class="pre">x</span></code> değerini girmezseniz <code class="docutils literal notranslate"><span class="pre">y</span></code> değerini de giremezsiniz)</p>
 <p>Her durumda, Argüman Kliniği’nin amacı, anlamlarını değiştirmeden mevcut tüm CPython yerleşik bileşenleri için argüman ayrıştırmayı desteklemektir. Bu nedenle Argüman Kliniği <em>isteğe bağlı gruplar</em> olarak adlandırılan bu alternatif ayrıştırma yaklaşımını destekler. İsteğe bağlı gruplar, hepsi birlikte geçirilmesi gereken argüman gruplarıdır. Gerekli argümanların sağında veya solunda olabilirler.  Yalnızca <em>konumsal</em> parametrelerle kullanılabilirler.</p>
@@ -602,7 +601,7 @@ et#
 </ul>
 </section>
 <section id="using-real-argument-clinic-converters-instead-of-legacy-converters">
-<h3>“Eski dönüştürücüler” yerine gerçek Argüman Kliniği dönüştürücülerinin kullanılması<a class="headerlink" href="#using-real-argument-clinic-converters-instead-of-legacy-converters" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>“Eski dönüştürücüler” yerine gerçek Argüman Kliniği dönüştürücülerinin kullanılması<a class="headerlink" href="#using-real-argument-clinic-converters-instead-of-legacy-converters" title="Permalink to this heading">¶</a></h3>
 <p>Zamandan tasarruf etmek ve Argüman Kliniğine ilk portunuzu gerçekleştirmek için ne kadar çok şey öğrenmeniz gerektiğini en aza indirmek için, yukarıdaki kılavuz size “eski dönüştürücüleri” kullanmanızı söyler.  “Eski dönüştürücüler”, mevcut kodun Argüman Kliniği’ne taşınmasını kolaylaştırmak için tasarlanmış bir kolaylıktır.  Ve açık olmak gerekirse, Python 3.4 için kod taşırken kullanımları kabul edilebilir.</p>
 <p>Ancak, uzun vadede muhtemelen tüm bloklarımızın Argüman Kliniği’nin dönüştürücüler için gerçek sözdizimini kullanmasını istiyoruz.  Neden mi?  Birkaç nedeni var:</p>
 <ul class="simple">
@@ -644,10 +643,6 @@ et#
 <p>Lütfen her olası argüman kombinasyonunun çalışmayacağını unutmayın. Genellikle bu argümanlar belirli davranışlara sahip belirli <code class="docutils literal notranslate"><span class="pre">PyArg_ParseTuple</span></code> <em>format birimleri</em> tarafından uygulanır.  Örneğin, şu anda <code class="docutils literal notranslate"><span class="pre">bitwise=True</span></code> belirtmeden <code class="docutils literal notranslate"><span class="pre">unsigned_short</span></code> çağıramazsınız. Bunun işe yarayacağını düşünmek tamamen mantıklı olsa da, bu anlamlar mevcut herhangi bir biçim birimiyle eşleşmez.  Bu yüzden Argüman Kliniği bunu desteklemez.  (Ya da, en azından, henüz değil.)</p>
 <p>Aşağıda, eski dönüştürücülerin gerçek Argüman Kliniği dönüştürücülerine eşlenmesini gösteren bir tablo bulunmaktadır.  Solda eski dönüştürücü, sağda ise onu değiştireceğiniz metin yer almaktadır.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'B'</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">unsigned_char(bitwise=True)</span></code></p></td>
@@ -790,18 +785,18 @@ et#
 <p>Argüman Kliniği size mevcut tüm dönüştürücüleri gösterecektir.  Her dönüştürücü için, kabul ettiği tüm parametreleri ve her parametre için varsayılan değeri gösterecektir. Tam listeyi görmek için <code class="docutils literal notranslate"><span class="pre">Tools/clinic/clinic.py</span> <span class="pre">--converters</span></code> komutunu çalıştırmanız yeterlidir.</p>
 </section>
 <section id="py-buffer">
-<h3>Py_buffer<a class="headerlink" href="#py-buffer" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Py_buffer<a class="headerlink" href="#py-buffer" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Py_buffer</span></code> dönüştürücüsünü (veya <code class="docutils literal notranslate"><span class="pre">'s*'</span></code>, <code class="docutils literal notranslate"><span class="pre">'w*'</span></code>, <code class="docutils literal notranslate"><span class="pre">'*y'</span></code> veya <code class="docutils literal notranslate"><span class="pre">'z*'</span></code> eski dönüştürücülerini) kullanırken, sağlanan tampon üzerinde <a class="reference internal" href="../c-api/buffer.html#c.PyBuffer_Release" title="PyBuffer_Release"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyBuffer_Release()</span></code></a> çağrısı yapmamanız gerekir. Argument Clinic bunu sizin için yapan kodu üretir (ayrıştırma işlevinde).</p>
 </section>
 <section id="advanced-converters">
-<h3>Gelişmiş dönüştürücüler<a class="headerlink" href="#advanced-converters" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Gelişmiş dönüştürücüler<a class="headerlink" href="#advanced-converters" title="Permalink to this heading">¶</a></h3>
 <p>İlk seferinizde ileri düzey oldukları için atladığınız format ünitelerini hatırlıyor musunuz?  İşte onları da nasıl halledeceğiniz.</p>
 <p>İşin püf noktası, tüm bu format birimlerinin argüman almasıdır - ya dönüştürme fonksiyonları, ya tipler ya da kodlama belirten dizeler. (Ancak “eski dönüştürücüler” argümanları desteklemez.  Bu yüzden ilk fonksiyonunuz için onları atladık).  Biçim birimine belirttiğiniz argüman artık dönüştürücünün bir argümanıdır; bu argüman ya <code class="docutils literal notranslate"><span class="pre">converter</span></code> (<code class="docutils literal notranslate"><span class="pre">O&amp;</span></code> için), <code class="docutils literal notranslate"><span class="pre">subclass_of</span></code> (<code class="docutils literal notranslate"><span class="pre">O!</span></code> için) ya da <code class="docutils literal notranslate"><span class="pre">encoding</span></code> (<code class="docutils literal notranslate"><span class="pre">e</span></code> ile başlayan tüm biçim birimleri için) şeklindedir.</p>
 <p><code class="docutils literal notranslate"><span class="pre">subclass_of</span></code> kullanırken, <code class="docutils literal notranslate"><span class="pre">object()</span></code> için diğer özel bağımsız değişkeni de kullanmak isteyebilirsiniz: <code class="docutils literal notranslate"><span class="pre">type</span></code>, parametre için gerçekte kullanılan türü ayarlamanızı sağlar.  Örneğin, nesnenin <code class="docutils literal notranslate"><span class="pre">PyUnicode_Type</span></code> türünün bir alt sınıfı olduğundan emin olmak istiyorsanız, muhtemelen <code class="docutils literal notranslate"><span class="pre">object(type='PyUnicodeObject</span> <span class="pre">*',</span> <span class="pre">subclass_of='&amp;PyUnicode_Type')</span></code> dönüştürücüsünü kullanmak istersiniz.</p>
 <p>Argüman Kliniği kullanımıyla ilgili olası bir sorun: <code class="docutils literal notranslate"><span class="pre">e</span></code> ile başlayan biçim birimleri için bazı olası esneklikleri ortadan kaldırır.  Elle bir <code class="docutils literal notranslate"><span class="pre">PyArg_Parse</span></code> çağrısı yazarken, teorik olarak <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a>’a hangi kodlama dizgesini aktaracağınıza çalışma zamanında karar verebilirsiniz.   Ancak şimdi bu dizge Argüman Kliniği-önişleme zamanında sabit kodlanmalıdır.  Bu sınırlama kasıtlıdır; bu format birimini desteklemeyi çok daha kolay hale getirdi ve gelecekteki optimizasyonlara izin verebilir. Bu kısıtlama mantıksız görünmüyor; CPython’un kendisi, biçim birimleri <code class="docutils literal notranslate"><span class="pre">e</span></code> ile başlayan parametreler için her zaman statik sabit kodlu kodlama dizeleri geçirir.</p>
 </section>
 <section id="parameter-default-values">
-<span id="default-values"></span><h3>Parametre varsayılan değerleri<a class="headerlink" href="#parameter-default-values" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="default-values"></span><h3>Parametre varsayılan değerleri<a class="headerlink" href="#parameter-default-values" title="Permalink to this heading">¶</a></h3>
 <p>Parametreler için varsayılan değerler bir dizi değerden herhangi biri olabilir. En basit haliyle string, int veya float değişmezleri olabilirler:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo: str = &quot;abc&quot;
 bar: int = 123
@@ -817,11 +812,11 @@ nada: object = None
 <p>Ayrıca <code class="docutils literal notranslate"><span class="pre">NULL</span></code> varsayılan değeri ve aşağıdaki bölümlerde belgelenen basit ifadeler için özel bir destek de vardır.</p>
 </section>
 <section id="the-null-default-value">
-<h3>Varsayılan değer <code class="docutils literal notranslate"><span class="pre">NULL</span></code><a class="headerlink" href="#the-null-default-value" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Varsayılan değer <code class="docutils literal notranslate"><span class="pre">NULL</span></code><a class="headerlink" href="#the-null-default-value" title="Permalink to this heading">¶</a></h3>
 <p>Dize ve nesne parametreleri için, varsayılan olmadığını belirtmek için bunları <code class="docutils literal notranslate"><span class="pre">None</span></code> olarak ayarlayabilirsiniz.  Ancak bu, C değişkeninin <code class="docutils literal notranslate"><span class="pre">Py_None</span></code> olarak başlatılacağı anlamına gelir.  Kolaylık olması açısından, sadece bu nedenle <code class="docutils literal notranslate"><span class="pre">NULL</span></code> adında özel bir değer vardır: Python’un bakış açısından varsayılan değer <code class="docutils literal notranslate"><span class="pre">None</span></code> gibi davranır, ancak C değişkeni <code class="docutils literal notranslate"><span class="pre">NULL</span></code> ile başlatılır.</p>
 </section>
 <section id="expressions-specified-as-default-values">
-<h3>Varsayılan değerler olarak belirtilen ifadeler<a class="headerlink" href="#expressions-specified-as-default-values" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Varsayılan değerler olarak belirtilen ifadeler<a class="headerlink" href="#expressions-specified-as-default-values" title="Permalink to this heading">¶</a></h3>
 <p>Bir parametre için varsayılan değer, gerçek bir değerden daha fazlası olabilir. Matematik operatörlerini kullanan ve nesnelerdeki öznitelikleri arayan bütün bir ifade olabilir.  Ancak bu destek, bazı açık olmayan anlamlar nedeniyle tam olarak basit değildir.</p>
 <p>Aşağıdaki örneği ele alalım:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo: Py_ssize_t = sys.maxsize - 1
@@ -848,7 +843,7 @@ nada: object = None
 </ul>
 </section>
 <section id="using-a-return-converter">
-<h3>Dönüş dönüştürücüsü kullanma<a class="headerlink" href="#using-a-return-converter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Dönüş dönüştürücüsü kullanma<a class="headerlink" href="#using-a-return-converter" title="Permalink to this heading">¶</a></h3>
 <p>Argüman Kliniği’nin sizin için oluşturduğu impl fonksiyonu varsayılan olarak <code class="docutils literal notranslate"><span class="pre">PyObject</span> <span class="pre">*</span></code> döndürür. Ancak C fonksiyonunuz genellikle bir C tipini hesaplar, sonra son anda onu <code class="docutils literal notranslate"><span class="pre">PyObject</span> <span class="pre">*</span></code>’e dönüştürür.  Argüman Kliniği girdilerinizi Python türlerinden yerel C türlerine dönüştürür - neden dönüş değerinizi de yerel bir C türünden bir Python türüne dönüştürmesin?</p>
 <p>“Dönüş dönüştürücüsü” de bunu yapar.  Bir C tipi döndürmek için impl fonksiyonunuzu değiştirir, ardından bu değeri uygun <code class="docutils literal notranslate"><span class="pre">PyObject</span> <span class="pre">*</span></code>’e dönüştürmek için oluşturulan (impl olmayan) fonksiyona kod ekler.</p>
 <p>Dönüş dönüştürücüleri için sözdizimi parametre dönüştürücülerine benzer. Dönüş dönüştürücüsünü fonksiyonun kendisindeki bir dönüş ek açıklaması gibi belirtirsiniz.  Dönüş dönüştürücüleri parametre dönüştürücüleriyle aynı şekilde davranır; argüman alırlar, argümanların tümü yalnızca anahtar sözcüktür ve varsayılan argümanlardan herhangi birini değiştirmiyorsanız parantezleri atlayabilirsiniz.</p>
@@ -872,7 +867,7 @@ DecodeFSDefault
 <p>Argüman Kliniği’nin desteklediği tüm dönüş dönüştürücülerini parametreleriyle (varsa) birlikte görmek için, tam liste için <code class="docutils literal notranslate"><span class="pre">Tools/clinic/clinic.py</span> <span class="pre">--converters</span></code> komutunu çalıştırmanız yeterlidir.</p>
 </section>
 <section id="cloning-existing-functions">
-<h3>Mevcut fonksiyonları klonlama<a class="headerlink" href="#cloning-existing-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Mevcut fonksiyonları klonlama<a class="headerlink" href="#cloning-existing-functions" title="Permalink to this heading">¶</a></h3>
 <p>Birbirine benzeyen çok sayıda fonksiyonunuz varsa, Kliniğin “clone” özelliğini kullanabilirsiniz.  Mevcut bir işlevi klonladığınızda, yeniden kullanırsınız:</p>
 <ul class="simple">
 <li><p>parametreleri, dahil olmak üzere</p>
@@ -900,7 +895,7 @@ DecodeFSDefault
 <p>Ayrıca, klonladığınız fonksiyonun mevcut dosyada daha önce tanımlanmış olması gerekir.</p>
 </section>
 <section id="calling-python-code">
-<h3>Python kodunu çağırma<a class="headerlink" href="#calling-python-code" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Python kodunu çağırma<a class="headerlink" href="#calling-python-code" title="Permalink to this heading">¶</a></h3>
 <p>İleri düzey konuların geri kalanı, C dosyanızın içinde yaşayan ve Argüman Kliniği’nin çalışma zamanı durumunu değiştiren Python kodu yazmanızı gerektirir.  Bu basittir: sadece bir Python bloğu tanımlarsınız.</p>
 <p>Bir Python bloğu, Argüman Kliniği işlev bloğundan farklı sınırlayıcı satırlar kullanır.  Şöyle görünür:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*[python input]</span>
@@ -919,7 +914,7 @@ DecodeFSDefault
 </div>
 </section>
 <section id="using-a-self-converter">
-<h3>“Kendi kendine dönüştürücü” kullanma<a class="headerlink" href="#using-a-self-converter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>“Kendi kendine dönüştürücü” kullanma<a class="headerlink" href="#using-a-self-converter" title="Permalink to this heading">¶</a></h3>
 <p>Argüman Kliniği, varsayılan bir dönüştürücü kullanarak sizin için otomatik olarak bir “self” parametresi ekler.  Bu parametrenin <code class="docutils literal notranslate"><span class="pre">type</span></code> değerini otomatik olarak, türü bildirirken belirttiğiniz “bir örneğe işaretçi” olarak ayarlar.  Ancak, Argüman Kliniği’nin dönüştürücüsünü geçersiz kılabilir ve kendiniz bir dönüştürücü belirleyebilirsiniz. Sadece kendi <code class="docutils literal notranslate"><span class="pre">self</span></code> parametrenizi bir bloktaki ilk parametre olarak ekleyin ve dönüştürücüsünün <code class="docutils literal notranslate"><span class="pre">self_converter</span></code> veya onun bir alt sınıfının bir örneği olduğundan emin olun.</p>
 <p>Ne anlamı var?  Bu, <code class="docutils literal notranslate"><span class="pre">self</span></code> türünü geçersiz kılmanıza veya ona farklı bir varsayılan ad vermenize olanak tanır.</p>
 <p><code class="docutils literal notranslate"><span class="pre">self</span></code> için döküm yapmak istediğiniz özel türü nasıl belirlersiniz? Eğer <code class="docutils literal notranslate"><span class="pre">self</span></code> için aynı tipe sahip sadece bir veya iki fonksiyonunuz varsa, kullanmak istediğiniz tipi <code class="docutils literal notranslate"><span class="pre">type</span></code> parametresi olarak girerek Argüman Kliniğinin mevcut <code class="docutils literal notranslate"><span class="pre">self</span></code> dönüştürücüsünü doğrudan kullanabilirsiniz:</p>
@@ -955,7 +950,7 @@ DecodeFSDefault
 </div>
 </section>
 <section id="using-a-defining-class-converter">
-<h3>“Sınıf tanımlama” dönüştürücüsü kullanma<a class="headerlink" href="#using-a-defining-class-converter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>“Sınıf tanımlama” dönüştürücüsü kullanma<a class="headerlink" href="#using-a-defining-class-converter" title="Permalink to this heading">¶</a></h3>
 <p>Argüman Kliniği, bir metodun tanımlayıcı sınıfına erişim sağlamayı kolaylaştırır. Bu, modül düzeyinde durum getirmesi gereken <a class="reference internal" href="../c-api/typeobj.html#heap-types"><span class="std std-ref">heap type</span></a> yöntemleri için kullanışlıdır.  Yeni bir heap tipini bir modül ile ilişkilendirmek için <a class="reference internal" href="../c-api/type.html#c.PyType_FromModuleAndSpec" title="PyType_FromModuleAndSpec"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_FromModuleAndSpec()</span></code></a> kullanın.  Artık modül durumunu, örneğin bir modül yönteminden almak için tanımlayıcı sınıf üzerinde <a class="reference internal" href="../c-api/type.html#c.PyType_GetModuleState" title="PyType_GetModuleState"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_GetModuleState()</span></code></a> kullanabilirsiniz.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Modules/zlibmodule.c</span></code> den örnek.  İlk olarak, <code class="docutils literal notranslate"><span class="pre">defining_class</span></code> klinik girdisine eklenir:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*[clinic input]</span>
@@ -994,7 +989,7 @@ DecodeFSDefault
 <p>Bkz: <span class="target" id="index-5"></span><a class="pep reference external" href="https://peps.python.org/pep-0573/"><strong>PEP 573</strong></a>.</p>
 </section>
 <section id="writing-a-custom-converter">
-<h3>Özel bir dönüştürücü yazma<a class="headerlink" href="#writing-a-custom-converter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Özel bir dönüştürücü yazma<a class="headerlink" href="#writing-a-custom-converter" title="Permalink to this heading">¶</a></h3>
 <p>Önceki bölümde ima ettiğimiz gibi… kendi dönüştürücülerinizi yazabilirsiniz! Bir dönüştürücü basitçe <code class="docutils literal notranslate"><span class="pre">CConverter</span></code>’dan miras alan bir Python sınıfıdır. Özel bir dönüştürücünün ana amacı, <code class="docutils literal notranslate"><span class="pre">O&amp;</span></code> biçimini kullanan bir parametreniz varsa, bu parametreyi birim ayrıştırmak, bir <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a> “dönüştürücü işlevi” çağırmak anlamına gelir.</p>
 <p>Dönüştürücü sınıfınızın adı <code class="docutils literal notranslate"><span class="pre">*something*_converter</span></code> olmalıdır. İsim bu kurala uygunsa, dönüştürücü sınıfınız Argüman Kliniği’ne otomatik olarak kaydedilecektir; adı, <code class="docutils literal notranslate"><span class="pre">_converter</span></code> son eki çıkarılmış sınıfınızın adı olacaktır.  (Bu bir meta sınıf ile gerçekleştirilir.)</p>
 <p><code class="docutils literal notranslate"><span class="pre">CConverter.__init__</span></code> alt sınıfını kullanmamalısınız.  Bunun yerine, bir <code class="docutils literal notranslate"><span class="pre">converter_init()</span></code> fonksiyonu yazmalısınız.  <code class="docutils literal notranslate"><span class="pre">converter_init()</span></code> her zaman bir <code class="docutils literal notranslate"><span class="pre">self</span></code> parametresi kabul eder; bundan sonra, tüm ek parametreler <em>mutlaka</em> yalnızca anahtar kelime olmalıdır.  Argüman Kliniği`nde dönüştürücüye aktarılan tüm argümanlar <code class="docutils literal notranslate"><span class="pre">converter_init()</span></code> fonksiyonunuza aktarılacaktır.</p>
@@ -1032,12 +1027,12 @@ DecodeFSDefault
 <p>Daha sofistike özel dönüştürücüler, başlatma ve temizleme işlemlerini gerçekleştirmek için özel C kodu ekleyebilir. CPython kaynak ağacında daha fazla özel dönüştürücü örneği görebilirsiniz; <code class="docutils literal notranslate"><span class="pre">CConverter</span></code> dizesi için C dosyalarını grepleyin.</p>
 </section>
 <section id="writing-a-custom-return-converter">
-<h3>Özel bir dönüş dönüştürücü yazma<a class="headerlink" href="#writing-a-custom-return-converter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Özel bir dönüş dönüştürücü yazma<a class="headerlink" href="#writing-a-custom-return-converter" title="Permalink to this heading">¶</a></h3>
 <p>Özel bir return dönüştürücü yazmak, özel bir dönüştürücü yazmaya çok benzer.  Biraz basit olması dışında, çünkü geri dönüş dönüştürücülerinin kendileri çok daha basittir.</p>
 <p>Dönüş dönüştürücüleri <code class="docutils literal notranslate"><span class="pre">CReturnConverter</span></code> alt sınıfına sahip olmalıdır. Henüz yaygın olarak kullanılmadıkları için özel dönüş dönüştürücüleri için henüz bir örnek yoktur.  Kendi dönüş dönüştürücünüzü yazmak istiyorsanız, lütfen <code class="docutils literal notranslate"><span class="pre">Tools/clinic/clinic.py</span></code> dosyasını, özellikle <code class="docutils literal notranslate"><span class="pre">CReturnConverter</span></code> ve tüm alt sınıflarının uygulamasını okuyun.</p>
 </section>
 <section id="meth-o-and-meth-noargs">
-<h3>METH_O ve METH_NOARGS<a class="headerlink" href="#meth-o-and-meth-noargs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>METH_O ve METH_NOARGS<a class="headerlink" href="#meth-o-and-meth-noargs" title="Permalink to this heading">¶</a></h3>
 <p>Bir fonksiyonu <code class="docutils literal notranslate"><span class="pre">METH_O</span></code> kullanarak dönüştürmek için, fonksiyonun tek argümanının <code class="docutils literal notranslate"><span class="pre">object</span></code> dönüştürücüsünü kullandığından emin olun ve argümanları sadece pozisyonel olarak işaretleyin:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*[clinic input]</span>
 <span class="cm">meth_o_sample</span>
@@ -1051,7 +1046,7 @@ DecodeFSDefault
 <p>Yine de bir self dönüştürücü, bir return dönüştürücü kullanabilir ve <code class="docutils literal notranslate"><span class="pre">METH_O</span></code> için nesne dönüştürücüye bir <code class="docutils literal notranslate"><span class="pre">type</span></code> argümanı belirtebilirsiniz.</p>
 </section>
 <section id="tp-new-and-tp-init-functions">
-<h3>tp_new ve tp_init fonksiyonları<a class="headerlink" href="#tp-new-and-tp-init-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>tp_new ve tp_init fonksiyonları<a class="headerlink" href="#tp-new-and-tp-init-functions" title="Permalink to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">tp_new</span></code> ve <code class="docutils literal notranslate"><span class="pre">tp_init</span></code> fonksiyonlarını dönüştürebilirsiniz.  Bunları uygun şekilde <code class="docutils literal notranslate"><span class="pre">__new__</span></code> veya <code class="docutils literal notranslate"><span class="pre">__init__</span></code> olarak adlandırmanız yeterlidir.  Notlar:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">__new__</span></code> için oluşturulan işlev adı, varsayılan olarak olduğu gibi <code class="docutils literal notranslate"><span class="pre">__new__</span></code> ile bitmez.  Bu sadece geçerli bir C tanımlayıcısına dönüştürülmüş sınıf adıdır.</p></li>
@@ -1062,7 +1057,7 @@ DecodeFSDefault
 </ul>
 </section>
 <section id="changing-and-redirecting-clinic-s-output">
-<h3>Kliniğin çıktısını değiştirme ve yönlendirme<a class="headerlink" href="#changing-and-redirecting-clinic-s-output" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Kliniğin çıktısını değiştirme ve yönlendirme<a class="headerlink" href="#changing-and-redirecting-clinic-s-output" title="Permalink to this heading">¶</a></h3>
 <p>Kliniğin çıktısının geleneksel elle düzenlenmiş C kodunuzun arasına serpiştirilmesi rahatsız edici olabilir.  Neyse ki, Klinik yapılandırılabilir: çıktısını daha sonra (veya daha önce!) yazdırmak için tamponlayabilir veya çıktısını ayrı bir dosyaya yazabilirsiniz.  Ayrıca Kliniğin ürettiği çıktının her satırına bir önek veya sonek ekleyebilirsiniz.</p>
 <p>Kliniğin çıktısını bu şekilde değiştirmek okunabilirlik için bir nimet olsa da, Klinik kodunun tanımlanmadan önce türleri kullanmasına veya kodunuzun tanımlanmadan önce Klinik tarafından oluşturulan kodu kullanmaya çalışmasına neden olabilir. Bu sorunlar, dosyanızdaki bildirimleri yeniden düzenleyerek veya Kliniğin ürettiği kodun yerini değiştirerek kolayca çözülebilir.  (Bu nedenle Kliniğin varsayılan davranışı her şeyi geçerli bloğa çıktı olarak vermektir; birçok kişi bunun okunabilirliği engellediğini düşünse de, kullanımdan önce tanımlama sorunlarını düzeltmek için kodunuzu yeniden düzenlemenizi asla gerektirmez).</p>
 <p>Bazı terminolojileri tanımlamakla başlayalım:</p>
@@ -1207,7 +1202,7 @@ set line_suffix &quot;string&quot;
 <p>Bu, Clinic’e çıktının mevcut içeriğinin değiştirilmeden tutulması gerektiğini söyler. Bu, çıktıyı <code class="docutils literal notranslate"><span class="pre">file</span></code> dosyalarına dökerken Clinic tarafından dahili olarak kullanılır; bunu bir Clinic bloğuna sarmak, dosyanın üzerine yazılmadan önce elle değiştirilmediğinden emin olmak için Clinic’in mevcut sağlama toplamı işlevini kullanmasını sağlar.</p>
 </section>
 <section id="the-ifdef-trick">
-<h3>#ifdef hilesi<a class="headerlink" href="#the-ifdef-trick" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>#ifdef hilesi<a class="headerlink" href="#the-ifdef-trick" title="Permalink to this heading">¶</a></h3>
 <p>Tüm platformlarda bulunmayan bir fonksiyonu dönüştürüyorsanız, hayatı biraz daha kolaylaştırmak için kullanabileceğiniz bir numara var.  Mevcut kod muhtemelen şuna benzer:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifdef HAVE_FUNCTIONNAME</span>
 <span class="k">static</span><span class="w"> </span><span class="n">module_functionname</span><span class="p">(...)</span>
@@ -1258,7 +1253,7 @@ Destination buffer &#39;buffer&#39; not empty at end of file, emptying.
 <p>Bu olduğunda, dosyanızı açın, Argüman Kliniği’nin dosyanıza eklediği <code class="docutils literal notranslate"><span class="pre">dump</span> <span class="pre">buffer</span></code> bloğunu bulun (en altta olacaktır), ardından bu makronun kullanıldığı <code class="docutils literal notranslate"><span class="pre">PyMethodDef</span></code> yapısının üzerine taşıyın.</p>
 </section>
 <section id="using-argument-clinic-in-python-files">
-<h3>Python dosyalarında Argüman Kliniği kullanma<a class="headerlink" href="#using-argument-clinic-in-python-files" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Python dosyalarında Argüman Kliniği kullanma<a class="headerlink" href="#using-argument-clinic-in-python-files" title="Permalink to this heading">¶</a></h3>
 <p>Aslında Python dosyalarını önceden işlemek için Argüman Kliniği kullanmak mümkündür. Argüman Kliniği bloklarını kullanmanın bir anlamı yok elbette, çünkü çıktı Python yorumlayıcısı için bir anlam ifade etmeyecektir.  Ancak Python bloklarını çalıştırmak için Argüman Kliniği’ni kullanmak Python’u bir Python önişlemcisi olarak kullanmanızı sağlar!</p>
 <p>Python yorumları C yorumlarından farklı olduğu için, Python dosyalarına gömülü Argüman Kliniği blokları biraz farklı görünür.  Şöyle görünürler:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#/*[python input]</span>
@@ -1338,6 +1333,10 @@ Destination buffer &#39;buffer&#39; not empty at end of file, emptying.
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1410,11 +1409,11 @@ Destination buffer &#39;buffer&#39; not empty at end of file, emptying.
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

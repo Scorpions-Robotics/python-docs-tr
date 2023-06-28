@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Synchronization Primitives" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/asyncio-sync.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,12 +97,64 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Synchronization Primitives</a><ul>
-<li><a class="reference internal" href="#lock">Lock</a></li>
-<li><a class="reference internal" href="#event">Event</a></li>
-<li><a class="reference internal" href="#condition">Condition</a></li>
-<li><a class="reference internal" href="#semaphore">Semaphore</a></li>
-<li><a class="reference internal" href="#boundedsemaphore">BoundedSemaphore</a></li>
-<li><a class="reference internal" href="#barrier">Barrier</a></li>
+<li><a class="reference internal" href="#lock">Lock</a><ul>
+<li><a class="reference internal" href="#asyncio.Lock"><code class="docutils literal notranslate"><span class="pre">Lock</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Lock.acquire"><code class="docutils literal notranslate"><span class="pre">Lock.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Lock.release"><code class="docutils literal notranslate"><span class="pre">Lock.release()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Lock.locked"><code class="docutils literal notranslate"><span class="pre">Lock.locked()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#event">Event</a><ul>
+<li><a class="reference internal" href="#asyncio.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Event.wait"><code class="docutils literal notranslate"><span class="pre">Event.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.set"><code class="docutils literal notranslate"><span class="pre">Event.set()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.clear"><code class="docutils literal notranslate"><span class="pre">Event.clear()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.is_set"><code class="docutils literal notranslate"><span class="pre">Event.is_set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#condition">Condition</a><ul>
+<li><a class="reference internal" href="#asyncio.Condition"><code class="docutils literal notranslate"><span class="pre">Condition</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Condition.acquire"><code class="docutils literal notranslate"><span class="pre">Condition.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.notify"><code class="docutils literal notranslate"><span class="pre">Condition.notify()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.locked"><code class="docutils literal notranslate"><span class="pre">Condition.locked()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.notify_all"><code class="docutils literal notranslate"><span class="pre">Condition.notify_all()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.release"><code class="docutils literal notranslate"><span class="pre">Condition.release()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.wait"><code class="docutils literal notranslate"><span class="pre">Condition.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.wait_for"><code class="docutils literal notranslate"><span class="pre">Condition.wait_for()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#semaphore">Semaphore</a><ul>
+<li><a class="reference internal" href="#asyncio.Semaphore"><code class="docutils literal notranslate"><span class="pre">Semaphore</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Semaphore.acquire"><code class="docutils literal notranslate"><span class="pre">Semaphore.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Semaphore.locked"><code class="docutils literal notranslate"><span class="pre">Semaphore.locked()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Semaphore.release"><code class="docutils literal notranslate"><span class="pre">Semaphore.release()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#boundedsemaphore">BoundedSemaphore</a><ul>
+<li><a class="reference internal" href="#asyncio.BoundedSemaphore"><code class="docutils literal notranslate"><span class="pre">BoundedSemaphore</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#barrier">Barrier</a><ul>
+<li><a class="reference internal" href="#asyncio.Barrier"><code class="docutils literal notranslate"><span class="pre">Barrier</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Barrier.wait"><code class="docutils literal notranslate"><span class="pre">Barrier.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.reset"><code class="docutils literal notranslate"><span class="pre">Barrier.reset()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.abort"><code class="docutils literal notranslate"><span class="pre">Barrier.abort()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.parties"><code class="docutils literal notranslate"><span class="pre">Barrier.parties</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.n_waiting"><code class="docutils literal notranslate"><span class="pre">Barrier.n_waiting</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.broken"><code class="docutils literal notranslate"><span class="pre">Barrier.broken</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asyncio.BrokenBarrierError"><code class="docutils literal notranslate"><span class="pre">BrokenBarrierError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -198,7 +249,7 @@
           <div class="body" role="main">
             
   <section id="synchronization-primitives">
-<span id="asyncio-sync"></span><h1>Synchronization Primitives<a class="headerlink" href="#synchronization-primitives" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="asyncio-sync"></span><h1>Synchronization Primitives<a class="headerlink" href="#synchronization-primitives" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/locks.py">Lib/asyncio/locks.py</a></p>
 <hr class="docutils" />
 <p>asyncio synchronization primitives are designed to be similar to
@@ -222,7 +273,7 @@ operations with timeouts.</p></li>
 </ul>
 <hr class="docutils" />
 <section id="lock">
-<h2>Lock<a class="headerlink" href="#lock" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Lock<a class="headerlink" href="#lock" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.Lock">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">Lock</span></span><a class="headerlink" href="#asyncio.Lock" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -283,7 +334,7 @@ the first coroutine that started waiting on the lock.</p>
 
 </section>
 <section id="event">
-<h2>Event<a class="headerlink" href="#event" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Event<a class="headerlink" href="#event" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.Event">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">Event</span></span><a class="headerlink" href="#asyncio.Event" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -354,7 +405,7 @@ awakened.</p>
 
 </section>
 <section id="condition">
-<h2>Condition<a class="headerlink" href="#condition" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Condition<a class="headerlink" href="#condition" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.Condition">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">Condition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lock</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.Condition" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -461,7 +512,7 @@ return value.</p>
 
 </section>
 <section id="semaphore">
-<h2>Semaphore<a class="headerlink" href="#semaphore" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Semaphore<a class="headerlink" href="#semaphore" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.Semaphore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">Semaphore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.Semaphore" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -525,7 +576,7 @@ making more <code class="docutils literal notranslate"><span class="pre">release
 
 </section>
 <section id="boundedsemaphore">
-<h2>BoundedSemaphore<a class="headerlink" href="#boundedsemaphore" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>BoundedSemaphore<a class="headerlink" href="#boundedsemaphore" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.BoundedSemaphore">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">BoundedSemaphore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.BoundedSemaphore" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -540,7 +591,7 @@ increases the internal counter above the initial <em>value</em>.</p>
 
 </section>
 <section id="barrier">
-<h2>Barrier<a class="headerlink" href="#barrier" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Barrier<a class="headerlink" href="#barrier" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.Barrier">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">Barrier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parties</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.Barrier" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -674,12 +725,64 @@ waiting tasks.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Synchronization Primitives</a><ul>
-<li><a class="reference internal" href="#lock">Lock</a></li>
-<li><a class="reference internal" href="#event">Event</a></li>
-<li><a class="reference internal" href="#condition">Condition</a></li>
-<li><a class="reference internal" href="#semaphore">Semaphore</a></li>
-<li><a class="reference internal" href="#boundedsemaphore">BoundedSemaphore</a></li>
-<li><a class="reference internal" href="#barrier">Barrier</a></li>
+<li><a class="reference internal" href="#lock">Lock</a><ul>
+<li><a class="reference internal" href="#asyncio.Lock"><code class="docutils literal notranslate"><span class="pre">Lock</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Lock.acquire"><code class="docutils literal notranslate"><span class="pre">Lock.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Lock.release"><code class="docutils literal notranslate"><span class="pre">Lock.release()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Lock.locked"><code class="docutils literal notranslate"><span class="pre">Lock.locked()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#event">Event</a><ul>
+<li><a class="reference internal" href="#asyncio.Event"><code class="docutils literal notranslate"><span class="pre">Event</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Event.wait"><code class="docutils literal notranslate"><span class="pre">Event.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.set"><code class="docutils literal notranslate"><span class="pre">Event.set()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.clear"><code class="docutils literal notranslate"><span class="pre">Event.clear()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Event.is_set"><code class="docutils literal notranslate"><span class="pre">Event.is_set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#condition">Condition</a><ul>
+<li><a class="reference internal" href="#asyncio.Condition"><code class="docutils literal notranslate"><span class="pre">Condition</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Condition.acquire"><code class="docutils literal notranslate"><span class="pre">Condition.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.notify"><code class="docutils literal notranslate"><span class="pre">Condition.notify()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.locked"><code class="docutils literal notranslate"><span class="pre">Condition.locked()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.notify_all"><code class="docutils literal notranslate"><span class="pre">Condition.notify_all()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.release"><code class="docutils literal notranslate"><span class="pre">Condition.release()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.wait"><code class="docutils literal notranslate"><span class="pre">Condition.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Condition.wait_for"><code class="docutils literal notranslate"><span class="pre">Condition.wait_for()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#semaphore">Semaphore</a><ul>
+<li><a class="reference internal" href="#asyncio.Semaphore"><code class="docutils literal notranslate"><span class="pre">Semaphore</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Semaphore.acquire"><code class="docutils literal notranslate"><span class="pre">Semaphore.acquire()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Semaphore.locked"><code class="docutils literal notranslate"><span class="pre">Semaphore.locked()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Semaphore.release"><code class="docutils literal notranslate"><span class="pre">Semaphore.release()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#boundedsemaphore">BoundedSemaphore</a><ul>
+<li><a class="reference internal" href="#asyncio.BoundedSemaphore"><code class="docutils literal notranslate"><span class="pre">BoundedSemaphore</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#barrier">Barrier</a><ul>
+<li><a class="reference internal" href="#asyncio.Barrier"><code class="docutils literal notranslate"><span class="pre">Barrier</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.Barrier.wait"><code class="docutils literal notranslate"><span class="pre">Barrier.wait()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.reset"><code class="docutils literal notranslate"><span class="pre">Barrier.reset()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.abort"><code class="docutils literal notranslate"><span class="pre">Barrier.abort()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.parties"><code class="docutils literal notranslate"><span class="pre">Barrier.parties</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.n_waiting"><code class="docutils literal notranslate"><span class="pre">Barrier.n_waiting</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Barrier.broken"><code class="docutils literal notranslate"><span class="pre">Barrier.broken</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asyncio.BrokenBarrierError"><code class="docutils literal notranslate"><span class="pre">BrokenBarrierError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -707,6 +810,10 @@ waiting tasks.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -781,11 +888,11 @@ waiting tasks.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

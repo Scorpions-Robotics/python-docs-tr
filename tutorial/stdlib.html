@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="10. Standart Kütüphanenin Özeti" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/stdlib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -202,9 +201,9 @@
           <div class="body" role="main">
             
   <section id="brief-tour-of-the-standard-library">
-<span id="tut-brieftour"></span><h1><span class="section-number">10. </span>Standart Kütüphanenin Özeti<a class="headerlink" href="#brief-tour-of-the-standard-library" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-brieftour"></span><h1><span class="section-number">10. </span>Standart Kütüphanenin Özeti<a class="headerlink" href="#brief-tour-of-the-standard-library" title="Permalink to this heading">¶</a></h1>
 <section id="operating-system-interface">
-<span id="tut-os-interface"></span><h2><span class="section-number">10.1. </span>İşletim Sistemi Arayüzü<a class="headerlink" href="#operating-system-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-os-interface"></span><h2><span class="section-number">10.1. </span>İşletim Sistemi Arayüzü<a class="headerlink" href="#operating-system-interface" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/os.html#module-os" title="os: Miscellaneous operating system interfaces."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> modülü, işletim sistemiyle etkileşim kurmak için düzinelerce fonksiyon sağlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>      <span class="c1"># Return the current working directory</span>
@@ -233,7 +232,7 @@
 </div>
 </section>
 <section id="file-wildcards">
-<span id="tut-file-wildcards"></span><h2><span class="section-number">10.2. </span>Dosya Joker Karakterleri<a class="headerlink" href="#file-wildcards" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-file-wildcards"></span><h2><span class="section-number">10.2. </span>Dosya Joker Karakterleri<a class="headerlink" href="#file-wildcards" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/glob.html#module-glob" title="glob: Unix shell style pathname pattern expansion."><code class="xref py py-mod docutils literal notranslate"><span class="pre">glob</span></code></a> modülü , klasör joker karakter aramalarından dosya listeleri oluşturabilmek için bir fonsiyon sağlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
@@ -242,7 +241,7 @@
 </div>
 </section>
 <section id="command-line-arguments">
-<span id="tut-command-line-arguments"></span><h2><span class="section-number">10.3. </span>Komut Satırı Argümanları<a class="headerlink" href="#command-line-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-command-line-arguments"></span><h2><span class="section-number">10.3. </span>Komut Satırı Argümanları<a class="headerlink" href="#command-line-arguments" title="Permalink to this heading">¶</a></h2>
 <p>Ortak yardımcı programların, çoğunlukla komut satırı argümanlarını işlemeleri gerekir. Bu argümanlar <a class="reference internal" href="../library/sys.html#module-sys" title="sys: Access system-specific parameters and functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code></a> modülünün <em>argv</em> özelliğinin içinde liste olarak saklanır. Örneğin <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">demo.py</span> <span class="pre">one</span> <span class="pre">two</span> <span class="pre">three</span></code> dosyasını çalıştırdığınız zaman vereceği çıktı:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
@@ -264,7 +263,7 @@
 <p>Komut satırında <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">top.py</span> <span class="pre">--lines=5</span> <span class="pre">alpha.txt</span> <span class="pre">beta.txt</span></code> çalıştırıldığı zaman program, <code class="docutils literal notranslate"><span class="pre">args.lines</span></code> ögesini <code class="docutils literal notranslate"><span class="pre">5</span></code> ve <code class="docutils literal notranslate"><span class="pre">args.filenames</span></code> ögesini <code class="docutils literal notranslate"><span class="pre">['alpha.txt',</span> <span class="pre">'beta.txt']</span></code> olarak ayarlar.</p>
 </section>
 <section id="error-output-redirection-and-program-termination">
-<span id="tut-stderr"></span><h2><span class="section-number">10.4. </span>Hata Çıktısının Yeniden Yönlendirilmesi ve Programın Sonlandırılması<a class="headerlink" href="#error-output-redirection-and-program-termination" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-stderr"></span><h2><span class="section-number">10.4. </span>Hata Çıktısının Yeniden Yönlendirilmesi ve Programın Sonlandırılması<a class="headerlink" href="#error-output-redirection-and-program-termination" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/sys.html#module-sys" title="sys: Access system-specific parameters and functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code></a> modülü ayrıca <em>stdin</em>, <em>stdout</em> ve <em>stderr</em> özelliklerine sahiptir. İkincisi, <em>stdout</em> yeniden yönlendirilmiş olsa bile bunları görünür hale getirmek için uyarılar ve hata iletileri yayımlamak için yararlıdır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Warning, log file not found starting a new one</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="go">Warning, log file not found starting a new one</span>
@@ -273,7 +272,7 @@
 <p>Bir programı sonlandırmak için, en kısa yol olan <code class="docutils literal notranslate"><span class="pre">sys.exit()</span></code> komutunu kullanın.</p>
 </section>
 <section id="string-pattern-matching">
-<span id="tut-string-pattern-matching"></span><h2><span class="section-number">10.5. </span>String Örüntü Eşlemesi<a class="headerlink" href="#string-pattern-matching" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-string-pattern-matching"></span><h2><span class="section-number">10.5. </span>String Örüntü Eşlemesi<a class="headerlink" href="#string-pattern-matching" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/re.html#module-re" title="re: Regular expression operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">re</span></code></a> modülü, gelişmiş string işleme için kurallı ifade araçları sağlar. Karmaşık eşleme ve manipülasyon için, kurallı ifadeler kısa ve optimize edilmiş çözümler sunar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\bf[a-z]*&#39;</span><span class="p">,</span> <span class="s1">&#39;which foot or hand fell fastest&#39;</span><span class="p">)</span>
@@ -289,7 +288,7 @@
 </div>
 </section>
 <section id="mathematics">
-<span id="tut-mathematics"></span><h2><span class="section-number">10.6. </span>Matematik<a class="headerlink" href="#mathematics" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-mathematics"></span><h2><span class="section-number">10.6. </span>Matematik<a class="headerlink" href="#mathematics" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/math.html#module-math" title="math: Mathematical functions (sin() etc.)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code></a> modülünün içindeki C kütüphanesi ondalıklı matematik fonksiyonlarına erişim sağlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span><span class="p">)</span>
@@ -324,7 +323,7 @@
 <p>SciPy projesi &lt;<a class="reference external" href="https://scipy.org">https://scipy.org</a>&gt; sayısal hesaplamalar için daha fazla modül içerir.</p>
 </section>
 <section id="internet-access">
-<span id="tut-internet-access"></span><h2><span class="section-number">10.7. </span>İnternet Erişimi<a class="headerlink" href="#internet-access" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-internet-access"></span><h2><span class="section-number">10.7. </span>İnternet Erişimi<a class="headerlink" href="#internet-access" title="Permalink to this heading">¶</a></h2>
 <p>İnternete bağlanmak ve internet protokollerini işlemek için bazı modüller var. Bunlardan en basit ikisi; <a class="reference internal" href="../library/urllib.request.html#module-urllib.request" title="urllib.request: Extensible library for opening URLs."><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.request</span></code></a> URL’lerden veri çekmek, ve <a class="reference internal" href="../library/smtplib.html#module-smtplib" title="smtplib: SMTP protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code></a> ise mail göndermek için:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://worldtimeapi.org/api/timezone/etc/UTC.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
@@ -349,7 +348,7 @@
 <p>(İkinci örnek için bir mail sunucusunun localhost’ta çalışması gerektiğini unutmayın.)</p>
 </section>
 <section id="dates-and-times">
-<span id="tut-dates-and-times"></span><h2><span class="section-number">10.8. </span>Tarihler ve Saatler<a class="headerlink" href="#dates-and-times" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-dates-and-times"></span><h2><span class="section-number">10.8. </span>Tarihler ve Saatler<a class="headerlink" href="#dates-and-times" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/datetime.html#module-datetime" title="datetime: Basic date and time types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a> modülü, tarihleri ve saatleri hem basit hem de karmaşık şekillerde işlemek için sınıflar sağlar. Tarih ve saat aritmetiği desteklenirken, uygulamanın odak noktası çıktı biçimlendirmesi ve düzenlemesi için verimli üye ayıklamadır.  Modül ayrıca saat dilimi farkında olan nesneleri de destekler.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># dates are easily constructed and formatted</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
@@ -368,7 +367,7 @@
 </div>
 </section>
 <section id="data-compression">
-<span id="tut-data-compression"></span><h2><span class="section-number">10.9. </span>Veri Sıkıştırma<a class="headerlink" href="#data-compression" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-data-compression"></span><h2><span class="section-number">10.9. </span>Veri Sıkıştırma<a class="headerlink" href="#data-compression" title="Permalink to this heading">¶</a></h2>
 <p>Genel veri arşivleme ve sıkıştırma formatları şu modüller tarafından desteklenir: <a class="reference internal" href="../library/zlib.html#module-zlib" title="zlib: Low-level interface to compression and decompression routines compatible with gzip."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code></a>, <a class="reference internal" href="../library/gzip.html#module-gzip" title="gzip: Interfaces for gzip compression and decompression using file objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">gzip</span></code></a>, <a class="reference internal" href="../library/bz2.html#module-bz2" title="bz2: Interfaces for bzip2 compression and decompression."><code class="xref py py-mod docutils literal notranslate"><span class="pre">bz2</span></code></a>, <a class="reference internal" href="../library/lzma.html#module-lzma" title="lzma: A Python wrapper for the liblzma compression library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">lzma</span></code></a>, <a class="reference internal" href="../library/zipfile.html#module-zipfile" title="zipfile: Read and write ZIP-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipfile</span></code></a> ve <a class="reference internal" href="../library/tarfile.html#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">zlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;witch which has which witches wrist watch&#39;</span>
@@ -385,7 +384,7 @@
 </div>
 </section>
 <section id="performance-measurement">
-<span id="tut-performance-measurement"></span><h2><span class="section-number">10.10. </span>Performans Ölçümü<a class="headerlink" href="#performance-measurement" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-performance-measurement"></span><h2><span class="section-number">10.10. </span>Performans Ölçümü<a class="headerlink" href="#performance-measurement" title="Permalink to this heading">¶</a></h2>
 <p>Bazı Python kullanıcıları, aynı soruna farklı yaklaşımların göreli performansını bilmek konusunda derin bir ilgi geliştirir. Python, bu soruları hemen yanıtlayan bir ölçüm aracı sağlar.</p>
 <p>Örneğin, argümanları değiştirmek için geleneksel yaklaşım yerine dizi paketleme ve açma özelliğini kullanmak cazip olabilir. <a class="reference internal" href="../library/timeit.html#module-timeit" title="timeit: Measure the execution time of small code snippets."><code class="xref py py-mod docutils literal notranslate"><span class="pre">timeit</span></code></a> modülü hızla sade bir performans avantajı gösterir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
@@ -398,7 +397,7 @@
 <p><a class="reference internal" href="../library/timeit.html#module-timeit" title="timeit: Measure the execution time of small code snippets."><code class="xref py py-mod docutils literal notranslate"><span class="pre">timeit</span></code></a> ‘in ince ayrıntı düzeyinin aksine, <a class="reference internal" href="../library/profile.html#module-profile" title="profile: Python source profiler."><code class="xref py py-mod docutils literal notranslate"><span class="pre">profile</span></code></a> ve <a class="reference internal" href="../library/profile.html#module-pstats" title="pstats: Statistics object for use with the profiler."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pstats</span></code></a> modülleri, daha büyük kod bloklarında zaman açısından kritik bölümleri tanımlamak için araçlar sağlar.</p>
 </section>
 <section id="quality-control">
-<span id="tut-quality-control"></span><h2><span class="section-number">10.11. </span>Kalite Kontrolü<a class="headerlink" href="#quality-control" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-quality-control"></span><h2><span class="section-number">10.11. </span>Kalite Kontrolü<a class="headerlink" href="#quality-control" title="Permalink to this heading">¶</a></h2>
 <p>Yüksek kalitede yazılımlar geliştirmek için her fonksiyon için testler yazılmalıdır ve bu testler geliştirirken sık sık çalıştırmalıdır.</p>
 <p><a class="reference internal" href="../library/doctest.html#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a> modülü, bir modülü taramak ve bir programın docstrings’ine gömülü testleri doğrulamak için bir araç sağlar.  Test yapısı, sonuçlarıyla birlikte tipik bir çağrıyı docstring’e kesip yapıştırma kadar basittir. Bu, kullanıcıya bir örnek sunarak dokümantasyonu geliştirir ve doctest modülünün kodun dokümantasyona göre doğru olduğundan emin olmasını sağlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
@@ -431,7 +430,7 @@
 </div>
 </section>
 <section id="batteries-included">
-<span id="tut-batteries-included"></span><h2><span class="section-number">10.12. </span>Bataryalar Dahildir<a class="headerlink" href="#batteries-included" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-batteries-included"></span><h2><span class="section-number">10.12. </span>Bataryalar Dahildir<a class="headerlink" href="#batteries-included" title="Permalink to this heading">¶</a></h2>
 <p>Python’un “bataryalar dahil” felsefesi vardır. Bu , büyük paketlerin en iyi şekilde sofistike ve sağlam kapabiliteleriyle görülür. Mesela:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="../library/xmlrpc.client.html#module-xmlrpc.client" title="xmlrpc.client: XML-RPC client access."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.client</span></code></a> ve <a class="reference internal" href="../library/xmlrpc.server.html#module-xmlrpc.server" title="xmlrpc.server: Basic XML-RPC server implementations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.server</span></code></a> modülleri, uzak işlem grubu çağrılarını uygulamayı neredeyse önemsiz bir görev haline getirir.  Modül adlarına rağmen, XML’nin doğrudan bilgisine veya işlenmesine gerek yoktur.</p></li>
@@ -493,6 +492,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -565,11 +568,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

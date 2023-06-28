@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Cryptographic Services" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/crypto.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -181,7 +180,7 @@
           <div class="body" role="main">
             
   <section id="cryptographic-services">
-<span id="crypto"></span><h1>Cryptographic Services<a class="headerlink" href="#cryptographic-services" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="crypto"></span><h1>Cryptographic Services<a class="headerlink" href="#cryptographic-services" title="Permalink to this heading">¶</a></h1>
 <p id="index-0">The modules described in this chapter implement various algorithms of a
 cryptographic nature.  They are available at the discretion of the installation.
 On Unix systems, the <a class="reference internal" href="crypt.html#module-crypt" title="crypt: The crypt() function used to check Unix passwords. (kullanım dışı) (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code></a> module may also be available.
@@ -189,13 +188,50 @@ Here’s an overview:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="hashlib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hashlib</span></code> — Secure hashes and message digests</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="hashlib.html#hash-algorithms">Hash algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hashlib.html#shake-variable-length-digests">SHAKE variable length digests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hashlib.html#file-hashing">File hashing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hashlib.html#key-derivation">Key derivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hashlib.html#hash-algorithms">Hash algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.new"><code class="docutils literal notranslate"><span class="pre">new()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.algorithms_guaranteed"><code class="docutils literal notranslate"><span class="pre">algorithms_guaranteed</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.algorithms_available"><code class="docutils literal notranslate"><span class="pre">algorithms_available</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.digest_size"><code class="docutils literal notranslate"><span class="pre">hash.digest_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.block_size"><code class="docutils literal notranslate"><span class="pre">hash.block_size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.name"><code class="docutils literal notranslate"><span class="pre">hash.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.update"><code class="docutils literal notranslate"><span class="pre">hash.update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.digest"><code class="docutils literal notranslate"><span class="pre">hash.digest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.hexdigest"><code class="docutils literal notranslate"><span class="pre">hash.hexdigest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.hash.copy"><code class="docutils literal notranslate"><span class="pre">hash.copy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hashlib.html#shake-variable-length-digests">SHAKE variable length digests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.shake.digest"><code class="docutils literal notranslate"><span class="pre">shake.digest()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.shake.hexdigest"><code class="docutils literal notranslate"><span class="pre">shake.hexdigest()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hashlib.html#file-hashing">File hashing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.file_digest"><code class="docutils literal notranslate"><span class="pre">file_digest()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hashlib.html#key-derivation">Key derivation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.pbkdf2_hmac"><code class="docutils literal notranslate"><span class="pre">pbkdf2_hmac()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#hashlib.scrypt"><code class="docutils literal notranslate"><span class="pre">scrypt()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="hashlib.html#blake2">BLAKE2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="hashlib.html#creating-hash-objects">Creating hash objects</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hashlib.html#constants">Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#creating-hash-objects">Creating hash objects</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2b"><code class="docutils literal notranslate"><span class="pre">blake2b()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2s"><code class="docutils literal notranslate"><span class="pre">blake2s()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="hashlib.html#constants">Constants</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2b.SALT_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2b.SALT_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2s.SALT_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2s.SALT_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2b.PERSON_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2b.PERSON_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2s.PERSON_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2s.PERSON_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2b.MAX_KEY_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2b.MAX_KEY_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2s.MAX_KEY_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2s.MAX_KEY_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2b.MAX_DIGEST_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2b.MAX_DIGEST_SIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="hashlib.html#hashlib.blake2s.MAX_DIGEST_SIZE"><code class="docutils literal notranslate"><span class="pre">blake2s.MAX_DIGEST_SIZE</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="hashlib.html#examples">Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="hashlib.html#simple-hashing">Simple hashing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hashlib.html#using-different-digest-sizes">Using different digest sizes</a></li>
@@ -210,14 +246,38 @@ Here’s an overview:</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="hmac.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hmac</span></code> — Keyed-Hashing for Message Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hmac.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">hmac</span></code> — Keyed-Hashing for Message Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.new"><code class="docutils literal notranslate"><span class="pre">new()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.digest"><code class="docutils literal notranslate"><span class="pre">digest()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.update"><code class="docutils literal notranslate"><span class="pre">HMAC.update()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.digest"><code class="docutils literal notranslate"><span class="pre">HMAC.digest()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.hexdigest"><code class="docutils literal notranslate"><span class="pre">HMAC.hexdigest()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.copy"><code class="docutils literal notranslate"><span class="pre">HMAC.copy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.digest_size"><code class="docutils literal notranslate"><span class="pre">HMAC.digest_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.block_size"><code class="docutils literal notranslate"><span class="pre">HMAC.block_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.HMAC.name"><code class="docutils literal notranslate"><span class="pre">HMAC.name</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hmac.html#hmac.compare_digest"><code class="docutils literal notranslate"><span class="pre">compare_digest()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="secrets.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">secrets</span></code> — Generate secure random numbers for managing secrets</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="secrets.html#random-numbers">Random numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html#random-numbers">Random numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.SystemRandom"><code class="docutils literal notranslate"><span class="pre">SystemRandom</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.choice"><code class="docutils literal notranslate"><span class="pre">choice()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.randbelow"><code class="docutils literal notranslate"><span class="pre">randbelow()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.randbits"><code class="docutils literal notranslate"><span class="pre">randbits()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="secrets.html#generating-tokens">Generating tokens</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.token_bytes"><code class="docutils literal notranslate"><span class="pre">token_bytes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.token_hex"><code class="docutils literal notranslate"><span class="pre">token_hex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.token_urlsafe"><code class="docutils literal notranslate"><span class="pre">token_urlsafe()</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="secrets.html#how-many-bytes-should-tokens-use">How many bytes should tokens use?</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="secrets.html#other-functions">Other functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="secrets.html#other-functions">Other functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="secrets.html#secrets.compare_digest"><code class="docutils literal notranslate"><span class="pre">compare_digest()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="secrets.html#recipes-and-best-practices">Recipes and best practices</a></li>
 </ul>
 </li>
@@ -254,6 +314,10 @@ Here’s an overview:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -326,11 +390,11 @@ Here’s an overview:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

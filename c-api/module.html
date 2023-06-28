@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Module Objects" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/module.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -199,7 +198,7 @@
           <div class="body" role="main">
             
   <section id="module-objects">
-<span id="moduleobjects"></span><h1>Module Objects<a class="headerlink" href="#module-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="moduleobjects"></span><h1>Module Objects<a class="headerlink" href="#module-objects" title="Permalink to this heading">¶</a></h1>
 <span class="target" id="index-0"></span><dl class="c var">
 <dt class="sig sig-object c" id="c.PyModule_Type">
 <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_Type</span></span></span><a class="headerlink" href="#c.PyModule_Type" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -312,7 +311,7 @@ unencodable filenames, use <a class="reference internal" href="#c.PyModule_GetFi
 </dd></dl>
 
 <section id="initializing-c-modules">
-<span id="initializing-modules"></span><h2>Initializing C modules<a class="headerlink" href="#initializing-c-modules" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="initializing-modules"></span><h2>Initializing C modules<a class="headerlink" href="#initializing-c-modules" title="Permalink to this heading">¶</a></h2>
 <p>Modules objects are usually created from extension modules (shared libraries
 which export an initialization function), or compiled-in modules
 (where the initialization function is added using <a class="reference internal" href="import.html#c.PyImport_AppendInittab" title="PyImport_AppendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_AppendInittab()</span></code></a>).
@@ -445,7 +444,7 @@ is <code class="docutils literal notranslate"><span class="pre">NULL</span></cod
 </dd></dl>
 
 <section id="single-phase-initialization">
-<h3>Single-phase initialization<a class="headerlink" href="#single-phase-initialization" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Single-phase initialization<a class="headerlink" href="#single-phase-initialization" title="Permalink to this heading">¶</a></h3>
 <p>The module initialization function may create and return the module object
 directly. This is referred to as “single-phase initialization”, and uses one
 of the following two module creation functions:</p>
@@ -474,7 +473,7 @@ instead; only use this if you are sure you need it.</p>
 object is typically populated using functions like <a class="reference internal" href="#c.PyModule_AddObjectRef" title="PyModule_AddObjectRef"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_AddObjectRef()</span></code></a>.</p>
 </section>
 <section id="multi-phase-initialization">
-<span id="id1"></span><h3>Multi-phase initialization<a class="headerlink" href="#multi-phase-initialization" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id1"></span><h3>Multi-phase initialization<a class="headerlink" href="#multi-phase-initialization" title="Permalink to this heading">¶</a></h3>
 <p>An alternate way to specify extensions is to request “multi-phase initialization”.
 Extension modules created this way behave more like Python modules: the
 initialization is split between the <em>creation phase</em>, when the module object
@@ -583,7 +582,7 @@ order they appear in the <em>m_slots</em> array.</p>
 <p>See <span class="target" id="index-8"></span><a class="pep reference external" href="https://peps.python.org/pep-0489/"><strong>PEP 489</strong></a> for more details on multi-phase initialization.</p>
 </section>
 <section id="low-level-module-creation-functions">
-<h3>Low-level module creation functions<a class="headerlink" href="#low-level-module-creation-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Low-level module creation functions<a class="headerlink" href="#low-level-module-creation-functions" title="Permalink to this heading">¶</a></h3>
 <p>The following functions are called under the hood when using multi-phase
 initialization. They can be used directly, for example when creating module
 objects dynamically. Note that both <code class="docutils literal notranslate"><span class="pre">PyModule_FromDefAndSpec</span></code> and
@@ -655,7 +654,7 @@ This function is called automatically when creating a module from
 
 </section>
 <section id="support-functions">
-<h3>Support functions<a class="headerlink" href="#support-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Support functions<a class="headerlink" href="#support-functions" title="Permalink to this heading">¶</a></h3>
 <p>The module initialization function (if using single phase initialization) or
 a function called from a module execution slot (if using multi-phase
 initialization), can use the following functions to help initialize the module
@@ -801,7 +800,7 @@ Return <code class="docutils literal notranslate"><span class="pre">-1</span></c
 </section>
 </section>
 <section id="module-lookup">
-<h2>Module lookup<a class="headerlink" href="#module-lookup" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module lookup<a class="headerlink" href="#module-lookup" title="Permalink to this heading">¶</a></h2>
 <p>Single-phase initialization creates singleton modules that can be looked up
 in the context of the current interpreter. This allows the module object to be
 retrieved later with only a reference to the module definition.</p>
@@ -896,6 +895,10 @@ Return 0 on success or -1 on failure.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -969,11 +972,11 @@ Return 0 on success or -1 on failure.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

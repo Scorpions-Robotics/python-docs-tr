@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="11. Standart Kütüphanenin Kısa Özeti — Bölüm II" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/stdlib2.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -198,10 +197,10 @@
           <div class="body" role="main">
             
   <section id="brief-tour-of-the-standard-library-part-ii">
-<span id="tut-brieftourtwo"></span><h1><span class="section-number">11. </span>Standart Kütüphanenin Kısa Özeti — Bölüm II<a class="headerlink" href="#brief-tour-of-the-standard-library-part-ii" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-brieftourtwo"></span><h1><span class="section-number">11. </span>Standart Kütüphanenin Kısa Özeti — Bölüm II<a class="headerlink" href="#brief-tour-of-the-standard-library-part-ii" title="Permalink to this heading">¶</a></h1>
 <p>Bu ikinci özet, profesyonel programlama ihtiyaçlarını destekleyen daha gelişmiş modülleri kapsar. Bu modüller nadiren küçük komut dosyalarında bulunur.</p>
 <section id="output-formatting">
-<span id="tut-output-formatting"></span><h2><span class="section-number">11.1. </span>Çıktı Biçimlendirmesi<a class="headerlink" href="#output-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-output-formatting"></span><h2><span class="section-number">11.1. </span>Çıktı Biçimlendirmesi<a class="headerlink" href="#output-formatting" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/reprlib.html#module-reprlib" title="reprlib: Alternate repr() implementation with size limits."><code class="xref py py-mod docutils literal notranslate"><span class="pre">reprlib</span></code></a> modülü, büyük veya derinlemesine iç içe kapların kısaltılmış gösterimleri için özelleştirilmiş bir <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> sürümünü sağlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">reprlib</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">reprlib</span><span class="o">.</span><span class="n">repr</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="s1">&#39;supercalifragilisticexpialidocious&#39;</span><span class="p">))</span>
@@ -249,7 +248,7 @@
 </div>
 </section>
 <section id="templating">
-<span id="tut-templating"></span><h2><span class="section-number">11.2. </span>Şablonlamak<a class="headerlink" href="#templating" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-templating"></span><h2><span class="section-number">11.2. </span>Şablonlamak<a class="headerlink" href="#templating" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/string.html#module-string" title="string: Common string operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">string</span></code></a> modülü  birçok yönlü kullanıcılar tarafından düzenlemeye uygun basitleştirilmiş sözdizimine sahip şablon sınıfı <a class="reference internal" href="../library/string.html#string.Template" title="string.Template"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></a> içerir.   Bu, kullanıcıların uygulamayı değiştirmek zorunda kalmadan uygulamalarını özelleştirmelerini sağlar.</p>
 <p>Format, geçerli Python tanımlayıcılarıyla (alfasayısal karakterler ve alt çizgiler) <code class="docutils literal notranslate"><span class="pre">$</span></code> tarafından oluşturulan yer tutucu adlarını kullanır.  Yer tutucuyu ayraçla çevrelemek, onu araya giren boşluklar olmadan daha alfasayısal harflerle takip etmenizi sağlar.  <code class="docutils literal notranslate"><span class="pre">$$</span></code> yazmak tek bir <code class="docutils literal notranslate"><span class="pre">$</span></code> oluşturur:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">Template</span>
@@ -293,7 +292,7 @@
 <p>Templating için başka bir uygulama, program mantığını birden çok çıktı biçiminin ayrıntılarından ayırmaktır.  Bu, XML dosyaları, düz metin raporları ve HTML web raporları için özel şablonların değiştirilmesini mümkün kılar.</p>
 </section>
 <section id="working-with-binary-data-record-layouts">
-<span id="tut-binary-formats"></span><h2><span class="section-number">11.3. </span>İkili Veri Kaydı Düzenleriyle Çalışma<a class="headerlink" href="#working-with-binary-data-record-layouts" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-binary-formats"></span><h2><span class="section-number">11.3. </span>İkili Veri Kaydı Düzenleriyle Çalışma<a class="headerlink" href="#working-with-binary-data-record-layouts" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/struct.html#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> modülü, değişken uzunluklu ikili kayıt formatlarıyla çalışmak için <a class="reference internal" href="../library/struct.html#struct.pack" title="struct.pack"><code class="xref py py-func docutils literal notranslate"><span class="pre">pack()</span></code></a> ve <a class="reference internal" href="../library/struct.html#struct.unpack" title="struct.unpack"><code class="xref py py-func docutils literal notranslate"><span class="pre">unpack()</span></code></a> işlevlerini sağlar. Aşağıdaki örnek, <a class="reference internal" href="../library/zipfile.html#module-zipfile" title="zipfile: Read and write ZIP-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipfile</span></code></a> modülünü kullanmadan bir ZIP dosyasındaki başlık bilgilerinin nasıl döngüye alınacağını gösterir. Paket kodları <code class="docutils literal notranslate"><span class="pre">&quot;H&quot;</span></code> ve <code class="docutils literal notranslate"><span class="pre">&quot;I&quot;</span></code> sırasıyla iki ve dört baytlık işaretsiz sayıları temsil eder. <code class="docutils literal notranslate"><span class="pre">&quot;&lt;&quot;</span></code>, standart boyutta ve küçük endian bayt düzeninde olduklarını gösterir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">struct</span>
 
@@ -317,7 +316,7 @@
 </div>
 </section>
 <section id="multi-threading">
-<span id="tut-multi-threading"></span><h2><span class="section-number">11.4. </span>Çoklu iş parçacığı<a class="headerlink" href="#multi-threading" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-multi-threading"></span><h2><span class="section-number">11.4. </span>Çoklu iş parçacığı<a class="headerlink" href="#multi-threading" title="Permalink to this heading">¶</a></h2>
 <p>Diş açma, sıralı olarak bağımlı olmayan görevlerin ayrıştırılması için bir tekniktir. Diğer görevler arka planda çalışırken kullanıcı girdisini kabul eden uygulamaların yanıt verme hızını artırmak için iş parçacıkları kullanılabilir. İlgili bir kullanım durumu, başka bir iş parçacığındaki hesaplamalara paralel olarak I/O çalıştırmaktadır.</p>
 <p>Aşağıdaki kod, ana program çalışmaya devam ederken üst düzey <a class="reference internal" href="../library/threading.html#module-threading" title="threading: Thread-based parallelism."><code class="xref py py-mod docutils literal notranslate"><span class="pre">threading</span></code></a> modülünün görevleri arka planda nasıl çalıştırabileceğini gösterir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">threading</span><span class="o">,</span> <span class="nn">zipfile</span>
@@ -346,7 +345,7 @@
 <p>Bu araçlar güçlü olsa da, küçük tasarım hataları, yeniden üretilmesi zor sorunlara neden olabilir. Bu nedenle, görev koordinasyonuna yönelik tercih edilen yaklaşım, bir kaynağa tüm erişimi tek bir iş parçacığında yoğunlaştırmak ve ardından bu iş parçacığını diğer iş parçacıklarından gelen isteklerle beslemek için <a class="reference internal" href="../library/queue.html#module-queue" title="queue: A synchronized queue class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> modülünü kullanmaktır. İş parçacıkları arası iletişim ve koordinasyon için <a class="reference internal" href="../library/queue.html#queue.Queue" title="queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a> nesnelerini kullanan uygulamaların tasarımı daha kolay, daha okunaklı ve daha güvenilirdir.</p>
 </section>
 <section id="logging">
-<span id="tut-logging"></span><h2><span class="section-number">11.5. </span>Günlükleme<a class="headerlink" href="#logging" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-logging"></span><h2><span class="section-number">11.5. </span>Günlükleme<a class="headerlink" href="#logging" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/logging.html#module-logging" title="logging: Flexible event logging system for applications."><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging</span></code></a> modülü, tam özellikli ve esnek bir kayıt sistemi sunar. En basit haliyle, günlük mesajları bir dosyaya veya <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> adresine gönderilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;Debugging information&#39;</span><span class="p">)</span>
@@ -366,7 +365,7 @@ CRITICAL:root:Critical error -- shutting down
 <p>Günlük kaydı sistemi, doğrudan Python’dan yapılandırılabilir veya uygulamayı değiştirmeden özelleştirilmiş günlük kaydı için kullanıcı tarafından düzenlenebilir bir yapılandırma dosyasından yüklenebilir.</p>
 </section>
 <section id="weak-references">
-<span id="tut-weak-references"></span><h2><span class="section-number">11.6. </span>Zayıf Başvurular<a class="headerlink" href="#weak-references" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-weak-references"></span><h2><span class="section-number">11.6. </span>Zayıf Başvurular<a class="headerlink" href="#weak-references" title="Permalink to this heading">¶</a></h2>
 <p>Python otomatik bellek yönetimi yapar (çoğu nesne için referans sayımı ve döngüleri ortadan kaldırmak için <a class="reference internal" href="../glossary.html#term-garbage-collection"><span class="xref std std-term">garbage collection</span></a>). Hafıza, ona yapılan son başvurunun ortadan kaldırılmasından kısa bir süre sonra serbest bırakılır.</p>
 <p>Bu yaklaşım çoğu uygulama için iyi sonuç verir ancak bazen nesneleri yalnızca başka bir şey tarafından kullanıldıkları sürece izlemeye ihtiyaç duyulur. Ne yazık ki, sadece onları izlemek onları kalıcı kılan bir referans oluşturur. <a class="reference internal" href="../library/weakref.html#module-weakref" title="weakref: Support for weak references and weak dictionaries."><code class="xref py py-mod docutils literal notranslate"><span class="pre">weakref</span></code></a> modülü, referans oluşturmadan nesneleri izlemek için araçlar sağlar. Nesneye artık ihtiyaç duyulmadığında, zayıf referans tablosundan otomatik olarak kaldırılır ve zayıf referans nesneleri için bir geri arama tetiklenir. Tipik uygulamalar, oluşturması pahalı olan nesneleri önbelleğe almayı içerir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">weakref</span><span class="o">,</span> <span class="nn">gc</span>
@@ -395,7 +394,7 @@ CRITICAL:root:Critical error -- shutting down
 </div>
 </section>
 <section id="tools-for-working-with-lists">
-<span id="tut-list-tools"></span><h2><span class="section-number">11.7. </span>Listelerle Çalışma Araçları<a class="headerlink" href="#tools-for-working-with-lists" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-list-tools"></span><h2><span class="section-number">11.7. </span>Listelerle Çalışma Araçları<a class="headerlink" href="#tools-for-working-with-lists" title="Permalink to this heading">¶</a></h2>
 <p>Birçok veri yapısı ihtiyacı yerleşik liste türüyle karşılanabilir. Ancak bazen farklı performans ödünleşimleri ile alternatif uygulamalara ihtiyaç duyulmaktadır.</p>
 <p><a class="reference internal" href="../library/array.html#module-array" title="array: Space efficient arrays of uniformly typed numeric values."><code class="xref py py-mod docutils literal notranslate"><span class="pre">array</span></code></a> modülü, yalnızca homojen verileri depolayan ve daha kompakt bir şekilde depolayan bir liste gibi bir <a class="reference internal" href="../library/array.html#array.array" title="array.array"><code class="xref py py-class docutils literal notranslate"><span class="pre">array()</span></code></a> nesnesi sağlar. Aşağıdaki örnek, normal Python int nesneleri listeleri için giriş başına olağan 16 bayt yerine iki baytlık işaretsiz ikili sayılar (tür kodu <code class="docutils literal notranslate"><span class="pre">&quot;H&quot;</span></code>) olarak saklanan bir sayı dizisini gösterir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
@@ -442,7 +441,7 @@ CRITICAL:root:Critical error -- shutting down
 </div>
 </section>
 <section id="decimal-floating-point-arithmetic">
-<span id="tut-decimal-fp"></span><h2><span class="section-number">11.8. </span>Ondalık Kayan Nokta Aritmetiği<a class="headerlink" href="#decimal-floating-point-arithmetic" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-decimal-fp"></span><h2><span class="section-number">11.8. </span>Ondalık Kayan Nokta Aritmetiği<a class="headerlink" href="#decimal-floating-point-arithmetic" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../library/decimal.html#module-decimal" title="decimal: Implementation of the General Decimal Arithmetic  Specification."><code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal</span></code></a> modülü, ondalık kayan nokta aritmetiği için bir <a class="reference internal" href="../library/decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decimal</span></code></a> veri tipi sunar. İkili kayan noktanın yerleşik <a class="reference internal" href="../library/functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> uygulamasıyla karşılaştırıldığında, sınıf özellikle için yararlıdır</p>
 <ul class="simple">
 <li><p>tam ondalık gösterim gerektiren finansal uygulamalar ve diğer kullanımlar,</p></li>
@@ -527,6 +526,10 @@ CRITICAL:root:Critical error -- shutting down
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -599,11 +602,11 @@ CRITICAL:root:Critical error -- shutting down
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

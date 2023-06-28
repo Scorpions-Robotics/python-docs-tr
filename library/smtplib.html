@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="smtplib — SMTP protocol client" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/smtplib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,36 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code> — SMTP protocol client</a><ul>
-<li><a class="reference internal" href="#smtp-objects">SMTP Objects</a></li>
+<li><a class="reference internal" href="#smtplib.SMTP"><code class="docutils literal notranslate"><span class="pre">SMTP</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP_SSL"><code class="docutils literal notranslate"><span class="pre">SMTP_SSL</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.LMTP"><code class="docutils literal notranslate"><span class="pre">LMTP</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPException"><code class="docutils literal notranslate"><span class="pre">SMTPException</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPServerDisconnected"><code class="docutils literal notranslate"><span class="pre">SMTPServerDisconnected</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPResponseException"><code class="docutils literal notranslate"><span class="pre">SMTPResponseException</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPSenderRefused"><code class="docutils literal notranslate"><span class="pre">SMTPSenderRefused</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPRecipientsRefused"><code class="docutils literal notranslate"><span class="pre">SMTPRecipientsRefused</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPDataError"><code class="docutils literal notranslate"><span class="pre">SMTPDataError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPConnectError"><code class="docutils literal notranslate"><span class="pre">SMTPConnectError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPHeloError"><code class="docutils literal notranslate"><span class="pre">SMTPHeloError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPNotSupportedError"><code class="docutils literal notranslate"><span class="pre">SMTPNotSupportedError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPAuthenticationError"><code class="docutils literal notranslate"><span class="pre">SMTPAuthenticationError</span></code></a></li>
+<li><a class="reference internal" href="#smtp-objects">SMTP Objects</a><ul>
+<li><a class="reference internal" href="#smtplib.SMTP.set_debuglevel"><code class="docutils literal notranslate"><span class="pre">SMTP.set_debuglevel()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.docmd"><code class="docutils literal notranslate"><span class="pre">SMTP.docmd()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.connect"><code class="docutils literal notranslate"><span class="pre">SMTP.connect()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.helo"><code class="docutils literal notranslate"><span class="pre">SMTP.helo()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.ehlo"><code class="docutils literal notranslate"><span class="pre">SMTP.ehlo()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.ehlo_or_helo_if_needed"><code class="docutils literal notranslate"><span class="pre">SMTP.ehlo_or_helo_if_needed()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.has_extn"><code class="docutils literal notranslate"><span class="pre">SMTP.has_extn()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.verify"><code class="docutils literal notranslate"><span class="pre">SMTP.verify()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.login"><code class="docutils literal notranslate"><span class="pre">SMTP.login()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.auth"><code class="docutils literal notranslate"><span class="pre">SMTP.auth()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.starttls"><code class="docutils literal notranslate"><span class="pre">SMTP.starttls()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.sendmail"><code class="docutils literal notranslate"><span class="pre">SMTP.sendmail()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.send_message"><code class="docutils literal notranslate"><span class="pre">SMTP.send_message()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.quit"><code class="docutils literal notranslate"><span class="pre">SMTP.quit()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#smtp-example">SMTP Example</a></li>
 </ul>
 </li>
@@ -193,7 +221,7 @@
           <div class="body" role="main">
             
   <section id="module-smtplib">
-<span id="smtplib-smtp-protocol-client"></span><h1><a class="reference internal" href="#module-smtplib" title="smtplib: SMTP protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code></a> — SMTP protocol client<a class="headerlink" href="#module-smtplib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="smtplib-smtp-protocol-client"></span><h1><a class="reference internal" href="#module-smtplib" title="smtplib: SMTP protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code></a> — SMTP protocol client<a class="headerlink" href="#module-smtplib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/smtplib.py">Lib/smtplib.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>The <a class="reference internal" href="#module-smtplib" title="smtplib: SMTP protocol client (requires sockets)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code></a> module defines an SMTP client session object that can be used
@@ -406,7 +434,7 @@ provided by the server, and defines a few additional commands.</p>
 </dl>
 </div>
 <section id="smtp-objects">
-<span id="id1"></span><h2>SMTP Objects<a class="headerlink" href="#smtp-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>SMTP Objects<a class="headerlink" href="#smtp-objects" title="Permalink to this heading">¶</a></h2>
 <p>An <a class="reference internal" href="#smtplib.SMTP" title="smtplib.SMTP"><code class="xref py py-class docutils literal notranslate"><span class="pre">SMTP</span></code></a> instance has the following methods:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="smtplib.SMTP.set_debuglevel">
@@ -733,7 +761,7 @@ Normally these do not need to be called directly, so they are not documented
 here.  For details, consult the module code.</p>
 </section>
 <section id="smtp-example">
-<span id="id2"></span><h2>SMTP Example<a class="headerlink" href="#smtp-example" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>SMTP Example<a class="headerlink" href="#smtp-example" title="Permalink to this heading">¶</a></h2>
 <p>This example prompts the user for addresses needed in the message envelope (‘To’
 and ‘From’ addresses), and the message to be delivered.  Note that the headers
 to be included with the message must be included in the message as entered; this
@@ -788,7 +816,36 @@ via <a class="reference internal" href="#smtplib.SMTP.send_message" title="smtpl
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtplib</span></code> — SMTP protocol client</a><ul>
-<li><a class="reference internal" href="#smtp-objects">SMTP Objects</a></li>
+<li><a class="reference internal" href="#smtplib.SMTP"><code class="docutils literal notranslate"><span class="pre">SMTP</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP_SSL"><code class="docutils literal notranslate"><span class="pre">SMTP_SSL</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.LMTP"><code class="docutils literal notranslate"><span class="pre">LMTP</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPException"><code class="docutils literal notranslate"><span class="pre">SMTPException</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPServerDisconnected"><code class="docutils literal notranslate"><span class="pre">SMTPServerDisconnected</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPResponseException"><code class="docutils literal notranslate"><span class="pre">SMTPResponseException</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPSenderRefused"><code class="docutils literal notranslate"><span class="pre">SMTPSenderRefused</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPRecipientsRefused"><code class="docutils literal notranslate"><span class="pre">SMTPRecipientsRefused</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPDataError"><code class="docutils literal notranslate"><span class="pre">SMTPDataError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPConnectError"><code class="docutils literal notranslate"><span class="pre">SMTPConnectError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPHeloError"><code class="docutils literal notranslate"><span class="pre">SMTPHeloError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPNotSupportedError"><code class="docutils literal notranslate"><span class="pre">SMTPNotSupportedError</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTPAuthenticationError"><code class="docutils literal notranslate"><span class="pre">SMTPAuthenticationError</span></code></a></li>
+<li><a class="reference internal" href="#smtp-objects">SMTP Objects</a><ul>
+<li><a class="reference internal" href="#smtplib.SMTP.set_debuglevel"><code class="docutils literal notranslate"><span class="pre">SMTP.set_debuglevel()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.docmd"><code class="docutils literal notranslate"><span class="pre">SMTP.docmd()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.connect"><code class="docutils literal notranslate"><span class="pre">SMTP.connect()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.helo"><code class="docutils literal notranslate"><span class="pre">SMTP.helo()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.ehlo"><code class="docutils literal notranslate"><span class="pre">SMTP.ehlo()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.ehlo_or_helo_if_needed"><code class="docutils literal notranslate"><span class="pre">SMTP.ehlo_or_helo_if_needed()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.has_extn"><code class="docutils literal notranslate"><span class="pre">SMTP.has_extn()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.verify"><code class="docutils literal notranslate"><span class="pre">SMTP.verify()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.login"><code class="docutils literal notranslate"><span class="pre">SMTP.login()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.auth"><code class="docutils literal notranslate"><span class="pre">SMTP.auth()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.starttls"><code class="docutils literal notranslate"><span class="pre">SMTP.starttls()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.sendmail"><code class="docutils literal notranslate"><span class="pre">SMTP.sendmail()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.send_message"><code class="docutils literal notranslate"><span class="pre">SMTP.send_message()</span></code></a></li>
+<li><a class="reference internal" href="#smtplib.SMTP.quit"><code class="docutils literal notranslate"><span class="pre">SMTP.quit()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#smtp-example">SMTP Example</a></li>
 </ul>
 </li>
@@ -817,6 +874,10 @@ via <a class="reference internal" href="#smtplib.SMTP.send_message" title="smtpl
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -890,11 +951,11 @@ via <a class="reference internal" href="#smtplib.SMTP.send_message" title="smtpl
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

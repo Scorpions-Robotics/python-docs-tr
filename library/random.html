@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="random — Generate pseudo-random numbers" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/random.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,12 +97,49 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code> — Generate pseudo-random numbers</a><ul>
-<li><a class="reference internal" href="#bookkeeping-functions">Bookkeeping functions</a></li>
-<li><a class="reference internal" href="#functions-for-bytes">Functions for bytes</a></li>
-<li><a class="reference internal" href="#functions-for-integers">Functions for integers</a></li>
-<li><a class="reference internal" href="#functions-for-sequences">Functions for sequences</a></li>
-<li><a class="reference internal" href="#real-valued-distributions">Real-valued distributions</a></li>
-<li><a class="reference internal" href="#alternative-generator">Alternative Generator</a></li>
+<li><a class="reference internal" href="#bookkeeping-functions">Bookkeeping functions</a><ul>
+<li><a class="reference internal" href="#random.seed"><code class="docutils literal notranslate"><span class="pre">seed()</span></code></a></li>
+<li><a class="reference internal" href="#random.getstate"><code class="docutils literal notranslate"><span class="pre">getstate()</span></code></a></li>
+<li><a class="reference internal" href="#random.setstate"><code class="docutils literal notranslate"><span class="pre">setstate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-bytes">Functions for bytes</a><ul>
+<li><a class="reference internal" href="#random.randbytes"><code class="docutils literal notranslate"><span class="pre">randbytes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-integers">Functions for integers</a><ul>
+<li><a class="reference internal" href="#random.randrange"><code class="docutils literal notranslate"><span class="pre">randrange()</span></code></a></li>
+<li><a class="reference internal" href="#random.randint"><code class="docutils literal notranslate"><span class="pre">randint()</span></code></a></li>
+<li><a class="reference internal" href="#random.getrandbits"><code class="docutils literal notranslate"><span class="pre">getrandbits()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-sequences">Functions for sequences</a><ul>
+<li><a class="reference internal" href="#random.choice"><code class="docutils literal notranslate"><span class="pre">choice()</span></code></a></li>
+<li><a class="reference internal" href="#random.choices"><code class="docutils literal notranslate"><span class="pre">choices()</span></code></a></li>
+<li><a class="reference internal" href="#random.shuffle"><code class="docutils literal notranslate"><span class="pre">shuffle()</span></code></a></li>
+<li><a class="reference internal" href="#random.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#real-valued-distributions">Real-valued distributions</a><ul>
+<li><a class="reference internal" href="#random.random"><code class="docutils literal notranslate"><span class="pre">random()</span></code></a></li>
+<li><a class="reference internal" href="#random.uniform"><code class="docutils literal notranslate"><span class="pre">uniform()</span></code></a></li>
+<li><a class="reference internal" href="#random.triangular"><code class="docutils literal notranslate"><span class="pre">triangular()</span></code></a></li>
+<li><a class="reference internal" href="#random.betavariate"><code class="docutils literal notranslate"><span class="pre">betavariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.expovariate"><code class="docutils literal notranslate"><span class="pre">expovariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.gammavariate"><code class="docutils literal notranslate"><span class="pre">gammavariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.gauss"><code class="docutils literal notranslate"><span class="pre">gauss()</span></code></a></li>
+<li><a class="reference internal" href="#random.lognormvariate"><code class="docutils literal notranslate"><span class="pre">lognormvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.normalvariate"><code class="docutils literal notranslate"><span class="pre">normalvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.vonmisesvariate"><code class="docutils literal notranslate"><span class="pre">vonmisesvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.paretovariate"><code class="docutils literal notranslate"><span class="pre">paretovariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.weibullvariate"><code class="docutils literal notranslate"><span class="pre">weibullvariate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#alternative-generator">Alternative Generator</a><ul>
+<li><a class="reference internal" href="#random.Random"><code class="docutils literal notranslate"><span class="pre">Random</span></code></a></li>
+<li><a class="reference internal" href="#random.SystemRandom"><code class="docutils literal notranslate"><span class="pre">SystemRandom</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#notes-on-reproducibility">Notes on Reproducibility</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#recipes">Recipes</a></li>
@@ -200,7 +236,7 @@
           <div class="body" role="main">
             
   <section id="module-random">
-<span id="random-generate-pseudo-random-numbers"></span><h1><a class="reference internal" href="#module-random" title="random: Generate pseudo-random numbers with various common distributions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code></a> — Generate pseudo-random numbers<a class="headerlink" href="#module-random" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="random-generate-pseudo-random-numbers"></span><h1><a class="reference internal" href="#module-random" title="random: Generate pseudo-random numbers with various common distributions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code></a> — Generate pseudo-random numbers<a class="headerlink" href="#module-random" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/random.py">Lib/random.py</a></p>
 <hr class="docutils" />
 <p>This module implements pseudo-random number generators for various
@@ -247,7 +283,7 @@ random number generator with a long period and comparatively simple update
 operations.</p>
 </div>
 <section id="bookkeeping-functions">
-<h2>Bookkeeping functions<a class="headerlink" href="#bookkeeping-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Bookkeeping functions<a class="headerlink" href="#bookkeeping-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="random.seed">
 <span class="sig-prename descclassname"><span class="pre">random.</span></span><span class="sig-name descname"><span class="pre">seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#random.seed" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -289,7 +325,7 @@ the time <a class="reference internal" href="#random.getstate" title="random.get
 
 </section>
 <section id="functions-for-bytes">
-<h2>Functions for bytes<a class="headerlink" href="#functions-for-bytes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Functions for bytes<a class="headerlink" href="#functions-for-bytes" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="random.randbytes">
 <span class="sig-prename descclassname"><span class="pre">random.</span></span><span class="sig-name descname"><span class="pre">randbytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#random.randbytes" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -303,7 +339,7 @@ Use <a class="reference internal" href="secrets.html#secrets.token_bytes" title=
 
 </section>
 <section id="functions-for-integers">
-<h2>Functions for integers<a class="headerlink" href="#functions-for-integers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Functions for integers<a class="headerlink" href="#functions-for-integers" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="random.randrange">
 <span class="sig-prename descclassname"><span class="pre">random.</span></span><span class="sig-name descname"><span class="pre">randrange</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#random.randrange" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -353,7 +389,7 @@ ranges.</p>
 
 </section>
 <section id="functions-for-sequences">
-<h2>Functions for sequences<a class="headerlink" href="#functions-for-sequences" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Functions for sequences<a class="headerlink" href="#functions-for-sequences" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="random.choice">
 <span class="sig-prename descclassname"><span class="pre">random.</span></span><span class="sig-name descname"><span class="pre">choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#random.choice" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -445,7 +481,7 @@ to lists is no longer supported.</p>
 
 </section>
 <section id="real-valued-distributions">
-<span id="id1"></span><h2>Real-valued distributions<a class="headerlink" href="#real-valued-distributions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Real-valued distributions<a class="headerlink" href="#real-valued-distributions" title="Permalink to this heading">¶</a></h2>
 <p>The following functions generate specific real-valued distributions. Function
 parameters are named after the corresponding variables in the distribution’s
 equation, as used in common mathematical practice; most of these equations can
@@ -563,7 +599,7 @@ parameter.</p>
 
 </section>
 <section id="alternative-generator">
-<h2>Alternative Generator<a class="headerlink" href="#alternative-generator" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Alternative Generator<a class="headerlink" href="#alternative-generator" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="random.Random">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">random.</span></span><span class="sig-name descname"><span class="pre">Random</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#random.Random" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -589,7 +625,7 @@ The <a class="reference internal" href="#random.getstate" title="random.getstate
 
 </section>
 <section id="notes-on-reproducibility">
-<h2>Notes on Reproducibility<a class="headerlink" href="#notes-on-reproducibility" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Notes on Reproducibility<a class="headerlink" href="#notes-on-reproducibility" title="Permalink to this heading">¶</a></h2>
 <p>Sometimes it is useful to be able to reproduce the sequences given by a
 pseudo-random number generator.  By re-using a seed value, the same sequence should be
 reproducible from run to run as long as multiple threads are not running.</p>
@@ -603,7 +639,7 @@ sequence when the compatible seeder is given the same seed.</p></li>
 </ul>
 </section>
 <section id="examples">
-<span id="random-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="random-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Basic examples:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">random</span><span class="p">()</span>                             <span class="c1"># Random float:  0.0 &lt;= x &lt; 1.0</span>
 <span class="go">0.37444887175646646</span>
@@ -743,10 +779,10 @@ how to perform data analysis using Python.</p>
 </div>
 </section>
 <section id="recipes">
-<h2>Recipes<a class="headerlink" href="#recipes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Recipes<a class="headerlink" href="#recipes" title="Permalink to this heading">¶</a></h2>
 <p>These recipes show how to efficiently make random selections
 from the combinatoric iterators in the <a class="reference internal" href="itertools.html#module-itertools" title="itertools: Functions creating iterators for efficient looping."><code class="xref py py-mod docutils literal notranslate"><span class="pre">itertools</span></code></a> module:</p>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_product</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">random_product</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="s2">&quot;Random selection from itertools.product(*args, **kwds)&quot;</span>
     <span class="n">pools</span> <span class="o">=</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">pool</span><span class="p">)</span> <span class="k">for</span> <span class="n">pool</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span> <span class="o">*</span> <span class="n">repeat</span>
     <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">,</span> <span class="n">pools</span><span class="p">))</span>
@@ -831,12 +867,49 @@ fine-grained floats than normally generated by <a class="reference internal" hre
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code> — Generate pseudo-random numbers</a><ul>
-<li><a class="reference internal" href="#bookkeeping-functions">Bookkeeping functions</a></li>
-<li><a class="reference internal" href="#functions-for-bytes">Functions for bytes</a></li>
-<li><a class="reference internal" href="#functions-for-integers">Functions for integers</a></li>
-<li><a class="reference internal" href="#functions-for-sequences">Functions for sequences</a></li>
-<li><a class="reference internal" href="#real-valued-distributions">Real-valued distributions</a></li>
-<li><a class="reference internal" href="#alternative-generator">Alternative Generator</a></li>
+<li><a class="reference internal" href="#bookkeeping-functions">Bookkeeping functions</a><ul>
+<li><a class="reference internal" href="#random.seed"><code class="docutils literal notranslate"><span class="pre">seed()</span></code></a></li>
+<li><a class="reference internal" href="#random.getstate"><code class="docutils literal notranslate"><span class="pre">getstate()</span></code></a></li>
+<li><a class="reference internal" href="#random.setstate"><code class="docutils literal notranslate"><span class="pre">setstate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-bytes">Functions for bytes</a><ul>
+<li><a class="reference internal" href="#random.randbytes"><code class="docutils literal notranslate"><span class="pre">randbytes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-integers">Functions for integers</a><ul>
+<li><a class="reference internal" href="#random.randrange"><code class="docutils literal notranslate"><span class="pre">randrange()</span></code></a></li>
+<li><a class="reference internal" href="#random.randint"><code class="docutils literal notranslate"><span class="pre">randint()</span></code></a></li>
+<li><a class="reference internal" href="#random.getrandbits"><code class="docutils literal notranslate"><span class="pre">getrandbits()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-for-sequences">Functions for sequences</a><ul>
+<li><a class="reference internal" href="#random.choice"><code class="docutils literal notranslate"><span class="pre">choice()</span></code></a></li>
+<li><a class="reference internal" href="#random.choices"><code class="docutils literal notranslate"><span class="pre">choices()</span></code></a></li>
+<li><a class="reference internal" href="#random.shuffle"><code class="docutils literal notranslate"><span class="pre">shuffle()</span></code></a></li>
+<li><a class="reference internal" href="#random.sample"><code class="docutils literal notranslate"><span class="pre">sample()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#real-valued-distributions">Real-valued distributions</a><ul>
+<li><a class="reference internal" href="#random.random"><code class="docutils literal notranslate"><span class="pre">random()</span></code></a></li>
+<li><a class="reference internal" href="#random.uniform"><code class="docutils literal notranslate"><span class="pre">uniform()</span></code></a></li>
+<li><a class="reference internal" href="#random.triangular"><code class="docutils literal notranslate"><span class="pre">triangular()</span></code></a></li>
+<li><a class="reference internal" href="#random.betavariate"><code class="docutils literal notranslate"><span class="pre">betavariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.expovariate"><code class="docutils literal notranslate"><span class="pre">expovariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.gammavariate"><code class="docutils literal notranslate"><span class="pre">gammavariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.gauss"><code class="docutils literal notranslate"><span class="pre">gauss()</span></code></a></li>
+<li><a class="reference internal" href="#random.lognormvariate"><code class="docutils literal notranslate"><span class="pre">lognormvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.normalvariate"><code class="docutils literal notranslate"><span class="pre">normalvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.vonmisesvariate"><code class="docutils literal notranslate"><span class="pre">vonmisesvariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.paretovariate"><code class="docutils literal notranslate"><span class="pre">paretovariate()</span></code></a></li>
+<li><a class="reference internal" href="#random.weibullvariate"><code class="docutils literal notranslate"><span class="pre">weibullvariate()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#alternative-generator">Alternative Generator</a><ul>
+<li><a class="reference internal" href="#random.Random"><code class="docutils literal notranslate"><span class="pre">Random</span></code></a></li>
+<li><a class="reference internal" href="#random.SystemRandom"><code class="docutils literal notranslate"><span class="pre">SystemRandom</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#notes-on-reproducibility">Notes on Reproducibility</a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#recipes">Recipes</a></li>
@@ -867,6 +940,10 @@ fine-grained floats than normally generated by <a class="reference internal" hre
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -940,11 +1017,11 @@ fine-grained floats than normally generated by <a class="reference internal" hre
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

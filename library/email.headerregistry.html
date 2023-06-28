@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="email.headerregistry: Custom Header Objects" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/email.headerregistry.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,80 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.headerregistry</span></code>: Custom Header Objects</a><ul>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader"><code class="docutils literal notranslate"><span class="pre">BaseHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.name"><code class="docutils literal notranslate"><span class="pre">BaseHeader.name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.defects"><code class="docutils literal notranslate"><span class="pre">BaseHeader.defects</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.max_count"><code class="docutils literal notranslate"><span class="pre">BaseHeader.max_count</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.fold"><code class="docutils literal notranslate"><span class="pre">BaseHeader.fold()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.UnstructuredHeader"><code class="docutils literal notranslate"><span class="pre">UnstructuredHeader</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.DateHeader"><code class="docutils literal notranslate"><span class="pre">DateHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.DateHeader.datetime"><code class="docutils literal notranslate"><span class="pre">DateHeader.datetime</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader"><code class="docutils literal notranslate"><span class="pre">AddressHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader.groups"><code class="docutils literal notranslate"><span class="pre">AddressHeader.groups</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader.addresses"><code class="docutils literal notranslate"><span class="pre">AddressHeader.addresses</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.SingleAddressHeader"><code class="docutils literal notranslate"><span class="pre">SingleAddressHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.SingleAddressHeader.address"><code class="docutils literal notranslate"><span class="pre">SingleAddressHeader.address</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.version"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.version</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.major"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.major</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.minor"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.minor</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ParameterizedMIMEHeader"><code class="docutils literal notranslate"><span class="pre">ParameterizedMIMEHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ParameterizedMIMEHeader.params"><code class="docutils literal notranslate"><span class="pre">ParameterizedMIMEHeader.params</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.content_type"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.content_type</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.maintype"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.maintype</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.subtype"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.subtype</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentDispositionHeader"><code class="docutils literal notranslate"><span class="pre">ContentDispositionHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentDispositionHeader.content_disposition"><code class="docutils literal notranslate"><span class="pre">ContentDispositionHeader.content_disposition</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTransferEncoding"><code class="docutils literal notranslate"><span class="pre">ContentTransferEncoding</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentTransferEncoding.cte"><code class="docutils literal notranslate"><span class="pre">ContentTransferEncoding.cte</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.map_to_type"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.map_to_type()</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.__getitem__"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.__getitem__()</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.__call__"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.__call__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.Address"><code class="docutils literal notranslate"><span class="pre">Address</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.Address.display_name"><code class="docutils literal notranslate"><span class="pre">Address.display_name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.username"><code class="docutils literal notranslate"><span class="pre">Address.username</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.domain"><code class="docutils literal notranslate"><span class="pre">Address.domain</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.addr_spec"><code class="docutils literal notranslate"><span class="pre">Address.addr_spec</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.__str__"><code class="docutils literal notranslate"><span class="pre">Address.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.Group.display_name"><code class="docutils literal notranslate"><span class="pre">Group.display_name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Group.addresses"><code class="docutils literal notranslate"><span class="pre">Group.addresses</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Group.__str__"><code class="docutils literal notranslate"><span class="pre">Group.__str__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.errors.html"
@@ -183,11 +256,11 @@
           <div class="body" role="main">
             
   <section id="module-email.headerregistry">
-<span id="email-headerregistry-custom-header-objects"></span><h1><a class="reference internal" href="#module-email.headerregistry" title="email.headerregistry: Automatic Parsing of headers based on the field name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.headerregistry</span></code></a>: Custom Header Objects<a class="headerlink" href="#module-email.headerregistry" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="email-headerregistry-custom-header-objects"></span><h1><a class="reference internal" href="#module-email.headerregistry" title="email.headerregistry: Automatic Parsing of headers based on the field name"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.headerregistry</span></code></a>: Custom Header Objects<a class="headerlink" href="#module-email.headerregistry" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/email/headerregistry.py">Lib/email/headerregistry.py</a></p>
 <hr class="docutils" />
 <div class="versionadded">
-<p><span class="versionmodified added">3.6 sürümünde geldi: </span><a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+<p><span class="versionmodified added">3.6 sürümünde geldi: </span><a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </div>
 <p>Headers are represented by customized subclasses of <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>.  The
 particular class used to represent a given header is determined by the
@@ -517,64 +590,64 @@ class’s <code class="docutils literal notranslate"><span class="pre">__bases__
 <p>The default mappings are:</p>
 <blockquote>
 <div><dl class="field-list simple">
-<dt class="field-odd">subject</dt>
+<dt class="field-odd">subject<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueUnstructuredHeader</p>
 </dd>
-<dt class="field-even">date</dt>
+<dt class="field-even">date<span class="colon">:</span></dt>
 <dd class="field-even"><p>UniqueDateHeader</p>
 </dd>
-<dt class="field-odd">resent-date</dt>
+<dt class="field-odd">resent-date<span class="colon">:</span></dt>
 <dd class="field-odd"><p>DateHeader</p>
 </dd>
-<dt class="field-even">orig-date</dt>
+<dt class="field-even">orig-date<span class="colon">:</span></dt>
 <dd class="field-even"><p>UniqueDateHeader</p>
 </dd>
-<dt class="field-odd">sender</dt>
+<dt class="field-odd">sender<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueSingleAddressHeader</p>
 </dd>
-<dt class="field-even">resent-sender</dt>
+<dt class="field-even">resent-sender<span class="colon">:</span></dt>
 <dd class="field-even"><p>SingleAddressHeader</p>
 </dd>
-<dt class="field-odd">to</dt>
+<dt class="field-odd">to<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueAddressHeader</p>
 </dd>
-<dt class="field-even">resent-to</dt>
+<dt class="field-even">resent-to<span class="colon">:</span></dt>
 <dd class="field-even"><p>AddressHeader</p>
 </dd>
-<dt class="field-odd">cc</dt>
+<dt class="field-odd">cc<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueAddressHeader</p>
 </dd>
-<dt class="field-even">resent-cc</dt>
+<dt class="field-even">resent-cc<span class="colon">:</span></dt>
 <dd class="field-even"><p>AddressHeader</p>
 </dd>
-<dt class="field-odd">bcc</dt>
+<dt class="field-odd">bcc<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueAddressHeader</p>
 </dd>
-<dt class="field-even">resent-bcc</dt>
+<dt class="field-even">resent-bcc<span class="colon">:</span></dt>
 <dd class="field-even"><p>AddressHeader</p>
 </dd>
-<dt class="field-odd">from</dt>
+<dt class="field-odd">from<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueAddressHeader</p>
 </dd>
-<dt class="field-even">resent-from</dt>
+<dt class="field-even">resent-from<span class="colon">:</span></dt>
 <dd class="field-even"><p>AddressHeader</p>
 </dd>
-<dt class="field-odd">reply-to</dt>
+<dt class="field-odd">reply-to<span class="colon">:</span></dt>
 <dd class="field-odd"><p>UniqueAddressHeader</p>
 </dd>
-<dt class="field-even">mime-version</dt>
+<dt class="field-even">mime-version<span class="colon">:</span></dt>
 <dd class="field-even"><p>MIMEVersionHeader</p>
 </dd>
-<dt class="field-odd">content-type</dt>
+<dt class="field-odd">content-type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ContentTypeHeader</p>
 </dd>
-<dt class="field-even">content-disposition</dt>
+<dt class="field-even">content-disposition<span class="colon">:</span></dt>
 <dd class="field-even"><p>ContentDispositionHeader</p>
 </dd>
-<dt class="field-odd">content-transfer-encoding</dt>
+<dt class="field-odd">content-transfer-encoding<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ContentTransferEncodingHeader</p>
 </dd>
-<dt class="field-even">message-id</dt>
+<dt class="field-even">message-id<span class="colon">:</span></dt>
 <dd class="field-even"><p>MessageIDHeader</p>
 </dd>
 </dl>
@@ -711,11 +784,12 @@ that single <code class="docutils literal notranslate"><span class="pre">Address
 </dd></dl>
 
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Originally added in 3.3 as a <a class="reference internal" href="../glossary.html#term-provisional-package"><span class="xref std std-term">provisional module</span></a></p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Originally added in 3.3 as a <a class="reference internal" href="../glossary.html#term-provisional-package"><span class="xref std std-term">provisional module</span></a></p>
+</aside>
+</aside>
 </section>
 
 
@@ -725,6 +799,80 @@ that single <code class="docutils literal notranslate"><span class="pre">Address
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.headerregistry</span></code>: Custom Header Objects</a><ul>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader"><code class="docutils literal notranslate"><span class="pre">BaseHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.name"><code class="docutils literal notranslate"><span class="pre">BaseHeader.name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.defects"><code class="docutils literal notranslate"><span class="pre">BaseHeader.defects</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.max_count"><code class="docutils literal notranslate"><span class="pre">BaseHeader.max_count</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.BaseHeader.fold"><code class="docutils literal notranslate"><span class="pre">BaseHeader.fold()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.UnstructuredHeader"><code class="docutils literal notranslate"><span class="pre">UnstructuredHeader</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.DateHeader"><code class="docutils literal notranslate"><span class="pre">DateHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.DateHeader.datetime"><code class="docutils literal notranslate"><span class="pre">DateHeader.datetime</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader"><code class="docutils literal notranslate"><span class="pre">AddressHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader.groups"><code class="docutils literal notranslate"><span class="pre">AddressHeader.groups</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.AddressHeader.addresses"><code class="docutils literal notranslate"><span class="pre">AddressHeader.addresses</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.SingleAddressHeader"><code class="docutils literal notranslate"><span class="pre">SingleAddressHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.SingleAddressHeader.address"><code class="docutils literal notranslate"><span class="pre">SingleAddressHeader.address</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.version"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.version</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.major"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.major</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.MIMEVersionHeader.minor"><code class="docutils literal notranslate"><span class="pre">MIMEVersionHeader.minor</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ParameterizedMIMEHeader"><code class="docutils literal notranslate"><span class="pre">ParameterizedMIMEHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ParameterizedMIMEHeader.params"><code class="docutils literal notranslate"><span class="pre">ParameterizedMIMEHeader.params</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.content_type"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.content_type</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.maintype"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.maintype</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTypeHeader.subtype"><code class="docutils literal notranslate"><span class="pre">ContentTypeHeader.subtype</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentDispositionHeader"><code class="docutils literal notranslate"><span class="pre">ContentDispositionHeader</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentDispositionHeader.content_disposition"><code class="docutils literal notranslate"><span class="pre">ContentDispositionHeader.content_disposition</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.ContentTransferEncoding"><code class="docutils literal notranslate"><span class="pre">ContentTransferEncoding</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.ContentTransferEncoding.cte"><code class="docutils literal notranslate"><span class="pre">ContentTransferEncoding.cte</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.map_to_type"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.map_to_type()</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.__getitem__"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.__getitem__()</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.HeaderRegistry.__call__"><code class="docutils literal notranslate"><span class="pre">HeaderRegistry.__call__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.Address"><code class="docutils literal notranslate"><span class="pre">Address</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.Address.display_name"><code class="docutils literal notranslate"><span class="pre">Address.display_name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.username"><code class="docutils literal notranslate"><span class="pre">Address.username</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.domain"><code class="docutils literal notranslate"><span class="pre">Address.domain</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.addr_spec"><code class="docutils literal notranslate"><span class="pre">Address.addr_spec</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Address.__str__"><code class="docutils literal notranslate"><span class="pre">Address.__str__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.headerregistry.Group"><code class="docutils literal notranslate"><span class="pre">Group</span></code></a><ul>
+<li><a class="reference internal" href="#email.headerregistry.Group.display_name"><code class="docutils literal notranslate"><span class="pre">Group.display_name</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Group.addresses"><code class="docutils literal notranslate"><span class="pre">Group.addresses</span></code></a></li>
+<li><a class="reference internal" href="#email.headerregistry.Group.__str__"><code class="docutils literal notranslate"><span class="pre">Group.__str__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.errors.html"
@@ -747,6 +895,10 @@ that single <code class="docutils literal notranslate"><span class="pre">Address
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -821,11 +973,11 @@ that single <code class="docutils literal notranslate"><span class="pre">Address
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

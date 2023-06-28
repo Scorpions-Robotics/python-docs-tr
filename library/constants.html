@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Built-in Constants" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/constants.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,20 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Built-in Constants</a><ul>
-<li><a class="reference internal" href="#constants-added-by-the-site-module">Constants added by the <code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> module</a></li>
+<li><a class="reference internal" href="#False"><code class="docutils literal notranslate"><span class="pre">False</span></code></a></li>
+<li><a class="reference internal" href="#True"><code class="docutils literal notranslate"><span class="pre">True</span></code></a></li>
+<li><a class="reference internal" href="#None"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></li>
+<li><a class="reference internal" href="#NotImplemented"><code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code></a></li>
+<li><a class="reference internal" href="#Ellipsis"><code class="docutils literal notranslate"><span class="pre">Ellipsis</span></code></a></li>
+<li><a class="reference internal" href="#debug__"><code class="docutils literal notranslate"><span class="pre">__debug__</span></code></a></li>
+<li><a class="reference internal" href="#constants-added-by-the-site-module">Constants added by the <code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> module</a><ul>
+<li><a class="reference internal" href="#quit"><code class="docutils literal notranslate"><span class="pre">quit</span></code></a></li>
+<li><a class="reference internal" href="#exit"><code class="docutils literal notranslate"><span class="pre">exit</span></code></a></li>
+<li><a class="reference internal" href="#copyright"><code class="docutils literal notranslate"><span class="pre">copyright</span></code></a></li>
+<li><a class="reference internal" href="#credits"><code class="docutils literal notranslate"><span class="pre">credits</span></code></a></li>
+<li><a class="reference internal" href="#license"><code class="docutils literal notranslate"><span class="pre">license</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -191,7 +203,7 @@
           <div class="body" role="main">
             
   <section id="built-in-constants">
-<span id="built-in-consts"></span><h1>Built-in Constants<a class="headerlink" href="#built-in-constants" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="built-in-consts"></span><h1>Built-in Constants<a class="headerlink" href="#built-in-constants" title="Permalink to this heading">¶</a></h1>
 <p>A small number of constants live in the built-in namespace.  They are:</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="False">
@@ -259,7 +271,7 @@ with extended slicing syntax for user-defined container data types.
 
 <dl class="py data">
 <dt class="sig sig-object py" id="debug__">
-<span id="__debug__"></span><span class="sig-name descname"><span class="pre">__debug__</span></span><a class="headerlink" href="#debug__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">__debug__</span></span><a class="headerlink" href="#debug__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>This constant is true if Python was not started with an <a class="reference internal" href="../using/cmdline.html#cmdoption-O"><code class="xref std std-option docutils literal notranslate"><span class="pre">-O</span></code></a> option.
 See also the <a class="reference internal" href="../reference/simple_stmts.html#assert"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">assert</span></code></a> statement.</p>
 </dd></dl>
@@ -271,7 +283,7 @@ cannot be reassigned (assignments to them, even as an attribute name, raise
 <a class="reference internal" href="exceptions.html#SyntaxError" title="SyntaxError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SyntaxError</span></code></a>), so they can be considered “true” constants.</p>
 </div>
 <section id="constants-added-by-the-site-module">
-<h2>Constants added by the <a class="reference internal" href="site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> module<a class="headerlink" href="#constants-added-by-the-site-module" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Constants added by the <a class="reference internal" href="site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> module<a class="headerlink" href="#constants-added-by-the-site-module" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> module (which is imported automatically during startup, except
 if the <a class="reference internal" href="../using/cmdline.html#cmdoption-S"><code class="xref std std-option docutils literal notranslate"><span class="pre">-S</span></code></a> command-line option is given) adds several constants to the
 built-in namespace.  They are useful for the interactive interpreter shell and
@@ -317,7 +329,20 @@ pager-like fashion (one screen at a time).</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Built-in Constants</a><ul>
-<li><a class="reference internal" href="#constants-added-by-the-site-module">Constants added by the <code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> module</a></li>
+<li><a class="reference internal" href="#False"><code class="docutils literal notranslate"><span class="pre">False</span></code></a></li>
+<li><a class="reference internal" href="#True"><code class="docutils literal notranslate"><span class="pre">True</span></code></a></li>
+<li><a class="reference internal" href="#None"><code class="docutils literal notranslate"><span class="pre">None</span></code></a></li>
+<li><a class="reference internal" href="#NotImplemented"><code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code></a></li>
+<li><a class="reference internal" href="#Ellipsis"><code class="docutils literal notranslate"><span class="pre">Ellipsis</span></code></a></li>
+<li><a class="reference internal" href="#debug__"><code class="docutils literal notranslate"><span class="pre">__debug__</span></code></a></li>
+<li><a class="reference internal" href="#constants-added-by-the-site-module">Constants added by the <code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> module</a><ul>
+<li><a class="reference internal" href="#quit"><code class="docutils literal notranslate"><span class="pre">quit</span></code></a></li>
+<li><a class="reference internal" href="#exit"><code class="docutils literal notranslate"><span class="pre">exit</span></code></a></li>
+<li><a class="reference internal" href="#copyright"><code class="docutils literal notranslate"><span class="pre">copyright</span></code></a></li>
+<li><a class="reference internal" href="#credits"><code class="docutils literal notranslate"><span class="pre">credits</span></code></a></li>
+<li><a class="reference internal" href="#license"><code class="docutils literal notranslate"><span class="pre">license</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -345,6 +370,10 @@ pager-like fashion (one screen at a time).</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -417,11 +446,11 @@ pager-like fashion (one screen at a time).</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

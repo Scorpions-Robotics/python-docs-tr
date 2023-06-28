@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="cgitb — Traceback manager for CGI scripts" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/cgitb.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,19 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code> — Traceback manager for CGI scripts</a><ul>
+<li><a class="reference internal" href="#cgitb.enable"><code class="docutils literal notranslate"><span class="pre">enable()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.text"><code class="docutils literal notranslate"><span class="pre">text()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.html"><code class="docutils literal notranslate"><span class="pre">html()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.handler"><code class="docutils literal notranslate"><span class="pre">handler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="cgi.html"
@@ -182,7 +194,7 @@
           <div class="body" role="main">
             
   <section id="module-cgitb">
-<span id="cgitb-traceback-manager-for-cgi-scripts"></span><h1><a class="reference internal" href="#module-cgitb" title="cgitb: Configurable traceback handler for CGI scripts. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code></a> — Traceback manager for CGI scripts<a class="headerlink" href="#module-cgitb" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="cgitb-traceback-manager-for-cgi-scripts"></span><h1><a class="reference internal" href="#module-cgitb" title="cgitb: Configurable traceback handler for CGI scripts. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code></a> — Traceback manager for CGI scripts<a class="headerlink" href="#module-cgitb" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/cgitb.py">Lib/cgitb.py</a></p>
 <div class="deprecated-removed" id="index-0">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-cgitb" title="cgitb: Configurable traceback handler for CGI scripts. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code></a> module is deprecated
@@ -263,6 +275,19 @@ exception is obtained from <a class="reference internal" href="sys.html#sys.exc_
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code> — Traceback manager for CGI scripts</a><ul>
+<li><a class="reference internal" href="#cgitb.enable"><code class="docutils literal notranslate"><span class="pre">enable()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.text"><code class="docutils literal notranslate"><span class="pre">text()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.html"><code class="docutils literal notranslate"><span class="pre">html()</span></code></a></li>
+<li><a class="reference internal" href="#cgitb.handler"><code class="docutils literal notranslate"><span class="pre">handler()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="cgi.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgi</span></code> — Common Gateway Interface support</a></p>
@@ -284,6 +309,10 @@ exception is obtained from <a class="reference internal" href="sys.html#sys.exc_
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -357,11 +386,11 @@ exception is obtained from <a class="reference internal" href="sys.html#sys.exc_
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

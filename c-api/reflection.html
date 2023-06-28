@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Reflection" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/reflection.html" />
@@ -22,9 +22,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -180,7 +179,7 @@
           <div class="body" role="main">
             
   <section id="reflection">
-<span id="id1"></span><h1>Reflection<a class="headerlink" href="#reflection" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="id1"></span><h1>Reflection<a class="headerlink" href="#reflection" title="Permalink to this heading">¶</a></h1>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyEval_GetBuiltins">
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyEval_GetBuiltins</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyEval_GetBuiltins" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -221,8 +220,8 @@ name of <em>func</em>s type.</p>
 <dt class="sig sig-object c" id="c.PyEval_GetFuncDesc">
 <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyEval_GetFuncDesc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyEval_GetFuncDesc" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a description string, depending on the type of <em>func</em>.
-Return values include “()” for functions and methods, ” constructor”,
-” instance”, and ” object”.  Concatenated with the result of
+Return values include “()” for functions and methods, “ constructor”,
+“ instance”, and “ object”.  Concatenated with the result of
 <a class="reference internal" href="#c.PyEval_GetFuncName" title="PyEval_GetFuncName"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyEval_GetFuncName()</span></code></a>, the result will be a description of
 <em>func</em>.</p>
 </dd></dl>
@@ -258,6 +257,10 @@ Return values include “()” for functions and methods, ” constructor”,
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -331,11 +334,11 @@ Return values include “()” for functions and methods, ” constructor”,
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

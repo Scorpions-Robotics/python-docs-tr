@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="gc — Garbage Collector interface" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/gc.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,40 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code> — Garbage Collector interface</a><ul>
+<li><a class="reference internal" href="#gc.enable"><code class="docutils literal notranslate"><span class="pre">enable()</span></code></a></li>
+<li><a class="reference internal" href="#gc.disable"><code class="docutils literal notranslate"><span class="pre">disable()</span></code></a></li>
+<li><a class="reference internal" href="#gc.isenabled"><code class="docutils literal notranslate"><span class="pre">isenabled()</span></code></a></li>
+<li><a class="reference internal" href="#gc.collect"><code class="docutils literal notranslate"><span class="pre">collect()</span></code></a></li>
+<li><a class="reference internal" href="#gc.set_debug"><code class="docutils literal notranslate"><span class="pre">set_debug()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_debug"><code class="docutils literal notranslate"><span class="pre">get_debug()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_objects"><code class="docutils literal notranslate"><span class="pre">get_objects()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_stats"><code class="docutils literal notranslate"><span class="pre">get_stats()</span></code></a></li>
+<li><a class="reference internal" href="#gc.set_threshold"><code class="docutils literal notranslate"><span class="pre">set_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_threshold"><code class="docutils literal notranslate"><span class="pre">get_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_referrers"><code class="docutils literal notranslate"><span class="pre">get_referrers()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_referents"><code class="docutils literal notranslate"><span class="pre">get_referents()</span></code></a></li>
+<li><a class="reference internal" href="#gc.is_tracked"><code class="docutils literal notranslate"><span class="pre">is_tracked()</span></code></a></li>
+<li><a class="reference internal" href="#gc.is_finalized"><code class="docutils literal notranslate"><span class="pre">is_finalized()</span></code></a></li>
+<li><a class="reference internal" href="#gc.freeze"><code class="docutils literal notranslate"><span class="pre">freeze()</span></code></a></li>
+<li><a class="reference internal" href="#gc.unfreeze"><code class="docutils literal notranslate"><span class="pre">unfreeze()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_freeze_count"><code class="docutils literal notranslate"><span class="pre">get_freeze_count()</span></code></a></li>
+<li><a class="reference internal" href="#gc.garbage"><code class="docutils literal notranslate"><span class="pre">garbage</span></code></a></li>
+<li><a class="reference internal" href="#gc.callbacks"><code class="docutils literal notranslate"><span class="pre">callbacks</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_STATS"><code class="docutils literal notranslate"><span class="pre">DEBUG_STATS</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_COLLECTABLE"><code class="docutils literal notranslate"><span class="pre">DEBUG_COLLECTABLE</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_UNCOLLECTABLE"><code class="docutils literal notranslate"><span class="pre">DEBUG_UNCOLLECTABLE</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_SAVEALL"><code class="docutils literal notranslate"><span class="pre">DEBUG_SAVEALL</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_LEAK"><code class="docutils literal notranslate"><span class="pre">DEBUG_LEAK</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="__future__.html"
@@ -182,7 +215,7 @@
           <div class="body" role="main">
             
   <section id="module-gc">
-<span id="gc-garbage-collector-interface"></span><h1><a class="reference internal" href="#module-gc" title="gc: Interface to the cycle-detecting garbage collector."><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code></a> — Garbage Collector interface<a class="headerlink" href="#module-gc" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="gc-garbage-collector-interface"></span><h1><a class="reference internal" href="#module-gc" title="gc: Interface to the cycle-detecting garbage collector."><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code></a> — Garbage Collector interface<a class="headerlink" href="#module-gc" title="Permalink to this heading">¶</a></h1>
 <hr class="docutils" />
 <p>This module provides an interface to the optional garbage collector.  It
 provides the ability to disable the collector, tune the collection frequency,
@@ -533,6 +566,40 @@ leaking program (equal to <code class="docutils literal notranslate"><span class
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code> — Garbage Collector interface</a><ul>
+<li><a class="reference internal" href="#gc.enable"><code class="docutils literal notranslate"><span class="pre">enable()</span></code></a></li>
+<li><a class="reference internal" href="#gc.disable"><code class="docutils literal notranslate"><span class="pre">disable()</span></code></a></li>
+<li><a class="reference internal" href="#gc.isenabled"><code class="docutils literal notranslate"><span class="pre">isenabled()</span></code></a></li>
+<li><a class="reference internal" href="#gc.collect"><code class="docutils literal notranslate"><span class="pre">collect()</span></code></a></li>
+<li><a class="reference internal" href="#gc.set_debug"><code class="docutils literal notranslate"><span class="pre">set_debug()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_debug"><code class="docutils literal notranslate"><span class="pre">get_debug()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_objects"><code class="docutils literal notranslate"><span class="pre">get_objects()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_stats"><code class="docutils literal notranslate"><span class="pre">get_stats()</span></code></a></li>
+<li><a class="reference internal" href="#gc.set_threshold"><code class="docutils literal notranslate"><span class="pre">set_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_count"><code class="docutils literal notranslate"><span class="pre">get_count()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_threshold"><code class="docutils literal notranslate"><span class="pre">get_threshold()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_referrers"><code class="docutils literal notranslate"><span class="pre">get_referrers()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_referents"><code class="docutils literal notranslate"><span class="pre">get_referents()</span></code></a></li>
+<li><a class="reference internal" href="#gc.is_tracked"><code class="docutils literal notranslate"><span class="pre">is_tracked()</span></code></a></li>
+<li><a class="reference internal" href="#gc.is_finalized"><code class="docutils literal notranslate"><span class="pre">is_finalized()</span></code></a></li>
+<li><a class="reference internal" href="#gc.freeze"><code class="docutils literal notranslate"><span class="pre">freeze()</span></code></a></li>
+<li><a class="reference internal" href="#gc.unfreeze"><code class="docutils literal notranslate"><span class="pre">unfreeze()</span></code></a></li>
+<li><a class="reference internal" href="#gc.get_freeze_count"><code class="docutils literal notranslate"><span class="pre">get_freeze_count()</span></code></a></li>
+<li><a class="reference internal" href="#gc.garbage"><code class="docutils literal notranslate"><span class="pre">garbage</span></code></a></li>
+<li><a class="reference internal" href="#gc.callbacks"><code class="docutils literal notranslate"><span class="pre">callbacks</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_STATS"><code class="docutils literal notranslate"><span class="pre">DEBUG_STATS</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_COLLECTABLE"><code class="docutils literal notranslate"><span class="pre">DEBUG_COLLECTABLE</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_UNCOLLECTABLE"><code class="docutils literal notranslate"><span class="pre">DEBUG_UNCOLLECTABLE</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_SAVEALL"><code class="docutils literal notranslate"><span class="pre">DEBUG_SAVEALL</span></code></a></li>
+<li><a class="reference internal" href="#gc.DEBUG_LEAK"><code class="docutils literal notranslate"><span class="pre">DEBUG_LEAK</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="__future__.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">__future__</span></code> — Future statement definitions</a></p>
@@ -554,6 +621,10 @@ leaking program (equal to <code class="docutils literal notranslate"><span class
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -627,11 +698,11 @@ leaking program (equal to <code class="docutils literal notranslate"><span class
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

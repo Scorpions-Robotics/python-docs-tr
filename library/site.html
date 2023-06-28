@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="site — Site-specific configuration hook" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/site.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -99,7 +98,18 @@
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> — Site-specific configuration hook</a><ul>
 <li><a class="reference internal" href="#readline-configuration">Readline configuration</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a><ul>
+<li><a class="reference internal" href="#site.PREFIXES"><code class="docutils literal notranslate"><span class="pre">PREFIXES</span></code></a></li>
+<li><a class="reference internal" href="#site.ENABLE_USER_SITE"><code class="docutils literal notranslate"><span class="pre">ENABLE_USER_SITE</span></code></a></li>
+<li><a class="reference internal" href="#site.USER_SITE"><code class="docutils literal notranslate"><span class="pre">USER_SITE</span></code></a></li>
+<li><a class="reference internal" href="#site.USER_BASE"><code class="docutils literal notranslate"><span class="pre">USER_BASE</span></code></a></li>
+<li><a class="reference internal" href="#site.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#site.addsitedir"><code class="docutils literal notranslate"><span class="pre">addsitedir()</span></code></a></li>
+<li><a class="reference internal" href="#site.getsitepackages"><code class="docutils literal notranslate"><span class="pre">getsitepackages()</span></code></a></li>
+<li><a class="reference internal" href="#site.getuserbase"><code class="docutils literal notranslate"><span class="pre">getuserbase()</span></code></a></li>
+<li><a class="reference internal" href="#site.getusersitepackages"><code class="docutils literal notranslate"><span class="pre">getusersitepackages()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
@@ -194,7 +204,7 @@
           <div class="body" role="main">
             
   <section id="module-site">
-<span id="site-site-specific-configuration-hook"></span><h1><a class="reference internal" href="#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> — Site-specific configuration hook<a class="headerlink" href="#module-site" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="site-site-specific-configuration-hook"></span><h1><a class="reference internal" href="#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> — Site-specific configuration hook<a class="headerlink" href="#module-site" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/site.py">Lib/site.py</a></p>
 <hr class="docutils" />
 <p><strong>This module is automatically imported during initialization.</strong> The automatic
@@ -297,7 +307,7 @@ its subclass exception, and the exception’s <code class="xref py py-attr docut
 empty, and the path manipulations are skipped; however the import of
 <code class="xref py py-mod docutils literal notranslate"><span class="pre">sitecustomize</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">usercustomize</span></code> is still attempted.</p>
 <section id="readline-configuration">
-<span id="rlcompleter-config"></span><h2>Readline configuration<a class="headerlink" href="#readline-configuration" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="rlcompleter-config"></span><h2>Readline configuration<a class="headerlink" href="#readline-configuration" title="Permalink to this heading">¶</a></h2>
 <p>On systems that support <a class="reference internal" href="readline.html#module-readline" title="readline: GNU readline support for Python. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">readline</span></code></a>, this module will also import and
 configure the <a class="reference internal" href="rlcompleter.html#module-rlcompleter" title="rlcompleter: Python identifier completion, suitable for the GNU readline library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">rlcompleter</span></code></a> module, if Python is started in
 <a class="reference internal" href="../tutorial/interpreter.html#tut-interactive"><span class="std std-ref">interactive mode</span></a> and without the <a class="reference internal" href="../using/cmdline.html#cmdoption-S"><code class="xref std std-option docutils literal notranslate"><span class="pre">-S</span></code></a> option.
@@ -311,7 +321,7 @@ override) the <a class="reference internal" href="sys.html#sys.__interactivehook
 </div>
 </section>
 <section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="site.PREFIXES">
 <span class="sig-prename descclassname"><span class="pre">site.</span></span><span class="sig-name descname"><span class="pre">PREFIXES</span></span><a class="headerlink" href="#site.PREFIXES" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -407,7 +417,7 @@ used.</p>
 
 </section>
 <section id="command-line-interface">
-<span id="site-commandline"></span><h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="site-commandline"></span><h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> module also provides a way to get the user directories from the
 command line:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>site<span class="w"> </span>--user-site
@@ -458,7 +468,18 @@ value greater than 2 if there is an error.</p>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code> — Site-specific configuration hook</a><ul>
 <li><a class="reference internal" href="#readline-configuration">Readline configuration</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a><ul>
+<li><a class="reference internal" href="#site.PREFIXES"><code class="docutils literal notranslate"><span class="pre">PREFIXES</span></code></a></li>
+<li><a class="reference internal" href="#site.ENABLE_USER_SITE"><code class="docutils literal notranslate"><span class="pre">ENABLE_USER_SITE</span></code></a></li>
+<li><a class="reference internal" href="#site.USER_SITE"><code class="docutils literal notranslate"><span class="pre">USER_SITE</span></code></a></li>
+<li><a class="reference internal" href="#site.USER_BASE"><code class="docutils literal notranslate"><span class="pre">USER_BASE</span></code></a></li>
+<li><a class="reference internal" href="#site.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#site.addsitedir"><code class="docutils literal notranslate"><span class="pre">addsitedir()</span></code></a></li>
+<li><a class="reference internal" href="#site.getsitepackages"><code class="docutils literal notranslate"><span class="pre">getsitepackages()</span></code></a></li>
+<li><a class="reference internal" href="#site.getuserbase"><code class="docutils literal notranslate"><span class="pre">getuserbase()</span></code></a></li>
+<li><a class="reference internal" href="#site.getusersitepackages"><code class="docutils literal notranslate"><span class="pre">getusersitepackages()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
@@ -487,6 +508,10 @@ value greater than 2 if there is an error.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -560,11 +585,11 @@ value greater than 2 if there is an error.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

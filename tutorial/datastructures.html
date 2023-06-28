@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="5. Veri Yapıları" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/datastructures.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -204,10 +203,10 @@
           <div class="body" role="main">
             
   <section id="data-structures">
-<span id="tut-structures"></span><h1><span class="section-number">5. </span>Veri Yapıları<a class="headerlink" href="#data-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-structures"></span><h1><span class="section-number">5. </span>Veri Yapıları<a class="headerlink" href="#data-structures" title="Permalink to this heading">¶</a></h1>
 <p>Bu bölüm, daha önce öğrendiğiniz bazı şeyleri daha ayrıntılı olarak açıklamakta ve bazı yeni şeyler de eklemektedir.</p>
 <section id="more-on-lists">
-<span id="tut-morelists"></span><h2><span class="section-number">5.1. </span>Listeler Üzerine<a class="headerlink" href="#more-on-lists" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-morelists"></span><h2><span class="section-number">5.1. </span>Listeler Üzerine<a class="headerlink" href="#more-on-lists" title="Permalink to this heading">¶</a></h2>
 <p>Liste veri türünün bazı yöntemleri daha vardır.  Liste nesnelerinin tüm metotları şunlardır:</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -299,10 +298,10 @@
 <span class="go">&#39;pear&#39;</span>
 </pre></div>
 </div>
-<p>Listeyi yalnızca değiştiren <code class="docutils literal notranslate"><span class="pre">insert</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code> veya <code class="docutils literal notranslate"><span class="pre">sort</span></code> gibi yöntemlerin hiçbir dönüş değeri yazdırmadığını fark etmiş olabilirsiniz – onlar varsayılan <code class="docutils literal notranslate"><span class="pre">None</span></code> değerini döndürürler. <a class="footnote-reference brackets" href="#id2" id="id1">1</a>  Bu, Python’daki tüm değiştirilebilir veri yapıları için bir tasarım ilkesidir.</p>
+<p>Listeyi yalnızca değiştiren <code class="docutils literal notranslate"><span class="pre">insert</span></code>, <code class="docutils literal notranslate"><span class="pre">remove</span></code> veya <code class="docutils literal notranslate"><span class="pre">sort</span></code> gibi yöntemlerin hiçbir dönüş değeri yazdırmadığını fark etmiş olabilirsiniz – onlar varsayılan <code class="docutils literal notranslate"><span class="pre">None</span></code> değerini döndürürler. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>  Bu, Python’daki tüm değiştirilebilir veri yapıları için bir tasarım ilkesidir.</p>
 <p>Fark edebileceğiniz bir başka şey de tüm verilerin sıralanamayacağı veya karşılaştırılamayacağıdır.  Örneğin, <code class="docutils literal notranslate"><span class="pre">[None,</span> <span class="pre">'hello',</span> <span class="pre">10]</span></code> sıralanamaz çünkü tamsayılar dizelerle karşılaştırılamaz ve <em>None</em> diğer türlerle karşılaştırılamaz.  Ayrıca, tanımlanmış bir sıralama ilişkisine sahip olmayan bazı türler de vardır.  Örneğin, <code class="docutils literal notranslate"><span class="pre">3+4j</span> <span class="pre">&lt;</span> <span class="pre">5+7j</span></code> geçerli bir karşılaştırma değildir.</p>
 <section id="using-lists-as-stacks">
-<span id="tut-lists-as-stacks"></span><h3><span class="section-number">5.1.1. </span>Listeleri Yığın Olarak Kullanma<a class="headerlink" href="#using-lists-as-stacks" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-lists-as-stacks"></span><h3><span class="section-number">5.1.1. </span>Listeleri Yığın Olarak Kullanma<a class="headerlink" href="#using-lists-as-stacks" title="Permalink to this heading">¶</a></h3>
 <p>Liste yöntemleri, bir listeyi, eklenen son öğenin alınan ilk öğe olduğu bir yığın olarak kullanmayı çok kolaylaştırır (“son giren ilk çıkar”).  Yığının en üstüne bir öğe eklemek için <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> kullanın.  Yığının en üstünden bir öğe almak için, açık bir indeks olmadan <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> kullanın.  Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
@@ -323,7 +322,7 @@
 </div>
 </section>
 <section id="using-lists-as-queues">
-<span id="tut-lists-as-queues"></span><h3><span class="section-number">5.1.2. </span>Listeleri Kuyruk Olarak Kullanma<a class="headerlink" href="#using-lists-as-queues" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-lists-as-queues"></span><h3><span class="section-number">5.1.2. </span>Listeleri Kuyruk Olarak Kullanma<a class="headerlink" href="#using-lists-as-queues" title="Permalink to this heading">¶</a></h3>
 <p>Bir listeyi, eklenen ilk elemanın alınan ilk eleman olduğu bir kuyruk olarak kullanmak da mümkündür (“ilk giren ilk çıkar”); ancak listeler bu amaç için verimli değildir.  Listenin sonundan ekleme ve çıkarma işlemleri hızlıyken, listenin başından ekleme veya çıkarma yapmak yavaştır (çünkü diğer tüm öğelerin bir adım kaydırılması gerekir).</p>
 <p>Bir kuyruk uygulamak için, her iki uçtan da hızlı ekleme ve çıkarma yapmak üzere tasarlanmış <a class="reference internal" href="../library/collections.html#collections.deque" title="collections.deque"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.deque</span></code></a> kullanın.  Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
@@ -340,7 +339,7 @@
 </div>
 </section>
 <section id="list-comprehensions">
-<span id="tut-listcomps"></span><h3><span class="section-number">5.1.3. </span>Liste Kavramaları<a class="headerlink" href="#list-comprehensions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-listcomps"></span><h3><span class="section-number">5.1.3. </span>Liste Kavramaları<a class="headerlink" href="#list-comprehensions" title="Permalink to this heading">¶</a></h3>
 <p>Liste kavramaları, listeler oluşturmak için kısa bir yol sağlar. Yaygın uygulamalar, her bir öğenin başka bir dizinin veya yinelenebilir öğenin her bir üyesine uygulanan bazı işlemlerin sonucu olduğu yeni listeler oluşturmak veya belirli bir koşulu karşılayan öğelerin bir alt dizisini oluşturmaktır.</p>
 <p>Örneğin, aşağıdaki gibi bir kareler listesi oluşturmak istediğimizi varsayalım:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">squares</span> <span class="o">=</span> <span class="p">[]</span>
@@ -415,7 +414,7 @@
 </div>
 </section>
 <section id="nested-list-comprehensions">
-<h3><span class="section-number">5.1.4. </span>İç İçe Liste Kavramaları<a class="headerlink" href="#nested-list-comprehensions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><span class="section-number">5.1.4. </span>İç İçe Liste Kavramaları<a class="headerlink" href="#nested-list-comprehensions" title="Permalink to this heading">¶</a></h3>
 <p>Bir liste kavrayışındaki ilk ifade, başka bir liste kavrayışı da dahil olmak üzere rastgele herhangi bir ifade olabilir.</p>
 <p>Uzunluğu 4 olan 3 listeden oluşan bir liste olarak uygulanan 3x4’lük bir matrisin aşağıdaki örneğini düşünün:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[</span>
@@ -461,7 +460,7 @@
 </section>
 </section>
 <section id="the-del-statement">
-<span id="tut-del"></span><h2><span class="section-number">5.2. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> ifadesi<a class="headerlink" href="#the-del-statement" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-del"></span><h2><span class="section-number">5.2. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> ifadesi<a class="headerlink" href="#the-del-statement" title="Permalink to this heading">¶</a></h2>
 <p>Değer yerine indeksi verilen bir öğeyi listeden kaldırmanın bir yolu vardır: <a class="reference internal" href="../reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> ifadesi.  Bu, bir değer döndüren <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> yönteminden farklıdır. <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> ifadesi ayrıca bir listeden dilimleri kaldırmak veya tüm listeyi temizlemek için de kullanılabilir (bunu daha önce dilime boş bir liste atayarak yapmıştık).  Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -482,7 +481,7 @@
 <p>Bundan sonra <code class="docutils literal notranslate"><span class="pre">a</span></code> ismine referans vermek bir hatadır (en azından ona başka bir değer atanana kadar).  Daha sonra <a class="reference internal" href="../reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> için başka kullanımlar bulacağız.</p>
 </section>
 <section id="tuples-and-sequences">
-<span id="tut-tuples"></span><h2><span class="section-number">5.3. </span>Veri Grupları ve Diziler<a class="headerlink" href="#tuples-and-sequences" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-tuples"></span><h2><span class="section-number">5.3. </span>Veri Grupları ve Diziler<a class="headerlink" href="#tuples-and-sequences" title="Permalink to this heading">¶</a></h2>
 <p>Listelerin ve dizelerin indeksleme ve dilimleme işlemleri gibi birçok ortak özelliğe sahip olduğunu gördük.  Bunlar <em>dizi</em> veri tiplerinin iki örneğidir (bkz. <a class="reference internal" href="../library/stdtypes.html#typesseq"><span class="std std-ref">Dizi Tipleri — list, tuple, range</span></a>).  Python gelişen bir dil olduğu için başka dizi veri tipleri de eklenebilir.  Ayrıca başka bir standart dizi veri tipi daha vardır: <em>tuple</em>.</p>
 <p>Bir veri grubu, virgülle ayrılmış bir dizi değerden oluşur, örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="mi">12345</span><span class="p">,</span> <span class="mi">54321</span><span class="p">,</span> <span class="s1">&#39;hello!&#39;</span>
@@ -525,7 +524,7 @@
 <p>Buna uygun bir şekilde <em>dizi açma (sequence unpacking)</em> denir ve sağ taraftaki herhangi bir dizi için çalışır.  Dizi açma, eşittir işaretinin sol tarafında dizideki eleman sayısı kadar değişken olmasını gerektirir.  Çoklu atamanın aslında tuple paketleme ve dizi açmanın bir kombinasyonu olduğunu unutmayın.</p>
 </section>
 <section id="sets">
-<span id="tut-sets"></span><h2><span class="section-number">5.4. </span>Kümeler<a class="headerlink" href="#sets" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-sets"></span><h2><span class="section-number">5.4. </span>Kümeler<a class="headerlink" href="#sets" title="Permalink to this heading">¶</a></h2>
 <p>Python ayrıca <em>kümeler</em> için bir veri türü içerir.  Bir küme, yinelenen öğeleri olmayan sırasız bir koleksiyondur.  Temel kullanımları içerisinde üyelik testi ve yinelenen girdilerin elenmesi yer alır.  Küme nesneleri ayrıca birleşim, kesişim, fark ve simetrik fark gibi matematiksel işlemleri de destekler.</p>
 <p>Küme oluşturmak için küme parantezleri veya <a class="reference internal" href="../library/stdtypes.html#set" title="set"><code class="xref py py-func docutils literal notranslate"><span class="pre">set()</span></code></a> fonksiyonu kullanılabilir.  Not: boş bir küme oluşturmak için <code class="docutils literal notranslate"><span class="pre">{}</span></code> değil <code class="docutils literal notranslate"><span class="pre">set()</span></code> kullanmanız gerekir, çünkü birincisi boş bir sözlük oluşturur, ki bu da bir sonraki bölümde tartışacağımız bir veri yapısıdır.</p>
 <p>İşte kısa bir gösterim:</p>
@@ -561,7 +560,7 @@
 </div>
 </section>
 <section id="dictionaries">
-<span id="tut-dictionaries"></span><h2><span class="section-number">5.5. </span>Sözlükler<a class="headerlink" href="#dictionaries" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-dictionaries"></span><h2><span class="section-number">5.5. </span>Sözlükler<a class="headerlink" href="#dictionaries" title="Permalink to this heading">¶</a></h2>
 <p>Python’da yerleşik olarak bulunan bir başka kullanışlı veri türü de <em>sözlüktür</em> (bkz <a class="reference internal" href="../library/stdtypes.html#typesmapping"><span class="std std-ref">Mapping Types — dict</span></a>). Sözlükler bazen diğer dillerde “ilişkisel bellekler” veya “ilişkisel diziler” olarak bulunur.  Bir sayı aralığı ile indekslenen dizilerin aksine, sözlükler herhangi bir değişmez tip olabilen <em>anahtarlar</em> ile indekslenir, ki dizgiler ve sayılar her zaman birer anahtar olabilir.  Veri grupları yalnızca dizgi, sayı ya da veri grubu içeriyorsa anahtar olarak kullanılabilir. Ancak bir veri grubu doğrudan ya da dolaylı olarak değişebilir herhangi bir nesne içeriyorsa anahtar olarak kullanılamaz. Listeler; dizin atamaları, dilim atamaları veya <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> ve <code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code> gibi yöntemler kullanılarak yerinde değiştirilebildiğinden listeleri anahtar olarak kullanamazsınız.</p>
 <p>Bir sözlüğü <em>anahtar: değer</em> çiftleri olarak düşünmek en iyisidir. Bir sözlük içerisindeki her anahtarın benzersiz olması gerektiğini ise unutmayın. Bir çift parantez boş bir sözlük oluşturur: <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Anahtar:değer çiftlerinin virgülle ayrılmış bir listesini parantezler içine yerleştirmek sözlüğe ilk anahtar:değer çiftlerini ekler; sözlükler çıktıda da aynı bu şekilde görünürler.</p>
 <p>Bir sözlük üzerindeki ana işlemler, bir değeri bir anahtarla depolamak ve anahtarı verilen değeri geri çıkarmaktır.  Ayrıca <code class="docutils literal notranslate"><span class="pre">del</span></code> ile bir anahtar:değer çiftini silmek de mümkündür. Zaten bir değeri kullanımda olan bir anahtar kullanarak saklarsanız, bu anahtarla ilişkili eski değer unutulur.  Var olmayan bir anahtar kullanarak değer çıkarmak bir hatadır.</p>
@@ -604,7 +603,7 @@
 </div>
 </section>
 <section id="looping-techniques">
-<span id="tut-loopidioms"></span><h2><span class="section-number">5.6. </span>Döngü Teknikleri<a class="headerlink" href="#looping-techniques" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-loopidioms"></span><h2><span class="section-number">5.6. </span>Döngü Teknikleri<a class="headerlink" href="#looping-techniques" title="Permalink to this heading">¶</a></h2>
 <p>Sözlükler arasında döngü yaparken, <code class="xref py py-meth docutils literal notranslate"><span class="pre">items()</span></code> yöntemi kullanılarak anahtar ve karşılık gelen değer aynı anda alınabilir.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knights</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gallahad&#39;</span><span class="p">:</span> <span class="s1">&#39;the pure&#39;</span><span class="p">,</span> <span class="s1">&#39;robin&#39;</span><span class="p">:</span> <span class="s1">&#39;the brave&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">knights</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -683,7 +682,7 @@
 </div>
 </section>
 <section id="more-on-conditions">
-<span id="tut-conditions"></span><h2><span class="section-number">5.7. </span>Koşullar Üzerine<a class="headerlink" href="#more-on-conditions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-conditions"></span><h2><span class="section-number">5.7. </span>Koşullar Üzerine<a class="headerlink" href="#more-on-conditions" title="Permalink to this heading">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">while</span></code> ve <code class="docutils literal notranslate"><span class="pre">if</span></code> deyimlerinde kullanılan koşullar sadece karşılaştırma değil, herhangi bir operatör içerebilir.</p>
 <p>Karşılaştırma operatörleri <code class="docutils literal notranslate"><span class="pre">in</span></code> ve <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> bir değerin bir dizide olup olmadığını kontrol eder.  <code class="docutils literal notranslate"><span class="pre">is</span></code> ve <code class="docutils literal notranslate"><span class="pre">is</span> <span class="pre">not</span></code> operatörleri iki nesnenin gerçekten aynı nesne olup olmadığını karşılaştırır.  Tüm karşılaştırma operatörleri aynı önceliğe sahiptir, bu öncelik ise tüm sayısal operatörlerden daha düşüktür.</p>
 <p>Karşılaştırmalar art arda zincirlenebilir.  Örneğin, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">b</span> <span class="pre">==</span> <span class="pre">c</span></code> ifadesi <code class="docutils literal notranslate"><span class="pre">a</span></code> değerinin <code class="docutils literal notranslate"><span class="pre">b</span></code> değerinden küçük olup olmadığını test ederken aynı zamanda <code class="docutils literal notranslate"><span class="pre">b</span></code> değerinin <code class="docutils literal notranslate"><span class="pre">c</span></code> değerine eşit olup olmadığını test eder.</p>
@@ -699,7 +698,7 @@
 <p>Python’da, C’den farklı olarak, ifadelerin içindeki atamanın <a class="reference internal" href="../faq/design.html#why-can-t-i-use-an-assignment-in-an-expression"><span class="std std-ref">walrus operatörü</span></a> <code class="docutils literal notranslate"><span class="pre">=</span></code> ile açıkça yapılması gerektiğini unutmayın. Bu, C programlarında karşılaşılan yaygın bir sorunu önler: <code class="docutils literal notranslate"><span class="pre">==</span></code> yazmak isterken <code class="docutils literal notranslate"><span class="pre">=</span></code> yazmak.</p>
 </section>
 <section id="comparing-sequences-and-other-types">
-<span id="tut-comparing"></span><h2><span class="section-number">5.8. </span>Diziler ile Diğer Veri Tiplerinin Karşılaştırılması<a class="headerlink" href="#comparing-sequences-and-other-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-comparing"></span><h2><span class="section-number">5.8. </span>Diziler ile Diğer Veri Tiplerinin Karşılaştırılması<a class="headerlink" href="#comparing-sequences-and-other-types" title="Permalink to this heading">¶</a></h2>
 <p>Dizi nesneleri tipik olarak aynı dizi türüne sahip diğer nesnelerle karşılaştırılabilir. Karşılaştırmada <em>sözlüksel</em> sıralama kullanılır: önce ilk iki öğe karşılaştırılır ve farklılarsa bu karşılaştırmanın sonucunu belirler; eşitlerse, sonraki iki öğe karşılaştırılır ve her iki dizi de tükenene kadar böyle devam eder. Karşılaştırılacak iki öğenin kendileri de aynı türden diziler ise, sözlükbilimsel karşılaştırma özyinelemeli olarak gerçekleştirilir.  İki dizinin tüm öğeleri eşit çıkarsa, diziler eşit kabul edilir. Eğer dizilerden biri diğerinin alt dizisi ise, daha kısa olan dizi daha küçük (küçük) olandır.  Dizgiler için sözlükbilimsel sıralama, tek tek karakterleri sıralamak için Unicode kod noktası numarasını kullanır. Aynı türdeki diziler arasındaki karşılaştırmalara bazı örnekler:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>              <span class="o">&lt;</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>              <span class="o">&lt;</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
@@ -712,11 +711,12 @@
 </div>
 <p>Nesnelerin uygun karşılaştırma yöntemlerine sahip olması koşuluyla, farklı türlerdeki nesnelerin <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> veya <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> ile karşılaştırılabileceğini unutmayın.  Örneğin, karışık sayısal türler sayısal değerlerine göre karşılaştırılır, bu nedenle 0 eşittir 0.0, vb.  Bu türler uygun yöntemlere sahip değillerse, yorumlayıcı rastgele bir sıralama döndürmek yerine <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> hatası verir.</p>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Diğer diller, <code class="docutils literal notranslate"><span class="pre">d-&gt;insert(&quot;a&quot;)-&gt;remove(&quot;b&quot;)-&gt;sort();</span></code> gibi yöntem zincirlemesine izin veren değiştirilmiş nesneyi döndürebilir.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Diğer diller, <code class="docutils literal notranslate"><span class="pre">d-&gt;insert(&quot;a&quot;)-&gt;remove(&quot;b&quot;)-&gt;sort();</span></code> gibi yöntem zincirlemesine izin veren değiştirilmiş nesneyi döndürebilir.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -772,6 +772,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -844,11 +848,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

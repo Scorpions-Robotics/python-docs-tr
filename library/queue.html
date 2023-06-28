@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="queue — A synchronized queue class" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/queue.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,33 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code> — A synchronized queue class</a><ul>
-<li><a class="reference internal" href="#queue-objects">Queue Objects</a></li>
-<li><a class="reference internal" href="#simplequeue-objects">SimpleQueue Objects</a></li>
+<li><a class="reference internal" href="#queue.Queue"><code class="docutils literal notranslate"><span class="pre">Queue</span></code></a></li>
+<li><a class="reference internal" href="#queue.LifoQueue"><code class="docutils literal notranslate"><span class="pre">LifoQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.PriorityQueue"><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue"><code class="docutils literal notranslate"><span class="pre">SimpleQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.Empty"><code class="docutils literal notranslate"><span class="pre">Empty</span></code></a></li>
+<li><a class="reference internal" href="#queue.Full"><code class="docutils literal notranslate"><span class="pre">Full</span></code></a></li>
+<li><a class="reference internal" href="#queue-objects">Queue Objects</a><ul>
+<li><a class="reference internal" href="#queue.Queue.qsize"><code class="docutils literal notranslate"><span class="pre">Queue.qsize()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.empty"><code class="docutils literal notranslate"><span class="pre">Queue.empty()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.full"><code class="docutils literal notranslate"><span class="pre">Queue.full()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.put"><code class="docutils literal notranslate"><span class="pre">Queue.put()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.put_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.put_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.get"><code class="docutils literal notranslate"><span class="pre">Queue.get()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.get_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.get_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.task_done"><code class="docutils literal notranslate"><span class="pre">Queue.task_done()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.join"><code class="docutils literal notranslate"><span class="pre">Queue.join()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplequeue-objects">SimpleQueue Objects</a><ul>
+<li><a class="reference internal" href="#queue.SimpleQueue.qsize"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.qsize()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.empty"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.empty()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.put"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.put()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.put_nowait"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.put_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.get"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.get()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.get_nowait"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.get_nowait()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -193,7 +217,7 @@
           <div class="body" role="main">
             
   <section id="module-queue">
-<span id="queue-a-synchronized-queue-class"></span><h1><a class="reference internal" href="#module-queue" title="queue: A synchronized queue class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> — A synchronized queue class<a class="headerlink" href="#module-queue" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="queue-a-synchronized-queue-class"></span><h1><a class="reference internal" href="#module-queue" title="queue: A synchronized queue class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> — A synchronized queue class<a class="headerlink" href="#module-queue" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/queue.py">Lib/queue.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-queue" title="queue: A synchronized queue class."><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code></a> module implements multi-producer, multi-consumer queues.
@@ -285,7 +309,7 @@ on a <a class="reference internal" href="#queue.Queue" title="queue.Queue"><code
 </dd></dl>
 
 <section id="queue-objects">
-<span id="queueobjects"></span><h2>Queue Objects<a class="headerlink" href="#queue-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="queueobjects"></span><h2>Queue Objects<a class="headerlink" href="#queue-objects" title="Permalink to this heading">¶</a></h2>
 <p>Queue objects (<a class="reference internal" href="#queue.Queue" title="queue.Queue"><code class="xref py py-class docutils literal notranslate"><span class="pre">Queue</span></code></a>, <a class="reference internal" href="#queue.LifoQueue" title="queue.LifoQueue"><code class="xref py py-class docutils literal notranslate"><span class="pre">LifoQueue</span></code></a>, or <a class="reference internal" href="#queue.PriorityQueue" title="queue.PriorityQueue"><code class="xref py py-class docutils literal notranslate"><span class="pre">PriorityQueue</span></code></a>)
 provide the public methods described below.</p>
 <dl class="py method">
@@ -405,7 +429,7 @@ count of unfinished tasks drops to zero, <a class="reference internal" href="#qu
 </div>
 </section>
 <section id="simplequeue-objects">
-<h2>SimpleQueue Objects<a class="headerlink" href="#simplequeue-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>SimpleQueue Objects<a class="headerlink" href="#simplequeue-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#queue.SimpleQueue" title="queue.SimpleQueue"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimpleQueue</span></code></a> objects provide the public methods described below.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="queue.SimpleQueue.qsize">
@@ -488,8 +512,33 @@ and also support indexing.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">queue</span></code> — A synchronized queue class</a><ul>
-<li><a class="reference internal" href="#queue-objects">Queue Objects</a></li>
-<li><a class="reference internal" href="#simplequeue-objects">SimpleQueue Objects</a></li>
+<li><a class="reference internal" href="#queue.Queue"><code class="docutils literal notranslate"><span class="pre">Queue</span></code></a></li>
+<li><a class="reference internal" href="#queue.LifoQueue"><code class="docutils literal notranslate"><span class="pre">LifoQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.PriorityQueue"><code class="docutils literal notranslate"><span class="pre">PriorityQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue"><code class="docutils literal notranslate"><span class="pre">SimpleQueue</span></code></a></li>
+<li><a class="reference internal" href="#queue.Empty"><code class="docutils literal notranslate"><span class="pre">Empty</span></code></a></li>
+<li><a class="reference internal" href="#queue.Full"><code class="docutils literal notranslate"><span class="pre">Full</span></code></a></li>
+<li><a class="reference internal" href="#queue-objects">Queue Objects</a><ul>
+<li><a class="reference internal" href="#queue.Queue.qsize"><code class="docutils literal notranslate"><span class="pre">Queue.qsize()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.empty"><code class="docutils literal notranslate"><span class="pre">Queue.empty()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.full"><code class="docutils literal notranslate"><span class="pre">Queue.full()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.put"><code class="docutils literal notranslate"><span class="pre">Queue.put()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.put_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.put_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.get"><code class="docutils literal notranslate"><span class="pre">Queue.get()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.get_nowait"><code class="docutils literal notranslate"><span class="pre">Queue.get_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.task_done"><code class="docutils literal notranslate"><span class="pre">Queue.task_done()</span></code></a></li>
+<li><a class="reference internal" href="#queue.Queue.join"><code class="docutils literal notranslate"><span class="pre">Queue.join()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simplequeue-objects">SimpleQueue Objects</a><ul>
+<li><a class="reference internal" href="#queue.SimpleQueue.qsize"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.qsize()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.empty"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.empty()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.put"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.put()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.put_nowait"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.put_nowait()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.get"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.get()</span></code></a></li>
+<li><a class="reference internal" href="#queue.SimpleQueue.get_nowait"><code class="docutils literal notranslate"><span class="pre">SimpleQueue.get_nowait()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -517,6 +566,10 @@ and also support indexing.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -590,11 +643,11 @@ and also support indexing.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

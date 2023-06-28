@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Gömülü Türler" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/stdtypes.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -103,12 +102,28 @@
 <li><a class="reference internal" href="#comparisons">Karşılaştırmalar</a></li>
 <li><a class="reference internal" href="#numeric-types-int-float-complex">Sayısal Türler — <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a><ul>
 <li><a class="reference internal" href="#bitwise-operations-on-integer-types">Tam sayı Türlerinde Bit Düzeyinde İşlemler</a></li>
-<li><a class="reference internal" href="#additional-methods-on-integer-types">Integer (Tam sayı) Türlerinde Ek Metotlar</a></li>
-<li><a class="reference internal" href="#additional-methods-on-float">Gerçel Sayılarda Ek Metotlar</a></li>
+<li><a class="reference internal" href="#additional-methods-on-integer-types">Integer (Tam sayı) Türlerinde Ek Metotlar</a><ul>
+<li><a class="reference internal" href="#int.bit_length"><code class="docutils literal notranslate"><span class="pre">int.bit_length()</span></code></a></li>
+<li><a class="reference internal" href="#int.bit_count"><code class="docutils literal notranslate"><span class="pre">int.bit_count()</span></code></a></li>
+<li><a class="reference internal" href="#int.to_bytes"><code class="docutils literal notranslate"><span class="pre">int.to_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#int.from_bytes"><code class="docutils literal notranslate"><span class="pre">int.from_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#int.as_integer_ratio"><code class="docutils literal notranslate"><span class="pre">int.as_integer_ratio()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-methods-on-float">Gerçel Sayılarda Ek Metotlar</a><ul>
+<li><a class="reference internal" href="#float.as_integer_ratio"><code class="docutils literal notranslate"><span class="pre">float.as_integer_ratio()</span></code></a></li>
+<li><a class="reference internal" href="#float.is_integer"><code class="docutils literal notranslate"><span class="pre">float.is_integer()</span></code></a></li>
+<li><a class="reference internal" href="#float.hex"><code class="docutils literal notranslate"><span class="pre">float.hex()</span></code></a></li>
+<li><a class="reference internal" href="#float.fromhex"><code class="docutils literal notranslate"><span class="pre">float.fromhex()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#hashing-of-numeric-types">Sayısal türlerin hashlemesi</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iterator-types">Yineleyici Türleri</a><ul>
+<li><a class="reference internal" href="#container.__iter__"><code class="docutils literal notranslate"><span class="pre">container.__iter__()</span></code></a></li>
+<li><a class="reference internal" href="#iterator.__iter__"><code class="docutils literal notranslate"><span class="pre">iterator.__iter__()</span></code></a></li>
+<li><a class="reference internal" href="#iterator.__next__"><code class="docutils literal notranslate"><span class="pre">iterator.__next__()</span></code></a></li>
 <li><a class="reference internal" href="#generator-types">Oluşturucu Tipleri</a></li>
 </ul>
 </li>
@@ -116,34 +131,268 @@
 <li><a class="reference internal" href="#common-sequence-operations">Yaygın Dizi İşlemleri</a></li>
 <li><a class="reference internal" href="#immutable-sequence-types">Değiştirilemez Dizi Tipleri</a></li>
 <li><a class="reference internal" href="#mutable-sequence-types">Değiştirilebilir Dizi Tipleri</a></li>
-<li><a class="reference internal" href="#lists">Listeler</a></li>
-<li><a class="reference internal" href="#tuples">Demetler</a></li>
-<li><a class="reference internal" href="#ranges">Aralıklar</a></li>
+<li><a class="reference internal" href="#lists">Listeler</a><ul>
+<li><a class="reference internal" href="#list"><code class="docutils literal notranslate"><span class="pre">list</span></code></a><ul>
+<li><a class="reference internal" href="#list.sort"><code class="docutils literal notranslate"><span class="pre">list.sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tuples">Demetler</a><ul>
+<li><a class="reference internal" href="#tuple"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ranges">Aralıklar</a><ul>
+<li><a class="reference internal" href="#range"><code class="docutils literal notranslate"><span class="pre">range</span></code></a><ul>
+<li><a class="reference internal" href="#range.start"><code class="docutils literal notranslate"><span class="pre">range.start</span></code></a></li>
+<li><a class="reference internal" href="#range.stop"><code class="docutils literal notranslate"><span class="pre">range.stop</span></code></a></li>
+<li><a class="reference internal" href="#range.step"><code class="docutils literal notranslate"><span class="pre">range.step</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#text-sequence-type-str">Metin Sırası Türü — <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a><ul>
-<li><a class="reference internal" href="#string-methods">String (Dize) Metotları</a></li>
+<li><a class="reference internal" href="#str"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></li>
+<li><a class="reference internal" href="#string-methods">String (Dize) Metotları</a><ul>
+<li><a class="reference internal" href="#str.capitalize"><code class="docutils literal notranslate"><span class="pre">str.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#str.casefold"><code class="docutils literal notranslate"><span class="pre">str.casefold()</span></code></a></li>
+<li><a class="reference internal" href="#str.center"><code class="docutils literal notranslate"><span class="pre">str.center()</span></code></a></li>
+<li><a class="reference internal" href="#str.count"><code class="docutils literal notranslate"><span class="pre">str.count()</span></code></a></li>
+<li><a class="reference internal" href="#str.encode"><code class="docutils literal notranslate"><span class="pre">str.encode()</span></code></a></li>
+<li><a class="reference internal" href="#str.endswith"><code class="docutils literal notranslate"><span class="pre">str.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#str.expandtabs"><code class="docutils literal notranslate"><span class="pre">str.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#str.find"><code class="docutils literal notranslate"><span class="pre">str.find()</span></code></a></li>
+<li><a class="reference internal" href="#str.format"><code class="docutils literal notranslate"><span class="pre">str.format()</span></code></a></li>
+<li><a class="reference internal" href="#str.format_map"><code class="docutils literal notranslate"><span class="pre">str.format_map()</span></code></a></li>
+<li><a class="reference internal" href="#str.index"><code class="docutils literal notranslate"><span class="pre">str.index()</span></code></a></li>
+<li><a class="reference internal" href="#str.isalnum"><code class="docutils literal notranslate"><span class="pre">str.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#str.isalpha"><code class="docutils literal notranslate"><span class="pre">str.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#str.isascii"><code class="docutils literal notranslate"><span class="pre">str.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#str.isdecimal"><code class="docutils literal notranslate"><span class="pre">str.isdecimal()</span></code></a></li>
+<li><a class="reference internal" href="#str.isdigit"><code class="docutils literal notranslate"><span class="pre">str.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#str.isidentifier"><code class="docutils literal notranslate"><span class="pre">str.isidentifier()</span></code></a></li>
+<li><a class="reference internal" href="#str.islower"><code class="docutils literal notranslate"><span class="pre">str.islower()</span></code></a></li>
+<li><a class="reference internal" href="#str.isnumeric"><code class="docutils literal notranslate"><span class="pre">str.isnumeric()</span></code></a></li>
+<li><a class="reference internal" href="#str.isprintable"><code class="docutils literal notranslate"><span class="pre">str.isprintable()</span></code></a></li>
+<li><a class="reference internal" href="#str.isspace"><code class="docutils literal notranslate"><span class="pre">str.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#str.istitle"><code class="docutils literal notranslate"><span class="pre">str.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#str.isupper"><code class="docutils literal notranslate"><span class="pre">str.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#str.join"><code class="docutils literal notranslate"><span class="pre">str.join()</span></code></a></li>
+<li><a class="reference internal" href="#str.ljust"><code class="docutils literal notranslate"><span class="pre">str.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#str.lower"><code class="docutils literal notranslate"><span class="pre">str.lower()</span></code></a></li>
+<li><a class="reference internal" href="#str.lstrip"><code class="docutils literal notranslate"><span class="pre">str.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#str.maketrans"><code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#str.partition"><code class="docutils literal notranslate"><span class="pre">str.partition()</span></code></a></li>
+<li><a class="reference internal" href="#str.removeprefix"><code class="docutils literal notranslate"><span class="pre">str.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#str.removesuffix"><code class="docutils literal notranslate"><span class="pre">str.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#str.replace"><code class="docutils literal notranslate"><span class="pre">str.replace()</span></code></a></li>
+<li><a class="reference internal" href="#str.rfind"><code class="docutils literal notranslate"><span class="pre">str.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#str.rindex"><code class="docutils literal notranslate"><span class="pre">str.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#str.rjust"><code class="docutils literal notranslate"><span class="pre">str.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#str.rpartition"><code class="docutils literal notranslate"><span class="pre">str.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#str.rsplit"><code class="docutils literal notranslate"><span class="pre">str.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#str.rstrip"><code class="docutils literal notranslate"><span class="pre">str.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#str.split"><code class="docutils literal notranslate"><span class="pre">str.split()</span></code></a></li>
+<li><a class="reference internal" href="#str.splitlines"><code class="docutils literal notranslate"><span class="pre">str.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#str.startswith"><code class="docutils literal notranslate"><span class="pre">str.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#str.strip"><code class="docutils literal notranslate"><span class="pre">str.strip()</span></code></a></li>
+<li><a class="reference internal" href="#str.swapcase"><code class="docutils literal notranslate"><span class="pre">str.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#str.title"><code class="docutils literal notranslate"><span class="pre">str.title()</span></code></a></li>
+<li><a class="reference internal" href="#str.translate"><code class="docutils literal notranslate"><span class="pre">str.translate()</span></code></a></li>
+<li><a class="reference internal" href="#str.upper"><code class="docutils literal notranslate"><span class="pre">str.upper()</span></code></a></li>
+<li><a class="reference internal" href="#str.zfill"><code class="docutils literal notranslate"><span class="pre">str.zfill()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#printf-style-string-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style String Formatting</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#binary-sequence-types-bytes-bytearray-memoryview">Binary Sequence Types — <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a><ul>
-<li><a class="reference internal" href="#bytes-objects">Bytes Objects</a></li>
-<li><a class="reference internal" href="#bytearray-objects">Bytearray Objects</a></li>
-<li><a class="reference internal" href="#bytes-and-bytearray-operations">Bytes and Bytearray Operations</a></li>
-<li><a class="reference internal" href="#printf-style-bytes-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting</a></li>
-<li><a class="reference internal" href="#memory-views">Memory Views</a></li>
+<li><a class="reference internal" href="#bytes-objects">Bytes Objects</a><ul>
+<li><a class="reference internal" href="#bytes"><code class="docutils literal notranslate"><span class="pre">bytes</span></code></a><ul>
+<li><a class="reference internal" href="#bytes.fromhex"><code class="docutils literal notranslate"><span class="pre">bytes.fromhex()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.hex"><code class="docutils literal notranslate"><span class="pre">bytes.hex()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#set-types-set-frozenset">Set Türleri — <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bytearray-objects">Bytearray Objects</a><ul>
+<li><a class="reference internal" href="#bytearray"><code class="docutils literal notranslate"><span class="pre">bytearray</span></code></a><ul>
+<li><a class="reference internal" href="#bytearray.fromhex"><code class="docutils literal notranslate"><span class="pre">bytearray.fromhex()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.hex"><code class="docutils literal notranslate"><span class="pre">bytearray.hex()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bytes-and-bytearray-operations">Bytes and Bytearray Operations</a><ul>
+<li><a class="reference internal" href="#bytes.count"><code class="docutils literal notranslate"><span class="pre">bytes.count()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.count"><code class="docutils literal notranslate"><span class="pre">bytearray.count()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.removeprefix"><code class="docutils literal notranslate"><span class="pre">bytes.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.removeprefix"><code class="docutils literal notranslate"><span class="pre">bytearray.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.removesuffix"><code class="docutils literal notranslate"><span class="pre">bytes.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.removesuffix"><code class="docutils literal notranslate"><span class="pre">bytearray.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.decode"><code class="docutils literal notranslate"><span class="pre">bytes.decode()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.decode"><code class="docutils literal notranslate"><span class="pre">bytearray.decode()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.endswith"><code class="docutils literal notranslate"><span class="pre">bytes.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.endswith"><code class="docutils literal notranslate"><span class="pre">bytearray.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.find"><code class="docutils literal notranslate"><span class="pre">bytes.find()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.find"><code class="docutils literal notranslate"><span class="pre">bytearray.find()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.index"><code class="docutils literal notranslate"><span class="pre">bytes.index()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.index"><code class="docutils literal notranslate"><span class="pre">bytearray.index()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.join"><code class="docutils literal notranslate"><span class="pre">bytes.join()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.join"><code class="docutils literal notranslate"><span class="pre">bytearray.join()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.maketrans"><code class="docutils literal notranslate"><span class="pre">bytes.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.maketrans"><code class="docutils literal notranslate"><span class="pre">bytearray.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.partition"><code class="docutils literal notranslate"><span class="pre">bytes.partition()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.partition"><code class="docutils literal notranslate"><span class="pre">bytearray.partition()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.replace"><code class="docutils literal notranslate"><span class="pre">bytes.replace()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.replace"><code class="docutils literal notranslate"><span class="pre">bytearray.replace()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rfind"><code class="docutils literal notranslate"><span class="pre">bytes.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rfind"><code class="docutils literal notranslate"><span class="pre">bytearray.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rindex"><code class="docutils literal notranslate"><span class="pre">bytes.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rindex"><code class="docutils literal notranslate"><span class="pre">bytearray.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rpartition"><code class="docutils literal notranslate"><span class="pre">bytes.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rpartition"><code class="docutils literal notranslate"><span class="pre">bytearray.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.startswith"><code class="docutils literal notranslate"><span class="pre">bytes.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.startswith"><code class="docutils literal notranslate"><span class="pre">bytearray.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.translate"><code class="docutils literal notranslate"><span class="pre">bytes.translate()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.translate"><code class="docutils literal notranslate"><span class="pre">bytearray.translate()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.center"><code class="docutils literal notranslate"><span class="pre">bytes.center()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.center"><code class="docutils literal notranslate"><span class="pre">bytearray.center()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.ljust"><code class="docutils literal notranslate"><span class="pre">bytes.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.ljust"><code class="docutils literal notranslate"><span class="pre">bytearray.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.lstrip"><code class="docutils literal notranslate"><span class="pre">bytes.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.lstrip"><code class="docutils literal notranslate"><span class="pre">bytearray.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rjust"><code class="docutils literal notranslate"><span class="pre">bytes.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rjust"><code class="docutils literal notranslate"><span class="pre">bytearray.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rsplit"><code class="docutils literal notranslate"><span class="pre">bytes.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rsplit"><code class="docutils literal notranslate"><span class="pre">bytearray.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rstrip"><code class="docutils literal notranslate"><span class="pre">bytes.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rstrip"><code class="docutils literal notranslate"><span class="pre">bytearray.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.split"><code class="docutils literal notranslate"><span class="pre">bytes.split()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.split"><code class="docutils literal notranslate"><span class="pre">bytearray.split()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.strip"><code class="docutils literal notranslate"><span class="pre">bytes.strip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.strip"><code class="docutils literal notranslate"><span class="pre">bytearray.strip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.capitalize"><code class="docutils literal notranslate"><span class="pre">bytes.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.capitalize"><code class="docutils literal notranslate"><span class="pre">bytearray.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.expandtabs"><code class="docutils literal notranslate"><span class="pre">bytes.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.expandtabs"><code class="docutils literal notranslate"><span class="pre">bytearray.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isalnum"><code class="docutils literal notranslate"><span class="pre">bytes.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isalnum"><code class="docutils literal notranslate"><span class="pre">bytearray.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isalpha"><code class="docutils literal notranslate"><span class="pre">bytes.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isalpha"><code class="docutils literal notranslate"><span class="pre">bytearray.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isascii"><code class="docutils literal notranslate"><span class="pre">bytes.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isascii"><code class="docutils literal notranslate"><span class="pre">bytearray.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isdigit"><code class="docutils literal notranslate"><span class="pre">bytes.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isdigit"><code class="docutils literal notranslate"><span class="pre">bytearray.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.islower"><code class="docutils literal notranslate"><span class="pre">bytes.islower()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.islower"><code class="docutils literal notranslate"><span class="pre">bytearray.islower()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isspace"><code class="docutils literal notranslate"><span class="pre">bytes.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isspace"><code class="docutils literal notranslate"><span class="pre">bytearray.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.istitle"><code class="docutils literal notranslate"><span class="pre">bytes.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.istitle"><code class="docutils literal notranslate"><span class="pre">bytearray.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isupper"><code class="docutils literal notranslate"><span class="pre">bytes.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isupper"><code class="docutils literal notranslate"><span class="pre">bytearray.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.lower"><code class="docutils literal notranslate"><span class="pre">bytes.lower()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.lower"><code class="docutils literal notranslate"><span class="pre">bytearray.lower()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.splitlines"><code class="docutils literal notranslate"><span class="pre">bytes.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.splitlines"><code class="docutils literal notranslate"><span class="pre">bytearray.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.swapcase"><code class="docutils literal notranslate"><span class="pre">bytes.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.swapcase"><code class="docutils literal notranslate"><span class="pre">bytearray.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.title"><code class="docutils literal notranslate"><span class="pre">bytes.title()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.title"><code class="docutils literal notranslate"><span class="pre">bytearray.title()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.upper"><code class="docutils literal notranslate"><span class="pre">bytes.upper()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.upper"><code class="docutils literal notranslate"><span class="pre">bytearray.upper()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.zfill"><code class="docutils literal notranslate"><span class="pre">bytes.zfill()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.zfill"><code class="docutils literal notranslate"><span class="pre">bytearray.zfill()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#printf-style-bytes-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting</a></li>
+<li><a class="reference internal" href="#memory-views">Memory Views</a><ul>
+<li><a class="reference internal" href="#memoryview"><code class="docutils literal notranslate"><span class="pre">memoryview</span></code></a><ul>
+<li><a class="reference internal" href="#memoryview.__eq__"><code class="docutils literal notranslate"><span class="pre">memoryview.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.tobytes"><code class="docutils literal notranslate"><span class="pre">memoryview.tobytes()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.hex"><code class="docutils literal notranslate"><span class="pre">memoryview.hex()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.tolist"><code class="docutils literal notranslate"><span class="pre">memoryview.tolist()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.toreadonly"><code class="docutils literal notranslate"><span class="pre">memoryview.toreadonly()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.release"><code class="docutils literal notranslate"><span class="pre">memoryview.release()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.cast"><code class="docutils literal notranslate"><span class="pre">memoryview.cast()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.obj"><code class="docutils literal notranslate"><span class="pre">memoryview.obj</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.nbytes"><code class="docutils literal notranslate"><span class="pre">memoryview.nbytes</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.readonly"><code class="docutils literal notranslate"><span class="pre">memoryview.readonly</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.format"><code class="docutils literal notranslate"><span class="pre">memoryview.format</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.itemsize"><code class="docutils literal notranslate"><span class="pre">memoryview.itemsize</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.ndim"><code class="docutils literal notranslate"><span class="pre">memoryview.ndim</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.shape"><code class="docutils literal notranslate"><span class="pre">memoryview.shape</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.strides"><code class="docutils literal notranslate"><span class="pre">memoryview.strides</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.suboffsets"><code class="docutils literal notranslate"><span class="pre">memoryview.suboffsets</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.c_contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.c_contiguous</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.f_contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.f_contiguous</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.contiguous</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-types-set-frozenset">Set Türleri — <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a><ul>
+<li><a class="reference internal" href="#set"><code class="docutils literal notranslate"><span class="pre">set</span></code></a></li>
+<li><a class="reference internal" href="#frozenset"><code class="docutils literal notranslate"><span class="pre">frozenset</span></code></a><ul>
+<li><a class="reference internal" href="#frozenset.isdisjoint"><code class="docutils literal notranslate"><span class="pre">frozenset.isdisjoint()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.issubset"><code class="docutils literal notranslate"><span class="pre">frozenset.issubset()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.issuperset"><code class="docutils literal notranslate"><span class="pre">frozenset.issuperset()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.union"><code class="docutils literal notranslate"><span class="pre">frozenset.union()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.intersection"><code class="docutils literal notranslate"><span class="pre">frozenset.intersection()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.difference"><code class="docutils literal notranslate"><span class="pre">frozenset.difference()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.symmetric_difference"><code class="docutils literal notranslate"><span class="pre">frozenset.symmetric_difference()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.copy"><code class="docutils literal notranslate"><span class="pre">frozenset.copy()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.update"><code class="docutils literal notranslate"><span class="pre">frozenset.update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.intersection_update"><code class="docutils literal notranslate"><span class="pre">frozenset.intersection_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.difference_update"><code class="docutils literal notranslate"><span class="pre">frozenset.difference_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.symmetric_difference_update"><code class="docutils literal notranslate"><span class="pre">frozenset.symmetric_difference_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.add"><code class="docutils literal notranslate"><span class="pre">frozenset.add()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.remove"><code class="docutils literal notranslate"><span class="pre">frozenset.remove()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.discard"><code class="docutils literal notranslate"><span class="pre">frozenset.discard()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.pop"><code class="docutils literal notranslate"><span class="pre">frozenset.pop()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.clear"><code class="docutils literal notranslate"><span class="pre">frozenset.clear()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#mapping-types-dict">Mapping Types — <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a><ul>
+<li><a class="reference internal" href="#dict"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a><ul>
+<li><a class="reference internal" href="#dict.clear"><code class="docutils literal notranslate"><span class="pre">dict.clear()</span></code></a></li>
+<li><a class="reference internal" href="#dict.copy"><code class="docutils literal notranslate"><span class="pre">dict.copy()</span></code></a></li>
+<li><a class="reference internal" href="#dict.fromkeys"><code class="docutils literal notranslate"><span class="pre">dict.fromkeys()</span></code></a></li>
+<li><a class="reference internal" href="#dict.get"><code class="docutils literal notranslate"><span class="pre">dict.get()</span></code></a></li>
+<li><a class="reference internal" href="#dict.items"><code class="docutils literal notranslate"><span class="pre">dict.items()</span></code></a></li>
+<li><a class="reference internal" href="#dict.keys"><code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code></a></li>
+<li><a class="reference internal" href="#dict.pop"><code class="docutils literal notranslate"><span class="pre">dict.pop()</span></code></a></li>
+<li><a class="reference internal" href="#dict.popitem"><code class="docutils literal notranslate"><span class="pre">dict.popitem()</span></code></a></li>
+<li><a class="reference internal" href="#dict.setdefault"><code class="docutils literal notranslate"><span class="pre">dict.setdefault()</span></code></a></li>
+<li><a class="reference internal" href="#dict.update"><code class="docutils literal notranslate"><span class="pre">dict.update()</span></code></a></li>
+<li><a class="reference internal" href="#dict.values"><code class="docutils literal notranslate"><span class="pre">dict.values()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#dictionary-view-objects">Dictionary view objects</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#context-manager-types">Bağlam Yöneticisi Türleri</a></li>
+<li><a class="reference internal" href="#context-manager-types">Bağlam Yöneticisi Türleri</a><ul>
+<li><a class="reference internal" href="#contextmanager.__enter__"><code class="docutils literal notranslate"><span class="pre">contextmanager.__enter__()</span></code></a></li>
+<li><a class="reference internal" href="#contextmanager.__exit__"><code class="docutils literal notranslate"><span class="pre">contextmanager.__exit__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#type-annotation-types-generic-alias-union">Type Annotation Types — <span class="xref std std-ref">Generic Alias</span>, <span class="xref std std-ref">Union</span></a><ul>
 <li><a class="reference internal" href="#generic-alias-type">Genel Takma Ad Türü</a><ul>
 <li><a class="reference internal" href="#standard-generic-classes">Standart Jenerik Sınıflar</a></li>
-<li><a class="reference internal" href="#special-attributes-of-genericalias-objects"><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri</a></li>
+<li><a class="reference internal" href="#special-attributes-of-genericalias-objects"><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri</a><ul>
+<li><a class="reference internal" href="#genericalias.__origin__"><code class="docutils literal notranslate"><span class="pre">genericalias.__origin__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__args__"><code class="docutils literal notranslate"><span class="pre">genericalias.__args__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__parameters__"><code class="docutils literal notranslate"><span class="pre">genericalias.__parameters__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__unpacked__"><code class="docutils literal notranslate"><span class="pre">genericalias.__unpacked__</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#union-type">Sendika Türü</a></li>
@@ -163,7 +412,17 @@
 <li><a class="reference internal" href="#internal-objects">İç Nesneler</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#special-attributes">Özel Özellikler</a></li>
+<li><a class="reference internal" href="#special-attributes">Özel Özellikler</a><ul>
+<li><a class="reference internal" href="#object.__dict__"><code class="docutils literal notranslate"><span class="pre">object.__dict__</span></code></a></li>
+<li><a class="reference internal" href="#instance.__class__"><code class="docutils literal notranslate"><span class="pre">instance.__class__</span></code></a></li>
+<li><a class="reference internal" href="#class.__bases__"><code class="docutils literal notranslate"><span class="pre">class.__bases__</span></code></a></li>
+<li><a class="reference internal" href="#definition.__name__"><code class="docutils literal notranslate"><span class="pre">definition.__name__</span></code></a></li>
+<li><a class="reference internal" href="#definition.__qualname__"><code class="docutils literal notranslate"><span class="pre">definition.__qualname__</span></code></a></li>
+<li><a class="reference internal" href="#class.__mro__"><code class="docutils literal notranslate"><span class="pre">class.__mro__</span></code></a></li>
+<li><a class="reference internal" href="#class.mro"><code class="docutils literal notranslate"><span class="pre">class.mro()</span></code></a></li>
+<li><a class="reference internal" href="#class.__subclasses__"><code class="docutils literal notranslate"><span class="pre">class.__subclasses__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#integer-string-conversion-length-limitation">Integer string conversion length limitation</a><ul>
 <li><a class="reference internal" href="#affected-apis">Affected APIs</a></li>
 <li><a class="reference internal" href="#configuring-the-limit">Configuring the limit</a></li>
@@ -262,15 +521,15 @@
           <div class="body" role="main">
             
   <section id="built-in-types">
-<span id="bltin-types"></span><h1>Gömülü Türler<a class="headerlink" href="#built-in-types" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="bltin-types"></span><h1>Gömülü Türler<a class="headerlink" href="#built-in-types" title="Permalink to this heading">¶</a></h1>
 <p>Aşağıdaki bölümlerde, yorumlayıcıda yerleşik olarak yer alan standart türler açıklanmaktadır.</p>
 <p id="index-0">Başlıca gömülü türler sayısallar, diziler, eşleşmeler, sınıflar, örnekler ve kural dışı durumlardır.</p>
 <p>Bazı koleksiyon sınıfları değişebilirdir.  Üyelerini yerinde ekleyen, çıkaran veya yeniden düzenleyen ve belirli bir öğe döndürmeyen metotlar, her zaman koleksiyon örneğini değil <code class="docutils literal notranslate"><span class="pre">None</span></code> değerini döndürür.</p>
 <p>Bazı işlemler birkaç nesne türü tarafından desteklenir; özellikle, tüm nesneler eşitlik için karşılaştırılabilir, doğruluk değeri için test edilebilir ve bir dizeye dönüştürülebilir (<a class="reference internal" href="functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> fonksiyonu veya hafif farklı olan <a class="reference internal" href="#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> fonksiyonu ile).  İkinci fonksiyon, bir nesne <a class="reference internal" href="functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> ile yazdırıldığında dolaylı olarak kullanılır.</p>
 <section id="truth-value-testing">
-<span id="truth"></span><h2>Doğruluk Değeri Testi<a class="headerlink" href="#truth-value-testing" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="truth"></span><h2>Doğruluk Değeri Testi<a class="headerlink" href="#truth-value-testing" title="Permalink to this heading">¶</a></h2>
 <p id="index-1">Herhangi bir nesne, <a class="reference internal" href="../reference/compound_stmts.html#if"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a> veya <a class="reference internal" href="../reference/compound_stmts.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> koşulunda veya aşağıdaki Boolean işlemlerinin işleneni olarak kullanımında doğruluk değeri için test edilebilir.</p>
-<p id="index-2">Varsayılan olarak, bir nesne, sınıfı “False” döndüren bir <code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code> metodunu veya nesneyle birlikte çağrıldığında sıfır döndüren bir <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> metodunu tanımlamadıkça doğru kabul edilir. <a class="footnote-reference brackets" href="#id12" id="id1">1</a> Yanlış olarak kabul edilen yerleşik nesnelerin çoğu:</p>
+<p id="index-2">Varsayılan olarak, bir nesne, sınıfı “False” döndüren bir <code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code> metodunu veya nesneyle birlikte çağrıldığında sıfır döndüren bir <code class="xref py py-meth docutils literal notranslate"><span class="pre">__len__()</span></code> metodunu tanımlamadıkça doğru kabul edilir. <a class="footnote-reference brackets" href="#id12" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Yanlış olarak kabul edilen yerleşik nesnelerin çoğu:</p>
 <blockquote>
 <div></div></blockquote>
 <ul class="simple" id="index-3">
@@ -281,14 +540,9 @@
 <p id="index-4">Boolean sonucu olan işlemler ve gömülü fonksiyonlar, aksi belirtilmedikçe her zaman false için “0” veya “False” ve true için “1” veya “True” döndürür. (Önemli istisna: Boolean işlemleri “or” ve “and” her zaman işlenenlerinden birini döndürür.)</p>
 </section>
 <section id="boolean-operations-and-or-not">
-<span id="boolean"></span><h2>Boolean İşlemleri — <code class="xref std std-keyword docutils literal notranslate"><span class="pre">and</span></code>, <code class="xref std std-keyword docutils literal notranslate"><span class="pre">or</span></code>, <code class="xref std std-keyword docutils literal notranslate"><span class="pre">not</span></code><a class="headerlink" href="#boolean-operations-and-or-not" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="boolean"></span><h2>Boolean İşlemleri — <code class="xref std std-keyword docutils literal notranslate"><span class="pre">and</span></code>, <code class="xref std std-keyword docutils literal notranslate"><span class="pre">or</span></code>, <code class="xref std std-keyword docutils literal notranslate"><span class="pre">not</span></code><a class="headerlink" href="#boolean-operations-and-or-not" title="Permalink to this heading">¶</a></h2>
 <p id="index-5">Bunlar artan önceliğe göre sıralanmış Boolean işlemleridir:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 62%" />
-<col style="width: 13%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -318,14 +572,10 @@
 </ol>
 </section>
 <section id="comparisons">
-<span id="stdcomparisons"></span><h2>Karşılaştırmalar<a class="headerlink" href="#comparisons" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="stdcomparisons"></span><h2>Karşılaştırmalar<a class="headerlink" href="#comparisons" title="Permalink to this heading">¶</a></h2>
 <p id="index-7">Python’da sekiz karşılaştırma işlemi vardır.  Hepsinin önceliği aynıdır (Boolean işlemlerinden daha önceliklidir).  Karşılaştırmalar isteğe bağlı olarak zincirlenebilir; örneğin, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">&lt;=</span> <span class="pre">z</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span> <span class="pre">and</span> <span class="pre">y</span> <span class="pre">&lt;=</span> <span class="pre">z</span></code> ile eş değerdir, ancak <em>y</em> yalnızca bir kez değerlendirilir (ancak her iki durumda da <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code> yanlış olduğu tespit edildiğinde <em>z</em> hiç değerlendirilmez).</p>
 <p>Bu tablo karşılaştırma operatörlerini özetlemektedir:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 32%" />
-<col style="width: 68%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -365,19 +615,13 @@
 <p id="index-10">Aynı söz dizimsel önceliğe sahip iki işlem daha, <a class="reference internal" href="../reference/expressions.html#in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">in</span></code></a> ve <a class="reference internal" href="../reference/expressions.html#not-in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></a>, <a class="reference internal" href="../glossary.html#term-iterable"><span class="xref std std-term">iterable</span></a> olan veya <code class="xref py py-meth docutils literal notranslate"><span class="pre">__contains__()</span></code> metodunu uygulayan türler tarafından desteklenir.</p>
 </section>
 <section id="numeric-types-int-float-complex">
-<span id="typesnumeric"></span><h2>Sayısal Türler — <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference internal" href="functions.html#complex" title="complex"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a><a class="headerlink" href="#numeric-types-int-float-complex" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typesnumeric"></span><h2>Sayısal Türler — <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference internal" href="functions.html#complex" title="complex"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a><a class="headerlink" href="#numeric-types-int-float-complex" title="Permalink to this heading">¶</a></h2>
 <p id="index-11">Üç farklı sayısal tür vardır: <em class="dfn">integers</em>, <em class="dfn">floating point numbers</em>, ve <em class="dfn">complex numbers</em>.  Ayrıca, Booleanlar tam sayıların bir alt türüdür.  Tam sayıların kesinliği sınırsızdır.  Gerçel sayılar genellikle C dilinde <span class="c-expr sig sig-inline c"><span class="kt">double</span></span> kullanılarak uygulanır; programınızın çalıştığı makine için gerçel sayıların kesinliği ve dahili gösterimi hakkında bilgi <a class="reference internal" href="sys.html#sys.float_info" title="sys.float_info"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.float_info</span></code></a> içinde mevcuttur.  Karmaşık sayıların her biri bir gerçel sayı olan gerçek ve sanal birer kısımları vardır. Bu parçaları <em>z</em> karmaşık sayısından ayıklamak için <code class="docutils literal notranslate"><span class="pre">z.real</span></code> ve <code class="docutils literal notranslate"><span class="pre">z.imag</span></code> kullanın. (Standart kütüphane, rasyonel sayılar için <a class="reference internal" href="fractions.html#fractions.Fraction" title="fractions.Fraction"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a> ve kullanıcı tarafından tanımlanabilen hassasiyete sahip gerçel sayılar için <a class="reference internal" href="decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">decimal.Decimal</span></code></a> ek sayısal türlerini içerir.)</p>
 <p id="index-12">Sayılar, sayısal değişmezlerle veya, gömülü fonksiyonlar ve operatörlerin sonucu olarak oluşturulur.  Sade tam sayı değişmezleri (onaltılı, sekizli ve ikili sayılar dahil) tam sayıları verir.  Ondalık nokta veya üs işareti içeren sayısal değişmezler, gerçel sayıları verir.  Sayısal bir değişmeze <code class="docutils literal notranslate"><span class="pre">'j'</span></code> veya <code class="docutils literal notranslate"><span class="pre">'J'</span></code> eklemek, tam veya gerçel bir sayıya eklenince gerçek ve hayali kısımları olan bir karmaşık sayı ortaya çıkaran, hayali bir sayı üretir.</p>
-<p id="index-13">Python karma aritmetiği tam olarak destekler: herhangi bir ikili aritmetik operatörü farklı sayısal türlerde işlenenlere sahip olduğunda, “dar” türe sahip işlenen, tam sayı karmaşık sayıdan daha dar olan gerçel sayıdan daha dar olduğu diğerininkine genişletilir. Farklı türlerdeki sayıların karşılaştırılması, bu sayıların tam değerleri karşılaştırılıyormuş gibi davranır. <a class="footnote-reference brackets" href="#id13" id="id2">2</a></p>
+<p id="index-13">Python karma aritmetiği tam olarak destekler: herhangi bir ikili aritmetik operatörü farklı sayısal türlerde işlenenlere sahip olduğunda, “dar” türe sahip işlenen, tam sayı karmaşık sayıdan daha dar olan gerçel sayıdan daha dar olduğu diğerininkine genişletilir. Farklı türlerdeki sayıların karşılaştırılması, bu sayıların tam değerleri karşılaştırılıyormuş gibi davranır. <a class="footnote-reference brackets" href="#id13" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
 <p><a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code></a>, <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-func docutils literal notranslate"><span class="pre">float()</span></code></a> ve <a class="reference internal" href="functions.html#complex" title="complex"><code class="xref py py-func docutils literal notranslate"><span class="pre">complex()</span></code></a> yapıcıları belirli bir türde sayılar üretmek için kullanılabilir.</p>
 <p>Tüm sayısal türler (karmaşık sayılar hariç) aşağıdaki işlemleri destekler (işlemlerin öncelikleri için bkz. <a class="reference internal" href="../reference/expressions.html#operator-summary"><span class="std std-ref">Operator precedence</span></a>):</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 40%" />
-<col style="width: 11%" />
-<col style="width: 24%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -482,10 +726,6 @@
 </ol>
 <p>Tüm <a class="reference internal" href="numbers.html#numbers.Real" title="numbers.Real"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Real</span></code></a> türleri (<a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> ve <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>) ayrıca aşağıdaki işlemleri içerir:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 69%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -509,16 +749,11 @@
 </table>
 <p>Ek sayısal işlemler için <a class="reference internal" href="math.html#module-math" title="math: Mathematical functions (sin() etc.)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">math</span></code></a> ve <a class="reference internal" href="cmath.html#module-cmath" title="cmath: Mathematical functions for complex numbers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">cmath</span></code></a> modüllerine bakın.</p>
 <section id="bitwise-operations-on-integer-types">
-<span id="bitstring-ops"></span><h3>Tam sayı Türlerinde Bit Düzeyinde İşlemler<a class="headerlink" href="#bitwise-operations-on-integer-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bitstring-ops"></span><h3>Tam sayı Türlerinde Bit Düzeyinde İşlemler<a class="headerlink" href="#bitwise-operations-on-integer-types" title="Permalink to this heading">¶</a></h3>
 <p id="index-16">Bit düzeyinde işlemler yalnızca tam sayılar için anlamlıdır. Bit düzeyinde işlemlerin sonucu, sonsuz sayıda işaret biti ile ikiye tümleyende gerçekleştiriliyormuş gibi hesaplanır.</p>
 <p>İkili bit düzeyinde işlemlerin öncelikleri, sayısal işlemlerden daha düşük ve karşılaştırmalardan daha yüksektir; <code class="docutils literal notranslate"><span class="pre">~</span></code> tekli işlemidiğer tekli sayısal işlemlerle (<code class="docutils literal notranslate"><span class="pre">+</span></code> ve <code class="docutils literal notranslate"><span class="pre">-</span></code>) aynı önceliğe sahiptir.</p>
 <p>Bu tablo, artan önceliğe göre sıralanmış bit düzeyinde işlemleri listeler:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 59%" />
-<col style="width: 19%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -561,7 +796,7 @@
 </ol>
 </section>
 <section id="additional-methods-on-integer-types">
-<h3>Integer (Tam sayı) Türlerinde Ek Metotlar<a class="headerlink" href="#additional-methods-on-integer-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Integer (Tam sayı) Türlerinde Ek Metotlar<a class="headerlink" href="#additional-methods-on-integer-types" title="Permalink to this heading">¶</a></h3>
 <p>Int türü, <a class="reference internal" href="numbers.html#numbers.Integral" title="numbers.Integral"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Integral</span></code></a> <a class="reference internal" href="../glossary.html#term-abstract-base-class"><span class="xref std std-term">abstract base class</span></a> ‘ı uygular. Ek olarak, birkaç metot daha sağlar:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="int.bit_length">
@@ -715,7 +950,7 @@ system, use <a class="reference internal" href="sys.html#sys.byteorder" title="s
 
 </section>
 <section id="additional-methods-on-float">
-<h3>Gerçel Sayılarda Ek Metotlar<a class="headerlink" href="#additional-methods-on-float" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Gerçel Sayılarda Ek Metotlar<a class="headerlink" href="#additional-methods-on-float" title="Permalink to this heading">¶</a></h3>
 <p>Float türü, <a class="reference internal" href="numbers.html#numbers.Real" title="numbers.Real"><code class="xref py py-class docutils literal notranslate"><span class="pre">numbers.Real</span></code></a> <a class="reference internal" href="../glossary.html#term-abstract-base-class"><span class="xref std std-term">abstract base class</span></a> ‘ı uygular. Float ayrıca aşağıdaki ek metotlara sahiptir.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="float.as_integer_ratio">
@@ -776,7 +1011,7 @@ character or Java’s <code class="docutils literal notranslate"><span class="pr
 </div>
 </section>
 <section id="hashing-of-numeric-types">
-<span id="numeric-hash"></span><h3>Sayısal türlerin hashlemesi<a class="headerlink" href="#hashing-of-numeric-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="numeric-hash"></span><h3>Sayısal türlerin hashlemesi<a class="headerlink" href="#hashing-of-numeric-types" title="Permalink to this heading">¶</a></h3>
 <p>Muhtemelen farklı türlerdeki <code class="docutils literal notranslate"><span class="pre">x</span></code> ve <code class="docutils literal notranslate"><span class="pre">y</span></code> sayıları için, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code> olduğunda <code class="docutils literal notranslate"><span class="pre">hash(x)</span> <span class="pre">==</span> <span class="pre">hash(y)</span></code> olması bir gerekliliktir (bkz. <a class="reference internal" href="../reference/datamodel.html#object.__hash__" title="object.__hash__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__hash__()</span></code></a>). Çeşitli sayısal türler arasında uygulama kolaylığı ve verimlilik için (<a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference internal" href="decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-class docutils literal notranslate"><span class="pre">decimal.Decimal</span></code></a> ve <a class="reference internal" href="fractions.html#fractions.Fraction" title="fractions.Fraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a> dahil) Python’un sayısal türler için hash’i, herhangi bir rasyonel sayı için tanımlanmış tek bir matematiksel fonksiyona dayanır ve bu nedenle <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> ve <a class="reference internal" href="fractions.html#fractions.Fraction" title="fractions.Fraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">fractions.Fraction</span></code></a> ‘ın tüm örnekleri ve <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> ve <a class="reference internal" href="decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-class docutils literal notranslate"><span class="pre">decimal.Decimal</span></code></a> öğelerinin tüm sonlu örnekleri için geçerlidir. Esasen, bu fonksiyon sabit bir asal sayı olan <code class="docutils literal notranslate"><span class="pre">P</span></code> için <code class="docutils literal notranslate"><span class="pre">reduction</span> <span class="pre">modulo</span></code> <code class="docutils literal notranslate"><span class="pre">P</span></code> ile verilir. <code class="docutils literal notranslate"><span class="pre">P</span></code> değeri Python’a <a class="reference internal" href="sys.html#sys.hash_info" title="sys.hash_info"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.hash_info</span></code></a> ‘nun <code class="xref py py-attr docutils literal notranslate"><span class="pre">modulus</span></code> özelliği olarak sunulur.</p>
 <div class="impl-detail compound">
 <p><strong>CPython uygulama ayrıntısı:</strong> Şu anda kullanılan asal sayı, 32 bit C uzunluğundaki makinelerde <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">2**31</span> <span class="pre">-</span> <span class="pre">1</span></code> ve 64-bit C uzunluğundaki makinelerde <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">2**61</span> <span class="pre">-</span> <span class="pre">1</span></code> şeklindedir.</p>
@@ -846,7 +1081,7 @@ and imaginary parts are combined by computing <code class="docutils literal notr
 </section>
 </section>
 <section id="iterator-types">
-<span id="typeiter"></span><h2>Yineleyici Türleri<a class="headerlink" href="#iterator-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typeiter"></span><h2>Yineleyici Türleri<a class="headerlink" href="#iterator-types" title="Permalink to this heading">¶</a></h2>
 <p id="index-17">Python, konteynerler üzerinde yineleme kavramını destekler. Bu, iki farklı metot kullanılarak uygulanır; bunlar, kullanıcı tanımlı sınıfların yinelemeyi desteklemesine izin vermek için kullanılır. Aşağıda daha ayrıntılı olarak açıklanan diziler, her zaman yineleme metotlarını destekler.</p>
 <p>Container nesnelerinin <a class="reference internal" href="../glossary.html#term-iterable"><span class="xref std std-term">iterable</span></a> desteği sağlaması için bir metodun tanımlanması gerekir:</p>
 <dl class="py method">
@@ -871,24 +1106,19 @@ and imaginary parts are combined by computing <code class="docutils literal notr
 <p>Python, genel ve özel dizi türleri, sözlükler ve diğer daha özel formlar üzerinde yinelemeyi desteklemek için birkaç yineleyici nesnesi tanımlar.  Belirli türler, yineleyici protokolünün uygulanmasının ötesinde önemli değildir.</p>
 <p>Bir yineleyicinin <a class="reference internal" href="#iterator.__next__" title="iterator.__next__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__next__()</span></code></a> metodu <a class="reference internal" href="exceptions.html#StopIteration" title="StopIteration"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StopIteration</span></code></a> hatasını verdiğinde, sonraki çağrılarda bunu yapmaya devam etmelidir. Bu özelliğe uymayan uygulamalar bozuk sayılır.</p>
 <section id="generator-types">
-<span id="id3"></span><h3>Oluşturucu Tipleri<a class="headerlink" href="#generator-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id3"></span><h3>Oluşturucu Tipleri<a class="headerlink" href="#generator-types" title="Permalink to this heading">¶</a></h3>
 <p>Python’un <a class="reference internal" href="../glossary.html#term-generator"><span class="xref std std-term">generator</span></a>s, yineleyici protokolünü uygulamak için uygun bir yol sağlar.  Bir container nesnesinin <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> metodu bir oluşturucu olarak uygulanırsa, otomatik olarak <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> ve <a class="reference internal" href="../reference/expressions.html#generator.__next__" title="generator.__next__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__next__()</span></code></a> metotlarını sağlayan bir yineleyici nesne (teknik olarak bir oluşturucu nesnesi) döndürür. Oluşturucular hakkında daha fazla bilgi <a class="reference internal" href="../reference/expressions.html#yieldexpr"><span class="std std-ref">the documentation for the yield expression</span></a> adresinde bulunabilir.</p>
 </section>
 </section>
 <section id="sequence-types-list-tuple-range">
-<span id="typesseq"></span><h2>Dizi Tipleri — <a class="reference internal" href="#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, <a class="reference internal" href="#range" title="range"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a><a class="headerlink" href="#sequence-types-list-tuple-range" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typesseq"></span><h2>Dizi Tipleri — <a class="reference internal" href="#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a>, <a class="reference internal" href="#range" title="range"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a><a class="headerlink" href="#sequence-types-list-tuple-range" title="Permalink to this heading">¶</a></h2>
 <p>Üç temel dizi türü vardır: listeler, demetler ve aralık nesneleri. <a class="reference internal" href="#binaryseq"><span class="std std-ref">binary data</span></a> ve <a class="reference internal" href="#textseq"><span class="std std-ref">text strings</span></a> ‘in işlenmesi için uyarlanmış ek dizi türleri, özel bölümlerde açıklanmıştır.</p>
 <section id="common-sequence-operations">
-<span id="typesseq-common"></span><h3>Yaygın Dizi İşlemleri<a class="headerlink" href="#common-sequence-operations" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-common"></span><h3>Yaygın Dizi İşlemleri<a class="headerlink" href="#common-sequence-operations" title="Permalink to this heading">¶</a></h3>
 <p id="index-18">Aşağıdaki tablodaki işlemler, hem değiştirilebilir hem de değiştirilemez olan çoğu dizi türü tarafından desteklenir. <a class="reference internal" href="collections.abc.html#collections.abc.Sequence" title="collections.abc.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code></a> ABC, bu işlemleri özel dize türlerinde doğru şekilde uygulamayı kolaylaştırmak için sağlanmıştır.</p>
 <p>Bu tablo artan önceliğe göre sıralanmış dizi işlemlerini listeler.  Tabloda <em>s</em> ve <em>t</em> aynı türden dizilerdir, <em>n</em>, <em>i</em>, <em>j</em> ve <em>k</em> tam sayılardır ve <em>x</em>, <em>s</em> tarafından dayatılan her tür ve değer kısıtlamasını karşılayan isteğe bağlı bir nesnedir.</p>
-<p><code class="docutils literal notranslate"><span class="pre">in</span></code> ve <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> işlemleri, karşılaştırma işlemleriyle aynı önceliklere sahiptir. <code class="docutils literal notranslate"><span class="pre">+</span></code> (birleştirme) ve <code class="docutils literal notranslate"><span class="pre">*</span></code> (yineleme) işlemleri, karşılık gelen sayısal işlemlerle aynı önceliğe sahiptir. <a class="footnote-reference brackets" href="#id14" id="id4">3</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">in</span></code> ve <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> işlemleri, karşılaştırma işlemleriyle aynı önceliklere sahiptir. <code class="docutils literal notranslate"><span class="pre">+</span></code> (birleştirme) ve <code class="docutils literal notranslate"><span class="pre">*</span></code> (yineleme) işlemleri, karşılık gelen sayısal işlemlerle aynı önceliğe sahiptir. <a class="footnote-reference brackets" href="#id14" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <table class="docutils align-default" id="index-19">
-<colgroup>
-<col style="width: 38%" />
-<col style="width: 47%" />
-<col style="width: 15%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -1004,22 +1234,17 @@ If <em>k</em> is <code class="docutils literal notranslate"><span class="pre">No
 </ol>
 </section>
 <section id="immutable-sequence-types">
-<span id="typesseq-immutable"></span><h3>Değiştirilemez Dizi Tipleri<a class="headerlink" href="#immutable-sequence-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-immutable"></span><h3>Değiştirilemez Dizi Tipleri<a class="headerlink" href="#immutable-sequence-types" title="Permalink to this heading">¶</a></h3>
 <p id="index-21">Değiştirilemez dizi türlerinin genellikle uyguladığı ve aynı zamanda değişken dizi türleri tarafından uygulanmayan tek işlem, gömülü <a class="reference internal" href="functions.html#hash" title="hash"><code class="xref py py-func docutils literal notranslate"><span class="pre">hash()</span></code></a> desteğidir.</p>
 <p>Bu destek, <a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> örnekleri gibi değiştirilemez dizilerin <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> anahtarları olarak kullanılmasına, <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> ve <a class="reference internal" href="#frozenset" title="frozenset"><code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a> örneklerinde saklanmasına izin verir.</p>
 <p>Attempting to hash an immutable sequence that contains unhashable values will
 result in <a class="reference internal" href="exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>.</p>
 </section>
 <section id="mutable-sequence-types">
-<span id="typesseq-mutable"></span><h3>Değiştirilebilir Dizi Tipleri<a class="headerlink" href="#mutable-sequence-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-mutable"></span><h3>Değiştirilebilir Dizi Tipleri<a class="headerlink" href="#mutable-sequence-types" title="Permalink to this heading">¶</a></h3>
 <p id="index-22">Aşağıdaki tabloda yer alan işlemler değiştirilebilir dizi tiplerinde tanımlanmıştır. <a class="reference internal" href="collections.abc.html#collections.abc.MutableSequence" title="collections.abc.MutableSequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.MutableSequence</span></code></a> ABC, bu işlemleri özel dizi türlerinde doğru şekilde uygulamayı kolaylaştırmak için sağlanmıştır.</p>
 <p>Tabloda <em>s</em> değiştirilebilir bir dizi türünün bir örneğidir, <em>t</em> yinelenebilir herhangi bir nesnedir ve <em>x</em>, <em>s</em> tarafından dayatılan herhangi bir tür ve değer kısıtlamasını karşılayan rastgele bir nesnedir (örneğin, <a class="reference internal" href="#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a> yalnızca <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">255</span></code> değer kısıtlamasını karşılayan tam sayıları kabul eder).</p>
 <table class="docutils align-default" id="index-23">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 39%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>İşlem</p></th>
 <th class="head"><p>Sonuç</p></th>
@@ -1105,7 +1330,7 @@ mutable sequence classes provide it.</p>
 </ol>
 </section>
 <section id="lists">
-<span id="typesseq-list"></span><h3>Listeler<a class="headerlink" href="#lists" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-list"></span><h3>Listeler<a class="headerlink" href="#lists" title="Permalink to this heading">¶</a></h3>
 <p id="index-24">Listeler, tipik olarak (kesin benzerlik derecesinin uygulamaya göre değişeceği) homojen öğelerin koleksiyonlarını depolamak için kullanılan değiştirilebilir dizilerdir.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="list">
@@ -1140,7 +1365,7 @@ mutable sequence classes provide it.</p>
 
 </section>
 <section id="tuples">
-<span id="typesseq-tuple"></span><h3>Demetler<a class="headerlink" href="#tuples" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-tuple"></span><h3>Demetler<a class="headerlink" href="#tuples" title="Permalink to this heading">¶</a></h3>
 <p id="index-25">Tuple’lar, tipik olarak heterojen veri koleksiyonlarını depolamak için kullanılan değiştirilemez dizilerdir (örneğin, gömülü <a class="reference internal" href="functions.html#enumerate" title="enumerate"><code class="xref py py-func docutils literal notranslate"><span class="pre">enumerate()</span></code></a> tarafından üretilen 2 tuple). Tuple’lar, değiştirilemez bir homojen veri dizisinin gerekli olduğu durumlarda da kullanılır (bir <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> veya <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a> örneğinde depolamaya izin vermek gibi).</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="tuple">
@@ -1160,7 +1385,7 @@ mutable sequence classes provide it.</p>
 <p>Ada göre erişimin dizine göre erişimden daha net olduğu heterojen veri koleksiyonları için, <a class="reference internal" href="collections.html#collections.namedtuple" title="collections.namedtuple"><code class="xref py py-func docutils literal notranslate"><span class="pre">collections.namedtuple()</span></code></a> basit bir tuple nesnesinden daha uygun bir seçim olabilir.</p>
 </section>
 <section id="ranges">
-<span id="typesseq-range"></span><h3>Aralıklar<a class="headerlink" href="#ranges" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesseq-range"></span><h3>Aralıklar<a class="headerlink" href="#ranges" title="Permalink to this heading">¶</a></h3>
 <p id="index-26"><a class="reference internal" href="#range" title="range"><code class="xref py py-class docutils literal notranslate"><span class="pre">range</span></code></a> türü, değiştirilemez bir sayı dizisini temsil eder ve genellikle <a class="reference internal" href="../reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> döngülerinde belirli sayıda döngü yapmak için kullanılır.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="range">
@@ -1250,7 +1475,7 @@ point applications.</p></li>
 </section>
 </section>
 <section id="text-sequence-type-str">
-<span id="textseq"></span><span id="index-27"></span><h2>Metin Sırası Türü — <a class="reference internal" href="#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a><a class="headerlink" href="#text-sequence-type-str" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="textseq"></span><span id="index-27"></span><h2>Metin Sırası Türü — <a class="reference internal" href="#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a><a class="headerlink" href="#text-sequence-type-str" title="Permalink to this heading">¶</a></h2>
 <p>Python’da metinsel veriler <a class="reference internal" href="#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> nesneleri veya <em class="dfn">strings</em> ile işlenir. Dizeler, Unicode kod noktalarının değişmez <a class="reference internal" href="#typesseq"><span class="std std-ref">dizgeleridir</span></a>. Dize değişmezleri çeşitli şekillerde yazılır:</p>
 <ul class="simple">
 <li><p>Tek tırnak: <code class="docutils literal notranslate"><span class="pre">'katıştırılmış</span> <span class="pre">&quot;çift&quot;</span> <span class="pre">tırnaklara</span> <span class="pre">izin</span> <span class="pre">verir'</span></code></p></li>
@@ -1291,7 +1516,7 @@ method, then <a class="reference internal" href="#str" title="str"><code class="
 </dd></dl>
 
 <section id="string-methods">
-<span id="index-31"></span><span id="id5"></span><h3>String (Dize) Metotları<a class="headerlink" href="#string-methods" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="index-31"></span><span id="id5"></span><h3>String (Dize) Metotları<a class="headerlink" href="#string-methods" title="Permalink to this heading">¶</a></h3>
 <p id="index-32">Dizeler, aşağıda açıklanan ek yöntemlerle birlikte tüm <a class="reference internal" href="#typesseq-common"><span class="std std-ref">ortak</span></a> dizi işlemlerini uygular.</p>
 <p>Strings also support two styles of string formatting, one providing a large
 degree of flexibility and customization (see <a class="reference internal" href="#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>,
@@ -1480,7 +1705,7 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 <dl class="py method">
 <dt class="sig sig-object py" id="str.islower">
 <span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">islower</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#str.islower" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Dizedeki tüm büyük harfli karakterler <a class="footnote-reference brackets" href="#id15" id="id6">4</a> küçük harfli ise ve en az bir büyük harfli karakter varsa <code class="docutils literal notranslate"><span class="pre">True</span></code>, aksi takdirde <code class="docutils literal notranslate"><span class="pre">False</span></code> döndürür.</p>
+<dd><p>Dizedeki tüm büyük harfli karakterler <a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> küçük harfli ise ve en az bir büyük harfli karakter varsa <code class="docutils literal notranslate"><span class="pre">True</span></code>, aksi takdirde <code class="docutils literal notranslate"><span class="pre">False</span></code> döndürür.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1511,7 +1736,7 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 <dl class="py method">
 <dt class="sig sig-object py" id="str.isupper">
 <span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">isupper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#str.isupper" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Dizedeki tüm karakterler <a class="footnote-reference brackets" href="#id15" id="id7">4</a> büyük harfli ise ve en az bir büyük harfli karakter varsa <code class="docutils literal notranslate"><span class="pre">True</span></code>, aksi takdirde <code class="docutils literal notranslate"><span class="pre">False</span></code> döndürür.</p>
+<dd><p>Dizedeki tüm karakterler <a class="footnote-reference brackets" href="#id15" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> büyük harfli ise ve en az bir büyük harfli karakter varsa <code class="docutils literal notranslate"><span class="pre">True</span></code>, aksi takdirde <code class="docutils literal notranslate"><span class="pre">False</span></code> döndürür.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;BANANA&#39;</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;banana&#39;</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
@@ -1539,7 +1764,7 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 <dl class="py method">
 <dt class="sig sig-object py" id="str.lower">
 <span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">lower</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#str.lower" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Dizenin tüm büyük harfli karakterlerini <a class="footnote-reference brackets" href="#id15" id="id8">4</a> küçük harfe dönüştürerek bir kopyasını döndürür.</p>
+<dd><p>Dizenin tüm büyük harfli karakterlerini <a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> küçük harfe dönüştürerek bir kopyasını döndürür.</p>
 <p>Harf küçültme algoritması, Unicode Standardının 3.13 bölümünde açıklanmıştır.</p>
 </dd></dl>
 
@@ -1638,7 +1863,7 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="str.rsplit">
-<span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Ayırıcı dizge olarak <em>sep</em> kullanarak dizgedeki sözcüklerin bir listesini döndürür. Eğer <em>maxsplit</em> belirtilmişse, <em>rightmost</em> olmak üzere en fazla <em>maxsplit</em> bölme yapılır.  Eğer <em>sep</em> belirtilmemişse veya <code class="docutils literal notranslate"><span class="pre">None</span></code> ise, herhangi bir boşluk dizesi ayırıcıdır.  Sağdan bölme dışında, <a class="reference internal" href="#str.rsplit" title="str.rsplit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">rsplit()</span></code></a> aşağıda ayrıntılı olarak açıklanan <a class="reference internal" href="#str.split" title="str.split"><code class="xref py py-meth docutils literal notranslate"><span class="pre">split()</span></code></a> gibi davranır.</p>
 </dd></dl>
 
@@ -1663,7 +1888,7 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 
 <dl class="py method">
 <dt class="sig sig-object py" id="str.split">
-<span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#str.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Ayırıcı dizge olarak <em>sep</em> kullanarak dizgedeki sözcüklerin bir listesini döndürür.  Eğer <em>maxsplit</em> belirtilmişse, en fazla <em>maxsplit</em> bölme işlemi yapılır (dolayısıyla, liste en fazla <code class="docutils literal notranslate"><span class="pre">maxsplit+1</span></code> elemana sahip olur).  Eğer <em>maxsplit</em> belirtilmemişse veya <code class="docutils literal notranslate"><span class="pre">-1</span></code> ise, bölme sayısında bir sınırlama yoktur (tüm olası bölmeler yapılır).</p>
 <p><em>sep</em> verilirse, ardışık sınırlayıcılar birlikte gruplanmaz ve boş dizeleri sınırladıkları kabul edilir (örneğin, <code class="docutils literal notranslate"><span class="pre">'1,,2'.split(',')</span></code>, <code class="docutils literal notranslate"><span class="pre">['1',</span> <span class="pre">'',</span> <span class="pre">'2']</span></code> döndürür). <em>sep</em> bağımsız değişkeni birden çok karakterden oluşabilir (örneğin, <code class="docutils literal notranslate"><span class="pre">'1&lt;&gt;2&lt;&gt;3'.split('&lt;&gt;')</span></code>, <code class="docutils literal notranslate"><span class="pre">['1',</span> <span class="pre">'2',</span> <span class="pre">'3']</span></code> döndürür). Boş bir dizeyi belirtilen bir ayırıcıyla bölmek <code class="docutils literal notranslate"><span class="pre">['']</span></code> döndürür.</p>
 <p>Örneğin:</p>
@@ -1693,10 +1918,6 @@ or a <a class="reference internal" href="../using/configure.html#debug-build"><s
 <dd><p>Satır sınırlarında keserek dizedeki satırların bir listesini döndürür.  Satır sonları için <em>keepends</em> belirtilmediği ve true değerinde olmadığı sürece, satır sonları sonuç listesine dahil edilmez.</p>
 <p>Bu yöntem aşağıdaki satır sınırlarında bölme yapar.  Spesifik olarak, sınırlar <a class="reference internal" href="../glossary.html#term-universal-newlines"><span class="xref std std-term">universal newlines</span></a> ‘ın bir üst kümesidir.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 44%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Temsil</p></th>
 <th class="head"><p>Açıklama</p></th>
@@ -1837,7 +2058,7 @@ character mappings.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="str.upper">
 <span class="sig-prename descclassname"><span class="pre">str.</span></span><span class="sig-name descname"><span class="pre">upper</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#str.upper" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return a copy of the string with all the cased characters <a class="footnote-reference brackets" href="#id15" id="id9">4</a> converted to
+<dd><p>Return a copy of the string with all the cased characters <a class="footnote-reference brackets" href="#id15" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> converted to
 uppercase.  Note that <code class="docutils literal notranslate"><span class="pre">s.upper().isupper()</span></code> might be <code class="docutils literal notranslate"><span class="pre">False</span></code> if <code class="docutils literal notranslate"><span class="pre">s</span></code>
 contains uncased characters or if the Unicode category of the resulting
 character(s) is not “Lu” (Letter, uppercase), but e.g. “Lt” (Letter,
@@ -1864,7 +2085,7 @@ or equal to <code class="docutils literal notranslate"><span class="pre">len(s)<
 
 </section>
 <section id="printf-style-string-formatting">
-<span id="old-string-formatting"></span><h3><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style String Formatting<a class="headerlink" href="#printf-style-string-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="old-string-formatting"></span><h3><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style String Formatting<a class="headerlink" href="#printf-style-string-formatting" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note" id="index-34">
 <p class="admonition-title">Not</p>
 <p>The formatting operations described here exhibit a variety of quirks that
@@ -1879,7 +2100,7 @@ Given <code class="docutils literal notranslate"><span class="pre">format</span>
 specifications in <em>format</em> are replaced with zero or more elements of <em>values</em>.
 The effect is similar to using the <code class="xref c c-func docutils literal notranslate"><span class="pre">sprintf()</span></code> in the C language.</p>
 <p>If <em>format</em> requires a single argument, <em>values</em> may be a single non-tuple
-object. <a class="footnote-reference brackets" href="#id16" id="id10">5</a>  Otherwise, <em>values</em> must be a tuple with exactly the number of
+object. <a class="footnote-reference brackets" href="#id16" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>  Otherwise, <em>values</em> must be a tuple with exactly the number of
 items specified by the format string, or a single mapping object (for example, a
 dictionary).</p>
 <p id="index-35">A conversion specifier contains two or more characters and has the following
@@ -1913,10 +2134,6 @@ selects the value to be formatted from the mapping.  For example:</p>
 sequential parameter list).</p>
 <p>The conversion flag characters are:</p>
 <table class="docutils align-default" id="index-36">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 88%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Flag</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -1948,11 +2165,6 @@ string) produced by a signed conversion.</p></td>
 is not necessary for Python – so e.g. <code class="docutils literal notranslate"><span class="pre">%ld</span></code> is identical to <code class="docutils literal notranslate"><span class="pre">%d</span></code>.</p>
 <p>The conversion types are:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 74%" />
-<col style="width: 10%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Conversion</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -2067,7 +2279,7 @@ longer replaced by <code class="docutils literal notranslate"><span class="pre">
 </section>
 </section>
 <section id="binary-sequence-types-bytes-bytearray-memoryview">
-<span id="binaryseq"></span><span id="index-38"></span><h2>Binary Sequence Types — <a class="reference internal" href="#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>, <a class="reference internal" href="#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>, <a class="reference internal" href="#memoryview" title="memoryview"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a><a class="headerlink" href="#binary-sequence-types-bytes-bytearray-memoryview" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="binaryseq"></span><span id="index-38"></span><h2>Binary Sequence Types — <a class="reference internal" href="#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>, <a class="reference internal" href="#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>, <a class="reference internal" href="#memoryview" title="memoryview"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a><a class="headerlink" href="#binary-sequence-types-bytes-bytearray-memoryview" title="Permalink to this heading">¶</a></h2>
 <p id="index-39">The core built-in types for manipulating binary data are <a class="reference internal" href="#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> and
 <a class="reference internal" href="#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a>. They are supported by <a class="reference internal" href="#memoryview" title="memoryview"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a> which uses
 the <a class="reference internal" href="../c-api/buffer.html#bufferobjects"><span class="std std-ref">buffer protocol</span></a> to access the memory of other
@@ -2075,7 +2287,7 @@ binary objects without needing to make a copy.</p>
 <p>The <a class="reference internal" href="array.html#module-array" title="array: Space efficient arrays of uniformly typed numeric values."><code class="xref py py-mod docutils literal notranslate"><span class="pre">array</span></code></a> module supports efficient storage of basic data types like
 32-bit integers and IEEE754 double-precision floating values.</p>
 <section id="bytes-objects">
-<span id="typebytes"></span><h3>Bytes Objects<a class="headerlink" href="#bytes-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typebytes"></span><h3>Bytes Objects<a class="headerlink" href="#bytes-objects" title="Permalink to this heading">¶</a></h3>
 <p id="index-40">Bytes objects are immutable sequences of single bytes. Since many major
 binary protocols are based on the ASCII text encoding, bytes objects offer
 several methods that are only valid when working with ASCII compatible
@@ -2178,7 +2390,7 @@ since it is often more useful than e.g. <code class="docutils literal notranslat
 always convert a bytes object into a list of integers using <code class="docutils literal notranslate"><span class="pre">list(b)</span></code>.</p>
 </section>
 <section id="bytearray-objects">
-<span id="typebytearray"></span><h3>Bytearray Objects<a class="headerlink" href="#bytearray-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typebytearray"></span><h3>Bytearray Objects<a class="headerlink" href="#bytearray-objects" title="Permalink to this heading">¶</a></h3>
 <p id="index-41"><a class="reference internal" href="#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a> objects are a mutable counterpart to <a class="reference internal" href="#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>
 objects.</p>
 <dl class="py class">
@@ -2248,7 +2460,7 @@ both indexing and slicing will produce a string of length 1)</p>
 a list of integers using <code class="docutils literal notranslate"><span class="pre">list(b)</span></code>.</p>
 </section>
 <section id="bytes-and-bytearray-operations">
-<span id="bytes-methods"></span><h3>Bytes and Bytearray Operations<a class="headerlink" href="#bytes-and-bytearray-operations" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bytes-methods"></span><h3>Bytes and Bytearray Operations<a class="headerlink" href="#bytes-and-bytearray-operations" title="Permalink to this heading">¶</a></h3>
 <p id="index-42">Both bytes and bytearray objects support the <a class="reference internal" href="#typesseq-common"><span class="std std-ref">common</span></a>
 sequence operations. They interoperate not just with operands of the same
 type, but with any <a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">bytes-like object</span></a>. Due to this flexibility, they can be
@@ -2653,9 +2865,9 @@ it always produces a new object, even if no changes were made.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bytes.rsplit">
-<span class="sig-prename descclassname"><span class="pre">bytes.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytes.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bytes.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytes.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dt class="sig sig-object py" id="bytearray.rsplit">
-<span class="sig-prename descclassname"><span class="pre">bytearray.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytearray.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bytearray.</span></span><span class="sig-name descname"><span class="pre">rsplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytearray.rsplit" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Split the binary sequence into subsequences of the same type, using <em>sep</em>
 as the delimiter string. If <em>maxsplit</em> is given, at most <em>maxsplit</em> splits
 are done, the <em>rightmost</em> ones.  If <em>sep</em> is not specified or <code class="docutils literal notranslate"><span class="pre">None</span></code>,
@@ -2700,9 +2912,9 @@ it always produces a new object, even if no changes were made.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="bytes.split">
-<span class="sig-prename descclassname"><span class="pre">bytes.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytes.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bytes.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytes.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dt class="sig sig-object py" id="bytearray.split">
-<span class="sig-prename descclassname"><span class="pre">bytearray.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytearray.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">bytearray.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bytearray.split" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Split the binary sequence into subsequences of the same type, using <em>sep</em>
 as the delimiter string. If <em>maxsplit</em> is given and non-negative, at most
 <em>maxsplit</em> splits are done (thus, the list will have at most <code class="docutils literal notranslate"><span class="pre">maxsplit+1</span></code>
@@ -3116,7 +3328,7 @@ always produces a new object, even if no changes were made.</p>
 
 </section>
 <section id="printf-style-bytes-formatting">
-<span id="bytes-formatting"></span><h3><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting<a class="headerlink" href="#printf-style-bytes-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bytes-formatting"></span><h3><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting<a class="headerlink" href="#printf-style-bytes-formatting" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note" id="index-44">
 <p class="admonition-title">Not</p>
 <p>The formatting operations described here exhibit a variety of quirks that
@@ -3131,7 +3343,7 @@ Given <code class="docutils literal notranslate"><span class="pre">format</span>
 specifications in <em>format</em> are replaced with zero or more elements of <em>values</em>.
 The effect is similar to using the <code class="xref c c-func docutils literal notranslate"><span class="pre">sprintf()</span></code> in the C language.</p>
 <p>If <em>format</em> requires a single argument, <em>values</em> may be a single non-tuple
-object. <a class="footnote-reference brackets" href="#id16" id="id11">5</a>  Otherwise, <em>values</em> must be a tuple with exactly the number of
+object. <a class="footnote-reference brackets" href="#id16" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>  Otherwise, <em>values</em> must be a tuple with exactly the number of
 items specified by the format bytes object, or a single mapping object (for
 example, a dictionary).</p>
 <p id="index-45">A conversion specifier contains two or more characters and has the following
@@ -3165,10 +3377,6 @@ selects the value to be formatted from the mapping.  For example:</p>
 sequential parameter list).</p>
 <p>The conversion flag characters are:</p>
 <table class="docutils align-default" id="index-46">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 88%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Flag</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -3200,11 +3408,6 @@ string) produced by a signed conversion.</p></td>
 is not necessary for Python – so e.g. <code class="docutils literal notranslate"><span class="pre">%ld</span></code> is identical to <code class="docutils literal notranslate"><span class="pre">%d</span></code>.</p>
 <p>The conversion types are:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 74%" />
-<col style="width: 10%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Conversion</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -3332,7 +3535,7 @@ always produces a new object, even if no changes were made.</p>
 </div>
 </section>
 <section id="memory-views">
-<span id="typememoryview"></span><h3>Memory Views<a class="headerlink" href="#memory-views" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typememoryview"></span><h3>Memory Views<a class="headerlink" href="#memory-views" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="#memoryview" title="memoryview"><code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a> objects allow Python code to access the internal data
 of an object that supports the <a class="reference internal" href="../c-api/buffer.html#bufferobjects"><span class="std std-ref">buffer protocol</span></a> without
 copying.</p>
@@ -3853,7 +4056,7 @@ access each element for each dimension of the array.</p>
 </section>
 </section>
 <section id="set-types-set-frozenset">
-<span id="types-set"></span><h2>Set Türleri — <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a>, <a class="reference internal" href="#frozenset" title="frozenset"><code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a><a class="headerlink" href="#set-types-set-frozenset" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="types-set"></span><h2>Set Türleri — <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a>, <a class="reference internal" href="#frozenset" title="frozenset"><code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a><a class="headerlink" href="#set-types-set-frozenset" title="Permalink to this heading">¶</a></h2>
 <p id="index-50">Bir <em class="dfn">set</em> nesnesi, farklı <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a> nesnelerinin sıralanmamış bir koleksiyonudur. Yaygın kullanımları arasında üyelik sınaması, bir diziden yinelenenlerin kaldırılması ve kesişim, birleşim, fark ve simetrik fark gibi matematiksel işlemlerin hesaplanması yer alır. (Diğer kapsayıcılar için yerleşik <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, <a class="reference internal" href="#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> ve <a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> sınıflarına ve <a class="reference internal" href="collections.html#module-collections" title="collections: Container datatypes"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a> modülüne bakın)</p>
 <p>Diğer koleksiyonlar gibi, kümeler de <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">len(set)</span></code>, ve <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">set</span></code> özelliklerini destekler.  Sırasız bir koleksiyon olan kümeler, eleman konumunu veya ekleme sırasını kaydetmez.  Buna göre, kümeler dizinleme, dilimleme veya sıra benzeri davranışları desteklemez.</p>
 <p>Şu anda iki yerleşik set türü vardır, <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> ve <a class="reference internal" href="#frozenset" title="frozenset"><code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a>. <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> türü değişkendir — içeriği <code class="xref py py-meth docutils literal notranslate"><span class="pre">add()</span></code> ve <code class="xref py py-meth docutils literal notranslate"><span class="pre">remove()</span></code> gibi yöntemler kullanılarak değiştirilebilir.  Değiştirilebilir olduğu için hash değeri yoktur ve bir sözlük anahtarı ya da başka bir kümenin elemanı olarak kullanılamaz. <a class="reference internal" href="#frozenset" title="frozenset"><code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a> türü değişmezdir ve <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a> — içeriği oluşturulduktan sonra değiştirilemez; bu nedenle bir sözlük anahtarı veya başka bir kümenin öğesi olarak kullanılabilir.</p>
@@ -4038,7 +4241,7 @@ access each element for each dimension of the array.</p>
 
 </section>
 <section id="mapping-types-dict">
-<span id="typesmapping"></span><h2>Mapping Types — <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a><a class="headerlink" href="#mapping-types-dict" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typesmapping"></span><h2>Mapping Types — <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a><a class="headerlink" href="#mapping-types-dict" title="Permalink to this heading">¶</a></h2>
 <p id="index-51">Bir <a class="reference internal" href="../glossary.html#term-mapping"><span class="xref std std-term">mapping</span></a> nesnesi <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a> değerlerini rastgele nesnelere eşler. Eşlemeler değiştirilebilir nesnelerdir.  Şu anda sadece bir standart eşleme türü vardır, <em class="dfn">dictionary</em>.  (Diğer kapsayıcılar için yerleşik <a class="reference internal" href="#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a>, <a class="reference internal" href="#set" title="set"><code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code></a> ve <a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a> sınıflarına ve <a class="reference internal" href="collections.html#module-collections" title="collections: Container datatypes"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a> modülüne bakın).</p>
 <p>Bir sözlüğün anahtarları <em>neredeyse</em> rastgele değerlerdir. <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a> olmayan değerler, yani listeler, sözlükler veya diğer değişken türleri içeren değerler (nesne kimliği yerine değere göre karşılaştırılan) anahtar olarak kullanılamaz. Eşit karşılaştırılan değerler (<code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">1.0</span></code> ve <code class="docutils literal notranslate"><span class="pre">True</span></code> gibi) aynı sözlük girdisini indekslemek için birbirinin yerine kullanılabilir.</p>
 <dl class="py class">
@@ -4339,7 +4542,7 @@ an implementation detail of CPython from 3.6.</p>
 of a <a class="reference internal" href="#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>.</p>
 </div>
 <section id="dictionary-view-objects">
-<span id="dict-views"></span><h3>Dictionary view objects<a class="headerlink" href="#dictionary-view-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="dict-views"></span><h3>Dictionary view objects<a class="headerlink" href="#dictionary-view-objects" title="Permalink to this heading">¶</a></h3>
 <p>The objects returned by <a class="reference internal" href="#dict.keys" title="dict.keys"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.keys()</span></code></a>, <a class="reference internal" href="#dict.values" title="dict.values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.values()</span></code></a> and
 <a class="reference internal" href="#dict.items" title="dict.items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.items()</span></code></a> are <em>view objects</em>.  They provide a dynamic view on the
 dictionary’s entries, which means that when the dictionary changes, the view
@@ -4441,7 +4644,7 @@ available (for example, <code class="docutils literal notranslate"><span class="
 </section>
 </section>
 <section id="context-manager-types">
-<span id="typecontextmanager"></span><h2>Bağlam Yöneticisi Türleri<a class="headerlink" href="#context-manager-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typecontextmanager"></span><h2>Bağlam Yöneticisi Türleri<a class="headerlink" href="#context-manager-types" title="Permalink to this heading">¶</a></h2>
 <p id="index-53">Python’s <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a> statement supports the concept of a runtime context
 defined by a context manager.  This is implemented using a pair of methods
 that allow user-defined classes to define a runtime context that is entered
@@ -4502,11 +4705,11 @@ Compared to the overhead of setting up the runtime context, the overhead of a
 single class dictionary lookup is negligible.</p>
 </section>
 <section id="type-annotation-types-generic-alias-union">
-<h2>Type Annotation Types — <a class="reference internal" href="#types-genericalias"><span class="std std-ref">Generic Alias</span></a>, <a class="reference internal" href="#types-union"><span class="std std-ref">Union</span></a><a class="headerlink" href="#type-annotation-types-generic-alias-union" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Type Annotation Types — <a class="reference internal" href="#types-genericalias"><span class="std std-ref">Generic Alias</span></a>, <a class="reference internal" href="#types-union"><span class="std std-ref">Union</span></a><a class="headerlink" href="#type-annotation-types-generic-alias-union" title="Permalink to this heading">¶</a></h2>
 <p id="index-54">The core built-in types for <a class="reference internal" href="../glossary.html#term-annotation"><span class="xref std std-term">type annotations</span></a> are
 <a class="reference internal" href="#types-genericalias"><span class="std std-ref">Generic Alias</span></a> and <a class="reference internal" href="#types-union"><span class="std std-ref">Union</span></a>.</p>
 <section id="generic-alias-type">
-<span id="types-genericalias"></span><h3>Genel Takma Ad Türü<a class="headerlink" href="#generic-alias-type" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="types-genericalias"></span><h3>Genel Takma Ad Türü<a class="headerlink" href="#generic-alias-type" title="Permalink to this heading">¶</a></h3>
 <p id="index-55"><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objects are generally created by
 <a class="reference internal" href="../reference/expressions.html#subscriptions"><span class="std std-ref">subscripting</span></a> a class. They are most often used with
 <a class="reference internal" href="../reference/datamodel.html#sequence-types"><span class="std std-ref">container classes</span></a>, such as <a class="reference internal" href="#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> or
@@ -4604,7 +4807,7 @@ variety of <a class="reference internal" href="re.html#match-objects"><span clas
 </pre></div>
 </div>
 <section id="standard-generic-classes">
-<h4>Standart Jenerik Sınıflar<a class="headerlink" href="#standard-generic-classes" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Standart Jenerik Sınıflar<a class="headerlink" href="#standard-generic-classes" title="Permalink to this heading">¶</a></h4>
 <p>Bu standart kütüphane sınıfları parametrelendirilmiş jenerikleri destekler. Bu liste kapsamlı değildir.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#tuple" title="tuple"><code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></a></p></li>
@@ -4664,7 +4867,7 @@ variety of <a class="reference internal" href="re.html#match-objects"><span clas
 </ul>
 </section>
 <section id="special-attributes-of-genericalias-objects">
-<h4><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri<a class="headerlink" href="#special-attributes-of-genericalias-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri<a class="headerlink" href="#special-attributes-of-genericalias-objects" title="Permalink to this heading">¶</a></h4>
 <p>Tüm parametreli jenerikler özel salt okunur öznitelikler uygular.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="genericalias.__origin__">
@@ -4733,7 +4936,7 @@ parameterized at runtime and understood by static type-checkers.</p>
 </section>
 </section>
 <section id="union-type">
-<span id="types-union"></span><h3>Sendika Türü<a class="headerlink" href="#union-type" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="types-union"></span><h3>Sendika Türü<a class="headerlink" href="#union-type" title="Permalink to this heading">¶</a></h3>
 <p id="index-58">Bir birleşim nesnesi, birden çok <a class="reference internal" href="#bltin-type-objects"><span class="std std-ref">type objects</span></a> üzerinde <code class="docutils literal notranslate"><span class="pre">|</span></code> (bitsel veya) işleminin değerini tutar. Bu türler öncelikle aşağıdakiler için tasarlanmıştır <a class="reference internal" href="../glossary.html#term-annotation"><span class="xref std std-term">type annotations</span></a>. Birleşim türü ifadesi, aşağıdakilere kıyasla daha temiz tür ipucu sözdizimi sağlar <a class="reference internal" href="typing.html#typing.Union" title="typing.Union"><code class="xref py py-data docutils literal notranslate"><span class="pre">typing.Union</span></code></a>.</p>
 <dl class="describe">
 <dt class="sig sig-object">
@@ -4837,26 +5040,26 @@ parameterized at runtime and understood by static type-checkers.</p>
 </section>
 </section>
 <section id="other-built-in-types">
-<span id="typesother"></span><h2>Diğer Yerleşik Tipler<a class="headerlink" href="#other-built-in-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="typesother"></span><h2>Diğer Yerleşik Tipler<a class="headerlink" href="#other-built-in-types" title="Permalink to this heading">¶</a></h2>
 <p>Yorumlayıcı başka nesne türlerini de destekler. Bunların çoğu yalnızca bir veya iki işlemi destekler.</p>
 <section id="modules">
-<span id="typesmodules"></span><h3>Modüller<a class="headerlink" href="#modules" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesmodules"></span><h3>Modüller<a class="headerlink" href="#modules" title="Permalink to this heading">¶</a></h3>
 <p>Bir modül üzerindeki tek özel işlem öznitelik erişimidir: <code class="docutils literal notranslate"><span class="pre">m.name</span></code>, burada <em>m</em> bir modüldür ve <em>name</em>, <em>m</em>’nin sembol tablosunda tanımlanan bir isme erişir. Modül nitelikleri atanabilir.  (<a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> deyiminin kesinlikle bir modül nesnesi üzerinde bir işlem olmadığına dikkat edin; <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">foo</span></code> <em>foo</em> adında bir modül nesnesinin var olmasını gerektirmez, bunun yerine bir yerlerde <em>foo</em> adında bir modül için (harici) bir <em>tanımlama</em> gerektirir)</p>
 <p>Her modülün özel bir niteliği <a class="reference internal" href="#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> ‘dir. Bu, modülün sembol tablosunu içeren sözlüktür. Bu sözlüğü değiştirmek aslında modülün sembol tablosunu değiştirecektir, ancak <a class="reference internal" href="#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> niteliğine doğrudan atama yapmak mümkün değildir (<code class="docutils literal notranslate"><span class="pre">m.__dict__['a']</span> <span class="pre">=</span> <span class="pre">1</span></code> yazabilirsiniz, bu <code class="docutils literal notranslate"><span class="pre">m.a</span></code> yı <code class="docutils literal notranslate"><span class="pre">1</span></code> olarak tanımlar, ancak <code class="docutils literal notranslate"><span class="pre">m.__dict__</span> <span class="pre">=</span> <span class="pre">{}</span></code> yazamazsınız).  <a class="reference internal" href="#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> öğesinin doğrudan değiştirilmesi önerilmez.</p>
 <p>Yorumlayıcıda yerleşik olarak bulunan modüller şu şekilde yazılır: <code class="docutils literal notranslate"><span class="pre">&lt;module</span> <span class="pre">'sys'</span> <span class="pre">(built-in)&gt;</span></code>.  Eğer bir dosyadan yüklenmişlerse, <code class="docutils literal notranslate"><span class="pre">&lt;module</span> <span class="pre">'os'</span> <span class="pre">from</span> <span class="pre">'/usr/local/lib/pythonX.Y/os.pyc'&gt;</span></code> şeklinde yazılırlar.</p>
 </section>
 <section id="classes-and-class-instances">
-<span id="typesobjects"></span><h3>Sınıflar ve Sınıf Örnekleri<a class="headerlink" href="#classes-and-class-instances" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesobjects"></span><h3>Sınıflar ve Sınıf Örnekleri<a class="headerlink" href="#classes-and-class-instances" title="Permalink to this heading">¶</a></h3>
 <p>Bunlar için <a class="reference internal" href="../reference/compound_stmts.html#class"><span class="std std-ref">Class definitions</span></a> ve <a class="reference internal" href="../reference/datamodel.html#objects"><span class="std std-ref">Objects, values and types</span></a>  bakın.</p>
 </section>
 <section id="functions">
-<span id="typesfunctions"></span><h3>Fonksiyonlar<a class="headerlink" href="#functions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesfunctions"></span><h3>Fonksiyonlar<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
 <p>Fonksiyon nesneleri fonksiyon tanımları tarafından oluşturulur.  Bir fonksiyon nesnesi üzerindeki tek işlem onu çağırmaktır: <code class="docutils literal notranslate"><span class="pre">func(argument-list)</span></code>.</p>
 <p>Fonksiyon nesnelerinin gerçekten iki çeşidi vardır: yerleşik fonksiyonlar ve kullanıcı tanımlı fonksiyonlar.  Her ikisi de aynı işlemi destekler (işlevi çağırmak için), ancak uygulama farklıdır, dolayısıyla farklı nesne türleri vardır.</p>
 <p>Daha fazla bilgi için <a class="reference internal" href="../reference/compound_stmts.html#function"><span class="std std-ref">Function definitions</span></a> bölümüne bakınız.</p>
 </section>
 <section id="methods">
-<span id="typesmethods"></span><h3>Yöntemler<a class="headerlink" href="#methods" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesmethods"></span><h3>Yöntemler<a class="headerlink" href="#methods" title="Permalink to this heading">¶</a></h3>
 <p id="index-60">Yöntemler, nitelik gösterimi kullanılarak çağrılan işlevlerdir. İki çeşidi vardır: yerleşik yöntemler (listelerde <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> gibi) ve sınıf örneği yöntemleri.  Yerleşik yöntemler, onları destekleyen türlerle birlikte tanımlanır.</p>
 <p>Bir yönteme (bir sınıf ad alanında tanımlanmış bir fonksiyon) bir örnek üzerinden erişirseniz, özel bir nesne elde edersiniz: bir <em class="dfn">bound method</em> (ayrıca <em class="dfn">instance method</em> olarak da adlandırılır) nesnesi. Çağrıldığında, <code class="docutils literal notranslate"><span class="pre">self</span></code> argümanını argüman listesine ekleyecektir.  Bağlı metotların iki özel salt okunur niteliği vardır: <code class="docutils literal notranslate"><span class="pre">m.__self__</span></code> metodun üzerinde çalıştığı nesne ve <code class="docutils literal notranslate"><span class="pre">m.__func__</span></code> metodu uygulayan fonksiyondur.  <code class="docutils literal notranslate"><span class="pre">m(arg-1,</span> <span class="pre">arg-2,</span> <span class="pre">...,</span> <span class="pre">arg-n)</span></code> çağrısı tamamen <code class="docutils literal notranslate"><span class="pre">m.__func__(m.__self__,</span> <span class="pre">arg-1,</span> <span class="pre">arg-2,</span> <span class="pre">...,</span> <span class="pre">arg-n)</span></code> çağrısına eş değerdir.</p>
 <p>Fonksiyon nesneleri gibi, bağlı metot nesneleri de keyfi nitelikler almayı destekler.  Ancak, yöntem nitelikleri aslında temel işlev nesnesinde (<code class="docutils literal notranslate"><span class="pre">meth.__func__</span></code>) saklandığından, bağlı yöntemlerde yöntem niteliklerinin ayarlanmasına izin verilmez.  Bir yöntem üzerinde bir öznitelik ayarlamaya çalışmak <a class="reference internal" href="exceptions.html#AttributeError" title="AttributeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">AttributeError</span></code></a> ile sonuçlanır.  Bir yöntem özniteliğini ayarlamak için, bunu temel işlev nesnesi üzerinde açıkça ayarlamanız gerekir:</p>
@@ -4877,44 +5080,44 @@ parameterized at runtime and understood by static type-checkers.</p>
 <p>Daha fazla bilgi için <a class="reference internal" href="../reference/datamodel.html#types"><span class="std std-ref">The standard type hierarchy</span></a> sayfasına bakın.</p>
 </section>
 <section id="code-objects">
-<span id="bltin-code-objects"></span><span id="index-61"></span><h3>Kod Nesneleri<a class="headerlink" href="#code-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-code-objects"></span><span id="index-61"></span><h3>Kod Nesneleri<a class="headerlink" href="#code-objects" title="Permalink to this heading">¶</a></h3>
 <p id="index-62">Kod nesneleri, uygulama tarafından bir fonksiyon gövdesi gibi “sözde derlenmiş” çalıştırılabilir Python kodunu temsil etmek için kullanılır. Fonksiyon nesnelerinden farklıdırlar çünkü global yürütme ortamlarına bir referans içermezler.  Kod nesneleri yerleşik <a class="reference internal" href="functions.html#compile" title="compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a> işlevi tarafından döndürülür ve  <code class="xref py py-attr docutils literal notranslate"><span class="pre">__code__</span></code> niteliği aracılığıyla işlev nesnelerinden çıkarılabilir. Ayrıca <a class="reference internal" href="code.html#module-code" title="code: Facilities to implement read-eval-print loops."><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code></a> modülüne de bakınız.</p>
 <p><code class="docutils literal notranslate"><span class="pre">__code__</span></code> ‘e erişmek,``obj`` ve <code class="docutils literal notranslate"><span class="pre">&quot;__code__&quot;</span></code> argümanlarıyla <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">denetim etkinliği</span></a> <code class="docutils literal notranslate"><span class="pre">object.__getattr__</span></code> oluşturur.</p>
 <p id="index-63">Bir kod nesnesi (kaynak dize yerine) <a class="reference internal" href="functions.html#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a> veya <a class="reference internal" href="functions.html#eval" title="eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a> yerleşik işlevlerine geçirilerek yürütülebilir veya değerlendirilebilir.</p>
 <p>Daha fazla bilgi için <a class="reference internal" href="../reference/datamodel.html#types"><span class="std std-ref">The standard type hierarchy</span></a> sayfasına bakın.</p>
 </section>
 <section id="type-objects">
-<span id="bltin-type-objects"></span><h3>Type Objects<a class="headerlink" href="#type-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-type-objects"></span><h3>Type Objects<a class="headerlink" href="#type-objects" title="Permalink to this heading">¶</a></h3>
 <p id="index-64">Type nesneleri çeşitli nesne türlerini temsil eder.  Bir nesnenin türüne yerleşik işlev <a class="reference internal" href="functions.html#type" title="type"><code class="xref py py-func docutils literal notranslate"><span class="pre">type()</span></code></a> tarafından erişilir.  Türler üzerinde özel bir işlem yoktur.  Standart modül <a class="reference internal" href="types.html#module-types" title="types: Names for built-in types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">types</span></code></a> tüm standart yerleşik türler için isimleri tanımlar.</p>
 <p>Türler şu şekilde yazılır: <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'int'&gt;</span></code>.</p>
 </section>
 <section id="the-null-object">
-<span id="bltin-null-object"></span><h3>Null Nesne<a class="headerlink" href="#the-null-object" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-null-object"></span><h3>Null Nesne<a class="headerlink" href="#the-null-object" title="Permalink to this heading">¶</a></h3>
 <p>Bu nesne, açıkça bir değer döndürmeyen işlevler tarafından döndürülür.  Özel operasyonları desteklemez.  Tam olarak <code class="docutils literal notranslate"><span class="pre">None</span></code> (yerleşik bir ad) adlı bir null nesne vardır.  <code class="docutils literal notranslate"><span class="pre">type(None)()</span></code> aynı singleton’u üretir.</p>
 <p>‘’Yok’’ olarak yazılmıştır.</p>
 </section>
 <section id="the-ellipsis-object">
-<span id="bltin-ellipsis-object"></span><span id="index-65"></span><h3>Üç Nokta Nesnesi<a class="headerlink" href="#the-ellipsis-object" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-ellipsis-object"></span><span id="index-65"></span><h3>Üç Nokta Nesnesi<a class="headerlink" href="#the-ellipsis-object" title="Permalink to this heading">¶</a></h3>
 <p>Bu nesne genellikle dilimleme tarafından kullanılır (bkz. <a class="reference internal" href="../reference/expressions.html#slicings"><span class="std std-ref">Slicings</span></a>).  Özel operasyonları desteklemez.  Tam olarak <a class="reference internal" href="constants.html#Ellipsis" title="Ellipsis"><code class="xref py py-const docutils literal notranslate"><span class="pre">Ellipsis</span></code></a> (yerleşik bir ad) adında bir elips nesnesi vardır.  <code class="docutils literal notranslate"><span class="pre">type(Ellipsis)()</span></code>, <a class="reference internal" href="constants.html#Ellipsis" title="Ellipsis"><code class="xref py py-const docutils literal notranslate"><span class="pre">Ellipsis</span></code></a> singletonunu üretir.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Ellipsis</span></code> veya <code class="docutils literal notranslate"><span class="pre">...</span></code> olarak yazılmıştır.</p>
 </section>
 <section id="the-notimplemented-object">
-<span id="bltin-notimplemented-object"></span><h3>NotImplemented Nesnesi<a class="headerlink" href="#the-notimplemented-object" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-notimplemented-object"></span><h3>NotImplemented Nesnesi<a class="headerlink" href="#the-notimplemented-object" title="Permalink to this heading">¶</a></h3>
 <p>Bu nesne, desteklemedikleri türlerde çalışmaları istendiğinde karşılaştırmalardan ve ikili işlemlerden döndürülür. Daha fazla bilgi için <a class="reference internal" href="../reference/expressions.html#comparisons"><span class="std std-ref">Comparisons</span></a> sayfasına bakın.  Tam olarak bir <code class="docutils literal notranslate"><span class="pre">NotImplemented</span></code> nesnesi vardır. <code class="docutils literal notranslate"><span class="pre">type(NotImplemented)()</span></code>, singleton örneğini üretir.</p>
 <p>‘’NotImplemented’’ olarak yazılmıştır.</p>
 </section>
 <section id="boolean-values">
-<span id="bltin-boolean-values"></span><h3>Boolean Değerleri<a class="headerlink" href="#boolean-values" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="bltin-boolean-values"></span><h3>Boolean Değerleri<a class="headerlink" href="#boolean-values" title="Permalink to this heading">¶</a></h3>
 <p>Boolean değerleri, <code class="docutils literal notranslate"><span class="pre">Yanlış</span></code> ve <code class="docutils literal notranslate"><span class="pre">Doğru</span></code> olmak üzere iki sabit nesnedir.  Doğruluk değerlerini temsil etmek için kullanılırlar (diğer değerler de yanlış veya doğru olarak kabul edilebilir).  Sayısal bağlamlarda (örneğin, bir aritmetik işlecinin bağımsız değişkeni olarak kullanıldığında), sırasıyla 0 ve 1 tamsayıları gibi davranırlar. Yerleşik işlev <a class="reference internal" href="functions.html#bool" title="bool"><code class="xref py py-func docutils literal notranslate"><span class="pre">bool()</span></code></a>, değer bir doğruluk değeri olarak yorumlanabiliyorsa, herhangi bir değeri bir Boolean’a dönüştürmek için kullanılabilir (yukarıdaki bölüm <a class="reference internal" href="#truth"><span class="std std-ref">Doğruluk Değeri Testi</span></a> a bakın).</p>
 <p id="index-66">Sırasıyla <code class="docutils literal notranslate"><span class="pre">Yanlış</span></code> ve <code class="docutils literal notranslate"><span class="pre">Doğru</span></code> olarak yazılırlar.</p>
 </section>
 <section id="internal-objects">
-<span id="typesinternal"></span><h3>İç Nesneler<a class="headerlink" href="#internal-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="typesinternal"></span><h3>İç Nesneler<a class="headerlink" href="#internal-objects" title="Permalink to this heading">¶</a></h3>
 <p>Bu bilgi için <a class="reference internal" href="../reference/datamodel.html#types"><span class="std std-ref">The standard type hierarchy</span></a> sayfasına bakın.  Yığın çerçeve nesnelerini, geri izleme nesnelerini ve dilim nesnelerini açıklar.</p>
 </section>
 </section>
 <section id="special-attributes">
-<span id="specialattrs"></span><h2>Özel Özellikler<a class="headerlink" href="#special-attributes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="specialattrs"></span><h2>Özel Özellikler<a class="headerlink" href="#special-attributes" title="Permalink to this heading">¶</a></h2>
 <p>Uygulama, ilgili oldukları çeşitli nesne türlerine birkaç özel salt okunur öznitelik ekler.  Bunlardan bazıları <a class="reference internal" href="functions.html#dir" title="dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">dir()</span></code></a> yerleşik işlevi tarafından bildirilmez.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="object.__dict__">
@@ -4973,7 +5176,7 @@ parameterized at runtime and understood by static type-checkers.</p>
 
 </section>
 <section id="integer-string-conversion-length-limitation">
-<span id="int-max-str-digits"></span><h2>Integer string conversion length limitation<a class="headerlink" href="#integer-string-conversion-length-limitation" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="int-max-str-digits"></span><h2>Integer string conversion length limitation<a class="headerlink" href="#integer-string-conversion-length-limitation" title="Permalink to this heading">¶</a></h2>
 <p>CPython has a global limit for converting between <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> and <a class="reference internal" href="#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>
 to mitigate denial of service attacks. This limit <em>only</em> applies to decimal or
 other non-power-of-two number bases. Hexadecimal, octal, and binary conversions
@@ -4989,7 +5192,7 @@ have sub-quadratic complexity. Converting a large value such as <code class="doc
 string when a non-linear conversion algorithm would be involved.  Underscores
 and the sign are not counted towards the limit.</p>
 <p>When an operation would exceed the limit, a <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> is raised:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">set_int_max_str_digits</span><span class="p">(</span><span class="mi">4300</span><span class="p">)</span>  <span class="c1"># Illustrative, this is the default.</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;2&#39;</span> <span class="o">*</span> <span class="mi">5432</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -5013,7 +5216,7 @@ and the sign are not counted towards the limit.</p>
 The lowest limit that can be configured is 640 digits as provided in
 <a class="reference internal" href="sys.html#sys.int_info" title="sys.int_info"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.int_info.str_digits_check_threshold</span></code></a>.</p>
 <p>Doğrulama</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">int_info</span><span class="o">.</span><span class="n">default_max_str_digits</span> <span class="o">==</span> <span class="mi">4300</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">int_info</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">sys</span><span class="o">.</span><span class="n">int_info</span><span class="o">.</span><span class="n">str_digits_check_threshold</span> <span class="o">==</span> <span class="mi">640</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">int_info</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;578966293710682886880994035146873798396722250538762761564&#39;</span>
@@ -5026,7 +5229,7 @@ The lowest limit that can be configured is 640 digits as provided in
 <p><span class="versionmodified added">3.11 sürümünde geldi.</span></p>
 </div>
 <section id="affected-apis">
-<h3>Affected APIs<a class="headerlink" href="#affected-apis" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Affected APIs<a class="headerlink" href="#affected-apis" title="Permalink to this heading">¶</a></h3>
 <p>The limitation only applies to potentially slow conversions between <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>
 and <a class="reference internal" href="#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or <a class="reference internal" href="#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a>:</p>
 <ul class="simple">
@@ -5048,7 +5251,7 @@ and <a class="reference internal" href="#str" title="str"><code class="xref py p
 </ul>
 </section>
 <section id="configuring-the-limit">
-<h3>Configuring the limit<a class="headerlink" href="#configuring-the-limit" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Configuring the limit<a class="headerlink" href="#configuring-the-limit" title="Permalink to this heading">¶</a></h3>
 <p>Before Python starts up you can use an environment variable or an interpreter
 command line flag to configure the limit:</p>
 <ul class="simple">
@@ -5097,7 +5300,7 @@ to precompile <code class="docutils literal notranslate"><span class="pre">.py</
 </div>
 </section>
 <section id="recommended-configuration">
-<h3>Recommended configuration<a class="headerlink" href="#recommended-configuration" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Recommended configuration<a class="headerlink" href="#recommended-configuration" title="Permalink to this heading">¶</a></h3>
 <p>The default <code class="xref py py-data docutils literal notranslate"><span class="pre">sys.int_info.default_max_str_digits</span></code> is expected to be
 reasonable for most applications. If your application requires a different
 limit, set it from your main entry point using Python version agnostic code as
@@ -5116,23 +5319,30 @@ these APIs were added in security patch releases in versions before 3.11.</p>
 </div>
 <p>If you need to disable it entirely, set it to <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Bu özel yöntemler hakkında daha fazla bilgi Python Referans El Kitabında (<a class="reference internal" href="../reference/datamodel.html#customization"><span class="std std-ref">Basic customization</span></a>) bulunabilir.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Sonuç olarak, <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> listesi <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0]</span></code> ve benzer şekilde demetler için eşit kabul edilir.</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id4">3</a></span></dt>
-<dd><p>Ayrıştırıcı, işlenenlerin türünü söyleyemediğinden sahip olmaları gerekir.</p>
-</dd>
-<dt class="label" id="id15"><span class="brackets">4</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>,<a href="#id9">4</a>)</span></dt>
-<dd><p>Harfli karakterler, genel kategori özelliği “Lu” (Harf, büyük), “Ll” (Harf, küçük harf) veya “Lt” (Harf, başlık) karakterlerinden biri olan karakterlerdir.</p>
-</dd>
-<dt class="label" id="id16"><span class="brackets">5</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id11">2</a>)</span></dt>
-<dd><p>Bu nedenle, yalnızca bir tuple(demet) biçimlendirmek için, tek öğesi biçimlendirilecek tuple(demet) olan tek bir tuple(demet) sağlamanız gerekir.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id12" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Bu özel yöntemler hakkında daha fazla bilgi Python Referans El Kitabında (<a class="reference internal" href="../reference/datamodel.html#customization"><span class="std std-ref">Basic customization</span></a>) bulunabilir.</p>
+</aside>
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Sonuç olarak, <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code> listesi <code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0]</span></code> ve benzer şekilde demetler için eşit kabul edilir.</p>
+</aside>
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">3</a><span class="fn-bracket">]</span></span>
+<p>Ayrıştırıcı, işlenenlerin türünü söyleyemediğinden sahip olmaları gerekir.</p>
+</aside>
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id6">1</a>,<a role="doc-backlink" href="#id7">2</a>,<a role="doc-backlink" href="#id8">3</a>,<a role="doc-backlink" href="#id9">4</a>)</span>
+<p>Harfli karakterler, genel kategori özelliği “Lu” (Harf, büyük), “Ll” (Harf, küçük harf) veya “Lt” (Harf, başlık) karakterlerinden biri olan karakterlerdir.</p>
+</aside>
+<aside class="footnote brackets" id="id16" role="note">
+<span class="label"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id10">1</a>,<a role="doc-backlink" href="#id11">2</a>)</span>
+<p>Bu nedenle, yalnızca bir tuple(demet) biçimlendirmek için, tek öğesi biçimlendirilecek tuple(demet) olan tek bir tuple(demet) sağlamanız gerekir.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -5153,12 +5363,28 @@ these APIs were added in security patch releases in versions before 3.11.</p>
 <li><a class="reference internal" href="#comparisons">Karşılaştırmalar</a></li>
 <li><a class="reference internal" href="#numeric-types-int-float-complex">Sayısal Türler — <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a><ul>
 <li><a class="reference internal" href="#bitwise-operations-on-integer-types">Tam sayı Türlerinde Bit Düzeyinde İşlemler</a></li>
-<li><a class="reference internal" href="#additional-methods-on-integer-types">Integer (Tam sayı) Türlerinde Ek Metotlar</a></li>
-<li><a class="reference internal" href="#additional-methods-on-float">Gerçel Sayılarda Ek Metotlar</a></li>
+<li><a class="reference internal" href="#additional-methods-on-integer-types">Integer (Tam sayı) Türlerinde Ek Metotlar</a><ul>
+<li><a class="reference internal" href="#int.bit_length"><code class="docutils literal notranslate"><span class="pre">int.bit_length()</span></code></a></li>
+<li><a class="reference internal" href="#int.bit_count"><code class="docutils literal notranslate"><span class="pre">int.bit_count()</span></code></a></li>
+<li><a class="reference internal" href="#int.to_bytes"><code class="docutils literal notranslate"><span class="pre">int.to_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#int.from_bytes"><code class="docutils literal notranslate"><span class="pre">int.from_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#int.as_integer_ratio"><code class="docutils literal notranslate"><span class="pre">int.as_integer_ratio()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-methods-on-float">Gerçel Sayılarda Ek Metotlar</a><ul>
+<li><a class="reference internal" href="#float.as_integer_ratio"><code class="docutils literal notranslate"><span class="pre">float.as_integer_ratio()</span></code></a></li>
+<li><a class="reference internal" href="#float.is_integer"><code class="docutils literal notranslate"><span class="pre">float.is_integer()</span></code></a></li>
+<li><a class="reference internal" href="#float.hex"><code class="docutils literal notranslate"><span class="pre">float.hex()</span></code></a></li>
+<li><a class="reference internal" href="#float.fromhex"><code class="docutils literal notranslate"><span class="pre">float.fromhex()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#hashing-of-numeric-types">Sayısal türlerin hashlemesi</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#iterator-types">Yineleyici Türleri</a><ul>
+<li><a class="reference internal" href="#container.__iter__"><code class="docutils literal notranslate"><span class="pre">container.__iter__()</span></code></a></li>
+<li><a class="reference internal" href="#iterator.__iter__"><code class="docutils literal notranslate"><span class="pre">iterator.__iter__()</span></code></a></li>
+<li><a class="reference internal" href="#iterator.__next__"><code class="docutils literal notranslate"><span class="pre">iterator.__next__()</span></code></a></li>
 <li><a class="reference internal" href="#generator-types">Oluşturucu Tipleri</a></li>
 </ul>
 </li>
@@ -5166,34 +5392,268 @@ these APIs were added in security patch releases in versions before 3.11.</p>
 <li><a class="reference internal" href="#common-sequence-operations">Yaygın Dizi İşlemleri</a></li>
 <li><a class="reference internal" href="#immutable-sequence-types">Değiştirilemez Dizi Tipleri</a></li>
 <li><a class="reference internal" href="#mutable-sequence-types">Değiştirilebilir Dizi Tipleri</a></li>
-<li><a class="reference internal" href="#lists">Listeler</a></li>
-<li><a class="reference internal" href="#tuples">Demetler</a></li>
-<li><a class="reference internal" href="#ranges">Aralıklar</a></li>
+<li><a class="reference internal" href="#lists">Listeler</a><ul>
+<li><a class="reference internal" href="#list"><code class="docutils literal notranslate"><span class="pre">list</span></code></a><ul>
+<li><a class="reference internal" href="#list.sort"><code class="docutils literal notranslate"><span class="pre">list.sort()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tuples">Demetler</a><ul>
+<li><a class="reference internal" href="#tuple"><code class="docutils literal notranslate"><span class="pre">tuple</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ranges">Aralıklar</a><ul>
+<li><a class="reference internal" href="#range"><code class="docutils literal notranslate"><span class="pre">range</span></code></a><ul>
+<li><a class="reference internal" href="#range.start"><code class="docutils literal notranslate"><span class="pre">range.start</span></code></a></li>
+<li><a class="reference internal" href="#range.stop"><code class="docutils literal notranslate"><span class="pre">range.stop</span></code></a></li>
+<li><a class="reference internal" href="#range.step"><code class="docutils literal notranslate"><span class="pre">range.step</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#text-sequence-type-str">Metin Sırası Türü — <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a><ul>
-<li><a class="reference internal" href="#string-methods">String (Dize) Metotları</a></li>
+<li><a class="reference internal" href="#str"><code class="docutils literal notranslate"><span class="pre">str</span></code></a></li>
+<li><a class="reference internal" href="#string-methods">String (Dize) Metotları</a><ul>
+<li><a class="reference internal" href="#str.capitalize"><code class="docutils literal notranslate"><span class="pre">str.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#str.casefold"><code class="docutils literal notranslate"><span class="pre">str.casefold()</span></code></a></li>
+<li><a class="reference internal" href="#str.center"><code class="docutils literal notranslate"><span class="pre">str.center()</span></code></a></li>
+<li><a class="reference internal" href="#str.count"><code class="docutils literal notranslate"><span class="pre">str.count()</span></code></a></li>
+<li><a class="reference internal" href="#str.encode"><code class="docutils literal notranslate"><span class="pre">str.encode()</span></code></a></li>
+<li><a class="reference internal" href="#str.endswith"><code class="docutils literal notranslate"><span class="pre">str.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#str.expandtabs"><code class="docutils literal notranslate"><span class="pre">str.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#str.find"><code class="docutils literal notranslate"><span class="pre">str.find()</span></code></a></li>
+<li><a class="reference internal" href="#str.format"><code class="docutils literal notranslate"><span class="pre">str.format()</span></code></a></li>
+<li><a class="reference internal" href="#str.format_map"><code class="docutils literal notranslate"><span class="pre">str.format_map()</span></code></a></li>
+<li><a class="reference internal" href="#str.index"><code class="docutils literal notranslate"><span class="pre">str.index()</span></code></a></li>
+<li><a class="reference internal" href="#str.isalnum"><code class="docutils literal notranslate"><span class="pre">str.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#str.isalpha"><code class="docutils literal notranslate"><span class="pre">str.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#str.isascii"><code class="docutils literal notranslate"><span class="pre">str.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#str.isdecimal"><code class="docutils literal notranslate"><span class="pre">str.isdecimal()</span></code></a></li>
+<li><a class="reference internal" href="#str.isdigit"><code class="docutils literal notranslate"><span class="pre">str.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#str.isidentifier"><code class="docutils literal notranslate"><span class="pre">str.isidentifier()</span></code></a></li>
+<li><a class="reference internal" href="#str.islower"><code class="docutils literal notranslate"><span class="pre">str.islower()</span></code></a></li>
+<li><a class="reference internal" href="#str.isnumeric"><code class="docutils literal notranslate"><span class="pre">str.isnumeric()</span></code></a></li>
+<li><a class="reference internal" href="#str.isprintable"><code class="docutils literal notranslate"><span class="pre">str.isprintable()</span></code></a></li>
+<li><a class="reference internal" href="#str.isspace"><code class="docutils literal notranslate"><span class="pre">str.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#str.istitle"><code class="docutils literal notranslate"><span class="pre">str.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#str.isupper"><code class="docutils literal notranslate"><span class="pre">str.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#str.join"><code class="docutils literal notranslate"><span class="pre">str.join()</span></code></a></li>
+<li><a class="reference internal" href="#str.ljust"><code class="docutils literal notranslate"><span class="pre">str.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#str.lower"><code class="docutils literal notranslate"><span class="pre">str.lower()</span></code></a></li>
+<li><a class="reference internal" href="#str.lstrip"><code class="docutils literal notranslate"><span class="pre">str.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#str.maketrans"><code class="docutils literal notranslate"><span class="pre">str.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#str.partition"><code class="docutils literal notranslate"><span class="pre">str.partition()</span></code></a></li>
+<li><a class="reference internal" href="#str.removeprefix"><code class="docutils literal notranslate"><span class="pre">str.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#str.removesuffix"><code class="docutils literal notranslate"><span class="pre">str.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#str.replace"><code class="docutils literal notranslate"><span class="pre">str.replace()</span></code></a></li>
+<li><a class="reference internal" href="#str.rfind"><code class="docutils literal notranslate"><span class="pre">str.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#str.rindex"><code class="docutils literal notranslate"><span class="pre">str.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#str.rjust"><code class="docutils literal notranslate"><span class="pre">str.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#str.rpartition"><code class="docutils literal notranslate"><span class="pre">str.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#str.rsplit"><code class="docutils literal notranslate"><span class="pre">str.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#str.rstrip"><code class="docutils literal notranslate"><span class="pre">str.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#str.split"><code class="docutils literal notranslate"><span class="pre">str.split()</span></code></a></li>
+<li><a class="reference internal" href="#str.splitlines"><code class="docutils literal notranslate"><span class="pre">str.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#str.startswith"><code class="docutils literal notranslate"><span class="pre">str.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#str.strip"><code class="docutils literal notranslate"><span class="pre">str.strip()</span></code></a></li>
+<li><a class="reference internal" href="#str.swapcase"><code class="docutils literal notranslate"><span class="pre">str.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#str.title"><code class="docutils literal notranslate"><span class="pre">str.title()</span></code></a></li>
+<li><a class="reference internal" href="#str.translate"><code class="docutils literal notranslate"><span class="pre">str.translate()</span></code></a></li>
+<li><a class="reference internal" href="#str.upper"><code class="docutils literal notranslate"><span class="pre">str.upper()</span></code></a></li>
+<li><a class="reference internal" href="#str.zfill"><code class="docutils literal notranslate"><span class="pre">str.zfill()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#printf-style-string-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style String Formatting</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#binary-sequence-types-bytes-bytearray-memoryview">Binary Sequence Types — <code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">memoryview</span></code></a><ul>
-<li><a class="reference internal" href="#bytes-objects">Bytes Objects</a></li>
-<li><a class="reference internal" href="#bytearray-objects">Bytearray Objects</a></li>
-<li><a class="reference internal" href="#bytes-and-bytearray-operations">Bytes and Bytearray Operations</a></li>
-<li><a class="reference internal" href="#printf-style-bytes-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting</a></li>
-<li><a class="reference internal" href="#memory-views">Memory Views</a></li>
+<li><a class="reference internal" href="#bytes-objects">Bytes Objects</a><ul>
+<li><a class="reference internal" href="#bytes"><code class="docutils literal notranslate"><span class="pre">bytes</span></code></a><ul>
+<li><a class="reference internal" href="#bytes.fromhex"><code class="docutils literal notranslate"><span class="pre">bytes.fromhex()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.hex"><code class="docutils literal notranslate"><span class="pre">bytes.hex()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#set-types-set-frozenset">Set Türleri — <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bytearray-objects">Bytearray Objects</a><ul>
+<li><a class="reference internal" href="#bytearray"><code class="docutils literal notranslate"><span class="pre">bytearray</span></code></a><ul>
+<li><a class="reference internal" href="#bytearray.fromhex"><code class="docutils literal notranslate"><span class="pre">bytearray.fromhex()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.hex"><code class="docutils literal notranslate"><span class="pre">bytearray.hex()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bytes-and-bytearray-operations">Bytes and Bytearray Operations</a><ul>
+<li><a class="reference internal" href="#bytes.count"><code class="docutils literal notranslate"><span class="pre">bytes.count()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.count"><code class="docutils literal notranslate"><span class="pre">bytearray.count()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.removeprefix"><code class="docutils literal notranslate"><span class="pre">bytes.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.removeprefix"><code class="docutils literal notranslate"><span class="pre">bytearray.removeprefix()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.removesuffix"><code class="docutils literal notranslate"><span class="pre">bytes.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.removesuffix"><code class="docutils literal notranslate"><span class="pre">bytearray.removesuffix()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.decode"><code class="docutils literal notranslate"><span class="pre">bytes.decode()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.decode"><code class="docutils literal notranslate"><span class="pre">bytearray.decode()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.endswith"><code class="docutils literal notranslate"><span class="pre">bytes.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.endswith"><code class="docutils literal notranslate"><span class="pre">bytearray.endswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.find"><code class="docutils literal notranslate"><span class="pre">bytes.find()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.find"><code class="docutils literal notranslate"><span class="pre">bytearray.find()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.index"><code class="docutils literal notranslate"><span class="pre">bytes.index()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.index"><code class="docutils literal notranslate"><span class="pre">bytearray.index()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.join"><code class="docutils literal notranslate"><span class="pre">bytes.join()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.join"><code class="docutils literal notranslate"><span class="pre">bytearray.join()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.maketrans"><code class="docutils literal notranslate"><span class="pre">bytes.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.maketrans"><code class="docutils literal notranslate"><span class="pre">bytearray.maketrans()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.partition"><code class="docutils literal notranslate"><span class="pre">bytes.partition()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.partition"><code class="docutils literal notranslate"><span class="pre">bytearray.partition()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.replace"><code class="docutils literal notranslate"><span class="pre">bytes.replace()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.replace"><code class="docutils literal notranslate"><span class="pre">bytearray.replace()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rfind"><code class="docutils literal notranslate"><span class="pre">bytes.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rfind"><code class="docutils literal notranslate"><span class="pre">bytearray.rfind()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rindex"><code class="docutils literal notranslate"><span class="pre">bytes.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rindex"><code class="docutils literal notranslate"><span class="pre">bytearray.rindex()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rpartition"><code class="docutils literal notranslate"><span class="pre">bytes.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rpartition"><code class="docutils literal notranslate"><span class="pre">bytearray.rpartition()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.startswith"><code class="docutils literal notranslate"><span class="pre">bytes.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.startswith"><code class="docutils literal notranslate"><span class="pre">bytearray.startswith()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.translate"><code class="docutils literal notranslate"><span class="pre">bytes.translate()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.translate"><code class="docutils literal notranslate"><span class="pre">bytearray.translate()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.center"><code class="docutils literal notranslate"><span class="pre">bytes.center()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.center"><code class="docutils literal notranslate"><span class="pre">bytearray.center()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.ljust"><code class="docutils literal notranslate"><span class="pre">bytes.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.ljust"><code class="docutils literal notranslate"><span class="pre">bytearray.ljust()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.lstrip"><code class="docutils literal notranslate"><span class="pre">bytes.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.lstrip"><code class="docutils literal notranslate"><span class="pre">bytearray.lstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rjust"><code class="docutils literal notranslate"><span class="pre">bytes.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rjust"><code class="docutils literal notranslate"><span class="pre">bytearray.rjust()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rsplit"><code class="docutils literal notranslate"><span class="pre">bytes.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rsplit"><code class="docutils literal notranslate"><span class="pre">bytearray.rsplit()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.rstrip"><code class="docutils literal notranslate"><span class="pre">bytes.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.rstrip"><code class="docutils literal notranslate"><span class="pre">bytearray.rstrip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.split"><code class="docutils literal notranslate"><span class="pre">bytes.split()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.split"><code class="docutils literal notranslate"><span class="pre">bytearray.split()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.strip"><code class="docutils literal notranslate"><span class="pre">bytes.strip()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.strip"><code class="docutils literal notranslate"><span class="pre">bytearray.strip()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.capitalize"><code class="docutils literal notranslate"><span class="pre">bytes.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.capitalize"><code class="docutils literal notranslate"><span class="pre">bytearray.capitalize()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.expandtabs"><code class="docutils literal notranslate"><span class="pre">bytes.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.expandtabs"><code class="docutils literal notranslate"><span class="pre">bytearray.expandtabs()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isalnum"><code class="docutils literal notranslate"><span class="pre">bytes.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isalnum"><code class="docutils literal notranslate"><span class="pre">bytearray.isalnum()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isalpha"><code class="docutils literal notranslate"><span class="pre">bytes.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isalpha"><code class="docutils literal notranslate"><span class="pre">bytearray.isalpha()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isascii"><code class="docutils literal notranslate"><span class="pre">bytes.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isascii"><code class="docutils literal notranslate"><span class="pre">bytearray.isascii()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isdigit"><code class="docutils literal notranslate"><span class="pre">bytes.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isdigit"><code class="docutils literal notranslate"><span class="pre">bytearray.isdigit()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.islower"><code class="docutils literal notranslate"><span class="pre">bytes.islower()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.islower"><code class="docutils literal notranslate"><span class="pre">bytearray.islower()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isspace"><code class="docutils literal notranslate"><span class="pre">bytes.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isspace"><code class="docutils literal notranslate"><span class="pre">bytearray.isspace()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.istitle"><code class="docutils literal notranslate"><span class="pre">bytes.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.istitle"><code class="docutils literal notranslate"><span class="pre">bytearray.istitle()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.isupper"><code class="docutils literal notranslate"><span class="pre">bytes.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.isupper"><code class="docutils literal notranslate"><span class="pre">bytearray.isupper()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.lower"><code class="docutils literal notranslate"><span class="pre">bytes.lower()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.lower"><code class="docutils literal notranslate"><span class="pre">bytearray.lower()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.splitlines"><code class="docutils literal notranslate"><span class="pre">bytes.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.splitlines"><code class="docutils literal notranslate"><span class="pre">bytearray.splitlines()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.swapcase"><code class="docutils literal notranslate"><span class="pre">bytes.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.swapcase"><code class="docutils literal notranslate"><span class="pre">bytearray.swapcase()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.title"><code class="docutils literal notranslate"><span class="pre">bytes.title()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.title"><code class="docutils literal notranslate"><span class="pre">bytearray.title()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.upper"><code class="docutils literal notranslate"><span class="pre">bytes.upper()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.upper"><code class="docutils literal notranslate"><span class="pre">bytearray.upper()</span></code></a></li>
+<li><a class="reference internal" href="#bytes.zfill"><code class="docutils literal notranslate"><span class="pre">bytes.zfill()</span></code></a></li>
+<li><a class="reference internal" href="#bytearray.zfill"><code class="docutils literal notranslate"><span class="pre">bytearray.zfill()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#printf-style-bytes-formatting"><code class="docutils literal notranslate"><span class="pre">printf</span></code>-style Bytes Formatting</a></li>
+<li><a class="reference internal" href="#memory-views">Memory Views</a><ul>
+<li><a class="reference internal" href="#memoryview"><code class="docutils literal notranslate"><span class="pre">memoryview</span></code></a><ul>
+<li><a class="reference internal" href="#memoryview.__eq__"><code class="docutils literal notranslate"><span class="pre">memoryview.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.tobytes"><code class="docutils literal notranslate"><span class="pre">memoryview.tobytes()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.hex"><code class="docutils literal notranslate"><span class="pre">memoryview.hex()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.tolist"><code class="docutils literal notranslate"><span class="pre">memoryview.tolist()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.toreadonly"><code class="docutils literal notranslate"><span class="pre">memoryview.toreadonly()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.release"><code class="docutils literal notranslate"><span class="pre">memoryview.release()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.cast"><code class="docutils literal notranslate"><span class="pre">memoryview.cast()</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.obj"><code class="docutils literal notranslate"><span class="pre">memoryview.obj</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.nbytes"><code class="docutils literal notranslate"><span class="pre">memoryview.nbytes</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.readonly"><code class="docutils literal notranslate"><span class="pre">memoryview.readonly</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.format"><code class="docutils literal notranslate"><span class="pre">memoryview.format</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.itemsize"><code class="docutils literal notranslate"><span class="pre">memoryview.itemsize</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.ndim"><code class="docutils literal notranslate"><span class="pre">memoryview.ndim</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.shape"><code class="docutils literal notranslate"><span class="pre">memoryview.shape</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.strides"><code class="docutils literal notranslate"><span class="pre">memoryview.strides</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.suboffsets"><code class="docutils literal notranslate"><span class="pre">memoryview.suboffsets</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.c_contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.c_contiguous</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.f_contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.f_contiguous</span></code></a></li>
+<li><a class="reference internal" href="#memoryview.contiguous"><code class="docutils literal notranslate"><span class="pre">memoryview.contiguous</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-types-set-frozenset">Set Türleri — <code class="xref py py-class docutils literal notranslate"><span class="pre">set</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">frozenset</span></code></a><ul>
+<li><a class="reference internal" href="#set"><code class="docutils literal notranslate"><span class="pre">set</span></code></a></li>
+<li><a class="reference internal" href="#frozenset"><code class="docutils literal notranslate"><span class="pre">frozenset</span></code></a><ul>
+<li><a class="reference internal" href="#frozenset.isdisjoint"><code class="docutils literal notranslate"><span class="pre">frozenset.isdisjoint()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.issubset"><code class="docutils literal notranslate"><span class="pre">frozenset.issubset()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.issuperset"><code class="docutils literal notranslate"><span class="pre">frozenset.issuperset()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.union"><code class="docutils literal notranslate"><span class="pre">frozenset.union()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.intersection"><code class="docutils literal notranslate"><span class="pre">frozenset.intersection()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.difference"><code class="docutils literal notranslate"><span class="pre">frozenset.difference()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.symmetric_difference"><code class="docutils literal notranslate"><span class="pre">frozenset.symmetric_difference()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.copy"><code class="docutils literal notranslate"><span class="pre">frozenset.copy()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.update"><code class="docutils literal notranslate"><span class="pre">frozenset.update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.intersection_update"><code class="docutils literal notranslate"><span class="pre">frozenset.intersection_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.difference_update"><code class="docutils literal notranslate"><span class="pre">frozenset.difference_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.symmetric_difference_update"><code class="docutils literal notranslate"><span class="pre">frozenset.symmetric_difference_update()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.add"><code class="docutils literal notranslate"><span class="pre">frozenset.add()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.remove"><code class="docutils literal notranslate"><span class="pre">frozenset.remove()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.discard"><code class="docutils literal notranslate"><span class="pre">frozenset.discard()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.pop"><code class="docutils literal notranslate"><span class="pre">frozenset.pop()</span></code></a></li>
+<li><a class="reference internal" href="#frozenset.clear"><code class="docutils literal notranslate"><span class="pre">frozenset.clear()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#mapping-types-dict">Mapping Types — <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a><ul>
+<li><a class="reference internal" href="#dict"><code class="docutils literal notranslate"><span class="pre">dict</span></code></a><ul>
+<li><a class="reference internal" href="#dict.clear"><code class="docutils literal notranslate"><span class="pre">dict.clear()</span></code></a></li>
+<li><a class="reference internal" href="#dict.copy"><code class="docutils literal notranslate"><span class="pre">dict.copy()</span></code></a></li>
+<li><a class="reference internal" href="#dict.fromkeys"><code class="docutils literal notranslate"><span class="pre">dict.fromkeys()</span></code></a></li>
+<li><a class="reference internal" href="#dict.get"><code class="docutils literal notranslate"><span class="pre">dict.get()</span></code></a></li>
+<li><a class="reference internal" href="#dict.items"><code class="docutils literal notranslate"><span class="pre">dict.items()</span></code></a></li>
+<li><a class="reference internal" href="#dict.keys"><code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code></a></li>
+<li><a class="reference internal" href="#dict.pop"><code class="docutils literal notranslate"><span class="pre">dict.pop()</span></code></a></li>
+<li><a class="reference internal" href="#dict.popitem"><code class="docutils literal notranslate"><span class="pre">dict.popitem()</span></code></a></li>
+<li><a class="reference internal" href="#dict.setdefault"><code class="docutils literal notranslate"><span class="pre">dict.setdefault()</span></code></a></li>
+<li><a class="reference internal" href="#dict.update"><code class="docutils literal notranslate"><span class="pre">dict.update()</span></code></a></li>
+<li><a class="reference internal" href="#dict.values"><code class="docutils literal notranslate"><span class="pre">dict.values()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#dictionary-view-objects">Dictionary view objects</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#context-manager-types">Bağlam Yöneticisi Türleri</a></li>
+<li><a class="reference internal" href="#context-manager-types">Bağlam Yöneticisi Türleri</a><ul>
+<li><a class="reference internal" href="#contextmanager.__enter__"><code class="docutils literal notranslate"><span class="pre">contextmanager.__enter__()</span></code></a></li>
+<li><a class="reference internal" href="#contextmanager.__exit__"><code class="docutils literal notranslate"><span class="pre">contextmanager.__exit__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#type-annotation-types-generic-alias-union">Type Annotation Types — <span class="xref std std-ref">Generic Alias</span>, <span class="xref std std-ref">Union</span></a><ul>
 <li><a class="reference internal" href="#generic-alias-type">Genel Takma Ad Türü</a><ul>
 <li><a class="reference internal" href="#standard-generic-classes">Standart Jenerik Sınıflar</a></li>
-<li><a class="reference internal" href="#special-attributes-of-genericalias-objects"><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri</a></li>
+<li><a class="reference internal" href="#special-attributes-of-genericalias-objects"><code class="docutils literal notranslate"><span class="pre">GenericAlias</span></code> objesinin Özel Öznitelikleri</a><ul>
+<li><a class="reference internal" href="#genericalias.__origin__"><code class="docutils literal notranslate"><span class="pre">genericalias.__origin__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__args__"><code class="docutils literal notranslate"><span class="pre">genericalias.__args__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__parameters__"><code class="docutils literal notranslate"><span class="pre">genericalias.__parameters__</span></code></a></li>
+<li><a class="reference internal" href="#genericalias.__unpacked__"><code class="docutils literal notranslate"><span class="pre">genericalias.__unpacked__</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#union-type">Sendika Türü</a></li>
@@ -5213,7 +5673,17 @@ these APIs were added in security patch releases in versions before 3.11.</p>
 <li><a class="reference internal" href="#internal-objects">İç Nesneler</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#special-attributes">Özel Özellikler</a></li>
+<li><a class="reference internal" href="#special-attributes">Özel Özellikler</a><ul>
+<li><a class="reference internal" href="#object.__dict__"><code class="docutils literal notranslate"><span class="pre">object.__dict__</span></code></a></li>
+<li><a class="reference internal" href="#instance.__class__"><code class="docutils literal notranslate"><span class="pre">instance.__class__</span></code></a></li>
+<li><a class="reference internal" href="#class.__bases__"><code class="docutils literal notranslate"><span class="pre">class.__bases__</span></code></a></li>
+<li><a class="reference internal" href="#definition.__name__"><code class="docutils literal notranslate"><span class="pre">definition.__name__</span></code></a></li>
+<li><a class="reference internal" href="#definition.__qualname__"><code class="docutils literal notranslate"><span class="pre">definition.__qualname__</span></code></a></li>
+<li><a class="reference internal" href="#class.__mro__"><code class="docutils literal notranslate"><span class="pre">class.__mro__</span></code></a></li>
+<li><a class="reference internal" href="#class.mro"><code class="docutils literal notranslate"><span class="pre">class.mro()</span></code></a></li>
+<li><a class="reference internal" href="#class.__subclasses__"><code class="docutils literal notranslate"><span class="pre">class.__subclasses__()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#integer-string-conversion-length-limitation">Integer string conversion length limitation</a><ul>
 <li><a class="reference internal" href="#affected-apis">Affected APIs</a></li>
 <li><a class="reference internal" href="#configuring-the-limit">Configuring the limit</a></li>
@@ -5247,6 +5717,10 @@ these APIs were added in security patch releases in versions before 3.11.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -5319,11 +5793,11 @@ these APIs were added in security patch releases in versions before 3.11.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

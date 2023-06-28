@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="inspect — Inspect live objects" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/inspect.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,14 +97,142 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code> — Inspect live objects</a><ul>
-<li><a class="reference internal" href="#types-and-members">Types and members</a></li>
-<li><a class="reference internal" href="#retrieving-source-code">Retrieving source code</a></li>
-<li><a class="reference internal" href="#introspecting-callables-with-the-signature-object">Introspecting callables with the Signature object</a></li>
-<li><a class="reference internal" href="#classes-and-functions">Classes and functions</a></li>
-<li><a class="reference internal" href="#the-interpreter-stack">The interpreter stack</a></li>
-<li><a class="reference internal" href="#fetching-attributes-statically">Fetching attributes statically</a></li>
-<li><a class="reference internal" href="#current-state-of-generators-and-coroutines">Current State of Generators and Coroutines</a></li>
-<li><a class="reference internal" href="#code-objects-bit-flags">Code Objects Bit Flags</a></li>
+<li><a class="reference internal" href="#types-and-members">Types and members</a><ul>
+<li><a class="reference internal" href="#inspect.getmembers"><code class="docutils literal notranslate"><span class="pre">getmembers()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmembers_static"><code class="docutils literal notranslate"><span class="pre">getmembers_static()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmodulename"><code class="docutils literal notranslate"><span class="pre">getmodulename()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismodule"><code class="docutils literal notranslate"><span class="pre">ismodule()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isclass"><code class="docutils literal notranslate"><span class="pre">isclass()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethod"><code class="docutils literal notranslate"><span class="pre">ismethod()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isfunction"><code class="docutils literal notranslate"><span class="pre">isfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgeneratorfunction"><code class="docutils literal notranslate"><span class="pre">isgeneratorfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgenerator"><code class="docutils literal notranslate"><span class="pre">isgenerator()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscoroutinefunction"><code class="docutils literal notranslate"><span class="pre">iscoroutinefunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscoroutine"><code class="docutils literal notranslate"><span class="pre">iscoroutine()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isawaitable"><code class="docutils literal notranslate"><span class="pre">isawaitable()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isasyncgenfunction"><code class="docutils literal notranslate"><span class="pre">isasyncgenfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isasyncgen"><code class="docutils literal notranslate"><span class="pre">isasyncgen()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.istraceback"><code class="docutils literal notranslate"><span class="pre">istraceback()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isframe"><code class="docutils literal notranslate"><span class="pre">isframe()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscode"><code class="docutils literal notranslate"><span class="pre">iscode()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isbuiltin"><code class="docutils literal notranslate"><span class="pre">isbuiltin()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethodwrapper"><code class="docutils literal notranslate"><span class="pre">ismethodwrapper()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isroutine"><code class="docutils literal notranslate"><span class="pre">isroutine()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isabstract"><code class="docutils literal notranslate"><span class="pre">isabstract()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethoddescriptor"><code class="docutils literal notranslate"><span class="pre">ismethoddescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isdatadescriptor"><code class="docutils literal notranslate"><span class="pre">isdatadescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgetsetdescriptor"><code class="docutils literal notranslate"><span class="pre">isgetsetdescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismemberdescriptor"><code class="docutils literal notranslate"><span class="pre">ismemberdescriptor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieving-source-code">Retrieving source code</a><ul>
+<li><a class="reference internal" href="#inspect.getdoc"><code class="docutils literal notranslate"><span class="pre">getdoc()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcomments"><code class="docutils literal notranslate"><span class="pre">getcomments()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getfile"><code class="docutils literal notranslate"><span class="pre">getfile()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmodule"><code class="docutils literal notranslate"><span class="pre">getmodule()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsourcefile"><code class="docutils literal notranslate"><span class="pre">getsourcefile()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsourcelines"><code class="docutils literal notranslate"><span class="pre">getsourcelines()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsource"><code class="docutils literal notranslate"><span class="pre">getsource()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.cleandoc"><code class="docutils literal notranslate"><span class="pre">cleandoc()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introspecting-callables-with-the-signature-object">Introspecting callables with the Signature object</a><ul>
+<li><a class="reference internal" href="#inspect.signature"><code class="docutils literal notranslate"><span class="pre">signature()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature"><code class="docutils literal notranslate"><span class="pre">Signature</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Signature.empty"><code class="docutils literal notranslate"><span class="pre">Signature.empty</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.parameters"><code class="docutils literal notranslate"><span class="pre">Signature.parameters</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.return_annotation"><code class="docutils literal notranslate"><span class="pre">Signature.return_annotation</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.bind"><code class="docutils literal notranslate"><span class="pre">Signature.bind()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.bind_partial"><code class="docutils literal notranslate"><span class="pre">Signature.bind_partial()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.replace"><code class="docutils literal notranslate"><span class="pre">Signature.replace()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.from_callable"><code class="docutils literal notranslate"><span class="pre">Signature.from_callable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Parameter.empty"><code class="docutils literal notranslate"><span class="pre">Parameter.empty</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.name"><code class="docutils literal notranslate"><span class="pre">Parameter.name</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.default"><code class="docutils literal notranslate"><span class="pre">Parameter.default</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.annotation"><code class="docutils literal notranslate"><span class="pre">Parameter.annotation</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.kind"><code class="docutils literal notranslate"><span class="pre">Parameter.kind</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Parameter.kind.description"><code class="docutils literal notranslate"><span class="pre">Parameter.kind.description</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Parameter.replace"><code class="docutils literal notranslate"><span class="pre">Parameter.replace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.BoundArguments"><code class="docutils literal notranslate"><span class="pre">BoundArguments</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.BoundArguments.arguments"><code class="docutils literal notranslate"><span class="pre">BoundArguments.arguments</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.args"><code class="docutils literal notranslate"><span class="pre">BoundArguments.args</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.kwargs"><code class="docutils literal notranslate"><span class="pre">BoundArguments.kwargs</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.signature"><code class="docutils literal notranslate"><span class="pre">BoundArguments.signature</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.apply_defaults"><code class="docutils literal notranslate"><span class="pre">BoundArguments.apply_defaults()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes-and-functions">Classes and functions</a><ul>
+<li><a class="reference internal" href="#inspect.getclasstree"><code class="docutils literal notranslate"><span class="pre">getclasstree()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getfullargspec"><code class="docutils literal notranslate"><span class="pre">getfullargspec()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getargvalues"><code class="docutils literal notranslate"><span class="pre">getargvalues()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.formatargvalues"><code class="docutils literal notranslate"><span class="pre">formatargvalues()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmro"><code class="docutils literal notranslate"><span class="pre">getmro()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcallargs"><code class="docutils literal notranslate"><span class="pre">getcallargs()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getclosurevars"><code class="docutils literal notranslate"><span class="pre">getclosurevars()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.unwrap"><code class="docutils literal notranslate"><span class="pre">unwrap()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.get_annotations"><code class="docutils literal notranslate"><span class="pre">get_annotations()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-interpreter-stack">The interpreter stack</a><ul>
+<li><a class="reference internal" href="#inspect.FrameInfo"><code class="docutils literal notranslate"><span class="pre">FrameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.FrameInfo.frame"><code class="docutils literal notranslate"><span class="pre">FrameInfo.frame</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.filename"><code class="docutils literal notranslate"><span class="pre">FrameInfo.filename</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.lineno"><code class="docutils literal notranslate"><span class="pre">FrameInfo.lineno</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.function"><code class="docutils literal notranslate"><span class="pre">FrameInfo.function</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.code_context"><code class="docutils literal notranslate"><span class="pre">FrameInfo.code_context</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.index"><code class="docutils literal notranslate"><span class="pre">FrameInfo.index</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.positions"><code class="docutils literal notranslate"><span class="pre">FrameInfo.positions</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Traceback"><code class="docutils literal notranslate"><span class="pre">Traceback</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Traceback.filename"><code class="docutils literal notranslate"><span class="pre">Traceback.filename</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.lineno"><code class="docutils literal notranslate"><span class="pre">Traceback.lineno</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.function"><code class="docutils literal notranslate"><span class="pre">Traceback.function</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.code_context"><code class="docutils literal notranslate"><span class="pre">Traceback.code_context</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.index"><code class="docutils literal notranslate"><span class="pre">Traceback.index</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.positions"><code class="docutils literal notranslate"><span class="pre">Traceback.positions</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.getframeinfo"><code class="docutils literal notranslate"><span class="pre">getframeinfo()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getouterframes"><code class="docutils literal notranslate"><span class="pre">getouterframes()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getinnerframes"><code class="docutils literal notranslate"><span class="pre">getinnerframes()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.currentframe"><code class="docutils literal notranslate"><span class="pre">currentframe()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.stack"><code class="docutils literal notranslate"><span class="pre">stack()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.trace"><code class="docutils literal notranslate"><span class="pre">trace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fetching-attributes-statically">Fetching attributes statically</a><ul>
+<li><a class="reference internal" href="#inspect.getattr_static"><code class="docutils literal notranslate"><span class="pre">getattr_static()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#current-state-of-generators-and-coroutines">Current State of Generators and Coroutines</a><ul>
+<li><a class="reference internal" href="#inspect.getgeneratorstate"><code class="docutils literal notranslate"><span class="pre">getgeneratorstate()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcoroutinestate"><code class="docutils literal notranslate"><span class="pre">getcoroutinestate()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getgeneratorlocals"><code class="docutils literal notranslate"><span class="pre">getgeneratorlocals()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcoroutinelocals"><code class="docutils literal notranslate"><span class="pre">getcoroutinelocals()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-objects-bit-flags">Code Objects Bit Flags</a><ul>
+<li><a class="reference internal" href="#inspect.CO_OPTIMIZED"><code class="docutils literal notranslate"><span class="pre">CO_OPTIMIZED</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_NEWLOCALS"><code class="docutils literal notranslate"><span class="pre">CO_NEWLOCALS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_VARARGS"><code class="docutils literal notranslate"><span class="pre">CO_VARARGS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_VARKEYWORDS"><code class="docutils literal notranslate"><span class="pre">CO_VARKEYWORDS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_NESTED"><code class="docutils literal notranslate"><span class="pre">CO_NESTED</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_GENERATOR"><code class="docutils literal notranslate"><span class="pre">CO_GENERATOR</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_COROUTINE"><code class="docutils literal notranslate"><span class="pre">CO_COROUTINE</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_ITERABLE_COROUTINE"><code class="docutils literal notranslate"><span class="pre">CO_ITERABLE_COROUTINE</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_ASYNC_GENERATOR"><code class="docutils literal notranslate"><span class="pre">CO_ASYNC_GENERATOR</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
@@ -200,7 +327,7 @@
           <div class="body" role="main">
             
   <section id="module-inspect">
-<span id="inspect-inspect-live-objects"></span><h1><a class="reference internal" href="#module-inspect" title="inspect: Extract information and source code from live objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code></a> — Inspect live objects<a class="headerlink" href="#module-inspect" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="inspect-inspect-live-objects"></span><h1><a class="reference internal" href="#module-inspect" title="inspect: Extract information and source code from live objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code></a> — Inspect live objects<a class="headerlink" href="#module-inspect" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/inspect.py">Lib/inspect.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-inspect" title="inspect: Extract information and source code from live objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code></a> module provides several useful functions to help get
@@ -213,18 +340,13 @@ to display a detailed traceback.</p>
 getting source code, inspecting classes and functions, and examining the
 interpreter stack.</p>
 <section id="types-and-members">
-<span id="inspect-types"></span><h2>Types and members<a class="headerlink" href="#types-and-members" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-types"></span><h2>Types and members<a class="headerlink" href="#types-and-members" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#inspect.getmembers" title="inspect.getmembers"><code class="xref py py-func docutils literal notranslate"><span class="pre">getmembers()</span></code></a> function retrieves the members of an object such as a
 class or module. The functions whose names begin with “is” are mainly
 provided as convenient choices for the second argument to <a class="reference internal" href="#inspect.getmembers" title="inspect.getmembers"><code class="xref py py-func docutils literal notranslate"><span class="pre">getmembers()</span></code></a>.
 They also help you determine when you can expect to find the following special
 attributes (see <a class="reference internal" href="../reference/import.html#import-mod-attrs"><span class="std std-ref">Import-related module attributes</span></a> for module attributes):</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 33%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Type</p></th>
 <th class="head"><p>Attribute</p></th>
@@ -847,7 +969,7 @@ types, this method will always return <code class="docutils literal notranslate"
 
 </section>
 <section id="retrieving-source-code">
-<span id="inspect-source"></span><h2>Retrieving source code<a class="headerlink" href="#retrieving-source-code" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-source"></span><h2>Retrieving source code<a class="headerlink" href="#retrieving-source-code" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="inspect.getdoc">
 <span class="sig-prename descclassname"><span class="pre">inspect.</span></span><span class="sig-name descname"><span class="pre">getdoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspect.getdoc" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -936,7 +1058,7 @@ expanded to spaces.</p>
 
 </section>
 <section id="introspecting-callables-with-the-signature-object">
-<span id="inspect-signature-object"></span><h2>Introspecting callables with the Signature object<a class="headerlink" href="#introspecting-callables-with-the-signature-object" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-signature-object"></span><h2>Introspecting callables with the Signature object<a class="headerlink" href="#introspecting-callables-with-the-signature-object" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
@@ -1121,10 +1243,10 @@ annotations.</p>
 <dd><p>The name of the parameter as a string.  The name must be a valid
 Python identifier.</p>
 <div class="impl-detail compound">
-<p class="compound-first"><strong>CPython uygulama ayrıntısı:</strong> CPython generates implicit parameter names of the form <code class="docutils literal notranslate"><span class="pre">.0</span></code> on the
+<p><strong>CPython uygulama ayrıntısı:</strong> CPython generates implicit parameter names of the form <code class="docutils literal notranslate"><span class="pre">.0</span></code> on the
 code objects used to implement comprehensions and generator
 expressions.</p>
-<div class="compound-last versionchanged">
+<div class="versionchanged">
 <p><span class="versionmodified changed">3.6 sürümünde değişti: </span>These parameter names are exposed by this module as names like
 <code class="docutils literal notranslate"><span class="pre">implicit0</span></code>.</p>
 </div>
@@ -1152,10 +1274,6 @@ this attribute is set to <a class="reference internal" href="#inspect.Parameter.
 values are accessible via <a class="reference internal" href="#inspect.Parameter" title="inspect.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a> (like <code class="docutils literal notranslate"><span class="pre">Parameter.KEYWORD_ONLY</span></code>),
 and support comparison and ordering, in the following order:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 34%" />
-<col style="width: 66%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Name</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -1345,7 +1463,7 @@ functions:</p>
 </div>
 </section>
 <section id="classes-and-functions">
-<span id="inspect-classes-functions"></span><h2>Classes and functions<a class="headerlink" href="#classes-and-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-classes-functions"></span><h2>Classes and functions<a class="headerlink" href="#classes-and-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="inspect.getclasstree">
 <span class="sig-prename descclassname"><span class="pre">inspect.</span></span><span class="sig-name descname"><span class="pre">getclasstree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unique</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#inspect.getclasstree" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1562,7 +1680,7 @@ more information on annotations best practices.</p>
 
 </section>
 <section id="the-interpreter-stack">
-<span id="inspect-stack"></span><h2>The interpreter stack<a class="headerlink" href="#the-interpreter-stack" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-stack"></span><h2>The interpreter stack<a class="headerlink" href="#the-interpreter-stack" title="Permalink to this heading">¶</a></h2>
 <p>Some of the following functions return
 <a class="reference internal" href="#inspect.FrameInfo" title="inspect.FrameInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">FrameInfo</span></code></a> objects. For backwards compatibility these objects allow
 tuple-like operations on all attributes except <code class="docutils literal notranslate"><span class="pre">positions</span></code>. This behavior
@@ -1796,7 +1914,7 @@ is returned.</p>
 
 </section>
 <section id="fetching-attributes-statically">
-<h2>Fetching attributes statically<a class="headerlink" href="#fetching-attributes-statically" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Fetching attributes statically<a class="headerlink" href="#fetching-attributes-statically" title="Permalink to this heading">¶</a></h2>
 <p>Both <a class="reference internal" href="functions.html#getattr" title="getattr"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a> and <a class="reference internal" href="functions.html#hasattr" title="hasattr"><code class="xref py py-func docutils literal notranslate"><span class="pre">hasattr()</span></code></a> can trigger code execution when
 fetching or checking for the existence of attributes. Descriptors, like
 properties, will be invoked and <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattribute__()</span></code>
@@ -1851,7 +1969,7 @@ code execution:</p>
 </div>
 </section>
 <section id="current-state-of-generators-and-coroutines">
-<h2>Current State of Generators and Coroutines<a class="headerlink" href="#current-state-of-generators-and-coroutines" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Current State of Generators and Coroutines<a class="headerlink" href="#current-state-of-generators-and-coroutines" title="Permalink to this heading">¶</a></h2>
 <p>When implementing coroutine schedulers and for other advanced uses of
 generators, it is useful to determine whether a generator is currently
 executing, is waiting to start or resume or execution, or has already
@@ -1932,7 +2050,7 @@ works for coroutine objects created by <a class="reference internal" href="../re
 
 </section>
 <section id="code-objects-bit-flags">
-<span id="inspect-module-co-flags"></span><h2>Code Objects Bit Flags<a class="headerlink" href="#code-objects-bit-flags" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-module-co-flags"></span><h2>Code Objects Bit Flags<a class="headerlink" href="#code-objects-bit-flags" title="Permalink to this heading">¶</a></h2>
 <p>Python code objects have a <code class="docutils literal notranslate"><span class="pre">co_flags</span></code> attribute, which is a bitmap of
 the following flags:</p>
 <dl class="py data">
@@ -2017,7 +2135,7 @@ for any introspection needs.</p>
 </div>
 </section>
 <section id="command-line-interface">
-<span id="inspect-module-cli"></span><h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="inspect-module-cli"></span><h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-inspect" title="inspect: Extract information and source code from live objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code></a> module also provides a basic introspection capability
 from the command line.</p>
 <p>By default, accepts the name of a module and prints the source of that
@@ -2043,14 +2161,142 @@ appended a colon and the qualified name of the target object.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">inspect</span></code> — Inspect live objects</a><ul>
-<li><a class="reference internal" href="#types-and-members">Types and members</a></li>
-<li><a class="reference internal" href="#retrieving-source-code">Retrieving source code</a></li>
-<li><a class="reference internal" href="#introspecting-callables-with-the-signature-object">Introspecting callables with the Signature object</a></li>
-<li><a class="reference internal" href="#classes-and-functions">Classes and functions</a></li>
-<li><a class="reference internal" href="#the-interpreter-stack">The interpreter stack</a></li>
-<li><a class="reference internal" href="#fetching-attributes-statically">Fetching attributes statically</a></li>
-<li><a class="reference internal" href="#current-state-of-generators-and-coroutines">Current State of Generators and Coroutines</a></li>
-<li><a class="reference internal" href="#code-objects-bit-flags">Code Objects Bit Flags</a></li>
+<li><a class="reference internal" href="#types-and-members">Types and members</a><ul>
+<li><a class="reference internal" href="#inspect.getmembers"><code class="docutils literal notranslate"><span class="pre">getmembers()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmembers_static"><code class="docutils literal notranslate"><span class="pre">getmembers_static()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmodulename"><code class="docutils literal notranslate"><span class="pre">getmodulename()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismodule"><code class="docutils literal notranslate"><span class="pre">ismodule()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isclass"><code class="docutils literal notranslate"><span class="pre">isclass()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethod"><code class="docutils literal notranslate"><span class="pre">ismethod()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isfunction"><code class="docutils literal notranslate"><span class="pre">isfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgeneratorfunction"><code class="docutils literal notranslate"><span class="pre">isgeneratorfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgenerator"><code class="docutils literal notranslate"><span class="pre">isgenerator()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscoroutinefunction"><code class="docutils literal notranslate"><span class="pre">iscoroutinefunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscoroutine"><code class="docutils literal notranslate"><span class="pre">iscoroutine()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isawaitable"><code class="docutils literal notranslate"><span class="pre">isawaitable()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isasyncgenfunction"><code class="docutils literal notranslate"><span class="pre">isasyncgenfunction()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isasyncgen"><code class="docutils literal notranslate"><span class="pre">isasyncgen()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.istraceback"><code class="docutils literal notranslate"><span class="pre">istraceback()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isframe"><code class="docutils literal notranslate"><span class="pre">isframe()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.iscode"><code class="docutils literal notranslate"><span class="pre">iscode()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isbuiltin"><code class="docutils literal notranslate"><span class="pre">isbuiltin()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethodwrapper"><code class="docutils literal notranslate"><span class="pre">ismethodwrapper()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isroutine"><code class="docutils literal notranslate"><span class="pre">isroutine()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isabstract"><code class="docutils literal notranslate"><span class="pre">isabstract()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismethoddescriptor"><code class="docutils literal notranslate"><span class="pre">ismethoddescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isdatadescriptor"><code class="docutils literal notranslate"><span class="pre">isdatadescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.isgetsetdescriptor"><code class="docutils literal notranslate"><span class="pre">isgetsetdescriptor()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.ismemberdescriptor"><code class="docutils literal notranslate"><span class="pre">ismemberdescriptor()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieving-source-code">Retrieving source code</a><ul>
+<li><a class="reference internal" href="#inspect.getdoc"><code class="docutils literal notranslate"><span class="pre">getdoc()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcomments"><code class="docutils literal notranslate"><span class="pre">getcomments()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getfile"><code class="docutils literal notranslate"><span class="pre">getfile()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmodule"><code class="docutils literal notranslate"><span class="pre">getmodule()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsourcefile"><code class="docutils literal notranslate"><span class="pre">getsourcefile()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsourcelines"><code class="docutils literal notranslate"><span class="pre">getsourcelines()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getsource"><code class="docutils literal notranslate"><span class="pre">getsource()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.cleandoc"><code class="docutils literal notranslate"><span class="pre">cleandoc()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introspecting-callables-with-the-signature-object">Introspecting callables with the Signature object</a><ul>
+<li><a class="reference internal" href="#inspect.signature"><code class="docutils literal notranslate"><span class="pre">signature()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature"><code class="docutils literal notranslate"><span class="pre">Signature</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Signature.empty"><code class="docutils literal notranslate"><span class="pre">Signature.empty</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.parameters"><code class="docutils literal notranslate"><span class="pre">Signature.parameters</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.return_annotation"><code class="docutils literal notranslate"><span class="pre">Signature.return_annotation</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.bind"><code class="docutils literal notranslate"><span class="pre">Signature.bind()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.bind_partial"><code class="docutils literal notranslate"><span class="pre">Signature.bind_partial()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.replace"><code class="docutils literal notranslate"><span class="pre">Signature.replace()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Signature.from_callable"><code class="docutils literal notranslate"><span class="pre">Signature.from_callable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Parameter.empty"><code class="docutils literal notranslate"><span class="pre">Parameter.empty</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.name"><code class="docutils literal notranslate"><span class="pre">Parameter.name</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.default"><code class="docutils literal notranslate"><span class="pre">Parameter.default</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.annotation"><code class="docutils literal notranslate"><span class="pre">Parameter.annotation</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Parameter.kind"><code class="docutils literal notranslate"><span class="pre">Parameter.kind</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Parameter.kind.description"><code class="docutils literal notranslate"><span class="pre">Parameter.kind.description</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Parameter.replace"><code class="docutils literal notranslate"><span class="pre">Parameter.replace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.BoundArguments"><code class="docutils literal notranslate"><span class="pre">BoundArguments</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.BoundArguments.arguments"><code class="docutils literal notranslate"><span class="pre">BoundArguments.arguments</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.args"><code class="docutils literal notranslate"><span class="pre">BoundArguments.args</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.kwargs"><code class="docutils literal notranslate"><span class="pre">BoundArguments.kwargs</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.signature"><code class="docutils literal notranslate"><span class="pre">BoundArguments.signature</span></code></a></li>
+<li><a class="reference internal" href="#inspect.BoundArguments.apply_defaults"><code class="docutils literal notranslate"><span class="pre">BoundArguments.apply_defaults()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#classes-and-functions">Classes and functions</a><ul>
+<li><a class="reference internal" href="#inspect.getclasstree"><code class="docutils literal notranslate"><span class="pre">getclasstree()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getfullargspec"><code class="docutils literal notranslate"><span class="pre">getfullargspec()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getargvalues"><code class="docutils literal notranslate"><span class="pre">getargvalues()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.formatargvalues"><code class="docutils literal notranslate"><span class="pre">formatargvalues()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getmro"><code class="docutils literal notranslate"><span class="pre">getmro()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcallargs"><code class="docutils literal notranslate"><span class="pre">getcallargs()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getclosurevars"><code class="docutils literal notranslate"><span class="pre">getclosurevars()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.unwrap"><code class="docutils literal notranslate"><span class="pre">unwrap()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.get_annotations"><code class="docutils literal notranslate"><span class="pre">get_annotations()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-interpreter-stack">The interpreter stack</a><ul>
+<li><a class="reference internal" href="#inspect.FrameInfo"><code class="docutils literal notranslate"><span class="pre">FrameInfo</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.FrameInfo.frame"><code class="docutils literal notranslate"><span class="pre">FrameInfo.frame</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.filename"><code class="docutils literal notranslate"><span class="pre">FrameInfo.filename</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.lineno"><code class="docutils literal notranslate"><span class="pre">FrameInfo.lineno</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.function"><code class="docutils literal notranslate"><span class="pre">FrameInfo.function</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.code_context"><code class="docutils literal notranslate"><span class="pre">FrameInfo.code_context</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.index"><code class="docutils literal notranslate"><span class="pre">FrameInfo.index</span></code></a></li>
+<li><a class="reference internal" href="#inspect.FrameInfo.positions"><code class="docutils literal notranslate"><span class="pre">FrameInfo.positions</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.Traceback"><code class="docutils literal notranslate"><span class="pre">Traceback</span></code></a><ul>
+<li><a class="reference internal" href="#inspect.Traceback.filename"><code class="docutils literal notranslate"><span class="pre">Traceback.filename</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.lineno"><code class="docutils literal notranslate"><span class="pre">Traceback.lineno</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.function"><code class="docutils literal notranslate"><span class="pre">Traceback.function</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.code_context"><code class="docutils literal notranslate"><span class="pre">Traceback.code_context</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.index"><code class="docutils literal notranslate"><span class="pre">Traceback.index</span></code></a></li>
+<li><a class="reference internal" href="#inspect.Traceback.positions"><code class="docutils literal notranslate"><span class="pre">Traceback.positions</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#inspect.getframeinfo"><code class="docutils literal notranslate"><span class="pre">getframeinfo()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getouterframes"><code class="docutils literal notranslate"><span class="pre">getouterframes()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getinnerframes"><code class="docutils literal notranslate"><span class="pre">getinnerframes()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.currentframe"><code class="docutils literal notranslate"><span class="pre">currentframe()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.stack"><code class="docutils literal notranslate"><span class="pre">stack()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.trace"><code class="docutils literal notranslate"><span class="pre">trace()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fetching-attributes-statically">Fetching attributes statically</a><ul>
+<li><a class="reference internal" href="#inspect.getattr_static"><code class="docutils literal notranslate"><span class="pre">getattr_static()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#current-state-of-generators-and-coroutines">Current State of Generators and Coroutines</a><ul>
+<li><a class="reference internal" href="#inspect.getgeneratorstate"><code class="docutils literal notranslate"><span class="pre">getgeneratorstate()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcoroutinestate"><code class="docutils literal notranslate"><span class="pre">getcoroutinestate()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getgeneratorlocals"><code class="docutils literal notranslate"><span class="pre">getgeneratorlocals()</span></code></a></li>
+<li><a class="reference internal" href="#inspect.getcoroutinelocals"><code class="docutils literal notranslate"><span class="pre">getcoroutinelocals()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#code-objects-bit-flags">Code Objects Bit Flags</a><ul>
+<li><a class="reference internal" href="#inspect.CO_OPTIMIZED"><code class="docutils literal notranslate"><span class="pre">CO_OPTIMIZED</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_NEWLOCALS"><code class="docutils literal notranslate"><span class="pre">CO_NEWLOCALS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_VARARGS"><code class="docutils literal notranslate"><span class="pre">CO_VARARGS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_VARKEYWORDS"><code class="docutils literal notranslate"><span class="pre">CO_VARKEYWORDS</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_NESTED"><code class="docutils literal notranslate"><span class="pre">CO_NESTED</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_GENERATOR"><code class="docutils literal notranslate"><span class="pre">CO_GENERATOR</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_COROUTINE"><code class="docutils literal notranslate"><span class="pre">CO_COROUTINE</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_ITERABLE_COROUTINE"><code class="docutils literal notranslate"><span class="pre">CO_ITERABLE_COROUTINE</span></code></a></li>
+<li><a class="reference internal" href="#inspect.CO_ASYNC_GENERATOR"><code class="docutils literal notranslate"><span class="pre">CO_ASYNC_GENERATOR</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 </ul>
 </li>
@@ -2079,6 +2325,10 @@ appended a colon and the qualified name of the target object.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -2152,11 +2402,11 @@ appended a colon and the qualified name of the target object.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

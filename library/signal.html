@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="signal — Set handlers for asynchronous events" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/signal.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -103,7 +102,61 @@
 <li><a class="reference internal" href="#signals-and-threads">Signals and threads</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a><ul>
+<li><a class="reference internal" href="#signal.Signals"><code class="docutils literal notranslate"><span class="pre">Signals</span></code></a></li>
+<li><a class="reference internal" href="#signal.Handlers"><code class="docutils literal notranslate"><span class="pre">Handlers</span></code></a></li>
+<li><a class="reference internal" href="#signal.Sigmasks"><code class="docutils literal notranslate"><span class="pre">Sigmasks</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_DFL"><code class="docutils literal notranslate"><span class="pre">SIG_DFL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_IGN"><code class="docutils literal notranslate"><span class="pre">SIG_IGN</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGABRT"><code class="docutils literal notranslate"><span class="pre">SIGABRT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGALRM"><code class="docutils literal notranslate"><span class="pre">SIGALRM</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGBREAK"><code class="docutils literal notranslate"><span class="pre">SIGBREAK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGBUS"><code class="docutils literal notranslate"><span class="pre">SIGBUS</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCHLD"><code class="docutils literal notranslate"><span class="pre">SIGCHLD</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCLD"><code class="docutils literal notranslate"><span class="pre">SIGCLD</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCONT"><code class="docutils literal notranslate"><span class="pre">SIGCONT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGFPE"><code class="docutils literal notranslate"><span class="pre">SIGFPE</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGHUP"><code class="docutils literal notranslate"><span class="pre">SIGHUP</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGILL"><code class="docutils literal notranslate"><span class="pre">SIGILL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGINT"><code class="docutils literal notranslate"><span class="pre">SIGINT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGKILL"><code class="docutils literal notranslate"><span class="pre">SIGKILL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGPIPE"><code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGSEGV"><code class="docutils literal notranslate"><span class="pre">SIGSEGV</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGSTKFLT"><code class="docutils literal notranslate"><span class="pre">SIGSTKFLT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGTERM"><code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGUSR1"><code class="docutils literal notranslate"><span class="pre">SIGUSR1</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGUSR2"><code class="docutils literal notranslate"><span class="pre">SIGUSR2</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGWINCH"><code class="docutils literal notranslate"><span class="pre">SIGWINCH</span></code></a></li>
+<li><a class="reference internal" href="#signal.CTRL_C_EVENT"><code class="docutils literal notranslate"><span class="pre">CTRL_C_EVENT</span></code></a></li>
+<li><a class="reference internal" href="#signal.CTRL_BREAK_EVENT"><code class="docutils literal notranslate"><span class="pre">CTRL_BREAK_EVENT</span></code></a></li>
+<li><a class="reference internal" href="#signal.NSIG"><code class="docutils literal notranslate"><span class="pre">NSIG</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_REAL"><code class="docutils literal notranslate"><span class="pre">ITIMER_REAL</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_VIRTUAL"><code class="docutils literal notranslate"><span class="pre">ITIMER_VIRTUAL</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_PROF"><code class="docutils literal notranslate"><span class="pre">ITIMER_PROF</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_BLOCK"><code class="docutils literal notranslate"><span class="pre">SIG_BLOCK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_UNBLOCK"><code class="docutils literal notranslate"><span class="pre">SIG_UNBLOCK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_SETMASK"><code class="docutils literal notranslate"><span class="pre">SIG_SETMASK</span></code></a></li>
+<li><a class="reference internal" href="#signal.ItimerError"><code class="docutils literal notranslate"><span class="pre">ItimerError</span></code></a></li>
+<li><a class="reference internal" href="#signal.alarm"><code class="docutils literal notranslate"><span class="pre">alarm()</span></code></a></li>
+<li><a class="reference internal" href="#signal.getsignal"><code class="docutils literal notranslate"><span class="pre">getsignal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.strsignal"><code class="docutils literal notranslate"><span class="pre">strsignal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.valid_signals"><code class="docutils literal notranslate"><span class="pre">valid_signals()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pause"><code class="docutils literal notranslate"><span class="pre">pause()</span></code></a></li>
+<li><a class="reference internal" href="#signal.raise_signal"><code class="docutils literal notranslate"><span class="pre">raise_signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pidfd_send_signal"><code class="docutils literal notranslate"><span class="pre">pidfd_send_signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pthread_kill"><code class="docutils literal notranslate"><span class="pre">pthread_kill()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pthread_sigmask"><code class="docutils literal notranslate"><span class="pre">pthread_sigmask()</span></code></a></li>
+<li><a class="reference internal" href="#signal.setitimer"><code class="docutils literal notranslate"><span class="pre">setitimer()</span></code></a></li>
+<li><a class="reference internal" href="#signal.getitimer"><code class="docutils literal notranslate"><span class="pre">getitimer()</span></code></a></li>
+<li><a class="reference internal" href="#signal.set_wakeup_fd"><code class="docutils literal notranslate"><span class="pre">set_wakeup_fd()</span></code></a></li>
+<li><a class="reference internal" href="#signal.siginterrupt"><code class="docutils literal notranslate"><span class="pre">siginterrupt()</span></code></a></li>
+<li><a class="reference internal" href="#signal.signal"><code class="docutils literal notranslate"><span class="pre">signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigpending"><code class="docutils literal notranslate"><span class="pre">sigpending()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigwait"><code class="docutils literal notranslate"><span class="pre">sigwait()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigwaitinfo"><code class="docutils literal notranslate"><span class="pre">sigwaitinfo()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigtimedwait"><code class="docutils literal notranslate"><span class="pre">sigtimedwait()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#note-on-sigpipe">Note on SIGPIPE</a></li>
 <li><a class="reference internal" href="#note-on-signal-handlers-and-exceptions">Note on Signal Handlers and Exceptions</a></li>
@@ -200,12 +253,12 @@
           <div class="body" role="main">
             
   <section id="module-signal">
-<span id="signal-set-handlers-for-asynchronous-events"></span><h1><a class="reference internal" href="#module-signal" title="signal: Set handlers for asynchronous events."><code class="xref py py-mod docutils literal notranslate"><span class="pre">signal</span></code></a> — Set handlers for asynchronous events<a class="headerlink" href="#module-signal" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="signal-set-handlers-for-asynchronous-events"></span><h1><a class="reference internal" href="#module-signal" title="signal: Set handlers for asynchronous events."><code class="xref py py-mod docutils literal notranslate"><span class="pre">signal</span></code></a> — Set handlers for asynchronous events<a class="headerlink" href="#module-signal" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/signal.py">Lib/signal.py</a></p>
 <hr class="docutils" />
 <p>This module provides mechanisms to use signal handlers in Python.</p>
 <section id="general-rules">
-<h2>General rules<a class="headerlink" href="#general-rules" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>General rules<a class="headerlink" href="#general-rules" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#signal.signal" title="signal.signal"><code class="xref py py-func docutils literal notranslate"><span class="pre">signal.signal()</span></code></a> function allows defining custom handlers to be
 executed when a signal is received.  A small number of default handlers are
 installed: <a class="reference internal" href="#signal.SIGPIPE" title="signal.SIGPIPE"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIGPIPE</span></code></a> is ignored (so write errors on pipes and sockets
@@ -220,7 +273,7 @@ underlying implementation), with the exception of the handler for
 are emulated and therefore behave differently. Several functions and signals
 are not available on these platforms.</p>
 <section id="execution-of-python-signal-handlers">
-<h3>Execution of Python signal handlers<a class="headerlink" href="#execution-of-python-signal-handlers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Execution of Python signal handlers<a class="headerlink" href="#execution-of-python-signal-handlers" title="Permalink to this heading">¶</a></h3>
 <p>A Python signal handler does not get executed inside the low-level (C) signal
 handler.  Instead, the low-level signal handler sets a flag which tells the
 <a class="reference internal" href="../glossary.html#term-virtual-machine"><span class="xref std std-term">virtual machine</span></a> to execute the corresponding Python signal handler
@@ -243,7 +296,7 @@ discussion.</p></li>
 </ul>
 </section>
 <section id="signals-and-threads">
-<span id="id1"></span><h3>Signals and threads<a class="headerlink" href="#signals-and-threads" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id1"></span><h3>Signals and threads<a class="headerlink" href="#signals-and-threads" title="Permalink to this heading">¶</a></h3>
 <p>Python signal handlers are always executed in the main Python thread of the main interpreter,
 even if the signal was received in another thread.  This means that signals
 can’t be used as a means of inter-thread communication.  You can use
@@ -252,7 +305,7 @@ the synchronization primitives from the <a class="reference internal" href="thre
 </section>
 </section>
 <section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">¶</a></h2>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.5 sürümünde değişti: </span>signal (SIG*), handler (<a class="reference internal" href="#signal.SIG_DFL" title="signal.SIG_DFL"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIG_DFL</span></code></a>, <a class="reference internal" href="#signal.SIG_IGN" title="signal.SIG_IGN"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIG_IGN</span></code></a>) and sigmask
 (<a class="reference internal" href="#signal.SIG_BLOCK" title="signal.SIG_BLOCK"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIG_BLOCK</span></code></a>, <a class="reference internal" href="#signal.SIG_UNBLOCK" title="signal.SIG_UNBLOCK"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIG_UNBLOCK</span></code></a>, <a class="reference internal" href="#signal.SIG_SETMASK" title="signal.SIG_SETMASK"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIG_SETMASK</span></code></a>)
@@ -935,7 +988,7 @@ exception (see <span class="target" id="index-1"></span><a class="pep reference 
 
 </section>
 <section id="examples">
-<span id="signal-example"></span><h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="signal-example"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Here is a minimal example program. It uses the <a class="reference internal" href="#signal.alarm" title="signal.alarm"><code class="xref py py-func docutils literal notranslate"><span class="pre">alarm()</span></code></a> function to limit
 the time spent waiting to open a file; this is useful if the file is for a
 serial device that may not be turned on, which would normally cause the
@@ -961,7 +1014,7 @@ be sent, and the handler raises an exception.</p>
 </div>
 </section>
 <section id="note-on-sigpipe">
-<h2>Note on SIGPIPE<a class="headerlink" href="#note-on-sigpipe" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Note on SIGPIPE<a class="headerlink" href="#note-on-sigpipe" title="Permalink to this heading">¶</a></h2>
 <p>Piping output of your program to tools like <em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/head(1)">head(1)</a></em> will
 cause a <a class="reference internal" href="#signal.SIGPIPE" title="signal.SIGPIPE"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIGPIPE</span></code></a> signal to be sent to your process when the receiver
 of its standard output closes early.  This results in an exception
@@ -996,7 +1049,7 @@ connection is interrupted while your program is still writing to
 it.</p>
 </section>
 <section id="note-on-signal-handlers-and-exceptions">
-<span id="handlers-and-exceptions"></span><h2>Note on Signal Handlers and Exceptions<a class="headerlink" href="#note-on-signal-handlers-and-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="handlers-and-exceptions"></span><h2>Note on Signal Handlers and Exceptions<a class="headerlink" href="#note-on-signal-handlers-and-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>If a signal handler raises an exception, the exception will be propagated to
 the main thread and may be raised after any <a class="reference internal" href="../glossary.html#term-bytecode"><span class="xref std std-term">bytecode</span></a> instruction. Most
 notably, a <a class="reference internal" href="exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a> may appear at any point during execution.
@@ -1077,7 +1130,61 @@ of gracefully shutting down.  Instead, they should install their own
 <li><a class="reference internal" href="#signals-and-threads">Signals and threads</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a><ul>
+<li><a class="reference internal" href="#signal.Signals"><code class="docutils literal notranslate"><span class="pre">Signals</span></code></a></li>
+<li><a class="reference internal" href="#signal.Handlers"><code class="docutils literal notranslate"><span class="pre">Handlers</span></code></a></li>
+<li><a class="reference internal" href="#signal.Sigmasks"><code class="docutils literal notranslate"><span class="pre">Sigmasks</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_DFL"><code class="docutils literal notranslate"><span class="pre">SIG_DFL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_IGN"><code class="docutils literal notranslate"><span class="pre">SIG_IGN</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGABRT"><code class="docutils literal notranslate"><span class="pre">SIGABRT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGALRM"><code class="docutils literal notranslate"><span class="pre">SIGALRM</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGBREAK"><code class="docutils literal notranslate"><span class="pre">SIGBREAK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGBUS"><code class="docutils literal notranslate"><span class="pre">SIGBUS</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCHLD"><code class="docutils literal notranslate"><span class="pre">SIGCHLD</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCLD"><code class="docutils literal notranslate"><span class="pre">SIGCLD</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGCONT"><code class="docutils literal notranslate"><span class="pre">SIGCONT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGFPE"><code class="docutils literal notranslate"><span class="pre">SIGFPE</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGHUP"><code class="docutils literal notranslate"><span class="pre">SIGHUP</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGILL"><code class="docutils literal notranslate"><span class="pre">SIGILL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGINT"><code class="docutils literal notranslate"><span class="pre">SIGINT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGKILL"><code class="docutils literal notranslate"><span class="pre">SIGKILL</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGPIPE"><code class="docutils literal notranslate"><span class="pre">SIGPIPE</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGSEGV"><code class="docutils literal notranslate"><span class="pre">SIGSEGV</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGSTKFLT"><code class="docutils literal notranslate"><span class="pre">SIGSTKFLT</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGTERM"><code class="docutils literal notranslate"><span class="pre">SIGTERM</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGUSR1"><code class="docutils literal notranslate"><span class="pre">SIGUSR1</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGUSR2"><code class="docutils literal notranslate"><span class="pre">SIGUSR2</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIGWINCH"><code class="docutils literal notranslate"><span class="pre">SIGWINCH</span></code></a></li>
+<li><a class="reference internal" href="#signal.CTRL_C_EVENT"><code class="docutils literal notranslate"><span class="pre">CTRL_C_EVENT</span></code></a></li>
+<li><a class="reference internal" href="#signal.CTRL_BREAK_EVENT"><code class="docutils literal notranslate"><span class="pre">CTRL_BREAK_EVENT</span></code></a></li>
+<li><a class="reference internal" href="#signal.NSIG"><code class="docutils literal notranslate"><span class="pre">NSIG</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_REAL"><code class="docutils literal notranslate"><span class="pre">ITIMER_REAL</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_VIRTUAL"><code class="docutils literal notranslate"><span class="pre">ITIMER_VIRTUAL</span></code></a></li>
+<li><a class="reference internal" href="#signal.ITIMER_PROF"><code class="docutils literal notranslate"><span class="pre">ITIMER_PROF</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_BLOCK"><code class="docutils literal notranslate"><span class="pre">SIG_BLOCK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_UNBLOCK"><code class="docutils literal notranslate"><span class="pre">SIG_UNBLOCK</span></code></a></li>
+<li><a class="reference internal" href="#signal.SIG_SETMASK"><code class="docutils literal notranslate"><span class="pre">SIG_SETMASK</span></code></a></li>
+<li><a class="reference internal" href="#signal.ItimerError"><code class="docutils literal notranslate"><span class="pre">ItimerError</span></code></a></li>
+<li><a class="reference internal" href="#signal.alarm"><code class="docutils literal notranslate"><span class="pre">alarm()</span></code></a></li>
+<li><a class="reference internal" href="#signal.getsignal"><code class="docutils literal notranslate"><span class="pre">getsignal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.strsignal"><code class="docutils literal notranslate"><span class="pre">strsignal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.valid_signals"><code class="docutils literal notranslate"><span class="pre">valid_signals()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pause"><code class="docutils literal notranslate"><span class="pre">pause()</span></code></a></li>
+<li><a class="reference internal" href="#signal.raise_signal"><code class="docutils literal notranslate"><span class="pre">raise_signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pidfd_send_signal"><code class="docutils literal notranslate"><span class="pre">pidfd_send_signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pthread_kill"><code class="docutils literal notranslate"><span class="pre">pthread_kill()</span></code></a></li>
+<li><a class="reference internal" href="#signal.pthread_sigmask"><code class="docutils literal notranslate"><span class="pre">pthread_sigmask()</span></code></a></li>
+<li><a class="reference internal" href="#signal.setitimer"><code class="docutils literal notranslate"><span class="pre">setitimer()</span></code></a></li>
+<li><a class="reference internal" href="#signal.getitimer"><code class="docutils literal notranslate"><span class="pre">getitimer()</span></code></a></li>
+<li><a class="reference internal" href="#signal.set_wakeup_fd"><code class="docutils literal notranslate"><span class="pre">set_wakeup_fd()</span></code></a></li>
+<li><a class="reference internal" href="#signal.siginterrupt"><code class="docutils literal notranslate"><span class="pre">siginterrupt()</span></code></a></li>
+<li><a class="reference internal" href="#signal.signal"><code class="docutils literal notranslate"><span class="pre">signal()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigpending"><code class="docutils literal notranslate"><span class="pre">sigpending()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigwait"><code class="docutils literal notranslate"><span class="pre">sigwait()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigwaitinfo"><code class="docutils literal notranslate"><span class="pre">sigwaitinfo()</span></code></a></li>
+<li><a class="reference internal" href="#signal.sigtimedwait"><code class="docutils literal notranslate"><span class="pre">sigtimedwait()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#note-on-sigpipe">Note on SIGPIPE</a></li>
 <li><a class="reference internal" href="#note-on-signal-handlers-and-exceptions">Note on Signal Handlers and Exceptions</a></li>
@@ -1108,6 +1215,10 @@ of gracefully shutting down.  Instead, they should install their own
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1181,11 +1292,11 @@ of gracefully shutting down.  Instead, they should install their own
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

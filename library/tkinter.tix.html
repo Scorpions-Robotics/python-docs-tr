@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="tkinter.tix — Extension widgets for Tk" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/tkinter.tix.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,19 +97,76 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code> — Extension widgets for Tk</a><ul>
-<li><a class="reference internal" href="#using-tix">Using Tix</a></li>
-<li><a class="reference internal" href="#tix-widgets">Tix Widgets</a><ul>
-<li><a class="reference internal" href="#basic-widgets">Basic Widgets</a></li>
-<li><a class="reference internal" href="#file-selectors">File Selectors</a></li>
-<li><a class="reference internal" href="#hierarchical-listbox">Hierarchical ListBox</a></li>
-<li><a class="reference internal" href="#tabular-listbox">Tabular ListBox</a></li>
-<li><a class="reference internal" href="#manager-widgets">Manager Widgets</a></li>
-<li><a class="reference internal" href="#image-types">Image Types</a></li>
-<li><a class="reference internal" href="#miscellaneous-widgets">Miscellaneous Widgets</a></li>
-<li><a class="reference internal" href="#form-geometry-manager">Form Geometry Manager</a></li>
+<li><a class="reference internal" href="#using-tix">Using Tix</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Tk"><code class="docutils literal notranslate"><span class="pre">Tk</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tix-commands">Tix Commands</a></li>
+<li><a class="reference internal" href="#tix-widgets">Tix Widgets</a><ul>
+<li><a class="reference internal" href="#basic-widgets">Basic Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Balloon"><code class="docutils literal notranslate"><span class="pre">Balloon</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ButtonBox"><code class="docutils literal notranslate"><span class="pre">ButtonBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ComboBox"><code class="docutils literal notranslate"><span class="pre">ComboBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.LabelEntry"><code class="docutils literal notranslate"><span class="pre">LabelEntry</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.LabelFrame"><code class="docutils literal notranslate"><span class="pre">LabelFrame</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Meter"><code class="docutils literal notranslate"><span class="pre">Meter</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.OptionMenu"><code class="docutils literal notranslate"><span class="pre">OptionMenu</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.PopupMenu"><code class="docutils literal notranslate"><span class="pre">PopupMenu</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Select"><code class="docutils literal notranslate"><span class="pre">Select</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.StdButtonBox"><code class="docutils literal notranslate"><span class="pre">StdButtonBox</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-selectors">File Selectors</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.DirList"><code class="docutils literal notranslate"><span class="pre">DirList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirTree"><code class="docutils literal notranslate"><span class="pre">DirTree</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirSelectDialog"><code class="docutils literal notranslate"><span class="pre">DirSelectDialog</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirSelectBox"><code class="docutils literal notranslate"><span class="pre">DirSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ExFileSelectBox"><code class="docutils literal notranslate"><span class="pre">ExFileSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.FileSelectBox"><code class="docutils literal notranslate"><span class="pre">FileSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.FileEntry"><code class="docutils literal notranslate"><span class="pre">FileEntry</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hierarchical-listbox">Hierarchical ListBox</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.HList"><code class="docutils literal notranslate"><span class="pre">HList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.CheckList"><code class="docutils literal notranslate"><span class="pre">CheckList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Tree"><code class="docutils literal notranslate"><span class="pre">Tree</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tabular-listbox">Tabular ListBox</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.TList"><code class="docutils literal notranslate"><span class="pre">TList</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manager-widgets">Manager Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.PanedWindow"><code class="docutils literal notranslate"><span class="pre">PanedWindow</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ListNoteBook"><code class="docutils literal notranslate"><span class="pre">ListNoteBook</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.NoteBook"><code class="docutils literal notranslate"><span class="pre">NoteBook</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-types">Image Types</a></li>
+<li><a class="reference internal" href="#miscellaneous-widgets">Miscellaneous Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.InputOnly"><code class="docutils literal notranslate"><span class="pre">InputOnly</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-geometry-manager">Form Geometry Manager</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Form"><code class="docutils literal notranslate"><span class="pre">Form</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tix-commands">Tix Commands</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand"><code class="docutils literal notranslate"><span class="pre">tixCommand</span></code></a><ul>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_configure"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_configure()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_cget"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_cget()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_getbitmap"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_getbitmap()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_addbitmapdir"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_addbitmapdir()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_filedialog"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_filedialog()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_getimage"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_getimage()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_option_get"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_option_get()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_resetoptions"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_resetoptions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -204,7 +260,7 @@
           <div class="body" role="main">
             
   <section id="module-tkinter.tix">
-<span id="tkinter-tix-extension-widgets-for-tk"></span><h1><a class="reference internal" href="#module-tkinter.tix" title="tkinter.tix: Tk Extension Widgets for Tkinter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code></a> — Extension widgets for Tk<a class="headerlink" href="#module-tkinter.tix" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tkinter-tix-extension-widgets-for-tk"></span><h1><a class="reference internal" href="#module-tkinter.tix" title="tkinter.tix: Tk Extension Widgets for Tkinter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code></a> — Extension widgets for Tk<a class="headerlink" href="#module-tkinter.tix" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/tkinter/tix.py">Lib/tkinter/tix.py</a></p>
 <div class="deprecated" id="index-0">
 <p><span class="versionmodified deprecated">3.6 sürümünden beri kullanım dışı: </span>This Tk extension is unmaintained and should not be used in new code.  Use
@@ -241,7 +297,7 @@ remotely modify and debug Tix/Tk/Tkinter applications.</p>
 </dl>
 </div>
 <section id="using-tix">
-<h2>Using Tix<a class="headerlink" href="#using-tix" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Using Tix<a class="headerlink" href="#using-tix" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.Tk">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">Tk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">screenName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">className</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Tix'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tkinter.tix.Tk" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -269,11 +325,11 @@ the following:</p>
 </div>
 </section>
 <section id="tix-widgets">
-<h2>Tix Widgets<a class="headerlink" href="#tix-widgets" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Tix Widgets<a class="headerlink" href="#tix-widgets" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="https://tix.sourceforge.net/dist/current/man/html/TixCmd/TixIntro.htm">Tix</a>
 introduces over 40 widget classes to the <a class="reference internal" href="tkinter.html#module-tkinter" title="tkinter: Interface to Tcl/Tk for graphical user interfaces"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter</span></code></a> repertoire.</p>
 <section id="basic-widgets">
-<h3>Basic Widgets<a class="headerlink" href="#basic-widgets" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Basic Widgets<a class="headerlink" href="#basic-widgets" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.Balloon">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">Balloon</span></span><a class="headerlink" href="#tkinter.tix.Balloon" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -367,7 +423,7 @@ widget is a group of standard buttons for Motif-like dialog boxes.</p>
 
 </section>
 <section id="file-selectors">
-<h3>File Selectors<a class="headerlink" href="#file-selectors" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>File Selectors<a class="headerlink" href="#file-selectors" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.DirList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">DirList</span></span><a class="headerlink" href="#tkinter.tix.DirList" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -435,7 +491,7 @@ the entry, which will bring up a file selection dialog.</p>
 
 </section>
 <section id="hierarchical-listbox">
-<h3>Hierarchical ListBox<a class="headerlink" href="#hierarchical-listbox" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Hierarchical ListBox<a class="headerlink" href="#hierarchical-listbox" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.HList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">HList</span></span><a class="headerlink" href="#tkinter.tix.HList" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -464,7 +520,7 @@ view of the tree by opening or closing parts of the tree.</p>
 
 </section>
 <section id="tabular-listbox">
-<h3>Tabular ListBox<a class="headerlink" href="#tabular-listbox" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Tabular ListBox<a class="headerlink" href="#tabular-listbox" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.TList">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">TList</span></span><a class="headerlink" href="#tkinter.tix.TList" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -478,7 +534,7 @@ multiple colors and fonts for the list entries.</p>
 
 </section>
 <section id="manager-widgets">
-<h3>Manager Widgets<a class="headerlink" href="#manager-widgets" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Manager Widgets<a class="headerlink" href="#manager-widgets" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.PanedWindow">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">PanedWindow</span></span><a class="headerlink" href="#tkinter.tix.PanedWindow" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -511,7 +567,7 @@ the visual “tabs” at the top of the NoteBook widget.</p>
 
 </section>
 <section id="image-types">
-<h3>Image Types<a class="headerlink" href="#image-types" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Image Types<a class="headerlink" href="#image-types" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="#module-tkinter.tix" title="tkinter.tix: Tk Extension Widgets for Tkinter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code></a> module adds:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://tix.sourceforge.net/dist/current/man/html/TixCmd/pixmap.htm">pixmap</a>
@@ -528,7 +584,7 @@ widget.</p>
 </ul>
 </section>
 <section id="miscellaneous-widgets">
-<h3>Miscellaneous Widgets<a class="headerlink" href="#miscellaneous-widgets" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Miscellaneous Widgets<a class="headerlink" href="#miscellaneous-widgets" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.InputOnly">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">InputOnly</span></span><a class="headerlink" href="#tkinter.tix.InputOnly" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -539,7 +595,7 @@ command (Unix only).</p>
 
 </section>
 <section id="form-geometry-manager">
-<h3>Form Geometry Manager<a class="headerlink" href="#form-geometry-manager" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Form Geometry Manager<a class="headerlink" href="#form-geometry-manager" title="Permalink to this heading">¶</a></h3>
 <p>In addition, <a class="reference internal" href="#module-tkinter.tix" title="tkinter.tix: Tk Extension Widgets for Tkinter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code></a> augments <a class="reference internal" href="tkinter.html#module-tkinter" title="tkinter: Interface to Tcl/Tk for graphical user interfaces"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter</span></code></a> by providing:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.Form">
@@ -551,7 +607,7 @@ manager based on attachment rules for all Tk widgets.</p>
 </section>
 </section>
 <section id="tix-commands">
-<h2>Tix Commands<a class="headerlink" href="#tix-commands" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Tix Commands<a class="headerlink" href="#tix-commands" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="tkinter.tix.tixCommand">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">tkinter.tix.</span></span><span class="sig-name descname"><span class="pre">tixCommand</span></span><a class="headerlink" href="#tkinter.tix.tixCommand" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -670,19 +726,76 @@ method must be used.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tkinter.tix</span></code> — Extension widgets for Tk</a><ul>
-<li><a class="reference internal" href="#using-tix">Using Tix</a></li>
-<li><a class="reference internal" href="#tix-widgets">Tix Widgets</a><ul>
-<li><a class="reference internal" href="#basic-widgets">Basic Widgets</a></li>
-<li><a class="reference internal" href="#file-selectors">File Selectors</a></li>
-<li><a class="reference internal" href="#hierarchical-listbox">Hierarchical ListBox</a></li>
-<li><a class="reference internal" href="#tabular-listbox">Tabular ListBox</a></li>
-<li><a class="reference internal" href="#manager-widgets">Manager Widgets</a></li>
-<li><a class="reference internal" href="#image-types">Image Types</a></li>
-<li><a class="reference internal" href="#miscellaneous-widgets">Miscellaneous Widgets</a></li>
-<li><a class="reference internal" href="#form-geometry-manager">Form Geometry Manager</a></li>
+<li><a class="reference internal" href="#using-tix">Using Tix</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Tk"><code class="docutils literal notranslate"><span class="pre">Tk</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#tix-commands">Tix Commands</a></li>
+<li><a class="reference internal" href="#tix-widgets">Tix Widgets</a><ul>
+<li><a class="reference internal" href="#basic-widgets">Basic Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Balloon"><code class="docutils literal notranslate"><span class="pre">Balloon</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ButtonBox"><code class="docutils literal notranslate"><span class="pre">ButtonBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ComboBox"><code class="docutils literal notranslate"><span class="pre">ComboBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.LabelEntry"><code class="docutils literal notranslate"><span class="pre">LabelEntry</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.LabelFrame"><code class="docutils literal notranslate"><span class="pre">LabelFrame</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Meter"><code class="docutils literal notranslate"><span class="pre">Meter</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.OptionMenu"><code class="docutils literal notranslate"><span class="pre">OptionMenu</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.PopupMenu"><code class="docutils literal notranslate"><span class="pre">PopupMenu</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Select"><code class="docutils literal notranslate"><span class="pre">Select</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.StdButtonBox"><code class="docutils literal notranslate"><span class="pre">StdButtonBox</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#file-selectors">File Selectors</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.DirList"><code class="docutils literal notranslate"><span class="pre">DirList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirTree"><code class="docutils literal notranslate"><span class="pre">DirTree</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirSelectDialog"><code class="docutils literal notranslate"><span class="pre">DirSelectDialog</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.DirSelectBox"><code class="docutils literal notranslate"><span class="pre">DirSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ExFileSelectBox"><code class="docutils literal notranslate"><span class="pre">ExFileSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.FileSelectBox"><code class="docutils literal notranslate"><span class="pre">FileSelectBox</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.FileEntry"><code class="docutils literal notranslate"><span class="pre">FileEntry</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hierarchical-listbox">Hierarchical ListBox</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.HList"><code class="docutils literal notranslate"><span class="pre">HList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.CheckList"><code class="docutils literal notranslate"><span class="pre">CheckList</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.Tree"><code class="docutils literal notranslate"><span class="pre">Tree</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tabular-listbox">Tabular ListBox</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.TList"><code class="docutils literal notranslate"><span class="pre">TList</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#manager-widgets">Manager Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.PanedWindow"><code class="docutils literal notranslate"><span class="pre">PanedWindow</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.ListNoteBook"><code class="docutils literal notranslate"><span class="pre">ListNoteBook</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.NoteBook"><code class="docutils literal notranslate"><span class="pre">NoteBook</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#image-types">Image Types</a></li>
+<li><a class="reference internal" href="#miscellaneous-widgets">Miscellaneous Widgets</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.InputOnly"><code class="docutils literal notranslate"><span class="pre">InputOnly</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#form-geometry-manager">Form Geometry Manager</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.Form"><code class="docutils literal notranslate"><span class="pre">Form</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tix-commands">Tix Commands</a><ul>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand"><code class="docutils literal notranslate"><span class="pre">tixCommand</span></code></a><ul>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_configure"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_configure()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_cget"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_cget()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_getbitmap"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_getbitmap()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_addbitmapdir"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_addbitmapdir()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_filedialog"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_filedialog()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_getimage"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_getimage()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_option_get"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_option_get()</span></code></a></li>
+<li><a class="reference internal" href="#tkinter.tix.tixCommand.tix_resetoptions"><code class="docutils literal notranslate"><span class="pre">tixCommand.tix_resetoptions()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -710,6 +823,10 @@ method must be used.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -783,11 +900,11 @@ method must be used.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

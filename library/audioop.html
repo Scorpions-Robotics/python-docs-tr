@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="audioop — Manipulate raw audio data" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/audioop.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,42 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code> — Manipulate raw audio data</a><ul>
+<li><a class="reference internal" href="#audioop.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#audioop.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.adpcm2lin"><code class="docutils literal notranslate"><span class="pre">adpcm2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.alaw2lin"><code class="docutils literal notranslate"><span class="pre">alaw2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.avg"><code class="docutils literal notranslate"><span class="pre">avg()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.avgpp"><code class="docutils literal notranslate"><span class="pre">avgpp()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.bias"><code class="docutils literal notranslate"><span class="pre">bias()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.byteswap"><code class="docutils literal notranslate"><span class="pre">byteswap()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.cross"><code class="docutils literal notranslate"><span class="pre">cross()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findfactor"><code class="docutils literal notranslate"><span class="pre">findfactor()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findfit"><code class="docutils literal notranslate"><span class="pre">findfit()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findmax"><code class="docutils literal notranslate"><span class="pre">findmax()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.getsample"><code class="docutils literal notranslate"><span class="pre">getsample()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2adpcm"><code class="docutils literal notranslate"><span class="pre">lin2adpcm()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2alaw"><code class="docutils literal notranslate"><span class="pre">lin2alaw()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2lin"><code class="docutils literal notranslate"><span class="pre">lin2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2ulaw"><code class="docutils literal notranslate"><span class="pre">lin2ulaw()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.maxpp"><code class="docutils literal notranslate"><span class="pre">maxpp()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.minmax"><code class="docutils literal notranslate"><span class="pre">minmax()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.mul"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.ratecv"><code class="docutils literal notranslate"><span class="pre">ratecv()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.reverse"><code class="docutils literal notranslate"><span class="pre">reverse()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.rms"><code class="docutils literal notranslate"><span class="pre">rms()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.tomono"><code class="docutils literal notranslate"><span class="pre">tomono()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.tostereo"><code class="docutils literal notranslate"><span class="pre">tostereo()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.ulaw2lin"><code class="docutils literal notranslate"><span class="pre">ulaw2lin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="asyncore.html"
@@ -182,7 +217,7 @@
           <div class="body" role="main">
             
   <section id="module-audioop">
-<span id="audioop-manipulate-raw-audio-data"></span><h1><a class="reference internal" href="#module-audioop" title="audioop: Manipulate raw audio data. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code></a> — Manipulate raw audio data<a class="headerlink" href="#module-audioop" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="audioop-manipulate-raw-audio-data"></span><h1><a class="reference internal" href="#module-audioop" title="audioop: Manipulate raw audio data. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code></a> — Manipulate raw audio data<a class="headerlink" href="#module-audioop" title="Permalink to this heading">¶</a></h1>
 <div class="deprecated-removed">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-audioop" title="audioop: Manipulate raw audio data. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code></a> module is deprecated
 (see <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0594/#audioop"><strong>PEP 594</strong></a> for details).</p>
@@ -480,6 +515,42 @@ sample and subtract the whole output sample from the input sample:</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code> — Manipulate raw audio data</a><ul>
+<li><a class="reference internal" href="#audioop.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#audioop.add"><code class="docutils literal notranslate"><span class="pre">add()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.adpcm2lin"><code class="docutils literal notranslate"><span class="pre">adpcm2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.alaw2lin"><code class="docutils literal notranslate"><span class="pre">alaw2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.avg"><code class="docutils literal notranslate"><span class="pre">avg()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.avgpp"><code class="docutils literal notranslate"><span class="pre">avgpp()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.bias"><code class="docutils literal notranslate"><span class="pre">bias()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.byteswap"><code class="docutils literal notranslate"><span class="pre">byteswap()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.cross"><code class="docutils literal notranslate"><span class="pre">cross()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findfactor"><code class="docutils literal notranslate"><span class="pre">findfactor()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findfit"><code class="docutils literal notranslate"><span class="pre">findfit()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.findmax"><code class="docutils literal notranslate"><span class="pre">findmax()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.getsample"><code class="docutils literal notranslate"><span class="pre">getsample()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2adpcm"><code class="docutils literal notranslate"><span class="pre">lin2adpcm()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2alaw"><code class="docutils literal notranslate"><span class="pre">lin2alaw()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2lin"><code class="docutils literal notranslate"><span class="pre">lin2lin()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.lin2ulaw"><code class="docutils literal notranslate"><span class="pre">lin2ulaw()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.max"><code class="docutils literal notranslate"><span class="pre">max()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.maxpp"><code class="docutils literal notranslate"><span class="pre">maxpp()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.minmax"><code class="docutils literal notranslate"><span class="pre">minmax()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.mul"><code class="docutils literal notranslate"><span class="pre">mul()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.ratecv"><code class="docutils literal notranslate"><span class="pre">ratecv()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.reverse"><code class="docutils literal notranslate"><span class="pre">reverse()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.rms"><code class="docutils literal notranslate"><span class="pre">rms()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.tomono"><code class="docutils literal notranslate"><span class="pre">tomono()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.tostereo"><code class="docutils literal notranslate"><span class="pre">tostereo()</span></code></a></li>
+<li><a class="reference internal" href="#audioop.ulaw2lin"><code class="docutils literal notranslate"><span class="pre">ulaw2lin()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="asyncore.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncore</span></code> — Asynchronous socket handler</a></p>
@@ -501,6 +572,10 @@ sample and subtract the whole output sample from the input sample:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -574,11 +649,11 @@ sample and subtract the whole output sample from the input sample:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

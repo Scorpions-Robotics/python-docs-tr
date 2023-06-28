@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="sysconfig — Provide access to Python’s configuration information" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/sysconfig.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,9 +97,30 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code> — Provide access to Python’s configuration information</a><ul>
-<li><a class="reference internal" href="#configuration-variables">Configuration variables</a></li>
-<li><a class="reference internal" href="#installation-paths">Installation paths</a></li>
-<li><a class="reference internal" href="#other-functions">Other functions</a></li>
+<li><a class="reference internal" href="#configuration-variables">Configuration variables</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_config_vars"><code class="docutils literal notranslate"><span class="pre">get_config_vars()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_config_var"><code class="docutils literal notranslate"><span class="pre">get_config_var()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-paths">Installation paths</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_scheme_names"><code class="docutils literal notranslate"><span class="pre">get_scheme_names()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_default_scheme"><code class="docutils literal notranslate"><span class="pre">get_default_scheme()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_preferred_scheme"><code class="docutils literal notranslate"><span class="pre">get_preferred_scheme()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig._get_preferred_schemes"><code class="docutils literal notranslate"><span class="pre">_get_preferred_schemes()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_path_names"><code class="docutils literal notranslate"><span class="pre">get_path_names()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_path"><code class="docutils literal notranslate"><span class="pre">get_path()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_paths"><code class="docutils literal notranslate"><span class="pre">get_paths()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-functions">Other functions</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_python_version"><code class="docutils literal notranslate"><span class="pre">get_python_version()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_platform"><code class="docutils literal notranslate"><span class="pre">get_platform()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.is_python_build"><code class="docutils literal notranslate"><span class="pre">is_python_build()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.parse_config_h"><code class="docutils literal notranslate"><span class="pre">parse_config_h()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_config_h_filename"><code class="docutils literal notranslate"><span class="pre">get_config_h_filename()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_makefile_filename"><code class="docutils literal notranslate"><span class="pre">get_makefile_filename()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#using-sysconfig-as-a-script">Using <code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code> as a script</a></li>
 </ul>
 </li>
@@ -195,7 +215,7 @@
           <div class="body" role="main">
             
   <section id="module-sysconfig">
-<span id="sysconfig-provide-access-to-python-s-configuration-information"></span><h1><a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> — Provide access to Python’s configuration information<a class="headerlink" href="#module-sysconfig" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="sysconfig-provide-access-to-python-s-configuration-information"></span><h1><a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> — Provide access to Python’s configuration information<a class="headerlink" href="#module-sysconfig" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
@@ -205,7 +225,7 @@
 information like the list of installation paths and the configuration variables
 relevant for the current platform.</p>
 <section id="configuration-variables">
-<h2>Configuration variables<a class="headerlink" href="#configuration-variables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Configuration variables<a class="headerlink" href="#configuration-variables" title="Permalink to this heading">¶</a></h2>
 <p>A Python distribution contains a <code class="file docutils literal notranslate"><span class="pre">Makefile</span></code> and a <code class="file docutils literal notranslate"><span class="pre">pyconfig.h</span></code>
 header file that are necessary to build both the Python binary itself and
 third-party C extensions compiled using <a class="reference internal" href="distutils.html#module-distutils" title="distutils: Support for building and installing Python modules into an existing Python installation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code></a>.</p>
@@ -242,7 +262,7 @@ argument in the configuration variable dictionary.</p>
 </div>
 </section>
 <section id="installation-paths">
-<span id="id1"></span><h2>Installation paths<a class="headerlink" href="#installation-paths" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Installation paths<a class="headerlink" href="#installation-paths" title="Permalink to this heading">¶</a></h2>
 <p>Python uses an installation scheme that differs depending on the platform and on
 the installation options.  These schemes are stored in <a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> under
 unique identifiers based on the value returned by <a class="reference internal" href="os.html#os.name" title="os.name"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.name</span></code></a>.</p>
@@ -385,7 +405,7 @@ update the dictionary used to expand the paths.</p>
 
 </section>
 <section id="other-functions">
-<h2>Other functions<a class="headerlink" href="#other-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Other functions<a class="headerlink" href="#other-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="sysconfig.get_python_version">
 <span class="sig-prename descclassname"><span class="pre">sysconfig.</span></span><span class="sig-name descname"><span class="pre">get_python_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sysconfig.get_python_version" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -455,7 +475,7 @@ dictionary, and updated with the values read in the file.</p>
 
 </section>
 <section id="using-sysconfig-as-a-script">
-<h2>Using <a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> as a script<a class="headerlink" href="#using-sysconfig-as-a-script" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Using <a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> as a script<a class="headerlink" href="#using-sysconfig-as-a-script" title="Permalink to this heading">¶</a></h2>
 <p>You can use <a class="reference internal" href="#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a> as a script with Python’s <em>-m</em> option:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>sysconfig
 <span class="go">Platform: &quot;macosx-10.4-i386&quot;</span>
@@ -497,9 +517,30 @@ dictionary, and updated with the values read in the file.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code> — Provide access to Python’s configuration information</a><ul>
-<li><a class="reference internal" href="#configuration-variables">Configuration variables</a></li>
-<li><a class="reference internal" href="#installation-paths">Installation paths</a></li>
-<li><a class="reference internal" href="#other-functions">Other functions</a></li>
+<li><a class="reference internal" href="#configuration-variables">Configuration variables</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_config_vars"><code class="docutils literal notranslate"><span class="pre">get_config_vars()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_config_var"><code class="docutils literal notranslate"><span class="pre">get_config_var()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation-paths">Installation paths</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_scheme_names"><code class="docutils literal notranslate"><span class="pre">get_scheme_names()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_default_scheme"><code class="docutils literal notranslate"><span class="pre">get_default_scheme()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_preferred_scheme"><code class="docutils literal notranslate"><span class="pre">get_preferred_scheme()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig._get_preferred_schemes"><code class="docutils literal notranslate"><span class="pre">_get_preferred_schemes()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_path_names"><code class="docutils literal notranslate"><span class="pre">get_path_names()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_path"><code class="docutils literal notranslate"><span class="pre">get_path()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_paths"><code class="docutils literal notranslate"><span class="pre">get_paths()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-functions">Other functions</a><ul>
+<li><a class="reference internal" href="#sysconfig.get_python_version"><code class="docutils literal notranslate"><span class="pre">get_python_version()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_platform"><code class="docutils literal notranslate"><span class="pre">get_platform()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.is_python_build"><code class="docutils literal notranslate"><span class="pre">is_python_build()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.parse_config_h"><code class="docutils literal notranslate"><span class="pre">parse_config_h()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_config_h_filename"><code class="docutils literal notranslate"><span class="pre">get_config_h_filename()</span></code></a></li>
+<li><a class="reference internal" href="#sysconfig.get_makefile_filename"><code class="docutils literal notranslate"><span class="pre">get_makefile_filename()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#using-sysconfig-as-a-script">Using <code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code> as a script</a></li>
 </ul>
 </li>
@@ -528,6 +569,10 @@ dictionary, and updated with the values read in the file.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -601,11 +646,11 @@ dictionary, and updated with the values read in the file.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

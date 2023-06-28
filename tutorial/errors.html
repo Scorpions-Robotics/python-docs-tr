@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="8. Hatalar ve Özel Durumlar" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/errors.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -200,10 +199,10 @@
           <div class="body" role="main">
             
   <section id="errors-and-exceptions">
-<span id="tut-errors"></span><h1><span class="section-number">8. </span>Hatalar ve Özel Durumlar<a class="headerlink" href="#errors-and-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-errors"></span><h1><span class="section-number">8. </span>Hatalar ve Özel Durumlar<a class="headerlink" href="#errors-and-exceptions" title="Permalink to this heading">¶</a></h1>
 <p>Şimdiye kadar hata mesajlarından fazla bahsedilmedi, ancak örnekleri denediyseniz muhtemelen bazılarını görmüşsünüzdür.  (En azından) iki ayırt edilebilir hata türü vardır: <em>söz dizimi hataları</em> (<em>syntax errors</em>) ve <em>özel durumlar</em> (<em>exceptions</em>).</p>
 <section id="syntax-errors">
-<span id="tut-syntaxerrors"></span><h2><span class="section-number">8.1. </span>Söz Dizimi Hataları<a class="headerlink" href="#syntax-errors" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-syntaxerrors"></span><h2><span class="section-number">8.1. </span>Söz Dizimi Hataları<a class="headerlink" href="#syntax-errors" title="Permalink to this heading">¶</a></h2>
 <p>Ayrıştırma hataları olarak da bilinen söz dizimi hataları, Python öğrenirken belki de en sık karşılaşılan hatalardan biridir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello world&#39;</span><span class="p">)</span>
   File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>
@@ -215,7 +214,7 @@
 <p>Ayrıştırıcı, hatalı satırı yineler ve hatanın algılandığı en erken noktayı gösteren küçük bir ‘ok’ görüntüler. Hata oktan <em>önceki</em> dizgede meydana  gelmiştir: örnekte, hata <a class="reference internal" href="../library/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> fonksiyonunda algılanır, çünkü öncesinde iki nokta üst üste (<code class="docutils literal notranslate"><span class="pre">':'</span></code>) eksiktir.  Dosya adı ve satır numarası yazdırılır, böylece girişin bir komut dosyasından gelmesi durumunda nereye bakacağınızı bilirsiniz.</p>
 </section>
 <section id="exceptions">
-<span id="tut-exceptions"></span><h2><span class="section-number">8.2. </span>Özel Durumlar<a class="headerlink" href="#exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-exceptions"></span><h2><span class="section-number">8.2. </span>Özel Durumlar<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h2>
 <p>Bir komut veya ifade söz dizimsel olarak doğru olsa bile, yürütülmeye çalışıldığında hataya neden olabilir. Yürütme sırasında algılanan hatalara <em>exceptions (özel durumlar)</em> denir ve bazıları programlar için kritik değildir: yakında Python programlarında bunların üstesinden gelmeyi öğreneceksiniz.  Ancak, çoğu özel durum programlar tarafından önlenemez ve burada gösterildiği gibi hata iletileriyle sonuçlanır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -237,7 +236,7 @@
 <p><a class="reference internal" href="../library/exceptions.html#bltin-exceptions"><span class="std std-ref">Built-in Exceptions</span></a> yerleşik özel durumları ve anlamlarını listeler.</p>
 </section>
 <section id="handling-exceptions">
-<span id="tut-handling"></span><h2><span class="section-number">8.3. </span>Özel Durumları İşleme<a class="headerlink" href="#handling-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-handling"></span><h2><span class="section-number">8.3. </span>Özel Durumları İşleme<a class="headerlink" href="#handling-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>Seçili özel durumları işleyen programlar yazmak mümkündür. Geçerli bir tam sayı girilene kadar kullanıcıdan giriş isteyen, ancak kullanıcının programı kesmesine izin veren aşağıdaki örneğe bakın (<kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd></kbd> veya işletim sistemi ne destekliyorsa onu kullanarak); kullanıcı kaynaklı kesintilerin <a class="reference internal" href="../library/exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a> özel durumu ile gösterildiğini unutmayın.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">try</span><span class="p">:</span>
@@ -347,7 +346,7 @@
 </div>
 </section>
 <section id="raising-exceptions">
-<span id="tut-raising"></span><h2><span class="section-number">8.4. </span>Hata Yükseltme<a class="headerlink" href="#raising-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-raising"></span><h2><span class="section-number">8.4. </span>Hata Yükseltme<a class="headerlink" href="#raising-exceptions" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../reference/simple_stmts.html#raise"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">raise</span></code></a> ifadesi, programcının belirli bir istisnanın gerçekleşmesini zorlamasını sağlar. Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;HiThere&#39;</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -374,7 +373,7 @@
 </div>
 </section>
 <section id="exception-chaining">
-<span id="tut-exception-chaining"></span><h2><span class="section-number">8.5. </span>İstisna Zincirleme<a class="headerlink" href="#exception-chaining" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-exception-chaining"></span><h2><span class="section-number">8.5. </span>İstisna Zincirleme<a class="headerlink" href="#exception-chaining" title="Permalink to this heading">¶</a></h2>
 <p>Bir <a class="reference internal" href="../reference/compound_stmts.html#except"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">except</span></code></a> bölümü içinde işlenmeyen bir istisna meydana gelirse, istisnanın kendisine eklenmiş olarak işlenmesi ve şu hata mesajına dahil edilmesi gerekir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;database.sqlite&quot;</span><span class="p">)</span>
@@ -432,14 +431,14 @@
 <p>Zincirleme mekaniği hakkında daha fazla bilgi için bkz. <a class="reference internal" href="../library/exceptions.html#bltin-exceptions"><span class="std std-ref">Built-in Exceptions</span></a>.</p>
 </section>
 <section id="user-defined-exceptions">
-<span id="tut-userexceptions"></span><h2><span class="section-number">8.6. </span>Kullanıcı Tanımlı İstisnalar<a class="headerlink" href="#user-defined-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-userexceptions"></span><h2><span class="section-number">8.6. </span>Kullanıcı Tanımlı İstisnalar<a class="headerlink" href="#user-defined-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>Programlar yeni bir istisna sınıfı oluşturarak kendi özel durumlarını adlandırabilir (Python sınıfları hakkında daha fazla bilgi için bkz: <a class="reference internal" href="classes.html#tut-classes"><span class="std std-ref">Sınıflar</span></a> ).  Özel durumlar genellikle doğrudan veya dolaylı olarak <a class="reference internal" href="../library/exceptions.html#Exception" title="Exception"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> sınıfından türetilmelidir.</p>
 <p>İstisna sınıfları, başka herhangi bir sınıfın yapabileceği her şeyi yapan tanımlanabilir, ancak genellikle basit tutulur ve çoğu zaman yalnızca istisna için işleyiciler tarafından hatayla ilgili bilgilerin çıkarılmasına izin veren bir dizi öznitelik sunar.</p>
 <p>Çoğu özel durum, standart özel durumların adlandırışına benzer şekilde “Hata” ile biten adlarla tanımlanır.</p>
 <p>Birçok standart modül, tanımladıkları işlevlerde oluşabilecek hataları raporlamak için kendi istisnalarını tanımlar.</p>
 </section>
 <section id="defining-clean-up-actions">
-<span id="tut-cleanup"></span><h2><span class="section-number">8.7. </span>Temizleme Eylemlerini Tanımlama<a class="headerlink" href="#defining-clean-up-actions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-cleanup"></span><h2><span class="section-number">8.7. </span>Temizleme Eylemlerini Tanımlama<a class="headerlink" href="#defining-clean-up-actions" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> deyimi, her koşulda yürütülmesi gereken temizleme eylemlerini tanımlamayı amaçlayan başka bir opsiyonel yan tümceye sahiptir.  Mesela:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">raise</span> <span class="ne">KeyboardInterrupt</span>
@@ -500,7 +499,7 @@
 <p>Gerçek dünyadaki uygulamalarda <a class="reference internal" href="../reference/compound_stmts.html#finally"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">finally</span></code></a> yan tümcesi, kaynağın kullanımının başarılı olup olmadığına bakılmaksızın dış kaynakları (dosyalar veya ağ bağlantıları gibi) serbest bırakmak için yararlıdır.</p>
 </section>
 <section id="predefined-clean-up-actions">
-<span id="tut-cleanup-with"></span><h2><span class="section-number">8.8. </span>Önceden Tanımlanmış Temizleme Eylemleri<a class="headerlink" href="#predefined-clean-up-actions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-cleanup-with"></span><h2><span class="section-number">8.8. </span>Önceden Tanımlanmış Temizleme Eylemleri<a class="headerlink" href="#predefined-clean-up-actions" title="Permalink to this heading">¶</a></h2>
 <p>Bazı nesneler, nesneyi kullanan işlemin başarılı veya başarısız olup olmadığına bakılmaksızın, nesne artık gerekli olmadığında gerçekleştirilecek standart temizleme eylemlerini tanımlar. Bir dosyayı açmaya ve içeriğini ekrana yazdırmaya çalışan aşağıdaki örneğe bakın.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;myfile.txt&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
@@ -515,7 +514,7 @@
 <p>İfade çalıştırıldıktan sonra, satırlar işlenirken bir sorunla karşılaşılsa bile <em>f</em> dosyası her zaman kapatılır. Dosyalar gibi önceden tanımlanmış temizleme eylemleri sağlayan nesneler dokümantasyonlarında bunu gösterir.</p>
 </section>
 <section id="raising-and-handling-multiple-unrelated-exceptions">
-<span id="tut-exception-groups"></span><h2><span class="section-number">8.9. </span>Birden Fazla Alakasız İstisna Oluşturma ve İşleme<a class="headerlink" href="#raising-and-handling-multiple-unrelated-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-exception-groups"></span><h2><span class="section-number">8.9. </span>Birden Fazla Alakasız İstisna Oluşturma ve İşleme<a class="headerlink" href="#raising-and-handling-multiple-unrelated-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>Meydana gelen birkaç istisnanın rapor edilmesinin gerekli olduğu durumlar vardır. Bu, genellikle birkaç görevin paralel olarak başarısız olabileceği eşzamanlılık çerçevelerinde geçerlidir, ancak ilk istisnayı yükseltmek yerine yürütmeye devam etmenin ve birden çok hata toplamanın istendiği başka kullanım durumları da vardır.</p>
 <p>Yerleşik <a class="reference internal" href="../library/exceptions.html#ExceptionGroup" title="ExceptionGroup"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ExceptionGroup</span></code></a>, birlikte oluşturulabilmeleri için istisna örneklerinin bir listesini sarar. Kendisi bir istisnadır, bu nedenle herhangi bir istisna gibi yakalanabilir.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
@@ -585,7 +584,7 @@
 </div>
 </section>
 <section id="enriching-exceptions-with-notes">
-<h2><span class="section-number">8.10. </span>İstisnaları Notlarla Zenginleştirme<a class="headerlink" href="#enriching-exceptions-with-notes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><span class="section-number">8.10. </span>İstisnaları Notlarla Zenginleştirme<a class="headerlink" href="#enriching-exceptions-with-notes" title="Permalink to this heading">¶</a></h2>
 <p>Yükseltilmek üzere bir istisna oluşturulduğunda, genellikle meydana gelen hatayı açıklayan bilgilerle başlatılır. İstisna yakalandıktan sonra bilgi eklemenin yararlı olduğu durumlar vardır. Bu amaçla, istisnaların bir dizgiyi kabul eden ve onu istisnanın notlar listesine ekleyen <code class="docutils literal notranslate"><span class="pre">add_note(note)</span></code> metodu vardır. Standart geri işleme (traceback) oluşturma, tüm notları istisnadan sonra eklendikleri sırayla içerir.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;bad type&#39;</span><span class="p">)</span>
@@ -691,6 +690,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -763,11 +766,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

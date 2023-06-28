@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="time — Zaman erişimi ve dönüşümleri" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/time.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,9 +97,57 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code> — Zaman erişimi ve dönüşümleri</a><ul>
-<li><a class="reference internal" href="#functions">Fonksiyonlar</a></li>
-<li><a class="reference internal" href="#clock-id-constants">Saat Kimliği Sabitleri</a></li>
-<li><a class="reference internal" href="#timezone-constants">Saat dilimi Sabitleri</a></li>
+<li><a class="reference internal" href="#functions">Fonksiyonlar</a><ul>
+<li><a class="reference internal" href="#time.asctime"><code class="docutils literal notranslate"><span class="pre">asctime()</span></code></a></li>
+<li><a class="reference internal" href="#time.pthread_getcpuclockid"><code class="docutils literal notranslate"><span class="pre">pthread_getcpuclockid()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_getres"><code class="docutils literal notranslate"><span class="pre">clock_getres()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_gettime"><code class="docutils literal notranslate"><span class="pre">clock_gettime()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_gettime_ns"><code class="docutils literal notranslate"><span class="pre">clock_gettime_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_settime"><code class="docutils literal notranslate"><span class="pre">clock_settime()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_settime_ns"><code class="docutils literal notranslate"><span class="pre">clock_settime_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.ctime"><code class="docutils literal notranslate"><span class="pre">ctime()</span></code></a></li>
+<li><a class="reference internal" href="#time.get_clock_info"><code class="docutils literal notranslate"><span class="pre">get_clock_info()</span></code></a></li>
+<li><a class="reference internal" href="#time.gmtime"><code class="docutils literal notranslate"><span class="pre">gmtime()</span></code></a></li>
+<li><a class="reference internal" href="#time.localtime"><code class="docutils literal notranslate"><span class="pre">localtime()</span></code></a></li>
+<li><a class="reference internal" href="#time.mktime"><code class="docutils literal notranslate"><span class="pre">mktime()</span></code></a></li>
+<li><a class="reference internal" href="#time.monotonic"><code class="docutils literal notranslate"><span class="pre">monotonic()</span></code></a></li>
+<li><a class="reference internal" href="#time.monotonic_ns"><code class="docutils literal notranslate"><span class="pre">monotonic_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.perf_counter"><code class="docutils literal notranslate"><span class="pre">perf_counter()</span></code></a></li>
+<li><a class="reference internal" href="#time.perf_counter_ns"><code class="docutils literal notranslate"><span class="pre">perf_counter_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.process_time"><code class="docutils literal notranslate"><span class="pre">process_time()</span></code></a></li>
+<li><a class="reference internal" href="#time.process_time_ns"><code class="docutils literal notranslate"><span class="pre">process_time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.sleep"><code class="docutils literal notranslate"><span class="pre">sleep()</span></code></a></li>
+<li><a class="reference internal" href="#time.strftime"><code class="docutils literal notranslate"><span class="pre">strftime()</span></code></a></li>
+<li><a class="reference internal" href="#time.strptime"><code class="docutils literal notranslate"><span class="pre">strptime()</span></code></a></li>
+<li><a class="reference internal" href="#time.struct_time"><code class="docutils literal notranslate"><span class="pre">struct_time</span></code></a></li>
+<li><a class="reference internal" href="#time.time"><code class="docutils literal notranslate"><span class="pre">time()</span></code></a></li>
+<li><a class="reference internal" href="#time.time_ns"><code class="docutils literal notranslate"><span class="pre">time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.thread_time"><code class="docutils literal notranslate"><span class="pre">thread_time()</span></code></a></li>
+<li><a class="reference internal" href="#time.thread_time_ns"><code class="docutils literal notranslate"><span class="pre">thread_time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.tzset"><code class="docutils literal notranslate"><span class="pre">tzset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clock-id-constants">Saat Kimliği Sabitleri</a><ul>
+<li><a class="reference internal" href="#time.CLOCK_BOOTTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_BOOTTIME</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_HIGHRES"><code class="docutils literal notranslate"><span class="pre">CLOCK_HIGHRES</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_MONOTONIC"><code class="docutils literal notranslate"><span class="pre">CLOCK_MONOTONIC</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_MONOTONIC_RAW"><code class="docutils literal notranslate"><span class="pre">CLOCK_MONOTONIC_RAW</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_PROCESS_CPUTIME_ID"><code class="docutils literal notranslate"><span class="pre">CLOCK_PROCESS_CPUTIME_ID</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_PROF"><code class="docutils literal notranslate"><span class="pre">CLOCK_PROF</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_TAI"><code class="docutils literal notranslate"><span class="pre">CLOCK_TAI</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_THREAD_CPUTIME_ID"><code class="docutils literal notranslate"><span class="pre">CLOCK_THREAD_CPUTIME_ID</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_UPTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_UPTIME</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_UPTIME_RAW"><code class="docutils literal notranslate"><span class="pre">CLOCK_UPTIME_RAW</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_REALTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_REALTIME</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#timezone-constants">Saat dilimi Sabitleri</a><ul>
+<li><a class="reference internal" href="#time.altzone"><code class="docutils literal notranslate"><span class="pre">altzone</span></code></a></li>
+<li><a class="reference internal" href="#time.daylight"><code class="docutils literal notranslate"><span class="pre">daylight</span></code></a></li>
+<li><a class="reference internal" href="#time.timezone"><code class="docutils literal notranslate"><span class="pre">timezone</span></code></a></li>
+<li><a class="reference internal" href="#time.tzname"><code class="docutils literal notranslate"><span class="pre">tzname</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -194,7 +241,7 @@
           <div class="body" role="main">
             
   <section id="module-time">
-<span id="time-time-access-and-conversions"></span><h1><a class="reference internal" href="#module-time" title="time: Time access and conversions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> — Zaman erişimi ve dönüşümleri<a class="headerlink" href="#module-time" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="time-time-access-and-conversions"></span><h1><a class="reference internal" href="#module-time" title="time: Time access and conversions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code></a> — Zaman erişimi ve dönüşümleri<a class="headerlink" href="#module-time" title="Permalink to this heading">¶</a></h1>
 <hr class="docutils" />
 <p>Bu modül zamanla alakalı çeşitli fonksiyonlar sağlar. Alakalı fonksiyonellik için, <a class="reference internal" href="datetime.html#module-datetime" title="datetime: Basic date and time types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a> ve <a class="reference internal" href="calendar.html#module-calendar" title="calendar: Functions for working with calendars, including some emulation of the Unix cal program."><code class="xref py py-mod docutils literal notranslate"><span class="pre">calendar</span></code></a> modüllerine göz atın.</p>
 <p>Bu modül her zaman kullanılabilir olmasına rağmen, bütün fonksiyonlar bütün platformlarda kullanılamaz. Bu modülde tanımlanmış fonksiyonlar çoğu aynı isimli C platform kütüphanesinin fonksiyonlarını çağırır. Fonksiyonların anlamları platformlar arasında değiştiğinden bazen platform dokümantasyonuna başvurmak yardımcı olabilir.</p>
@@ -229,11 +276,6 @@
 </li>
 <li><p>Zaman temsilleri arasında dönüşüm yapmak için belirtilen fonksiyonları kullanın:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Den</p></th>
 <th class="head"><p>Karşı</p></th>
@@ -262,7 +304,7 @@
 </li>
 </ul>
 <section id="functions">
-<span id="time-functions"></span><h2>Fonksiyonlar<a class="headerlink" href="#functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="time-functions"></span><h2>Fonksiyonlar<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="time.asctime">
 <span class="sig-prename descclassname"><span class="pre">time.</span></span><span class="sig-name descname"><span class="pre">asctime</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#time.asctime" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -497,11 +539,6 @@
 <p>0 zaman demeti içerisindeki herhangi bir pozisyon için geçerli bir argümandır; normalde geçersiz ise, değer doğru bir değere zorlanır.</p>
 <p>Aşağıdaki direktifler <em>format</em> dizesine gömülebilir. İsteğe bağlı alan genişliği ve kesinlik belirtimi olmadan gösterilirler ve <a class="reference internal" href="#time.strftime" title="time.strftime"><code class="xref py py-func docutils literal notranslate"><span class="pre">strftime()</span></code></a> sonucunda belirtilen karakterlerle değiştirilirler:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 73%" />
-<col style="width: 11%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Yönerge</p></th>
 <th class="head"><p>Anlamı</p></th>
@@ -590,11 +627,11 @@
 <td></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%z</span></code></p></td>
-<td><p>+HHMM veya -HHMM biçimindeki UTC/GMT’den pozitif veya negatif bir zaman farkını gösteren saat dilimi farkı, burada H ondalık saat hanelerini ve M ondalık dakika hanelerini temsil eder [-23:59, +23:59]. <a class="footnote-reference brackets" href="#id4" id="id1">1</a></p></td>
+<td><p>+HHMM veya -HHMM biçimindeki UTC/GMT’den pozitif veya negatif bir zaman farkını gösteren saat dilimi farkı, burada H ondalık saat hanelerini ve M ondalık dakika hanelerini temsil eder [-23:59, +23:59]. <a class="footnote-reference brackets" href="#id4" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">%Z</span></code></p></td>
-<td><p>Yerel zaman ismi (yerel zaman bulunmuyorsa karakter girmeyin). Kullanımdan kaldırıldı. <a class="footnote-reference brackets" href="#id4" id="id2">1</a></p></td>
+<td><p>Yerel zaman ismi (yerel zaman bulunmuyorsa karakter girmeyin). Kullanımdan kaldırıldı. <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%%</span></code></p></td>
@@ -609,7 +646,7 @@
 <li><p>Aralık gerçekten de <code class="docutils literal notranslate"><span class="pre">0</span></code>’dan <code class="docutils literal notranslate"><span class="pre">61</span></code>’e kadardır; <code class="docutils literal notranslate"><span class="pre">60</span></code> değeri <a class="reference external" href="https://en.wikipedia.org/wiki/Leap_second">leap seconds</a> ‘u temsil eden zaman damgalarında geçerlidir ve <code class="docutils literal notranslate"><span class="pre">61</span></code> değeriyse tarihsel nedenlerden ötürü desteklenmektedir.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">%U</span></code> ve <code class="docutils literal notranslate"><span class="pre">%W</span></code> ifadeleri, <a class="reference internal" href="#time.strptime" title="time.strptime"><code class="xref py py-func docutils literal notranslate"><span class="pre">strptime()</span></code></a> fonksiyonu ile kullanıldığında, yalnızca haftanın günü ve yıl belirtilmişse hesaplamalarda kullanılır.</p></li>
 </ol>
-<p>İşte bir örnek, <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2822.html"><strong>RFC 2822</strong></a> İnternet e-posta standardında belirtilenle uyumlu tarih biçimi.  <a class="footnote-reference brackets" href="#id4" id="id3">1</a></p>
+<p>İşte bir örnek, <span class="target" id="index-36"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2822.html"><strong>RFC 2822</strong></a> İnternet e-posta standardında belirtilenle uyumlu tarih biçimi.  <a class="footnote-reference brackets" href="#id4" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">gmtime</span><span class="p">,</span> <span class="n">strftime</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y %H:%M:%S +0000&quot;</span><span class="p">,</span> <span class="n">gmtime</span><span class="p">())</span>
 <span class="go">&#39;Thu, 28 Jun 2001 14:17:15 +0000&#39;</span>
@@ -640,11 +677,6 @@
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">time.</span></span><span class="sig-name descname"><span class="pre">struct_time</span></span><a class="headerlink" href="#time.struct_time" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p><a class="reference internal" href="#time.gmtime" title="time.gmtime"><code class="xref py py-func docutils literal notranslate"><span class="pre">gmtime()</span></code></a>, <a class="reference internal" href="#time.localtime" title="time.localtime"><code class="xref py py-func docutils literal notranslate"><span class="pre">localtime()</span></code></a> ve <a class="reference internal" href="#time.strptime" title="time.strptime"><code class="xref py py-func docutils literal notranslate"><span class="pre">strptime()</span></code></a> tarafından döndürülen zaman değeri dizisinin türü.  <a class="reference internal" href="../glossary.html#term-named-tuple"><span class="xref std std-term">named tuple</span></a> arayüzüne sahip bir nesnedir: değerlere dizin ve öznitelik adıyla erişilebilir.  Aşağıdaki değerler mevcuttur:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 32%" />
-<col style="width: 56%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Dizin</p></th>
 <th class="head"><p>Öznitelik</p></th>
@@ -803,7 +835,7 @@
 
 </section>
 <section id="clock-id-constants">
-<span id="time-clock-id-constants"></span><h2>Saat Kimliği Sabitleri<a class="headerlink" href="#clock-id-constants" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="time-clock-id-constants"></span><h2>Saat Kimliği Sabitleri<a class="headerlink" href="#clock-id-constants" title="Permalink to this heading">¶</a></h2>
 <p>Şu sabitler <a class="reference internal" href="#time.clock_getres" title="time.clock_getres"><code class="xref py py-func docutils literal notranslate"><span class="pre">clock_getres()</span></code></a> ve <a class="reference internal" href="#time.clock_gettime" title="time.clock_gettime"><code class="xref py py-func docutils literal notranslate"><span class="pre">clock_gettime()</span></code></a> için parametre olarak kullanılırlar.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="time.CLOCK_BOOTTIME">
@@ -942,7 +974,7 @@
 
 </section>
 <section id="timezone-constants">
-<span id="time-timezone-constants"></span><h2>Saat dilimi Sabitleri<a class="headerlink" href="#timezone-constants" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="time-timezone-constants"></span><h2>Saat dilimi Sabitleri<a class="headerlink" href="#timezone-constants" title="Permalink to this heading">¶</a></h2>
 <dl class="py data">
 <dt class="sig sig-object py" id="time.altzone">
 <span class="sig-prename descclassname"><span class="pre">time.</span></span><span class="sig-name descname"><span class="pre">altzone</span></span><a class="headerlink" href="#time.altzone" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -983,11 +1015,13 @@
 </dl>
 </div>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id4"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>)</span></dt>
-<dd><p><code class="docutils literal notranslate"><span class="pre">%Z</span></code> kullanımı artık kullanımdan kaldırıldı, ancak tercih edilen saat/dakika farkına genişleyen <code class="docutils literal notranslate"><span class="pre">%z</span></code> çıkışı, tüm ANSI C kütüphaneleri tarafından desteklenmez. Ayrıca, orijinal 1982 <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc822.html"><strong>RFC 822</strong></a> standardının katı bir okuması, iki basamaklı bir yıl gerektirir (<code class="docutils literal notranslate"><span class="pre">%y</span></code> yerine <code class="docutils literal notranslate"><span class="pre">%y</span></code>), ancak uygulama 2000 yılından çok önce 4 basamaklı yıllara taşındı.  Bundan sonra <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc822.html"><strong>RFC 822</strong></a> geçerliliğini yitirdi ve 4 basamaklı yıl önce <span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1123.html"><strong>RFC 1123</strong></a> tarafından önerildi ve ardından <span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2822.html"><strong>RFC 2822</strong></a> tarafından zorunlu kılındı.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
+<p><code class="docutils literal notranslate"><span class="pre">%Z</span></code> kullanımı artık kullanımdan kaldırıldı, ancak tercih edilen saat/dakika farkına genişleyen <code class="docutils literal notranslate"><span class="pre">%z</span></code> çıkışı, tüm ANSI C kütüphaneleri tarafından desteklenmez. Ayrıca, orijinal 1982 <span class="target" id="index-43"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc822.html"><strong>RFC 822</strong></a> standardının katı bir okuması, iki basamaklı bir yıl gerektirir (<code class="docutils literal notranslate"><span class="pre">%y</span></code> yerine <code class="docutils literal notranslate"><span class="pre">%y</span></code>), ancak uygulama 2000 yılından çok önce 4 basamaklı yıllara taşındı.  Bundan sonra <span class="target" id="index-44"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc822.html"><strong>RFC 822</strong></a> geçerliliğini yitirdi ve 4 basamaklı yıl önce <span class="target" id="index-45"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1123.html"><strong>RFC 1123</strong></a> tarafından önerildi ve ardından <span class="target" id="index-46"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2822.html"><strong>RFC 2822</strong></a> tarafından zorunlu kılındı.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1002,9 +1036,57 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">time</span></code> — Zaman erişimi ve dönüşümleri</a><ul>
-<li><a class="reference internal" href="#functions">Fonksiyonlar</a></li>
-<li><a class="reference internal" href="#clock-id-constants">Saat Kimliği Sabitleri</a></li>
-<li><a class="reference internal" href="#timezone-constants">Saat dilimi Sabitleri</a></li>
+<li><a class="reference internal" href="#functions">Fonksiyonlar</a><ul>
+<li><a class="reference internal" href="#time.asctime"><code class="docutils literal notranslate"><span class="pre">asctime()</span></code></a></li>
+<li><a class="reference internal" href="#time.pthread_getcpuclockid"><code class="docutils literal notranslate"><span class="pre">pthread_getcpuclockid()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_getres"><code class="docutils literal notranslate"><span class="pre">clock_getres()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_gettime"><code class="docutils literal notranslate"><span class="pre">clock_gettime()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_gettime_ns"><code class="docutils literal notranslate"><span class="pre">clock_gettime_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_settime"><code class="docutils literal notranslate"><span class="pre">clock_settime()</span></code></a></li>
+<li><a class="reference internal" href="#time.clock_settime_ns"><code class="docutils literal notranslate"><span class="pre">clock_settime_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.ctime"><code class="docutils literal notranslate"><span class="pre">ctime()</span></code></a></li>
+<li><a class="reference internal" href="#time.get_clock_info"><code class="docutils literal notranslate"><span class="pre">get_clock_info()</span></code></a></li>
+<li><a class="reference internal" href="#time.gmtime"><code class="docutils literal notranslate"><span class="pre">gmtime()</span></code></a></li>
+<li><a class="reference internal" href="#time.localtime"><code class="docutils literal notranslate"><span class="pre">localtime()</span></code></a></li>
+<li><a class="reference internal" href="#time.mktime"><code class="docutils literal notranslate"><span class="pre">mktime()</span></code></a></li>
+<li><a class="reference internal" href="#time.monotonic"><code class="docutils literal notranslate"><span class="pre">monotonic()</span></code></a></li>
+<li><a class="reference internal" href="#time.monotonic_ns"><code class="docutils literal notranslate"><span class="pre">monotonic_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.perf_counter"><code class="docutils literal notranslate"><span class="pre">perf_counter()</span></code></a></li>
+<li><a class="reference internal" href="#time.perf_counter_ns"><code class="docutils literal notranslate"><span class="pre">perf_counter_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.process_time"><code class="docutils literal notranslate"><span class="pre">process_time()</span></code></a></li>
+<li><a class="reference internal" href="#time.process_time_ns"><code class="docutils literal notranslate"><span class="pre">process_time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.sleep"><code class="docutils literal notranslate"><span class="pre">sleep()</span></code></a></li>
+<li><a class="reference internal" href="#time.strftime"><code class="docutils literal notranslate"><span class="pre">strftime()</span></code></a></li>
+<li><a class="reference internal" href="#time.strptime"><code class="docutils literal notranslate"><span class="pre">strptime()</span></code></a></li>
+<li><a class="reference internal" href="#time.struct_time"><code class="docutils literal notranslate"><span class="pre">struct_time</span></code></a></li>
+<li><a class="reference internal" href="#time.time"><code class="docutils literal notranslate"><span class="pre">time()</span></code></a></li>
+<li><a class="reference internal" href="#time.time_ns"><code class="docutils literal notranslate"><span class="pre">time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.thread_time"><code class="docutils literal notranslate"><span class="pre">thread_time()</span></code></a></li>
+<li><a class="reference internal" href="#time.thread_time_ns"><code class="docutils literal notranslate"><span class="pre">thread_time_ns()</span></code></a></li>
+<li><a class="reference internal" href="#time.tzset"><code class="docutils literal notranslate"><span class="pre">tzset()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#clock-id-constants">Saat Kimliği Sabitleri</a><ul>
+<li><a class="reference internal" href="#time.CLOCK_BOOTTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_BOOTTIME</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_HIGHRES"><code class="docutils literal notranslate"><span class="pre">CLOCK_HIGHRES</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_MONOTONIC"><code class="docutils literal notranslate"><span class="pre">CLOCK_MONOTONIC</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_MONOTONIC_RAW"><code class="docutils literal notranslate"><span class="pre">CLOCK_MONOTONIC_RAW</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_PROCESS_CPUTIME_ID"><code class="docutils literal notranslate"><span class="pre">CLOCK_PROCESS_CPUTIME_ID</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_PROF"><code class="docutils literal notranslate"><span class="pre">CLOCK_PROF</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_TAI"><code class="docutils literal notranslate"><span class="pre">CLOCK_TAI</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_THREAD_CPUTIME_ID"><code class="docutils literal notranslate"><span class="pre">CLOCK_THREAD_CPUTIME_ID</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_UPTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_UPTIME</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_UPTIME_RAW"><code class="docutils literal notranslate"><span class="pre">CLOCK_UPTIME_RAW</span></code></a></li>
+<li><a class="reference internal" href="#time.CLOCK_REALTIME"><code class="docutils literal notranslate"><span class="pre">CLOCK_REALTIME</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#timezone-constants">Saat dilimi Sabitleri</a><ul>
+<li><a class="reference internal" href="#time.altzone"><code class="docutils literal notranslate"><span class="pre">altzone</span></code></a></li>
+<li><a class="reference internal" href="#time.daylight"><code class="docutils literal notranslate"><span class="pre">daylight</span></code></a></li>
+<li><a class="reference internal" href="#time.timezone"><code class="docutils literal notranslate"><span class="pre">timezone</span></code></a></li>
+<li><a class="reference internal" href="#time.tzname"><code class="docutils literal notranslate"><span class="pre">tzname</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1032,6 +1114,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1105,11 +1191,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

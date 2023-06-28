@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Type Objects" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/typeobj.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -107,7 +106,30 @@
 <li><a class="reference internal" href="#pytypeobject-definition">PyTypeObject Definition</a></li>
 <li><a class="reference internal" href="#pyobject-slots">PyObject Slots</a></li>
 <li><a class="reference internal" href="#pyvarobject-slots">PyVarObject Slots</a></li>
-<li><a class="reference internal" href="#pytypeobject-slots">PyTypeObject Slots</a></li>
+<li><a class="reference internal" href="#pytypeobject-slots">PyTypeObject Slots</a><ul>
+<li><a class="reference internal" href="#Py_TPFLAGS_HEAPTYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BASETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASETYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_READY"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READY</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_READYING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READYING</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_GC"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DEFAULT</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_METHOD_DESCRIPTOR"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_METHOD_DESCRIPTOR</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_LONG_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LONG_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_LIST_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LIST_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_TUPLE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TUPLE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BYTES_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BYTES_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_UNICODE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_UNICODE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DICT_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DICT_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BASE_EXC_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASE_EXC_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_TYPE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TYPE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_FINALIZE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_FINALIZE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_VECTORCALL"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_VECTORCALL</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_IMMUTABLETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DISALLOW_INSTANTIATION"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_MAPPING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_MAPPING</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_SEQUENCE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_SEQUENCE</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#static-types">Static Types</a></li>
 <li><a class="reference internal" href="#heap-types">Heap Types</a></li>
 </ul>
@@ -210,7 +232,7 @@
           <div class="body" role="main">
             
   <section id="type-objects">
-<span id="type-structs"></span><h1>Type Objects<a class="headerlink" href="#type-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="type-structs"></span><h1>Type Objects<a class="headerlink" href="#type-objects" title="Permalink to this heading">¶</a></h1>
 <p>Perhaps one of the most important structures of the Python object system is the
 structure that defines a new type: the <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> structure.  Type
 objects can be handled using any of the <code class="docutils literal notranslate"><span class="pre">PyObject_*</span></code> or
@@ -228,25 +250,25 @@ structure.</p>
 section provides at-a-glance insight into the meaning and use of
 <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a>.</p>
 <section id="quick-reference">
-<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Quick Reference<a class="headerlink" href="#quick-reference" title="Permalink to this heading">¶</a></h2>
 <section id="tp-slots">
-<span id="tp-slots-table"></span><h3>“tp slots”<a class="headerlink" href="#tp-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
-<table class="colwidths-given docutils align-default">
+<span id="tp-slots-table"></span><h3>“tp slots”<a class="headerlink" href="#tp-slots" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
 <colgroup>
-<col style="width: 31%" />
-<col style="width: 31%" />
-<col style="width: 31%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
-<col style="width: 2%" />
+<col style="width: 31.0%" />
+<col style="width: 31.0%" />
+<col style="width: 31.0%" />
+<col style="width: 1.7%" />
+<col style="width: 1.7%" />
+<col style="width: 1.7%" />
+<col style="width: 1.7%" />
 </colgroup>
 <thead>
-<tr class="row-odd"><th class="head" rowspan="2"><p>PyTypeObject Slot <a class="footnote-reference brackets" href="#slots" id="id1">1</a></p></th>
+<tr class="row-odd"><th class="head" rowspan="2"><p>PyTypeObject Slot <a class="footnote-reference brackets" href="#slots" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></th>
 <th class="head" rowspan="2"><p><a class="reference internal" href="#slot-typedefs-table"><span class="std std-ref">Type</span></a></p></th>
 <th class="head" rowspan="2"><p>special
 methods/attrs</p></th>
-<th class="head" colspan="4"><p>Info <a class="footnote-reference brackets" href="#cols" id="id2">2</a></p></th>
+<th class="head" colspan="4"><p>Info <a class="footnote-reference brackets" href="#cols" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></th>
 </tr>
 <tr class="row-even"><th class="head"><p>O</p></th>
 <th class="head"><p>T</p></th>
@@ -647,16 +669,18 @@ __delete__</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="footnote brackets">
-<dt class="label" id="slots"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p><strong>()</strong>: A slot name in parentheses indicates it is (effectively) deprecated.</p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="slots" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><strong>()</strong>: A slot name in parentheses indicates it is (effectively) deprecated.</p>
 <p><strong>&lt;&gt;</strong>: Names in angle brackets should be initially set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> and
 treated as read-only.</p>
 <p><strong>[]</strong>: Names in square brackets are for internal use only.</p>
 <p><strong>&lt;R&gt;</strong> (as a prefix) means the field is required (must be non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code>).</p>
-</dd>
-<dt class="label" id="cols"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>Columns:</p>
+</aside>
+<aside class="footnote brackets" id="cols" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Columns:</p>
 <p><strong>“O”</strong>:  set on <code class="xref c c-type docutils literal notranslate"><span class="pre">PyBaseObject_Type</span></code></p>
 <p><strong>“T”</strong>:  set on <a class="reference internal" href="type.html#c.PyType_Type" title="PyType_Type"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyType_Type</span></code></a></p>
 <p><strong>“D”</strong>:  default (if slot is set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>)</p>
@@ -676,16 +700,16 @@ G - inherited, but only in combination with other slots; see the slot&#39;s desc
 </div>
 <p>Note that some slots are effectively inherited through the normal
 attribute lookup chain.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 <section id="sub-slots">
-<span id="id3"></span><h3>sub-slots<a class="headerlink" href="#sub-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
-<table class="colwidths-given docutils align-default">
+<span id="id3"></span><h3>sub-slots<a class="headerlink" href="#sub-slots" title="Permalink to this heading">¶</a></h3>
+<table class="docutils align-default">
 <colgroup>
-<col style="width: 47%" />
-<col style="width: 31%" />
-<col style="width: 22%" />
+<col style="width: 47.3%" />
+<col style="width: 30.9%" />
+<col style="width: 21.8%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Slot</p></th>
@@ -933,13 +957,8 @@ __delitem__</p></td>
 </table>
 </section>
 <section id="slot-typedefs">
-<span id="slot-typedefs-table"></span><h3>slot typedefs<a class="headerlink" href="#slot-typedefs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="slot-typedefs-table"></span><h3>slot typedefs<a class="headerlink" href="#slot-typedefs" title="Permalink to this heading">¶</a></h3>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 36%" />
-<col style="width: 36%" />
-<col style="width: 28%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>typedef</p></th>
 <th class="head"><p>Parameter Types</p></th>
@@ -1156,7 +1175,7 @@ __delitem__</p></td>
 </section>
 </section>
 <section id="pytypeobject-definition">
-<h2>PyTypeObject Definition<a class="headerlink" href="#pytypeobject-definition" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>PyTypeObject Definition<a class="headerlink" href="#pytypeobject-definition" title="Permalink to this heading">¶</a></h2>
 <p>The structure definition for <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> can be found in
 <code class="file docutils literal notranslate"><span class="pre">Include/object.h</span></code>.  For convenience of reference, this repeats the
 definition found there:</p>
@@ -1247,7 +1266,7 @@ definition found there:</p>
 </div>
 </section>
 <section id="pyobject-slots">
-<h2>PyObject Slots<a class="headerlink" href="#pyobject-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>PyObject Slots<a class="headerlink" href="#pyobject-slots" title="Permalink to this heading">¶</a></h2>
 <p>The type object structure extends the <a class="reference internal" href="structures.html#c.PyVarObject" title="PyVarObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyVarObject</span></code></a> structure. The
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">ob_size</span></code> field is used for dynamic types (created by <code class="xref py py-func docutils literal notranslate"><span class="pre">type_new()</span></code>,
 usually called from a class statement). Note that <a class="reference internal" href="type.html#c.PyType_Type" title="PyType_Type"><code class="xref c c-data docutils literal notranslate"><span class="pre">PyType_Type</span></code></a> (the
@@ -1309,7 +1328,7 @@ still alive at the end of a run when the environment variable
 
 </section>
 <section id="pyvarobject-slots">
-<h2>PyVarObject Slots<a class="headerlink" href="#pyvarobject-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>PyVarObject Slots<a class="headerlink" href="#pyvarobject-slots" title="Permalink to this heading">¶</a></h2>
 <dl class="c member">
 <dt class="sig sig-object c" id="c.PyVarObject.ob_size">
 <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><span class="n"><span class="pre">Py_ssize_t</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="structures.html#c.PyVarObject" title="PyVarObject"><span class="n"><span class="pre">PyVarObject</span></span></a><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">ob_size</span></span></span><a class="headerlink" href="#c.PyVarObject.ob_size" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -1321,7 +1340,7 @@ initialized to zero. For <a class="reference internal" href="#heap-types"><span 
 
 </section>
 <section id="pytypeobject-slots">
-<h2>PyTypeObject Slots<a class="headerlink" href="#pytypeobject-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>PyTypeObject Slots<a class="headerlink" href="#pytypeobject-slots" title="Permalink to this heading">¶</a></h2>
 <p>Each slot has a section describing inheritance.  If <a class="reference internal" href="type.html#c.PyType_Ready" title="PyType_Ready"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_Ready()</span></code></a>
 may set a value when the field is set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code> then there will also be
 a “Default” section.  (Note that many fields set on <code class="xref c c-type docutils literal notranslate"><span class="pre">PyBaseObject_Type</span></code>
@@ -2145,10 +2164,6 @@ set an exception condition.</p>
 <p>The following constants are defined to be used as the third argument for
 <a class="reference internal" href="#c.PyTypeObject.tp_richcompare" title="PyTypeObject.tp_richcompare"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_richcompare</span></code></a> and for <a class="reference internal" href="object.html#c.PyObject_RichCompare" title="PyObject_RichCompare"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_RichCompare()</span></code></a>:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 57%" />
-<col style="width: 43%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Constant</p></th>
 <th class="head"><p>Comparison</p></th>
@@ -2691,7 +2706,7 @@ using <code class="xref py py-attr docutils literal notranslate"><span class="pr
 
 </section>
 <section id="static-types">
-<span id="id4"></span><h2>Static Types<a class="headerlink" href="#static-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id4"></span><h2>Static Types<a class="headerlink" href="#static-types" title="Permalink to this heading">¶</a></h2>
 <p>Traditionally, types defined in C code are <em>static</em>, that is,
 a static <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> structure is defined directly in code
 and initialized using <a class="reference internal" href="type.html#c.PyType_Ready" title="PyType_Ready"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_Ready()</span></code></a>.</p>
@@ -2709,7 +2724,7 @@ include any subinterpreter-specific state.</p></li>
 compiled for a specific Python minor version.</p>
 </section>
 <section id="heap-types">
-<span id="id5"></span><h2>Heap Types<a class="headerlink" href="#heap-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id5"></span><h2>Heap Types<a class="headerlink" href="#heap-types" title="Permalink to this heading">¶</a></h2>
 <p>An alternative to <a class="reference internal" href="#static-types"><span class="std std-ref">static types</span></a> is <em>heap-allocated types</em>,
 or <em>heap types</em> for short, which correspond closely to classes created by
 Python’s <code class="docutils literal notranslate"><span class="pre">class</span></code> statement. Heap types have the <a class="reference internal" href="#Py_TPFLAGS_HEAPTYPE" title="Py_TPFLAGS_HEAPTYPE"><code class="xref py py-const docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code></a>
@@ -2720,7 +2735,7 @@ or <a class="reference internal" href="type.html#c.PyType_FromModuleAndSpec" tit
 </section>
 </section>
 <section id="number-object-structures">
-<span id="number-structs"></span><h1>Number Object Structures<a class="headerlink" href="#number-object-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="number-structs"></span><h1>Number Object Structures<a class="headerlink" href="#number-object-structures" title="Permalink to this heading">¶</a></h1>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.PyNumberMethods">
 <span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyNumberMethods</span></span></span><a class="headerlink" href="#c.PyNumberMethods" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -2971,7 +2986,7 @@ Python 3.0.1.</p>
 
 </section>
 <section id="mapping-object-structures">
-<span id="mapping-structs"></span><h1>Mapping Object Structures<a class="headerlink" href="#mapping-object-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="mapping-structs"></span><h1>Mapping Object Structures<a class="headerlink" href="#mapping-object-structures" title="Permalink to this heading">¶</a></h1>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.PyMappingMethods">
 <span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyMappingMethods</span></span></span><a class="headerlink" href="#c.PyMappingMethods" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -3010,7 +3025,7 @@ assignment and deletion.</p>
 
 </section>
 <section id="sequence-object-structures">
-<span id="sequence-structs"></span><h1>Sequence Object Structures<a class="headerlink" href="#sequence-object-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="sequence-structs"></span><h1>Sequence Object Structures<a class="headerlink" href="#sequence-object-structures" title="Permalink to this heading">¶</a></h1>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.PySequenceMethods">
 <span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PySequenceMethods</span></span></span><a class="headerlink" href="#c.PySequenceMethods" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -3101,7 +3116,7 @@ via the <a class="reference internal" href="#c.PyNumberMethods.nb_inplace_multip
 
 </section>
 <section id="buffer-object-structures">
-<span id="buffer-structs"></span><h1>Buffer Object Structures<a class="headerlink" href="#buffer-object-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="buffer-structs"></span><h1>Buffer Object Structures<a class="headerlink" href="#buffer-object-structures" title="Permalink to this heading">¶</a></h1>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.PyBufferProcs">
 <span class="k"><span class="pre">type</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyBufferProcs</span></span></span><a class="headerlink" href="#c.PyBufferProcs" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -3181,7 +3196,7 @@ wraps this function.</p>
 
 </section>
 <section id="async-object-structures">
-<span id="async-structs"></span><h1>Async Object Structures<a class="headerlink" href="#async-object-structures" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="async-structs"></span><h1>Async Object Structures<a class="headerlink" href="#async-object-structures" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 sürümünde geldi.</span></p>
 </div>
@@ -3253,7 +3268,7 @@ This slot may be set to <code class="docutils literal notranslate"><span class="
 
 </section>
 <section id="slot-type-typedefs">
-<span id="id6"></span><h1>Slot Type typedefs<a class="headerlink" href="#slot-type-typedefs" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="id6"></span><h1>Slot Type typedefs<a class="headerlink" href="#slot-type-typedefs" title="Permalink to this heading">¶</a></h1>
 <dl class="c type">
 <dt class="sig sig-object c" id="c.allocfunc">
 <span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">allocfunc</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n"><span class="pre">PyTypeObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><span class="n"><span class="pre">Py_ssize_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">nitems</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.allocfunc" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -3421,7 +3436,7 @@ The value argument is set to <code class="docutils literal notranslate"><span cl
 
 </section>
 <section id="examples">
-<span id="typedef-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="typedef-examples"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
 <p>The following are simple examples of Python type definitions.  They
 include common usage you may encounter.  Some demonstrate tricky corner
 cases.  For more examples, practical info, and a tutorial, see
@@ -3580,7 +3595,30 @@ to create instances (e.g. uses a separate factory func) using
 <li><a class="reference internal" href="#pytypeobject-definition">PyTypeObject Definition</a></li>
 <li><a class="reference internal" href="#pyobject-slots">PyObject Slots</a></li>
 <li><a class="reference internal" href="#pyvarobject-slots">PyVarObject Slots</a></li>
-<li><a class="reference internal" href="#pytypeobject-slots">PyTypeObject Slots</a></li>
+<li><a class="reference internal" href="#pytypeobject-slots">PyTypeObject Slots</a><ul>
+<li><a class="reference internal" href="#Py_TPFLAGS_HEAPTYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BASETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASETYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_READY"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READY</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_READYING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_READYING</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_GC"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DEFAULT"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DEFAULT</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_METHOD_DESCRIPTOR"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_METHOD_DESCRIPTOR</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_LONG_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LONG_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_LIST_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_LIST_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_TUPLE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TUPLE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BYTES_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BYTES_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_UNICODE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_UNICODE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DICT_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DICT_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_BASE_EXC_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_BASE_EXC_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_TYPE_SUBCLASS"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_TYPE_SUBCLASS</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_FINALIZE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_FINALIZE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_HAVE_VECTORCALL"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_VECTORCALL</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_IMMUTABLETYPE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_DISALLOW_INSTANTIATION"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_MAPPING"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_MAPPING</span></code></a></li>
+<li><a class="reference internal" href="#Py_TPFLAGS_SEQUENCE"><code class="docutils literal notranslate"><span class="pre">Py_TPFLAGS_SEQUENCE</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#static-types">Static Types</a></li>
 <li><a class="reference internal" href="#heap-types">Heap Types</a></li>
 </ul>
@@ -3617,6 +3655,10 @@ to create instances (e.g. uses a separate factory func) using
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -3690,11 +3732,11 @@ to create instances (e.g. uses a separate factory func) using
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

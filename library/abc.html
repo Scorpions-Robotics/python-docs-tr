@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="abc — Abstract Base Classes" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/abc.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,27 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code> — Abstract Base Classes</a><ul>
+<li><a class="reference internal" href="#abc.ABC"><code class="docutils literal notranslate"><span class="pre">ABC</span></code></a></li>
+<li><a class="reference internal" href="#abc.ABCMeta"><code class="docutils literal notranslate"><span class="pre">ABCMeta</span></code></a><ul>
+<li><a class="reference internal" href="#abc.ABCMeta.register"><code class="docutils literal notranslate"><span class="pre">ABCMeta.register()</span></code></a></li>
+<li><a class="reference internal" href="#abc.ABCMeta.__subclasshook__"><code class="docutils literal notranslate"><span class="pre">ABCMeta.__subclasshook__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abc.abstractmethod"><code class="docutils literal notranslate"><span class="pre">abstractmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractclassmethod"><code class="docutils literal notranslate"><span class="pre">abstractclassmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractstaticmethod"><code class="docutils literal notranslate"><span class="pre">abstractstaticmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractproperty"><code class="docutils literal notranslate"><span class="pre">abstractproperty()</span></code></a></li>
+<li><a class="reference internal" href="#abc.get_cache_token"><code class="docutils literal notranslate"><span class="pre">get_cache_token()</span></code></a></li>
+<li><a class="reference internal" href="#abc.update_abstractmethods"><code class="docutils literal notranslate"><span class="pre">update_abstractmethods()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="contextlib.html"
@@ -182,7 +202,7 @@
           <div class="body" role="main">
             
   <section id="module-abc">
-<span id="abc-abstract-base-classes"></span><h1><a class="reference internal" href="#module-abc" title="abc: Abstract base classes according to :pep:`3119`."><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code></a> — Abstract Base Classes<a class="headerlink" href="#module-abc" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="abc-abstract-base-classes"></span><h1><a class="reference internal" href="#module-abc" title="abc: Abstract base classes according to :pep:`3119`."><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code></a> — Abstract Base Classes<a class="headerlink" href="#module-abc" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/abc.py">Lib/abc.py</a></p>
 <hr class="docutils" />
 <p>This module provides the infrastructure for defining <a class="reference internal" href="../glossary.html#term-abstract-base-class"><span class="xref std std-term">abstract base
@@ -235,7 +255,7 @@ these and their descendants will be considered subclasses of the registering
 ABC by the built-in <a class="reference internal" href="functions.html#issubclass" title="issubclass"><code class="xref py py-func docutils literal notranslate"><span class="pre">issubclass()</span></code></a> function, but the registering ABC
 won’t show up in their MRO (Method Resolution Order) nor will method
 implementations defined by the registering ABC be callable (not even via
-<a class="reference internal" href="functions.html#super" title="super"><code class="xref py py-func docutils literal notranslate"><span class="pre">super()</span></code></a>). <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+<a class="reference internal" href="functions.html#super" title="super"><code class="xref py py-func docutils literal notranslate"><span class="pre">super()</span></code></a>). <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Classes created with a metaclass of <a class="reference internal" href="#abc.ABCMeta" title="abc.ABCMeta"><code class="xref py py-class docutils literal notranslate"><span class="pre">ABCMeta</span></code></a> have the following method:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="abc.ABCMeta.register">
@@ -526,12 +546,13 @@ It does not update any subclasses.</p>
 </dd></dl>
 
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>C++ programmers should note that Python’s virtual base class
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>C++ programmers should note that Python’s virtual base class
 concept is not the same as C++’s.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 
 
@@ -541,6 +562,27 @@ concept is not the same as C++’s.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code> — Abstract Base Classes</a><ul>
+<li><a class="reference internal" href="#abc.ABC"><code class="docutils literal notranslate"><span class="pre">ABC</span></code></a></li>
+<li><a class="reference internal" href="#abc.ABCMeta"><code class="docutils literal notranslate"><span class="pre">ABCMeta</span></code></a><ul>
+<li><a class="reference internal" href="#abc.ABCMeta.register"><code class="docutils literal notranslate"><span class="pre">ABCMeta.register()</span></code></a></li>
+<li><a class="reference internal" href="#abc.ABCMeta.__subclasshook__"><code class="docutils literal notranslate"><span class="pre">ABCMeta.__subclasshook__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abc.abstractmethod"><code class="docutils literal notranslate"><span class="pre">abstractmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractclassmethod"><code class="docutils literal notranslate"><span class="pre">abstractclassmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractstaticmethod"><code class="docutils literal notranslate"><span class="pre">abstractstaticmethod()</span></code></a></li>
+<li><a class="reference internal" href="#abc.abstractproperty"><code class="docutils literal notranslate"><span class="pre">abstractproperty()</span></code></a></li>
+<li><a class="reference internal" href="#abc.get_cache_token"><code class="docutils literal notranslate"><span class="pre">get_cache_token()</span></code></a></li>
+<li><a class="reference internal" href="#abc.update_abstractmethods"><code class="docutils literal notranslate"><span class="pre">update_abstractmethods()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="contextlib.html"
@@ -563,6 +605,10 @@ concept is not the same as C++’s.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -636,11 +682,11 @@ concept is not the same as C++’s.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

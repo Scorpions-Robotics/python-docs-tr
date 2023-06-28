@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Call Protocol" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/call.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -199,11 +198,11 @@
           <div class="body" role="main">
             
   <section id="call-protocol">
-<span id="call"></span><h1>Call Protocol<a class="headerlink" href="#call-protocol" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="call"></span><h1>Call Protocol<a class="headerlink" href="#call-protocol" title="Permalink to this heading">¶</a></h1>
 <p>CPython supports two different calling protocols:
 <em>tp_call</em> and vectorcall.</p>
 <section id="the-tp-call-protocol">
-<h2>The <em>tp_call</em> Protocol<a class="headerlink" href="#the-tp-call-protocol" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>The <em>tp_call</em> Protocol<a class="headerlink" href="#the-tp-call-protocol" title="Permalink to this heading">¶</a></h2>
 <p>Instances of classes that set <a class="reference internal" href="typeobj.html#c.PyTypeObject.tp_call" title="PyTypeObject.tp_call"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_call</span></code></a> are callable.
 The signature of the slot is:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="nf">tp_call</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">callable</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">kwargs</span><span class="p">);</span>
@@ -221,7 +220,7 @@ also pass arguments this way.</p>
 <a class="reference internal" href="#capi-call"><span class="std std-ref">call API</span></a>.</p>
 </section>
 <section id="the-vectorcall-protocol">
-<span id="vectorcall"></span><h2>The Vectorcall Protocol<a class="headerlink" href="#the-vectorcall-protocol" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="vectorcall"></span><h2>The Vectorcall Protocol<a class="headerlink" href="#the-vectorcall-protocol" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.9 sürümünde geldi.</span></p>
 </div>
@@ -312,7 +311,7 @@ Additionally, <code class="docutils literal notranslate"><span class="pre">PyObj
 The old names are still defined as aliases of the new, non-underscored names.</p>
 </div>
 <section id="recursion-control">
-<h3>Recursion Control<a class="headerlink" href="#recursion-control" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Recursion Control<a class="headerlink" href="#recursion-control" title="Permalink to this heading">¶</a></h3>
 <p>When using <em>tp_call</em>, callees do not need to worry about
 <a class="reference internal" href="exceptions.html#recursion"><span class="std std-ref">recursion</span></a>: CPython uses
 <a class="reference internal" href="exceptions.html#c.Py_EnterRecursiveCall" title="Py_EnterRecursiveCall"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_EnterRecursiveCall()</span></code></a> and <a class="reference internal" href="exceptions.html#c.Py_LeaveRecursiveCall" title="Py_LeaveRecursiveCall"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_LeaveRecursiveCall()</span></code></a>
@@ -322,7 +321,7 @@ the callee should use <em>Py_EnterRecursiveCall</em> and <em>Py_LeaveRecursiveCa
 if needed.</p>
 </section>
 <section id="vectorcall-support-api">
-<h3>Vectorcall Support API<a class="headerlink" href="#vectorcall-support-api" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Vectorcall Support API<a class="headerlink" href="#vectorcall-support-api" title="Permalink to this heading">¶</a></h3>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyVectorcall_NARGS">
 <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><span class="n"><span class="pre">Py_ssize_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyVectorcall_NARGS</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">nargsf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyVectorcall_NARGS" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -370,7 +369,7 @@ and it does not fall back to <code class="docutils literal notranslate"><span cl
 </section>
 </section>
 <section id="object-calling-api">
-<span id="capi-call"></span><h2>Object Calling API<a class="headerlink" href="#object-calling-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="capi-call"></span><h2>Object Calling API<a class="headerlink" href="#object-calling-api" title="Permalink to this heading">¶</a></h2>
 <p>Various functions are available for calling a Python object.
 Each converts its arguments to a convention supported by the called object –
 either <em>tp_call</em> or vectorcall.
@@ -379,12 +378,6 @@ the format of data you have available.</p>
 <p>The following table summarizes the available functions;
 please see individual documentation for details.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 44%" />
-<col style="width: 19%" />
-<col style="width: 21%" />
-<col style="width: 16%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Function</p></th>
 <th class="head"><p>callable</p></th>
@@ -642,7 +635,7 @@ this will call the unbound method object with the full
 
 </section>
 <section id="call-support-api">
-<h2>Call Support API<a class="headerlink" href="#call-support-api" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Call Support API<a class="headerlink" href="#call-support-api" title="Permalink to this heading">¶</a></h2>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyCallable_Check">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyCallable_Check</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyCallable_Check" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -699,6 +692,10 @@ and <code class="docutils literal notranslate"><span class="pre">0</span></code>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -772,11 +769,11 @@ and <code class="docutils literal notranslate"><span class="pre">0</span></code>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

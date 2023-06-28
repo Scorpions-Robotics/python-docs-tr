@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="typing — Support for type hints" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/typing.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -108,29 +107,166 @@
 <li><a class="reference internal" href="#nominal-vs-structural-subtyping">Nominal vs structural subtyping</a></li>
 <li><a class="reference internal" href="#module-contents">Module contents</a><ul>
 <li><a class="reference internal" href="#special-typing-primitives">Special typing primitives</a><ul>
-<li><a class="reference internal" href="#special-types">Special types</a></li>
-<li><a class="reference internal" href="#special-forms">Special forms</a></li>
-<li><a class="reference internal" href="#building-generic-types">Building generic types</a></li>
-<li><a class="reference internal" href="#other-special-directives">Other special directives</a></li>
+<li><a class="reference internal" href="#special-types">Special types</a><ul>
+<li><a class="reference internal" href="#typing.Any"><code class="docutils literal notranslate"><span class="pre">Any</span></code></a></li>
+<li><a class="reference internal" href="#typing.LiteralString"><code class="docutils literal notranslate"><span class="pre">LiteralString</span></code></a></li>
+<li><a class="reference internal" href="#typing.Never"><code class="docutils literal notranslate"><span class="pre">Never</span></code></a></li>
+<li><a class="reference internal" href="#typing.NoReturn"><code class="docutils literal notranslate"><span class="pre">NoReturn</span></code></a></li>
+<li><a class="reference internal" href="#typing.Self"><code class="docutils literal notranslate"><span class="pre">Self</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeAlias"><code class="docutils literal notranslate"><span class="pre">TypeAlias</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#special-forms">Special forms</a><ul>
+<li><a class="reference internal" href="#typing.Tuple"><code class="docutils literal notranslate"><span class="pre">Tuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.Union"><code class="docutils literal notranslate"><span class="pre">Union</span></code></a></li>
+<li><a class="reference internal" href="#typing.Optional"><code class="docutils literal notranslate"><span class="pre">Optional</span></code></a></li>
+<li><a class="reference internal" href="#typing.Callable"><code class="docutils literal notranslate"><span class="pre">Callable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Concatenate"><code class="docutils literal notranslate"><span class="pre">Concatenate</span></code></a></li>
+<li><a class="reference internal" href="#typing.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+<li><a class="reference internal" href="#typing.Literal"><code class="docutils literal notranslate"><span class="pre">Literal</span></code></a></li>
+<li><a class="reference internal" href="#typing.ClassVar"><code class="docutils literal notranslate"><span class="pre">ClassVar</span></code></a></li>
+<li><a class="reference internal" href="#typing.Final"><code class="docutils literal notranslate"><span class="pre">Final</span></code></a></li>
+<li><a class="reference internal" href="#typing.Required"><code class="docutils literal notranslate"><span class="pre">Required</span></code></a></li>
+<li><a class="reference internal" href="#typing.NotRequired"><code class="docutils literal notranslate"><span class="pre">NotRequired</span></code></a></li>
+<li><a class="reference internal" href="#typing.Annotated"><code class="docutils literal notranslate"><span class="pre">Annotated</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeGuard"><code class="docutils literal notranslate"><span class="pre">TypeGuard</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-generic-types">Building generic types</a><ul>
+<li><a class="reference internal" href="#typing.Generic"><code class="docutils literal notranslate"><span class="pre">Generic</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeVar"><code class="docutils literal notranslate"><span class="pre">TypeVar</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeVarTuple"><code class="docutils literal notranslate"><span class="pre">TypeVarTuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.Unpack"><code class="docutils literal notranslate"><span class="pre">Unpack</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpec"><code class="docutils literal notranslate"><span class="pre">ParamSpec</span></code></a><ul>
+<li><a class="reference internal" href="#typing.ParamSpec.args"><code class="docutils literal notranslate"><span class="pre">ParamSpec.args</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpec.kwargs"><code class="docutils literal notranslate"><span class="pre">ParamSpec.kwargs</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typing.ParamSpecArgs"><code class="docutils literal notranslate"><span class="pre">ParamSpecArgs</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpecKwargs"><code class="docutils literal notranslate"><span class="pre">ParamSpecKwargs</span></code></a></li>
+<li><a class="reference internal" href="#typing.AnyStr"><code class="docutils literal notranslate"><span class="pre">AnyStr</span></code></a></li>
+<li><a class="reference internal" href="#typing.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a></li>
+<li><a class="reference internal" href="#typing.runtime_checkable"><code class="docutils literal notranslate"><span class="pre">runtime_checkable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-special-directives">Other special directives</a><ul>
+<li><a class="reference internal" href="#typing.NamedTuple"><code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.NewType"><code class="docutils literal notranslate"><span class="pre">NewType</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict"><code class="docutils literal notranslate"><span class="pre">TypedDict</span></code></a><ul>
+<li><a class="reference internal" href="#typing.TypedDict.__total__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__total__</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict.__required_keys__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__required_keys__</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict.__optional_keys__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__optional_keys__</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#generic-concrete-collections">Generic concrete collections</a><ul>
-<li><a class="reference internal" href="#corresponding-to-built-in-types">Corresponding to built-in types</a></li>
-<li><a class="reference internal" href="#corresponding-to-types-in-collections">Corresponding to types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
-<li><a class="reference internal" href="#other-concrete-types">Other concrete types</a></li>
+<li><a class="reference internal" href="#corresponding-to-built-in-types">Corresponding to built-in types</a><ul>
+<li><a class="reference internal" href="#typing.Dict"><code class="docutils literal notranslate"><span class="pre">Dict</span></code></a></li>
+<li><a class="reference internal" href="#typing.List"><code class="docutils literal notranslate"><span class="pre">List</span></code></a></li>
+<li><a class="reference internal" href="#typing.Set"><code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+<li><a class="reference internal" href="#typing.FrozenSet"><code class="docutils literal notranslate"><span class="pre">FrozenSet</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#corresponding-to-types-in-collections">Corresponding to types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a><ul>
+<li><a class="reference internal" href="#typing.DefaultDict"><code class="docutils literal notranslate"><span class="pre">DefaultDict</span></code></a></li>
+<li><a class="reference internal" href="#typing.OrderedDict"><code class="docutils literal notranslate"><span class="pre">OrderedDict</span></code></a></li>
+<li><a class="reference internal" href="#typing.ChainMap"><code class="docutils literal notranslate"><span class="pre">ChainMap</span></code></a></li>
+<li><a class="reference internal" href="#typing.Counter"><code class="docutils literal notranslate"><span class="pre">Counter</span></code></a></li>
+<li><a class="reference internal" href="#typing.Deque"><code class="docutils literal notranslate"><span class="pre">Deque</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-concrete-types">Other concrete types</a><ul>
+<li><a class="reference internal" href="#typing.IO"><code class="docutils literal notranslate"><span class="pre">IO</span></code></a></li>
+<li><a class="reference internal" href="#typing.TextIO"><code class="docutils literal notranslate"><span class="pre">TextIO</span></code></a></li>
+<li><a class="reference internal" href="#typing.BinaryIO"><code class="docutils literal notranslate"><span class="pre">BinaryIO</span></code></a></li>
+<li><a class="reference internal" href="#typing.Pattern"><code class="docutils literal notranslate"><span class="pre">Pattern</span></code></a></li>
+<li><a class="reference internal" href="#typing.Match"><code class="docutils literal notranslate"><span class="pre">Match</span></code></a></li>
+<li><a class="reference internal" href="#typing.Text"><code class="docutils literal notranslate"><span class="pre">Text</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#abstract-base-classes">Abstract Base Classes</a><ul>
-<li><a class="reference internal" href="#corresponding-to-collections-in-collections-abc">Corresponding to collections in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a></li>
-<li><a class="reference internal" href="#corresponding-to-other-types-in-collections-abc">Corresponding to other types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a></li>
-<li><a class="reference internal" href="#asynchronous-programming">Asynchronous programming</a></li>
-<li><a class="reference internal" href="#context-manager-types">Context manager types</a></li>
+<li><a class="reference internal" href="#corresponding-to-collections-in-collections-abc">Corresponding to collections in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><ul>
+<li><a class="reference internal" href="#typing.AbstractSet"><code class="docutils literal notranslate"><span class="pre">AbstractSet</span></code></a></li>
+<li><a class="reference internal" href="#typing.ByteString"><code class="docutils literal notranslate"><span class="pre">ByteString</span></code></a></li>
+<li><a class="reference internal" href="#typing.Collection"><code class="docutils literal notranslate"><span class="pre">Collection</span></code></a></li>
+<li><a class="reference internal" href="#typing.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a></li>
+<li><a class="reference internal" href="#typing.ItemsView"><code class="docutils literal notranslate"><span class="pre">ItemsView</span></code></a></li>
+<li><a class="reference internal" href="#typing.KeysView"><code class="docutils literal notranslate"><span class="pre">KeysView</span></code></a></li>
+<li><a class="reference internal" href="#typing.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a></li>
+<li><a class="reference internal" href="#typing.MappingView"><code class="docutils literal notranslate"><span class="pre">MappingView</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableMapping"><code class="docutils literal notranslate"><span class="pre">MutableMapping</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableSequence"><code class="docutils literal notranslate"><span class="pre">MutableSequence</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableSet"><code class="docutils literal notranslate"><span class="pre">MutableSet</span></code></a></li>
+<li><a class="reference internal" href="#typing.Sequence"><code class="docutils literal notranslate"><span class="pre">Sequence</span></code></a></li>
+<li><a class="reference internal" href="#typing.ValuesView"><code class="docutils literal notranslate"><span class="pre">ValuesView</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#protocols">Protocols</a></li>
-<li><a class="reference internal" href="#functions-and-decorators">Functions and decorators</a></li>
-<li><a class="reference internal" href="#introspection-helpers">Introspection helpers</a></li>
-<li><a class="reference internal" href="#constant">Constant</a></li>
+<li><a class="reference internal" href="#corresponding-to-other-types-in-collections-abc">Corresponding to other types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><ul>
+<li><a class="reference internal" href="#typing.Iterable"><code class="docutils literal notranslate"><span class="pre">Iterable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Iterator"><code class="docutils literal notranslate"><span class="pre">Iterator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Generator"><code class="docutils literal notranslate"><span class="pre">Generator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Hashable"><code class="docutils literal notranslate"><span class="pre">Hashable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Reversible"><code class="docutils literal notranslate"><span class="pre">Reversible</span></code></a></li>
+<li><a class="reference internal" href="#typing.Sized"><code class="docutils literal notranslate"><span class="pre">Sized</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asynchronous-programming">Asynchronous programming</a><ul>
+<li><a class="reference internal" href="#typing.Coroutine"><code class="docutils literal notranslate"><span class="pre">Coroutine</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncGenerator"><code class="docutils literal notranslate"><span class="pre">AsyncGenerator</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncIterable"><code class="docutils literal notranslate"><span class="pre">AsyncIterable</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncIterator"><code class="docutils literal notranslate"><span class="pre">AsyncIterator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Awaitable"><code class="docutils literal notranslate"><span class="pre">Awaitable</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#context-manager-types">Context manager types</a><ul>
+<li><a class="reference internal" href="#typing.ContextManager"><code class="docutils literal notranslate"><span class="pre">ContextManager</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncContextManager"><code class="docutils literal notranslate"><span class="pre">AsyncContextManager</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li><a class="reference internal" href="#typing.SupportsAbs"><code class="docutils literal notranslate"><span class="pre">SupportsAbs</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsBytes"><code class="docutils literal notranslate"><span class="pre">SupportsBytes</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsComplex"><code class="docutils literal notranslate"><span class="pre">SupportsComplex</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsFloat"><code class="docutils literal notranslate"><span class="pre">SupportsFloat</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsIndex"><code class="docutils literal notranslate"><span class="pre">SupportsIndex</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsInt"><code class="docutils literal notranslate"><span class="pre">SupportsInt</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsRound"><code class="docutils literal notranslate"><span class="pre">SupportsRound</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-and-decorators">Functions and decorators</a><ul>
+<li><a class="reference internal" href="#typing.cast"><code class="docutils literal notranslate"><span class="pre">cast()</span></code></a></li>
+<li><a class="reference internal" href="#typing.assert_type"><code class="docutils literal notranslate"><span class="pre">assert_type()</span></code></a></li>
+<li><a class="reference internal" href="#typing.assert_never"><code class="docutils literal notranslate"><span class="pre">assert_never()</span></code></a></li>
+<li><a class="reference internal" href="#typing.reveal_type"><code class="docutils literal notranslate"><span class="pre">reveal_type()</span></code></a></li>
+<li><a class="reference internal" href="#typing.dataclass_transform"><code class="docutils literal notranslate"><span class="pre">dataclass_transform()</span></code></a></li>
+<li><a class="reference internal" href="#typing.overload"><code class="docutils literal notranslate"><span class="pre">overload()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_overloads"><code class="docutils literal notranslate"><span class="pre">get_overloads()</span></code></a></li>
+<li><a class="reference internal" href="#typing.clear_overloads"><code class="docutils literal notranslate"><span class="pre">clear_overloads()</span></code></a></li>
+<li><a class="reference internal" href="#typing.final"><code class="docutils literal notranslate"><span class="pre">final()</span></code></a></li>
+<li><a class="reference internal" href="#typing.no_type_check"><code class="docutils literal notranslate"><span class="pre">no_type_check()</span></code></a></li>
+<li><a class="reference internal" href="#typing.no_type_check_decorator"><code class="docutils literal notranslate"><span class="pre">no_type_check_decorator()</span></code></a></li>
+<li><a class="reference internal" href="#typing.type_check_only"><code class="docutils literal notranslate"><span class="pre">type_check_only()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introspection-helpers">Introspection helpers</a><ul>
+<li><a class="reference internal" href="#typing.get_type_hints"><code class="docutils literal notranslate"><span class="pre">get_type_hints()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_args"><code class="docutils literal notranslate"><span class="pre">get_args()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_origin"><code class="docutils literal notranslate"><span class="pre">get_origin()</span></code></a></li>
+<li><a class="reference internal" href="#typing.is_typeddict"><code class="docutils literal notranslate"><span class="pre">is_typeddict()</span></code></a></li>
+<li><a class="reference internal" href="#typing.ForwardRef"><code class="docutils literal notranslate"><span class="pre">ForwardRef</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constant">Constant</a><ul>
+<li><a class="reference internal" href="#typing.TYPE_CHECKING"><code class="docutils literal notranslate"><span class="pre">TYPE_CHECKING</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#deprecation-timeline-of-major-features">Deprecation Timeline of Major Features</a></li>
@@ -227,7 +363,7 @@
           <div class="body" role="main">
             
   <section id="module-typing">
-<span id="typing-support-for-type-hints"></span><h1><a class="reference internal" href="#module-typing" title="typing: Support for type hints (see :pep:`484`)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">typing</span></code></a> — Support for type hints<a class="headerlink" href="#module-typing" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="typing-support-for-type-hints"></span><h1><a class="reference internal" href="#module-typing" title="typing: Support for type hints (see :pep:`484`)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">typing</span></code></a> — Support for type hints<a class="headerlink" href="#module-typing" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 sürümünde geldi.</span></p>
 </div>
@@ -262,7 +398,7 @@ provides backports of these new features to older versions of Python.</p>
 for type system features, useful typing related tools and typing best practices.</p>
 </div>
 <section id="relevant-peps">
-<span id="id1"></span><h2>Relevant PEPs<a class="headerlink" href="#relevant-peps" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Relevant PEPs<a class="headerlink" href="#relevant-peps" title="Permalink to this heading">¶</a></h2>
 <p>Since the initial introduction of type hints in <span class="target" id="index-2"></span><a class="pep reference external" href="https://peps.python.org/pep-0484/"><strong>PEP 484</strong></a> and <span class="target" id="index-3"></span><a class="pep reference external" href="https://peps.python.org/pep-0483/"><strong>PEP 483</strong></a>, a
 number of PEPs have modified and enhanced Python’s framework for type
 annotations. These include:</p>
@@ -355,7 +491,7 @@ the binary-or operator <code class="docutils literal notranslate"><span class="p
 </ul>
 </section>
 <section id="type-aliases">
-<span id="id2"></span><h2>Type aliases<a class="headerlink" href="#type-aliases" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>Type aliases<a class="headerlink" href="#type-aliases" title="Permalink to this heading">¶</a></h2>
 <p>A type alias is defined by assigning the type to the alias. In this example,
 <code class="docutils literal notranslate"><span class="pre">Vector</span></code> and <code class="docutils literal notranslate"><span class="pre">list[float]</span></code> will be treated as interchangeable synonyms:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vector</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span>
@@ -389,7 +525,7 @@ the binary-or operator <code class="docutils literal notranslate"><span class="p
 <code class="docutils literal notranslate"><span class="pre">type(None)</span></code>.</p>
 </section>
 <section id="newtype">
-<span id="distinct"></span><h2>NewType<a class="headerlink" href="#newtype" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distinct"></span><h2>NewType<a class="headerlink" href="#newtype" title="Permalink to this heading">¶</a></h2>
 <p>Use the <a class="reference internal" href="#typing.NewType" title="typing.NewType"><code class="xref py py-class docutils literal notranslate"><span class="pre">NewType</span></code></a> helper to create distinct types:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">NewType</span>
 
@@ -466,7 +602,7 @@ cost will be reduced in 3.11.0.</p>
 </div>
 </section>
 <section id="callable">
-<h2>Callable<a class="headerlink" href="#callable" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Callable<a class="headerlink" href="#callable" title="Permalink to this heading">¶</a></h2>
 <p>Frameworks expecting callback functions of specific signatures might be
 type hinted using <code class="docutils literal notranslate"><span class="pre">Callable[[Arg1Type,</span> <span class="pre">Arg2Type],</span> <span class="pre">ReturnType]</span></code>.</p>
 <p>For example:</p>
@@ -505,7 +641,7 @@ examples of usage in <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="generics">
-<span id="id3"></span><h2>Generics<a class="headerlink" href="#generics" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id3"></span><h2>Generics<a class="headerlink" href="#generics" title="Permalink to this heading">¶</a></h2>
 <p>Since type information about objects kept in containers cannot be statically
 inferred in a generic way, abstract base classes have been extended to support
 subscription to denote expected types for container elements.</p>
@@ -528,7 +664,7 @@ called <a class="reference internal" href="#typing.TypeVar" title="typing.TypeVa
 </div>
 </section>
 <section id="user-defined-generic-types">
-<span id="user-defined-generics"></span><h2>User-defined generic types<a class="headerlink" href="#user-defined-generic-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="user-defined-generics"></span><h2>User-defined generic types<a class="headerlink" href="#user-defined-generic-types" title="Permalink to this heading">¶</a></h2>
 <p>A user-defined class can be defined as a generic class.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">Generic</span>
 <span class="kn">from</span> <span class="nn">logging</span> <span class="kn">import</span> <span class="n">Logger</span>
@@ -678,7 +814,7 @@ generics is cached, and most types in the typing module are <a class="reference 
 comparable for equality.</p>
 </section>
 <section id="the-any-type">
-<h2>The <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a> type<a class="headerlink" href="#the-any-type" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>The <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a> type<a class="headerlink" href="#the-any-type" title="Permalink to this heading">¶</a></h2>
 <p>A special kind of type is <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>. A static type checker will treat
 every type as being compatible with <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a> and <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a> as being
 compatible with every type.</p>
@@ -750,7 +886,7 @@ it as a return value) of a more specialized type is a type error. For example:</
 manner. Use <a class="reference internal" href="#typing.Any" title="typing.Any"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a> to indicate that a value is dynamically typed.</p>
 </section>
 <section id="nominal-vs-structural-subtyping">
-<h2>Nominal vs structural subtyping<a class="headerlink" href="#nominal-vs-structural-subtyping" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Nominal vs structural subtyping<a class="headerlink" href="#nominal-vs-structural-subtyping" title="Permalink to this heading">¶</a></h2>
 <p>Initially <span class="target" id="index-23"></span><a class="pep reference external" href="https://peps.python.org/pep-0484/"><strong>PEP 484</strong></a> defined the Python static type system as using
 <em>nominal subtyping</em>. This means that a class <code class="docutils literal notranslate"><span class="pre">A</span></code> is allowed where
 a class <code class="docutils literal notranslate"><span class="pre">B</span></code> is expected if and only if <code class="docutils literal notranslate"><span class="pre">A</span></code> is a subclass of <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
@@ -788,7 +924,7 @@ can define new custom protocols to fully enjoy structural subtyping
 (see examples below).</p>
 </section>
 <section id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">¶</a></h2>
 <p>The module defines the following classes, functions and decorators.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
@@ -806,9 +942,9 @@ in the first Python version released 5 years after the release of Python 3.9.0.
 See details in <span class="target" id="index-26"></span><a class="pep reference external" href="https://peps.python.org/pep-0585/"><strong>PEP 585</strong></a>—<em>Type Hinting Generics In Standard Collections</em>.</p>
 </div>
 <section id="special-typing-primitives">
-<h3>Special typing primitives<a class="headerlink" href="#special-typing-primitives" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Special typing primitives<a class="headerlink" href="#special-typing-primitives" title="Permalink to this heading">¶</a></h3>
 <section id="special-types">
-<h4>Special types<a class="headerlink" href="#special-types" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Special types<a class="headerlink" href="#special-types" title="Permalink to this heading">¶</a></h4>
 <p>These can be used as types in annotations and do not support <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="typing.Any">
@@ -974,7 +1110,7 @@ For example:</p>
 
 </section>
 <section id="special-forms">
-<h4>Special forms<a class="headerlink" href="#special-forms" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Special forms<a class="headerlink" href="#special-forms" title="Permalink to this heading">¶</a></h4>
 <p>These can be used as types in annotations using <code class="docutils literal notranslate"><span class="pre">[]</span></code>, each having a unique syntax.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="typing.Tuple">
@@ -1453,7 +1589,7 @@ The responsibility of writing type-safe type guards is left to the user.</p>
 
 </section>
 <section id="building-generic-types">
-<h4>Building generic types<a class="headerlink" href="#building-generic-types" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Building generic types<a class="headerlink" href="#building-generic-types" title="Permalink to this heading">¶</a></h4>
 <p>These are not used in annotations. They are building blocks for creating generic types.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.Generic">
@@ -1880,7 +2016,7 @@ it impossible to call (instantiate) <a class="reference internal" href="ssl.html
 
 </section>
 <section id="other-special-directives">
-<h4>Other special directives<a class="headerlink" href="#other-special-directives" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Other special directives<a class="headerlink" href="#other-special-directives" title="Permalink to this heading">¶</a></h4>
 <p>These are not used in annotations. They are building blocks for declaring types.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.NamedTuple">
@@ -2179,9 +2315,9 @@ See <span class="target" id="index-49"></span><a class="pep reference external" 
 </section>
 </section>
 <section id="generic-concrete-collections">
-<h3>Generic concrete collections<a class="headerlink" href="#generic-concrete-collections" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Generic concrete collections<a class="headerlink" href="#generic-concrete-collections" title="Permalink to this heading">¶</a></h3>
 <section id="corresponding-to-built-in-types">
-<h4>Corresponding to built-in types<a class="headerlink" href="#corresponding-to-built-in-types" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Corresponding to built-in types<a class="headerlink" href="#corresponding-to-built-in-types" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.Dict">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">Dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">dict,</span> <span class="pre">MutableMapping[KT,</span> <span class="pre">VT]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.Dict" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2251,7 +2387,7 @@ See <span class="target" id="index-53"></span><a class="pep reference external" 
 </div>
 </section>
 <section id="corresponding-to-types-in-collections">
-<h4>Corresponding to types in <a class="reference internal" href="collections.html#module-collections" title="collections: Container datatypes"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a><a class="headerlink" href="#corresponding-to-types-in-collections" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Corresponding to types in <a class="reference internal" href="collections.html#module-collections" title="collections: Container datatypes"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a><a class="headerlink" href="#corresponding-to-types-in-collections" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.DefaultDict">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">DefaultDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">collections.defaultdict,</span> <span class="pre">MutableMapping[KT,</span> <span class="pre">VT]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.DefaultDict" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2328,7 +2464,7 @@ See <span class="target" id="index-58"></span><a class="pep reference external" 
 
 </section>
 <section id="other-concrete-types">
-<h4>Other concrete types<a class="headerlink" href="#other-concrete-types" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Other concrete types<a class="headerlink" href="#other-concrete-types" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.IO">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">IO</span></span><a class="headerlink" href="#typing.IO" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2393,9 +2529,9 @@ currently planned, but users are encouraged to use
 </section>
 </section>
 <section id="abstract-base-classes">
-<h3>Abstract Base Classes<a class="headerlink" href="#abstract-base-classes" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Abstract Base Classes<a class="headerlink" href="#abstract-base-classes" title="Permalink to this heading">¶</a></h3>
 <section id="corresponding-to-collections-in-collections-abc">
-<h4>Corresponding to collections in <a class="reference internal" href="collections.abc.html#module-collections.abc" title="collections.abc: Abstract base classes for containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><a class="headerlink" href="#corresponding-to-collections-in-collections-abc" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Corresponding to collections in <a class="reference internal" href="collections.abc.html#module-collections.abc" title="collections.abc: Abstract base classes for containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><a class="headerlink" href="#corresponding-to-collections-in-collections-abc" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.AbstractSet">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">AbstractSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Collection[T_co]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.AbstractSet" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2542,7 +2678,7 @@ See <span class="target" id="index-72"></span><a class="pep reference external" 
 
 </section>
 <section id="corresponding-to-other-types-in-collections-abc">
-<h4>Corresponding to other types in <a class="reference internal" href="collections.abc.html#module-collections.abc" title="collections.abc: Abstract base classes for containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><a class="headerlink" href="#corresponding-to-other-types-in-collections-abc" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Corresponding to other types in <a class="reference internal" href="collections.abc.html#module-collections.abc" title="collections.abc: Abstract base classes for containers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><a class="headerlink" href="#corresponding-to-other-types-in-collections-abc" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.Iterable">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">Iterable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Generic[T_co]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.Iterable" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2624,7 +2760,7 @@ See <span class="target" id="index-76"></span><a class="pep reference external" 
 
 </section>
 <section id="asynchronous-programming">
-<h4>Asynchronous programming<a class="headerlink" href="#asynchronous-programming" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Asynchronous programming<a class="headerlink" href="#asynchronous-programming" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.Coroutine">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">Coroutine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Awaitable[V_co],</span> <span class="pre">Generic[T_co,</span> <span class="pre">T_contra,</span> <span class="pre">V_co]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.Coroutine" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2729,7 +2865,7 @@ See <span class="target" id="index-81"></span><a class="pep reference external" 
 
 </section>
 <section id="context-manager-types">
-<h4>Context manager types<a class="headerlink" href="#context-manager-types" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Context manager types<a class="headerlink" href="#context-manager-types" title="Permalink to this heading">¶</a></h4>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.ContextManager">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">ContextManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">Generic[T_co]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.ContextManager" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2767,7 +2903,7 @@ See <span class="target" id="index-83"></span><a class="pep reference external" 
 </section>
 </section>
 <section id="protocols">
-<h3>Protocols<a class="headerlink" href="#protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Protocols<a class="headerlink" href="#protocols" title="Permalink to this heading">¶</a></h3>
 <p>These protocols are decorated with <a class="reference internal" href="#typing.runtime_checkable" title="typing.runtime_checkable"><code class="xref py py-func docutils literal notranslate"><span class="pre">runtime_checkable()</span></code></a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="typing.SupportsAbs">
@@ -2818,7 +2954,7 @@ that is covariant in its return type.</p>
 
 </section>
 <section id="functions-and-decorators">
-<h3>Functions and decorators<a class="headerlink" href="#functions-and-decorators" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Functions and decorators<a class="headerlink" href="#functions-and-decorators" title="Permalink to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="typing.cast">
 <span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">cast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typ</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.cast" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -3161,7 +3297,7 @@ It is usually preferable to make such classes public.</p>
 
 </section>
 <section id="introspection-helpers">
-<h3>Introspection helpers<a class="headerlink" href="#introspection-helpers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Introspection helpers<a class="headerlink" href="#introspection-helpers" title="Permalink to this heading">¶</a></h3>
 <dl class="py function">
 <dt class="sig sig-object py" id="typing.get_type_hints">
 <span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">get_type_hints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">globalns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">localns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_extras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#typing.get_type_hints" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -3269,7 +3405,7 @@ will not automatically resolve to <code class="docutils literal notranslate"><sp
 
 </section>
 <section id="constant">
-<h3>Constant<a class="headerlink" href="#constant" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Constant<a class="headerlink" href="#constant" title="Permalink to this heading">¶</a></h3>
 <dl class="py data">
 <dt class="sig sig-object py" id="typing.TYPE_CHECKING">
 <span class="sig-prename descclassname"><span class="pre">typing.</span></span><span class="sig-name descname"><span class="pre">TYPE_CHECKING</span></span><a class="headerlink" href="#typing.TYPE_CHECKING" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -3302,17 +3438,11 @@ This makes it unnecessary to use quotes around the annotation
 </section>
 </section>
 <section id="deprecation-timeline-of-major-features">
-<h2>Deprecation Timeline of Major Features<a class="headerlink" href="#deprecation-timeline-of-major-features" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Deprecation Timeline of Major Features<a class="headerlink" href="#deprecation-timeline-of-major-features" title="Permalink to this heading">¶</a></h2>
 <p>Certain features in <code class="docutils literal notranslate"><span class="pre">typing</span></code> are deprecated and may be removed in a future
 version of Python. The following table summarizes major deprecations for your
 convenience. This is subject to change, and not all deprecations are listed.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 18%" />
-<col style="width: 23%" />
-<col style="width: 19%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Feature</p></th>
 <th class="head"><p>Deprecated in</p></th>
@@ -3364,29 +3494,166 @@ collections</p></td>
 <li><a class="reference internal" href="#nominal-vs-structural-subtyping">Nominal vs structural subtyping</a></li>
 <li><a class="reference internal" href="#module-contents">Module contents</a><ul>
 <li><a class="reference internal" href="#special-typing-primitives">Special typing primitives</a><ul>
-<li><a class="reference internal" href="#special-types">Special types</a></li>
-<li><a class="reference internal" href="#special-forms">Special forms</a></li>
-<li><a class="reference internal" href="#building-generic-types">Building generic types</a></li>
-<li><a class="reference internal" href="#other-special-directives">Other special directives</a></li>
+<li><a class="reference internal" href="#special-types">Special types</a><ul>
+<li><a class="reference internal" href="#typing.Any"><code class="docutils literal notranslate"><span class="pre">Any</span></code></a></li>
+<li><a class="reference internal" href="#typing.LiteralString"><code class="docutils literal notranslate"><span class="pre">LiteralString</span></code></a></li>
+<li><a class="reference internal" href="#typing.Never"><code class="docutils literal notranslate"><span class="pre">Never</span></code></a></li>
+<li><a class="reference internal" href="#typing.NoReturn"><code class="docutils literal notranslate"><span class="pre">NoReturn</span></code></a></li>
+<li><a class="reference internal" href="#typing.Self"><code class="docutils literal notranslate"><span class="pre">Self</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeAlias"><code class="docutils literal notranslate"><span class="pre">TypeAlias</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#special-forms">Special forms</a><ul>
+<li><a class="reference internal" href="#typing.Tuple"><code class="docutils literal notranslate"><span class="pre">Tuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.Union"><code class="docutils literal notranslate"><span class="pre">Union</span></code></a></li>
+<li><a class="reference internal" href="#typing.Optional"><code class="docutils literal notranslate"><span class="pre">Optional</span></code></a></li>
+<li><a class="reference internal" href="#typing.Callable"><code class="docutils literal notranslate"><span class="pre">Callable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Concatenate"><code class="docutils literal notranslate"><span class="pre">Concatenate</span></code></a></li>
+<li><a class="reference internal" href="#typing.Type"><code class="docutils literal notranslate"><span class="pre">Type</span></code></a></li>
+<li><a class="reference internal" href="#typing.Literal"><code class="docutils literal notranslate"><span class="pre">Literal</span></code></a></li>
+<li><a class="reference internal" href="#typing.ClassVar"><code class="docutils literal notranslate"><span class="pre">ClassVar</span></code></a></li>
+<li><a class="reference internal" href="#typing.Final"><code class="docutils literal notranslate"><span class="pre">Final</span></code></a></li>
+<li><a class="reference internal" href="#typing.Required"><code class="docutils literal notranslate"><span class="pre">Required</span></code></a></li>
+<li><a class="reference internal" href="#typing.NotRequired"><code class="docutils literal notranslate"><span class="pre">NotRequired</span></code></a></li>
+<li><a class="reference internal" href="#typing.Annotated"><code class="docutils literal notranslate"><span class="pre">Annotated</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeGuard"><code class="docutils literal notranslate"><span class="pre">TypeGuard</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-generic-types">Building generic types</a><ul>
+<li><a class="reference internal" href="#typing.Generic"><code class="docutils literal notranslate"><span class="pre">Generic</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeVar"><code class="docutils literal notranslate"><span class="pre">TypeVar</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypeVarTuple"><code class="docutils literal notranslate"><span class="pre">TypeVarTuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.Unpack"><code class="docutils literal notranslate"><span class="pre">Unpack</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpec"><code class="docutils literal notranslate"><span class="pre">ParamSpec</span></code></a><ul>
+<li><a class="reference internal" href="#typing.ParamSpec.args"><code class="docutils literal notranslate"><span class="pre">ParamSpec.args</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpec.kwargs"><code class="docutils literal notranslate"><span class="pre">ParamSpec.kwargs</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#typing.ParamSpecArgs"><code class="docutils literal notranslate"><span class="pre">ParamSpecArgs</span></code></a></li>
+<li><a class="reference internal" href="#typing.ParamSpecKwargs"><code class="docutils literal notranslate"><span class="pre">ParamSpecKwargs</span></code></a></li>
+<li><a class="reference internal" href="#typing.AnyStr"><code class="docutils literal notranslate"><span class="pre">AnyStr</span></code></a></li>
+<li><a class="reference internal" href="#typing.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a></li>
+<li><a class="reference internal" href="#typing.runtime_checkable"><code class="docutils literal notranslate"><span class="pre">runtime_checkable()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-special-directives">Other special directives</a><ul>
+<li><a class="reference internal" href="#typing.NamedTuple"><code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code></a></li>
+<li><a class="reference internal" href="#typing.NewType"><code class="docutils literal notranslate"><span class="pre">NewType</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict"><code class="docutils literal notranslate"><span class="pre">TypedDict</span></code></a><ul>
+<li><a class="reference internal" href="#typing.TypedDict.__total__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__total__</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict.__required_keys__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__required_keys__</span></code></a></li>
+<li><a class="reference internal" href="#typing.TypedDict.__optional_keys__"><code class="docutils literal notranslate"><span class="pre">TypedDict.__optional_keys__</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#generic-concrete-collections">Generic concrete collections</a><ul>
-<li><a class="reference internal" href="#corresponding-to-built-in-types">Corresponding to built-in types</a></li>
-<li><a class="reference internal" href="#corresponding-to-types-in-collections">Corresponding to types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a></li>
-<li><a class="reference internal" href="#other-concrete-types">Other concrete types</a></li>
+<li><a class="reference internal" href="#corresponding-to-built-in-types">Corresponding to built-in types</a><ul>
+<li><a class="reference internal" href="#typing.Dict"><code class="docutils literal notranslate"><span class="pre">Dict</span></code></a></li>
+<li><a class="reference internal" href="#typing.List"><code class="docutils literal notranslate"><span class="pre">List</span></code></a></li>
+<li><a class="reference internal" href="#typing.Set"><code class="docutils literal notranslate"><span class="pre">Set</span></code></a></li>
+<li><a class="reference internal" href="#typing.FrozenSet"><code class="docutils literal notranslate"><span class="pre">FrozenSet</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#corresponding-to-types-in-collections">Corresponding to types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a><ul>
+<li><a class="reference internal" href="#typing.DefaultDict"><code class="docutils literal notranslate"><span class="pre">DefaultDict</span></code></a></li>
+<li><a class="reference internal" href="#typing.OrderedDict"><code class="docutils literal notranslate"><span class="pre">OrderedDict</span></code></a></li>
+<li><a class="reference internal" href="#typing.ChainMap"><code class="docutils literal notranslate"><span class="pre">ChainMap</span></code></a></li>
+<li><a class="reference internal" href="#typing.Counter"><code class="docutils literal notranslate"><span class="pre">Counter</span></code></a></li>
+<li><a class="reference internal" href="#typing.Deque"><code class="docutils literal notranslate"><span class="pre">Deque</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-concrete-types">Other concrete types</a><ul>
+<li><a class="reference internal" href="#typing.IO"><code class="docutils literal notranslate"><span class="pre">IO</span></code></a></li>
+<li><a class="reference internal" href="#typing.TextIO"><code class="docutils literal notranslate"><span class="pre">TextIO</span></code></a></li>
+<li><a class="reference internal" href="#typing.BinaryIO"><code class="docutils literal notranslate"><span class="pre">BinaryIO</span></code></a></li>
+<li><a class="reference internal" href="#typing.Pattern"><code class="docutils literal notranslate"><span class="pre">Pattern</span></code></a></li>
+<li><a class="reference internal" href="#typing.Match"><code class="docutils literal notranslate"><span class="pre">Match</span></code></a></li>
+<li><a class="reference internal" href="#typing.Text"><code class="docutils literal notranslate"><span class="pre">Text</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#abstract-base-classes">Abstract Base Classes</a><ul>
-<li><a class="reference internal" href="#corresponding-to-collections-in-collections-abc">Corresponding to collections in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a></li>
-<li><a class="reference internal" href="#corresponding-to-other-types-in-collections-abc">Corresponding to other types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a></li>
-<li><a class="reference internal" href="#asynchronous-programming">Asynchronous programming</a></li>
-<li><a class="reference internal" href="#context-manager-types">Context manager types</a></li>
+<li><a class="reference internal" href="#corresponding-to-collections-in-collections-abc">Corresponding to collections in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><ul>
+<li><a class="reference internal" href="#typing.AbstractSet"><code class="docutils literal notranslate"><span class="pre">AbstractSet</span></code></a></li>
+<li><a class="reference internal" href="#typing.ByteString"><code class="docutils literal notranslate"><span class="pre">ByteString</span></code></a></li>
+<li><a class="reference internal" href="#typing.Collection"><code class="docutils literal notranslate"><span class="pre">Collection</span></code></a></li>
+<li><a class="reference internal" href="#typing.Container"><code class="docutils literal notranslate"><span class="pre">Container</span></code></a></li>
+<li><a class="reference internal" href="#typing.ItemsView"><code class="docutils literal notranslate"><span class="pre">ItemsView</span></code></a></li>
+<li><a class="reference internal" href="#typing.KeysView"><code class="docutils literal notranslate"><span class="pre">KeysView</span></code></a></li>
+<li><a class="reference internal" href="#typing.Mapping"><code class="docutils literal notranslate"><span class="pre">Mapping</span></code></a></li>
+<li><a class="reference internal" href="#typing.MappingView"><code class="docutils literal notranslate"><span class="pre">MappingView</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableMapping"><code class="docutils literal notranslate"><span class="pre">MutableMapping</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableSequence"><code class="docutils literal notranslate"><span class="pre">MutableSequence</span></code></a></li>
+<li><a class="reference internal" href="#typing.MutableSet"><code class="docutils literal notranslate"><span class="pre">MutableSet</span></code></a></li>
+<li><a class="reference internal" href="#typing.Sequence"><code class="docutils literal notranslate"><span class="pre">Sequence</span></code></a></li>
+<li><a class="reference internal" href="#typing.ValuesView"><code class="docutils literal notranslate"><span class="pre">ValuesView</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#protocols">Protocols</a></li>
-<li><a class="reference internal" href="#functions-and-decorators">Functions and decorators</a></li>
-<li><a class="reference internal" href="#introspection-helpers">Introspection helpers</a></li>
-<li><a class="reference internal" href="#constant">Constant</a></li>
+<li><a class="reference internal" href="#corresponding-to-other-types-in-collections-abc">Corresponding to other types in <code class="xref py py-mod docutils literal notranslate"><span class="pre">collections.abc</span></code></a><ul>
+<li><a class="reference internal" href="#typing.Iterable"><code class="docutils literal notranslate"><span class="pre">Iterable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Iterator"><code class="docutils literal notranslate"><span class="pre">Iterator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Generator"><code class="docutils literal notranslate"><span class="pre">Generator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Hashable"><code class="docutils literal notranslate"><span class="pre">Hashable</span></code></a></li>
+<li><a class="reference internal" href="#typing.Reversible"><code class="docutils literal notranslate"><span class="pre">Reversible</span></code></a></li>
+<li><a class="reference internal" href="#typing.Sized"><code class="docutils literal notranslate"><span class="pre">Sized</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asynchronous-programming">Asynchronous programming</a><ul>
+<li><a class="reference internal" href="#typing.Coroutine"><code class="docutils literal notranslate"><span class="pre">Coroutine</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncGenerator"><code class="docutils literal notranslate"><span class="pre">AsyncGenerator</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncIterable"><code class="docutils literal notranslate"><span class="pre">AsyncIterable</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncIterator"><code class="docutils literal notranslate"><span class="pre">AsyncIterator</span></code></a></li>
+<li><a class="reference internal" href="#typing.Awaitable"><code class="docutils literal notranslate"><span class="pre">Awaitable</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#context-manager-types">Context manager types</a><ul>
+<li><a class="reference internal" href="#typing.ContextManager"><code class="docutils literal notranslate"><span class="pre">ContextManager</span></code></a></li>
+<li><a class="reference internal" href="#typing.AsyncContextManager"><code class="docutils literal notranslate"><span class="pre">AsyncContextManager</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#protocols">Protocols</a><ul>
+<li><a class="reference internal" href="#typing.SupportsAbs"><code class="docutils literal notranslate"><span class="pre">SupportsAbs</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsBytes"><code class="docutils literal notranslate"><span class="pre">SupportsBytes</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsComplex"><code class="docutils literal notranslate"><span class="pre">SupportsComplex</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsFloat"><code class="docutils literal notranslate"><span class="pre">SupportsFloat</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsIndex"><code class="docutils literal notranslate"><span class="pre">SupportsIndex</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsInt"><code class="docutils literal notranslate"><span class="pre">SupportsInt</span></code></a></li>
+<li><a class="reference internal" href="#typing.SupportsRound"><code class="docutils literal notranslate"><span class="pre">SupportsRound</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#functions-and-decorators">Functions and decorators</a><ul>
+<li><a class="reference internal" href="#typing.cast"><code class="docutils literal notranslate"><span class="pre">cast()</span></code></a></li>
+<li><a class="reference internal" href="#typing.assert_type"><code class="docutils literal notranslate"><span class="pre">assert_type()</span></code></a></li>
+<li><a class="reference internal" href="#typing.assert_never"><code class="docutils literal notranslate"><span class="pre">assert_never()</span></code></a></li>
+<li><a class="reference internal" href="#typing.reveal_type"><code class="docutils literal notranslate"><span class="pre">reveal_type()</span></code></a></li>
+<li><a class="reference internal" href="#typing.dataclass_transform"><code class="docutils literal notranslate"><span class="pre">dataclass_transform()</span></code></a></li>
+<li><a class="reference internal" href="#typing.overload"><code class="docutils literal notranslate"><span class="pre">overload()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_overloads"><code class="docutils literal notranslate"><span class="pre">get_overloads()</span></code></a></li>
+<li><a class="reference internal" href="#typing.clear_overloads"><code class="docutils literal notranslate"><span class="pre">clear_overloads()</span></code></a></li>
+<li><a class="reference internal" href="#typing.final"><code class="docutils literal notranslate"><span class="pre">final()</span></code></a></li>
+<li><a class="reference internal" href="#typing.no_type_check"><code class="docutils literal notranslate"><span class="pre">no_type_check()</span></code></a></li>
+<li><a class="reference internal" href="#typing.no_type_check_decorator"><code class="docutils literal notranslate"><span class="pre">no_type_check_decorator()</span></code></a></li>
+<li><a class="reference internal" href="#typing.type_check_only"><code class="docutils literal notranslate"><span class="pre">type_check_only()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#introspection-helpers">Introspection helpers</a><ul>
+<li><a class="reference internal" href="#typing.get_type_hints"><code class="docutils literal notranslate"><span class="pre">get_type_hints()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_args"><code class="docutils literal notranslate"><span class="pre">get_args()</span></code></a></li>
+<li><a class="reference internal" href="#typing.get_origin"><code class="docutils literal notranslate"><span class="pre">get_origin()</span></code></a></li>
+<li><a class="reference internal" href="#typing.is_typeddict"><code class="docutils literal notranslate"><span class="pre">is_typeddict()</span></code></a></li>
+<li><a class="reference internal" href="#typing.ForwardRef"><code class="docutils literal notranslate"><span class="pre">ForwardRef</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#constant">Constant</a><ul>
+<li><a class="reference internal" href="#typing.TYPE_CHECKING"><code class="docutils literal notranslate"><span class="pre">TYPE_CHECKING</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#deprecation-timeline-of-major-features">Deprecation Timeline of Major Features</a></li>
@@ -3417,6 +3684,10 @@ collections</p></td>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -3490,11 +3761,11 @@ collections</p></td>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

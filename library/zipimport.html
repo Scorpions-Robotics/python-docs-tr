@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="zipimport — Import modules from Zip archives" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/zipimport.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,27 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipimport</span></code> — Import modules from Zip archives</a><ul>
-<li><a class="reference internal" href="#zipimporter-objects">zipimporter Objects</a></li>
+<li><a class="reference internal" href="#zipimport.ZipImportError"><code class="docutils literal notranslate"><span class="pre">ZipImportError</span></code></a></li>
+<li><a class="reference internal" href="#zipimporter-objects">zipimporter Objects</a><ul>
+<li><a class="reference internal" href="#zipimport.zipimporter"><code class="docutils literal notranslate"><span class="pre">zipimporter</span></code></a><ul>
+<li><a class="reference internal" href="#zipimport.zipimporter.create_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.create_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.exec_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.exec_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_loader"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_loader()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_spec"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_spec()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_code"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_code()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_data"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_data()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_filename"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_filename()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_source"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_source()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.is_package"><code class="docutils literal notranslate"><span class="pre">zipimporter.is_package()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.load_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.load_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.invalidate_caches"><code class="docutils literal notranslate"><span class="pre">zipimporter.invalidate_caches()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.archive"><code class="docutils literal notranslate"><span class="pre">zipimporter.archive</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.prefix"><code class="docutils literal notranslate"><span class="pre">zipimporter.prefix</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -193,7 +212,7 @@
           <div class="body" role="main">
             
   <section id="module-zipimport">
-<span id="zipimport-import-modules-from-zip-archives"></span><h1><a class="reference internal" href="#module-zipimport" title="zipimport: Support for importing Python modules from ZIP archives."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipimport</span></code></a> — Import modules from Zip archives<a class="headerlink" href="#module-zipimport" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="zipimport-import-modules-from-zip-archives"></span><h1><a class="reference internal" href="#module-zipimport" title="zipimport: Support for importing Python modules from ZIP archives."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipimport</span></code></a> — Import modules from Zip archives<a class="headerlink" href="#module-zipimport" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/zipimport.py">Lib/zipimport.py</a></p>
 <hr class="docutils" />
 <p>This module adds the ability to import Python modules (<code class="file docutils literal notranslate"><span class="pre">*.py</span></code>,
@@ -240,7 +259,7 @@ so it can be caught as <a class="reference internal" href="exceptions.html#Impor
 </dd></dl>
 
 <section id="zipimporter-objects">
-<span id="id1"></span><h2>zipimporter Objects<a class="headerlink" href="#zipimporter-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>zipimporter Objects<a class="headerlink" href="#zipimporter-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#zipimport.zipimporter" title="zipimport.zipimporter"><code class="xref py py-class docutils literal notranslate"><span class="pre">zipimporter</span></code></a> is the class for importing ZIP files.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="zipimport.zipimporter">
@@ -388,7 +407,7 @@ slash, equal the original <em>archivepath</em> argument given to the
 
 </section>
 <section id="examples">
-<span id="zipimport-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="zipimport-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Here is an example that imports a module from a ZIP archive - note that the
 <a class="reference internal" href="#module-zipimport" title="zipimport: Support for importing Python modules from ZIP archives."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipimport</span></code></a> module is not explicitly used.</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unzip<span class="w"> </span>-l<span class="w"> </span>example.zip
@@ -421,7 +440,27 @@ slash, equal the original <em>archivepath</em> argument given to the
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zipimport</span></code> — Import modules from Zip archives</a><ul>
-<li><a class="reference internal" href="#zipimporter-objects">zipimporter Objects</a></li>
+<li><a class="reference internal" href="#zipimport.ZipImportError"><code class="docutils literal notranslate"><span class="pre">ZipImportError</span></code></a></li>
+<li><a class="reference internal" href="#zipimporter-objects">zipimporter Objects</a><ul>
+<li><a class="reference internal" href="#zipimport.zipimporter"><code class="docutils literal notranslate"><span class="pre">zipimporter</span></code></a><ul>
+<li><a class="reference internal" href="#zipimport.zipimporter.create_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.create_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.exec_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.exec_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_loader"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_loader()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.find_spec"><code class="docutils literal notranslate"><span class="pre">zipimporter.find_spec()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_code"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_code()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_data"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_data()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_filename"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_filename()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.get_source"><code class="docutils literal notranslate"><span class="pre">zipimporter.get_source()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.is_package"><code class="docutils literal notranslate"><span class="pre">zipimporter.is_package()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.load_module"><code class="docutils literal notranslate"><span class="pre">zipimporter.load_module()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.invalidate_caches"><code class="docutils literal notranslate"><span class="pre">zipimporter.invalidate_caches()</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.archive"><code class="docutils literal notranslate"><span class="pre">zipimporter.archive</span></code></a></li>
+<li><a class="reference internal" href="#zipimport.zipimporter.prefix"><code class="docutils literal notranslate"><span class="pre">zipimporter.prefix</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -450,6 +489,10 @@ slash, equal the original <em>archivepath</em> argument given to the
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -523,11 +566,11 @@ slash, equal the original <em>archivepath</em> argument given to the
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

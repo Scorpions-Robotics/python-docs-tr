@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="plistlib — Generate and parse Apple .plist files" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/plistlib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,6 +97,13 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plistlib</span></code> — Generate and parse Apple <code class="docutils literal notranslate"><span class="pre">.plist</span></code> files</a><ul>
+<li><a class="reference internal" href="#plistlib.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.loads"><code class="docutils literal notranslate"><span class="pre">loads()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.dump"><code class="docutils literal notranslate"><span class="pre">dump()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.dumps"><code class="docutils literal notranslate"><span class="pre">dumps()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.UID"><code class="docutils literal notranslate"><span class="pre">UID</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.FMT_XML"><code class="docutils literal notranslate"><span class="pre">FMT_XML</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.FMT_BINARY"><code class="docutils literal notranslate"><span class="pre">FMT_BINARY</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -192,7 +198,7 @@
           <div class="body" role="main">
             
   <section id="module-plistlib">
-<span id="plistlib-generate-and-parse-apple-plist-files"></span><h1><a class="reference internal" href="#module-plistlib" title="plistlib: Generate and parse Apple plist files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">plistlib</span></code></a> — Generate and parse Apple <code class="docutils literal notranslate"><span class="pre">.plist</span></code> files<a class="headerlink" href="#module-plistlib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="plistlib-generate-and-parse-apple-plist-files"></span><h1><a class="reference internal" href="#module-plistlib" title="plistlib: Generate and parse Apple plist files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">plistlib</span></code></a> — Generate and parse Apple <code class="docutils literal notranslate"><span class="pre">.plist</span></code> files<a class="headerlink" href="#module-plistlib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/plistlib.py">Lib/plistlib.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>This module provides an interface for reading and writing the “property list”
@@ -330,7 +336,7 @@ of the UID.  <code class="xref py py-attr docutils literal notranslate"><span cl
 </dd></dl>
 
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>Generating a plist:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">plistlib</span>
@@ -380,6 +386,13 @@ of the UID.  <code class="xref py py-attr docutils literal notranslate"><span cl
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">plistlib</span></code> — Generate and parse Apple <code class="docutils literal notranslate"><span class="pre">.plist</span></code> files</a><ul>
+<li><a class="reference internal" href="#plistlib.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.loads"><code class="docutils literal notranslate"><span class="pre">loads()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.dump"><code class="docutils literal notranslate"><span class="pre">dump()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.dumps"><code class="docutils literal notranslate"><span class="pre">dumps()</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.UID"><code class="docutils literal notranslate"><span class="pre">UID</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.FMT_XML"><code class="docutils literal notranslate"><span class="pre">FMT_XML</span></code></a></li>
+<li><a class="reference internal" href="#plistlib.FMT_BINARY"><code class="docutils literal notranslate"><span class="pre">FMT_BINARY</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -408,6 +421,10 @@ of the UID.  <code class="xref py py-attr docutils literal notranslate"><span cl
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -481,11 +498,11 @@ of the UID.  <code class="xref py py-attr docutils literal notranslate"><span cl
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

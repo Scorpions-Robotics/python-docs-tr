@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="email.charset: Representing character sets" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/email.charset.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,35 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.charset</span></code>: Representing character sets</a><ul>
+<li><a class="reference internal" href="#email.charset.Charset"><code class="docutils literal notranslate"><span class="pre">Charset</span></code></a><ul>
+<li><a class="reference internal" href="#email.charset.Charset.input_charset"><code class="docutils literal notranslate"><span class="pre">Charset.input_charset</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.header_encoding</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.body_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.body_encoding</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.output_charset"><code class="docutils literal notranslate"><span class="pre">Charset.output_charset</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.input_codec"><code class="docutils literal notranslate"><span class="pre">Charset.input_codec</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.output_codec"><code class="docutils literal notranslate"><span class="pre">Charset.output_codec</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.get_body_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.get_body_encoding()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.get_output_charset"><code class="docutils literal notranslate"><span class="pre">Charset.get_output_charset()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encode"><code class="docutils literal notranslate"><span class="pre">Charset.header_encode()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encode_lines"><code class="docutils literal notranslate"><span class="pre">Charset.header_encode_lines()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.body_encode"><code class="docutils literal notranslate"><span class="pre">Charset.body_encode()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__str__"><code class="docutils literal notranslate"><span class="pre">Charset.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__eq__"><code class="docutils literal notranslate"><span class="pre">Charset.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__ne__"><code class="docutils literal notranslate"><span class="pre">Charset.__ne__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.charset.add_charset"><code class="docutils literal notranslate"><span class="pre">add_charset()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.add_alias"><code class="docutils literal notranslate"><span class="pre">add_alias()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.add_codec"><code class="docutils literal notranslate"><span class="pre">add_codec()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.header.html"
@@ -183,7 +211,7 @@
           <div class="body" role="main">
             
   <section id="module-email.charset">
-<span id="email-charset-representing-character-sets"></span><h1><a class="reference internal" href="#module-email.charset" title="email.charset: Character Sets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.charset</span></code></a>: Representing character sets<a class="headerlink" href="#module-email.charset" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="email-charset-representing-character-sets"></span><h1><a class="reference internal" href="#module-email.charset" title="email.charset: Character Sets"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.charset</span></code></a>: Representing character sets<a class="headerlink" href="#module-email.charset" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/email/charset.py">Lib/email/charset.py</a></p>
 <hr class="docutils" />
 <p>This module is part of the legacy (<code class="docutils literal notranslate"><span class="pre">Compat32</span></code>) email API.  In the new
@@ -395,6 +423,35 @@ Python codec, as appropriate for the second argument to the <a class="reference 
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.charset</span></code>: Representing character sets</a><ul>
+<li><a class="reference internal" href="#email.charset.Charset"><code class="docutils literal notranslate"><span class="pre">Charset</span></code></a><ul>
+<li><a class="reference internal" href="#email.charset.Charset.input_charset"><code class="docutils literal notranslate"><span class="pre">Charset.input_charset</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.header_encoding</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.body_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.body_encoding</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.output_charset"><code class="docutils literal notranslate"><span class="pre">Charset.output_charset</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.input_codec"><code class="docutils literal notranslate"><span class="pre">Charset.input_codec</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.output_codec"><code class="docutils literal notranslate"><span class="pre">Charset.output_codec</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.get_body_encoding"><code class="docutils literal notranslate"><span class="pre">Charset.get_body_encoding()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.get_output_charset"><code class="docutils literal notranslate"><span class="pre">Charset.get_output_charset()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encode"><code class="docutils literal notranslate"><span class="pre">Charset.header_encode()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.header_encode_lines"><code class="docutils literal notranslate"><span class="pre">Charset.header_encode_lines()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.body_encode"><code class="docutils literal notranslate"><span class="pre">Charset.body_encode()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__str__"><code class="docutils literal notranslate"><span class="pre">Charset.__str__()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__eq__"><code class="docutils literal notranslate"><span class="pre">Charset.__eq__()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.Charset.__ne__"><code class="docutils literal notranslate"><span class="pre">Charset.__ne__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#email.charset.add_charset"><code class="docutils literal notranslate"><span class="pre">add_charset()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.add_alias"><code class="docutils literal notranslate"><span class="pre">add_alias()</span></code></a></li>
+<li><a class="reference internal" href="#email.charset.add_codec"><code class="docutils literal notranslate"><span class="pre">add_codec()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.header.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.header</span></code>: Internationalized headers</a></p>
@@ -416,6 +473,10 @@ Python codec, as appropriate for the second argument to the <a class="reference 
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -490,11 +551,11 @@ Python codec, as appropriate for the second argument to the <a class="reference 
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

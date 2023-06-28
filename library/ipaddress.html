@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="ipaddress — IPv4/IPv6 manipulation library" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/ipaddress.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,9 +97,55 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code> — IPv4/IPv6 manipulation library</a><ul>
-<li><a class="reference internal" href="#convenience-factory-functions">Convenience factory functions</a></li>
+<li><a class="reference internal" href="#convenience-factory-functions">Convenience factory functions</a><ul>
+<li><a class="reference internal" href="#ipaddress.ip_address"><code class="docutils literal notranslate"><span class="pre">ip_address()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.ip_network"><code class="docutils literal notranslate"><span class="pre">ip_network()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.ip_interface"><code class="docutils literal notranslate"><span class="pre">ip_interface()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ip-addresses">IP Addresses</a><ul>
-<li><a class="reference internal" href="#address-objects">Address objects</a></li>
+<li><a class="reference internal" href="#address-objects">Address objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Address"><code class="docutils literal notranslate"><span class="pre">IPv4Address</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.version"><code class="docutils literal notranslate"><span class="pre">IPv4Address.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Address.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.compressed"><code class="docutils literal notranslate"><span class="pre">IPv4Address.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.exploded"><code class="docutils literal notranslate"><span class="pre">IPv4Address.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.packed"><code class="docutils literal notranslate"><span class="pre">IPv4Address.packed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.reverse_pointer"><code class="docutils literal notranslate"><span class="pre">IPv4Address.reverse_pointer</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_private"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_global"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_global</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.__format__"><code class="docutils literal notranslate"><span class="pre">IPv4Address.__format__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address"><code class="docutils literal notranslate"><span class="pre">IPv6Address</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.compressed"><code class="docutils literal notranslate"><span class="pre">IPv6Address.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.exploded"><code class="docutils literal notranslate"><span class="pre">IPv6Address.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.packed"><code class="docutils literal notranslate"><span class="pre">IPv6Address.packed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.reverse_pointer"><code class="docutils literal notranslate"><span class="pre">IPv6Address.reverse_pointer</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.version"><code class="docutils literal notranslate"><span class="pre">IPv6Address.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Address.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_private"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_global"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_global</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_site_local"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_site_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.ipv4_mapped"><code class="docutils literal notranslate"><span class="pre">IPv6Address.ipv4_mapped</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.scope_id"><code class="docutils literal notranslate"><span class="pre">IPv6Address.scope_id</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.sixtofour"><code class="docutils literal notranslate"><span class="pre">IPv6Address.sixtofour</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.teredo"><code class="docutils literal notranslate"><span class="pre">IPv6Address.teredo</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.__format__"><code class="docutils literal notranslate"><span class="pre">IPv6Address.__format__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conversion-to-strings-and-integers">Conversion to Strings and Integers</a></li>
 <li><a class="reference internal" href="#operators">Operators</a><ul>
 <li><a class="reference internal" href="#comparison-operators">Comparison operators</a></li>
@@ -111,7 +156,70 @@
 </li>
 <li><a class="reference internal" href="#ip-network-definitions">IP Network definitions</a><ul>
 <li><a class="reference internal" href="#prefix-net-mask-and-host-mask">Prefix, net mask and host mask</a></li>
-<li><a class="reference internal" href="#network-objects">Network objects</a></li>
+<li><a class="reference internal" href="#network-objects">Network objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Network"><code class="docutils literal notranslate"><span class="pre">IPv4Network</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.version"><code class="docutils literal notranslate"><span class="pre">IPv4Network.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_private"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.network_address"><code class="docutils literal notranslate"><span class="pre">IPv4Network.network_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.broadcast_address"><code class="docutils literal notranslate"><span class="pre">IPv4Network.broadcast_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.compressed"><code class="docutils literal notranslate"><span class="pre">IPv4Network.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.exploded"><code class="docutils literal notranslate"><span class="pre">IPv4Network.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.num_addresses"><code class="docutils literal notranslate"><span class="pre">IPv4Network.num_addresses</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.hosts"><code class="docutils literal notranslate"><span class="pre">IPv4Network.hosts()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.overlaps"><code class="docutils literal notranslate"><span class="pre">IPv4Network.overlaps()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.address_exclude"><code class="docutils literal notranslate"><span class="pre">IPv4Network.address_exclude()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.subnets"><code class="docutils literal notranslate"><span class="pre">IPv4Network.subnets()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.supernet"><code class="docutils literal notranslate"><span class="pre">IPv4Network.supernet()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.subnet_of"><code class="docutils literal notranslate"><span class="pre">IPv4Network.subnet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.supernet_of"><code class="docutils literal notranslate"><span class="pre">IPv4Network.supernet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.compare_networks"><code class="docutils literal notranslate"><span class="pre">IPv4Network.compare_networks()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network"><code class="docutils literal notranslate"><span class="pre">IPv6Network</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.version"><code class="docutils literal notranslate"><span class="pre">IPv6Network.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_private"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.network_address"><code class="docutils literal notranslate"><span class="pre">IPv6Network.network_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.broadcast_address"><code class="docutils literal notranslate"><span class="pre">IPv6Network.broadcast_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.compressed"><code class="docutils literal notranslate"><span class="pre">IPv6Network.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.exploded"><code class="docutils literal notranslate"><span class="pre">IPv6Network.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.num_addresses"><code class="docutils literal notranslate"><span class="pre">IPv6Network.num_addresses</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.hosts"><code class="docutils literal notranslate"><span class="pre">IPv6Network.hosts()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.overlaps"><code class="docutils literal notranslate"><span class="pre">IPv6Network.overlaps()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.address_exclude"><code class="docutils literal notranslate"><span class="pre">IPv6Network.address_exclude()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.subnets"><code class="docutils literal notranslate"><span class="pre">IPv6Network.subnets()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.supernet"><code class="docutils literal notranslate"><span class="pre">IPv6Network.supernet()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.subnet_of"><code class="docutils literal notranslate"><span class="pre">IPv6Network.subnet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.supernet_of"><code class="docutils literal notranslate"><span class="pre">IPv6Network.supernet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.compare_networks"><code class="docutils literal notranslate"><span class="pre">IPv6Network.compare_networks()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_site_local"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_site_local</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#id1">Operators</a><ul>
 <li><a class="reference internal" href="#logical-operators">Logical operators</a></li>
 <li><a class="reference internal" href="#iteration">Iteration</a></li>
@@ -121,14 +229,41 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#interface-objects">Interface objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface"><code class="docutils literal notranslate"><span class="pre">IPv4Interface</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.ip"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.ip</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.network"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.network</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_hostmask</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface"><code class="docutils literal notranslate"><span class="pre">IPv6Interface</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.ip"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.ip</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.network"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.network</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_hostmask</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#id2">Operators</a><ul>
 <li><a class="reference internal" href="#id3">Logical operators</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#other-module-level-functions">Other Module Level Functions</a></li>
-<li><a class="reference internal" href="#custom-exceptions">Custom Exceptions</a></li>
+<li><a class="reference internal" href="#other-module-level-functions">Other Module Level Functions</a><ul>
+<li><a class="reference internal" href="#ipaddress.v4_int_to_packed"><code class="docutils literal notranslate"><span class="pre">v4_int_to_packed()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.v6_int_to_packed"><code class="docutils literal notranslate"><span class="pre">v6_int_to_packed()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.summarize_address_range"><code class="docutils literal notranslate"><span class="pre">summarize_address_range()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.collapse_addresses"><code class="docutils literal notranslate"><span class="pre">collapse_addresses()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.get_mixed_type_key"><code class="docutils literal notranslate"><span class="pre">get_mixed_type_key()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#custom-exceptions">Custom Exceptions</a><ul>
+<li><a class="reference internal" href="#ipaddress.AddressValueError"><code class="docutils literal notranslate"><span class="pre">AddressValueError</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.NetmaskValueError"><code class="docutils literal notranslate"><span class="pre">NetmaskValueError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -222,7 +357,7 @@
           <div class="body" role="main">
             
   <section id="module-ipaddress">
-<span id="ipaddress-ipv4-ipv6-manipulation-library"></span><h1><a class="reference internal" href="#module-ipaddress" title="ipaddress: IPv4/IPv6 manipulation library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code></a> — IPv4/IPv6 manipulation library<a class="headerlink" href="#module-ipaddress" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="ipaddress-ipv4-ipv6-manipulation-library"></span><h1><a class="reference internal" href="#module-ipaddress" title="ipaddress: IPv4/IPv6 manipulation library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code></a> — IPv4/IPv6 manipulation library<a class="headerlink" href="#module-ipaddress" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/ipaddress.py">Lib/ipaddress.py</a></p>
 <hr class="docutils" />
 <p><a class="reference internal" href="#module-ipaddress" title="ipaddress: IPv4/IPv6 manipulation library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code></a> provides the capabilities to create, manipulate and
@@ -238,7 +373,7 @@ network definition, and so on.</p>
 <p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
 <section id="convenience-factory-functions">
-<h2>Convenience factory functions<a class="headerlink" href="#convenience-factory-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Convenience factory functions<a class="headerlink" href="#convenience-factory-functions" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-ipaddress" title="ipaddress: IPv4/IPv6 manipulation library."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code></a> module provides factory functions to conveniently create
 IP addresses, networks and interfaces:</p>
 <dl class="py function">
@@ -292,9 +427,9 @@ obtained by calling the appropriate version specific class constructors
 directly.</p>
 </section>
 <section id="ip-addresses">
-<h2>IP Addresses<a class="headerlink" href="#ip-addresses" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>IP Addresses<a class="headerlink" href="#ip-addresses" title="Permalink to this heading">¶</a></h2>
 <section id="address-objects">
-<h3>Address objects<a class="headerlink" href="#address-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Address objects<a class="headerlink" href="#address-objects" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="#ipaddress.IPv4Address" title="ipaddress.IPv4Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Address</span></code></a> and <a class="reference internal" href="#ipaddress.IPv6Address" title="ipaddress.IPv6Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv6Address</span></code></a> objects share a lot of common
 attributes.  Some attributes that are only meaningful for IPv6 addresses are
 also implemented by <a class="reference internal" href="#ipaddress.IPv4Address" title="ipaddress.IPv4Address"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Address</span></code></a> objects, in order to make it easier to
@@ -644,7 +779,7 @@ address, this property will be <code class="docutils literal notranslate"><span 
 
 </section>
 <section id="conversion-to-strings-and-integers">
-<h3>Conversion to Strings and Integers<a class="headerlink" href="#conversion-to-strings-and-integers" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Conversion to Strings and Integers<a class="headerlink" href="#conversion-to-strings-and-integers" title="Permalink to this heading">¶</a></h3>
 <p>To interoperate with networking interfaces such as the socket module,
 addresses must be converted to strings or integers. This is handled using
 the <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> and <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code></a> builtin functions:</p>
@@ -661,12 +796,12 @@ the <a class="reference internal" href="stdtypes.html#str" title="str"><code cla
 <p>Note that IPv6 scoped addresses are converted to integers without scope zone ID.</p>
 </section>
 <section id="operators">
-<h3>Operators<a class="headerlink" href="#operators" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this heading">¶</a></h3>
 <p>Address objects support some operators.  Unless stated otherwise, operators can
 only be applied between compatible objects (i.e. IPv4 with IPv4, IPv6 with
 IPv6).</p>
 <section id="comparison-operators">
-<h4>Comparison operators<a class="headerlink" href="#comparison-operators" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">¶</a></h4>
 <p>Address objects can be compared with the usual set of comparison operators.
 Same IPv6 addresses with different scope zone IDs are not equal.
 Some examples:</p>
@@ -684,7 +819,7 @@ Some examples:</p>
 </div>
 </section>
 <section id="arithmetic-operators">
-<h4>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Arithmetic operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this heading">¶</a></h4>
 <p>Integers can be added to or subtracted from address objects.  Some examples:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IPv4Address</span><span class="p">(</span><span class="s1">&#39;127.0.0.2&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">3</span>
 <span class="go">IPv4Address(&#39;127.0.0.5&#39;)</span>
@@ -700,7 +835,7 @@ Some examples:</p>
 </section>
 </section>
 <section id="ip-network-definitions">
-<h2>IP Network definitions<a class="headerlink" href="#ip-network-definitions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>IP Network definitions<a class="headerlink" href="#ip-network-definitions" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#ipaddress.IPv4Network" title="ipaddress.IPv4Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Network</span></code></a> and <a class="reference internal" href="#ipaddress.IPv6Network" title="ipaddress.IPv6Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv6Network</span></code></a> objects provide a mechanism
 for defining and inspecting IP network definitions.  A network definition
 consists of a <em>mask</em> and a <em>network address</em>, and as such defines a range of
@@ -709,7 +844,7 @@ mask.  For example, a network definition with the mask <code class="docutils lit
 the network address <code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code> consists of IP addresses in the inclusive
 range <code class="docutils literal notranslate"><span class="pre">192.168.1.0</span></code> to <code class="docutils literal notranslate"><span class="pre">192.168.1.255</span></code>.</p>
 <section id="prefix-net-mask-and-host-mask">
-<h3>Prefix, net mask and host mask<a class="headerlink" href="#prefix-net-mask-and-host-mask" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Prefix, net mask and host mask<a class="headerlink" href="#prefix-net-mask-and-host-mask" title="Permalink to this heading">¶</a></h3>
 <p>There are several equivalent ways to specify IP network masks.  A <em>prefix</em>
 <code class="docutils literal notranslate"><span class="pre">/&lt;nbits&gt;</span></code> is a notation that denotes how many high-order bits are set in
 the network mask.  A <em>net mask</em> is an IP address with some number of
@@ -720,7 +855,7 @@ high-order bits set.  Thus the prefix <code class="docutils literal notranslate"
 host mask equivalent to <code class="docutils literal notranslate"><span class="pre">/24</span></code> in IPv4 is <code class="docutils literal notranslate"><span class="pre">0.0.0.255</span></code>.</p>
 </section>
 <section id="network-objects">
-<h3>Network objects<a class="headerlink" href="#network-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Network objects<a class="headerlink" href="#network-objects" title="Permalink to this heading">¶</a></h3>
 <p>All attributes implemented by address objects are implemented by network
 objects as well.  In addition, network objects implement additional attributes.
 All of these are common between <a class="reference internal" href="#ipaddress.IPv4Network" title="ipaddress.IPv4Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv4Network</span></code></a> and <a class="reference internal" href="#ipaddress.IPv6Network" title="ipaddress.IPv6Network"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPv6Network</span></code></a>,
@@ -1211,17 +1346,17 @@ for both the network address and the broadcast address.</p>
 
 </section>
 <section id="id1">
-<h3>Operators<a class="headerlink" href="#id1" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Operators<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h3>
 <p>Network objects support some operators.  Unless stated otherwise, operators can
 only be applied between compatible objects (i.e. IPv4 with IPv4, IPv6 with
 IPv6).</p>
 <section id="logical-operators">
-<h4>Logical operators<a class="headerlink" href="#logical-operators" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this heading">¶</a></h4>
 <p>Network objects can be compared with the usual set of logical operators.
 Network objects are ordered first by network address, then by net mask.</p>
 </section>
 <section id="iteration">
-<h4>Iteration<a class="headerlink" href="#iteration" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Iteration<a class="headerlink" href="#iteration" title="Permalink to this heading">¶</a></h4>
 <p>Network objects can be iterated to list all the addresses belonging to the
 network.  For iteration, <em>all</em> hosts are returned, including unusable hosts
 (for usable hosts, use the <a class="reference internal" href="#ipaddress.IPv4Network.hosts" title="ipaddress.IPv4Network.hosts"><code class="xref py py-meth docutils literal notranslate"><span class="pre">hosts()</span></code></a> method).  An
@@ -1249,7 +1384,7 @@ example:</p>
 </div>
 </section>
 <section id="networks-as-containers-of-addresses">
-<h4>Networks as containers of addresses<a class="headerlink" href="#networks-as-containers-of-addresses" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Networks as containers of addresses<a class="headerlink" href="#networks-as-containers-of-addresses" title="Permalink to this heading">¶</a></h4>
 <p>Network objects can act as containers of addresses.  Some examples:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IPv4Network</span><span class="p">(</span><span class="s1">&#39;192.0.2.0/28&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="go">IPv4Address(&#39;192.0.2.0&#39;)</span>
@@ -1265,7 +1400,7 @@ example:</p>
 </section>
 </section>
 <section id="interface-objects">
-<h2>Interface objects<a class="headerlink" href="#interface-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Interface objects<a class="headerlink" href="#interface-objects" title="Permalink to this heading">¶</a></h2>
 <p>Interface objects are <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a>, so they can be used as keys in
 dictionaries.</p>
 <dl class="py class">
@@ -1373,12 +1508,12 @@ are available:</p>
 </dd></dl>
 
 <section id="id2">
-<h3>Operators<a class="headerlink" href="#id2" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Operators<a class="headerlink" href="#id2" title="Permalink to this heading">¶</a></h3>
 <p>Interface objects support some operators.  Unless stated otherwise, operators
 can only be applied between compatible objects (i.e. IPv4 with IPv4, IPv6 with
 IPv6).</p>
 <section id="id3">
-<h4>Logical operators<a class="headerlink" href="#id3" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>Logical operators<a class="headerlink" href="#id3" title="Permalink to this heading">¶</a></h4>
 <p>Interface objects can be compared with the usual set of logical operators.</p>
 <p>For equality comparison (<code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">!=</span></code>), both the IP address and network
 must be the same for the objects to be equal.  An interface will not compare
@@ -1392,7 +1527,7 @@ IP addresses.</p>
 </section>
 </section>
 <section id="other-module-level-functions">
-<h2>Other Module Level Functions<a class="headerlink" href="#other-module-level-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Other Module Level Functions<a class="headerlink" href="#other-module-level-functions" title="Permalink to this heading">¶</a></h2>
 <p>The module also provides the following module level functions:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="ipaddress.v4_int_to_packed">
@@ -1468,7 +1603,7 @@ this function as the <em>key</em> argument to <a class="reference internal" href
 
 </section>
 <section id="custom-exceptions">
-<h2>Custom Exceptions<a class="headerlink" href="#custom-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Custom Exceptions<a class="headerlink" href="#custom-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>To support more specific error reporting from class constructors, the
 module defines the following exceptions:</p>
 <dl class="py exception">
@@ -1497,9 +1632,55 @@ module defines the following exceptions:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ipaddress</span></code> — IPv4/IPv6 manipulation library</a><ul>
-<li><a class="reference internal" href="#convenience-factory-functions">Convenience factory functions</a></li>
+<li><a class="reference internal" href="#convenience-factory-functions">Convenience factory functions</a><ul>
+<li><a class="reference internal" href="#ipaddress.ip_address"><code class="docutils literal notranslate"><span class="pre">ip_address()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.ip_network"><code class="docutils literal notranslate"><span class="pre">ip_network()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.ip_interface"><code class="docutils literal notranslate"><span class="pre">ip_interface()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#ip-addresses">IP Addresses</a><ul>
-<li><a class="reference internal" href="#address-objects">Address objects</a></li>
+<li><a class="reference internal" href="#address-objects">Address objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Address"><code class="docutils literal notranslate"><span class="pre">IPv4Address</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.version"><code class="docutils literal notranslate"><span class="pre">IPv4Address.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Address.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.compressed"><code class="docutils literal notranslate"><span class="pre">IPv4Address.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.exploded"><code class="docutils literal notranslate"><span class="pre">IPv4Address.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.packed"><code class="docutils literal notranslate"><span class="pre">IPv4Address.packed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.reverse_pointer"><code class="docutils literal notranslate"><span class="pre">IPv4Address.reverse_pointer</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_private"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_global"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_global</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv4Address.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Address.__format__"><code class="docutils literal notranslate"><span class="pre">IPv4Address.__format__()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address"><code class="docutils literal notranslate"><span class="pre">IPv6Address</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.compressed"><code class="docutils literal notranslate"><span class="pre">IPv6Address.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.exploded"><code class="docutils literal notranslate"><span class="pre">IPv6Address.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.packed"><code class="docutils literal notranslate"><span class="pre">IPv6Address.packed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.reverse_pointer"><code class="docutils literal notranslate"><span class="pre">IPv6Address.reverse_pointer</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.version"><code class="docutils literal notranslate"><span class="pre">IPv6Address.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Address.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_private"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_global"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_global</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.is_site_local"><code class="docutils literal notranslate"><span class="pre">IPv6Address.is_site_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.ipv4_mapped"><code class="docutils literal notranslate"><span class="pre">IPv6Address.ipv4_mapped</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.scope_id"><code class="docutils literal notranslate"><span class="pre">IPv6Address.scope_id</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.sixtofour"><code class="docutils literal notranslate"><span class="pre">IPv6Address.sixtofour</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.teredo"><code class="docutils literal notranslate"><span class="pre">IPv6Address.teredo</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Address.__format__"><code class="docutils literal notranslate"><span class="pre">IPv6Address.__format__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#conversion-to-strings-and-integers">Conversion to Strings and Integers</a></li>
 <li><a class="reference internal" href="#operators">Operators</a><ul>
 <li><a class="reference internal" href="#comparison-operators">Comparison operators</a></li>
@@ -1510,7 +1691,70 @@ module defines the following exceptions:</p>
 </li>
 <li><a class="reference internal" href="#ip-network-definitions">IP Network definitions</a><ul>
 <li><a class="reference internal" href="#prefix-net-mask-and-host-mask">Prefix, net mask and host mask</a></li>
-<li><a class="reference internal" href="#network-objects">Network objects</a></li>
+<li><a class="reference internal" href="#network-objects">Network objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Network"><code class="docutils literal notranslate"><span class="pre">IPv4Network</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.version"><code class="docutils literal notranslate"><span class="pre">IPv4Network.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_private"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv4Network.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.network_address"><code class="docutils literal notranslate"><span class="pre">IPv4Network.network_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.broadcast_address"><code class="docutils literal notranslate"><span class="pre">IPv4Network.broadcast_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.compressed"><code class="docutils literal notranslate"><span class="pre">IPv4Network.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.exploded"><code class="docutils literal notranslate"><span class="pre">IPv4Network.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Network.with_hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.num_addresses"><code class="docutils literal notranslate"><span class="pre">IPv4Network.num_addresses</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Network.prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.hosts"><code class="docutils literal notranslate"><span class="pre">IPv4Network.hosts()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.overlaps"><code class="docutils literal notranslate"><span class="pre">IPv4Network.overlaps()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.address_exclude"><code class="docutils literal notranslate"><span class="pre">IPv4Network.address_exclude()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.subnets"><code class="docutils literal notranslate"><span class="pre">IPv4Network.subnets()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.supernet"><code class="docutils literal notranslate"><span class="pre">IPv4Network.supernet()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.subnet_of"><code class="docutils literal notranslate"><span class="pre">IPv4Network.subnet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.supernet_of"><code class="docutils literal notranslate"><span class="pre">IPv4Network.supernet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Network.compare_networks"><code class="docutils literal notranslate"><span class="pre">IPv4Network.compare_networks()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network"><code class="docutils literal notranslate"><span class="pre">IPv6Network</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.version"><code class="docutils literal notranslate"><span class="pre">IPv6Network.version</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.max_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.max_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_multicast"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_multicast</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_private"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_private</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_unspecified"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_unspecified</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_reserved"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_reserved</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_loopback"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_loopback</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_link_local"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_link_local</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.network_address"><code class="docutils literal notranslate"><span class="pre">IPv6Network.network_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.broadcast_address"><code class="docutils literal notranslate"><span class="pre">IPv6Network.broadcast_address</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.compressed"><code class="docutils literal notranslate"><span class="pre">IPv6Network.compressed</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.exploded"><code class="docutils literal notranslate"><span class="pre">IPv6Network.exploded</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Network.with_hostmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.num_addresses"><code class="docutils literal notranslate"><span class="pre">IPv6Network.num_addresses</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Network.prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.hosts"><code class="docutils literal notranslate"><span class="pre">IPv6Network.hosts()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.overlaps"><code class="docutils literal notranslate"><span class="pre">IPv6Network.overlaps()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.address_exclude"><code class="docutils literal notranslate"><span class="pre">IPv6Network.address_exclude()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.subnets"><code class="docutils literal notranslate"><span class="pre">IPv6Network.subnets()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.supernet"><code class="docutils literal notranslate"><span class="pre">IPv6Network.supernet()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.subnet_of"><code class="docutils literal notranslate"><span class="pre">IPv6Network.subnet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.supernet_of"><code class="docutils literal notranslate"><span class="pre">IPv6Network.supernet_of()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.compare_networks"><code class="docutils literal notranslate"><span class="pre">IPv6Network.compare_networks()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Network.is_site_local"><code class="docutils literal notranslate"><span class="pre">IPv6Network.is_site_local</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#id1">Operators</a><ul>
 <li><a class="reference internal" href="#logical-operators">Logical operators</a></li>
 <li><a class="reference internal" href="#iteration">Iteration</a></li>
@@ -1520,14 +1764,41 @@ module defines the following exceptions:</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#interface-objects">Interface objects</a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface"><code class="docutils literal notranslate"><span class="pre">IPv4Interface</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.ip"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.ip</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.network"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.network</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv4Interface.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv4Interface.with_hostmask</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface"><code class="docutils literal notranslate"><span class="pre">IPv6Interface</span></code></a><ul>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.ip"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.ip</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.network"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.network</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_prefixlen"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_prefixlen</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_netmask"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_netmask</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.IPv6Interface.with_hostmask"><code class="docutils literal notranslate"><span class="pre">IPv6Interface.with_hostmask</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#id2">Operators</a><ul>
 <li><a class="reference internal" href="#id3">Logical operators</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#other-module-level-functions">Other Module Level Functions</a></li>
-<li><a class="reference internal" href="#custom-exceptions">Custom Exceptions</a></li>
+<li><a class="reference internal" href="#other-module-level-functions">Other Module Level Functions</a><ul>
+<li><a class="reference internal" href="#ipaddress.v4_int_to_packed"><code class="docutils literal notranslate"><span class="pre">v4_int_to_packed()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.v6_int_to_packed"><code class="docutils literal notranslate"><span class="pre">v6_int_to_packed()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.summarize_address_range"><code class="docutils literal notranslate"><span class="pre">summarize_address_range()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.collapse_addresses"><code class="docutils literal notranslate"><span class="pre">collapse_addresses()</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.get_mixed_type_key"><code class="docutils literal notranslate"><span class="pre">get_mixed_type_key()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#custom-exceptions">Custom Exceptions</a><ul>
+<li><a class="reference internal" href="#ipaddress.AddressValueError"><code class="docutils literal notranslate"><span class="pre">AddressValueError</span></code></a></li>
+<li><a class="reference internal" href="#ipaddress.NetmaskValueError"><code class="docutils literal notranslate"><span class="pre">NetmaskValueError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1555,6 +1826,10 @@ module defines the following exceptions:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1628,11 +1903,11 @@ module defines the following exceptions:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

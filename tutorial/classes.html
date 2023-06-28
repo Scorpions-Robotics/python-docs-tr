@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="9. Sınıflar" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/classes.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -213,21 +212,21 @@
           <div class="body" role="main">
             
   <section id="classes">
-<span id="tut-classes"></span><h1><span class="section-number">9. </span>Sınıflar<a class="headerlink" href="#classes" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-classes"></span><h1><span class="section-number">9. </span>Sınıflar<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h1>
 <p>Sınıflar, verileri ve işlevleri bir arada tutan bir araçtır. Yeni bir sınıf oluşturulurken, objeye ait yeni örnekler (instances) oluşturulur. Sınıf örnekleri, durumlarını korumak için onlara iliştirilmiş niteliklere sahip olabilir. Sınıfların durumunu modifiye etmek için ise metotlar kullanılabilir.</p>
 <p>Diğer programlama dilleriyle karşılaştırıldığında, Python’un sınıf mekanizması olabildiğince az yeni sözdizimi ve semantik içeren sınıflar ekler.  C++ ve Modula-3’te bulunan sınıf mekanizmalarının bir karışımıdır.  Python sınıfları Nesne Yönelimli Programlama’nın tüm standart özelliklerini sağlar: sınıf devralma mekanizması birden çok temel sınıfa izin verir, türetilmiş bir sınıf temel sınıfının veya sınıflarının herhangi bir metodunu geçersiz kılabilir ve bir metot aynı ada sahip bir temel sınıfın metodunu çağırabilir.  Nesneler farklı miktar ve türlerde veri içerebilir.  Modüller için olduğu gibi, sınıflar da Python’un dinamik doğasına uygundur: çalışma sırasında oluşturulurlar ve oluşturulduktan sonra da değiştirilebilirler.</p>
 <p>C++ terminolojisinde, normalde sınıf üyeleri (veri üyeleri dahil) <em>public</em> (aşağıdakine bakın <a class="reference internal" href="#tut-private"><span class="std std-ref">Özel Değişkenler</span></a>) ve tüm üye fonksiyonları <em>virtual</em>’ dır.  Modula-3’te olduğu gibi, nesnenin üyelerine metotlarından ulaşmak için bir kısayol yoktur: metodun işlevi, çağrı tarafından örtülü olarak sağlanan objeyi temsil eden açık bir argümanla bildirilir.  Smalltalk’ta olduğu gibi, sınıfların kendileri de birer nesnedir.  Bu sayede metotlar yeniden isimlendirilebilir veya içe aktarılabilir.  C++ ve Modula-3’ün aksine, yerleşik türler kullanıcının üzerlerine yapacağı geliştirmeler için temel sınıflar olarak kullanılabilir.  Ayrıca, C++’ta olduğu gibi, özel sözdizimine sahip çoğu yerleşik işleç (aritmetik işleçler, alt simgeleme vb.) sınıf örnekleri için yeniden tanımlanabilir, geliştirilebilir.</p>
 <p>(Sınıflara dair evrensel terimlerin yanı sıra, nadiren Smalltalk ve C++ terimlerini kullanacağım. Onun yerine Modula-3 terimlerini kullanacağım çünkü Python’un nesne yönelimli semantiğine C++’tan daha yakın, yine de ancak çok az okuyucunun bunları duymuş olacağını tahmin ediyorum.)</p>
 <section id="a-word-about-names-and-objects">
-<span id="tut-object"></span><h2><span class="section-number">9.1. </span>İsim ve Nesneler Hakkında Birkaç Şey<a class="headerlink" href="#a-word-about-names-and-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-object"></span><h2><span class="section-number">9.1. </span>İsim ve Nesneler Hakkında Birkaç Şey<a class="headerlink" href="#a-word-about-names-and-objects" title="Permalink to this heading">¶</a></h2>
 <p>Nesnelerin bireyselliği vardır ve birden çok ad (birden çok kapsamda) aynı nesneye bağlanabilir.  Bu, diğer dillerde örtüşme (aliasing) olarak bilinir.  Bu genellikle Python’a ilk bakışta takdir edilmeyen bir özellik olsa da değiştirilemeyen veri türleriyle (sayılar, dizeler, diziler) uğraşırken rahatlıkla göz ardı edilebilir.  Ancak, örtüşmeler, listeler, sözlükler ve diğer türlerin çoğu gibi değişebilir nesneleri içeren Python kodunun semantiği üzerinde şaşırtıcı bir etkiye sahiptir. Diğer adlar bazı açılardan işaretçiler (pointers) gibi davrandığından, bu genellikle programın yararına kullanılır.  Örneğin, bir nesneyi geçirmek kolaydır çünkü uygulama tarafından geçirilen şey yalnızca bir işaretçidir; bir fonksiyon argüman olarak geçirilen bir nesneyi değiştirirse, çağıran bu değişikliği görür — bu Pascal’daki iki farklı bağımsız değişken geçirme mekanizmasına olan gereksinimi ortadan kaldırır.</p>
 </section>
 <section id="python-scopes-and-namespaces">
-<span id="tut-scopes"></span><h2><span class="section-number">9.2. </span>Python Etki Alanları ve Ad Alanları<a class="headerlink" href="#python-scopes-and-namespaces" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-scopes"></span><h2><span class="section-number">9.2. </span>Python Etki Alanları ve Ad Alanları<a class="headerlink" href="#python-scopes-and-namespaces" title="Permalink to this heading">¶</a></h2>
 <p>Sınıflara başlamadan önce, size Python’un etki alanı kuralları hakkında bir şey söylemeliyim.  Sınıf tanımlarında ad alanlarının kullanımının bazı püf noktaları vardır ve neler olduğunu tam olarak anlamak için etki alanlarının ve isimlerin nasıl çalıştığını bilmeniz gerekir. Bu arada, bu konuda bilgi edinmek herhangi bir ileri düzey Python programcısı için yararlıdır.</p>
 <p>Haydi birkaç tanımlama ile başlayalım.</p>
 <p><em>Ad alanları</em> (namespace), adlardan nesnelere eşlemedir.  Çoğu isim şu anda Python sözlükleri olarak uygulanmaktadır, ancak bu fark edilir çapta bir fark yaratmaz (performans hariç) ve gelecekte değişebilir.  Ad alanlarına örnek olarak şunlar verilebilir: yerleşik isimler (<a class="reference internal" href="../library/functions.html#abs" title="abs"><code class="xref py py-func docutils literal notranslate"><span class="pre">abs()</span></code></a> ve yerleşik özel durum adları gibi fonksiyonları içerir); modüldeki global adlar; ve bir fonksiyon çağırmadaki yerel adlar.  Bir bakıma, bir nesnenin nitelik kümesi de bir ad alanı oluşturur.  İsimler hakkında bilinmesi gereken önemli şey, farklı ad alanlarındaki adlar arasında kesinlikle bir ilişki olmamasıdır; örneğin, iki farklı modülün her ikisi de karışıklık olmadan <code class="docutils literal notranslate"><span class="pre">maximize</span></code> fonksiyonunu tanımlayabilir — modül kullanıcılarının modül adını örneklemesi gerekir.</p>
-<p>Bu arada, <em>nitelik</em> sözcüğünü bir noktayı takip eden herhangi bir isim için kullanıyorum. Mesela,  <code class="docutils literal notranslate"><span class="pre">z.real</span></code> ifadesinde <code class="docutils literal notranslate"><span class="pre">real</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> nesnesine ait bir niteliktir. Açıkçası, modüllerde isimlere yapılan referanslar nitelik referanslarıdır: <code class="docutils literal notranslate"><span class="pre">modname.funcname</span></code> ifadesinde <code class="docutils literal notranslate"><span class="pre">modname</span></code> bir modül nesnesi ve <code class="docutils literal notranslate"><span class="pre">funcname</span></code> onun bir niteliğidir. Bu durumda, modülün nitelikleri ve modüldeki global değişkenler arasında bir eşleşme olur: aynı ad alanını paylaşmaları! <a class="footnote-reference brackets" href="#id2" id="id1">1</a></p>
+<p>Bu arada, <em>nitelik</em> sözcüğünü bir noktayı takip eden herhangi bir isim için kullanıyorum. Mesela,  <code class="docutils literal notranslate"><span class="pre">z.real</span></code> ifadesinde <code class="docutils literal notranslate"><span class="pre">real</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> nesnesine ait bir niteliktir. Açıkçası, modüllerde isimlere yapılan referanslar nitelik referanslarıdır: <code class="docutils literal notranslate"><span class="pre">modname.funcname</span></code> ifadesinde <code class="docutils literal notranslate"><span class="pre">modname</span></code> bir modül nesnesi ve <code class="docutils literal notranslate"><span class="pre">funcname</span></code> onun bir niteliğidir. Bu durumda, modülün nitelikleri ve modüldeki global değişkenler arasında bir eşleşme olur: aynı ad alanını paylaşmaları! <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>Nitelikler salt okunur veya düzenlenebilir olabilir.  İkinci durumda, niteliklere atama yapmak mümkündür.  Modül nitelikleri düzenlenebilir: <code class="docutils literal notranslate"><span class="pre">modname.the_answer</span> <span class="pre">=</span> <span class="pre">42</span></code> yazabilirsiniz.  Düzenlenebilir nitelikler <a class="reference internal" href="../reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> ifadesiyle de silinebilir.  Örneğin, <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">modname.the_answer</span></code> ifadesi <code class="xref py py-attr docutils literal notranslate"><span class="pre">the_answer</span></code> niteliğini <code class="docutils literal notranslate"><span class="pre">modname</span></code> tarafından adlandırılan nesneden kaldırır.</p>
 <p>Ad alanları farklı anlarda oluşturulur ve farklı yaşam sürelerine sahiptir.  Yerleşik adları içeren ad alanı, Python yorumlayıcısı başlatıldığında oluşturulur ve hiçbir zaman silinmez.  Modül tanımı okunduğunda modül için genel ad alanı oluşturulur; normalde, modül ad alanları da yorumlayıcı çıkıp bitene kadar sürer.  Bir komut dosyasından veya etkileşimli olarak okunan yorumlayıcının en üst düzey çağrısı tarafından yürütülen ifadeler <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a> adlı bir modülün parçası olarak kabul edilir, bu nedenle kendi genel ad alanlarına sahiptirler.  (Yerleşik isimler aslında bir modülde de yaşar; buna <a class="reference internal" href="../library/builtins.html#module-builtins" title="builtins: The module that provides the built-in namespace."><code class="xref py py-mod docutils literal notranslate"><span class="pre">builtins</span></code></a>.)</p>
 <p>Bir işlevin yerel ad alanı, bir fonksiyon çağrıldığında oluşturulur ve fonksiyon başa çıkamadığı bir hata veya istisna ile karşılaştığında silinir.  (Aslında, bir bakıma ad alanı unutulmaktadır diyebiliriz.)  Tabii ki, özyinelemeli çağrıların her birinin kendi yerel ad alanı vardır.</p>
@@ -245,7 +244,7 @@
 <p>Python’un özel bir cilvesi, eğer <a class="reference internal" href="../reference/simple_stmts.html#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a> veya <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a> deyimi geçerli değilse – isimlere yapılan atamaların her zaman en içteki kapsama girmesidir. Atamalar verileri kopyalamaz — adları nesnelere bağlarlar.  Aynı şey silme için de geçerlidir: <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">x</span></code> deyimi, <code class="docutils literal notranslate"><span class="pre">x</span></code> bağlamasını yerel kapsam tarafından başvurulan ad alanından kaldırır.  Aslında, yeni adlar tanıtan tüm işlemler yerel kapsamı kullanır: özellikle, <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> ifadeleri ve işlev tanımları modül veya işlev adını yerel kapsamda bağlar.</p>
 <p><a class="reference internal" href="../reference/simple_stmts.html#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a> deyimi, belirli değişkenlerin genel kapsamda yaşadığını ve orada geri alınması gerektiğini belirtmek için kullanılabilir; <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a> deyimi, belirli değişkenlerin bir çevreleme kapsamında yaşadığını ve orada geri alınması gerektiğini gösterir.</p>
 <section id="scopes-and-namespaces-example">
-<span id="tut-scopeexample"></span><h3><span class="section-number">9.2.1. </span>Kapsamlar ve Ad Alanları Örneği<a class="headerlink" href="#scopes-and-namespaces-example" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-scopeexample"></span><h3><span class="section-number">9.2.1. </span>Kapsamlar ve Ad Alanları Örneği<a class="headerlink" href="#scopes-and-namespaces-example" title="Permalink to this heading">¶</a></h3>
 <p>Bu, farklı kapsamlara ve ad alanlarına başvurmayı ve <a class="reference internal" href="../reference/simple_stmts.html#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a> ve <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a> değişken bağlamasını nasıl etkileyeceğini gösteren bir örnektir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scope_test</span><span class="p">():</span>
     <span class="k">def</span> <span class="nf">do_local</span><span class="p">():</span>
@@ -283,10 +282,10 @@ In global scope: global spam
 </section>
 </section>
 <section id="a-first-look-at-classes">
-<span id="tut-firstclasses"></span><h2><span class="section-number">9.3. </span>Sınıflara İlk Bakış<a class="headerlink" href="#a-first-look-at-classes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-firstclasses"></span><h2><span class="section-number">9.3. </span>Sınıflara İlk Bakış<a class="headerlink" href="#a-first-look-at-classes" title="Permalink to this heading">¶</a></h2>
 <p>Sınıflar biraz yeni söz dizimi, üç yeni nesne türü ve bazı yeni semantiklere sahiptir.</p>
 <section id="class-definition-syntax">
-<span id="tut-classdefinition"></span><h3><span class="section-number">9.3.1. </span>Sınıf Tanımlama Söz Dizimi<a class="headerlink" href="#class-definition-syntax" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-classdefinition"></span><h3><span class="section-number">9.3.1. </span>Sınıf Tanımlama Söz Dizimi<a class="headerlink" href="#class-definition-syntax" title="Permalink to this heading">¶</a></h3>
 <p>Sınıf tanımlamasının en basit biçimi şöyledir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ClassName</span><span class="p">:</span>
     <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
@@ -302,7 +301,7 @@ In global scope: global spam
 <p>Bir sınıf tanımı normal olarak bırakıldığında (uç aracılığıyla), bir <em>sınıf nesnesi</em> oluşturulur.  Bu temelde sınıf tanımı tarafından oluşturulan ad alanının içerikleri için bir aracıdır, sınıf nesneleri hakkında daha fazla bilgiyi ise sonraki bölümde öğreneceğiz.  Orijinal yerel kapsam (sınıf tanımı girilmeden hemen önce geçerli olan) yeniden etkinleştirilir ve sınıf nesnesi burada sınıf tanımı üstbilgisinde verilen sınıf adına bağlı olur (örnekte <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassName</span></code>).</p>
 </section>
 <section id="class-objects">
-<span id="tut-classobjects"></span><h3><span class="section-number">9.3.2. </span>Sınıf Nesneleri<a class="headerlink" href="#class-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-classobjects"></span><h3><span class="section-number">9.3.2. </span>Sınıf Nesneleri<a class="headerlink" href="#class-objects" title="Permalink to this heading">¶</a></h3>
 <p>Sınıf nesneleri iki tür işlemi destekler: nitelik referansları ve örnekleme.</p>
 <p><em>Nitelik referansları</em>, Python’daki tüm nitelik referansları için kullanılan standart söz dizimi olan <code class="docutils literal notranslate"><span class="pre">obj.name</span></code> kullanır.  Geçerli nitelik adları, sınıf nesnesi oluşturulduğunda sınıfın ad alanında bulunan tüm adlardır.  Yani, sınıf tanımı şöyle görünüyorsa:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">:</span>
@@ -341,7 +340,7 @@ In global scope: global spam
 </div>
 </section>
 <section id="instance-objects">
-<span id="tut-instanceobjects"></span><h3><span class="section-number">9.3.3. </span>Örnek Nesneleri<a class="headerlink" href="#instance-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-instanceobjects"></span><h3><span class="section-number">9.3.3. </span>Örnek Nesneleri<a class="headerlink" href="#instance-objects" title="Permalink to this heading">¶</a></h3>
 <p>Şimdi örnek nesnelerle ne yapabiliriz?  Örnek nesneleri tarafından anlaşılan tek işlemler nitelik başvurularıdır.  İki tür geçerli öznitelik adı vardır: veri nitelikleri ve metotları.</p>
 <p><em>veri nitelikleri</em>, Smalltalk’taki “örnek değişkenlerine” ve C++’taki “veri üyelerine” karşılık gelir.  Veri niteliklerinin önceden tanımlanması gerekmez; yerel değişkenler gibi, ilk değer atandığı anda varlıkları başlar.  Örneğin, <code class="docutils literal notranslate"><span class="pre">x</span></code> yukarıda oluşturulan <code class="xref py py-class docutils literal notranslate"><span class="pre">MyClass</span></code> örneğiyse, aşağıdaki kod parçası iz bırakmadan <code class="docutils literal notranslate"><span class="pre">16</span></code> değerini yazdırır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
@@ -355,7 +354,7 @@ In global scope: global spam
 <p id="index-0">Örnek nesnesinin geçerli metot adları nesnenin sınıfına bağlıdır.  Fonksiyon nesneleri olan bir sınıfın tüm nitelikleri, örneklerinin karşılık gelen fonksiyonlarını tanımlar.  Bu nedenle, örneğimizde, <code class="docutils literal notranslate"><span class="pre">x.f</span></code> geçerli bir metot referansıdır, ne de olsa <code class="docutils literal notranslate"><span class="pre">MyClass.f</span></code> bir fonksiyondur ancak <code class="docutils literal notranslate"><span class="pre">MyClass.i</span></code> fonksiyon olmadığından <code class="docutils literal notranslate"><span class="pre">x.i</span></code> değildir.  Ancak <code class="docutils literal notranslate"><span class="pre">x.f</span></code>, <code class="docutils literal notranslate"><span class="pre">MyClass.f</span></code> ile aynı şey değildir çünkü bir fonksiyon nesnesi değil, <em>metot nesnesi</em> ‘dir.</p>
 </section>
 <section id="method-objects">
-<span id="tut-methodobjects"></span><h3><span class="section-number">9.3.4. </span>Metot Nesneleri<a class="headerlink" href="#method-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-methodobjects"></span><h3><span class="section-number">9.3.4. </span>Metot Nesneleri<a class="headerlink" href="#method-objects" title="Permalink to this heading">¶</a></h3>
 <p>Genellikle, bir metot bağlandıktan hemen sonra çağrılır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">f</span><span class="p">()</span>
 </pre></div>
@@ -372,7 +371,7 @@ In global scope: global spam
 <p>Metotların nasıl çalıştığını hala anlamıyorsanız, nasıl uygulandığına bakmak belki de sorunları açıklığa kavuşturabilir.  Bir örneğin, veri olmayan bir niteliğine başvurulduğu zaman bu örneğin ait olduğu sınıfa bakılır.  Ad bir fonksiyon nesnesi olan geçerli bir sınıf özniteliğini gösterirse, örnek nesne ve fonksiyon nesnesi soyut bir nesnede paketlenerek (işaretçiler) bir metot nesnesi oluşturulur. İşte bu metot nesnesidir.  Metot nesnesi bir argüman listesiyle çağrıldığında, örnek nesneden ve argüman listesinden yeni bir argüman listesi oluşturulur ve fonksiyon nesnesi bu yeni argüman listesiyle çağrılır.</p>
 </section>
 <section id="class-and-instance-variables">
-<span id="tut-class-and-instance-variables"></span><h3><span class="section-number">9.3.5. </span>Sınıf ve Örnek Değişkenleri<a class="headerlink" href="#class-and-instance-variables" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-class-and-instance-variables"></span><h3><span class="section-number">9.3.5. </span>Sınıf ve Örnek Değişkenleri<a class="headerlink" href="#class-and-instance-variables" title="Permalink to this heading">¶</a></h3>
 <p>Genel olarak, örnek değişkenleri o örneğe özgü veriler içindir ve sınıf değişkenleri sınıfın tüm örnekleri tarafından paylaşılan nitelikler ile metotlar içindir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Dog</span><span class="p">:</span>
 
@@ -435,7 +434,7 @@ In global scope: global spam
 </section>
 </section>
 <section id="random-remarks">
-<span id="tut-remarks"></span><h2><span class="section-number">9.4. </span>Rastgele Açıklamalar<a class="headerlink" href="#random-remarks" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-remarks"></span><h2><span class="section-number">9.4. </span>Rastgele Açıklamalar<a class="headerlink" href="#random-remarks" title="Permalink to this heading">¶</a></h2>
 <p>Aynı nitelik adı hem bir örnekte hem de bir sınıfta oluşuyorsa, nitelik araması örneğe öncelik verir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Warehouse</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="n">purpose</span> <span class="o">=</span> <span class="s1">&#39;storage&#39;</span>
@@ -486,7 +485,7 @@ In global scope: global spam
 <p>Her değer bir nesnedir ve bu nedenle bir <em>sınıf</em> (<em>type</em> olarak da adlandırılır) bulundurur. <code class="docutils literal notranslate"><span class="pre">object.__class__</span></code> olarak depolanır.</p>
 </section>
 <section id="inheritance">
-<span id="tut-inheritance"></span><h2><span class="section-number">9.5. </span>Kalıtım<a class="headerlink" href="#inheritance" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-inheritance"></span><h2><span class="section-number">9.5. </span>Kalıtım<a class="headerlink" href="#inheritance" title="Permalink to this heading">¶</a></h2>
 <p>Tabii ki, bir dil özelliği kalıtımı desteklemeden “sınıf” adına layık olmaz.  Türetilmiş sınıf tanımının söz dizimi şöyle görünür:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">BaseClassName</span><span class="p">):</span>
     <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
@@ -510,7 +509,7 @@ In global scope: global spam
 <li><p>Sınıf kalıtımını denetlemek için <a class="reference internal" href="../library/functions.html#issubclass" title="issubclass"><code class="xref py py-func docutils literal notranslate"><span class="pre">issubclass()</span></code></a> kullanın: <code class="docutils literal notranslate"><span class="pre">issubclass(bool,</span> <span class="pre">int)</span></code> <code class="docutils literal notranslate"><span class="pre">True</span></code> ‘dur, çünkü <a class="reference internal" href="../library/functions.html#bool" title="bool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a> <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> ‘in bir alt sınıfıdır.  Ancak, <code class="docutils literal notranslate"><span class="pre">issubclass(float,</span> <span class="pre">int)</span></code> <code class="docutils literal notranslate"><span class="pre">False</span></code> olduğundan <a class="reference internal" href="../library/functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> alt sınıfı değildir.</p></li>
 </ul>
 <section id="multiple-inheritance">
-<span id="tut-multiple"></span><h3><span class="section-number">9.5.1. </span>Çoklu Kalıtım<a class="headerlink" href="#multiple-inheritance" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-multiple"></span><h3><span class="section-number">9.5.1. </span>Çoklu Kalıtım<a class="headerlink" href="#multiple-inheritance" title="Permalink to this heading">¶</a></h3>
 <p>Python, çoklu kalıtım biçimini de destekler.  Birden çok temel sınıf içeren bir sınıf tanımı şöyle görünür:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DerivedClassName</span><span class="p">(</span><span class="n">Base1</span><span class="p">,</span> <span class="n">Base2</span><span class="p">,</span> <span class="n">Base3</span><span class="p">):</span>
     <span class="o">&lt;</span><span class="n">statement</span><span class="o">-</span><span class="mi">1</span><span class="o">&gt;</span>
@@ -526,7 +525,7 @@ In global scope: global spam
 </section>
 </section>
 <section id="private-variables">
-<span id="tut-private"></span><h2><span class="section-number">9.6. </span>Özel Değişkenler<a class="headerlink" href="#private-variables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-private"></span><h2><span class="section-number">9.6. </span>Özel Değişkenler<a class="headerlink" href="#private-variables" title="Permalink to this heading">¶</a></h2>
 <p>Python’da bir nesnenin içinden erişilmesi dışında asla erişilemeyen “özel” örnek değişkenleri yoktur.  Ancak, çoğu Python kodu tarafından izlenen bir kural vardır: alt çizgi (örneğin <code class="docutils literal notranslate"><span class="pre">_spam</span></code>) ile öneklenmiş bir ad API’nin genel olmayan bir parçası olarak kabul edilmelidir (bir fonksiyon, metot veya veri üyesi olsun).  Bir uygulama detayıdır ve önceden haber verilmeksizin değiştirilebilir.</p>
 <p id="index-1">Sınıf-özel üyeler için geçerli bir kullanım örneği olduğundan (yani alt sınıflar tarafından tanımlanan adlara sahip adların ad çakışmasını önlemek için), <em class="dfn">name mangling</em> adı verilen böyle bir mekanizma için sınırlı destek vardır.  <code class="docutils literal notranslate"><span class="pre">__spam</span></code> formunun herhangi bir tanımlayıcısı (en az iki satır altı, en fazla bir alt çizgi) metinsel olarak <code class="docutils literal notranslate"><span class="pre">_classname__spam</span></code> ile değiştirilir;  Bu mangling, bir sınıfın tanımı içinde gerçekleştiği sürece tanımlayıcının söz dizimsel konumuna bakılmaksızın yapılır.</p>
 <p>Ad mangling, alt sınıfların sınıf içi metot çağrılarını kesmeden metotları geçersiz kılmasına izin vermek için yararlıdır.  Mesela:</p>
@@ -555,7 +554,7 @@ In global scope: global spam
 <p><code class="docutils literal notranslate"><span class="pre">exec()</span></code> veya <code class="docutils literal notranslate"><span class="pre">eval()</span></code> koduna geçirilen kodun çağırma sınıfının sınıf adını geçerli sınıf olarak görmediğine dikkat edin; bu, etkisi aynı şekilde birlikte bayt derlenmiş kodla sınırlı olan <code class="docutils literal notranslate"><span class="pre">global</span></code> deyiminin etkisine benzer.  Aynı kısıtlama <code class="docutils literal notranslate"><span class="pre">getattr()</span></code>, <code class="docutils literal notranslate"><span class="pre">setattr()</span></code> ve <code class="docutils literal notranslate"><span class="pre">delattr()</span></code> ve doğrudan <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> atıfta bulunurken de geçerlidir.</p>
 </section>
 <section id="odds-and-ends">
-<span id="tut-odds"></span><h2><span class="section-number">9.7. </span>Oranlar ve Bitişler<a class="headerlink" href="#odds-and-ends" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-odds"></span><h2><span class="section-number">9.7. </span>Oranlar ve Bitişler<a class="headerlink" href="#odds-and-ends" title="Permalink to this heading">¶</a></h2>
 <p>Bazen, birkaç adlandırılmış veri öğesini bir araya getirerek Pascal <em>record</em> ‘u veya C <em>struct</em> ‘ına benzer bir veri türüne sahip olmak yararlıdır. Deyimsel yaklaşım, bu amaç için <a class="reference internal" href="../library/dataclasses.html#module-dataclasses" title="dataclasses: Generate special methods on user-defined classes."><code class="xref py py-mod docutils literal notranslate"><span class="pre">dataclasses</span></code></a> kullanmaktır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 
@@ -577,7 +576,7 @@ In global scope: global spam
 <p>Örnek yöntem nesnelerinin de nitelikleri vardır: <code class="docutils literal notranslate"><span class="pre">m.__self__</span></code> yöntemi olan örnek nesnedir <code class="xref py py-meth docutils literal notranslate"><span class="pre">m()</span></code>, ve <code class="docutils literal notranslate"><span class="pre">m.__func__</span></code> yönteme karşılık gelen fonksiyon nesnesidir.</p>
 </section>
 <section id="iterators">
-<span id="tut-iterators"></span><h2><span class="section-number">9.8. </span>Yineleyiciler<a class="headerlink" href="#iterators" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-iterators"></span><h2><span class="section-number">9.8. </span>Yineleyiciler<a class="headerlink" href="#iterators" title="Permalink to this heading">¶</a></h2>
 <p>Şimdiye kadar büyük olasılıkla çoğu kapsayıcı nesnenin bir <a class="reference internal" href="../reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> deyimi kullanılarak döngüye alınabileceğini fark etmişsinizdir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
@@ -640,7 +639,7 @@ In global scope: global spam
 </div>
 </section>
 <section id="generators">
-<span id="tut-generators"></span><h2><span class="section-number">9.9. </span>Üreteçler<a class="headerlink" href="#generators" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-generators"></span><h2><span class="section-number">9.9. </span>Üreteçler<a class="headerlink" href="#generators" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../glossary.html#term-generator"><span class="xref std std-term">Üreteçler</span></a> yineleyiciler oluşturmak için basit ve güçlü bir araçtır.  Normal fonksiyonlar gibi yazılırlar, ancak veri döndürmek istediklerinde <a class="reference internal" href="../reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a> deyimini kullanırlar.  Üzerinde her <a class="reference internal" href="../library/functions.html#next" title="next"><code class="xref py py-func docutils literal notranslate"><span class="pre">next()</span></code></a> çağrıldığı zaman, üreteç kaldığı yerden devam eder (tüm veri değerlerini ve hangi deyimin en son yürütüldüğını hatırlar).  Bu örnek, üreteçlerin oluşturulmasının ne kadar da kolay olabileceğini gösterir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -661,7 +660,7 @@ In global scope: global spam
 <p>Otomatik metot oluşturma ve kaydetme programı durumuna ek olarak, üreteçler sonlandırıldığında otomatik olarak <a class="reference internal" href="../library/exceptions.html#StopIteration" title="StopIteration"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StopIteration</span></code></a> ‘ı yükseltirler. Birlikte, bu özellikler normal bir işlev yazmaktan daha fazla çaba harcamadan yinelemeler oluşturmayı kolaylaştırır.</p>
 </section>
 <section id="generator-expressions">
-<span id="tut-genexps"></span><h2><span class="section-number">9.10. </span>Üreteç İfadeleri<a class="headerlink" href="#generator-expressions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-genexps"></span><h2><span class="section-number">9.10. </span>Üreteç İfadeleri<a class="headerlink" href="#generator-expressions" title="Permalink to this heading">¶</a></h2>
 <p>Bazı basit üreteçler, listelere benzer bir söz dizimi kullanılarak ve köşeli ayraçlar yerine parantezlerle kısaca kodlanabilir. Bu ifadeler, üreteçlerin kapsayıcı bir fonksiyon tarafından hemen kullanıldığı durumlar için tasarlanmıştır.  Üreteç ifadeleri tam üreteç tanımlarından daha kompakt ancak daha az çok yönlüdür ve aynı özellikle liste anlamalarından daha bellek dostu olma eğilimindedir.</p>
 <p>Örnekler:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>                 <span class="c1"># sum of squares</span>
@@ -682,11 +681,12 @@ In global scope: global spam
 </pre></div>
 </div>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Bir şey hariç.  Modül nesneleri,  <a class="reference internal" href="../library/stdtypes.html#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a>  denen sadece okunabilir bir özelliğe sahiptir, bu da modülün ad alanını uygulamak için bir sözlük döndürür: <a class="reference internal" href="../library/stdtypes.html#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> ismi bir özellik olsa da global bir isim değildir. Kuşkusuz, bu durum ad alanlarının soyutlanış özelliklerine aykırı, dolayısıyla sadece programın durması sonrası çalışan hata ayıklayıcılar gibilerinin kullanımına kısıtlanmalı.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Bir şey hariç.  Modül nesneleri,  <a class="reference internal" href="../library/stdtypes.html#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a>  denen sadece okunabilir bir özelliğe sahiptir, bu da modülün ad alanını uygulamak için bir sözlük döndürür: <a class="reference internal" href="../library/stdtypes.html#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> ismi bir özellik olsa da global bir isim değildir. Kuşkusuz, bu durum ad alanlarının soyutlanış özelliklerine aykırı, dolayısıyla sadece programın durması sonrası çalışan hata ayıklayıcılar gibilerinin kullanımına kısıtlanmalı.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -751,6 +751,10 @@ In global scope: global spam
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -823,11 +827,11 @@ In global scope: global spam
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

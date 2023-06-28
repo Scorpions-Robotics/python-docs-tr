@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="struct — Interpret bytes as packed binary data" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/struct.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,16 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code> — Interpret bytes as packed binary data</a><ul>
-<li><a class="reference internal" href="#functions-and-exceptions">Functions and Exceptions</a></li>
+<li><a class="reference internal" href="#functions-and-exceptions">Functions and Exceptions</a><ul>
+<li><a class="reference internal" href="#struct.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#struct.pack"><code class="docutils literal notranslate"><span class="pre">pack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.pack_into"><code class="docutils literal notranslate"><span class="pre">pack_into()</span></code></a></li>
+<li><a class="reference internal" href="#struct.unpack"><code class="docutils literal notranslate"><span class="pre">unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.unpack_from"><code class="docutils literal notranslate"><span class="pre">unpack_from()</span></code></a></li>
+<li><a class="reference internal" href="#struct.iter_unpack"><code class="docutils literal notranslate"><span class="pre">iter_unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.calcsize"><code class="docutils literal notranslate"><span class="pre">calcsize()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#format-strings">Format Strings</a><ul>
 <li><a class="reference internal" href="#byte-order-size-and-alignment">Byte Order, Size, and Alignment</a></li>
 <li><a class="reference internal" href="#format-characters">Format Characters</a></li>
@@ -110,7 +118,19 @@
 <li><a class="reference internal" href="#standard-formats">Standard Formats</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#struct.Struct"><code class="docutils literal notranslate"><span class="pre">Struct</span></code></a><ul>
+<li><a class="reference internal" href="#struct.Struct.pack"><code class="docutils literal notranslate"><span class="pre">Struct.pack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.pack_into"><code class="docutils literal notranslate"><span class="pre">Struct.pack_into()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.unpack"><code class="docutils literal notranslate"><span class="pre">Struct.unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.unpack_from"><code class="docutils literal notranslate"><span class="pre">Struct.unpack_from()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.iter_unpack"><code class="docutils literal notranslate"><span class="pre">Struct.iter_unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.format"><code class="docutils literal notranslate"><span class="pre">Struct.format</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.size"><code class="docutils literal notranslate"><span class="pre">Struct.size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -204,7 +224,7 @@
           <div class="body" role="main">
             
   <section id="module-struct">
-<span id="struct-interpret-bytes-as-packed-binary-data"></span><h1><a class="reference internal" href="#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> — Interpret bytes as packed binary data<a class="headerlink" href="#module-struct" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="struct-interpret-bytes-as-packed-binary-data"></span><h1><a class="reference internal" href="#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> — Interpret bytes as packed binary data<a class="headerlink" href="#module-struct" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/struct.py">Lib/struct.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>This module converts between Python values and C structs represented
@@ -233,7 +253,7 @@ for that purpose are <a class="reference internal" href="stdtypes.html#bytes" ti
 that can be viewed as an array of bytes implement the buffer protocol, so that
 they can be read/filled without additional copying from a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> object.</p>
 <section id="functions-and-exceptions">
-<h2>Functions and Exceptions<a class="headerlink" href="#functions-and-exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Functions and Exceptions<a class="headerlink" href="#functions-and-exceptions" title="Permalink to this heading">¶</a></h2>
 <p>The module defines the following exception and functions:</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="struct.error">
@@ -299,7 +319,7 @@ required by the format, as reflected by <a class="reference internal" href="#str
 
 </section>
 <section id="format-strings">
-<span id="struct-format-strings"></span><h2>Format Strings<a class="headerlink" href="#format-strings" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="struct-format-strings"></span><h2>Format Strings<a class="headerlink" href="#format-strings" title="Permalink to this heading">¶</a></h2>
 <p>Format strings describe the data layout when
 packing and unpacking data.  They are built up from <a class="reference internal" href="#format-characters"><span class="std std-ref">format characters</span></a>,
 which specify the type of data being packed/unpacked.  In addition,
@@ -308,7 +328,7 @@ Each format string consists of an optional prefix character which
 describes the overall properties of the data and one or more format
 characters which describe the actual data values and padding.</p>
 <section id="byte-order-size-and-alignment">
-<span id="struct-alignment"></span><h3>Byte Order, Size, and Alignment<a class="headerlink" href="#byte-order-size-and-alignment" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="struct-alignment"></span><h3>Byte Order, Size, and Alignment<a class="headerlink" href="#byte-order-size-and-alignment" title="Permalink to this heading">¶</a></h3>
 <p>By default, C types are represented in the machine’s native format and byte
 order, and properly aligned by skipping pad bytes if necessary (according to the
 rules used by the C compiler).
@@ -321,12 +341,6 @@ and padding or standard formats depends on the application.</p>
 the byte order, size and alignment of the packed data, according to the
 following table:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 43%" />
-<col style="width: 18%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character</p></th>
 <th class="head"><p>Byte order</p></th>
@@ -389,7 +403,7 @@ count of zero.  See <a class="reference internal" href="#struct-examples"><span 
 </ol>
 </section>
 <section id="format-characters">
-<span id="id1"></span><h3>Format Characters<a class="headerlink" href="#format-characters" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id1"></span><h3>Format Characters<a class="headerlink" href="#format-characters" title="Permalink to this heading">¶</a></h3>
 <p>Format characters have the following meaning; the conversion between C and
 Python values should be obvious given their types.  The ‘Standard size’ column
 refers to the size of the packed value in bytes when using standard size; that
@@ -397,13 +411,6 @@ is, when the format string starts with one of <code class="docutils literal notr
 <code class="docutils literal notranslate"><span class="pre">'='</span></code>.  When using native size, the size of the packed value is
 platform-dependent.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 32%" />
-<col style="width: 24%" />
-<col style="width: 20%" />
-<col style="width: 15%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Format</p></th>
 <th class="head"><p>C Type</p></th>
@@ -623,7 +630,7 @@ Either 0 or 1 in the native or standard bool representation will be packed, and
 any non-zero value will be <code class="docutils literal notranslate"><span class="pre">True</span></code> when unpacking.</p>
 </section>
 <section id="examples">
-<span id="struct-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="struct-examples"></span><h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Native byte order examples (designated by the <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> format prefix or
@@ -705,7 +712,7 @@ at the end, assuming the platform’s longs are aligned on 4-byte boundaries:</p
 </section>
 </section>
 <section id="applications">
-<span id="id2"></span><h2>Applications<a class="headerlink" href="#applications" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">¶</a></h2>
 <p>Two main applications for the <a class="reference internal" href="#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> module exist, data
 interchange between Python and C code within an application or another
 application compiled using the same compiler (<a class="reference internal" href="#struct-native-formats"><span class="std std-ref">native formats</span></a>), and
@@ -713,7 +720,7 @@ data interchange between applications using agreed upon data layout
 (<a class="reference internal" href="#struct-standard-formats"><span class="std std-ref">standard formats</span></a>).  Generally speaking, the format strings
 constructed for these two domains are distinct.</p>
 <section id="native-formats">
-<span id="struct-native-formats"></span><h3>Native Formats<a class="headerlink" href="#native-formats" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="struct-native-formats"></span><h3>Native Formats<a class="headerlink" href="#native-formats" title="Permalink to this heading">¶</a></h3>
 <p>When constructing format strings which mimic native layouts, the
 compiler and machine architecture determine byte ordering and padding.
 In such cases, the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> format character should be used to specify
@@ -742,7 +749,7 @@ native formats it is better to use a zero-repeat format like <code class="docuti
 better to be explicit and use the <code class="docutils literal notranslate"><span class="pre">'&#64;'</span></code> prefix character.</p>
 </section>
 <section id="standard-formats">
-<span id="struct-standard-formats"></span><h3>Standard Formats<a class="headerlink" href="#standard-formats" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="struct-standard-formats"></span><h3>Standard Formats<a class="headerlink" href="#standard-formats" title="Permalink to this heading">¶</a></h3>
 <p>When exchanging data beyond your process such as networking or storage,
 be precise.  Specify the exact byte order, size, and alignment.  Do
 not assume they match the native order of a particular machine.
@@ -784,7 +791,7 @@ below were executed on a 32-bit machine:</p>
 </section>
 </section>
 <section id="classes">
-<span id="struct-objects"></span><h2>Classes<a class="headerlink" href="#classes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="struct-objects"></span><h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> module also defines the following type:</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="struct.Struct">
@@ -871,7 +878,16 @@ by the <a class="reference internal" href="#struct.pack" title="struct.pack"><co
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code> — Interpret bytes as packed binary data</a><ul>
-<li><a class="reference internal" href="#functions-and-exceptions">Functions and Exceptions</a></li>
+<li><a class="reference internal" href="#functions-and-exceptions">Functions and Exceptions</a><ul>
+<li><a class="reference internal" href="#struct.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#struct.pack"><code class="docutils literal notranslate"><span class="pre">pack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.pack_into"><code class="docutils literal notranslate"><span class="pre">pack_into()</span></code></a></li>
+<li><a class="reference internal" href="#struct.unpack"><code class="docutils literal notranslate"><span class="pre">unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.unpack_from"><code class="docutils literal notranslate"><span class="pre">unpack_from()</span></code></a></li>
+<li><a class="reference internal" href="#struct.iter_unpack"><code class="docutils literal notranslate"><span class="pre">iter_unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.calcsize"><code class="docutils literal notranslate"><span class="pre">calcsize()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#format-strings">Format Strings</a><ul>
 <li><a class="reference internal" href="#byte-order-size-and-alignment">Byte Order, Size, and Alignment</a></li>
 <li><a class="reference internal" href="#format-characters">Format Characters</a></li>
@@ -883,7 +899,19 @@ by the <a class="reference internal" href="#struct.pack" title="struct.pack"><co
 <li><a class="reference internal" href="#standard-formats">Standard Formats</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#classes">Classes</a><ul>
+<li><a class="reference internal" href="#struct.Struct"><code class="docutils literal notranslate"><span class="pre">Struct</span></code></a><ul>
+<li><a class="reference internal" href="#struct.Struct.pack"><code class="docutils literal notranslate"><span class="pre">Struct.pack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.pack_into"><code class="docutils literal notranslate"><span class="pre">Struct.pack_into()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.unpack"><code class="docutils literal notranslate"><span class="pre">Struct.unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.unpack_from"><code class="docutils literal notranslate"><span class="pre">Struct.unpack_from()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.iter_unpack"><code class="docutils literal notranslate"><span class="pre">Struct.iter_unpack()</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.format"><code class="docutils literal notranslate"><span class="pre">Struct.format</span></code></a></li>
+<li><a class="reference internal" href="#struct.Struct.size"><code class="docutils literal notranslate"><span class="pre">Struct.size</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -911,6 +939,10 @@ by the <a class="reference internal" href="#struct.pack" title="struct.pack"><co
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -984,11 +1016,11 @@ by the <a class="reference internal" href="#struct.pack" title="struct.pack"><co
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

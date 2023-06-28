@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="email.utils: Miscellaneous utilities" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/email.utils.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,32 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code>: Miscellaneous utilities</a><ul>
+<li><a class="reference internal" href="#email.utils.localtime"><code class="docutils literal notranslate"><span class="pre">localtime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.make_msgid"><code class="docutils literal notranslate"><span class="pre">make_msgid()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.quote"><code class="docutils literal notranslate"><span class="pre">quote()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.unquote"><code class="docutils literal notranslate"><span class="pre">unquote()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parseaddr"><code class="docutils literal notranslate"><span class="pre">parseaddr()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.formataddr"><code class="docutils literal notranslate"><span class="pre">formataddr()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.getaddresses"><code class="docutils literal notranslate"><span class="pre">getaddresses()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate"><code class="docutils literal notranslate"><span class="pre">parsedate()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate_tz"><code class="docutils literal notranslate"><span class="pre">parsedate_tz()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate_to_datetime"><code class="docutils literal notranslate"><span class="pre">parsedate_to_datetime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.mktime_tz"><code class="docutils literal notranslate"><span class="pre">mktime_tz()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.formatdate"><code class="docutils literal notranslate"><span class="pre">formatdate()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.format_datetime"><code class="docutils literal notranslate"><span class="pre">format_datetime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.decode_rfc2231"><code class="docutils literal notranslate"><span class="pre">decode_rfc2231()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.encode_rfc2231"><code class="docutils literal notranslate"><span class="pre">encode_rfc2231()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.collapse_rfc2231_value"><code class="docutils literal notranslate"><span class="pre">collapse_rfc2231_value()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.decode_params"><code class="docutils literal notranslate"><span class="pre">decode_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.encoders.html"
@@ -183,7 +208,7 @@
           <div class="body" role="main">
             
   <section id="module-email.utils">
-<span id="email-utils-miscellaneous-utilities"></span><h1><a class="reference internal" href="#module-email.utils" title="email.utils: Miscellaneous email package utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code></a>: Miscellaneous utilities<a class="headerlink" href="#module-email.utils" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="email-utils-miscellaneous-utilities"></span><h1><a class="reference internal" href="#module-email.utils" title="email.utils: Miscellaneous email package utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code></a>: Miscellaneous utilities<a class="headerlink" href="#module-email.utils" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/email/utils.py">Lib/email/utils.py</a></p>
 <hr class="docutils" />
 <p>There are a couple of useful utilities provided in the <a class="reference internal" href="#module-email.utils" title="email.utils: Miscellaneous email package utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code></a>
@@ -301,7 +326,7 @@ the date, <a class="reference internal" href="#email.utils.parsedate" title="ema
 <dd><p>Performs the same function as <a class="reference internal" href="#email.utils.parsedate" title="email.utils.parsedate"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate()</span></code></a>, but returns either <code class="docutils literal notranslate"><span class="pre">None</span></code> or
 a 10-tuple; the first 9 elements make up a tuple that can be passed directly to
 <a class="reference internal" href="time.html#time.mktime" title="time.mktime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.mktime()</span></code></a>, and the tenth is the offset of the date’s timezone from UTC
-(which is the official term for Greenwich Mean Time) <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.  If the input string
+(which is the official term for Greenwich Mean Time) <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  If the input string
 has no timezone, the last element of the tuple returned is <code class="docutils literal notranslate"><span class="pre">0</span></code>, which represents
 UTC. Note that indexes 6, 7, and 8 of the result tuple are not usable.</p>
 </dd></dl>
@@ -406,13 +431,14 @@ a tuple, it should be a string and it is returned unquoted.</p>
 </dd></dl>
 
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Note that the sign of the timezone offset is the opposite of the sign of the
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Note that the sign of the timezone offset is the opposite of the sign of the
 <code class="docutils literal notranslate"><span class="pre">time.timezone</span></code> variable for the same timezone; the latter variable follows
 the POSIX standard while this module follows <span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2822.html"><strong>RFC 2822</strong></a>.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 
 
@@ -422,6 +448,32 @@ the POSIX standard while this module follows <span class="target" id="index-10">
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code>: Miscellaneous utilities</a><ul>
+<li><a class="reference internal" href="#email.utils.localtime"><code class="docutils literal notranslate"><span class="pre">localtime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.make_msgid"><code class="docutils literal notranslate"><span class="pre">make_msgid()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.quote"><code class="docutils literal notranslate"><span class="pre">quote()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.unquote"><code class="docutils literal notranslate"><span class="pre">unquote()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parseaddr"><code class="docutils literal notranslate"><span class="pre">parseaddr()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.formataddr"><code class="docutils literal notranslate"><span class="pre">formataddr()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.getaddresses"><code class="docutils literal notranslate"><span class="pre">getaddresses()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate"><code class="docutils literal notranslate"><span class="pre">parsedate()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate_tz"><code class="docutils literal notranslate"><span class="pre">parsedate_tz()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.parsedate_to_datetime"><code class="docutils literal notranslate"><span class="pre">parsedate_to_datetime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.mktime_tz"><code class="docutils literal notranslate"><span class="pre">mktime_tz()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.formatdate"><code class="docutils literal notranslate"><span class="pre">formatdate()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.format_datetime"><code class="docutils literal notranslate"><span class="pre">format_datetime()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.decode_rfc2231"><code class="docutils literal notranslate"><span class="pre">decode_rfc2231()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.encode_rfc2231"><code class="docutils literal notranslate"><span class="pre">encode_rfc2231()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.collapse_rfc2231_value"><code class="docutils literal notranslate"><span class="pre">collapse_rfc2231_value()</span></code></a></li>
+<li><a class="reference internal" href="#email.utils.decode_params"><code class="docutils literal notranslate"><span class="pre">decode_params()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.encoders.html"
@@ -444,6 +496,10 @@ the POSIX standard while this module follows <span class="target" id="index-10">
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -518,11 +574,11 @@ the POSIX standard while this module follows <span class="target" id="index-10">
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

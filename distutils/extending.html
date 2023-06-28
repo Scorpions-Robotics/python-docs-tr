@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="7. Extending Distutils" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/distutils/extending.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -192,7 +191,7 @@
           <div class="body" role="main">
             
   <section id="extending-distutils">
-<span id="id1"></span><h1><span class="section-number">7. </span>Extending Distutils<a class="headerlink" href="#extending-distutils" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">7. </span>Extending Distutils<a class="headerlink" href="#extending-distutils" title="Permalink to this heading">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>This document is being retained solely until the <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> documentation
@@ -214,7 +213,7 @@ convenience.</p>
 indirectly, directly subclassing the command they are replacing.  Commands are
 required to derive from <code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code>.</p>
 <section id="integrating-new-commands">
-<h2><span class="section-number">7.1. </span>Integrating new commands<a class="headerlink" href="#integrating-new-commands" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><span class="section-number">7.1. </span>Integrating new commands<a class="headerlink" href="#integrating-new-commands" title="Permalink to this heading">¶</a></h2>
 <p>There are different ways to integrate new command implementations into
 distutils.  The most difficult is to lobby for the inclusion of the new features
 in distutils itself, and wait for (and require) a version of Python that
@@ -264,7 +263,7 @@ implemented by the class <code class="xref py py-class docutils literal notransl
 <code class="xref py py-class docutils literal notranslate"><span class="pre">buildcmds.bdist_openpkg.bdist_openpkg</span></code>.</p>
 </section>
 <section id="adding-new-distribution-types">
-<h2><span class="section-number">7.2. </span>Adding new distribution types<a class="headerlink" href="#adding-new-distribution-types" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><span class="section-number">7.2. </span>Adding new distribution types<a class="headerlink" href="#adding-new-distribution-types" title="Permalink to this heading">¶</a></h2>
 <p>Commands that create distributions (files in the <code class="file docutils literal notranslate"><span class="pre">dist/</span></code> directory) need
 to add <code class="docutils literal notranslate"><span class="pre">(command,</span> <span class="pre">filename)</span></code> pairs to <code class="docutils literal notranslate"><span class="pre">self.distribution.dist_files</span></code> so that
 <strong class="command">upload</strong> can upload it to PyPI.  The <em>filename</em> in the pair contains no
@@ -313,6 +312,10 @@ should still be added to represent what would have been created.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -385,11 +388,11 @@ should still be added to represent what would have been created.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

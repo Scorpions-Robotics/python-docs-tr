@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Curses Programming with Python" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/howto/curses.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -202,22 +201,22 @@
           <div class="body" role="main">
             
   <section id="curses-programming-with-python">
-<span id="curses-howto"></span><h1>Curses Programming with Python<a class="headerlink" href="#curses-programming-with-python" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="curses-howto"></span><h1>Curses Programming with Python<a class="headerlink" href="#curses-programming-with-python" title="Permalink to this heading">¶</a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">Author</dt>
+<dt class="field-odd">Author<span class="colon">:</span></dt>
 <dd class="field-odd"><p>A.M. Kuchling, Eric S. Raymond</p>
 </dd>
-<dt class="field-even">Release</dt>
+<dt class="field-even">Release<span class="colon">:</span></dt>
 <dd class="field-even"><p>2.04</p>
 </dd>
 </dl>
-<div class="topic">
+<aside class="topic">
 <p class="topic-title">Abstract</p>
 <p>This document describes how to use the <a class="reference internal" href="../library/curses.html#module-curses" title="curses: An interface to the curses library, providing portable terminal handling. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code></a> extension
 module to control text-mode displays.</p>
-</div>
+</aside>
 <section id="what-is-curses">
-<h2>What is curses?<a class="headerlink" href="#what-is-curses" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>What is curses?<a class="headerlink" href="#what-is-curses" title="Permalink to this heading">¶</a></h2>
 <p>The curses library supplies a terminal-independent screen-painting and
 keyboard-handling facility for text-based terminals; such terminals
 include VT100s, the Linux console, and the simulated terminal provided
@@ -253,7 +252,7 @@ everything, though.</p>
 <p>The Windows version of Python doesn’t include the <a class="reference internal" href="../library/curses.html#module-curses" title="curses: An interface to the curses library, providing portable terminal handling. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code></a>
 module.  A ported version called <a class="reference external" href="https://pypi.org/project/UniCurses">UniCurses</a> is available.</p>
 <section id="the-python-curses-module">
-<h3>The Python curses module<a class="headerlink" href="#the-python-curses-module" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>The Python curses module<a class="headerlink" href="#the-python-curses-module" title="Permalink to this heading">¶</a></h3>
 <p>The Python module is a fairly simple wrapper over the C functions provided by
 curses; if you’re already familiar with curses programming in C, it’s really
 easy to transfer that knowledge to Python.  The biggest difference is that the
@@ -268,7 +267,7 @@ for ncurses.  It will, however, give you the basic ideas.</p>
 </section>
 </section>
 <section id="starting-and-ending-a-curses-application">
-<h2>Starting and ending a curses application<a class="headerlink" href="#starting-and-ending-a-curses-application" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Starting and ending a curses application<a class="headerlink" href="#starting-and-ending-a-curses-application" title="Permalink to this heading">¶</a></h2>
 <p>Before doing anything, curses must be initialized.  This is done by
 calling the <a class="reference internal" href="../library/curses.html#curses.initscr" title="curses.initscr"><code class="xref py py-func docutils literal notranslate"><span class="pre">initscr()</span></code></a> function, which will determine the
 terminal type, send any required setup codes to the terminal, and
@@ -350,7 +349,7 @@ your terminal won’t be left in a funny state on exception and you’ll be
 able to read the exception’s message and traceback.</p>
 </section>
 <section id="windows-and-pads">
-<h2>Windows and Pads<a class="headerlink" href="#windows-and-pads" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Windows and Pads<a class="headerlink" href="#windows-and-pads" title="Permalink to this heading">¶</a></h2>
 <p>Windows are the basic abstraction in curses.  A window object represents a
 rectangular area of the screen, and supports methods to display text,
 erase it, allow the user to input strings, and so forth.</p>
@@ -437,7 +436,7 @@ update the data structure, and then call <code class="xref py py-func docutils l
 the screen.</p>
 </section>
 <section id="displaying-text">
-<h2>Displaying Text<a class="headerlink" href="#displaying-text" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Displaying Text<a class="headerlink" href="#displaying-text" title="Permalink to this heading">¶</a></h2>
 <p>From a C programmer’s point of view, curses may sometimes look like a
 twisty maze of functions, all subtly different.  For example,
 <code class="xref c c-func docutils literal notranslate"><span class="pre">addstr()</span></code> displays a string at the current cursor location in
@@ -451,10 +450,6 @@ is a window object like any other, and methods such as
 <a class="reference internal" href="../library/curses.html#curses.window.addstr" title="curses.window.addstr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">addstr()</span></code></a> accept multiple argument forms.  Usually there
 are four different forms.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 41%" />
-<col style="width: 59%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Form</p></th>
 <th class="head"><p>Description</p></th>
@@ -509,7 +504,7 @@ that’s a synonym for <a class="reference internal" href="../library/curses.htm
 curses library will attempt to suppress the flashing cursor, and you
 won’t need to worry about leaving it in odd locations.</p>
 <section id="attributes-and-color">
-<h3>Attributes and Color<a class="headerlink" href="#attributes-and-color" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Attributes and Color<a class="headerlink" href="#attributes-and-color" title="Permalink to this heading">¶</a></h3>
 <p>Characters can be displayed in different ways.  Status lines in a text-based
 application are commonly shown in reverse video, or a text viewer may need to
 highlight certain words.  curses supports this by allowing you to specify an
@@ -521,10 +516,6 @@ are available, or that they’re all visually distinct.  That depends on
 the ability of the terminal being used, so it’s safest to stick to the
 most commonly available attributes, listed here.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 37%" />
-<col style="width: 63%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Attribute</p></th>
 <th class="head"><p>Description</p></th>
@@ -612,7 +603,7 @@ system’s man pages for more information.</p>
 </section>
 </section>
 <section id="user-input">
-<h2>User Input<a class="headerlink" href="#user-input" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>User Input<a class="headerlink" href="#user-input" title="Permalink to this heading">¶</a></h2>
 <p>The C curses library offers only very simple input mechanisms. Python’s
 <a class="reference internal" href="../library/curses.html#module-curses" title="curses: An interface to the curses library, providing portable terminal handling. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code></a> module adds a basic text-input widget.  (Other libraries
 such as <a class="reference external" href="https://pypi.org/project/urwid/">Urwid</a> have more extensive
@@ -697,7 +688,7 @@ trailing spaces.  Here’s an example:</p>
 <p>See the library documentation on <a class="reference internal" href="../library/curses.html#module-curses.textpad" title="curses.textpad: Emacs-like input editing in a curses window."><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses.textpad</span></code></a> for more details.</p>
 </section>
 <section id="for-more-information">
-<h2>For More Information<a class="headerlink" href="#for-more-information" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>For More Information<a class="headerlink" href="#for-more-information" title="Permalink to this heading">¶</a></h2>
 <p>This HOWTO doesn’t cover some advanced topics, such as reading the
 contents of the screen or capturing mouse events from an xterm
 instance, but the Python library page for the <a class="reference internal" href="../library/curses.html#module-curses" title="curses: An interface to the curses library, providing portable terminal handling. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code></a> module is now
@@ -779,6 +770,10 @@ Urwid.</p></li>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -851,11 +846,11 @@ Urwid.</p></li>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

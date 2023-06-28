@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="6. Modüller" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/modules.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -204,7 +203,7 @@
           <div class="body" role="main">
             
   <section id="modules">
-<span id="tut-modules"></span><h1><span class="section-number">6. </span>Modüller<a class="headerlink" href="#modules" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-modules"></span><h1><span class="section-number">6. </span>Modüller<a class="headerlink" href="#modules" title="Permalink to this heading">¶</a></h1>
 <p>Python yorumlayıcısından çıkıp tekrar girerseniz, yaptığınız tanımlar (fonksiyonlar  ve değişkenler) kaybolur. Bu nedenle, daha uzun bir program yazmak istiyorsanız, girdiyi yorumlayıcıya hazırlarken bir metin düzenleyicisi kullanmak ve o dosyayla girdi olarak çalıştırmak daha iyidir.  Bu bir <em>script</em> oluşturma olarak bilinir.  Programınız uzadıkça, daha kolay bakım için birkaç dosyaya bölmek isteyebilirsiniz.  Ayrıca, tanımını her programa kopyalamadan, birkaç programda yazdığınız kullanışlı bir fonksiyonu kullanmak isteyebilirsiniz.</p>
 <p>Bunu desteklemek için Python, tanımları bir dosyaya koymanın ve bunları bir komut dosyasında veya yorumlayıcının etkileşimli bir örneğinde kullanmanın bir yolunu sağlar. Böyle bir dosyaya <em>module</em> denir; bir modülden alınan tanımlar diğer modüllere veya <em>main</em> modülüne (en üst düzeyde ve hesap makinesi modunda yürütülen bir komut dosyasında erişiminiz olan değişkenlerin derlenmesi) aktarılabilir.</p>
 <p>Modül, Python tanımlarını ve ifadelerini içeren bir dosyadır.  Dosya adı, <code class="file docutils literal notranslate"><span class="pre">.py</span></code> son ekini içeren modül adıdır.  Bir modül içinde, modülün adı (dize olarak) <code class="docutils literal notranslate"><span class="pre">__name__</span></code> genel değişkeninin değeri olarak kullanılabilir.  Örneğin, geçerli dizinde aşağıdaki içeriklerle <code class="file docutils literal notranslate"><span class="pre">fibo.py</span></code> adlı bir dosya oluşturmak için en sevdiğiniz metin düzenleyicisini kullanın:</p>
@@ -246,8 +245,8 @@
 </pre></div>
 </div>
 <section id="more-on-modules">
-<span id="tut-moremodules"></span><h2><span class="section-number">6.1. </span>Modüller hakkında daha fazla<a class="headerlink" href="#more-on-modules" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
-<p>Bir modül, işlev tanımlarının yanı sıra çalıştırılabilir ifadeler de içerebilir. Bu ifadeler modülü başlatmayı amaçlamaktadır. Yalnızca bir import ifadesinde modül adıyla karşılaşıldığında <em>ilk</em> kez yürütülürler. <a class="footnote-reference brackets" href="#id3" id="id1">1</a> (Dosya komut dosyası olarak yürütülürse de çalıştırılırlar.)</p>
+<span id="tut-moremodules"></span><h2><span class="section-number">6.1. </span>Modüller hakkında daha fazla<a class="headerlink" href="#more-on-modules" title="Permalink to this heading">¶</a></h2>
+<p>Bir modül, işlev tanımlarının yanı sıra çalıştırılabilir ifadeler de içerebilir. Bu ifadeler modülü başlatmayı amaçlamaktadır. Yalnızca bir import ifadesinde modül adıyla karşılaşıldığında <em>ilk</em> kez yürütülürler. <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> (Dosya komut dosyası olarak yürütülürse de çalıştırılırlar.)</p>
 <p>Her modülün, modülde tanımlanan tüm işlevler tarafından genel ad alanı olarak kullanılan kendi özel ad alanı vardır. Böylece, bir modülün yazarı, bir kullanıcının genel değişkenleriyle yanlışlıkla çakışma endişesi duymadan, modüldeki genel değişkenleri kullanabilir. Öte yandan, ne yaptığınızı biliyorsanız, bir modülün global değişkenlerine, işlevlerine atıfta bulunmak için kullanılan <code class="docutils literal notranslate"><span class="pre">modname.itemname</span></code> notasyonuyla dokunabilirsiniz.</p>
 <p>Modüller diğer modülleri içe aktarabilir. Tüm <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> ifadelerinin bir modülün (veya bu konuda betiğin) başına yerleştirilmesi alışılmış bir durumdur ancak gerekli değildir. İçe aktarılan modül adları, bir modülün en üst düzeyine yerleştirilirse (herhangi bir işlev veya sınıfın dışında), modülün genel ad alanına eklenir.</p>
 <p><a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> ifadesinin, bir modülden adları doğrudan içe aktaran modülün ad alanına aktaran bir çeşidi vardır. Örneğin:</p>
@@ -283,7 +282,7 @@
 <p>Verimlilik nedeniyle, her modül yorumlayıcı oturumu başına yalnızca bir kez içe aktarılır.  Bu nedenle, modüllerinizi değiştirirseniz, yorumlayıcıyı yeniden başlatmanız gerekir - veya etkileşimli olarak test etmek istediğiniz tek bir modülse, <a class="reference internal" href="../library/importlib.html#importlib.reload" title="importlib.reload"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.reload()</span></code></a>, örneğin <code class="docutils literal notranslate"><span class="pre">importlib;</span> <span class="pre">importlib.reload(modulename)</span></code>.</p>
 </div>
 <section id="executing-modules-as-scripts">
-<span id="tut-modulesasscripts"></span><h3><span class="section-number">6.1.1. </span>Modülleri komut dosyası olarak yürütme<a class="headerlink" href="#executing-modules-as-scripts" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-modulesasscripts"></span><h3><span class="section-number">6.1.1. </span>Modülleri komut dosyası olarak yürütme<a class="headerlink" href="#executing-modules-as-scripts" title="Permalink to this heading">¶</a></h3>
 <p>Bir Python modülünü :: ile çalıştırdığınızda:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">fibo</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;</span><span class="n">arguments</span><span class="o">&gt;</span>
 </pre></div>
@@ -307,7 +306,7 @@
 <p>Bu genellikle bir modüle uygun bir kullanıcı arabirimi sağlamak veya test amacıyla kullanılır (modülü komut dosyası olarak çalıştırmak bir test paketi yürütür).</p>
 </section>
 <section id="the-module-search-path">
-<span id="tut-searchpath"></span><h3><span class="section-number">6.1.2. </span>Modül Arama Yolu<a class="headerlink" href="#the-module-search-path" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-searchpath"></span><h3><span class="section-number">6.1.2. </span>Modül Arama Yolu<a class="headerlink" href="#the-module-search-path" title="Permalink to this heading">¶</a></h3>
 <p id="index-0"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spam</span></code> adlı bir modül içe aktarıldığında, yorumlayıcı önce bu ada sahip yerleşik bir modül arar. Bu modül adları <a class="reference internal" href="../library/sys.html#sys.builtin_module_names" title="sys.builtin_module_names"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.builtin_module_names</span></code></a> içinde listelenmiştir. Bulunamazsa, <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> değişkeni tarafından verilen dizin listesinde <code class="file docutils literal notranslate"><span class="pre">spam.py</span></code> adlı bir dosyayı arar. <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> şu konumlardan başlatılır:</p>
 <ul class="simple">
 <li><p>Girdi komut dosyasını içeren dizin (veya dosya belirtilmediğinde geçerli dizin).</p></li>
@@ -322,7 +321,7 @@
 <p>Başlatıldıktan sonra Python programları <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> değiştirebilir.  Çalıştırılmakta olan komut dosyasını içeren dizin, arama yolunun başına, standart kitaplık yolunun önüne yerleştirilir. Bu, kitaplık dizininde aynı ada sahip modüller yerine bu dizindeki komut dosyalarının yüklanacağı anlamına gelir. Değiştirme amaçlanmadığı sürece bu bir hatadır.  Daha fazla bilgi için <a class="reference internal" href="#tut-standardmodules"><span class="std std-ref">Standart modüller</span></a> bölümüne bakın.</p>
 </section>
 <section id="compiled-python-files">
-<span id="tut-pycache"></span><h3><span class="section-number">6.1.3. </span>“Derlenmiş” Python dosyaları<a class="headerlink" href="#compiled-python-files" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-pycache"></span><h3><span class="section-number">6.1.3. </span>“Derlenmiş” Python dosyaları<a class="headerlink" href="#compiled-python-files" title="Permalink to this heading">¶</a></h3>
 <p>Modüllerin yüklenmesini hızlandırmak için Python, her modülün derlenmiş sürümünü <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> dizininde <code class="file docutils literal notranslate"><span class="pre">module.</span><em><span class="pre">version</span></em><span class="pre">.pyc</span></code> adı altında önbelleğe alır; burada sürüm, derlenen dosyanın biçimini kodlar; genellikle Python sürüm numarasını içerir. Örneğin, CPython 3.3 sürümünde spam.py’nin derlenmiş sürümü <code class="docutils literal notranslate"><span class="pre">__pycache__/spam.cpython-33.pyc</span></code> olarak önbelleğe alınacaktır. Bu adlandırma kuralı, farklı sürümlerden ve Python’un farklı sürümlerinden derlenmiş modüllerin bir arada var olmasına izin verir.</p>
 <p>Python, eski olup olmadığını ve yeniden derlenmesi gerekip gerekmediğini görmek için kaynağın değişiklik tarihini derlenmiş sürümle karşılaştırır. Bu tamamen otomatik bir işlemdir. Ayrıca, derlenen modüller platformdan bağımsızdır, bu nedenle aynı kitaplık farklı mimarilere sahip sistemler arasında paylaşılabilir.</p>
 <p>Python iki durumda önbelleği kontrol etmez. İlk olarak, doğrudan komut satırından yüklenen modülün sonucunu her zaman yeniden derler ve saklamaz. İkincisi, kaynak modül yoksa önbelleği kontrol etmez. Kaynak olmayan (yalnızca derlenmiş) bir dağıtımı desteklemek için, derlenen modül kaynak dizinde olmalı ve bir kaynak modül olmamalıdır.</p>
@@ -336,7 +335,7 @@
 </section>
 </section>
 <section id="standard-modules">
-<span id="tut-standardmodules"></span><h2><span class="section-number">6.2. </span>Standart modüller<a class="headerlink" href="#standard-modules" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-standardmodules"></span><h2><span class="section-number">6.2. </span>Standart modüller<a class="headerlink" href="#standard-modules" title="Permalink to this heading">¶</a></h2>
 <p id="index-4">Python, ayrı bir belge olan Python Kütüphanesi Referansında (bundan sonra “Kütüphane Referansı”) açıklanan standart modüllerden oluşan bir kütüphane ile birlikte gelir. Bazı modüller yorumlayıcıya yerleştirilmiştir; bunlar, dilin çekirdeğinin bir parçası olmayan, ancak yine de verimlilik için veya sistem çağrıları gibi işletim sistemi ilkellerine erişim sağlamak için yerleşik olan işlemlere erişim sağlar. Bu tür modüller seti, aynı zamanda temel platforma da bağlı olan bir yapılandırma seçeneğidir. Örneğin, <a class="reference internal" href="../library/winreg.html#module-winreg" title="winreg: Routines and objects for manipulating the Windows registry. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winreg</span></code></a> modülü yalnızca Windows sistemlerinde sağlanır. Belirli bir modül biraz ilgiyi hak ediyor: Her Python yorumlayıcısında yerleşik olan <a class="reference internal" href="../library/sys.html#module-sys" title="sys: Access system-specific parameters and functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code></a>. <code class="docutils literal notranslate"><span class="pre">sys.ps1</span></code> ve <code class="docutils literal notranslate"><span class="pre">sys.ps2</span></code> değişkenleri, birincil ve ikincil bilgi istemleri olarak kullanılan dizeleri tanımlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sys</span><span class="o">.</span><span class="n">ps1</span>
@@ -357,7 +356,7 @@
 </div>
 </section>
 <section id="the-dir-function">
-<span id="tut-dir"></span><h2><span class="section-number">6.3. </span><a class="reference internal" href="../library/functions.html#dir" title="dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">dir()</span></code></a> Fonksiyonu<a class="headerlink" href="#the-dir-function" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-dir"></span><h2><span class="section-number">6.3. </span><a class="reference internal" href="../library/functions.html#dir" title="dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">dir()</span></code></a> Fonksiyonu<a class="headerlink" href="#the-dir-function" title="Permalink to this heading">¶</a></h2>
 <p>Yerleşik fonksiyon <a class="reference internal" href="../library/functions.html#dir" title="dir"><code class="xref py py-func docutils literal notranslate"><span class="pre">dir()</span></code></a>, bir modülün hangi adları tanımladığını bulmak için kullanılır. Sıralanmış bir dize listesi döndürür:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">fibo</span><span class="o">,</span> <span class="nn">sys</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">dir</span><span class="p">(</span><span class="n">fibo</span><span class="p">)</span>
@@ -431,7 +430,7 @@
 </div>
 </section>
 <section id="packages">
-<span id="tut-packages"></span><h2><span class="section-number">6.4. </span>Paketler<a class="headerlink" href="#packages" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-packages"></span><h2><span class="section-number">6.4. </span>Paketler<a class="headerlink" href="#packages" title="Permalink to this heading">¶</a></h2>
 <p>Paketler, “noktalı modül adlarını” kullanarak Python’un modül ad alanını yapılandırmanın bir yoludur. Örneğin, modül adı <code class="xref py py-mod docutils literal notranslate"><span class="pre">A.B</span></code>, “A” adlı bir pakette “B” adlı bir alt modülü belirtir. Modüllerin kullanılması, farklı modüllerin yazarlarını birbirlerinin global değişken adları hakkında endişelenmekten kurtardığı gibi, noktalı modül adlarının kullanılması, NumPy veya Pillow gibi çok modüllü paketlerin yazarlarını birbirlerinin modül adları hakkında endişelenmekten kurtarır.</p>
 <p>Ses dosyalarının ve ses verilerinin tek tip işlenmesi için bir modül koleksiyonu (“paket”) tasarlamak istediğinizi varsayalım. Birçok farklı ses dosyası biçimi vardır (genellikle uzantılarıyla tanınır, örneğin: <code class="file docutils literal notranslate"><span class="pre">.wav</span></code>, <code class="file docutils literal notranslate"><span class="pre">.aiff</span></code>, <code class="file docutils literal notranslate"><span class="pre">.au</span></code>) bu nedenle, çeşitli dosya biçimleri arasında dönüşüm için büyüyen bir modül koleksiyonu oluşturmanız ve sürdürmeniz gerekebilir. Ses verileri üzerinde gerçekleştirmek isteyebileceğiniz birçok farklı işlem de vardır (karıştırma, eko ekleme, ekolayzır işlevi uygulama, yapay bir stereo efekti oluşturma gibi) bu nedenle ek olarak, bu işlemleri gerçekleştirmek için hiç bitmeyen bir modül akışı yazıyor olacaksınız. İşte paketiniz için olası bir yapı (hiyerarşik bir dosya sistemi cinsinden ifade edilir):</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sound/                          Top-level package
@@ -488,7 +487,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">item</span></code> kullanırken, öğenin paketin bir alt modülü (veya alt paketi) veya pakette tanımlanmış bir fonksiyon, sınıf veya değişken gibi başka bir ad olabileceğini unutmayın. <code class="docutils literal notranslate"><span class="pre">import</span></code> ifadesi önce öğenin pakette tanımlanıp tanımlanmadığını test eder; değilse modül olduğunu varsayar ve yüklemeye çalışır. Onu bulamazsa, bir <a class="reference internal" href="../library/exceptions.html#ImportError" title="ImportError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ImportError</span></code></a> istisnası ortaya çıkar.</p>
 <p>Aksine, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">item.subitem.subsubitem</span></code> gibi bir sözdizimi kullanırken, sonuncusu hariç her öğe bir paket olmalıdır; son öğe bir modül veya paket olabilir, ancak önceki öğede tanımlanan bir sınıf, fonksiyon veya değişken olamaz.</p>
 <section id="importing-from-a-package">
-<span id="tut-pkg-import-star"></span><h3><span class="section-number">6.4.1. </span>Bir Paketten * İçe Aktarma<a class="headerlink" href="#importing-from-a-package" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-pkg-import-star"></span><h3><span class="section-number">6.4.1. </span>Bir Paketten * İçe Aktarma<a class="headerlink" href="#importing-from-a-package" title="Permalink to this heading">¶</a></h3>
 <p id="index-8">Şimdi, kullanıcı <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> yazdığında ne olur? İdeal olarak, bunun bir şekilde dosya sistemine gitmesi, pakette hangi alt modüllerin bulunduğunu bulması ve hepsini içe aktarması umulur. Bu uzun zaman alabilir ve alt modüllerin içe aktarılması, yalnızca alt modül açıkça içe aktarıldığında gerçekleşmesi gereken istenmeyen yan etkilere neden olabilir.</p>
 <p>Tek çözüm, paket yazarının paketin açık bir dizinini sağlamasıdır. <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> ifadesi aşağıdaki kuralı kullanır: eğer bir paketin <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> kodu <code class="docutils literal notranslate"><span class="pre">__all__</span></code> adlı bir liste tanımlarsa, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">*</span></code> ile karşılaşıldığında alınması gereken modül adlarının listesi olarak alınır. Paketin yeni bir sürümü yayınlandığında bu listeyi güncel tutmak paket yazarının sorumluluğundadır. Paket yazarları, paketlerinden * içe aktarmak için bir kullanım görmezlerse, onu desteklememeye de karar verebilirler. Örneğin, <code class="file docutils literal notranslate"><span class="pre">sound/effects/__init__.py</span></code> dosyası şu kodu içerebilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;surround&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse&quot;</span><span class="p">]</span>
@@ -506,7 +505,7 @@
 <p>Unutmayın, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">specific_submodule</span></code> kullanmanın yanlış bir tarafı yok! Aslında, içe aktarma modülünün farklı paketlerden aynı ada sahip alt modülleri kullanması gerekmedikçe, önerilen gösterim budur.</p>
 </section>
 <section id="intra-package-references">
-<span id="id2"></span><h3><span class="section-number">6.4.2. </span>Paket İçi Referanslar<a class="headerlink" href="#intra-package-references" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id2"></span><h3><span class="section-number">6.4.2. </span>Paket İçi Referanslar<a class="headerlink" href="#intra-package-references" title="Permalink to this heading">¶</a></h3>
 <p>Paketler alt paketler halinde yapılandırıldığında (örnekteki <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound</span></code> paketinde olduğu gibi), kardeş paketlerin alt modüllerine atıfta bulunmak için mutlak içe aktarma kullanabilirsiniz. Örneğin, <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.filters.vocoder</span></code> modülünün <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> paketindeki <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> modülünü kullanması gerekiyorsa, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">echo</span></code> ‘yu kullanabilir.</p>
 <p>Ayrıca, içe aktarma ifadesinin <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">name</span></code> formuyla göreli içe aktarmaları da yazabilirsiniz. Bu içe aktarmalar, göreli içe aktarmada yer alan mevcut ve ana paketleri belirtmek için baştaki noktaları kullanır. Örneğin <code class="xref py py-mod docutils literal notranslate"><span class="pre">surround</span></code> modülünden şunları kullanabilirsiniz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">echo</span>
@@ -517,15 +516,16 @@
 <p>Göreceli içe aktarmaların geçerli modülün adını temel aldığını unutmayın. Ana modülün adı her zaman <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code> olduğundan, Python uygulamasının ana modülü olarak kullanılması amaçlanan modüller her zaman mutlak içe aktarma kullanmalıdır.</p>
 </section>
 <section id="packages-in-multiple-directories">
-<h3><span class="section-number">6.4.3. </span>Birden Çok Dizindeki Paketler<a class="headerlink" href="#packages-in-multiple-directories" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><span class="section-number">6.4.3. </span>Birden Çok Dizindeki Paketler<a class="headerlink" href="#packages-in-multiple-directories" title="Permalink to this heading">¶</a></h3>
 <p>Paketler bir özel özelliği daha destekler, <a class="reference internal" href="../reference/import.html#path__" title="__path__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__path__</span></code></a>. Bu, o dosyadaki kod yürütülmeden önce paketin <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> dosyasını tutan dizinin adını içeren bir liste olacak şekilde başlatılır. Bu değişken değiştirilebilir; bunu yapmak, pakette bulunan modüller ve alt paketler için gelecekteki aramaları etkiler.</p>
 <p>Bu özelliğe sıklıkla ihtiyaç duyulmasa da, bir pakette bulunan modül dizisini genişletmek için kullanılabilir.</p>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Aslında işlev tanımları aynı zamanda ‘çalıştırılan’ ‘ifadelerdir’; modül düzeyinde bir işlev tanımının çalıştırılması, işlev adını modülün genel ad alanına ekler.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Aslında işlev tanımları aynı zamanda ‘çalıştırılan’ ‘ifadelerdir’; modül düzeyinde bir işlev tanımının çalıştırılması, işlev adını modülün genel ad alanına ekler.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -582,6 +582,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -654,11 +658,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

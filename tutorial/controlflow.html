@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="4. Daha Fazla Kontrol Akışı Aracı" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/controlflow.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -216,10 +215,10 @@
           <div class="body" role="main">
             
   <section id="more-control-flow-tools">
-<span id="tut-morecontrol"></span><h1><span class="section-number">4. </span>Daha Fazla Kontrol Akışı Aracı<a class="headerlink" href="#more-control-flow-tools" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-morecontrol"></span><h1><span class="section-number">4. </span>Daha Fazla Kontrol Akışı Aracı<a class="headerlink" href="#more-control-flow-tools" title="Permalink to this heading">¶</a></h1>
 <p>Az önce tanıtılan <a class="reference internal" href="../reference/compound_stmts.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> deyiminin yanı sıra Python, bazı değişikliklerle birlikte diğer dillerden bilinen olağan akış kontrol deyimlerini kullanır.</p>
 <section id="if-statements">
-<span id="tut-if"></span><h2><span class="section-number">4.1. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> İfadeleri<a class="headerlink" href="#if-statements" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-if"></span><h2><span class="section-number">4.1. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> İfadeleri<a class="headerlink" href="#if-statements" title="Permalink to this heading">¶</a></h2>
 <p>Belki de en iyi bilinen deyim türü <a class="reference internal" href="../reference/compound_stmts.html#if"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a> deyimidir.  Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter an integer: &quot;</span><span class="p">))</span>
 <span class="go">Please enter an integer: 42</span>
@@ -240,7 +239,7 @@
 <p>Aynı değeri birkaç sabitle karşılaştırıyorsanız veya belirli türleri veya nitelikleri kontrol ediyorsanız, <code class="xref std std-keyword docutils literal notranslate"><span class="pre">match</span></code> deyimini de yararlı bulabilirsiniz. Daha fazla ayrıntı için <a class="reference internal" href="#tut-match"><span class="std std-ref">pass İfadeleri</span></a> bölümüne bakınız.</p>
 </section>
 <section id="for-statements">
-<span id="tut-for"></span><h2><span class="section-number">4.2. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> İfadeleri<a class="headerlink" href="#for-statements" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-for"></span><h2><span class="section-number">4.2. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> İfadeleri<a class="headerlink" href="#for-statements" title="Permalink to this heading">¶</a></h2>
 <p id="index-0">Python’daki <a class="reference internal" href="../reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> deyimi, C veya Pascal’da alışkın olduğunuzdan biraz farklıdır.  Her zaman sayıların aritmetik ilerlemesi üzerinde yineleme yapmak (Pascal’daki gibi) veya kullanıcıya hem yineleme adımını hem de durma koşulunu tanımlama yeteneği vermek (C gibi) yerine, Python’un <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> deyimi, herhangi bir dizinin (bir liste veya bir dize) öğeleri üzerinde, dizide göründükleri sırayla yineler.  Örneğin (kelime oyunu yapmak istemedim):</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Measure some strings:</span>
 <span class="gp">... </span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;window&#39;</span><span class="p">,</span> <span class="s1">&#39;defenestrate&#39;</span><span class="p">]</span>
@@ -270,7 +269,7 @@
 </div>
 </section>
 <section id="the-range-function">
-<span id="tut-range"></span><h2><span class="section-number">4.3. </span><a class="reference internal" href="../library/stdtypes.html#range" title="range"><code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code></a> Fonksiyonu<a class="headerlink" href="#the-range-function" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-range"></span><h2><span class="section-number">4.3. </span><a class="reference internal" href="../library/stdtypes.html#range" title="range"><code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code></a> Fonksiyonu<a class="headerlink" href="#the-range-function" title="Permalink to this heading">¶</a></h2>
 <p>Bir sayı dizisi üzerinde yineleme yapmanız gerekiyorsa, yerleşik <a class="reference internal" href="../library/stdtypes.html#range" title="range"><code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code></a> fonksiyonu kullanışlı olur.  Aritmetik ilerlemeler üretir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -320,7 +319,7 @@
 <p>Daha sonra yinelenebilirleri döndüren ve argüman olarak yinelenebilirleri alan daha fazla fonksiyon göreceğiz. <a class="reference internal" href="datastructures.html#tut-structures"><span class="std std-ref">Veri Yapıları</span></a> bölümünde, <a class="reference internal" href="../library/stdtypes.html#list" title="list"><code class="xref py py-func docutils literal notranslate"><span class="pre">list()</span></code></a> hakkında daha ayrıntılı olarak tartışacağız.</p>
 </section>
 <section id="break-and-continue-statements-and-else-clauses-on-loops">
-<span id="tut-break"></span><h2><span class="section-number">4.4. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code> ve <code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code> İfadeleri ve <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> Döngülerdeki Cümleler<a class="headerlink" href="#break-and-continue-statements-and-else-clauses-on-loops" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-break"></span><h2><span class="section-number">4.4. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code> ve <code class="xref std std-keyword docutils literal notranslate"><span class="pre">continue</span></code> İfadeleri ve <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> Döngülerdeki Cümleler<a class="headerlink" href="#break-and-continue-statements-and-else-clauses-on-loops" title="Permalink to this heading">¶</a></h2>
 <p>C’de olduğu gibi <a class="reference internal" href="../reference/simple_stmts.html#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a> deyimi, en içteki <a class="reference internal" href="../reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> veya <a class="reference internal" href="../reference/compound_stmts.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> döngüsünü keser.</p>
 <p>Döngü deyimleri bir <code class="xref std std-keyword docutils literal notranslate"><span class="pre">else</span></code> cümlesine sahip olabilir; bu cümle döngü yinelenebilirin tükenmesiyle sonlandığında (<a class="reference internal" href="../reference/compound_stmts.html#for"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code></a> ile) veya koşul yanlış olduğunda (<a class="reference internal" href="../reference/compound_stmts.html#while"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">while</span></code></a> ile) çalıştırılır, ancak döngü bir <a class="reference internal" href="../reference/simple_stmts.html#break"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">break</span></code></a> deyimiyle sonlandırıldığında çalıştırılmaz.  Bu, asal sayıları arayan aşağıdaki döngü ile örneklendirilmiştir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
@@ -363,7 +362,7 @@
 </div>
 </section>
 <section id="pass-statements">
-<span id="tut-pass"></span><h2><span class="section-number">4.5. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">pass</span></code> İfadeleri<a class="headerlink" href="#pass-statements" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-pass"></span><h2><span class="section-number">4.5. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">pass</span></code> İfadeleri<a class="headerlink" href="#pass-statements" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../reference/simple_stmts.html#pass"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">pass</span></code></a> deyimi hiçbir şey yapmaz. Sözdizimsel olarak bir deyim gerektiğinde ancak program hiçbir eylem gerektirmediğinde kullanılabilir. Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">pass</span>  <span class="c1"># Busy-wait for keyboard interrupt (Ctrl+C)</span>
@@ -384,7 +383,7 @@
 </div>
 </section>
 <section id="match-statements">
-<span id="tut-match"></span><h2><span class="section-number">4.6. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">pass</span></code> İfadeleri<a class="headerlink" href="#match-statements" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-match"></span><h2><span class="section-number">4.6. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">pass</span></code> İfadeleri<a class="headerlink" href="#match-statements" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="../reference/compound_stmts.html#match"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">match</span></code></a> bir ifadeyi alır ve değerini bir veya daha fazla case bloğu olarak verilen ardışık kalıplarla karşılaştırır.  Bu, C, Java veya JavaScript’teki (ve diğer birçok dildeki) bir switch ifadesine yüzeysel olarak benzer, ancak Rust veya Haskell gibi dillerdeki kalıp eşleştirmeye daha çok benzer. Yalnızca eşleşen ilk kalıp yürütülür ve ayrıca bileşenleri (sıra öğeleri veya nesne nitelikleri) değerden değişkenlere çıkarabilir.</p>
 <p>En basit form, bir konu değerini bir veya daha fazla sabitle karşılaştırır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">http_error</span><span class="p">(</span><span class="n">status</span><span class="p">):</span>
@@ -505,7 +504,7 @@
 <p>Daha ayrıntılı bir açıklama ve ek örnekler için, öğretici bir formatta yazılmış olan <span class="target" id="index-15"></span><a class="pep reference external" href="https://peps.python.org/pep-0636/"><strong>PEP 636</strong></a> sayfasına bakabilirsiniz.</p>
 </section>
 <section id="defining-functions">
-<span id="tut-functions"></span><h2><span class="section-number">4.7. </span>Fonksiyonların Tanımlanması<a class="headerlink" href="#defining-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-functions"></span><h2><span class="section-number">4.7. </span>Fonksiyonların Tanımlanması<a class="headerlink" href="#defining-functions" title="Permalink to this heading">¶</a></h2>
 <p>Fibonacci serisini rastgele bir sınıra kadar yazan bir fonksiyon oluşturabiliriz:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>    <span class="c1"># write Fibonacci series up to n</span>
 <span class="gp">... </span><span class="w">    </span><span class="sd">&quot;&quot;&quot;Print a Fibonacci series up to n.&quot;&quot;&quot;</span>
@@ -523,7 +522,7 @@
 <p id="index-2">Anahtar kelime <a class="reference internal" href="../reference/compound_stmts.html#def"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a> bir fonksiyon <em>tanımını</em> tanıtır.  Bunu fonksiyon adı ve parantez içine alınmış resmi parametreler listesi takip etmelidir. Fonksiyonun gövdesini oluşturan ifadeler bir sonraki satırdan başlar ve girintili olmalıdır.</p>
 <p>Fonksiyon gövdesinin ilk ifadesi isteğe bağlı olarak bir string literal olabilir; bu string literal fonksiyonun dokümantasyon stringi veya <em class="dfn">docstring</em> ‘dir. (Docstringler hakkında daha fazla bilgi <a class="reference internal" href="#tut-docstrings"><span class="std std-ref">Dokümantasyon Stringler’i</span></a> bölümünde bulunabilir.) Otomatik olarak çevrimiçi veya basılı dokümantasyon üretmek veya kullanıcının etkileşimli olarak kodda gezinmesini sağlamak için docstringleri kullanan araçlar vardır; yazdığınız koda docstringler eklemek iyi bir uygulamadır, bu yüzden bunu alışkanlık haline getirin.</p>
 <p>Bir fonksiyonun <em>çalıştırılması</em>, fonksiyonun yerel değişkenleri için kullanılan yeni bir sembol tablosu ortaya çıkarır.  Daha açık bir ifadeyle, bir fonksiyon içindeki tüm değişken atamaları değeri yerel sembol tablosunda saklar; oysa değişken referansları önce yerel sembol tablosuna, sonra çevreleyen fonksiyonların yerel sembol tablolarına, daha sonra global sembol tablosuna ve son olarak da yerleşik isimler tablosuna bakar. Bu nedenle, global değişkenlere ve çevreleyen fonksiyonların değişkenlerine bir fonksiyon içinde doğrudan değer atanamaz (global değişkenler için bir <a class="reference internal" href="../reference/simple_stmts.html#global"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">global</span></code></a> deyiminde veya çevreleyen fonksiyonların değişkenleri için bir <a class="reference internal" href="../reference/simple_stmts.html#nonlocal"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">nonlocal</span></code></a> deyiminde isimlendirilmedikçe), ancak bunlara referans verilebilir.</p>
-<p>Bir fonksiyon çağrısının gerçek parametreleri (argümanları), çağrıldığında çağrılan fonksiyonun yerel sembol tablosunda tanıtılır; bu nedenle, argümanlar <em>call by value</em> (burada <em>value</em> her zaman bir nesne <em>referans</em>’dır, nesnenin değeri değildir) kullanılarak aktarılır. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> Bir fonksiyon başka bir fonksiyonu çağırdığında veya kendini tekrarlı olarak çağırdığında, bu çağrı için yeni bir yerel sembol tablosu oluşturulur.</p>
+<p>Bir fonksiyon çağrısının gerçek parametreleri (argümanları), çağrıldığında çağrılan fonksiyonun yerel sembol tablosunda tanıtılır; bu nedenle, argümanlar <em>call by value</em> (burada <em>value</em> her zaman bir nesne <em>referans</em>’dır, nesnenin değeri değildir) kullanılarak aktarılır. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Bir fonksiyon başka bir fonksiyonu çağırdığında veya kendini tekrarlı olarak çağırdığında, bu çağrı için yeni bir yerel sembol tablosu oluşturulur.</p>
 <p>Bir fonksiyon tanımı, fonksiyon adını geçerli sembol tablosundaki fonksiyon nesnesiyle ilişkilendirir.  Yorumlayıcı, bu adın işaret ettiği nesneyi kullanıcı tanımlı bir fonksiyon olarak tanır.  Diğer isimler de aynı fonksiyon nesnesine işaret edebilir ve fonksiyona erişmek için kullanılabilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fib</span>
 <span class="go">&lt;function fib at 10042ed0&gt;</span>
@@ -560,10 +559,10 @@
 </ul>
 </section>
 <section id="more-on-defining-functions">
-<span id="tut-defining"></span><h2><span class="section-number">4.8. </span>İşlev Tanımlama hakkında daha fazla bilgi<a class="headerlink" href="#more-on-defining-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-defining"></span><h2><span class="section-number">4.8. </span>İşlev Tanımlama hakkında daha fazla bilgi<a class="headerlink" href="#more-on-defining-functions" title="Permalink to this heading">¶</a></h2>
 <p>Değişken sayıda argüman içeren fonksiyonlar tanımlamak da mümkündür. Birleştirilebilen üç form vardır.</p>
 <section id="default-argument-values">
-<span id="tut-defaultargs"></span><h3><span class="section-number">4.8.1. </span>Varsayılan Değişken Değerleri<a class="headerlink" href="#default-argument-values" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-defaultargs"></span><h3><span class="section-number">4.8.1. </span>Varsayılan Değişken Değerleri<a class="headerlink" href="#default-argument-values" title="Permalink to this heading">¶</a></h3>
 <p>En kullanışlı biçim, bir veya daha fazla bağımsız değişken için varsayılan bir değer belirtmektir. Bu, izin vermek üzere tanımlandığından daha az sayıda bağımsız değişkenle çağrılabilen bir fonksiyon oluşturur.  Örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ask_ok</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">retries</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">reminder</span><span class="o">=</span><span class="s1">&#39;Please try again!&#39;</span><span class="p">):</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -622,7 +621,7 @@
 </div>
 </section>
 <section id="keyword-arguments">
-<span id="tut-keywordargs"></span><h3><span class="section-number">4.8.2. </span>Anahtar Kelime Değişkenleri<a class="headerlink" href="#keyword-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-keywordargs"></span><h3><span class="section-number">4.8.2. </span>Anahtar Kelime Değişkenleri<a class="headerlink" href="#keyword-arguments" title="Permalink to this heading">¶</a></h3>
 <p>Fonksiyonlar ayrıca <code class="docutils literal notranslate"><span class="pre">kwarg=value</span></code> şeklinde <a class="reference internal" href="../glossary.html#term-keyword-argument"><span class="xref std std-term">anahtar kelime argümanları</span></a> kullanılarak da çağrılabilir.  Örneğin, aşağıdaki fonksiyon:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parrot</span><span class="p">(</span><span class="n">voltage</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s1">&#39;a stiff&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;voom&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Norwegian Blue&#39;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-- This parrot wouldn&#39;t&quot;</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -690,7 +689,7 @@ sketch : Cheese Shop Sketch
 <p>Anahtar sözcük bağımsız değişkenlerinin yazdırılma sırasının, fonksiyon çağrısında sağlandıkları sırayla eşleşmesinin garanti edildiğini unutmayın.</p>
 </section>
 <section id="special-parameters">
-<h3><span class="section-number">4.8.3. </span>Özel parametreler<a class="headerlink" href="#special-parameters" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><span class="section-number">4.8.3. </span>Özel parametreler<a class="headerlink" href="#special-parameters" title="Permalink to this heading">¶</a></h3>
 <p>Varsayılan olarak, argümanlar bir Python fonksiyonuna ya pozisyona göre ya da açıkça anahtar kelimeye göre aktarılabilir. Okunabilirlik ve performans için, argümanların geçirilme şeklini kısıtlamak mantıklıdır, böylece bir geliştiricinin öğelerin konumla mı, konumla ya da anahtar sözcükle mi yoksa anahtar sözcükle mi geçirildiğini belirlemek için yalnızca fonksiyon tanımına bakması gerekir.</p>
 <p>Bir fonksiyon tanımı aşağıdaki gibi görünebilir:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):
@@ -703,20 +702,20 @@ sketch : Cheese Shop Sketch
 </div>
 <p>burada <code class="docutils literal notranslate"><span class="pre">/</span></code> ve <code class="docutils literal notranslate"><span class="pre">*</span></code> isteğe bağlıdır. Kullanılırsa, bu semboller, argümanların fonksiyona nasıl geçirilebileceğine göre parametre türünü gösterir: yalnızca konumsal, konumsal veya anahtar sözcük ve yalnızca anahtar sözcük. Anahtar sözcük parametreleri, adlandırılmış parametreler olarak da adlandırılır.</p>
 <section id="positional-or-keyword-arguments">
-<h4><span class="section-number">4.8.3.1. </span>Konumsal veya Anahtar Kelime Argümanları<a class="headerlink" href="#positional-or-keyword-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><span class="section-number">4.8.3.1. </span>Konumsal veya Anahtar Kelime Argümanları<a class="headerlink" href="#positional-or-keyword-arguments" title="Permalink to this heading">¶</a></h4>
 <p>Eğer <code class="docutils literal notranslate"><span class="pre">/</span></code> ve <code class="docutils literal notranslate"><span class="pre">*</span></code> fonksiyon tanımında mevcut değilse, argümanlar bir fonksiyona pozisyon veya anahtar kelime ile aktarılabilir.</p>
 </section>
 <section id="positional-only-parameters">
-<h4><span class="section-number">4.8.3.2. </span>Yalnızca Konumsal Parametreler<a class="headerlink" href="#positional-only-parameters" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><span class="section-number">4.8.3.2. </span>Yalnızca Konumsal Parametreler<a class="headerlink" href="#positional-only-parameters" title="Permalink to this heading">¶</a></h4>
 <p>Bu konuya biraz daha detaylı bakacak olursak, belirli parametreleri <em>positional-only</em> olarak işaretlemek mümkündür. Eğer <em>konumsal-sadece</em> ise, parametrelerin sırası önemlidir ve parametreler anahtar kelime ile aktarılamaz. Yalnızca konumsal parametreler bir <code class="docutils literal notranslate"><span class="pre">/</span></code> (ileri eğik çizgi) önüne yerleştirilir. <code class="docutils literal notranslate"><span class="pre">/</span></code> sadece konumsal parametreleri diğer parametrelerden mantıksal olarak ayırmak için kullanılır. Fonksiyon tanımında <code class="docutils literal notranslate"><span class="pre">/</span></code> yoksa, sadece konumsal parametre yoktur.</p>
 <p><code class="docutils literal notranslate"><span class="pre">/</span></code> işaretini takip eden parametreler <em>konumsal veya anahtar sözcük</em> veya <em>sadece anahtar sözcük</em> olabilir.</p>
 </section>
 <section id="keyword-only-arguments">
-<h4><span class="section-number">4.8.3.3. </span>Yalnızca Anahtar Sözcük İçeren Değişkenler<a class="headerlink" href="#keyword-only-arguments" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><span class="section-number">4.8.3.3. </span>Yalnızca Anahtar Sözcük İçeren Değişkenler<a class="headerlink" href="#keyword-only-arguments" title="Permalink to this heading">¶</a></h4>
 <p>Parametrelerin anahtar sözcük argümanıyla geçirilmesi gerektiğini belirterek parametreleri <em>anahtar sözcüğe özel</em> olarak işaretlemek için, argüman listesine ilk <em>anahtar sözcüğe özel</em> parametreden hemen önce bir <code class="docutils literal notranslate"><span class="pre">*</span></code> yerleştirin.</p>
 </section>
 <section id="function-examples">
-<h4><span class="section-number">4.8.3.4. </span>Fonksiyon Örnekleri<a class="headerlink" href="#function-examples" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><span class="section-number">4.8.3.4. </span>Fonksiyon Örnekleri<a class="headerlink" href="#function-examples" title="Permalink to this heading">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">/</span></code> ve <code class="docutils literal notranslate"><span class="pre">*</span></code> işaretlerine çok dikkat ederek aşağıdaki örnek fonksiyon tanımlarını göz önünde bulundurun:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">standard_arg</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
@@ -801,7 +800,7 @@ sketch : Cheese Shop Sketch
 <p>Başka bir deyişle, yalnızca konumsal parametrelerin adları <code class="docutils literal notranslate"><span class="pre">**kwds</span></code> içinde belirsizlik olmadan kullanılabilir.</p>
 </section>
 <section id="recap">
-<h4><span class="section-number">4.8.3.5. </span>Özet<a class="headerlink" href="#recap" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4><span class="section-number">4.8.3.5. </span>Özet<a class="headerlink" href="#recap" title="Permalink to this heading">¶</a></h4>
 <p>Kullanım durumu, fonksiyon tanımında hangi parametrelerin kullanılacağını belirleyecektir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">,</span> <span class="o">/</span><span class="p">,</span> <span class="n">pos_or_kwd</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">kwd1</span><span class="p">,</span> <span class="n">kwd2</span><span class="p">):</span>
 </pre></div>
@@ -815,7 +814,7 @@ sketch : Cheese Shop Sketch
 </section>
 </section>
 <section id="arbitrary-argument-lists">
-<span id="tut-arbitraryargs"></span><h3><span class="section-number">4.8.4. </span>Keyfi Argüman Listeleri<a class="headerlink" href="#arbitrary-argument-lists" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-arbitraryargs"></span><h3><span class="section-number">4.8.4. </span>Keyfi Argüman Listeleri<a class="headerlink" href="#arbitrary-argument-lists" title="Permalink to this heading">¶</a></h3>
 <p id="index-3">Son olarak, en az kullanılan seçenek, bir fonksiyonun rastgele sayıda argümanla çağrılabileceğini belirtmektir.  Bu argümanlar bir tuple içinde paketlenecektir (bkz <a class="reference internal" href="datastructures.html#tut-tuples"><span class="std std-ref">Veri Grupları ve Diziler</span></a>).  Değişken argüman sayısından önce, sıfır veya daha fazla normal argüman olabilir.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">write_multiple_items</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">separator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
@@ -833,7 +832,7 @@ sketch : Cheese Shop Sketch
 </div>
 </section>
 <section id="unpacking-argument-lists">
-<span id="tut-unpacking-arguments"></span><h3><span class="section-number">4.8.5. </span>Argüman Listelerini Açma<a class="headerlink" href="#unpacking-argument-lists" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-unpacking-arguments"></span><h3><span class="section-number">4.8.5. </span>Argüman Listelerini Açma<a class="headerlink" href="#unpacking-argument-lists" title="Permalink to this heading">¶</a></h3>
 <p>Tersi durum, argümanlar zaten bir liste veya tuple içinde olduğunda, ancak ayrı konumsal argümanlar gerektiren bir fonksiyon çağrısı için paketten çıkarılması gerektiğinde ortaya çıkar.  Örneğin, yerleşik <a class="reference internal" href="../library/stdtypes.html#range" title="range"><code class="xref py py-func docutils literal notranslate"><span class="pre">range()</span></code></a> fonksiyonu ayrı <em>start</em> ve <em>stop</em> argümanları bekler.  Eğer bunlar ayrı olarak mevcut değilse, argümanları bir listeden veya tuple’dan çıkarmak için fonksiyon çağrısını <code class="docutils literal notranslate"><span class="pre">*</span></code>-operatörü ile yazın:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>            <span class="c1"># normal call with separate arguments</span>
 <span class="go">[3, 4, 5]</span>
@@ -855,7 +854,7 @@ sketch : Cheese Shop Sketch
 </div>
 </section>
 <section id="lambda-expressions">
-<span id="tut-lambda"></span><h3><span class="section-number">4.8.6. </span>Lambda İfadeleri<a class="headerlink" href="#lambda-expressions" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-lambda"></span><h3><span class="section-number">4.8.6. </span>Lambda İfadeleri<a class="headerlink" href="#lambda-expressions" title="Permalink to this heading">¶</a></h3>
 <p>Küçük anonim fonksiyonlar <a class="reference internal" href="../reference/expressions.html#lambda"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">lambda</span></code></a> anahtar sözcüğü ile oluşturulabilir. Bu fonksiyon iki argümanının toplamını döndürür: <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">a,</span> <span class="pre">b:</span> <span class="pre">a+b</span></code>. Lambda fonksiyonları, fonksiyon nesnelerinin gerekli olduğu her yerde kullanılabilir.  Sözdizimsel olarak tek bir ifadeyle sınırlıdırlar.  Anlamsal olarak, normal bir fonksiyon tanımı için sadece sözdizimsel şekerdirler.  İç içe işlev tanımları gibi, lambda işlevleri de içeren kapsamdaki değişkenlere başvurabilir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">make_incrementor</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">n</span>
@@ -876,7 +875,7 @@ sketch : Cheese Shop Sketch
 </div>
 </section>
 <section id="documentation-strings">
-<span id="tut-docstrings"></span><h3><span class="section-number">4.8.7. </span>Dokümantasyon Stringler’i<a class="headerlink" href="#documentation-strings" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-docstrings"></span><h3><span class="section-number">4.8.7. </span>Dokümantasyon Stringler’i<a class="headerlink" href="#documentation-strings" title="Permalink to this heading">¶</a></h3>
 <p id="index-5">Belge dizelerinin içeriği ve biçimlendirilmesiyle ilgili bazı kurallar aşağıda verilmiştir.</p>
 <p>İlk satır her zaman nesnenin amacının kısa ve öz bir özeti olmalıdır.  Öz olması için, nesnenin adı veya türü açıkça belirtilmemelidir, çünkü bunlar başka yollarla elde edilebilir (adın bir fonksiyonun çalışmasını açıklayan bir fiil olması durumu hariç).  Bu satır büyük harfle başlamalı ve nokta ile bitmelidir.</p>
 <p>Belgeleme string’inde daha fazla satır varsa, ikinci satır boş olmalı ve özeti açıklamanın geri kalanından görsel olarak ayırmalıdır.  Sonraki satırlar, nesnenin çağrı kurallarını, yan etkilerini vb. açıklayan bir veya daha fazla paragraftan oluşmalıdır.</p>
@@ -897,7 +896,7 @@ sketch : Cheese Shop Sketch
 </div>
 </section>
 <section id="function-annotations">
-<span id="tut-annotations"></span><h3><span class="section-number">4.8.8. </span>Fonksiyon Ek Açıklamaları<a class="headerlink" href="#function-annotations" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-annotations"></span><h3><span class="section-number">4.8.8. </span>Fonksiyon Ek Açıklamaları<a class="headerlink" href="#function-annotations" title="Permalink to this heading">¶</a></h3>
 <p id="index-6"><a class="reference internal" href="../reference/compound_stmts.html#function"><span class="std std-ref">Fonksiyon ek açıklamaları</span></a> kullanıcı tanımlı fonksiyonlar tarafından kullanılan tipler hakkında tamamen isteğe bağlı meta veri bilgileridir (daha fazla bilgi için <span class="target" id="index-16"></span><a class="pep reference external" href="https://peps.python.org/pep-3107/"><strong>PEP 3107</strong></a> ve <span class="target" id="index-17"></span><a class="pep reference external" href="https://peps.python.org/pep-0484/"><strong>PEP 484</strong></a> sayfalarına bakınız).</p>
 <p><a class="reference internal" href="../glossary.html#term-function-annotation"><span class="xref std std-term">İşaretlemeler</span></a>, fonksiyonun <code class="xref py py-attr docutils literal notranslate"><span class="pre">__annotations__</span></code> özelliğinde bir sözlük olarak saklanır ve fonksiyonun diğer bölümleri üzerinde hiçbir etkisi yoktur.  Parametre ek açıklamaları, parametre adından sonra iki nokta üst üste işareti ve ardından ek açıklamanın değerine göre değerlendirilen bir ifade ile tanımlanır.  Dönüş ek açıklamaları, parametre listesi ile <a class="reference internal" href="../reference/compound_stmts.html#def"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">def</span></code></a> ifadesinin sonunu belirten iki nokta arasında bir <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> ifadesi ve ardından bir ifade ile tanımlanır.  Aşağıdaki örnekte bir gerekli argüman, bir isteğe bağlı argüman ve dönüş değeri ek açıklamalıdır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">ham</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">eggs</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
@@ -914,7 +913,7 @@ sketch : Cheese Shop Sketch
 </section>
 </section>
 <section id="intermezzo-coding-style">
-<span id="tut-codingstyle"></span><h2><span class="section-number">4.9. </span>Intermezzo: Kodlama Stili<a class="headerlink" href="#intermezzo-coding-style" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-codingstyle"></span><h2><span class="section-number">4.9. </span>Intermezzo: Kodlama Stili<a class="headerlink" href="#intermezzo-coding-style" title="Permalink to this heading">¶</a></h2>
 <p id="index-9">Artık daha uzun, daha karmaşık Python parçaları yazmak üzere olduğunuza göre, <em>kodlama stili</em> hakkında konuşmak için iyi bir zaman.  Çoğu dil farklı stillerde yazılabilir (ya da daha özlü bir ifadeyle <em>biçimlendirilebilir</em>); bazıları diğerlerinden daha okunaklıdır. Başkalarının kodunuzu okumasını kolaylaştırmak her zaman iyi bir fikirdir ve güzel bir kodlama stili benimsemek buna çok yardımcı olur.</p>
 <p>Python için <span class="target" id="index-18"></span><a class="pep reference external" href="https://peps.python.org/pep-0008/"><strong>PEP 8</strong></a>, çoğu projenin bağlı olduğu stil kılavuzu olarak ortaya çıkmıştır; okunabilir ve göze hoş gelen bir kodlama stilini teşvik eder.  Her Python geliştiricisi bir noktada onu okumalıdır; işte sizin için çıkarılan en önemli noktalar:</p>
 <ul>
@@ -933,11 +932,12 @@ sketch : Cheese Shop Sketch
 <li><p>Aynı şekilde, farklı bir dil konuşan kişilerin kodu okuması veya muhafaza etmesi için en ufak bir şans varsa, tanımlayıcılarda ASCII olmayan karakterler kullanmayın.</p></li>
 </ul>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Aslında, <em>nesne referansı ile çağırma</em> daha iyi bir tanımlama olacaktır, çünkü değiştirilebilir bir nesne aktarılırsa, çağıran, çağırılanın üzerinde yaptığı tüm değişiklikleri (bir listeye eklenen öğeler) görecektir.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Aslında, <em>nesne referansı ile çağırma</em> daha iyi bir tanımlama olacaktır, çünkü değiştirilebilir bir nesne aktarılırsa, çağıran, çağırılanın üzerinde yaptığı tüm değişiklikleri (bir listeye eklenen öğeler) görecektir.</p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1005,6 +1005,10 @@ sketch : Cheese Shop Sketch
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1077,11 +1081,11 @@ sketch : Cheese Shop Sketch
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

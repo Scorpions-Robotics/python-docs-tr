@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Platform Support" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/asyncio-platforms.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -198,19 +197,19 @@
           <div class="body" role="main">
             
   <section id="platform-support">
-<span id="asyncio-platform-support"></span><h1>Platform Support<a class="headerlink" href="#platform-support" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="asyncio-platform-support"></span><h1>Platform Support<a class="headerlink" href="#platform-support" title="Permalink to this heading">¶</a></h1>
 <p>The <a class="reference internal" href="asyncio.html#module-asyncio" title="asyncio: Asynchronous I/O."><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> module is designed to be portable,
 but some platforms have subtle differences and limitations
 due to the platforms’ underlying architecture and capabilities.</p>
 <section id="all-platforms">
-<h2>All Platforms<a class="headerlink" href="#all-platforms" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>All Platforms<a class="headerlink" href="#all-platforms" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.add_reader" title="asyncio.loop.add_reader"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.add_reader()</span></code></a> and <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.add_writer" title="asyncio.loop.add_writer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.add_writer()</span></code></a>
 cannot be used to monitor file I/O.</p></li>
 </ul>
 </section>
 <section id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">¶</a></h2>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/proactor_events.py">Lib/asyncio/proactor_events.py</a>,
 <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/windows_events.py">Lib/asyncio/windows_events.py</a>,
 <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/windows_utils.py">Lib/asyncio/windows_utils.py</a></p>
@@ -248,7 +247,7 @@ milliseconds.  The best resolution is 0.5 milliseconds. The resolution depends o
 hardware (availability of <a class="reference external" href="https://en.wikipedia.org/wiki/High_Precision_Event_Timer">HPET</a>) and on the
 Windows configuration.</p>
 <section id="subprocess-support-on-windows">
-<span id="asyncio-windows-subprocess"></span><h3>Subprocess Support on Windows<a class="headerlink" href="#subprocess-support-on-windows" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-windows-subprocess"></span><h3>Subprocess Support on Windows<a class="headerlink" href="#subprocess-support-on-windows" title="Permalink to this heading">¶</a></h3>
 <p>On Windows, the default event loop <a class="reference internal" href="asyncio-eventloop.html#asyncio.ProactorEventLoop" title="asyncio.ProactorEventLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProactorEventLoop</span></code></a> supports
 subprocesses, whereas <a class="reference internal" href="asyncio-eventloop.html#asyncio.SelectorEventLoop" title="asyncio.SelectorEventLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">SelectorEventLoop</span></code></a> does not.</p>
 <p>The <a class="reference internal" href="asyncio-policy.html#asyncio.AbstractEventLoopPolicy.set_child_watcher" title="asyncio.AbstractEventLoopPolicy.set_child_watcher"><code class="xref py py-meth docutils literal notranslate"><span class="pre">policy.set_child_watcher()</span></code></a> function is also
@@ -257,7 +256,7 @@ to watch child processes.</p>
 </section>
 </section>
 <section id="macos">
-<h2>macOS<a class="headerlink" href="#macos" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>macOS<a class="headerlink" href="#macos" title="Permalink to this heading">¶</a></h2>
 <p>Modern macOS versions are fully supported.</p>
 <p class="rubric">macOS &lt;= 10.8</p>
 <p>On macOS 10.6, 10.7 and 10.8, the default event loop
@@ -321,6 +320,10 @@ these older versions of macOS.  Example:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -395,11 +398,11 @@ these older versions of macOS.  Example:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

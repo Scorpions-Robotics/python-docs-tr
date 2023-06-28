@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Unicode Objects and Codecs" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/c-api/unicode.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -217,9 +216,9 @@
           <div class="body" role="main">
             
   <section id="unicode-objects-and-codecs">
-<span id="unicodeobjects"></span><h1>Unicode Objects and Codecs<a class="headerlink" href="#unicode-objects-and-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="unicodeobjects"></span><h1>Unicode Objects and Codecs<a class="headerlink" href="#unicode-objects-and-codecs" title="Permalink to this heading">¶</a></h1>
 <section id="unicode-objects">
-<h2>Unicode Objects<a class="headerlink" href="#unicode-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Unicode Objects<a class="headerlink" href="#unicode-objects" title="Permalink to this heading">¶</a></h2>
 <p>Since the implementation of <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-0393/"><strong>PEP 393</strong></a> in Python 3.3, Unicode objects internally
 use a variety of representations, in order to allow handling the complete range
 of Unicode characters while staying memory efficient.  There are special cases
@@ -246,7 +245,7 @@ APIs. All Unicode objects will be “canonical” since then. See <span class="t
 for more information.</p>
 </div>
 <section id="unicode-type">
-<h3>Unicode Type<a class="headerlink" href="#unicode-type" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Unicode Type<a class="headerlink" href="#unicode-type" title="Permalink to this heading">¶</a></h3>
 <p>These are the basic Unicode object types used for the Unicode implementation in
 Python:</p>
 <dl class="c type">
@@ -501,7 +500,7 @@ is not ready.</p>
 
 </section>
 <section id="unicode-character-properties">
-<h3>Unicode Character Properties<a class="headerlink" href="#unicode-character-properties" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Unicode Character Properties<a class="headerlink" href="#unicode-character-properties" title="Permalink to this heading">¶</a></h3>
 <p>Unicode provides many different character properties. The most often needed ones
 are available through these macros which are mapped to C functions depending on
 the Python configuration.</p>
@@ -655,7 +654,7 @@ surrogate pair.</p>
 
 </section>
 <section id="creating-and-accessing-unicode-strings">
-<h3>Creating and accessing Unicode strings<a class="headerlink" href="#creating-and-accessing-unicode-strings" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Creating and accessing Unicode strings<a class="headerlink" href="#creating-and-accessing-unicode-strings" title="Permalink to this heading">¶</a></h3>
 <p>To create Unicode objects and access their basic sequence properties, use these
 APIs:</p>
 <dl class="c function">
@@ -716,11 +715,6 @@ a string with the values formatted into it.  The variable arguments must be C
 types and must correspond exactly to the format characters in the <em>format</em>
 ASCII-encoded string. The following format characters are allowed:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 26%" />
-<col style="width: 28%" />
-<col style="width: 46%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Format Characters</p></th>
 <th class="head"><p>Type</p></th>
@@ -740,67 +734,67 @@ represented as a C int.</p></td>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%d</span></code></p></td>
 <td><p>int</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%d&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id1">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%d&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%u</span></code></p></td>
 <td><p>unsigned int</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%u&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id2">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%u&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%ld</span></code></p></td>
 <td><p>long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%ld&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id3">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%ld&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%li</span></code></p></td>
 <td><p>long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%li&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id4">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%li&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%lu</span></code></p></td>
 <td><p>unsigned long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id5">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%lld</span></code></p></td>
 <td><p>long long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lld&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id6">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lld&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%lli</span></code></p></td>
 <td><p>long long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lli&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id7">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%lli&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%llu</span></code></p></td>
 <td><p>unsigned long long</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%llu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id8">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%llu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%zd</span></code></p></td>
 <td><p><a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a></p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zd&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id9">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zd&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%zi</span></code></p></td>
 <td><p><a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a></p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zi&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id10">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zi&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%zu</span></code></p></td>
 <td><p>size_t</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id11">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%zu&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%i</span></code></p></td>
 <td><p>int</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%i&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id12">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%i&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%x</span></code></p></td>
 <td><p>int</p></td>
 <td><p>Equivalent to
-<code class="docutils literal notranslate"><span class="pre">printf(&quot;%x&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id13">1</a></p></td>
+<code class="docutils literal notranslate"><span class="pre">printf(&quot;%x&quot;)</span></code>. <a class="footnote-reference brackets" href="#id14" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">%s</span></code></p></td>
 <td><p>const char*</p></td>
@@ -858,12 +852,14 @@ The precision formatter unit is number of bytes for <code class="docutils litera
 characters for <code class="docutils literal notranslate"><span class="pre">&quot;%A&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;%U&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;%S&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;%R&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;%V&quot;</span></code>
 (if the <code class="docutils literal notranslate"><span class="pre">PyObject*</span></code> argument is not <code class="docutils literal notranslate"><span class="pre">NULL</span></code>).</p>
 </div>
-<dl class="footnote brackets">
-<dt class="label" id="id14"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>,<a href="#id5">5</a>,<a href="#id6">6</a>,<a href="#id7">7</a>,<a href="#id8">8</a>,<a href="#id9">9</a>,<a href="#id10">10</a>,<a href="#id11">11</a>,<a href="#id12">12</a>,<a href="#id13">13</a>)</span></dt>
-<dd><p>For integer specifiers (d, u, ld, li, lu, lld, lli, llu, zd, zi,
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id14" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id4">4</a>,<a role="doc-backlink" href="#id5">5</a>,<a role="doc-backlink" href="#id6">6</a>,<a role="doc-backlink" href="#id7">7</a>,<a role="doc-backlink" href="#id8">8</a>,<a role="doc-backlink" href="#id9">9</a>,<a role="doc-backlink" href="#id10">10</a>,<a role="doc-backlink" href="#id11">11</a>,<a role="doc-backlink" href="#id12">12</a>,<a role="doc-backlink" href="#id13">13</a>)</span>
+<p>For integer specifiers (d, u, ld, li, lu, lld, lli, llu, zd, zi,
 zu, i, x): the 0-conversion flag has effect even when a precision is given.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.2 sürümünde değişti: </span>Support for <code class="docutils literal notranslate"><span class="pre">&quot;%lld&quot;</span></code> and <code class="docutils literal notranslate"><span class="pre">&quot;%llu&quot;</span></code> added.</p>
 </div>
@@ -994,7 +990,7 @@ null code point appended.</p>
 
 </section>
 <section id="deprecated-py-unicode-apis">
-<h3>Deprecated Py_UNICODE APIs<a class="headerlink" href="#deprecated-py-unicode-apis" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Deprecated Py_UNICODE APIs<a class="headerlink" href="#deprecated-py-unicode-apis" title="Permalink to this heading">¶</a></h3>
 <div class="deprecated-removed">
 <p><span class="versionmodified">Sürüm 3.3 ‘den beri kullanım dışı, sürüm 3.12 ‘da kaldırılacak.</span></p>
 </div>
@@ -1078,7 +1074,7 @@ return the reference with incremented refcount.</p>
 
 </section>
 <section id="locale-encoding">
-<h3>Locale Encoding<a class="headerlink" href="#locale-encoding" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Locale Encoding<a class="headerlink" href="#locale-encoding" title="Permalink to this heading">¶</a></h3>
 <p>The current locale encoding can be used to decode text from the operating
 system.</p>
 <dl class="c function">
@@ -1150,7 +1146,7 @@ used for <code class="docutils literal notranslate"><span class="pre">strict</sp
 
 </section>
 <section id="file-system-encoding">
-<h3>File System Encoding<a class="headerlink" href="#file-system-encoding" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>File System Encoding<a class="headerlink" href="#file-system-encoding" title="Permalink to this heading">¶</a></h3>
 <p>To encode and decode file names and other environment strings,
 <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_FileSystemDefaultEncoding</span></code> should be used as the encoding, and
 <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_FileSystemDefaultEncodeErrors</span></code> should be used as the error handler
@@ -1250,7 +1246,7 @@ to the current locale encoding, use <a class="reference internal" href="#c.PyUni
 
 </section>
 <section id="wchar-t-support">
-<h3>wchar_t Support<a class="headerlink" href="#wchar-t-support" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>wchar_t Support<a class="headerlink" href="#wchar-t-support" title="Permalink to this heading">¶</a></h3>
 <p><span class="c-expr sig sig-inline c"><span class="n">wchar_t</span></span> support for platforms which support it:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_FromWideChar">
@@ -1301,7 +1297,7 @@ string contains null characters.</p>
 </section>
 </section>
 <section id="built-in-codecs">
-<span id="builtincodecs"></span><h2>Built-in Codecs<a class="headerlink" href="#built-in-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="builtincodecs"></span><h2>Built-in Codecs<a class="headerlink" href="#built-in-codecs" title="Permalink to this heading">¶</a></h2>
 <p>Python provides a set of built-in codecs which are written in C for speed. All of
 these codecs are directly usable via the following functions.</p>
 <p>Many of the following APIs take two arguments encoding and errors, and they
@@ -1320,7 +1316,7 @@ built-in codecs is “strict” (<a class="reference internal" href="../library/
 <p>The codecs all use a similar interface.  Only deviations from the following
 generic ones are documented for simplicity.</p>
 <section id="generic-codecs">
-<h3>Generic Codecs<a class="headerlink" href="#generic-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Generic Codecs<a class="headerlink" href="#generic-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the generic codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_Decode">
@@ -1344,7 +1340,7 @@ the codec.</p>
 
 </section>
 <section id="utf-8-codecs">
-<h3>UTF-8 Codecs<a class="headerlink" href="#utf-8-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>UTF-8 Codecs<a class="headerlink" href="#utf-8-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the UTF-8 codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeUTF8">
@@ -1409,7 +1405,7 @@ pointers to it become invalid when the Unicode object is garbage collected.</p>
 
 </section>
 <section id="utf-32-codecs">
-<h3>UTF-32 Codecs<a class="headerlink" href="#utf-32-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>UTF-32 Codecs<a class="headerlink" href="#utf-32-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the UTF-32 codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeUTF32">
@@ -1454,7 +1450,7 @@ Return <code class="docutils literal notranslate"><span class="pre">NULL</span><
 
 </section>
 <section id="utf-16-codecs">
-<h3>UTF-16 Codecs<a class="headerlink" href="#utf-16-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>UTF-16 Codecs<a class="headerlink" href="#utf-16-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the UTF-16 codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeUTF16">
@@ -1500,7 +1496,7 @@ Return <code class="docutils literal notranslate"><span class="pre">NULL</span><
 
 </section>
 <section id="utf-7-codecs">
-<h3>UTF-7 Codecs<a class="headerlink" href="#utf-7-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>UTF-7 Codecs<a class="headerlink" href="#utf-7-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the UTF-7 codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeUTF7">
@@ -1520,7 +1516,7 @@ bytes that have been decoded will be stored in <em>consumed</em>.</p>
 
 </section>
 <section id="unicode-escape-codecs">
-<h3>Unicode-Escape Codecs<a class="headerlink" href="#unicode-escape-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Unicode-Escape Codecs<a class="headerlink" href="#unicode-escape-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the “Unicode Escape” codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeUnicodeEscape">
@@ -1539,7 +1535,7 @@ raised by the codec.</p>
 
 </section>
 <section id="raw-unicode-escape-codecs">
-<h3>Raw-Unicode-Escape Codecs<a class="headerlink" href="#raw-unicode-escape-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Raw-Unicode-Escape Codecs<a class="headerlink" href="#raw-unicode-escape-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the “Raw Unicode Escape” codec APIs:</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyUnicode_DecodeRawUnicodeEscape">
@@ -1558,7 +1554,7 @@ was raised by the codec.</p>
 
 </section>
 <section id="latin-1-codecs">
-<h3>Latin-1 Codecs<a class="headerlink" href="#latin-1-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Latin-1 Codecs<a class="headerlink" href="#latin-1-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the Latin-1 codec APIs: Latin-1 corresponds to the first 256 Unicode
 ordinals and only these are accepted by the codecs during encoding.</p>
 <dl class="c function">
@@ -1578,7 +1574,7 @@ raised by the codec.</p>
 
 </section>
 <section id="ascii-codecs">
-<h3>ASCII Codecs<a class="headerlink" href="#ascii-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>ASCII Codecs<a class="headerlink" href="#ascii-codecs" title="Permalink to this heading">¶</a></h3>
 <p>These are the ASCII codec APIs.  Only 7-bit ASCII data is accepted. All other
 codes generate errors.</p>
 <dl class="c function">
@@ -1598,7 +1594,7 @@ raised by the codec.</p>
 
 </section>
 <section id="character-map-codecs">
-<h3>Character Map Codecs<a class="headerlink" href="#character-map-codecs" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Character Map Codecs<a class="headerlink" href="#character-map-codecs" title="Permalink to this heading">¶</a></h3>
 <p>This codec is special in that it can be used to implement many different codecs
 (and this is in fact what was done to obtain most of the standard codecs
 included in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">encodings</span></code> package). The codec uses mappings to encode and
@@ -1650,7 +1646,7 @@ use the default error handling.</p>
 
 </section>
 <section id="mbcs-codecs-for-windows">
-<h3>MBCS codecs for Windows<a class="headerlink" href="#mbcs-codecs-for-windows" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>MBCS codecs for Windows<a class="headerlink" href="#mbcs-codecs-for-windows" title="Permalink to this heading">¶</a></h3>
 <p>These are the MBCS codec APIs. They are currently only available on Windows and
 use the Win32 MBCS converters to implement the conversions.  Note that MBCS (or
 DBCS) is a class of encodings, not just one.  The target encoding is defined by
@@ -1692,11 +1688,11 @@ bytes object.  Return <code class="docutils literal notranslate"><span class="pr
 
 </section>
 <section id="methods-slots">
-<h3>Methods &amp; Slots<a class="headerlink" href="#methods-slots" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Methods &amp; Slots<a class="headerlink" href="#methods-slots" title="Permalink to this heading">¶</a></h3>
 </section>
 </section>
 <section id="methods-and-slot-functions">
-<span id="unicodemethodsandslots"></span><h2>Methods and Slot Functions<a class="headerlink" href="#methods-and-slot-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unicodemethodsandslots"></span><h2>Methods and Slot Functions<a class="headerlink" href="#methods-and-slot-functions" title="Permalink to this heading">¶</a></h2>
 <p>The following APIs are capable of handling Unicode objects and strings on input
 (we refer to them as strings in the descriptions) and return Unicode objects or
 integers as appropriate.</p>
@@ -1918,6 +1914,10 @@ interned string object with the same value.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1991,11 +1991,11 @@ interned string object with the same value.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

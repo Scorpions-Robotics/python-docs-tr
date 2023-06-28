@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="msilib — Read and write Microsoft Installer files" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/msilib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,16 +97,103 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code> — Read and write Microsoft Installer files</a><ul>
-<li><a class="reference internal" href="#database-objects">Database Objects</a></li>
-<li><a class="reference internal" href="#view-objects">View Objects</a></li>
-<li><a class="reference internal" href="#summary-information-objects">Summary Information Objects</a></li>
-<li><a class="reference internal" href="#record-objects">Record Objects</a></li>
+<li><a class="reference internal" href="#msilib.FCICreate"><code class="docutils literal notranslate"><span class="pre">FCICreate()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.UuidCreate"><code class="docutils literal notranslate"><span class="pre">UuidCreate()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.OpenDatabase"><code class="docutils literal notranslate"><span class="pre">OpenDatabase()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.CreateRecord"><code class="docutils literal notranslate"><span class="pre">CreateRecord()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.init_database"><code class="docutils literal notranslate"><span class="pre">init_database()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_data"><code class="docutils literal notranslate"><span class="pre">add_data()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Binary"><code class="docutils literal notranslate"><span class="pre">Binary</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_tables"><code class="docutils literal notranslate"><span class="pre">add_tables()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_stream"><code class="docutils literal notranslate"><span class="pre">add_stream()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.gen_uuid"><code class="docutils literal notranslate"><span class="pre">gen_uuid()</span></code></a></li>
+<li><a class="reference internal" href="#database-objects">Database Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Database.OpenView"><code class="docutils literal notranslate"><span class="pre">Database.OpenView()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.Commit"><code class="docutils literal notranslate"><span class="pre">Database.Commit()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.GetSummaryInformation"><code class="docutils literal notranslate"><span class="pre">Database.GetSummaryInformation()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.Close"><code class="docutils literal notranslate"><span class="pre">Database.Close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#view-objects">View Objects</a><ul>
+<li><a class="reference internal" href="#msilib.View.Execute"><code class="docutils literal notranslate"><span class="pre">View.Execute()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.GetColumnInfo"><code class="docutils literal notranslate"><span class="pre">View.GetColumnInfo()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Fetch"><code class="docutils literal notranslate"><span class="pre">View.Fetch()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Modify"><code class="docutils literal notranslate"><span class="pre">View.Modify()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Close"><code class="docutils literal notranslate"><span class="pre">View.Close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary-information-objects">Summary Information Objects</a><ul>
+<li><a class="reference internal" href="#msilib.SummaryInformation.GetProperty"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.GetProperty()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.GetPropertyCount"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.GetPropertyCount()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.SetProperty"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.SetProperty()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.Persist"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.Persist()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#record-objects">Record Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Record.GetFieldCount"><code class="docutils literal notranslate"><span class="pre">Record.GetFieldCount()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.GetInteger"><code class="docutils literal notranslate"><span class="pre">Record.GetInteger()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.GetString"><code class="docutils literal notranslate"><span class="pre">Record.GetString()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetString"><code class="docutils literal notranslate"><span class="pre">Record.SetString()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetStream"><code class="docutils literal notranslate"><span class="pre">Record.SetStream()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetInteger"><code class="docutils literal notranslate"><span class="pre">Record.SetInteger()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.ClearData"><code class="docutils literal notranslate"><span class="pre">Record.ClearData()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#errors">Errors</a></li>
-<li><a class="reference internal" href="#cab-objects">CAB Objects</a></li>
-<li><a class="reference internal" href="#directory-objects">Directory Objects</a></li>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#gui-classes">GUI classes</a></li>
-<li><a class="reference internal" href="#precomputed-tables">Precomputed tables</a></li>
+<li><a class="reference internal" href="#cab-objects">CAB Objects</a><ul>
+<li><a class="reference internal" href="#msilib.CAB"><code class="docutils literal notranslate"><span class="pre">CAB</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.CAB.append"><code class="docutils literal notranslate"><span class="pre">CAB.append()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.CAB.commit"><code class="docutils literal notranslate"><span class="pre">CAB.commit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#directory-objects">Directory Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Directory"><code class="docutils literal notranslate"><span class="pre">Directory</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Directory.start_component"><code class="docutils literal notranslate"><span class="pre">Directory.start_component()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.add_file"><code class="docutils literal notranslate"><span class="pre">Directory.add_file()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.glob"><code class="docutils literal notranslate"><span class="pre">Directory.glob()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.remove_pyc"><code class="docutils literal notranslate"><span class="pre">Directory.remove_pyc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#features">Features</a><ul>
+<li><a class="reference internal" href="#msilib.Feature"><code class="docutils literal notranslate"><span class="pre">Feature</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Feature.set_current"><code class="docutils literal notranslate"><span class="pre">Feature.set_current()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gui-classes">GUI classes</a><ul>
+<li><a class="reference internal" href="#msilib.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Control.event"><code class="docutils literal notranslate"><span class="pre">Control.event()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Control.mapping"><code class="docutils literal notranslate"><span class="pre">Control.mapping()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Control.condition"><code class="docutils literal notranslate"><span class="pre">Control.condition()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msilib.RadioButtonGroup"><code class="docutils literal notranslate"><span class="pre">RadioButtonGroup</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.RadioButtonGroup.add"><code class="docutils literal notranslate"><span class="pre">RadioButtonGroup.add()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msilib.Dialog"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Dialog.control"><code class="docutils literal notranslate"><span class="pre">Dialog.control()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.text"><code class="docutils literal notranslate"><span class="pre">Dialog.text()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.bitmap"><code class="docutils literal notranslate"><span class="pre">Dialog.bitmap()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.line"><code class="docutils literal notranslate"><span class="pre">Dialog.line()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.pushbutton"><code class="docutils literal notranslate"><span class="pre">Dialog.pushbutton()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.radiogroup"><code class="docutils literal notranslate"><span class="pre">Dialog.radiogroup()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.checkbox"><code class="docutils literal notranslate"><span class="pre">Dialog.checkbox()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#precomputed-tables">Precomputed tables</a><ul>
+<li><a class="reference internal" href="#msilib.schema"><code class="docutils literal notranslate"><span class="pre">schema</span></code></a></li>
+<li><a class="reference internal" href="#msilib.sequence"><code class="docutils literal notranslate"><span class="pre">sequence</span></code></a></li>
+<li><a class="reference internal" href="#msilib.text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -201,7 +287,7 @@
           <div class="body" role="main">
             
   <section id="module-msilib">
-<span id="msilib-read-and-write-microsoft-installer-files"></span><h1><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (kullanım dışı) (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> — Read and write Microsoft Installer files<a class="headerlink" href="#module-msilib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="msilib-read-and-write-microsoft-installer-files"></span><h1><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (kullanım dışı) (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> — Read and write Microsoft Installer files<a class="headerlink" href="#module-msilib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/msilib/__init__.py">Lib/msilib/__init__.py</a></p>
 <div class="deprecated-removed" id="index-0">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (kullanım dışı) (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> module is deprecated
@@ -320,7 +406,7 @@ braces, and with all hexdigits in uppercase).</p>
 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa379352.aspx">UuidToString</a></p>
 </div>
 <section id="database-objects">
-<span id="id1"></span><h2>Database Objects<a class="headerlink" href="#database-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Database Objects<a class="headerlink" href="#database-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="msilib.Database.OpenView">
 <span class="sig-prename descclassname"><span class="pre">Database.</span></span><span class="sig-name descname"><span class="pre">OpenView</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Database.OpenView" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -361,7 +447,7 @@ values.</p>
 </div>
 </section>
 <section id="view-objects">
-<span id="id2"></span><h2>View Objects<a class="headerlink" href="#view-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>View Objects<a class="headerlink" href="#view-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="msilib.View.Execute">
 <span class="sig-prename descclassname"><span class="pre">View.</span></span><span class="sig-name descname"><span class="pre">Execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.View.Execute" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -412,7 +498,7 @@ parameter tokens in the query.</p>
 </div>
 </section>
 <section id="summary-information-objects">
-<span id="summary-objects"></span><h2>Summary Information Objects<a class="headerlink" href="#summary-information-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="summary-objects"></span><h2>Summary Information Objects<a class="headerlink" href="#summary-information-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="msilib.SummaryInformation.GetProperty">
 <span class="sig-prename descclassname"><span class="pre">SummaryInformation.</span></span><span class="sig-name descname"><span class="pre">GetProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">field</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.SummaryInformation.GetProperty" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -456,7 +542,7 @@ Possible value types are integer and string.</p>
 </div>
 </section>
 <section id="record-objects">
-<span id="id3"></span><h2>Record Objects<a class="headerlink" href="#record-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id3"></span><h2>Record Objects<a class="headerlink" href="#record-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py method">
 <dt class="sig sig-object py" id="msilib.Record.GetFieldCount">
 <span class="sig-prename descclassname"><span class="pre">Record.</span></span><span class="sig-name descname"><span class="pre">GetFieldCount</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Record.GetFieldCount" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -515,12 +601,12 @@ integer; <em>value</em> a string.</p>
 </div>
 </section>
 <section id="errors">
-<span id="msi-errors"></span><h2>Errors<a class="headerlink" href="#errors" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="msi-errors"></span><h2>Errors<a class="headerlink" href="#errors" title="Permalink to this heading">¶</a></h2>
 <p>All wrappers around MSI functions raise <code class="xref py py-exc docutils literal notranslate"><span class="pre">MSIError</span></code>; the string inside the
 exception will contain more detail.</p>
 </section>
 <section id="cab-objects">
-<span id="cab"></span><h2>CAB Objects<a class="headerlink" href="#cab-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="cab"></span><h2>CAB Objects<a class="headerlink" href="#cab-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="msilib.CAB">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">CAB</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.CAB" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -550,7 +636,7 @@ inside the CAB file.</p>
 
 </section>
 <section id="directory-objects">
-<span id="msi-directory"></span><h2>Directory Objects<a class="headerlink" href="#directory-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="msi-directory"></span><h2>Directory Objects<a class="headerlink" href="#directory-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="msilib.Directory">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">basedir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">physical</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">logical</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">componentflags</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Directory" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -606,7 +692,7 @@ pattern.  Individual files can be excluded in the <em>exclude</em> list.</p>
 </div>
 </section>
 <section id="features">
-<span id="id4"></span><h2>Features<a class="headerlink" href="#features" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id4"></span><h2>Features<a class="headerlink" href="#features" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="msilib.Feature">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">msilib.</span></span><span class="sig-name descname"><span class="pre">Feature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#msilib.Feature" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -630,7 +716,7 @@ specified.</p>
 </div>
 </section>
 <section id="gui-classes">
-<span id="msi-gui"></span><h2>GUI classes<a class="headerlink" href="#gui-classes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="msi-gui"></span><h2>GUI classes<a class="headerlink" href="#gui-classes" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (kullanım dışı) (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> provides several classes that wrap the GUI tables in an MSI
 database. However, no standard user interface is provided.</p>
 <dl class="py class">
@@ -738,7 +824,7 @@ provided.</p>
 </div>
 </section>
 <section id="precomputed-tables">
-<span id="msi-tables"></span><h2>Precomputed tables<a class="headerlink" href="#precomputed-tables" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="msi-tables"></span><h2>Precomputed tables<a class="headerlink" href="#precomputed-tables" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#module-msilib" title="msilib: Creation of Microsoft Installer files, and CAB files. (kullanım dışı) (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code></a> provides a few subpackages that contain only schema and table
 definitions. Currently, these definitions are based on MSI version 2.0.</p>
 <dl class="py data">
@@ -778,16 +864,103 @@ standard installer actions.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code> — Read and write Microsoft Installer files</a><ul>
-<li><a class="reference internal" href="#database-objects">Database Objects</a></li>
-<li><a class="reference internal" href="#view-objects">View Objects</a></li>
-<li><a class="reference internal" href="#summary-information-objects">Summary Information Objects</a></li>
-<li><a class="reference internal" href="#record-objects">Record Objects</a></li>
+<li><a class="reference internal" href="#msilib.FCICreate"><code class="docutils literal notranslate"><span class="pre">FCICreate()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.UuidCreate"><code class="docutils literal notranslate"><span class="pre">UuidCreate()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.OpenDatabase"><code class="docutils literal notranslate"><span class="pre">OpenDatabase()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.CreateRecord"><code class="docutils literal notranslate"><span class="pre">CreateRecord()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.init_database"><code class="docutils literal notranslate"><span class="pre">init_database()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_data"><code class="docutils literal notranslate"><span class="pre">add_data()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Binary"><code class="docutils literal notranslate"><span class="pre">Binary</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_tables"><code class="docutils literal notranslate"><span class="pre">add_tables()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.add_stream"><code class="docutils literal notranslate"><span class="pre">add_stream()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.gen_uuid"><code class="docutils literal notranslate"><span class="pre">gen_uuid()</span></code></a></li>
+<li><a class="reference internal" href="#database-objects">Database Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Database.OpenView"><code class="docutils literal notranslate"><span class="pre">Database.OpenView()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.Commit"><code class="docutils literal notranslate"><span class="pre">Database.Commit()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.GetSummaryInformation"><code class="docutils literal notranslate"><span class="pre">Database.GetSummaryInformation()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Database.Close"><code class="docutils literal notranslate"><span class="pre">Database.Close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#view-objects">View Objects</a><ul>
+<li><a class="reference internal" href="#msilib.View.Execute"><code class="docutils literal notranslate"><span class="pre">View.Execute()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.GetColumnInfo"><code class="docutils literal notranslate"><span class="pre">View.GetColumnInfo()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Fetch"><code class="docutils literal notranslate"><span class="pre">View.Fetch()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Modify"><code class="docutils literal notranslate"><span class="pre">View.Modify()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.View.Close"><code class="docutils literal notranslate"><span class="pre">View.Close()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#summary-information-objects">Summary Information Objects</a><ul>
+<li><a class="reference internal" href="#msilib.SummaryInformation.GetProperty"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.GetProperty()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.GetPropertyCount"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.GetPropertyCount()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.SetProperty"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.SetProperty()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.SummaryInformation.Persist"><code class="docutils literal notranslate"><span class="pre">SummaryInformation.Persist()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#record-objects">Record Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Record.GetFieldCount"><code class="docutils literal notranslate"><span class="pre">Record.GetFieldCount()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.GetInteger"><code class="docutils literal notranslate"><span class="pre">Record.GetInteger()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.GetString"><code class="docutils literal notranslate"><span class="pre">Record.GetString()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetString"><code class="docutils literal notranslate"><span class="pre">Record.SetString()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetStream"><code class="docutils literal notranslate"><span class="pre">Record.SetStream()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.SetInteger"><code class="docutils literal notranslate"><span class="pre">Record.SetInteger()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Record.ClearData"><code class="docutils literal notranslate"><span class="pre">Record.ClearData()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#errors">Errors</a></li>
-<li><a class="reference internal" href="#cab-objects">CAB Objects</a></li>
-<li><a class="reference internal" href="#directory-objects">Directory Objects</a></li>
-<li><a class="reference internal" href="#features">Features</a></li>
-<li><a class="reference internal" href="#gui-classes">GUI classes</a></li>
-<li><a class="reference internal" href="#precomputed-tables">Precomputed tables</a></li>
+<li><a class="reference internal" href="#cab-objects">CAB Objects</a><ul>
+<li><a class="reference internal" href="#msilib.CAB"><code class="docutils literal notranslate"><span class="pre">CAB</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.CAB.append"><code class="docutils literal notranslate"><span class="pre">CAB.append()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.CAB.commit"><code class="docutils literal notranslate"><span class="pre">CAB.commit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#directory-objects">Directory Objects</a><ul>
+<li><a class="reference internal" href="#msilib.Directory"><code class="docutils literal notranslate"><span class="pre">Directory</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Directory.start_component"><code class="docutils literal notranslate"><span class="pre">Directory.start_component()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.add_file"><code class="docutils literal notranslate"><span class="pre">Directory.add_file()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.glob"><code class="docutils literal notranslate"><span class="pre">Directory.glob()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Directory.remove_pyc"><code class="docutils literal notranslate"><span class="pre">Directory.remove_pyc()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#features">Features</a><ul>
+<li><a class="reference internal" href="#msilib.Feature"><code class="docutils literal notranslate"><span class="pre">Feature</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Feature.set_current"><code class="docutils literal notranslate"><span class="pre">Feature.set_current()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#gui-classes">GUI classes</a><ul>
+<li><a class="reference internal" href="#msilib.Control"><code class="docutils literal notranslate"><span class="pre">Control</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Control.event"><code class="docutils literal notranslate"><span class="pre">Control.event()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Control.mapping"><code class="docutils literal notranslate"><span class="pre">Control.mapping()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Control.condition"><code class="docutils literal notranslate"><span class="pre">Control.condition()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msilib.RadioButtonGroup"><code class="docutils literal notranslate"><span class="pre">RadioButtonGroup</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.RadioButtonGroup.add"><code class="docutils literal notranslate"><span class="pre">RadioButtonGroup.add()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#msilib.Dialog"><code class="docutils literal notranslate"><span class="pre">Dialog</span></code></a><ul>
+<li><a class="reference internal" href="#msilib.Dialog.control"><code class="docutils literal notranslate"><span class="pre">Dialog.control()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.text"><code class="docutils literal notranslate"><span class="pre">Dialog.text()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.bitmap"><code class="docutils literal notranslate"><span class="pre">Dialog.bitmap()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.line"><code class="docutils literal notranslate"><span class="pre">Dialog.line()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.pushbutton"><code class="docutils literal notranslate"><span class="pre">Dialog.pushbutton()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.radiogroup"><code class="docutils literal notranslate"><span class="pre">Dialog.radiogroup()</span></code></a></li>
+<li><a class="reference internal" href="#msilib.Dialog.checkbox"><code class="docutils literal notranslate"><span class="pre">Dialog.checkbox()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#precomputed-tables">Precomputed tables</a><ul>
+<li><a class="reference internal" href="#msilib.schema"><code class="docutils literal notranslate"><span class="pre">schema</span></code></a></li>
+<li><a class="reference internal" href="#msilib.sequence"><code class="docutils literal notranslate"><span class="pre">sequence</span></code></a></li>
+<li><a class="reference internal" href="#msilib.text"><code class="docutils literal notranslate"><span class="pre">text</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -815,6 +988,10 @@ standard installer actions.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -888,11 +1065,11 @@ standard installer actions.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

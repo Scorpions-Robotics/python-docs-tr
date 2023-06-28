@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="syslog — Unix syslog library routines" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/syslog.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,6 +97,10 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code> — Unix syslog library routines</a><ul>
+<li><a class="reference internal" href="#syslog.syslog"><code class="docutils literal notranslate"><span class="pre">syslog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.openlog"><code class="docutils literal notranslate"><span class="pre">openlog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.closelog"><code class="docutils literal notranslate"><span class="pre">closelog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.setlogmask"><code class="docutils literal notranslate"><span class="pre">setlogmask()</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
 <li><a class="reference internal" href="#simple-example">Simple example</a></li>
 </ul>
@@ -195,7 +198,7 @@
           <div class="body" role="main">
             
   <section id="module-syslog">
-<span id="syslog-unix-syslog-library-routines"></span><h1><a class="reference internal" href="#module-syslog" title="syslog: An interface to the Unix syslog library routines. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code></a> — Unix syslog library routines<a class="headerlink" href="#module-syslog" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="syslog-unix-syslog-library-routines"></span><h1><a class="reference internal" href="#module-syslog" title="syslog: An interface to the Unix syslog library routines. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code></a> — Unix syslog library routines<a class="headerlink" href="#module-syslog" title="Permalink to this heading">¶</a></h1>
 <hr class="docutils" />
 <p>This module provides an interface to the Unix <code class="docutils literal notranslate"><span class="pre">syslog</span></code> library routines.
 Refer to the Unix manual pages for a detailed description of the <code class="docutils literal notranslate"><span class="pre">syslog</span></code>
@@ -291,9 +294,9 @@ in <code class="docutils literal notranslate"><span class="pre">&lt;syslog.h&gt;
 </dd>
 </dl>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <section id="simple-example">
-<h3>Simple example<a class="headerlink" href="#simple-example" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Simple example<a class="headerlink" href="#simple-example" title="Permalink to this heading">¶</a></h3>
 <p>A simple set of examples:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">syslog</span>
 
@@ -324,6 +327,10 @@ mail logging:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code> — Unix syslog library routines</a><ul>
+<li><a class="reference internal" href="#syslog.syslog"><code class="docutils literal notranslate"><span class="pre">syslog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.openlog"><code class="docutils literal notranslate"><span class="pre">openlog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.closelog"><code class="docutils literal notranslate"><span class="pre">closelog()</span></code></a></li>
+<li><a class="reference internal" href="#syslog.setlogmask"><code class="docutils literal notranslate"><span class="pre">setlogmask()</span></code></a></li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
 <li><a class="reference internal" href="#simple-example">Simple example</a></li>
 </ul>
@@ -355,6 +362,10 @@ mail logging:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -428,11 +439,11 @@ mail logging:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

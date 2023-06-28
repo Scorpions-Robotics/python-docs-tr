@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="http.cookiejar — Cookie handling for HTTP clients" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/http.cookiejar.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,11 +97,85 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code> — Cookie handling for HTTP clients</a><ul>
-<li><a class="reference internal" href="#cookiejar-and-filecookiejar-objects">CookieJar and FileCookieJar Objects</a></li>
-<li><a class="reference internal" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers">FileCookieJar subclasses and co-operation with web browsers</a></li>
-<li><a class="reference internal" href="#cookiepolicy-objects">CookiePolicy Objects</a></li>
-<li><a class="reference internal" href="#defaultcookiepolicy-objects">DefaultCookiePolicy Objects</a></li>
-<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a></li>
+<li><a class="reference internal" href="#http.cookiejar.LoadError"><code class="docutils literal notranslate"><span class="pre">LoadError</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar"><code class="docutils literal notranslate"><span class="pre">CookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar"><code class="docutils literal notranslate"><span class="pre">FileCookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy"><code class="docutils literal notranslate"><span class="pre">CookiePolicy</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie"><code class="docutils literal notranslate"><span class="pre">Cookie</span></code></a></li>
+<li><a class="reference internal" href="#cookiejar-and-filecookiejar-objects">CookieJar and FileCookieJar Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.add_cookie_header"><code class="docutils literal notranslate"><span class="pre">CookieJar.add_cookie_header()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.extract_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.extract_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_policy"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_policy()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.make_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.make_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_cookie_if_ok"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_cookie_if_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_cookie"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_cookie()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.clear"><code class="docutils literal notranslate"><span class="pre">CookieJar.clear()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.clear_session_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.clear_session_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.save"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.save()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.load"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.load()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.revert"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.revert()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.filename"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.filename</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.delayload"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.delayload</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers">FileCookieJar subclasses and co-operation with web browsers</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.MozillaCookieJar"><code class="docutils literal notranslate"><span class="pre">MozillaCookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.LWPCookieJar"><code class="docutils literal notranslate"><span class="pre">LWPCookieJar</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cookiepolicy-objects">CookiePolicy Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.set_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.set_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.domain_return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.domain_return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.path_return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.path_return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.netscape"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.netscape</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.rfc2965"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.rfc2965</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.hide_cookie2"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.hide_cookie2</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defaultcookiepolicy-objects">DefaultCookiePolicy Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.blocked_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.blocked_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.set_blocked_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.set_blocked_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.is_blocked"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.is_blocked()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.allowed_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.allowed_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.set_allowed_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.set_allowed_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.is_not_allowed"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.is_not_allowed()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.rfc2109_as_netscape"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.rfc2109_as_netscape</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_domain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_domain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_rfc2965_unverifiable"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_rfc2965_unverifiable</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_unverifiable"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_unverifiable</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_domain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_domain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_set_initial_dollar"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_set_initial_dollar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_set_path"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_set_path</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrictNoDots"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrictNoDots</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrictNonDomain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrictNonDomain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainRFC2965Match"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainRFC2965Match</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainLiberal"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainLiberal</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrict"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrict</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.version"><code class="docutils literal notranslate"><span class="pre">Cookie.version</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.name"><code class="docutils literal notranslate"><span class="pre">Cookie.name</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.value"><code class="docutils literal notranslate"><span class="pre">Cookie.value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.port"><code class="docutils literal notranslate"><span class="pre">Cookie.port</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.path"><code class="docutils literal notranslate"><span class="pre">Cookie.path</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.secure"><code class="docutils literal notranslate"><span class="pre">Cookie.secure</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.expires"><code class="docutils literal notranslate"><span class="pre">Cookie.expires</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.discard"><code class="docutils literal notranslate"><span class="pre">Cookie.discard</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.comment"><code class="docutils literal notranslate"><span class="pre">Cookie.comment</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.comment_url"><code class="docutils literal notranslate"><span class="pre">Cookie.comment_url</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.rfc2109"><code class="docutils literal notranslate"><span class="pre">Cookie.rfc2109</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.port_specified"><code class="docutils literal notranslate"><span class="pre">Cookie.port_specified</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.domain_specified"><code class="docutils literal notranslate"><span class="pre">Cookie.domain_specified</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.domain_initial_dot"><code class="docutils literal notranslate"><span class="pre">Cookie.domain_initial_dot</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.has_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.has_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.get_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.get_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.set_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.set_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.is_expired"><code class="docutils literal notranslate"><span class="pre">Cookie.is_expired()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -197,7 +270,7 @@
           <div class="body" role="main">
             
   <section id="module-http.cookiejar">
-<span id="http-cookiejar-cookie-handling-for-http-clients"></span><h1><a class="reference internal" href="#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a> — Cookie handling for HTTP clients<a class="headerlink" href="#module-http.cookiejar" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="http-cookiejar-cookie-handling-for-http-clients"></span><h1><a class="reference internal" href="#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a> — Cookie handling for HTTP clients<a class="headerlink" href="#module-http.cookiejar" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/http/cookiejar.py">Lib/http/cookiejar.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a> module defines classes for automatic handling of HTTP
@@ -322,7 +395,7 @@ place of <em class="mailheader">Set-Cookie</em>.  Not widely used.</p>
 <p><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2964.html"><strong>RFC 2964</strong></a> - Use of HTTP State Management</p>
 </div>
 <section id="cookiejar-and-filecookiejar-objects">
-<span id="cookie-jar-objects"></span><h2>CookieJar and FileCookieJar Objects<a class="headerlink" href="#cookiejar-and-filecookiejar-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="cookie-jar-objects"></span><h2>CookieJar and FileCookieJar Objects<a class="headerlink" href="#cookiejar-and-filecookiejar-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#http.cookiejar.CookieJar" title="http.cookiejar.CookieJar"><code class="xref py py-class docutils literal notranslate"><span class="pre">CookieJar</span></code></a> objects support the <a class="reference internal" href="../glossary.html#term-iterator"><span class="xref std std-term">iterator</span></a> protocol for iterating over
 contained <a class="reference internal" href="#http.cookiejar.Cookie" title="http.cookiejar.Cookie"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cookie</span></code></a> objects.</p>
 <p><a class="reference internal" href="#http.cookiejar.CookieJar" title="http.cookiejar.CookieJar"><code class="xref py py-class docutils literal notranslate"><span class="pre">CookieJar</span></code></a> has the following methods:</p>
@@ -478,7 +551,7 @@ library lazily loads cookies.</p>
 
 </section>
 <section id="filecookiejar-subclasses-and-co-operation-with-web-browsers">
-<span id="file-cookie-jar-classes"></span><h2>FileCookieJar subclasses and co-operation with web browsers<a class="headerlink" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="file-cookie-jar-classes"></span><h2>FileCookieJar subclasses and co-operation with web browsers<a class="headerlink" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers" title="Permalink to this heading">¶</a></h2>
 <p>The following <a class="reference internal" href="#http.cookiejar.CookieJar" title="http.cookiejar.CookieJar"><code class="xref py py-class docutils literal notranslate"><span class="pre">CookieJar</span></code></a> subclasses are provided for reading and
 writing.</p>
 <dl class="py class">
@@ -515,7 +588,7 @@ convenient if you want to store cookies in a human-readable file.</p>
 
 </section>
 <section id="cookiepolicy-objects">
-<span id="cookie-policy-objects"></span><h2>CookiePolicy Objects<a class="headerlink" href="#cookiepolicy-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="cookie-policy-objects"></span><h2>CookiePolicy Objects<a class="headerlink" href="#cookiepolicy-objects" title="Permalink to this heading">¶</a></h2>
 <p>Objects implementing the <a class="reference internal" href="#http.cookiejar.CookiePolicy" title="http.cookiejar.CookiePolicy"><code class="xref py py-class docutils literal notranslate"><span class="pre">CookiePolicy</span></code></a> interface have the following
 methods:</p>
 <dl class="py method">
@@ -593,7 +666,7 @@ above.  <a class="reference internal" href="#http.cookiejar.CookiePolicy" title=
 setting and receiving any and all cookies (this is unlikely to be useful).</p>
 </section>
 <section id="defaultcookiepolicy-objects">
-<span id="default-cookie-policy-objects"></span><h2>DefaultCookiePolicy Objects<a class="headerlink" href="#defaultcookiepolicy-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="default-cookie-policy-objects"></span><h2>DefaultCookiePolicy Objects<a class="headerlink" href="#defaultcookiepolicy-objects" title="Permalink to this heading">¶</a></h2>
 <p>Implements the standard rules for accepting and returning cookies.</p>
 <p>Both <span class="target" id="index-14"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2965.html"><strong>RFC 2965</strong></a> and Netscape cookies are covered.  RFC 2965 handling is switched
 off by default.</p>
@@ -771,7 +844,7 @@ off).</p>
 
 </section>
 <section id="cookie-objects">
-<h2>Cookie Objects<a class="headerlink" href="#cookie-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Cookie Objects<a class="headerlink" href="#cookie-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#http.cookiejar.Cookie" title="http.cookiejar.Cookie"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cookie</span></code></a> instances have Python attributes roughly corresponding to the
 standard cookie-attributes specified in the various cookie standards.  The
 correspondence is not one-to-one, because there are complicated rules for
@@ -911,7 +984,7 @@ cookie has expired at the specified time.</p>
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>The first example shows the most common usage of <a class="reference internal" href="#module-http.cookiejar" title="http.cookiejar: Classes for automatic handling of HTTP cookies."><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code></a>:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">http.cookiejar</span><span class="o">,</span> <span class="nn">urllib.request</span>
 <span class="n">cj</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">CookieJar</span><span class="p">()</span>
@@ -956,11 +1029,85 @@ returned:</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">http.cookiejar</span></code> — Cookie handling for HTTP clients</a><ul>
-<li><a class="reference internal" href="#cookiejar-and-filecookiejar-objects">CookieJar and FileCookieJar Objects</a></li>
-<li><a class="reference internal" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers">FileCookieJar subclasses and co-operation with web browsers</a></li>
-<li><a class="reference internal" href="#cookiepolicy-objects">CookiePolicy Objects</a></li>
-<li><a class="reference internal" href="#defaultcookiepolicy-objects">DefaultCookiePolicy Objects</a></li>
-<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a></li>
+<li><a class="reference internal" href="#http.cookiejar.LoadError"><code class="docutils literal notranslate"><span class="pre">LoadError</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar"><code class="docutils literal notranslate"><span class="pre">CookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar"><code class="docutils literal notranslate"><span class="pre">FileCookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy"><code class="docutils literal notranslate"><span class="pre">CookiePolicy</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie"><code class="docutils literal notranslate"><span class="pre">Cookie</span></code></a></li>
+<li><a class="reference internal" href="#cookiejar-and-filecookiejar-objects">CookieJar and FileCookieJar Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.add_cookie_header"><code class="docutils literal notranslate"><span class="pre">CookieJar.add_cookie_header()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.extract_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.extract_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_policy"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_policy()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.make_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.make_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_cookie_if_ok"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_cookie_if_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.set_cookie"><code class="docutils literal notranslate"><span class="pre">CookieJar.set_cookie()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.clear"><code class="docutils literal notranslate"><span class="pre">CookieJar.clear()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookieJar.clear_session_cookies"><code class="docutils literal notranslate"><span class="pre">CookieJar.clear_session_cookies()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.save"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.save()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.load"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.load()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.revert"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.revert()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.filename"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.filename</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.FileCookieJar.delayload"><code class="docutils literal notranslate"><span class="pre">FileCookieJar.delayload</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#filecookiejar-subclasses-and-co-operation-with-web-browsers">FileCookieJar subclasses and co-operation with web browsers</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.MozillaCookieJar"><code class="docutils literal notranslate"><span class="pre">MozillaCookieJar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.LWPCookieJar"><code class="docutils literal notranslate"><span class="pre">LWPCookieJar</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cookiepolicy-objects">CookiePolicy Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.set_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.set_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.domain_return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.domain_return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.path_return_ok"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.path_return_ok()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.netscape"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.netscape</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.rfc2965"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.rfc2965</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.CookiePolicy.hide_cookie2"><code class="docutils literal notranslate"><span class="pre">CookiePolicy.hide_cookie2</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#defaultcookiepolicy-objects">DefaultCookiePolicy Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.blocked_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.blocked_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.set_blocked_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.set_blocked_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.is_blocked"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.is_blocked()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.allowed_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.allowed_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.set_allowed_domains"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.set_allowed_domains()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.is_not_allowed"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.is_not_allowed()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.rfc2109_as_netscape"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.rfc2109_as_netscape</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_domain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_domain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_rfc2965_unverifiable"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_rfc2965_unverifiable</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_unverifiable"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_unverifiable</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_domain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_domain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_set_initial_dollar"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_set_initial_dollar</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.strict_ns_set_path"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.strict_ns_set_path</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrictNoDots"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrictNoDots</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrictNonDomain"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrictNonDomain</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainRFC2965Match"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainRFC2965Match</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainLiberal"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainLiberal</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.DefaultCookiePolicy.DomainStrict"><code class="docutils literal notranslate"><span class="pre">DefaultCookiePolicy.DomainStrict</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cookie-objects">Cookie Objects</a><ul>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.version"><code class="docutils literal notranslate"><span class="pre">Cookie.version</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.name"><code class="docutils literal notranslate"><span class="pre">Cookie.name</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.value"><code class="docutils literal notranslate"><span class="pre">Cookie.value</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.port"><code class="docutils literal notranslate"><span class="pre">Cookie.port</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.path"><code class="docutils literal notranslate"><span class="pre">Cookie.path</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.secure"><code class="docutils literal notranslate"><span class="pre">Cookie.secure</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.expires"><code class="docutils literal notranslate"><span class="pre">Cookie.expires</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.discard"><code class="docutils literal notranslate"><span class="pre">Cookie.discard</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.comment"><code class="docutils literal notranslate"><span class="pre">Cookie.comment</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.comment_url"><code class="docutils literal notranslate"><span class="pre">Cookie.comment_url</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.rfc2109"><code class="docutils literal notranslate"><span class="pre">Cookie.rfc2109</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.port_specified"><code class="docutils literal notranslate"><span class="pre">Cookie.port_specified</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.domain_specified"><code class="docutils literal notranslate"><span class="pre">Cookie.domain_specified</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.domain_initial_dot"><code class="docutils literal notranslate"><span class="pre">Cookie.domain_initial_dot</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.has_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.has_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.get_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.get_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.set_nonstandard_attr"><code class="docutils literal notranslate"><span class="pre">Cookie.set_nonstandard_attr()</span></code></a></li>
+<li><a class="reference internal" href="#http.cookiejar.Cookie.is_expired"><code class="docutils literal notranslate"><span class="pre">Cookie.is_expired()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 </ul>
 </li>
@@ -989,6 +1136,10 @@ returned:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1062,11 +1213,11 @@ returned:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

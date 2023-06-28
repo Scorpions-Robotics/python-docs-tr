@@ -38,14 +38,8 @@ const initialiseSidebar = () => {
 
 
 
-  // create the sidebar button element
-  const sidebarButton = document.createElement("div")
-  sidebarButton.id = "sidebarbutton"
-  // create the sidebar button arrow element
-  const sidebarArrow = document.createElement("span")
-  sidebarArrow.innerText =  "«"
-  sidebarButton.appendChild(sidebarArrow)
-  sidebar.appendChild(sidebarButton)
+  const sidebarButton = document.getElementById("sidebarbutton")
+  const sidebarArrow = sidebarButton.querySelector('span')
 
 
   const collapse_sidebar = () => {

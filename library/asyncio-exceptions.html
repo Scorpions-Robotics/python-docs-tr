@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Exceptions" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/asyncio-exceptions.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,28 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Exceptions</a><ul>
+<li><a class="reference internal" href="#asyncio.TimeoutError"><code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.CancelledError"><code class="docutils literal notranslate"><span class="pre">CancelledError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.InvalidStateError"><code class="docutils literal notranslate"><span class="pre">InvalidStateError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SendfileNotAvailableError"><code class="docutils literal notranslate"><span class="pre">SendfileNotAvailableError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError.expected"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError.expected</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError.partial"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError.partial</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asyncio.LimitOverrunError"><code class="docutils literal notranslate"><span class="pre">LimitOverrunError</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.LimitOverrunError.consumed"><code class="docutils literal notranslate"><span class="pre">LimitOverrunError.consumed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="asyncio-queue.html"
@@ -183,7 +204,7 @@
           <div class="body" role="main">
             
   <section id="exceptions">
-<span id="asyncio-exceptions"></span><h1>Exceptions<a class="headerlink" href="#exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="asyncio-exceptions"></span><h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/exceptions.py">Lib/asyncio/exceptions.py</a></p>
 <hr class="docutils" />
 <dl class="py exception">
@@ -267,6 +288,28 @@ socket or file type.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Exceptions</a><ul>
+<li><a class="reference internal" href="#asyncio.TimeoutError"><code class="docutils literal notranslate"><span class="pre">TimeoutError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.CancelledError"><code class="docutils literal notranslate"><span class="pre">CancelledError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.InvalidStateError"><code class="docutils literal notranslate"><span class="pre">InvalidStateError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SendfileNotAvailableError"><code class="docutils literal notranslate"><span class="pre">SendfileNotAvailableError</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError.expected"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError.expected</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.IncompleteReadError.partial"><code class="docutils literal notranslate"><span class="pre">IncompleteReadError.partial</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#asyncio.LimitOverrunError"><code class="docutils literal notranslate"><span class="pre">LimitOverrunError</span></code></a><ul>
+<li><a class="reference internal" href="#asyncio.LimitOverrunError.consumed"><code class="docutils literal notranslate"><span class="pre">LimitOverrunError.consumed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="asyncio-queue.html"
                           title="önceki bölüm">Queues</a></p>
@@ -288,6 +331,10 @@ socket or file type.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -362,11 +409,11 @@ socket or file type.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

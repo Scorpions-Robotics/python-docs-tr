@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="xdrlib — Encode and decode XDR data" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/xdrlib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,9 +97,46 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code> — Encode and decode XDR data</a><ul>
-<li><a class="reference internal" href="#packer-objects">Packer Objects</a></li>
-<li><a class="reference internal" href="#unpacker-objects">Unpacker Objects</a></li>
-<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#xdrlib.Packer"><code class="docutils literal notranslate"><span class="pre">Packer</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker"><code class="docutils literal notranslate"><span class="pre">Unpacker</span></code></a></li>
+<li><a class="reference internal" href="#packer-objects">Packer Objects</a><ul>
+<li><a class="reference internal" href="#xdrlib.Packer.get_buffer"><code class="docutils literal notranslate"><span class="pre">Packer.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.reset"><code class="docutils literal notranslate"><span class="pre">Packer.reset()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_float"><code class="docutils literal notranslate"><span class="pre">Packer.pack_float()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_double"><code class="docutils literal notranslate"><span class="pre">Packer.pack_double()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_fstring"><code class="docutils literal notranslate"><span class="pre">Packer.pack_fstring()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_fopaque"><code class="docutils literal notranslate"><span class="pre">Packer.pack_fopaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_string"><code class="docutils literal notranslate"><span class="pre">Packer.pack_string()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_opaque"><code class="docutils literal notranslate"><span class="pre">Packer.pack_opaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_bytes"><code class="docutils literal notranslate"><span class="pre">Packer.pack_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_list"><code class="docutils literal notranslate"><span class="pre">Packer.pack_list()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_farray"><code class="docutils literal notranslate"><span class="pre">Packer.pack_farray()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_array"><code class="docutils literal notranslate"><span class="pre">Packer.pack_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unpacker-objects">Unpacker Objects</a><ul>
+<li><a class="reference internal" href="#xdrlib.Unpacker.reset"><code class="docutils literal notranslate"><span class="pre">Unpacker.reset()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.get_position"><code class="docutils literal notranslate"><span class="pre">Unpacker.get_position()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.set_position"><code class="docutils literal notranslate"><span class="pre">Unpacker.set_position()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.get_buffer"><code class="docutils literal notranslate"><span class="pre">Unpacker.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.done"><code class="docutils literal notranslate"><span class="pre">Unpacker.done()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_float"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_float()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_double"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_double()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_fstring"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_fstring()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_fopaque"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_fopaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_string"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_string()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_opaque"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_opaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_bytes"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_list"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_list()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_farray"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_farray()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_array"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
+<li><a class="reference internal" href="#xdrlib.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.ConversionError"><code class="docutils literal notranslate"><span class="pre">ConversionError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -194,7 +230,7 @@
           <div class="body" role="main">
             
   <section id="module-xdrlib">
-<span id="xdrlib-encode-and-decode-xdr-data"></span><h1><a class="reference internal" href="#module-xdrlib" title="xdrlib: Encoders and decoders for the External Data Representation (XDR). (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code></a> — Encode and decode XDR data<a class="headerlink" href="#module-xdrlib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="xdrlib-encode-and-decode-xdr-data"></span><h1><a class="reference internal" href="#module-xdrlib" title="xdrlib: Encoders and decoders for the External Data Representation (XDR). (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code></a> — Encode and decode XDR data<a class="headerlink" href="#module-xdrlib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/xdrlib.py">Lib/xdrlib.py</a></p>
 <div class="deprecated-removed" id="index-0">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-xdrlib" title="xdrlib: Encoders and decoders for the External Data Representation (XDR). (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code></a> module is deprecated
@@ -232,7 +268,7 @@ originally written.  It has apparently been obsoleted by <span class="target" id
 </dl>
 </div>
 <section id="packer-objects">
-<span id="xdr-packer-objects"></span><h2>Packer Objects<a class="headerlink" href="#packer-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="xdr-packer-objects"></span><h2>Packer Objects<a class="headerlink" href="#packer-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#xdrlib.Packer" title="xdrlib.Packer"><code class="xref py py-class docutils literal notranslate"><span class="pre">Packer</span></code></a> instances have the following methods:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdrlib.Packer.get_buffer">
@@ -335,7 +371,7 @@ list is packed as an unsigned integer, then each element is packed as in
 
 </section>
 <section id="unpacker-objects">
-<span id="xdr-unpacker-objects"></span><h2>Unpacker Objects<a class="headerlink" href="#unpacker-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="xdr-unpacker-objects"></span><h2>Unpacker Objects<a class="headerlink" href="#unpacker-objects" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#xdrlib.Unpacker" title="xdrlib.Unpacker"><code class="xref py py-class docutils literal notranslate"><span class="pre">Unpacker</span></code></a> class offers the following methods:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="xdrlib.Unpacker.reset">
@@ -451,7 +487,7 @@ unpacked as in <a class="reference internal" href="#xdrlib.Unpacker.unpack_farra
 
 </section>
 <section id="exceptions">
-<span id="xdr-exceptions"></span><h2>Exceptions<a class="headerlink" href="#exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="xdr-exceptions"></span><h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h2>
 <p>Exceptions in this module are coded as class instances:</p>
 <dl class="py exception">
 <dt class="sig sig-object py" id="xdrlib.Error">
@@ -489,9 +525,46 @@ unpacked as in <a class="reference internal" href="#xdrlib.Unpacker.unpack_farra
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code> — Encode and decode XDR data</a><ul>
-<li><a class="reference internal" href="#packer-objects">Packer Objects</a></li>
-<li><a class="reference internal" href="#unpacker-objects">Unpacker Objects</a></li>
-<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#xdrlib.Packer"><code class="docutils literal notranslate"><span class="pre">Packer</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker"><code class="docutils literal notranslate"><span class="pre">Unpacker</span></code></a></li>
+<li><a class="reference internal" href="#packer-objects">Packer Objects</a><ul>
+<li><a class="reference internal" href="#xdrlib.Packer.get_buffer"><code class="docutils literal notranslate"><span class="pre">Packer.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.reset"><code class="docutils literal notranslate"><span class="pre">Packer.reset()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_float"><code class="docutils literal notranslate"><span class="pre">Packer.pack_float()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_double"><code class="docutils literal notranslate"><span class="pre">Packer.pack_double()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_fstring"><code class="docutils literal notranslate"><span class="pre">Packer.pack_fstring()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_fopaque"><code class="docutils literal notranslate"><span class="pre">Packer.pack_fopaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_string"><code class="docutils literal notranslate"><span class="pre">Packer.pack_string()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_opaque"><code class="docutils literal notranslate"><span class="pre">Packer.pack_opaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_bytes"><code class="docutils literal notranslate"><span class="pre">Packer.pack_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_list"><code class="docutils literal notranslate"><span class="pre">Packer.pack_list()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_farray"><code class="docutils literal notranslate"><span class="pre">Packer.pack_farray()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Packer.pack_array"><code class="docutils literal notranslate"><span class="pre">Packer.pack_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unpacker-objects">Unpacker Objects</a><ul>
+<li><a class="reference internal" href="#xdrlib.Unpacker.reset"><code class="docutils literal notranslate"><span class="pre">Unpacker.reset()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.get_position"><code class="docutils literal notranslate"><span class="pre">Unpacker.get_position()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.set_position"><code class="docutils literal notranslate"><span class="pre">Unpacker.set_position()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.get_buffer"><code class="docutils literal notranslate"><span class="pre">Unpacker.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.done"><code class="docutils literal notranslate"><span class="pre">Unpacker.done()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_float"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_float()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_double"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_double()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_fstring"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_fstring()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_fopaque"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_fopaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_string"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_string()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_opaque"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_opaque()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_bytes"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_bytes()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_list"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_list()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_farray"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_farray()</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.Unpacker.unpack_array"><code class="docutils literal notranslate"><span class="pre">Unpacker.unpack_array()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
+<li><a class="reference internal" href="#xdrlib.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#xdrlib.ConversionError"><code class="docutils literal notranslate"><span class="pre">ConversionError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -519,6 +592,10 @@ unpacked as in <a class="reference internal" href="#xdrlib.Unpacker.unpack_farra
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -592,11 +669,11 @@ unpacked as in <a class="reference internal" href="#xdrlib.Unpacker.unpack_farra
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

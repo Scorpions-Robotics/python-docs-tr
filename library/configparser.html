@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="configparser — Configuration file parser" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/configparser.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -102,13 +101,68 @@
 <li><a class="reference internal" href="#supported-datatypes">Supported Datatypes</a></li>
 <li><a class="reference internal" href="#fallback-values">Fallback Values</a></li>
 <li><a class="reference internal" href="#supported-ini-file-structure">Supported INI File Structure</a></li>
-<li><a class="reference internal" href="#interpolation-of-values">Interpolation of values</a></li>
+<li><a class="reference internal" href="#interpolation-of-values">Interpolation of values</a><ul>
+<li><a class="reference internal" href="#configparser.BasicInterpolation"><code class="docutils literal notranslate"><span class="pre">BasicInterpolation</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ExtendedInterpolation"><code class="docutils literal notranslate"><span class="pre">ExtendedInterpolation</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#mapping-protocol-access">Mapping Protocol Access</a></li>
-<li><a class="reference internal" href="#customizing-parser-behaviour">Customizing Parser Behaviour</a></li>
+<li><a class="reference internal" href="#customizing-parser-behaviour">Customizing Parser Behaviour</a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser.BOOLEAN_STATES"><code class="docutils literal notranslate"><span class="pre">ConfigParser.BOOLEAN_STATES</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.SECTCRE"><code class="docutils literal notranslate"><span class="pre">ConfigParser.SECTCRE</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#legacy-api-examples">Legacy API Examples</a></li>
-<li><a class="reference internal" href="#configparser-objects">ConfigParser Objects</a></li>
-<li><a class="reference internal" href="#rawconfigparser-objects">RawConfigParser Objects</a></li>
-<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#configparser-objects">ConfigParser Objects</a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser"><code class="docutils literal notranslate"><span class="pre">ConfigParser</span></code></a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser.defaults"><code class="docutils literal notranslate"><span class="pre">ConfigParser.defaults()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.sections"><code class="docutils literal notranslate"><span class="pre">ConfigParser.sections()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.add_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.add_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.has_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.has_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.options"><code class="docutils literal notranslate"><span class="pre">ConfigParser.options()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.has_option"><code class="docutils literal notranslate"><span class="pre">ConfigParser.has_option()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_file"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_file()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_string"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_string()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_dict"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_dict()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.get"><code class="docutils literal notranslate"><span class="pre">ConfigParser.get()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getint"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getint()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getfloat"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getfloat()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getboolean"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getboolean()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.items"><code class="docutils literal notranslate"><span class="pre">ConfigParser.items()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.set"><code class="docutils literal notranslate"><span class="pre">ConfigParser.set()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.write"><code class="docutils literal notranslate"><span class="pre">ConfigParser.write()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.remove_option"><code class="docutils literal notranslate"><span class="pre">ConfigParser.remove_option()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.remove_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.remove_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.optionxform"><code class="docutils literal notranslate"><span class="pre">ConfigParser.optionxform()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.readfp"><code class="docutils literal notranslate"><span class="pre">ConfigParser.readfp()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configparser.MAX_INTERPOLATION_DEPTH"><code class="docutils literal notranslate"><span class="pre">MAX_INTERPOLATION_DEPTH</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rawconfigparser-objects">RawConfigParser Objects</a><ul>
+<li><a class="reference internal" href="#configparser.RawConfigParser"><code class="docutils literal notranslate"><span class="pre">RawConfigParser</span></code></a><ul>
+<li><a class="reference internal" href="#configparser.RawConfigParser.add_section"><code class="docutils literal notranslate"><span class="pre">RawConfigParser.add_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.RawConfigParser.set"><code class="docutils literal notranslate"><span class="pre">RawConfigParser.set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
+<li><a class="reference internal" href="#configparser.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#configparser.NoSectionError"><code class="docutils literal notranslate"><span class="pre">NoSectionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.DuplicateSectionError"><code class="docutils literal notranslate"><span class="pre">DuplicateSectionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.DuplicateOptionError"><code class="docutils literal notranslate"><span class="pre">DuplicateOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.NoOptionError"><code class="docutils literal notranslate"><span class="pre">NoOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationError"><code class="docutils literal notranslate"><span class="pre">InterpolationError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationDepthError"><code class="docutils literal notranslate"><span class="pre">InterpolationDepthError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationMissingOptionError"><code class="docutils literal notranslate"><span class="pre">InterpolationMissingOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationSyntaxError"><code class="docutils literal notranslate"><span class="pre">InterpolationSyntaxError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.MissingSectionHeaderError"><code class="docutils literal notranslate"><span class="pre">MissingSectionHeaderError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ParsingError"><code class="docutils literal notranslate"><span class="pre">ParsingError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -202,7 +256,7 @@
           <div class="body" role="main">
             
   <section id="module-configparser">
-<span id="configparser-configuration-file-parser"></span><h1><a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> — Configuration file parser<a class="headerlink" href="#module-configparser" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="configparser-configuration-file-parser"></span><h1><a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> — Configuration file parser<a class="headerlink" href="#module-configparser" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/configparser.py">Lib/configparser.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>This module provides the <a class="reference internal" href="#configparser.ConfigParser" title="configparser.ConfigParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></a> class which implements a basic
@@ -229,7 +283,7 @@ sometimes used for configuration, but does not support comments.</p>
 </dl>
 </div>
 <section id="quick-start">
-<h2>Quick Start<a class="headerlink" href="#quick-start" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this heading">¶</a></h2>
 <p>Let’s take a very basic configuration file that looks like this:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DEFAULT]</span>
 <span class="na">ServerAliveInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">45</span>
@@ -249,7 +303,7 @@ sometimes used for configuration, but does not support comments.</p>
 consists of sections, each of which contains keys with values.
 <a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> classes can read and write such files.  Let’s start by
 creating the above configuration file programmatically.</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">configparser</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">configparser</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;DEFAULT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ServerAliveInterval&#39;</span><span class="p">:</span> <span class="s1">&#39;45&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                     <span class="s1">&#39;Compression&#39;</span><span class="p">:</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span>
@@ -271,7 +325,7 @@ There are differences, <a class="reference external" href="#mapping-protocol-acc
 the behavior is very close to what you would expect from a dictionary.</p>
 <p>Now that we have created and saved a configuration file, let’s read it
 back and explore the data it holds.</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">sections</span><span class="p">()</span>
 <span class="go">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;example.ini&#39;</span><span class="p">)</span>
@@ -304,13 +358,13 @@ back and explore the data it holds.</p>
 </div>
 <p>As we can see above, the API is pretty straightforward.  The only bit of magic
 involves the <code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code> section which provides default values for all other
-sections <a class="footnote-reference brackets" href="#id15" id="id1">1</a>.  Note also that keys in sections are
-case-insensitive and stored in lowercase <a class="footnote-reference brackets" href="#id15" id="id2">1</a>.</p>
+sections <a class="footnote-reference brackets" href="#id15" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  Note also that keys in sections are
+case-insensitive and stored in lowercase <a class="footnote-reference brackets" href="#id15" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
 <p>It is possible to read several configurations into a single
 <a class="reference internal" href="#configparser.ConfigParser" title="configparser.ConfigParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></a>, where the most recently added configuration has the
 highest priority. Any conflicting keys are taken from the more recent
 configuration while the previously existing keys are retained.</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">another_config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">another_config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">another_config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s1">&#39;example.ini&#39;</span><span class="p">)</span>
 <span class="go">[&#39;example.ini&#39;]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">another_config</span><span class="p">[</span><span class="s1">&#39;topsecret.server.example&#39;</span><span class="p">][</span><span class="s1">&#39;Port&#39;</span><span class="p">]</span>
@@ -329,11 +383,11 @@ configuration while the previously existing keys are retained.</p>
 files passed to the <em>filenames</em> parameter.</p>
 </section>
 <section id="supported-datatypes">
-<h2>Supported Datatypes<a class="headerlink" href="#supported-datatypes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Supported Datatypes<a class="headerlink" href="#supported-datatypes" title="Permalink to this heading">¶</a></h2>
 <p>Config parsers do not guess datatypes of values in configuration files, always
 storing them internally as strings.  This means that if you need other
 datatypes, you should convert on your own:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">topsecret</span><span class="p">[</span><span class="s1">&#39;Port&#39;</span><span class="p">])</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">topsecret</span><span class="p">[</span><span class="s1">&#39;Port&#39;</span><span class="p">])</span>
 <span class="go">50022</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">float</span><span class="p">(</span><span class="n">topsecret</span><span class="p">[</span><span class="s1">&#39;CompressionLevel&#39;</span><span class="p">])</span>
 <span class="go">9.0</span>
@@ -345,8 +399,8 @@ interesting because simply passing the value to <code class="docutils literal no
 since <code class="docutils literal notranslate"><span class="pre">bool('False')</span></code> is still <code class="docutils literal notranslate"><span class="pre">True</span></code>.  This is why config parsers also
 provide <a class="reference internal" href="#configparser.ConfigParser.getboolean" title="configparser.ConfigParser.getboolean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getboolean()</span></code></a>.  This method is case-insensitive and
 recognizes Boolean values from <code class="docutils literal notranslate"><span class="pre">'yes'</span></code>/<code class="docutils literal notranslate"><span class="pre">'no'</span></code>, <code class="docutils literal notranslate"><span class="pre">'on'</span></code>/<code class="docutils literal notranslate"><span class="pre">'off'</span></code>,
-<code class="docutils literal notranslate"><span class="pre">'true'</span></code>/<code class="docutils literal notranslate"><span class="pre">'false'</span></code> and <code class="docutils literal notranslate"><span class="pre">'1'</span></code>/<code class="docutils literal notranslate"><span class="pre">'0'</span></code> <a class="footnote-reference brackets" href="#id15" id="id3">1</a>.  For example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;ForwardX11&#39;</span><span class="p">)</span>
+<code class="docutils literal notranslate"><span class="pre">'true'</span></code>/<code class="docutils literal notranslate"><span class="pre">'false'</span></code> and <code class="docutils literal notranslate"><span class="pre">'1'</span></code>/<code class="docutils literal notranslate"><span class="pre">'0'</span></code> <a class="footnote-reference brackets" href="#id15" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  For example:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;ForwardX11&#39;</span><span class="p">)</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;forge.example&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;ForwardX11&#39;</span><span class="p">)</span>
 <span class="go">True</span>
@@ -357,13 +411,13 @@ recognizes Boolean values from <code class="docutils literal notranslate"><span 
 <p>Apart from <a class="reference internal" href="#configparser.ConfigParser.getboolean" title="configparser.ConfigParser.getboolean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getboolean()</span></code></a>, config parsers also
 provide equivalent <a class="reference internal" href="#configparser.ConfigParser.getint" title="configparser.ConfigParser.getint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getint()</span></code></a> and
 <a class="reference internal" href="#configparser.ConfigParser.getfloat" title="configparser.ConfigParser.getfloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getfloat()</span></code></a> methods.  You can register your own
-converters and customize the provided ones. <a class="footnote-reference brackets" href="#id15" id="id4">1</a></p>
+converters and customize the provided ones. <a class="footnote-reference brackets" href="#id15" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 </section>
 <section id="fallback-values">
-<h2>Fallback Values<a class="headerlink" href="#fallback-values" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Fallback Values<a class="headerlink" href="#fallback-values" title="Permalink to this heading">¶</a></h2>
 <p>As with a dictionary, you can use a section’s <code class="xref py py-meth docutils literal notranslate"><span class="pre">get()</span></code> method to
 provide fallback values:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Port&#39;</span><span class="p">)</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Port&#39;</span><span class="p">)</span>
 <span class="go">&#39;50022&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CompressionLevel&#39;</span><span class="p">)</span>
 <span class="go">&#39;9&#39;</span>
@@ -377,7 +431,7 @@ For instance, in our example the <code class="docutils literal notranslate"><spa
 specified only in the <code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code> section.  If we try to get it from
 the section <code class="docutils literal notranslate"><span class="pre">'topsecret.server.example'</span></code>, we will always get the default,
 even if we specify a fallback:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CompressionLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CompressionLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)</span>
 <span class="go">&#39;9&#39;</span>
 </pre></div>
 </div>
@@ -385,7 +439,7 @@ even if we specify a fallback:</p>
 provides a custom, more complex interface, maintained for backwards
 compatibility.  When using this method, a fallback value can be provided via
 the <code class="docutils literal notranslate"><span class="pre">fallback</span></code> keyword-only argument:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;forge.example&#39;</span><span class="p">,</span> <span class="s1">&#39;monster&#39;</span><span class="p">,</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;forge.example&#39;</span><span class="p">,</span> <span class="s1">&#39;monster&#39;</span><span class="p">,</span>
 <span class="gp">... </span>           <span class="n">fallback</span><span class="o">=</span><span class="s1">&#39;No such things as monsters&#39;</span><span class="p">)</span>
 <span class="go">&#39;No such things as monsters&#39;</span>
 </pre></div>
@@ -393,7 +447,7 @@ the <code class="docutils literal notranslate"><span class="pre">fallback</span>
 <p>The same <code class="docutils literal notranslate"><span class="pre">fallback</span></code> argument can be used with the
 <a class="reference internal" href="#configparser.ConfigParser.getint" title="configparser.ConfigParser.getint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getint()</span></code></a>, <a class="reference internal" href="#configparser.ConfigParser.getfloat" title="configparser.ConfigParser.getfloat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getfloat()</span></code></a> and
 <a class="reference internal" href="#configparser.ConfigParser.getboolean" title="configparser.ConfigParser.getboolean"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getboolean()</span></code></a> methods, for example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;BatchMode&#39;</span> <span class="ow">in</span> <span class="n">topsecret</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;BatchMode&#39;</span> <span class="ow">in</span> <span class="n">topsecret</span>
 <span class="go">False</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">topsecret</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;BatchMode&#39;</span><span class="p">,</span> <span class="n">fallback</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">True</span>
@@ -404,12 +458,12 @@ the <code class="docutils literal notranslate"><span class="pre">fallback</span>
 </div>
 </section>
 <section id="supported-ini-file-structure">
-<h2>Supported INI File Structure<a class="headerlink" href="#supported-ini-file-structure" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Supported INI File Structure<a class="headerlink" href="#supported-ini-file-structure" title="Permalink to this heading">¶</a></h2>
 <p>A configuration file consists of sections, each led by a <code class="docutils literal notranslate"><span class="pre">[section]</span></code> header,
 followed by key/value entries separated by a specific string (<code class="docutils literal notranslate"><span class="pre">=</span></code> or <code class="docutils literal notranslate"><span class="pre">:</span></code> by
-default <a class="footnote-reference brackets" href="#id15" id="id5">1</a>).  By default, section names are case sensitive but keys are not
-<a class="footnote-reference brackets" href="#id15" id="id6">1</a>.  Leading and trailing whitespace is removed from keys and values.
-Values can be omitted if the parser is configured to allow it <a class="footnote-reference brackets" href="#id15" id="id7">1</a>,
+default <a class="footnote-reference brackets" href="#id15" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).  By default, section names are case sensitive but keys are not
+<a class="footnote-reference brackets" href="#id15" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  Leading and trailing whitespace is removed from keys and values.
+Values can be omitted if the parser is configured to allow it <a class="footnote-reference brackets" href="#id15" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>,
 in which case the key/value delimiter may also be left
 out.  Values can also span multiple lines, as long as they are indented deeper
 than the first line of the value.  Depending on the parser’s mode, blank lines
@@ -417,8 +471,8 @@ may be treated as parts of multiline values or ignored.</p>
 <p>By default,  a valid section name can be any string that does not contain ‘\n’ or ‘]’.
 To change this, see <a class="reference internal" href="#configparser.ConfigParser.SECTCRE" title="configparser.ConfigParser.SECTCRE"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ConfigParser.SECTCRE</span></code></a>.</p>
 <p>Configuration files may include comments, prefixed by specific
-characters (<code class="docutils literal notranslate"><span class="pre">#</span></code> and <code class="docutils literal notranslate"><span class="pre">;</span></code> by default <a class="footnote-reference brackets" href="#id15" id="id8">1</a>).  Comments may appear on
-their own on an otherwise empty line, possibly indented. <a class="footnote-reference brackets" href="#id15" id="id9">1</a></p>
+characters (<code class="docutils literal notranslate"><span class="pre">#</span></code> and <code class="docutils literal notranslate"><span class="pre">;</span></code> by default <a class="footnote-reference brackets" href="#id15" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>).  Comments may appear on
+their own on an otherwise empty line, possibly indented. <a class="footnote-reference brackets" href="#id15" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <p>For example:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Simple Values]</span>
 <span class="na">key</span><span class="o">=</span><span class="s">value</span>
@@ -465,7 +519,7 @@ their own on an otherwise empty line, possibly indented. <a class="footnote-refe
 </div>
 </section>
 <section id="interpolation-of-values">
-<h2>Interpolation of values<a class="headerlink" href="#interpolation-of-values" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Interpolation of values<a class="headerlink" href="#interpolation-of-values" title="Permalink to this heading">¶</a></h2>
 <p>On top of the core functionality, <a class="reference internal" href="#configparser.ConfigParser" title="configparser.ConfigParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></a> supports
 interpolation.  This means values can be preprocessed before returning them
 from <code class="docutils literal notranslate"><span class="pre">get()</span></code> calls.</p>
@@ -474,7 +528,7 @@ from <code class="docutils literal notranslate"><span class="pre">get()</span></
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configparser.</span></span><span class="sig-name descname"><span class="pre">BasicInterpolation</span></span><a class="headerlink" href="#configparser.BasicInterpolation" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>The default implementation used by <a class="reference internal" href="#configparser.ConfigParser" title="configparser.ConfigParser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigParser</span></code></a>.  It enables
 values to contain format strings which refer to other values in the same
-section, or values in the special default section <a class="footnote-reference brackets" href="#id15" id="id10">1</a>.  Additional default
+section, or values in the special default section <a class="footnote-reference brackets" href="#id15" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  Additional default
 values can be provided on initialization.</p>
 <p>For example:</p>
 <div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[Paths]</span>
@@ -542,7 +596,7 @@ would look like this with extended interpolation:</p>
 
 </section>
 <section id="mapping-protocol-access">
-<h2>Mapping Protocol Access<a class="headerlink" href="#mapping-protocol-access" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Mapping Protocol Access<a class="headerlink" href="#mapping-protocol-access" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
@@ -561,7 +615,7 @@ The mapping interface is complete and adheres to the
 However, there are a few differences that should be taken into account:</p>
 <ul>
 <li><p>By default, all keys in sections are accessible in a case-insensitive manner
-<a class="footnote-reference brackets" href="#id15" id="id11">1</a>.  E.g. <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">option</span> <span class="pre">in</span> <span class="pre">parser[&quot;section&quot;]</span></code> yields only <code class="docutils literal notranslate"><span class="pre">optionxform</span></code>’ed
+<a class="footnote-reference brackets" href="#id15" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.  E.g. <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">option</span> <span class="pre">in</span> <span class="pre">parser[&quot;section&quot;]</span></code> yields only <code class="docutils literal notranslate"><span class="pre">optionxform</span></code>’ed
 option key names.  This means lowercased keys by default.  At the same time,
 for a section that holds the key <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, both expressions return <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;a&quot;</span> <span class="ow">in</span> <span class="n">parser</span><span class="p">[</span><span class="s2">&quot;section&quot;</span><span class="p">]</span>
@@ -597,7 +651,7 @@ subclasses overriding the original interface still should have mappings working
 as expected.</p>
 </section>
 <section id="customizing-parser-behaviour">
-<h2>Customizing Parser Behaviour<a class="headerlink" href="#customizing-parser-behaviour" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Customizing Parser Behaviour<a class="headerlink" href="#customizing-parser-behaviour" title="Permalink to this heading">¶</a></h2>
 <p>There are nearly as many INI format variants as there are applications using it.
 <a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a> goes a long way to provide support for the largest sensible
 set of INI styles available.  The default functionality is mainly dictated by
@@ -624,7 +678,7 @@ options on write-back.</p>
 <p>Please note: there are ways to add a set of key-value pairs in a single
 operation.  When you use a regular dictionary in those operations, the order
 of the keys will be ordered.  For example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">parser</span><span class="o">.</span><span class="n">read_dict</span><span class="p">({</span><span class="s1">&#39;section1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="s1">&#39;value1&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                               <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="s1">&#39;value2&#39;</span><span class="p">,</span>
 <span class="gp">... </span>                               <span class="s1">&#39;key3&#39;</span><span class="p">:</span> <span class="s1">&#39;value3&#39;</span><span class="p">},</span>
@@ -647,7 +701,7 @@ of the keys will be ordered.  For example:</p>
 which otherwise conform to the syntax supported by <a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a>.  The
 <em>allow_no_value</em> parameter to the constructor can be used to
 indicate that such values should be accepted:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">configparser</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">configparser</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sample_config</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="gp">... </span><span class="s2">[mysqld]</span>
@@ -822,7 +876,7 @@ consider the following values <code class="docutils literal notranslate"><span c
 <code class="docutils literal notranslate"><span class="pre">'on'</span></code> and the following values <code class="docutils literal notranslate"><span class="pre">False</span></code>: <code class="docutils literal notranslate"><span class="pre">'0'</span></code>, <code class="docutils literal notranslate"><span class="pre">'no'</span></code>, <code class="docutils literal notranslate"><span class="pre">'false'</span></code>,
 <code class="docutils literal notranslate"><span class="pre">'off'</span></code>.  You can override this by specifying a custom dictionary of strings
 and their Boolean outcomes. For example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">custom</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">custom</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">custom</span><span class="p">[</span><span class="s1">&#39;section1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;funky&#39;</span><span class="p">:</span> <span class="s1">&#39;nope&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">custom</span><span class="p">[</span><span class="s1">&#39;section1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">getboolean</span><span class="p">(</span><span class="s1">&#39;funky&#39;</span><span class="p">)</span>
 <span class="gt">Traceback (most recent call last):</span>
@@ -845,7 +899,7 @@ operation.  The default converts the name to lowercase.  This also
 means that when a configuration file gets written, all keys will be
 lowercase.  Override this method if that’s unsuitable.
 For example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="gp">... </span><span class="s2">[Section1]</span>
 <span class="gp">... </span><span class="s2">Key = Value</span>
 <span class="gp">...</span>
@@ -883,7 +937,7 @@ matches <code class="docutils literal notranslate"><span class="pre">[section]</
 part of the section name, thus <code class="docutils literal notranslate"><span class="pre">[</span>&#160; <span class="pre">larch</span>&#160; <span class="pre">]</span></code> will be read as a section of
 name <code class="docutils literal notranslate"><span class="pre">&quot;</span>&#160; <span class="pre">larch</span>&#160; <span class="pre">&quot;</span></code>.  Override this attribute if that’s unsuitable.  For
 example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">re</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">config</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="gp">... </span><span class="s2">[Section 1]</span>
 <span class="gp">... </span><span class="s2">option = value</span>
@@ -912,7 +966,7 @@ interfere with constructor options <em>allow_no_value</em> and <em>delimiters</e
 
 </section>
 <section id="legacy-api-examples">
-<h2>Legacy API Examples<a class="headerlink" href="#legacy-api-examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Legacy API Examples<a class="headerlink" href="#legacy-api-examples" title="Permalink to this heading">¶</a></h2>
 <p>Mainly because of backwards compatibility concerns, <a class="reference internal" href="#module-configparser" title="configparser: Configuration file parser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">configparser</span></code></a>
 provides also a legacy API with explicit <code class="docutils literal notranslate"><span class="pre">get</span></code>/<code class="docutils literal notranslate"><span class="pre">set</span></code> methods.  While there
 are valid use cases for the methods outlined below, mapping protocol access is
@@ -1008,7 +1062,7 @@ interpolation if an option used is not defined elsewhere.</p>
 </div>
 </section>
 <section id="configparser-objects">
-<span id="id12"></span><h2>ConfigParser Objects<a class="headerlink" href="#configparser-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id12"></span><h2>ConfigParser Objects<a class="headerlink" href="#configparser-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="configparser.ConfigParser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configparser.</span></span><span class="sig-name descname"><span class="pre">ConfigParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_no_value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('=',</span> <span class="pre">':')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_prefixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">('#',</span> <span class="pre">';')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_comment_prefixes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_lines_in_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_section</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">configparser.DEFAULTSECT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">BasicInterpolation()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configparser.ConfigParser" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1354,7 +1408,7 @@ is used.</p>
 
 </section>
 <section id="rawconfigparser-objects">
-<span id="id14"></span><h2>RawConfigParser Objects<a class="headerlink" href="#rawconfigparser-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id14"></span><h2>RawConfigParser Objects<a class="headerlink" href="#rawconfigparser-objects" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="configparser.RawConfigParser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configparser.</span></span><span class="sig-name descname"><span class="pre">RawConfigParser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">defaults=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dict_type=dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_no_value=False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delimiters=('='</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">':')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment_prefixes=('#'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">';')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inline_comment_prefixes=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strict=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">empty_lines_in_values=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_section=configparser.DEFAULTSECT</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">interpolation</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#configparser.RawConfigParser" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1401,7 +1455,7 @@ which does not allow such assignments to take place.</p>
 
 </section>
 <section id="exceptions">
-<h2>Exceptions<a class="headerlink" href="#exceptions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h2>
 <dl class="py exception">
 <dt class="sig sig-object py" id="configparser.Error">
 <em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configparser.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><a class="headerlink" href="#configparser.Error" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1489,13 +1543,15 @@ headers.</p>
 </dd></dl>
 
 <p class="rubric">Footnotes</p>
-<dl class="footnote brackets">
-<dt class="label" id="id15"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>,<a href="#id5">5</a>,<a href="#id6">6</a>,<a href="#id7">7</a>,<a href="#id8">8</a>,<a href="#id9">9</a>,<a href="#id10">10</a>,<a href="#id11">11</a>)</span></dt>
-<dd><p>Config parsers allow for heavy customization.  If you are interested in
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id15" role="note">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id4">4</a>,<a role="doc-backlink" href="#id5">5</a>,<a role="doc-backlink" href="#id6">6</a>,<a role="doc-backlink" href="#id7">7</a>,<a role="doc-backlink" href="#id8">8</a>,<a role="doc-backlink" href="#id9">9</a>,<a role="doc-backlink" href="#id10">10</a>,<a role="doc-backlink" href="#id11">11</a>)</span>
+<p>Config parsers allow for heavy customization.  If you are interested in
 changing the behaviour outlined by the footnote reference, consult the
 <a class="reference internal" href="#customizing-parser-behaviour">Customizing Parser Behaviour</a> section.</p>
-</dd>
-</dl>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -1514,13 +1570,68 @@ changing the behaviour outlined by the footnote reference, consult the
 <li><a class="reference internal" href="#supported-datatypes">Supported Datatypes</a></li>
 <li><a class="reference internal" href="#fallback-values">Fallback Values</a></li>
 <li><a class="reference internal" href="#supported-ini-file-structure">Supported INI File Structure</a></li>
-<li><a class="reference internal" href="#interpolation-of-values">Interpolation of values</a></li>
+<li><a class="reference internal" href="#interpolation-of-values">Interpolation of values</a><ul>
+<li><a class="reference internal" href="#configparser.BasicInterpolation"><code class="docutils literal notranslate"><span class="pre">BasicInterpolation</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ExtendedInterpolation"><code class="docutils literal notranslate"><span class="pre">ExtendedInterpolation</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#mapping-protocol-access">Mapping Protocol Access</a></li>
-<li><a class="reference internal" href="#customizing-parser-behaviour">Customizing Parser Behaviour</a></li>
+<li><a class="reference internal" href="#customizing-parser-behaviour">Customizing Parser Behaviour</a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser.BOOLEAN_STATES"><code class="docutils literal notranslate"><span class="pre">ConfigParser.BOOLEAN_STATES</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.SECTCRE"><code class="docutils literal notranslate"><span class="pre">ConfigParser.SECTCRE</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#legacy-api-examples">Legacy API Examples</a></li>
-<li><a class="reference internal" href="#configparser-objects">ConfigParser Objects</a></li>
-<li><a class="reference internal" href="#rawconfigparser-objects">RawConfigParser Objects</a></li>
-<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li><a class="reference internal" href="#configparser-objects">ConfigParser Objects</a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser"><code class="docutils literal notranslate"><span class="pre">ConfigParser</span></code></a><ul>
+<li><a class="reference internal" href="#configparser.ConfigParser.defaults"><code class="docutils literal notranslate"><span class="pre">ConfigParser.defaults()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.sections"><code class="docutils literal notranslate"><span class="pre">ConfigParser.sections()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.add_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.add_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.has_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.has_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.options"><code class="docutils literal notranslate"><span class="pre">ConfigParser.options()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.has_option"><code class="docutils literal notranslate"><span class="pre">ConfigParser.has_option()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_file"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_file()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_string"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_string()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.read_dict"><code class="docutils literal notranslate"><span class="pre">ConfigParser.read_dict()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.get"><code class="docutils literal notranslate"><span class="pre">ConfigParser.get()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getint"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getint()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getfloat"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getfloat()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.getboolean"><code class="docutils literal notranslate"><span class="pre">ConfigParser.getboolean()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.items"><code class="docutils literal notranslate"><span class="pre">ConfigParser.items()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.set"><code class="docutils literal notranslate"><span class="pre">ConfigParser.set()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.write"><code class="docutils literal notranslate"><span class="pre">ConfigParser.write()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.remove_option"><code class="docutils literal notranslate"><span class="pre">ConfigParser.remove_option()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.remove_section"><code class="docutils literal notranslate"><span class="pre">ConfigParser.remove_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.optionxform"><code class="docutils literal notranslate"><span class="pre">ConfigParser.optionxform()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ConfigParser.readfp"><code class="docutils literal notranslate"><span class="pre">ConfigParser.readfp()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configparser.MAX_INTERPOLATION_DEPTH"><code class="docutils literal notranslate"><span class="pre">MAX_INTERPOLATION_DEPTH</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rawconfigparser-objects">RawConfigParser Objects</a><ul>
+<li><a class="reference internal" href="#configparser.RawConfigParser"><code class="docutils literal notranslate"><span class="pre">RawConfigParser</span></code></a><ul>
+<li><a class="reference internal" href="#configparser.RawConfigParser.add_section"><code class="docutils literal notranslate"><span class="pre">RawConfigParser.add_section()</span></code></a></li>
+<li><a class="reference internal" href="#configparser.RawConfigParser.set"><code class="docutils literal notranslate"><span class="pre">RawConfigParser.set()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceptions</a><ul>
+<li><a class="reference internal" href="#configparser.Error"><code class="docutils literal notranslate"><span class="pre">Error</span></code></a></li>
+<li><a class="reference internal" href="#configparser.NoSectionError"><code class="docutils literal notranslate"><span class="pre">NoSectionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.DuplicateSectionError"><code class="docutils literal notranslate"><span class="pre">DuplicateSectionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.DuplicateOptionError"><code class="docutils literal notranslate"><span class="pre">DuplicateOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.NoOptionError"><code class="docutils literal notranslate"><span class="pre">NoOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationError"><code class="docutils literal notranslate"><span class="pre">InterpolationError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationDepthError"><code class="docutils literal notranslate"><span class="pre">InterpolationDepthError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationMissingOptionError"><code class="docutils literal notranslate"><span class="pre">InterpolationMissingOptionError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.InterpolationSyntaxError"><code class="docutils literal notranslate"><span class="pre">InterpolationSyntaxError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.MissingSectionHeaderError"><code class="docutils literal notranslate"><span class="pre">MissingSectionHeaderError</span></code></a></li>
+<li><a class="reference internal" href="#configparser.ParsingError"><code class="docutils literal notranslate"><span class="pre">ParsingError</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1548,6 +1659,10 @@ changing the behaviour outlined by the footnote reference, consult the
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1621,11 +1736,11 @@ changing the behaviour outlined by the footnote reference, consult the
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

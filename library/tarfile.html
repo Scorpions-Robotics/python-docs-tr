@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="tarfile — Read and write tar archive files" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/tarfile.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,8 +97,68 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code> — Read and write tar archive files</a><ul>
-<li><a class="reference internal" href="#tarfile-objects">TarFile Objects</a></li>
-<li><a class="reference internal" href="#tarinfo-objects">TarInfo Objects</a></li>
+<li><a class="reference internal" href="#tarfile.open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.is_tarfile"><code class="docutils literal notranslate"><span class="pre">is_tarfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarError"><code class="docutils literal notranslate"><span class="pre">TarError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ReadError"><code class="docutils literal notranslate"><span class="pre">ReadError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.CompressionError"><code class="docutils literal notranslate"><span class="pre">CompressionError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.StreamError"><code class="docutils literal notranslate"><span class="pre">StreamError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ExtractError"><code class="docutils literal notranslate"><span class="pre">ExtractError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.HeaderError"><code class="docutils literal notranslate"><span class="pre">HeaderError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ENCODING"><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.USTAR_FORMAT"><code class="docutils literal notranslate"><span class="pre">USTAR_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.GNU_FORMAT"><code class="docutils literal notranslate"><span class="pre">GNU_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.PAX_FORMAT"><code class="docutils literal notranslate"><span class="pre">PAX_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.DEFAULT_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile-objects">TarFile Objects</a><ul>
+<li><a class="reference internal" href="#tarfile.TarFile"><code class="docutils literal notranslate"><span class="pre">TarFile</span></code></a><ul>
+<li><a class="reference internal" href="#tarfile.TarFile.open"><code class="docutils literal notranslate"><span class="pre">TarFile.open()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getmember"><code class="docutils literal notranslate"><span class="pre">TarFile.getmember()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getmembers"><code class="docutils literal notranslate"><span class="pre">TarFile.getmembers()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getnames"><code class="docutils literal notranslate"><span class="pre">TarFile.getnames()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.list"><code class="docutils literal notranslate"><span class="pre">TarFile.list()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.next"><code class="docutils literal notranslate"><span class="pre">TarFile.next()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extractall"><code class="docutils literal notranslate"><span class="pre">TarFile.extractall()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extract"><code class="docutils literal notranslate"><span class="pre">TarFile.extract()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extractfile"><code class="docutils literal notranslate"><span class="pre">TarFile.extractfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.add"><code class="docutils literal notranslate"><span class="pre">TarFile.add()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.addfile"><code class="docutils literal notranslate"><span class="pre">TarFile.addfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.gettarinfo"><code class="docutils literal notranslate"><span class="pre">TarFile.gettarinfo()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.close"><code class="docutils literal notranslate"><span class="pre">TarFile.close()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.pax_headers"><code class="docutils literal notranslate"><span class="pre">TarFile.pax_headers</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tarinfo-objects">TarInfo Objects</a><ul>
+<li><a class="reference internal" href="#tarfile.TarInfo"><code class="docutils literal notranslate"><span class="pre">TarInfo</span></code></a><ul>
+<li><a class="reference internal" href="#tarfile.TarInfo.frombuf"><code class="docutils literal notranslate"><span class="pre">TarInfo.frombuf()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.fromtarfile"><code class="docutils literal notranslate"><span class="pre">TarInfo.fromtarfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.tobuf"><code class="docutils literal notranslate"><span class="pre">TarInfo.tobuf()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.name"><code class="docutils literal notranslate"><span class="pre">TarInfo.name</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.size"><code class="docutils literal notranslate"><span class="pre">TarInfo.size</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.mtime"><code class="docutils literal notranslate"><span class="pre">TarInfo.mtime</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.mode"><code class="docutils literal notranslate"><span class="pre">TarInfo.mode</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.type"><code class="docutils literal notranslate"><span class="pre">TarInfo.type</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.linkname"><code class="docutils literal notranslate"><span class="pre">TarInfo.linkname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.uid"><code class="docutils literal notranslate"><span class="pre">TarInfo.uid</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.gid"><code class="docutils literal notranslate"><span class="pre">TarInfo.gid</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.uname"><code class="docutils literal notranslate"><span class="pre">TarInfo.uname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.gname"><code class="docutils literal notranslate"><span class="pre">TarInfo.gname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.pax_headers"><code class="docutils literal notranslate"><span class="pre">TarInfo.pax_headers</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isfile"><code class="docutils literal notranslate"><span class="pre">TarInfo.isfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isreg"><code class="docutils literal notranslate"><span class="pre">TarInfo.isreg()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isdir"><code class="docutils literal notranslate"><span class="pre">TarInfo.isdir()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.issym"><code class="docutils literal notranslate"><span class="pre">TarInfo.issym()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.islnk"><code class="docutils literal notranslate"><span class="pre">TarInfo.islnk()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.ischr"><code class="docutils literal notranslate"><span class="pre">TarInfo.ischr()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isblk"><code class="docutils literal notranslate"><span class="pre">TarInfo.isblk()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isfifo"><code class="docutils literal notranslate"><span class="pre">TarInfo.isfifo()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isdev"><code class="docutils literal notranslate"><span class="pre">TarInfo.isdev()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command-Line Interface</a><ul>
 <li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 </ul>
@@ -200,7 +259,7 @@
           <div class="body" role="main">
             
   <section id="module-tarfile">
-<span id="tarfile-read-and-write-tar-archive-files"></span><h1><a class="reference internal" href="#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a> — Read and write tar archive files<a class="headerlink" href="#module-tarfile" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tarfile-read-and-write-tar-archive-files"></span><h1><a class="reference internal" href="#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a> — Read and write tar archive files<a class="headerlink" href="#module-tarfile" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/tarfile.py">Lib/tarfile.py</a></p>
 <hr class="docutils" />
 <p>The <a class="reference internal" href="#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a> module makes it possible to read and write tar
@@ -232,10 +291,6 @@ allowed, see <a class="reference internal" href="#tarfile-objects"><span class="
 <p><em>mode</em> has to be a string of the form <code class="docutils literal notranslate"><span class="pre">'filemode[:compression]'</span></code>, it defaults
 to <code class="docutils literal notranslate"><span class="pre">'r'</span></code>. Here is a full list of mode combinations:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 71%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>mode</p></th>
 <th class="head"><p>action</p></th>
@@ -321,10 +376,6 @@ device. However, such a <a class="reference internal" href="#tarfile.TarFile" ti
 not allow random access, see <a class="reference internal" href="#tar-examples"><span class="std std-ref">Examples</span></a>.  The currently
 possible modes:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Mode</p></th>
 <th class="head"><p>Action</p></th>
@@ -486,7 +537,7 @@ standard <a class="reference internal" href="shutil.html#module-shutil" title="s
 </dl>
 </div>
 <section id="tarfile-objects">
-<span id="id1"></span><h2>TarFile Objects<a class="headerlink" href="#tarfile-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>TarFile Objects<a class="headerlink" href="#tarfile-objects" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#tarfile.TarFile" title="tarfile.TarFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarFile</span></code></a> object provides an interface to a tar archive. A tar
 archive is a sequence of blocks. An archive member (a stored file) is made up of
 a header block followed by data blocks. It is possible to store a file in a tar
@@ -747,7 +798,7 @@ appended to the archive.</p>
 
 </section>
 <section id="tarinfo-objects">
-<span id="id2"></span><h2>TarInfo Objects<a class="headerlink" href="#tarinfo-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>TarInfo Objects<a class="headerlink" href="#tarinfo-objects" title="Permalink to this heading">¶</a></h2>
 <p>A <a class="reference internal" href="#tarfile.TarInfo" title="tarfile.TarInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarInfo</span></code></a> object represents one member in a <a class="reference internal" href="#tarfile.TarFile" title="tarfile.TarFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">TarFile</span></code></a>. Aside
 from storing all required attributes of a file (like file type, size, time,
 permissions, owner etc.), it provides some useful methods to determine its type.
@@ -913,7 +964,7 @@ of type <code class="xref py py-const docutils literal notranslate"><span class=
 
 </section>
 <section id="command-line-interface">
-<span id="tarfile-commandline"></span><h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tarfile-commandline"></span><h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.4 sürümünde geldi.</span></p>
 </div>
@@ -943,7 +994,7 @@ directory’s name:</p>
 </pre></div>
 </div>
 <section id="command-line-options">
-<h3>Command-line options<a class="headerlink" href="#command-line-options" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this heading">¶</a></h3>
 <dl class="std cmdoption">
 <dt class="sig sig-object std" id="cmdoption-tarfile-l">
 <span class="sig-name descname"><span class="pre">-l</span></span><span class="sig-prename descclassname"> <span class="pre">&lt;tarfile&gt;</span></span><a class="headerlink" href="#cmdoption-tarfile-l" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -985,7 +1036,7 @@ directory’s name:</p>
 </section>
 </section>
 <section id="examples">
-<span id="tar-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tar-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>How to extract an entire tar archive to the current working directory:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tarfile</span>
 <span class="n">tar</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;sample.tar.gz&quot;</span><span class="p">)</span>
@@ -1051,7 +1102,7 @@ parameter in <a class="reference internal" href="#tarfile.TarFile.add" title="ta
 </div>
 </section>
 <section id="supported-tar-formats">
-<span id="tar-formats"></span><h2>Supported tar formats<a class="headerlink" href="#supported-tar-formats" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tar-formats"></span><h2>Supported tar formats<a class="headerlink" href="#supported-tar-formats" title="Permalink to this heading">¶</a></h2>
 <p>There are three tar formats that can be created with the <a class="reference internal" href="#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a> module:</p>
 <ul>
 <li><p>The POSIX.1-1988 ustar format (<a class="reference internal" href="#tarfile.USTAR_FORMAT" title="tarfile.USTAR_FORMAT"><code class="xref py py-const docutils literal notranslate"><span class="pre">USTAR_FORMAT</span></code></a>). It supports filenames
@@ -1088,7 +1139,7 @@ pax format, but is not compatible.</p></li>
 </ul>
 </section>
 <section id="unicode-issues">
-<span id="tar-unicode"></span><h2>Unicode issues<a class="headerlink" href="#unicode-issues" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tar-unicode"></span><h2>Unicode issues<a class="headerlink" href="#unicode-issues" title="Permalink to this heading">¶</a></h2>
 <p>The tar format was originally conceived to make backups on tape drives with the
 main focus on preserving file system information. Nowadays tar archives are
 commonly used for file distribution and exchanging archives over networks. One
@@ -1129,8 +1180,68 @@ surrogate characters are stored.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code> — Read and write tar archive files</a><ul>
-<li><a class="reference internal" href="#tarfile-objects">TarFile Objects</a></li>
-<li><a class="reference internal" href="#tarinfo-objects">TarInfo Objects</a></li>
+<li><a class="reference internal" href="#tarfile.open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.is_tarfile"><code class="docutils literal notranslate"><span class="pre">is_tarfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarError"><code class="docutils literal notranslate"><span class="pre">TarError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ReadError"><code class="docutils literal notranslate"><span class="pre">ReadError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.CompressionError"><code class="docutils literal notranslate"><span class="pre">CompressionError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.StreamError"><code class="docutils literal notranslate"><span class="pre">StreamError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ExtractError"><code class="docutils literal notranslate"><span class="pre">ExtractError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.HeaderError"><code class="docutils literal notranslate"><span class="pre">HeaderError</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.ENCODING"><code class="docutils literal notranslate"><span class="pre">ENCODING</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.USTAR_FORMAT"><code class="docutils literal notranslate"><span class="pre">USTAR_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.GNU_FORMAT"><code class="docutils literal notranslate"><span class="pre">GNU_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.PAX_FORMAT"><code class="docutils literal notranslate"><span class="pre">PAX_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.DEFAULT_FORMAT"><code class="docutils literal notranslate"><span class="pre">DEFAULT_FORMAT</span></code></a></li>
+<li><a class="reference internal" href="#tarfile-objects">TarFile Objects</a><ul>
+<li><a class="reference internal" href="#tarfile.TarFile"><code class="docutils literal notranslate"><span class="pre">TarFile</span></code></a><ul>
+<li><a class="reference internal" href="#tarfile.TarFile.open"><code class="docutils literal notranslate"><span class="pre">TarFile.open()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getmember"><code class="docutils literal notranslate"><span class="pre">TarFile.getmember()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getmembers"><code class="docutils literal notranslate"><span class="pre">TarFile.getmembers()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.getnames"><code class="docutils literal notranslate"><span class="pre">TarFile.getnames()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.list"><code class="docutils literal notranslate"><span class="pre">TarFile.list()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.next"><code class="docutils literal notranslate"><span class="pre">TarFile.next()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extractall"><code class="docutils literal notranslate"><span class="pre">TarFile.extractall()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extract"><code class="docutils literal notranslate"><span class="pre">TarFile.extract()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.extractfile"><code class="docutils literal notranslate"><span class="pre">TarFile.extractfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.add"><code class="docutils literal notranslate"><span class="pre">TarFile.add()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.addfile"><code class="docutils literal notranslate"><span class="pre">TarFile.addfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.gettarinfo"><code class="docutils literal notranslate"><span class="pre">TarFile.gettarinfo()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.close"><code class="docutils literal notranslate"><span class="pre">TarFile.close()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarFile.pax_headers"><code class="docutils literal notranslate"><span class="pre">TarFile.pax_headers</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tarinfo-objects">TarInfo Objects</a><ul>
+<li><a class="reference internal" href="#tarfile.TarInfo"><code class="docutils literal notranslate"><span class="pre">TarInfo</span></code></a><ul>
+<li><a class="reference internal" href="#tarfile.TarInfo.frombuf"><code class="docutils literal notranslate"><span class="pre">TarInfo.frombuf()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.fromtarfile"><code class="docutils literal notranslate"><span class="pre">TarInfo.fromtarfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.tobuf"><code class="docutils literal notranslate"><span class="pre">TarInfo.tobuf()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.name"><code class="docutils literal notranslate"><span class="pre">TarInfo.name</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.size"><code class="docutils literal notranslate"><span class="pre">TarInfo.size</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.mtime"><code class="docutils literal notranslate"><span class="pre">TarInfo.mtime</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.mode"><code class="docutils literal notranslate"><span class="pre">TarInfo.mode</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.type"><code class="docutils literal notranslate"><span class="pre">TarInfo.type</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.linkname"><code class="docutils literal notranslate"><span class="pre">TarInfo.linkname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.uid"><code class="docutils literal notranslate"><span class="pre">TarInfo.uid</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.gid"><code class="docutils literal notranslate"><span class="pre">TarInfo.gid</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.uname"><code class="docutils literal notranslate"><span class="pre">TarInfo.uname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.gname"><code class="docutils literal notranslate"><span class="pre">TarInfo.gname</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.pax_headers"><code class="docutils literal notranslate"><span class="pre">TarInfo.pax_headers</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isfile"><code class="docutils literal notranslate"><span class="pre">TarInfo.isfile()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isreg"><code class="docutils literal notranslate"><span class="pre">TarInfo.isreg()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isdir"><code class="docutils literal notranslate"><span class="pre">TarInfo.isdir()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.issym"><code class="docutils literal notranslate"><span class="pre">TarInfo.issym()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.islnk"><code class="docutils literal notranslate"><span class="pre">TarInfo.islnk()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.ischr"><code class="docutils literal notranslate"><span class="pre">TarInfo.ischr()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isblk"><code class="docutils literal notranslate"><span class="pre">TarInfo.isblk()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isfifo"><code class="docutils literal notranslate"><span class="pre">TarInfo.isfifo()</span></code></a></li>
+<li><a class="reference internal" href="#tarfile.TarInfo.isdev"><code class="docutils literal notranslate"><span class="pre">TarInfo.isdev()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#command-line-interface">Command-Line Interface</a><ul>
 <li><a class="reference internal" href="#command-line-options">Command-line options</a></li>
 </ul>
@@ -1165,6 +1276,10 @@ surrogate characters are stored.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1238,11 +1353,11 @@ surrogate characters are stored.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="email.iterators: Iterators" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/email.iterators.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,18 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code>: Iterators</a><ul>
+<li><a class="reference internal" href="#email.iterators.body_line_iterator"><code class="docutils literal notranslate"><span class="pre">body_line_iterator()</span></code></a></li>
+<li><a class="reference internal" href="#email.iterators.typed_subpart_iterator"><code class="docutils literal notranslate"><span class="pre">typed_subpart_iterator()</span></code></a></li>
+<li><a class="reference internal" href="#email.iterators._structure"><code class="docutils literal notranslate"><span class="pre">_structure()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.utils.html"
@@ -183,7 +194,7 @@
           <div class="body" role="main">
             
   <section id="module-email.iterators">
-<span id="email-iterators-iterators"></span><h1><a class="reference internal" href="#module-email.iterators" title="email.iterators: Iterate over a  message object tree."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code></a>: Iterators<a class="headerlink" href="#module-email.iterators" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="email-iterators-iterators"></span><h1><a class="reference internal" href="#module-email.iterators" title="email.iterators: Iterate over a  message object tree."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code></a>: Iterators<a class="headerlink" href="#module-email.iterators" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/email/iterators.py">Lib/email/iterators.py</a></p>
 <hr class="docutils" />
 <p>Iterating over a message object tree is fairly easy with the
@@ -221,7 +232,7 @@ MIME type of <em class="mimetype">text/*</em>.</p>
 <span class="sig-prename descclassname"><span class="pre">email.iterators.</span></span><span class="sig-name descname"><span class="pre">_structure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.iterators._structure" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Prints an indented representation of the content types of the message object
 structure.  For example:</p>
-<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_file</span><span class="p">(</span><span class="n">somefile</span><span class="p">)</span>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">message_from_file</span><span class="p">(</span><span class="n">somefile</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_structure</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
 <span class="go">multipart/mixed</span>
 <span class="go">    text/plain</span>
@@ -255,6 +266,18 @@ suitable for Python’s <a class="reference internal" href="functions.html#print
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code>: Iterators</a><ul>
+<li><a class="reference internal" href="#email.iterators.body_line_iterator"><code class="docutils literal notranslate"><span class="pre">body_line_iterator()</span></code></a></li>
+<li><a class="reference internal" href="#email.iterators.typed_subpart_iterator"><code class="docutils literal notranslate"><span class="pre">typed_subpart_iterator()</span></code></a></li>
+<li><a class="reference internal" href="#email.iterators._structure"><code class="docutils literal notranslate"><span class="pre">_structure()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="email.utils.html"
                           title="önceki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code>: Miscellaneous utilities</a></p>
@@ -276,6 +299,10 @@ suitable for Python’s <a class="reference internal" href="functions.html#print
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -350,11 +377,11 @@ suitable for Python’s <a class="reference internal" href="functions.html#print
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

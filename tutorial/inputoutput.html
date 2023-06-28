@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="7. Girdi ve Çıktı" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/inputoutput.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -202,10 +201,10 @@
           <div class="body" role="main">
             
   <section id="input-and-output">
-<span id="tut-io"></span><h1><span class="section-number">7. </span>Girdi ve Çıktı<a class="headerlink" href="#input-and-output" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-io"></span><h1><span class="section-number">7. </span>Girdi ve Çıktı<a class="headerlink" href="#input-and-output" title="Permalink to this heading">¶</a></h1>
 <p>Bir programın çıktısını sunmanın birkaç yolu vardır; veriler okunabilir bir biçimde yazdırılabilir veya ileride kullanılmak üzere bir dosyaya yazılabilir. Bu bölümde bazı olasılıklar tartışılacaktır.</p>
 <section id="fancier-output-formatting">
-<span id="tut-formatting"></span><h2><span class="section-number">7.1. </span>Güzel Çıktı Biçimlendirmesi<a class="headerlink" href="#fancier-output-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-formatting"></span><h2><span class="section-number">7.1. </span>Güzel Çıktı Biçimlendirmesi<a class="headerlink" href="#fancier-output-formatting" title="Permalink to this heading">¶</a></h2>
 <p>Şimdiye kadar iki değer yazma yolu ile karşılaştık: <em>expression statements</em> ve <a class="reference internal" href="../library/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> fonksiyonu.  (Üçüncü bir yol, dosya nesnelerinin <code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> yöntemini kullanmaktır; standart çıktı dosyasına <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> olarak başvurulabilir. Bu konuda daha fazla bilgi için Kütüphane Referansı’na bakın.)</p>
 <p>Genellikle, yalnızca boşlukla ayrılmış değerleri yazdırmaktansa, çıktınızın biçimlendirmesi üzerinde daha fazla denetim istersiniz. Çıktıyı biçimlendirmenin birkaç yolu vardır.</p>
 <ul>
@@ -255,7 +254,7 @@
 </div>
 <p><a class="reference internal" href="../library/string.html#module-string" title="string: Common string operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">string</span></code></a> modülü bir <a class="reference internal" href="../library/string.html#string.Template" title="string.Template"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></a> sınıfını içerir; bu sınıf, <code class="docutils literal notranslate"><span class="pre">$x</span></code> gibi yer tutucuları kullanarak ve bunları bir sözlükten değerlerle değiştirerek, değerleri dizelerle değiştirmenin başka bir yolunu sunar, ancak biçimlendirme üzerinde çok daha az kontrol sağlar.</p>
 <section id="formatted-string-literals">
-<span id="tut-f-strings"></span><h3><span class="section-number">7.1.1. </span>Biçimlendirilmiş Dize Değişmezleri<a class="headerlink" href="#formatted-string-literals" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-f-strings"></span><h3><span class="section-number">7.1.1. </span>Biçimlendirilmiş Dize Değişmezleri<a class="headerlink" href="#formatted-string-literals" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">Formatted string literals</span></a> (kısaltmak için f-string olarak da adlandırılır), dizenin önüne <code class="docutils literal notranslate"><span class="pre">f</span></code> veya <code class="docutils literal notranslate"><span class="pre">F</span></code> yazarak ve ifadeleri <code class="docutils literal notranslate"><span class="pre">{expression}</span></code> olarak yazarak Python ifadelerinin değerini bir dizenin içine eklemenize olanak tanır.</p>
 <p>Opsiyonel biçim belirleyicisi ifadeyi izleyebilir. Bu, değerin nasıl biçimlendirileceğini daha fazla denetlemenizi sağlar. Aşağıdaki örnek pi sayısını ondalık sayıdan sonra üç basamağa yuvarlar:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
@@ -292,7 +291,7 @@
 <p><code class="docutils literal notranslate"><span class="pre">=</span></code> belirtici hakkında daha fazla bilgi için <a class="reference internal" href="../whatsnew/3.8.html#bpo-36817-whatsnew"><span class="std std-ref">kendi kendini belgeleyen ifadeler</span></a> konusuna bakın. Bu biçim belirtimleriyle ilgili bir referans için, <a class="reference internal" href="../library/string.html#formatspec"><span class="std std-ref">Format Specification Mini-Language</span></a> için başvuru kılavuzuna bakın.</p>
 </section>
 <section id="the-string-format-method">
-<span id="tut-string-format"></span><h3><span class="section-number">7.1.2. </span>String format() Metodu<a class="headerlink" href="#the-string-format-method" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-string-format"></span><h3><span class="section-number">7.1.2. </span>String format() Metodu<a class="headerlink" href="#the-string-format-method" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> metodunun temel kullanımı şöyle görünür:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We are the </span><span class="si">{}</span><span class="s1"> who say &quot;</span><span class="si">{}</span><span class="s1">!&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;knights&#39;</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">))</span>
 <span class="go">We are the knights who say &quot;Ni!&quot;</span>
@@ -350,7 +349,7 @@
 <p><a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> ile dize biçimlendirmeye tam bir genel bakış için bkz. <a class="reference internal" href="../library/string.html#formatstrings"><span class="std std-ref">Format String Syntax</span></a>.</p>
 </section>
 <section id="manual-string-formatting">
-<h3><span class="section-number">7.1.3. </span>Manuel Dize Biçimlendirmesi<a class="headerlink" href="#manual-string-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><span class="section-number">7.1.3. </span>Manuel Dize Biçimlendirmesi<a class="headerlink" href="#manual-string-formatting" title="Permalink to this heading">¶</a></h3>
 <p>Manuel olarak biçimlendirilmiş aynı kare ve küp tablosu aşağıdadır:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -382,7 +381,7 @@
 </div>
 </section>
 <section id="old-string-formatting">
-<h3><span class="section-number">7.1.4. </span>Eski dize biçimlendirmesi<a class="headerlink" href="#old-string-formatting" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><span class="section-number">7.1.4. </span>Eski dize biçimlendirmesi<a class="headerlink" href="#old-string-formatting" title="Permalink to this heading">¶</a></h3>
 <p>% operatör (modulo) dize biçimlendirmesi için de kullanılabilir. <code class="docutils literal notranslate"><span class="pre">'string'</span> <span class="pre">%</span> <span class="pre">values</span></code> göz önüne alındığında, <code class="docutils literal notranslate"><span class="pre">string</span></code> öğesindeki <code class="docutils literal notranslate"><span class="pre">%</span></code> örnekleri sıfır veya daha fazla <code class="docutils literal notranslate"><span class="pre">values</span></code> öğesiyle değiştirilir. Bu işlem genellikle dize enterpolasyonu olarak bilinir. Mesela:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of pi is approximately </span><span class="si">%5.3f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
@@ -393,7 +392,7 @@
 </section>
 </section>
 <section id="reading-and-writing-files">
-<span id="tut-files"></span><h2><span class="section-number">7.2. </span>Dosyaları Okuma ve Yazma<a class="headerlink" href="#reading-and-writing-files" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-files"></span><h2><span class="section-number">7.2. </span>Dosyaları Okuma ve Yazma<a class="headerlink" href="#reading-and-writing-files" title="Permalink to this heading">¶</a></h2>
 <p id="index-0"><a class="reference internal" href="../library/functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> bir <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">file object</span></a> döndürür ve en yaygın olarak iki konum argümanı ve bir anahtar sözcük argümanı ile kullanılır: <code class="docutils literal notranslate"><span class="pre">open(filename,</span> <span class="pre">mode,</span> <span class="pre">encoding=None)</span></code></p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
 </pre></div>
@@ -424,7 +423,7 @@
 </pre></div>
 </div>
 <section id="methods-of-file-objects">
-<span id="tut-filemethods"></span><h3><span class="section-number">7.2.1. </span>Dosya Nesnelerinin Metotları<a class="headerlink" href="#methods-of-file-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-filemethods"></span><h3><span class="section-number">7.2.1. </span>Dosya Nesnelerinin Metotları<a class="headerlink" href="#methods-of-file-objects" title="Permalink to this heading">¶</a></h3>
 <p>Bu bölümdeki örneklerin geri kalanı, <code class="docutils literal notranslate"><span class="pre">f</span></code> adlı bir dosya nesnesinin zaten oluşturulduğunu varsayar.</p>
 <p>Bir dosyanın içeriğini okumak için, bir miktar veriyi okuyan ve dize (metin modunda) veya bayt nesnesi (ikili modda) olarak döndüren <code class="docutils literal notranslate"><span class="pre">f.read(size)</span></code> öğesini çağırın. <em>size</em> isteğe bağlı bir sayısal parametredir.  <em>size</em> boş bırakıldığında veya negatif olduğunda, dosyanın tüm içeriği okunur ve döndürülür; dosya makinenizin belleğinden iki kat daha büyükse bu sizin sorununuzdur. Aksi takdirde, en fazla <em>size</em> karakterleri (metin modunda) veya <em>size</em> bayt (ikili modda) okunur ve döndürülür. Dosyanın sonuna ulaşıldıysa, <code class="docutils literal notranslate"><span class="pre">f.read()</span></code> boş bir dize (<code class="docutils literal notranslate"><span class="pre">''</span></code>) döndürür.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -482,7 +481,7 @@
 <p>Dosya nesnelerinin daha az kullanılan <code class="xref py py-meth docutils literal notranslate"><span class="pre">isatty()</span></code> ve <code class="xref py py-meth docutils literal notranslate"><span class="pre">truncate()</span></code> gibi bazı ek metotları vardır; dosya nesneleri için eksiksiz bir kılavuz için Kütüphane Referansı’na bakın.</p>
 </section>
 <section id="saving-structured-data-with-json">
-<span id="tut-json"></span><h3><span class="section-number">7.2.2. </span>Yapılandırılmış verileri <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> ile kaydetme<a class="headerlink" href="#saving-structured-data-with-json" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-json"></span><h3><span class="section-number">7.2.2. </span>Yapılandırılmış verileri <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> ile kaydetme<a class="headerlink" href="#saving-structured-data-with-json" title="Permalink to this heading">¶</a></h3>
 <p id="index-1">Dizeler bir dosyaya kolayca yazılabilir ve dosyadan okunabilir.  Sayılar biraz daha fazla çaba gerektirir, çünkü <code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code> yöntemi yalnızca <code class="docutils literal notranslate"><span class="pre">'123'</span></code> gibi bir dize alan ve sayısal değeri 123’ü döndüren <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code></a> gibi bir işleve geçirilmesi gereken dizeleri döndürür.  İç içe geçmiş listeler ve sözlükler gibi daha karmaşık veri türlerini kaydetmek istediğinizde, elle ayrıştırma ve seri hale getirmek karmaşık hale gelir.</p>
 <p>Python, kullanıcıların karmaşık veri türlerini dosyalara kaydetmek için sürekli olarak kod yazmasını ve hata ayıklamasını sağlamak yerine, <a class="reference external" href="https://json.org">JSON (JavaScript Object Notation)</a> adlı popüler veri değişim biçimini kullanmanıza olanak tanır.  <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> adlı standart modül, Python veri hiyerarşilerini alabilir ve bunları dize temsillerine dönüştürebilir; bu işleme <em class="dfn">serializing</em> adı verilir.  Dize gösteriminden verilerin yeniden yapılandırılmasına <em class="dfn">deserializing</em> denir.  Serileştirme ve seri durumdan çıkarma arasında, nesneyi temsil eden dizi bir dosyada veya veride saklanmış olabilir veya bir ağ bağlantısı üzerinden uzaktaki bir makineye gönderilmiş olabilir.</p>
 <div class="admonition note">
@@ -568,6 +567,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -640,11 +643,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

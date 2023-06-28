@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="2. Python Yorumlayıcısını Kullanma" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/tutorial/interpreter.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -199,14 +198,14 @@
           <div class="body" role="main">
             
   <section id="using-the-python-interpreter">
-<span id="tut-using"></span><h1><span class="section-number">2. </span>Python Yorumlayıcısını Kullanma<a class="headerlink" href="#using-the-python-interpreter" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="tut-using"></span><h1><span class="section-number">2. </span>Python Yorumlayıcısını Kullanma<a class="headerlink" href="#using-the-python-interpreter" title="Permalink to this heading">¶</a></h1>
 <section id="invoking-the-interpreter">
-<span id="tut-invoking"></span><h2><span class="section-number">2.1. </span>Yorumlayıcıyı Çağırma<a class="headerlink" href="#invoking-the-interpreter" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-invoking"></span><h2><span class="section-number">2.1. </span>Yorumlayıcıyı Çağırma<a class="headerlink" href="#invoking-the-interpreter" title="Permalink to this heading">¶</a></h2>
 <p>Python yorumlayıcısı genellikle mevcut olduğu makinelerde <code class="file docutils literal notranslate"><span class="pre">/usr/local/bin/python3.10</span></code> ‘a yüklenir; Unix kabuğunuzun arama yoluna (path) <code class="file docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> yazmak, komutu yazarak başlatmayı mümkün kılar:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>python3.11
 </pre></div>
 </div>
-<p>kabuğa. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> Yorumlayıcının bulunduğu dizinin seçimi bir yükleme seçeneği olduğundan, Python dizini başka bir yerde de olabilir; yerel Python gurunuza veya sistem yöneticinize danışın.  (Örneğin, <code class="file docutils literal notranslate"><span class="pre">/usr/local/python</span></code> popüler bir alternatif konumdur.)</p>
+<p>kabuğa. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Yorumlayıcının bulunduğu dizinin seçimi bir yükleme seçeneği olduğundan, Python dizini başka bir yerde de olabilir; yerel Python gurunuza veya sistem yöneticinize danışın.  (Örneğin, <code class="file docutils literal notranslate"><span class="pre">/usr/local/python</span></code> popüler bir alternatif konumdur.)</p>
 <p>Python’ı <a class="reference internal" href="../using/windows.html#windows-store"><span class="std std-ref">Microsoft Store</span></a> yüklediğiniz Windows makinelerinde <code class="file docutils literal notranslate"><span class="pre">python3.10</span></code> komutu kullanılabilir. <a class="reference internal" href="../using/windows.html#launcher"><span class="std std-ref">py.exe launcher</span></a> başlatıcısı yüklüyse, <code class="file docutils literal notranslate"><span class="pre">py</span></code> komutunu kullanabilirsiniz. Python’u başlatmanın diğer yolları için <a class="reference internal" href="../using/windows.html#setting-envvars"><span class="std std-ref">Excursus: Setting environment variables</span></a> ‘a bakın.</p>
 <p>Dosya sonu karakteri (Unix’te <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd></kbd>, Windows’ta <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd></kbd>) yazılması, yorumlayıcının sıfır durumuyla (zero exit status) sonlanmasına neden olur.  Bu işe yaramazsa, aşağıdaki komutu yazarak yorumlayıcıdan çıkabilirsiniz: <code class="docutils literal notranslate"><span class="pre">quit()</span></code>.</p>
 <p>Yorumlayıcının satır düzenleme özellikleri arasında etkileşimli düzenleme, geçmiş değiştirme ve <a class="reference external" href="https://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> kütüphanesini destekleyen sistemlerde kod tamamlama bulunur. Komut satırı düzenlemenin desteklenip desteklenmediğini görmek için belki de en hızlı denetim, elde ettiğiniz ilk Python istemine <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">P</kbd></kbd> yazmaktır.  Bip sesi çıkarsa komut satırı düzenlemeniz vardır; Tuşların tanıtımı için <a class="reference internal" href="interactive.html#tut-interacting"><span class="std std-ref">Etkileşimli Girdi Düzenleme ve Geçmiş İkame</span></a> ‘e göz atabilirsiniz. Hiçbir şey görünmüyorsa veya <code class="docutils literal notranslate"><span class="pre">^P</span></code> yankılanıyorsa, komut satırı düzenlemesi kullanılamaz; yalnızca geçerli satırdaki karakterleri kaldırmak için geri alabiliyorsunuz.</p>
@@ -216,11 +215,11 @@
 <p>Bir komut dosyası kullanıldığında, bazen komut dosyasını çalıştırabilmek ve daha sonra etkileşimli moda girebilmek yararlıdır.  Bu komut dosyasından önce <a class="reference internal" href="../using/cmdline.html#cmdoption-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a> geçirilerek yapılabilir.</p>
 <p>Tüm komut satırı seçenekleri <a class="reference internal" href="../using/cmdline.html#using-on-general"><span class="std std-ref">Command line and environment</span></a> bölümünde açıklanmıştır.</p>
 <section id="argument-passing">
-<span id="tut-argpassing"></span><h3><span class="section-number">2.1.1. </span>Değişken Geçirme<a class="headerlink" href="#argument-passing" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-argpassing"></span><h3><span class="section-number">2.1.1. </span>Değişken Geçirme<a class="headerlink" href="#argument-passing" title="Permalink to this heading">¶</a></h3>
 <p>Yorumlayıcı tarafından bilindiğinde, komut dosyası adı ve bundan sonraki ek argüman dizelerin listesine dönüştürülür ve <code class="docutils literal notranslate"><span class="pre">sys</span></code> modülündeki <code class="docutils literal notranslate"><span class="pre">argv</span></code> değişkenine atanır.  Bu listeye <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code> öğesini yürüterek erişebilirsiniz.  Listenin uzunluğu en az birdir; komut dosyası ve argüman verilmediğinde <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> boş bir dizedir.  Komut dosyası adı <code class="docutils literal notranslate"><span class="pre">'-'</span></code> (standart giriş anlamına gelir) olarak verildiğinde, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> <code class="docutils literal notranslate"><span class="pre">'-'</span></code> olarak ayarlanır.  <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> <em>komut</em> kullanıldığında, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code> olarak ayarlanır.  <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> <em>modül</em> kullanıldığında, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> bulunan modülün tam adına ayarlanır. <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> <em>komut</em> veya <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> <em>modül</em> ‘den sonra bulunan seçenekler, Python yorumlayıcısının seçenek işlemesi tarafından tüketilmez, ancak komut veya modülün işlemesi için <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> içinde bırakılır.</p>
 </section>
 <section id="interactive-mode">
-<span id="tut-interactive"></span><h3><span class="section-number">2.1.2. </span>Etkileşimli Mod<a class="headerlink" href="#interactive-mode" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-interactive"></span><h3><span class="section-number">2.1.2. </span>Etkileşimli Mod<a class="headerlink" href="#interactive-mode" title="Permalink to this heading">¶</a></h3>
 <p>Komutlar bir tty’den okunduğunda, yorumlayıcının <em>etkileşimli modda</em> olduğu söylenir.  Bu modda, genellikle üç büyük işaret olan <em>öncelikli bilgi istemi</em> ile bir sonraki komutu ister (<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>); devam satırları için <em>ikincil istem</em> ile sorar, varsayılan olarak üç nokta (<code class="docutils literal notranslate"><span class="pre">...</span></code>). Yorumlayıcı, ilk istemi yazdırmadan önce sürüm numarasını ve telif hakkı bildirimini belirten bir karşılama iletisi yazdırır:</p>
 <div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3.11
 <span class="go">Python 3.11 (default, April 4 2021, 09:25:04)</span>
@@ -241,9 +240,9 @@
 </section>
 </section>
 <section id="the-interpreter-and-its-environment">
-<span id="tut-interp"></span><h2><span class="section-number">2.2. </span>Yorumlayıcı ve Çevresi<a class="headerlink" href="#the-interpreter-and-its-environment" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="tut-interp"></span><h2><span class="section-number">2.2. </span>Yorumlayıcı ve Çevresi<a class="headerlink" href="#the-interpreter-and-its-environment" title="Permalink to this heading">¶</a></h2>
 <section id="source-code-encoding">
-<span id="tut-source-encoding"></span><h3><span class="section-number">2.2.1. </span>Kaynak Kodu Şeması<a class="headerlink" href="#source-code-encoding" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="tut-source-encoding"></span><h3><span class="section-number">2.2.1. </span>Kaynak Kodu Şeması<a class="headerlink" href="#source-code-encoding" title="Permalink to this heading">¶</a></h3>
 <p>Varsayılan olarak, Python kaynak dosyaları UTF-8’de kodlanmış olarak kabul edilir.  Bu kodlamada, dünyadaki çoğu dilin karakterleri dize değişmezlerinde, tanımlayıcılarda ve yorumlarda aynı anda kullanılabilir — standart kütüphane tanımlayıcılar için yalnızca ASCII karakterleri kullansa da, herhangi bir taşınabilir kodun izlemesi gereken bir kuraldır.  Tüm bu karakterleri düzgün görüntülemek için, düzenleyicinizin dosyanın UTF-8 olduğunu tanıması ve dosyadaki tüm karakterleri destekleyen bir yazı tipi kullanması gerekir.</p>
 <p>Varsayılan dil şeması dışında bir şema bildirmek için, dosyanın <em>ilk</em> satırı olarak özel bir yorum satırı eklenmelidir.  Sözdizimi aşağıdaki gibidir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: encoding -*-</span>
@@ -260,11 +259,12 @@
 </pre></div>
 </div>
 <p class="rubric">Dipnotlar</p>
-<dl class="footnote brackets">
-<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>Unix’te, Python 3.x yorumlayıcısı varsayılan olarak <code class="docutils literal notranslate"><span class="pre">python</span></code> adlı yürütülebilir dosyayla yüklenmez, böylece aynı anda yüklenen bir Python 2.x yürütülebilir dosyasıyla çakışmaz.</p>
-</dd>
-</dl>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Unix’te, Python 3.x yorumlayıcısı varsayılan olarak <code class="docutils literal notranslate"><span class="pre">python</span></code> adlı yürütülebilir dosyayla yüklenmez, böylece aynı anda yüklenen bir Python 2.x yürütülebilir dosyasıyla çakışmaz.</p>
+</aside>
+</aside>
 </section>
 </section>
 </section>
@@ -316,6 +316,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -388,11 +392,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

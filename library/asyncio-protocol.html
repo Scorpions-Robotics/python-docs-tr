@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Transports and Protocols" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/asyncio-protocol.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -99,21 +98,95 @@
     <ul>
 <li><a class="reference internal" href="#">Transports and Protocols</a><ul>
 <li><a class="reference internal" href="#transports">Transports</a><ul>
-<li><a class="reference internal" href="#transports-hierarchy">Transports Hierarchy</a></li>
-<li><a class="reference internal" href="#base-transport">Base Transport</a></li>
-<li><a class="reference internal" href="#read-only-transports">Read-only Transports</a></li>
-<li><a class="reference internal" href="#write-only-transports">Write-only Transports</a></li>
-<li><a class="reference internal" href="#datagram-transports">Datagram Transports</a></li>
-<li><a class="reference internal" href="#subprocess-transports">Subprocess Transports</a></li>
+<li><a class="reference internal" href="#transports-hierarchy">Transports Hierarchy</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseTransport"><code class="docutils literal notranslate"><span class="pre">BaseTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport"><code class="docutils literal notranslate"><span class="pre">WriteTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport"><code class="docutils literal notranslate"><span class="pre">ReadTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Transport"><code class="docutils literal notranslate"><span class="pre">Transport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramTransport"><code class="docutils literal notranslate"><span class="pre">DatagramTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#base-transport">Base Transport</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseTransport.close"><code class="docutils literal notranslate"><span class="pre">BaseTransport.close()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.is_closing"><code class="docutils literal notranslate"><span class="pre">BaseTransport.is_closing()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.get_extra_info"><code class="docutils literal notranslate"><span class="pre">BaseTransport.get_extra_info()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.set_protocol"><code class="docutils literal notranslate"><span class="pre">BaseTransport.set_protocol()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.get_protocol"><code class="docutils literal notranslate"><span class="pre">BaseTransport.get_protocol()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#read-only-transports">Read-only Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.ReadTransport.is_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.is_reading()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport.pause_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.pause_reading()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport.resume_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.resume_reading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#write-only-transports">Write-only Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.WriteTransport.abort"><code class="docutils literal notranslate"><span class="pre">WriteTransport.abort()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.can_write_eof"><code class="docutils literal notranslate"><span class="pre">WriteTransport.can_write_eof()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.get_write_buffer_size"><code class="docutils literal notranslate"><span class="pre">WriteTransport.get_write_buffer_size()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.get_write_buffer_limits"><code class="docutils literal notranslate"><span class="pre">WriteTransport.get_write_buffer_limits()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.set_write_buffer_limits"><code class="docutils literal notranslate"><span class="pre">WriteTransport.set_write_buffer_limits()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.write"><code class="docutils literal notranslate"><span class="pre">WriteTransport.write()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.writelines"><code class="docutils literal notranslate"><span class="pre">WriteTransport.writelines()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.write_eof"><code class="docutils literal notranslate"><span class="pre">WriteTransport.write_eof()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datagram-transports">Datagram Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.DatagramTransport.sendto"><code class="docutils literal notranslate"><span class="pre">DatagramTransport.sendto()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramTransport.abort"><code class="docutils literal notranslate"><span class="pre">DatagramTransport.abort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subprocess-transports">Subprocess Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_pid"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_pid()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_pipe_transport"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_pipe_transport()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_returncode"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_returncode()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.kill"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.kill()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.send_signal"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.send_signal()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.terminate"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.terminate()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.close"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.close()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protocols">Protocols</a><ul>
-<li><a class="reference internal" href="#base-protocols">Base Protocols</a></li>
-<li><a class="reference internal" href="#base-protocol">Base Protocol</a></li>
-<li><a class="reference internal" href="#streaming-protocols">Streaming Protocols</a></li>
-<li><a class="reference internal" href="#buffered-streaming-protocols">Buffered Streaming Protocols</a></li>
-<li><a class="reference internal" href="#datagram-protocols">Datagram Protocols</a></li>
-<li><a class="reference internal" href="#subprocess-protocols">Subprocess Protocols</a></li>
+<li><a class="reference internal" href="#base-protocols">Base Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseProtocol"><code class="docutils literal notranslate"><span class="pre">BaseProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#base-protocol">Base Protocol</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.connection_made"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.connection_made()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.connection_lost"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.connection_lost()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.pause_writing"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.pause_writing()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.resume_writing"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.resume_writing()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streaming-protocols">Streaming Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.Protocol.data_received"><code class="docutils literal notranslate"><span class="pre">Protocol.data_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Protocol.eof_received"><code class="docutils literal notranslate"><span class="pre">Protocol.eof_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#buffered-streaming-protocols">Buffered Streaming Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.get_buffer"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.buffer_updated"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.buffer_updated()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.eof_received"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.eof_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datagram-protocols">Datagram Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol.datagram_received"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol.datagram_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol.error_received"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol.error_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subprocess-protocols">Subprocess Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.pipe_data_received"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.pipe_data_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.pipe_connection_lost"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.pipe_connection_lost()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.process_exited"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.process_exited()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
@@ -219,7 +292,7 @@
           <div class="body" role="main">
             
   <section id="transports-and-protocols">
-<span id="asyncio-transports-protocols"></span><h1>Transports and Protocols<a class="headerlink" href="#transports-and-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="asyncio-transports-protocols"></span><h1>Transports and Protocols<a class="headerlink" href="#transports-and-protocols" title="Permalink to this heading">¶</a></h1>
 <p class="rubric">Preface</p>
 <p>Transports and Protocols are used by the <strong>low-level</strong> event loop
 APIs such as <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_connection" title="asyncio.loop.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_connection()</span></code></a>.  They use
@@ -263,7 +336,7 @@ classes.</p></li>
 protocols, and low-level event loop APIs.</p></li>
 </ul>
 <section id="transports">
-<span id="asyncio-transport"></span><h2>Transports<a class="headerlink" href="#transports" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="asyncio-transport"></span><h2>Transports<a class="headerlink" href="#transports" title="Permalink to this heading">¶</a></h2>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/transports.py">Lib/asyncio/transports.py</a></p>
 <hr class="docutils" />
 <p>Transports are classes provided by <a class="reference internal" href="asyncio.html#module-asyncio" title="asyncio: Asynchronous I/O."><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> in order to abstract
@@ -274,7 +347,7 @@ various kinds of communication channels.</p>
 The methods available on a transport depend on the transport’s kind.</p>
 <p>The transport classes are <a class="reference internal" href="asyncio-dev.html#asyncio-multithreading"><span class="std std-ref">not thread safe</span></a>.</p>
 <section id="transports-hierarchy">
-<h3>Transports Hierarchy<a class="headerlink" href="#transports-hierarchy" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Transports Hierarchy<a class="headerlink" href="#transports-hierarchy" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.BaseTransport">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">BaseTransport</span></span><a class="headerlink" href="#asyncio.BaseTransport" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -336,7 +409,7 @@ event loop methods <a class="reference internal" href="asyncio-eventloop.html#as
 
 </section>
 <section id="base-transport">
-<h3>Base Transport<a class="headerlink" href="#base-transport" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Base Transport<a class="headerlink" href="#base-transport" title="Permalink to this heading">¶</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="asyncio.BaseTransport.close">
 <span class="sig-prename descclassname"><span class="pre">BaseTransport.</span></span><span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.BaseTransport.close" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -430,7 +503,7 @@ protocols are documented to support the switch.</p>
 
 </section>
 <section id="read-only-transports">
-<h3>Read-only Transports<a class="headerlink" href="#read-only-transports" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Read-only Transports<a class="headerlink" href="#read-only-transports" title="Permalink to this heading">¶</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="asyncio.ReadTransport.is_reading">
 <span class="sig-prename descclassname"><span class="pre">ReadTransport.</span></span><span class="sig-name descname"><span class="pre">is_reading</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.ReadTransport.is_reading" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -466,7 +539,7 @@ transport is already reading.</p>
 
 </section>
 <section id="write-only-transports">
-<h3>Write-only Transports<a class="headerlink" href="#write-only-transports" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Write-only Transports<a class="headerlink" href="#write-only-transports" title="Permalink to this heading">¶</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="asyncio.WriteTransport.abort">
 <span class="sig-prename descclassname"><span class="pre">WriteTransport.</span></span><span class="sig-name descname"><span class="pre">abort</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.WriteTransport.abort" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -558,7 +631,7 @@ Data may still be received.</p>
 
 </section>
 <section id="datagram-transports">
-<h3>Datagram Transports<a class="headerlink" href="#datagram-transports" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Datagram Transports<a class="headerlink" href="#datagram-transports" title="Permalink to this heading">¶</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="asyncio.DatagramTransport.sendto">
 <span class="sig-prename descclassname"><span class="pre">DatagramTransport.</span></span><span class="sig-name descname"><span class="pre">sendto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">addr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.DatagramTransport.sendto" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -582,7 +655,7 @@ method will eventually be called with <a class="reference internal" href="consta
 
 </section>
 <section id="subprocess-transports">
-<span id="asyncio-subprocess-transports"></span><h3>Subprocess Transports<a class="headerlink" href="#subprocess-transports" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-subprocess-transports"></span><h3>Subprocess Transports<a class="headerlink" href="#subprocess-transports" title="Permalink to this heading">¶</a></h3>
 <dl class="py method">
 <dt class="sig sig-object py" id="asyncio.SubprocessTransport.get_pid">
 <span class="sig-prename descclassname"><span class="pre">SubprocessTransport.</span></span><span class="sig-name descname"><span class="pre">get_pid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asyncio.SubprocessTransport.get_pid" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -650,7 +723,7 @@ stop the subprocess.</p>
 </section>
 </section>
 <section id="protocols">
-<span id="asyncio-protocol"></span><h2>Protocols<a class="headerlink" href="#protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="asyncio-protocol"></span><h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this heading">¶</a></h2>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/asyncio/protocols.py">Lib/asyncio/protocols.py</a></p>
 <hr class="docutils" />
 <p>asyncio provides a set of abstract base classes that should be used
@@ -661,7 +734,7 @@ all methods.  All these methods are callbacks: they are called by
 transports on certain events, for example when some data is received.
 A base protocol method should be called by the corresponding transport.</p>
 <section id="base-protocols">
-<h3>Base Protocols<a class="headerlink" href="#base-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Base Protocols<a class="headerlink" href="#base-protocols" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="asyncio.BaseProtocol">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">asyncio.</span></span><span class="sig-name descname"><span class="pre">BaseProtocol</span></span><a class="headerlink" href="#asyncio.BaseProtocol" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -697,7 +770,7 @@ processes (unidirectional pipes).</p>
 
 </section>
 <section id="base-protocol">
-<h3>Base Protocol<a class="headerlink" href="#base-protocol" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Base Protocol<a class="headerlink" href="#base-protocol" title="Permalink to this heading">¶</a></h3>
 <p>All asyncio protocols can implement Base Protocol callbacks.</p>
 <p class="rubric">Connection Callbacks</p>
 <p>Connection callbacks are called on all protocols, exactly once per
@@ -747,7 +820,7 @@ conditions are important to ensure that things go as expected when
 either mark is zero.</p>
 </section>
 <section id="streaming-protocols">
-<h3>Streaming Protocols<a class="headerlink" href="#streaming-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Streaming Protocols<a class="headerlink" href="#streaming-protocols" title="Permalink to this heading">¶</a></h3>
 <p>Event methods, such as <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_server" title="asyncio.loop.create_server"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_server()</span></code></a>,
 <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_unix_server" title="asyncio.loop.create_unix_server"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_unix_server()</span></code></a>, <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_connection" title="asyncio.loop.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_connection()</span></code></a>,
 <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_unix_connection" title="asyncio.loop.create_unix_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_unix_connection()</span></code></a>, <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.connect_accepted_socket" title="asyncio.loop.connect_accepted_socket"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.connect_accepted_socket()</span></code></a>,
@@ -794,7 +867,7 @@ being closed.</p>
 </div>
 </section>
 <section id="buffered-streaming-protocols">
-<h3>Buffered Streaming Protocols<a class="headerlink" href="#buffered-streaming-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Buffered Streaming Protocols<a class="headerlink" href="#buffered-streaming-protocols" title="Permalink to this heading">¶</a></h3>
 <div class="versionadded">
 <p><span class="versionmodified added">3.7 sürümünde geldi.</span></p>
 </div>
@@ -848,7 +921,7 @@ and, if called, <a class="reference internal" href="#asyncio.BufferedProtocol.ge
 </div>
 </section>
 <section id="datagram-protocols">
-<h3>Datagram Protocols<a class="headerlink" href="#datagram-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Datagram Protocols<a class="headerlink" href="#datagram-protocols" title="Permalink to this heading">¶</a></h3>
 <p>Datagram Protocol instances should be constructed by protocol
 factories passed to the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_datagram_endpoint" title="asyncio.loop.create_datagram_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_datagram_endpoint()</span></code></a> method.</p>
 <dl class="py method">
@@ -882,7 +955,7 @@ or may not be raised; if it is raised, it will be reported to
 </div>
 </section>
 <section id="subprocess-protocols">
-<span id="asyncio-subprocess-protocols"></span><h3>Subprocess Protocols<a class="headerlink" href="#subprocess-protocols" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-subprocess-protocols"></span><h3>Subprocess Protocols<a class="headerlink" href="#subprocess-protocols" title="Permalink to this heading">¶</a></h3>
 <p>Subprocess Protocol instances should be constructed by protocol
 factories passed to the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.subprocess_exec" title="asyncio.loop.subprocess_exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.subprocess_exec()</span></code></a> and
 <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.subprocess_shell" title="asyncio.loop.subprocess_shell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.subprocess_shell()</span></code></a> methods.</p>
@@ -912,9 +985,9 @@ is closed.</p>
 </section>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <section id="tcp-echo-server">
-<span id="asyncio-example-tcp-echo-server-protocol"></span><h3>TCP Echo Server<a class="headerlink" href="#tcp-echo-server" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-example-tcp-echo-server-protocol"></span><h3>TCP Echo Server<a class="headerlink" href="#tcp-echo-server" title="Permalink to this heading">¶</a></h3>
 <p>Create a TCP echo server using the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_server" title="asyncio.loop.create_server"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_server()</span></code></a> method, send back
 received data, and close the connection:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -960,7 +1033,7 @@ example uses the high-level <a class="reference internal" href="asyncio-stream.h
 </div>
 </section>
 <section id="tcp-echo-client">
-<span id="asyncio-example-tcp-echo-client-protocol"></span><h3>TCP Echo Client<a class="headerlink" href="#tcp-echo-client" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-example-tcp-echo-client-protocol"></span><h3>TCP Echo Client<a class="headerlink" href="#tcp-echo-client" title="Permalink to this heading">¶</a></h3>
 <p>A TCP echo client using the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_connection" title="asyncio.loop.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_connection()</span></code></a> method, sends
 data, and waits until the connection is closed:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -1013,7 +1086,7 @@ example uses the high-level <a class="reference internal" href="asyncio-stream.h
 </div>
 </section>
 <section id="udp-echo-server">
-<span id="asyncio-udp-echo-server-protocol"></span><h3>UDP Echo Server<a class="headerlink" href="#udp-echo-server" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-udp-echo-server-protocol"></span><h3>UDP Echo Server<a class="headerlink" href="#udp-echo-server" title="Permalink to this heading">¶</a></h3>
 <p>A UDP echo server, using the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_datagram_endpoint" title="asyncio.loop.create_datagram_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_datagram_endpoint()</span></code></a>
 method, sends back received data:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -1054,7 +1127,7 @@ method, sends back received data:</p>
 </div>
 </section>
 <section id="udp-echo-client">
-<span id="asyncio-udp-echo-client-protocol"></span><h3>UDP Echo Client<a class="headerlink" href="#udp-echo-client" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-udp-echo-client-protocol"></span><h3>UDP Echo Client<a class="headerlink" href="#udp-echo-client" title="Permalink to this heading">¶</a></h3>
 <p>A UDP echo client, using the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_datagram_endpoint" title="asyncio.loop.create_datagram_endpoint"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_datagram_endpoint()</span></code></a>
 method, sends data and closes the transport when it receives the answer:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -1108,7 +1181,7 @@ method, sends data and closes the transport when it receives the answer:</p>
 </div>
 </section>
 <section id="connecting-existing-sockets">
-<span id="asyncio-example-create-connection"></span><h3>Connecting Existing Sockets<a class="headerlink" href="#connecting-existing-sockets" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-example-create-connection"></span><h3>Connecting Existing Sockets<a class="headerlink" href="#connecting-existing-sockets" title="Permalink to this heading">¶</a></h3>
 <p>Wait until a socket receives data using the
 <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.create_connection" title="asyncio.loop.create_connection"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.create_connection()</span></code></a> method with a protocol:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
@@ -1170,7 +1243,7 @@ created by the <a class="reference internal" href="asyncio-stream.html#asyncio.o
 </div>
 </section>
 <section id="loop-subprocess-exec-and-subprocessprotocol">
-<span id="asyncio-example-subprocess-proto"></span><h3>loop.subprocess_exec() and SubprocessProtocol<a class="headerlink" href="#loop-subprocess-exec-and-subprocessprotocol" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="asyncio-example-subprocess-proto"></span><h3>loop.subprocess_exec() and SubprocessProtocol<a class="headerlink" href="#loop-subprocess-exec-and-subprocessprotocol" title="Permalink to this heading">¶</a></h3>
 <p>An example of a subprocess protocol used to get the output of a
 subprocess and to wait for the subprocess exit.</p>
 <p>The subprocess is created by the <a class="reference internal" href="asyncio-eventloop.html#asyncio.loop.subprocess_exec" title="asyncio.loop.subprocess_exec"><code class="xref py py-meth docutils literal notranslate"><span class="pre">loop.subprocess_exec()</span></code></a> method:</p>
@@ -1237,21 +1310,95 @@ written using high-level APIs.</p>
     <ul>
 <li><a class="reference internal" href="#">Transports and Protocols</a><ul>
 <li><a class="reference internal" href="#transports">Transports</a><ul>
-<li><a class="reference internal" href="#transports-hierarchy">Transports Hierarchy</a></li>
-<li><a class="reference internal" href="#base-transport">Base Transport</a></li>
-<li><a class="reference internal" href="#read-only-transports">Read-only Transports</a></li>
-<li><a class="reference internal" href="#write-only-transports">Write-only Transports</a></li>
-<li><a class="reference internal" href="#datagram-transports">Datagram Transports</a></li>
-<li><a class="reference internal" href="#subprocess-transports">Subprocess Transports</a></li>
+<li><a class="reference internal" href="#transports-hierarchy">Transports Hierarchy</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseTransport"><code class="docutils literal notranslate"><span class="pre">BaseTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport"><code class="docutils literal notranslate"><span class="pre">WriteTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport"><code class="docutils literal notranslate"><span class="pre">ReadTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Transport"><code class="docutils literal notranslate"><span class="pre">Transport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramTransport"><code class="docutils literal notranslate"><span class="pre">DatagramTransport</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#base-transport">Base Transport</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseTransport.close"><code class="docutils literal notranslate"><span class="pre">BaseTransport.close()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.is_closing"><code class="docutils literal notranslate"><span class="pre">BaseTransport.is_closing()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.get_extra_info"><code class="docutils literal notranslate"><span class="pre">BaseTransport.get_extra_info()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.set_protocol"><code class="docutils literal notranslate"><span class="pre">BaseTransport.set_protocol()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseTransport.get_protocol"><code class="docutils literal notranslate"><span class="pre">BaseTransport.get_protocol()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#read-only-transports">Read-only Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.ReadTransport.is_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.is_reading()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport.pause_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.pause_reading()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.ReadTransport.resume_reading"><code class="docutils literal notranslate"><span class="pre">ReadTransport.resume_reading()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#write-only-transports">Write-only Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.WriteTransport.abort"><code class="docutils literal notranslate"><span class="pre">WriteTransport.abort()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.can_write_eof"><code class="docutils literal notranslate"><span class="pre">WriteTransport.can_write_eof()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.get_write_buffer_size"><code class="docutils literal notranslate"><span class="pre">WriteTransport.get_write_buffer_size()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.get_write_buffer_limits"><code class="docutils literal notranslate"><span class="pre">WriteTransport.get_write_buffer_limits()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.set_write_buffer_limits"><code class="docutils literal notranslate"><span class="pre">WriteTransport.set_write_buffer_limits()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.write"><code class="docutils literal notranslate"><span class="pre">WriteTransport.write()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.writelines"><code class="docutils literal notranslate"><span class="pre">WriteTransport.writelines()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.WriteTransport.write_eof"><code class="docutils literal notranslate"><span class="pre">WriteTransport.write_eof()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datagram-transports">Datagram Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.DatagramTransport.sendto"><code class="docutils literal notranslate"><span class="pre">DatagramTransport.sendto()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramTransport.abort"><code class="docutils literal notranslate"><span class="pre">DatagramTransport.abort()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subprocess-transports">Subprocess Transports</a><ul>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_pid"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_pid()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_pipe_transport"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_pipe_transport()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.get_returncode"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.get_returncode()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.kill"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.kill()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.send_signal"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.send_signal()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.terminate"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.terminate()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessTransport.close"><code class="docutils literal notranslate"><span class="pre">SubprocessTransport.close()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#protocols">Protocols</a><ul>
-<li><a class="reference internal" href="#base-protocols">Base Protocols</a></li>
-<li><a class="reference internal" href="#base-protocol">Base Protocol</a></li>
-<li><a class="reference internal" href="#streaming-protocols">Streaming Protocols</a></li>
-<li><a class="reference internal" href="#buffered-streaming-protocols">Buffered Streaming Protocols</a></li>
-<li><a class="reference internal" href="#datagram-protocols">Datagram Protocols</a></li>
-<li><a class="reference internal" href="#subprocess-protocols">Subprocess Protocols</a></li>
+<li><a class="reference internal" href="#base-protocols">Base Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseProtocol"><code class="docutils literal notranslate"><span class="pre">BaseProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Protocol"><code class="docutils literal notranslate"><span class="pre">Protocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#base-protocol">Base Protocol</a><ul>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.connection_made"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.connection_made()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.connection_lost"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.connection_lost()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.pause_writing"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.pause_writing()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BaseProtocol.resume_writing"><code class="docutils literal notranslate"><span class="pre">BaseProtocol.resume_writing()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#streaming-protocols">Streaming Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.Protocol.data_received"><code class="docutils literal notranslate"><span class="pre">Protocol.data_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.Protocol.eof_received"><code class="docutils literal notranslate"><span class="pre">Protocol.eof_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#buffered-streaming-protocols">Buffered Streaming Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.get_buffer"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.get_buffer()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.buffer_updated"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.buffer_updated()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.BufferedProtocol.eof_received"><code class="docutils literal notranslate"><span class="pre">BufferedProtocol.eof_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#datagram-protocols">Datagram Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol.datagram_received"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol.datagram_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.DatagramProtocol.error_received"><code class="docutils literal notranslate"><span class="pre">DatagramProtocol.error_received()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#subprocess-protocols">Subprocess Protocols</a><ul>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.pipe_data_received"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.pipe_data_received()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.pipe_connection_lost"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.pipe_connection_lost()</span></code></a></li>
+<li><a class="reference internal" href="#asyncio.SubprocessProtocol.process_exited"><code class="docutils literal notranslate"><span class="pre">SubprocessProtocol.process_exited()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#examples">Examples</a><ul>
@@ -1290,6 +1437,10 @@ written using high-level APIs.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -1364,11 +1515,11 @@ written using high-level APIs.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

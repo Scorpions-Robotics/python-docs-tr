@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Python Development Mode" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/devmode.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -192,7 +191,7 @@
           <div class="body" role="main">
             
   <section id="python-development-mode">
-<span id="devmode"></span><h1>Python Development Mode<a class="headerlink" href="#python-development-mode" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="devmode"></span><h1>Python Development Mode<a class="headerlink" href="#python-development-mode" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">3.7 sürümünde geldi.</span></p>
 </div>
@@ -205,7 +204,7 @@ setting the <span class="target" id="index-0"></span><a class="reference interna
 <p>See also <a class="reference internal" href="../using/configure.html#debug-build"><span class="std std-ref">Python debug build</span></a>.</p>
 </section>
 <section id="effects-of-the-python-development-mode">
-<h1>Effects of the Python Development Mode<a class="headerlink" href="#effects-of-the-python-development-mode" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Effects of the Python Development Mode<a class="headerlink" href="#effects-of-the-python-development-mode" title="Permalink to this heading">¶</a></h1>
 <p>Enabling the Python Development Mode is similar to the following command, but
 with additional effects described below:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">PYTHONMALLOC</span><span class="o">=</span><span class="n">debug</span> <span class="n">PYTHONASYNCIODEBUG</span><span class="o">=</span><span class="mi">1</span> <span class="n">python3</span> <span class="o">-</span><span class="n">W</span> <span class="n">default</span> <span class="o">-</span><span class="n">X</span> <span class="n">faulthandler</span>
@@ -285,7 +284,7 @@ and decoding operations.</p>
 </div>
 </section>
 <section id="resourcewarning-example">
-<h1>ResourceWarning Example<a class="headerlink" href="#resourcewarning-example" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>ResourceWarning Example<a class="headerlink" href="#resourcewarning-example" title="Permalink to this heading">¶</a></h1>
 <p>Example of a script counting the number of lines of the text file specified in
 the command line:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
@@ -341,7 +340,7 @@ CPython, but it is even worse in PyPy. Closing resources explicitly makes an
 application more deterministic and more reliable.</p>
 </section>
 <section id="bad-file-descriptor-error-example">
-<h1>Bad file descriptor error example<a class="headerlink" href="#bad-file-descriptor-error-example" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<h1>Bad file descriptor error example<a class="headerlink" href="#bad-file-descriptor-error-example" title="Permalink to this heading">¶</a></h1>
 <p>Script displaying the first line of itself:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 
@@ -422,6 +421,10 @@ for an example).</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -495,11 +498,11 @@ for an example).</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

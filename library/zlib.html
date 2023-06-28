@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="zlib — Compression compatible with gzip" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/zlib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -94,6 +93,33 @@
         <option value="dark">Dark</option>
     </select>
 </label>
+  <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code> — Compression compatible with <strong class="program">gzip</strong></a><ul>
+<li><a class="reference internal" href="#zlib.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#zlib.adler32"><code class="docutils literal notranslate"><span class="pre">adler32()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.compress"><code class="docutils literal notranslate"><span class="pre">compress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.compressobj"><code class="docutils literal notranslate"><span class="pre">compressobj()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.crc32"><code class="docutils literal notranslate"><span class="pre">crc32()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.decompress"><code class="docutils literal notranslate"><span class="pre">decompress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.decompressobj"><code class="docutils literal notranslate"><span class="pre">decompressobj()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.compress"><code class="docutils literal notranslate"><span class="pre">Compress.compress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.flush"><code class="docutils literal notranslate"><span class="pre">Compress.flush()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.copy"><code class="docutils literal notranslate"><span class="pre">Compress.copy()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.unused_data"><code class="docutils literal notranslate"><span class="pre">Decompress.unused_data</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.unconsumed_tail"><code class="docutils literal notranslate"><span class="pre">Decompress.unconsumed_tail</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.eof"><code class="docutils literal notranslate"><span class="pre">Decompress.eof</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.decompress"><code class="docutils literal notranslate"><span class="pre">Decompress.decompress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.flush"><code class="docutils literal notranslate"><span class="pre">Decompress.flush()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.copy"><code class="docutils literal notranslate"><span class="pre">Decompress.copy()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.ZLIB_VERSION"><code class="docutils literal notranslate"><span class="pre">ZLIB_VERSION</span></code></a></li>
+<li><a class="reference internal" href="#zlib.ZLIB_RUNTIME_VERSION"><code class="docutils literal notranslate"><span class="pre">ZLIB_RUNTIME_VERSION</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="archiving.html"
@@ -182,7 +208,7 @@
           <div class="body" role="main">
             
   <section id="module-zlib">
-<span id="zlib-compression-compatible-with-gzip"></span><h1><a class="reference internal" href="#module-zlib" title="zlib: Low-level interface to compression and decompression routines compatible with gzip."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code></a> — Compression compatible with <strong class="program">gzip</strong><a class="headerlink" href="#module-zlib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="zlib-compression-compatible-with-gzip"></span><h1><a class="reference internal" href="#module-zlib" title="zlib: Low-level interface to compression and decompression routines compatible with gzip."><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code></a> — Compression compatible with <strong class="program">gzip</strong><a class="headerlink" href="#module-zlib" title="Permalink to this heading">¶</a></h1>
 <hr class="docutils" />
 <p>For applications that require data compression, the functions in this module
 allow compression and decompression, using the zlib library. The zlib library
@@ -221,7 +247,7 @@ for use as a general hash algorithm.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="zlib.compress">
-<span class="sig-prename descclassname"><span class="pre">zlib.</span></span><span class="sig-name descname"><span class="pre">compress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wbits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">MAX_WBITS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zlib.compress" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">zlib.</span></span><span class="sig-name descname"><span class="pre">compress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wbits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">MAX_WBITS</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#zlib.compress" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Compresses the bytes in <em>data</em>, returning a bytes object containing compressed data.
 <em>level</em> is an integer from <code class="docutils literal notranslate"><span class="pre">0</span></code> to <code class="docutils literal notranslate"><span class="pre">9</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code> controlling the level of compression;
 <code class="docutils literal notranslate"><span class="pre">1</span></code> (Z_BEST_SPEED) is fastest and produces the least compression, <code class="docutils literal notranslate"><span class="pre">9</span></code> (Z_BEST_COMPRESSION)
@@ -512,6 +538,33 @@ functions.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <div>
+    <h3><a href="../contents.html">İçindekiler</a></h3>
+    <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zlib</span></code> — Compression compatible with <strong class="program">gzip</strong></a><ul>
+<li><a class="reference internal" href="#zlib.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li><a class="reference internal" href="#zlib.adler32"><code class="docutils literal notranslate"><span class="pre">adler32()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.compress"><code class="docutils literal notranslate"><span class="pre">compress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.compressobj"><code class="docutils literal notranslate"><span class="pre">compressobj()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.crc32"><code class="docutils literal notranslate"><span class="pre">crc32()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.decompress"><code class="docutils literal notranslate"><span class="pre">decompress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.decompressobj"><code class="docutils literal notranslate"><span class="pre">decompressobj()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.compress"><code class="docutils literal notranslate"><span class="pre">Compress.compress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.flush"><code class="docutils literal notranslate"><span class="pre">Compress.flush()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Compress.copy"><code class="docutils literal notranslate"><span class="pre">Compress.copy()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.unused_data"><code class="docutils literal notranslate"><span class="pre">Decompress.unused_data</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.unconsumed_tail"><code class="docutils literal notranslate"><span class="pre">Decompress.unconsumed_tail</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.eof"><code class="docutils literal notranslate"><span class="pre">Decompress.eof</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.decompress"><code class="docutils literal notranslate"><span class="pre">Decompress.decompress()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.flush"><code class="docutils literal notranslate"><span class="pre">Decompress.flush()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.Decompress.copy"><code class="docutils literal notranslate"><span class="pre">Decompress.copy()</span></code></a></li>
+<li><a class="reference internal" href="#zlib.ZLIB_VERSION"><code class="docutils literal notranslate"><span class="pre">ZLIB_VERSION</span></code></a></li>
+<li><a class="reference internal" href="#zlib.ZLIB_RUNTIME_VERSION"><code class="docutils literal notranslate"><span class="pre">ZLIB_RUNTIME_VERSION</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  <div>
     <h4>Önceki konu</h4>
     <p class="topless"><a href="archiving.html"
                           title="önceki bölüm">Data Compression and Archiving</a></p>
@@ -533,6 +586,10 @@ functions.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -606,11 +663,11 @@ functions.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

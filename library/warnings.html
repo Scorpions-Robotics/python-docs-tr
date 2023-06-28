@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="warnings — Warning control" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/warnings.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -108,8 +107,20 @@
 <li><a class="reference internal" href="#temporarily-suppressing-warnings">Temporarily Suppressing Warnings</a></li>
 <li><a class="reference internal" href="#testing-warnings">Testing Warnings</a></li>
 <li><a class="reference internal" href="#updating-code-for-new-versions-of-dependencies">Updating Code For New Versions of Dependencies</a></li>
-<li><a class="reference internal" href="#available-functions">Available Functions</a></li>
-<li><a class="reference internal" href="#available-context-managers">Available Context Managers</a></li>
+<li><a class="reference internal" href="#available-functions">Available Functions</a><ul>
+<li><a class="reference internal" href="#warnings.warn"><code class="docutils literal notranslate"><span class="pre">warn()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.warn_explicit"><code class="docutils literal notranslate"><span class="pre">warn_explicit()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.showwarning"><code class="docutils literal notranslate"><span class="pre">showwarning()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.formatwarning"><code class="docutils literal notranslate"><span class="pre">formatwarning()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.filterwarnings"><code class="docutils literal notranslate"><span class="pre">filterwarnings()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.simplefilter"><code class="docutils literal notranslate"><span class="pre">simplefilter()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.resetwarnings"><code class="docutils literal notranslate"><span class="pre">resetwarnings()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#available-context-managers">Available Context Managers</a><ul>
+<li><a class="reference internal" href="#warnings.catch_warnings"><code class="docutils literal notranslate"><span class="pre">catch_warnings</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -203,7 +214,7 @@
           <div class="body" role="main">
             
   <section id="module-warnings">
-<span id="warnings-warning-control"></span><h1><a class="reference internal" href="#module-warnings" title="warnings: Issue warning messages and control their disposition."><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> — Warning control<a class="headerlink" href="#module-warnings" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="warnings-warning-control"></span><h1><a class="reference internal" href="#module-warnings" title="warnings: Issue warning messages and control their disposition."><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a> — Warning control<a class="headerlink" href="#module-warnings" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/warnings.py">Lib/warnings.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>Warning messages are typically issued in situations where it is useful to alert
@@ -235,7 +246,7 @@ custom implementations.</p>
 the standard logging infrastructure.</p>
 </div>
 <section id="warning-categories">
-<span id="id1"></span><h2>Warning Categories<a class="headerlink" href="#warning-categories" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Warning Categories<a class="headerlink" href="#warning-categories" title="Permalink to this heading">¶</a></h2>
 <p>There are a number of built-in exceptions that represent warning categories.
 This categorization is useful to be able to filter out groups of warnings.</p>
 <p>While these are technically
@@ -246,10 +257,6 @@ standard warning categories.  A warning category must always be a subclass of
 the <a class="reference internal" href="exceptions.html#Warning" title="Warning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Warning</span></code></a> class.</p>
 <p>The following warnings category classes are currently defined:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 42%" />
-<col style="width: 58%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Class</p></th>
 <th class="head"><p>Description</p></th>
@@ -317,7 +324,7 @@ filters.</p>
 </div>
 </section>
 <section id="the-warnings-filter">
-<span id="warning-filter"></span><h2>The Warnings Filter<a class="headerlink" href="#the-warnings-filter" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="warning-filter"></span><h2>The Warnings Filter<a class="headerlink" href="#the-warnings-filter" title="Permalink to this heading">¶</a></h2>
 <p>The warnings filter controls whether warnings are ignored, displayed, or turned
 into errors (raising an exception).</p>
 <p>Conceptually, the warnings filter maintains an ordered list of filter
@@ -328,10 +335,6 @@ the disposition of the match.  Each entry is a tuple of the form (<em>action</em
 <ul>
 <li><p><em>action</em> is one of the following strings:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Disposition</p></th>
@@ -384,7 +387,7 @@ class, to turn a warning into an error we simply raise <code class="docutils lit
 <p>If a warning is reported and doesn’t match any registered filter then the
 “default” action is applied (hence its name).</p>
 <section id="describing-warning-filters">
-<span id="id2"></span><h3>Describing Warning Filters<a class="headerlink" href="#describing-warning-filters" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id2"></span><h3>Describing Warning Filters<a class="headerlink" href="#describing-warning-filters" title="Permalink to this heading">¶</a></h3>
 <p>The warnings filter is initialized by <a class="reference internal" href="../using/cmdline.html#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a> options passed to the Python
 interpreter command line and the <span class="target" id="index-3"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONWARNINGS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONWARNINGS</span></code></a> environment variable.
 The interpreter saves the arguments for all supplied entries without
@@ -416,7 +419,7 @@ Some examples:</p>
 </div>
 </section>
 <section id="default-warning-filter">
-<span id="id3"></span><h3>Default Warning Filter<a class="headerlink" href="#default-warning-filter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="id3"></span><h3>Default Warning Filter<a class="headerlink" href="#default-warning-filter" title="Permalink to this heading">¶</a></h3>
 <p>By default, Python installs several warning filters, which can be overridden by
 the <a class="reference internal" href="../using/cmdline.html#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a> command-line option, the <span class="target" id="index-5"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONWARNINGS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONWARNINGS</span></code></a> environment
 variable and calls to <a class="reference internal" href="#warnings.filterwarnings" title="warnings.filterwarnings"><code class="xref py py-func docutils literal notranslate"><span class="pre">filterwarnings()</span></code></a>.</p>
@@ -445,7 +448,7 @@ twice.</p>
 </div>
 </section>
 <section id="overriding-the-default-filter">
-<span id="warning-disable"></span><h3>Overriding the default filter<a class="headerlink" href="#overriding-the-default-filter" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="warning-disable"></span><h3>Overriding the default filter<a class="headerlink" href="#overriding-the-default-filter" title="Permalink to this heading">¶</a></h3>
 <p>Developers of applications written in Python may wish to hide <em>all</em> Python level
 warnings from their users by default, and only display them when running tests
 or otherwise working on the application. The <a class="reference internal" href="sys.html#sys.warnoptions" title="sys.warnoptions"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.warnoptions</span></code></a> attribute
@@ -481,7 +484,7 @@ messages are made visible by default, using code like the following (where
 </section>
 </section>
 <section id="temporarily-suppressing-warnings">
-<span id="warning-suppress"></span><h2>Temporarily Suppressing Warnings<a class="headerlink" href="#temporarily-suppressing-warnings" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="warning-suppress"></span><h2>Temporarily Suppressing Warnings<a class="headerlink" href="#temporarily-suppressing-warnings" title="Permalink to this heading">¶</a></h2>
 <p>If you are using code that you know will raise a warning, such as a deprecated
 function, but do not want to see the warning (even when warnings have been
 explicitly configured via the command line), then it is possible to suppress
@@ -504,7 +507,7 @@ application. If two or more threads use the <a class="reference internal" href="
 manager at the same time, the behavior is undefined.</p>
 </section>
 <section id="testing-warnings">
-<span id="warning-testing"></span><h2>Testing Warnings<a class="headerlink" href="#testing-warnings" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="warning-testing"></span><h2>Testing Warnings<a class="headerlink" href="#testing-warnings" title="Permalink to this heading">¶</a></h2>
 <p>To test warnings raised by code, use the <a class="reference internal" href="#warnings.catch_warnings" title="warnings.catch_warnings"><code class="xref py py-class docutils literal notranslate"><span class="pre">catch_warnings</span></code></a> context
 manager. With it you can temporarily mutate the warnings filter to facilitate
 your testing. For instance, do the following to capture all raised warnings to
@@ -545,7 +548,7 @@ continues to increase after each operation, or else delete the previous
 entries from the warnings list before each new operation).</p>
 </section>
 <section id="updating-code-for-new-versions-of-dependencies">
-<span id="warning-ignored"></span><h2>Updating Code For New Versions of Dependencies<a class="headerlink" href="#updating-code-for-new-versions-of-dependencies" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="warning-ignored"></span><h2>Updating Code For New Versions of Dependencies<a class="headerlink" href="#updating-code-for-new-versions-of-dependencies" title="Permalink to this heading">¶</a></h2>
 <p>Warning categories that are primarily of interest to Python developers (rather
 than end users of applications written in Python) are ignored by default.</p>
 <p>Notably, this “ignored by default” list includes <a class="reference internal" href="exceptions.html#DeprecationWarning" title="DeprecationWarning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">DeprecationWarning</span></code></a>
@@ -566,7 +569,7 @@ warnings you can change what argument is passed to <a class="reference internal"
 possible.</p>
 </section>
 <section id="available-functions">
-<span id="warning-functions"></span><h2>Available Functions<a class="headerlink" href="#available-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="warning-functions"></span><h2>Available Functions<a class="headerlink" href="#available-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="warnings.warn">
 <span class="sig-prename descclassname"><span class="pre">warnings.</span></span><span class="sig-name descname"><span class="pre">warn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stacklevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#warnings.warn" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -667,7 +670,7 @@ and calls to <a class="reference internal" href="#warnings.simplefilter" title="
 
 </section>
 <section id="available-context-managers">
-<h2>Available Context Managers<a class="headerlink" href="#available-context-managers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Available Context Managers<a class="headerlink" href="#available-context-managers" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="warnings.catch_warnings">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">warnings.</span></span><span class="sig-name descname"><span class="pre">catch_warnings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">record</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Warning</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lineno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#warnings.catch_warnings" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -723,8 +726,20 @@ global state and therefore is not thread-safe.</p>
 <li><a class="reference internal" href="#temporarily-suppressing-warnings">Temporarily Suppressing Warnings</a></li>
 <li><a class="reference internal" href="#testing-warnings">Testing Warnings</a></li>
 <li><a class="reference internal" href="#updating-code-for-new-versions-of-dependencies">Updating Code For New Versions of Dependencies</a></li>
-<li><a class="reference internal" href="#available-functions">Available Functions</a></li>
-<li><a class="reference internal" href="#available-context-managers">Available Context Managers</a></li>
+<li><a class="reference internal" href="#available-functions">Available Functions</a><ul>
+<li><a class="reference internal" href="#warnings.warn"><code class="docutils literal notranslate"><span class="pre">warn()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.warn_explicit"><code class="docutils literal notranslate"><span class="pre">warn_explicit()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.showwarning"><code class="docutils literal notranslate"><span class="pre">showwarning()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.formatwarning"><code class="docutils literal notranslate"><span class="pre">formatwarning()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.filterwarnings"><code class="docutils literal notranslate"><span class="pre">filterwarnings()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.simplefilter"><code class="docutils literal notranslate"><span class="pre">simplefilter()</span></code></a></li>
+<li><a class="reference internal" href="#warnings.resetwarnings"><code class="docutils literal notranslate"><span class="pre">resetwarnings()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#available-context-managers">Available Context Managers</a><ul>
+<li><a class="reference internal" href="#warnings.catch_warnings"><code class="docutils literal notranslate"><span class="pre">catch_warnings</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -752,6 +767,10 @@ global state and therefore is not thread-safe.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -825,11 +844,11 @@ global state and therefore is not thread-safe.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

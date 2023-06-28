@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="9. API Reference" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/distutils/apiref.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,30 +97,159 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">9. API Reference</a><ul>
-<li><a class="reference internal" href="#module-distutils.core">9.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code> — Core Distutils functionality</a></li>
-<li><a class="reference internal" href="#module-distutils.ccompiler">9.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code> — CCompiler base class</a></li>
+<li><a class="reference internal" href="#module-distutils.core">9.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code> — Core Distutils functionality</a><ul>
+<li><a class="reference internal" href="#distutils.core.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.run_setup"><code class="docutils literal notranslate"><span class="pre">run_setup()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Extension"><code class="docutils literal notranslate"><span class="pre">Extension</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Distribution"><code class="docutils literal notranslate"><span class="pre">Distribution</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.ccompiler">9.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code> — CCompiler base class</a><ul>
+<li><a class="reference internal" href="#distutils.ccompiler.gen_lib_options"><code class="docutils literal notranslate"><span class="pre">gen_lib_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.gen_preprocess_options"><code class="docutils literal notranslate"><span class="pre">gen_preprocess_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.get_default_compiler"><code class="docutils literal notranslate"><span class="pre">get_default_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.new_compiler"><code class="docutils literal notranslate"><span class="pre">new_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.show_compilers"><code class="docutils literal notranslate"><span class="pre">show_compilers()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler"><code class="docutils literal notranslate"><span class="pre">CCompiler</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_include_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_include_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_include_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_include_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_library"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_library()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_libraries"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_libraries()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_library_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_library_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_library_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_library_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_runtime_library_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_runtime_library_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_runtime_library_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_runtime_library_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.define_macro"><code class="docutils literal notranslate"><span class="pre">CCompiler.define_macro()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.undefine_macro"><code class="docutils literal notranslate"><span class="pre">CCompiler.undefine_macro()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_link_object"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_link_object()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_link_objects"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_link_objects()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.detect_language"><code class="docutils literal notranslate"><span class="pre">CCompiler.detect_language()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.find_library_file"><code class="docutils literal notranslate"><span class="pre">CCompiler.find_library_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.has_function"><code class="docutils literal notranslate"><span class="pre">CCompiler.has_function()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_dir_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_dir_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.runtime_library_dir_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.runtime_library_dir_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_executables"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_executables()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.compile"><code class="docutils literal notranslate"><span class="pre">CCompiler.compile()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.create_static_lib"><code class="docutils literal notranslate"><span class="pre">CCompiler.create_static_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link"><code class="docutils literal notranslate"><span class="pre">CCompiler.link()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_executable"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_executable()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_shared_lib"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_shared_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_shared_object"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_shared_object()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.preprocess"><code class="docutils literal notranslate"><span class="pre">CCompiler.preprocess()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.executable_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.executable_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.object_filenames"><code class="docutils literal notranslate"><span class="pre">CCompiler.object_filenames()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.shared_object_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.shared_object_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.execute"><code class="docutils literal notranslate"><span class="pre">CCompiler.execute()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.spawn"><code class="docutils literal notranslate"><span class="pre">CCompiler.spawn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.mkpath"><code class="docutils literal notranslate"><span class="pre">CCompiler.mkpath()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.move_file"><code class="docutils literal notranslate"><span class="pre">CCompiler.move_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.announce"><code class="docutils literal notranslate"><span class="pre">CCompiler.announce()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.warn"><code class="docutils literal notranslate"><span class="pre">CCompiler.warn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.debug_print"><code class="docutils literal notranslate"><span class="pre">CCompiler.debug_print()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.unixccompiler">9.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.unixccompiler</span></code> — Unix C Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.msvccompiler">9.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.msvccompiler</span></code> — Microsoft Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.bcppcompiler">9.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.bcppcompiler</span></code> — Borland Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.cygwinccompiler">9.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cygwincompiler</span></code> — Cygwin Compiler</a></li>
-<li><a class="reference internal" href="#module-distutils.archive_util">9.7. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code> —  Archiving utilities</a></li>
-<li><a class="reference internal" href="#module-distutils.dep_util">9.8. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code> — Dependency checking</a></li>
-<li><a class="reference internal" href="#module-distutils.dir_util">9.9. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code> — Directory tree operations</a></li>
-<li><a class="reference internal" href="#module-distutils.file_util">9.10. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code> — Single file operations</a></li>
-<li><a class="reference internal" href="#module-distutils.util">9.11. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code> — Miscellaneous other utility functions</a></li>
+<li><a class="reference internal" href="#module-distutils.archive_util">9.7. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code> —  Archiving utilities</a><ul>
+<li><a class="reference internal" href="#distutils.archive_util.make_archive"><code class="docutils literal notranslate"><span class="pre">make_archive()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.archive_util.make_tarball"><code class="docutils literal notranslate"><span class="pre">make_tarball()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.archive_util.make_zipfile"><code class="docutils literal notranslate"><span class="pre">make_zipfile()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.dep_util">9.8. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code> — Dependency checking</a><ul>
+<li><a class="reference internal" href="#distutils.dep_util.newer"><code class="docutils literal notranslate"><span class="pre">newer()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dep_util.newer_pairwise"><code class="docutils literal notranslate"><span class="pre">newer_pairwise()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dep_util.newer_group"><code class="docutils literal notranslate"><span class="pre">newer_group()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.dir_util">9.9. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code> — Directory tree operations</a><ul>
+<li><a class="reference internal" href="#distutils.dir_util.mkpath"><code class="docutils literal notranslate"><span class="pre">mkpath()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.create_tree"><code class="docutils literal notranslate"><span class="pre">create_tree()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.copy_tree"><code class="docutils literal notranslate"><span class="pre">copy_tree()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.remove_tree"><code class="docutils literal notranslate"><span class="pre">remove_tree()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.file_util">9.10. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code> — Single file operations</a><ul>
+<li><a class="reference internal" href="#distutils.file_util.copy_file"><code class="docutils literal notranslate"><span class="pre">copy_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.file_util.move_file"><code class="docutils literal notranslate"><span class="pre">move_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.file_util.write_file"><code class="docutils literal notranslate"><span class="pre">write_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.util">9.11. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code> — Miscellaneous other utility functions</a><ul>
+<li><a class="reference internal" href="#distutils.util.get_platform"><code class="docutils literal notranslate"><span class="pre">get_platform()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.convert_path"><code class="docutils literal notranslate"><span class="pre">convert_path()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.change_root"><code class="docutils literal notranslate"><span class="pre">change_root()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.check_environ"><code class="docutils literal notranslate"><span class="pre">check_environ()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.subst_vars"><code class="docutils literal notranslate"><span class="pre">subst_vars()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.split_quoted"><code class="docutils literal notranslate"><span class="pre">split_quoted()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.strtobool"><code class="docutils literal notranslate"><span class="pre">strtobool()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.byte_compile"><code class="docutils literal notranslate"><span class="pre">byte_compile()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.rfc822_escape"><code class="docutils literal notranslate"><span class="pre">rfc822_escape()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.dist">9.12. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dist</span></code> — The Distribution class</a></li>
 <li><a class="reference internal" href="#module-distutils.extension">9.13. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.extension</span></code> — The Extension class</a></li>
 <li><a class="reference internal" href="#module-distutils.debug">9.14. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.debug</span></code> — Distutils debug mode</a></li>
 <li><a class="reference internal" href="#module-distutils.errors">9.15. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.errors</span></code> — Distutils exceptions</a></li>
-<li><a class="reference internal" href="#module-distutils.fancy_getopt">9.16. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code> — Wrapper around the standard getopt module</a></li>
+<li><a class="reference internal" href="#module-distutils.fancy_getopt">9.16. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code> — Wrapper around the standard getopt module</a><ul>
+<li><a class="reference internal" href="#distutils.fancy_getopt.fancy_getopt"><code class="docutils literal notranslate"><span class="pre">fancy_getopt()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.wrap_text"><code class="docutils literal notranslate"><span class="pre">wrap_text()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt"><code class="docutils literal notranslate"><span class="pre">FancyGetopt</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.getopt"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.getopt()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.get_option_order"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.get_option_order()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.generate_help"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.generate_help()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.filelist">9.17. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.filelist</span></code> — The FileList class</a></li>
 <li><a class="reference internal" href="#module-distutils.log">9.18. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.log</span></code> — Simple <strong>PEP 282</strong>-style logging</a></li>
 <li><a class="reference internal" href="#module-distutils.spawn">9.19. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.spawn</span></code> — Spawn a sub-process</a></li>
-<li><a class="reference internal" href="#module-distutils.sysconfig">9.20. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> — System configuration information</a></li>
-<li><a class="reference internal" href="#module-distutils.text_file">9.21. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code> — The TextFile class</a></li>
+<li><a class="reference internal" href="#module-distutils.sysconfig">9.20. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> — System configuration information</a><ul>
+<li><a class="reference internal" href="#distutils.sysconfig.PREFIX"><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.EXEC_PREFIX"><code class="docutils literal notranslate"><span class="pre">EXEC_PREFIX</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_var"><code class="docutils literal notranslate"><span class="pre">get_config_var()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_vars"><code class="docutils literal notranslate"><span class="pre">get_config_vars()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_h_filename"><code class="docutils literal notranslate"><span class="pre">get_config_h_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_makefile_filename"><code class="docutils literal notranslate"><span class="pre">get_makefile_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_python_inc"><code class="docutils literal notranslate"><span class="pre">get_python_inc()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_python_lib"><code class="docutils literal notranslate"><span class="pre">get_python_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.customize_compiler"><code class="docutils literal notranslate"><span class="pre">customize_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.set_python_build"><code class="docutils literal notranslate"><span class="pre">set_python_build()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.text_file">9.21. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code> — The TextFile class</a><ul>
+<li><a class="reference internal" href="#distutils.text_file.TextFile"><code class="docutils literal notranslate"><span class="pre">TextFile</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.open"><code class="docutils literal notranslate"><span class="pre">TextFile.open()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.close"><code class="docutils literal notranslate"><span class="pre">TextFile.close()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.warn"><code class="docutils literal notranslate"><span class="pre">TextFile.warn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.readline"><code class="docutils literal notranslate"><span class="pre">TextFile.readline()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.readlines"><code class="docutils literal notranslate"><span class="pre">TextFile.readlines()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.unreadline"><code class="docutils literal notranslate"><span class="pre">TextFile.unreadline()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.version">9.22. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.version</span></code> — Version number classes</a></li>
-<li><a class="reference internal" href="#module-distutils.cmd">9.23. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code> — Abstract base class for Distutils commands</a></li>
-<li><a class="reference internal" href="#creating-a-new-distutils-command">9.24. Creating a new Distutils command</a></li>
+<li><a class="reference internal" href="#module-distutils.cmd">9.23. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code> — Abstract base class for Distutils commands</a><ul>
+<li><a class="reference internal" href="#distutils.cmd.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-new-distutils-command">9.24. Creating a new Distutils command</a><ul>
+<li><a class="reference internal" href="#distutils.cmd.Command.initialize_options"><code class="docutils literal notranslate"><span class="pre">Command.initialize_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.finalize_options"><code class="docutils literal notranslate"><span class="pre">Command.finalize_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.run"><code class="docutils literal notranslate"><span class="pre">Command.run()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.sub_commands"><code class="docutils literal notranslate"><span class="pre">Command.sub_commands</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.command">9.25. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command</span></code> — Individual Distutils commands</a></li>
 <li><a class="reference internal" href="#module-distutils.command.bdist">9.26. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist</span></code> — Build a binary installer</a></li>
 <li><a class="reference internal" href="#module-distutils.command.bdist_packager">9.27. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_packager</span></code> — Abstract base class for packagers</a></li>
@@ -131,7 +259,11 @@
 <li><a class="reference internal" href="#module-distutils.command.build">9.31. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build</span></code> — Build all files of a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.build_clib">9.32. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_clib</span></code> — Build any C libraries in a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.build_ext">9.33. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_ext</span></code> — Build any extensions in a package</a></li>
-<li><a class="reference internal" href="#module-distutils.command.build_py">9.34. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code> — Build the .py/.pyc files of a package</a></li>
+<li><a class="reference internal" href="#module-distutils.command.build_py">9.34. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code> — Build the .py/.pyc files of a package</a><ul>
+<li><a class="reference internal" href="#distutils.command.build_py.build_py"><code class="docutils literal notranslate"><span class="pre">build_py</span></code></a></li>
+<li><a class="reference internal" href="#distutils.command.build_py.build_py_2to3"><code class="docutils literal notranslate"><span class="pre">build_py_2to3</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.command.build_scripts">9.35. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_scripts</span></code> — Build the scripts of a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.clean">9.36. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.clean</span></code> — Clean a package build area</a></li>
 <li><a class="reference internal" href="#module-distutils.command.config">9.37. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.config</span></code> — Perform package configuration</a></li>
@@ -234,7 +366,7 @@
           <div class="body" role="main">
             
   <section id="api-reference">
-<span id="id1"></span><h1><span class="section-number">9. </span>API Reference<a class="headerlink" href="#api-reference" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">9. </span>API Reference<a class="headerlink" href="#api-reference" title="Permalink to this heading">¶</a></h1>
 <div class="admonition seealso">
 <p class="admonition-title">Ayrıca bakınız</p>
 <dl class="simple">
@@ -251,7 +383,7 @@ at <a class="reference external" href="https://setuptools.readthedocs.io/en/late
 independently covers all of the relevant information currently included here.</p>
 </div>
 <section id="module-distutils.core">
-<span id="distutils-core-core-distutils-functionality"></span><h2><span class="section-number">9.1. </span><a class="reference internal" href="#module-distutils.core" title="distutils.core: The core Distutils functionality"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code></a> — Core Distutils functionality<a class="headerlink" href="#module-distutils.core" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-core-core-distutils-functionality"></span><h2><span class="section-number">9.1. </span><a class="reference internal" href="#module-distutils.core" title="distutils.core: The core Distutils functionality"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code></a> — Core Distutils functionality<a class="headerlink" href="#module-distutils.core" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-distutils.core" title="distutils.core: The core Distutils functionality"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code></a> module is the only module that needs to be installed
 to use the Distutils. It provides the <a class="reference internal" href="#distutils.core.setup" title="distutils.core.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> (which is called from the
 setup script). Indirectly provides the  <code class="xref py py-class docutils literal notranslate"><span class="pre">distutils.dist.Distribution</span></code> and
@@ -264,11 +396,6 @@ for from a Distutils method.</p>
 <p>The setup function takes a large number of arguments. These are laid out in the
 following table.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 18%" />
-<col style="width: 28%" />
-<col style="width: 54%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>argument name</p></th>
 <th class="head"><p>value</p></th>
@@ -424,10 +551,6 @@ list of strings; if supplied, <code class="docutils literal notranslate"><span c
 for the duration  of the call.</p>
 <p><em>stop_after</em> tells <a class="reference internal" href="#distutils.core.setup" title="distutils.core.setup"><code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></a> when to stop processing; possible  values:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>value</p></th>
 <th class="head"><p>description</p></th>
@@ -475,11 +598,6 @@ the full reference.</p>
 <dd><p>The Extension class describes a single C or C++ extension module in a setup
 script. It accepts the following keyword arguments in its constructor:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 29%" />
-<col style="width: 39%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>argument name</p></th>
 <th class="head"><p>value</p></th>
@@ -650,7 +768,7 @@ implement a single distutils command.</p>
 
 </section>
 <section id="module-distutils.ccompiler">
-<span id="distutils-ccompiler-ccompiler-base-class"></span><h2><span class="section-number">9.2. </span><a class="reference internal" href="#module-distutils.ccompiler" title="distutils.ccompiler: Abstract CCompiler class"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code></a> — CCompiler base class<a class="headerlink" href="#module-distutils.ccompiler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-ccompiler-ccompiler-base-class"></span><h2><span class="section-number">9.2. </span><a class="reference internal" href="#module-distutils.ccompiler" title="distutils.ccompiler: Abstract CCompiler class"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code></a> — CCompiler base class<a class="headerlink" href="#module-distutils.ccompiler" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the abstract base class for the <a class="reference internal" href="#distutils.ccompiler.CCompiler" title="distutils.ccompiler.CCompiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCompiler</span></code></a>
 classes.  A <a class="reference internal" href="#distutils.ccompiler.CCompiler" title="distutils.ccompiler.CCompiler"><code class="xref py py-class docutils literal notranslate"><span class="pre">CCompiler</span></code></a> instance can be used for all the compile  and
 link steps needed to build a single project. Methods are provided to  set
@@ -898,10 +1016,6 @@ various stages of compilation.  The exact set of executables that may be
 specified here depends on the compiler class (via the ‘executables’ class
 attribute), but most will have:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>attribute</p></th>
 <th class="head"><p>description</p></th>
@@ -1141,7 +1255,7 @@ standard output, otherwise do nothing.</p>
 
 </section>
 <section id="module-distutils.unixccompiler">
-<span id="distutils-unixccompiler-unix-c-compiler"></span><h2><span class="section-number">9.3. </span><a class="reference internal" href="#module-distutils.unixccompiler" title="distutils.unixccompiler: UNIX C Compiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.unixccompiler</span></code></a> — Unix C Compiler<a class="headerlink" href="#module-distutils.unixccompiler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-unixccompiler-unix-c-compiler"></span><h2><span class="section-number">9.3. </span><a class="reference internal" href="#module-distutils.unixccompiler" title="distutils.unixccompiler: UNIX C Compiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.unixccompiler</span></code></a> — Unix C Compiler<a class="headerlink" href="#module-distutils.unixccompiler" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">UnixCCompiler</span></code> class, a subclass of
 <code class="xref py py-class docutils literal notranslate"><span class="pre">CCompiler</span></code> that handles the typical Unix-style command-line  C compiler:</p>
 <ul class="simple">
@@ -1158,7 +1272,7 @@ option: compiles <code class="file docutils literal notranslate"><span class="pr
 </ul>
 </section>
 <section id="module-distutils.msvccompiler">
-<span id="distutils-msvccompiler-microsoft-compiler"></span><h2><span class="section-number">9.4. </span><a class="reference internal" href="#module-distutils.msvccompiler" title="distutils.msvccompiler: Microsoft Compiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.msvccompiler</span></code></a> — Microsoft Compiler<a class="headerlink" href="#module-distutils.msvccompiler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-msvccompiler-microsoft-compiler"></span><h2><span class="section-number">9.4. </span><a class="reference internal" href="#module-distutils.msvccompiler" title="distutils.msvccompiler: Microsoft Compiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.msvccompiler</span></code></a> — Microsoft Compiler<a class="headerlink" href="#module-distutils.msvccompiler" title="Permalink to this heading">¶</a></h2>
 <p>This module provides <code class="xref py py-class docutils literal notranslate"><span class="pre">MSVCCompiler</span></code>, an implementation of the abstract
 <code class="xref py py-class docutils literal notranslate"><span class="pre">CCompiler</span></code> class for Microsoft Visual Studio. Typically, extension
 modules need to be compiled with the same compiler that was used to compile
@@ -1173,19 +1287,19 @@ that the distutils user has made an explicit choice to override the compiler
 selection by <code class="xref py py-class docutils literal notranslate"><span class="pre">MSVCCompiler</span></code>.</p>
 </section>
 <section id="module-distutils.bcppcompiler">
-<span id="distutils-bcppcompiler-borland-compiler"></span><h2><span class="section-number">9.5. </span><a class="reference internal" href="#module-distutils.bcppcompiler" title="distutils.bcppcompiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.bcppcompiler</span></code></a> — Borland Compiler<a class="headerlink" href="#module-distutils.bcppcompiler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-bcppcompiler-borland-compiler"></span><h2><span class="section-number">9.5. </span><a class="reference internal" href="#module-distutils.bcppcompiler" title="distutils.bcppcompiler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.bcppcompiler</span></code></a> — Borland Compiler<a class="headerlink" href="#module-distutils.bcppcompiler" title="Permalink to this heading">¶</a></h2>
 <p>This module provides <code class="xref py py-class docutils literal notranslate"><span class="pre">BorlandCCompiler</span></code>, a subclass of the abstract
 <code class="xref py py-class docutils literal notranslate"><span class="pre">CCompiler</span></code> class for the Borland C++ compiler.</p>
 </section>
 <section id="module-distutils.cygwinccompiler">
-<span id="distutils-cygwincompiler-cygwin-compiler"></span><h2><span class="section-number">9.6. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cygwincompiler</span></code> — Cygwin Compiler<a class="headerlink" href="#module-distutils.cygwinccompiler" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-cygwincompiler-cygwin-compiler"></span><h2><span class="section-number">9.6. </span><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cygwincompiler</span></code> — Cygwin Compiler<a class="headerlink" href="#module-distutils.cygwinccompiler" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">CygwinCCompiler</span></code> class, a subclass of
 <code class="xref py py-class docutils literal notranslate"><span class="pre">UnixCCompiler</span></code> that handles the Cygwin port of the GNU C compiler to
 Windows.  It also contains the Mingw32CCompiler class which handles the mingw32
 port of GCC (same as cygwin in no-cygwin mode).</p>
 </section>
 <section id="module-distutils.archive_util">
-<span id="distutils-archive-util-archiving-utilities"></span><h2><span class="section-number">9.7. </span><a class="reference internal" href="#module-distutils.archive_util" title="distutils.archive_util: Utility functions for creating archive files (tarballs, zip files, ...)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code></a> —  Archiving utilities<a class="headerlink" href="#module-distutils.archive_util" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-archive-util-archiving-utilities"></span><h2><span class="section-number">9.7. </span><a class="reference internal" href="#module-distutils.archive_util" title="distutils.archive_util: Utility functions for creating archive files (tarballs, zip files, ...)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code></a> —  Archiving utilities<a class="headerlink" href="#module-distutils.archive_util" title="Permalink to this heading">¶</a></h2>
 <p>This module provides a few functions for creating archive files, such as
 tarballs or zipfiles.</p>
 <dl class="py function">
@@ -1233,7 +1347,7 @@ found on the default search path).  If neither  tool is available, raises
 
 </section>
 <section id="module-distutils.dep_util">
-<span id="distutils-dep-util-dependency-checking"></span><h2><span class="section-number">9.8. </span><a class="reference internal" href="#module-distutils.dep_util" title="distutils.dep_util: Utility functions for simple dependency checking"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code></a> — Dependency checking<a class="headerlink" href="#module-distutils.dep_util" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-dep-util-dependency-checking"></span><h2><span class="section-number">9.8. </span><a class="reference internal" href="#module-distutils.dep_util" title="distutils.dep_util: Utility functions for simple dependency checking"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code></a> — Dependency checking<a class="headerlink" href="#module-distutils.dep_util" title="Permalink to this heading">¶</a></h2>
 <p>This module provides functions for performing simple, timestamp-based
 dependency of files and groups of files; also, functions based entirely  on such
 timestamp dependency analysis.</p>
@@ -1271,7 +1385,7 @@ the commands).</p>
 
 </section>
 <section id="module-distutils.dir_util">
-<span id="distutils-dir-util-directory-tree-operations"></span><h2><span class="section-number">9.9. </span><a class="reference internal" href="#module-distutils.dir_util" title="distutils.dir_util: Utility functions for operating on directories and directory trees"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code></a> — Directory tree operations<a class="headerlink" href="#module-distutils.dir_util" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-dir-util-directory-tree-operations"></span><h2><span class="section-number">9.9. </span><a class="reference internal" href="#module-distutils.dir_util" title="distutils.dir_util: Utility functions for operating on directories and directory trees"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code></a> — Directory tree operations<a class="headerlink" href="#module-distutils.dir_util" title="Permalink to this heading">¶</a></h2>
 <p>This module provides functions for operating on directories and trees of
 directories.</p>
 <dl class="py function">
@@ -1333,7 +1447,7 @@ true).</p>
 
 </section>
 <section id="module-distutils.file_util">
-<span id="distutils-file-util-single-file-operations"></span><h2><span class="section-number">9.10. </span><a class="reference internal" href="#module-distutils.file_util" title="distutils.file_util: Utility functions for operating on single files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code></a> — Single file operations<a class="headerlink" href="#module-distutils.file_util" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-file-util-single-file-operations"></span><h2><span class="section-number">9.10. </span><a class="reference internal" href="#module-distutils.file_util" title="distutils.file_util: Utility functions for operating on single files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code></a> — Single file operations<a class="headerlink" href="#module-distutils.file_util" title="Permalink to this heading">¶</a></h2>
 <p>This module contains some utility functions for operating on individual files.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="distutils.file_util.copy_file">
@@ -1379,7 +1493,7 @@ without line terminators) to it.</p>
 
 </section>
 <section id="module-distutils.util">
-<span id="distutils-util-miscellaneous-other-utility-functions"></span><h2><span class="section-number">9.11. </span><a class="reference internal" href="#module-distutils.util" title="distutils.util: Miscellaneous other utility functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code></a> — Miscellaneous other utility functions<a class="headerlink" href="#module-distutils.util" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-util-miscellaneous-other-utility-functions"></span><h2><span class="section-number">9.11. </span><a class="reference internal" href="#module-distutils.util" title="distutils.util: Miscellaneous other utility functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code></a> — Miscellaneous other utility functions<a class="headerlink" href="#module-distutils.util" title="Permalink to this heading">¶</a></h2>
 <p>This module contains other assorted bits and pieces that don’t fit into  any
 other utility module.</p>
 <dl class="py function">
@@ -1556,21 +1670,21 @@ modification of the string.</p>
 
 </section>
 <section id="module-distutils.dist">
-<span id="distutils-dist-the-distribution-class"></span><h2><span class="section-number">9.12. </span><a class="reference internal" href="#module-distutils.dist" title="distutils.dist: Provides the Distribution class, which represents the module distribution being built/installed/distributed"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dist</span></code></a> — The Distribution class<a class="headerlink" href="#module-distutils.dist" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-dist-the-distribution-class"></span><h2><span class="section-number">9.12. </span><a class="reference internal" href="#module-distutils.dist" title="distutils.dist: Provides the Distribution class, which represents the module distribution being built/installed/distributed"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dist</span></code></a> — The Distribution class<a class="headerlink" href="#module-distutils.dist" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <a class="reference internal" href="#distutils.core.Distribution" title="distutils.core.Distribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">Distribution</span></code></a> class, which
 represents the module distribution being built/installed/distributed.</p>
 </section>
 <section id="module-distutils.extension">
-<span id="distutils-extension-the-extension-class"></span><h2><span class="section-number">9.13. </span><a class="reference internal" href="#module-distutils.extension" title="distutils.extension: Provides the Extension class, used to describe C/C++ extension modules in setup scripts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.extension</span></code></a> — The Extension class<a class="headerlink" href="#module-distutils.extension" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-extension-the-extension-class"></span><h2><span class="section-number">9.13. </span><a class="reference internal" href="#module-distutils.extension" title="distutils.extension: Provides the Extension class, used to describe C/C++ extension modules in setup scripts"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.extension</span></code></a> — The Extension class<a class="headerlink" href="#module-distutils.extension" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">Extension</span></code> class, used to describe C/C++
 extension modules in setup scripts.</p>
 </section>
 <section id="module-distutils.debug">
-<span id="distutils-debug-distutils-debug-mode"></span><h2><span class="section-number">9.14. </span><a class="reference internal" href="#module-distutils.debug" title="distutils.debug: Provides the debug flag for distutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.debug</span></code></a> — Distutils debug mode<a class="headerlink" href="#module-distutils.debug" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-debug-distutils-debug-mode"></span><h2><span class="section-number">9.14. </span><a class="reference internal" href="#module-distutils.debug" title="distutils.debug: Provides the debug flag for distutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.debug</span></code></a> — Distutils debug mode<a class="headerlink" href="#module-distutils.debug" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the DEBUG flag.</p>
 </section>
 <section id="module-distutils.errors">
-<span id="distutils-errors-distutils-exceptions"></span><h2><span class="section-number">9.15. </span><a class="reference internal" href="#module-distutils.errors" title="distutils.errors: Provides standard distutils exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.errors</span></code></a> — Distutils exceptions<a class="headerlink" href="#module-distutils.errors" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-errors-distutils-exceptions"></span><h2><span class="section-number">9.15. </span><a class="reference internal" href="#module-distutils.errors" title="distutils.errors: Provides standard distutils exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.errors</span></code></a> — Distutils exceptions<a class="headerlink" href="#module-distutils.errors" title="Permalink to this heading">¶</a></h2>
 <p>Provides exceptions used by the Distutils modules.  Note that Distutils modules
 may raise standard exceptions; in particular, SystemExit is usually raised for
 errors that are obviously the end-user’s fault (eg. bad command-line arguments).</p>
@@ -1578,7 +1692,7 @@ errors that are obviously the end-user’s fault (eg. bad command-line arguments
 symbols whose names start with <code class="docutils literal notranslate"><span class="pre">Distutils</span></code> and end with <code class="docutils literal notranslate"><span class="pre">Error</span></code>.</p>
 </section>
 <section id="module-distutils.fancy_getopt">
-<span id="distutils-fancy-getopt-wrapper-around-the-standard-getopt-module"></span><h2><span class="section-number">9.16. </span><a class="reference internal" href="#module-distutils.fancy_getopt" title="distutils.fancy_getopt: Additional getopt functionality"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code></a> — Wrapper around the standard getopt module<a class="headerlink" href="#module-distutils.fancy_getopt" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-fancy-getopt-wrapper-around-the-standard-getopt-module"></span><h2><span class="section-number">9.16. </span><a class="reference internal" href="#module-distutils.fancy_getopt" title="distutils.fancy_getopt: Additional getopt functionality"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code></a> — Wrapper around the standard getopt module<a class="headerlink" href="#module-distutils.fancy_getopt" title="Permalink to this heading">¶</a></h2>
 <p>This module provides a wrapper around the standard <a class="reference internal" href="../library/getopt.html#module-getopt" title="getopt: Portable parser for command line options; support both short and long option names."><code class="xref py py-mod docutils literal notranslate"><span class="pre">getopt</span></code></a>  module that
 provides the following additional features:</p>
 <ul class="simple">
@@ -1650,22 +1764,22 @@ the option table for this <a class="reference internal" href="#distutils.fancy_g
 
 </section>
 <section id="module-distutils.filelist">
-<span id="distutils-filelist-the-filelist-class"></span><h2><span class="section-number">9.17. </span><a class="reference internal" href="#module-distutils.filelist" title="distutils.filelist: The FileList class, used for poking about the file system and building lists of files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.filelist</span></code></a> — The FileList class<a class="headerlink" href="#module-distutils.filelist" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-filelist-the-filelist-class"></span><h2><span class="section-number">9.17. </span><a class="reference internal" href="#module-distutils.filelist" title="distutils.filelist: The FileList class, used for poking about the file system and building lists of files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.filelist</span></code></a> — The FileList class<a class="headerlink" href="#module-distutils.filelist" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <code class="xref py py-class docutils literal notranslate"><span class="pre">FileList</span></code> class, used for poking about the
 filesystem and building lists of files.</p>
 </section>
 <section id="module-distutils.log">
-<span id="distutils-log-simple-pep-282-style-logging"></span><h2><span class="section-number">9.18. </span><a class="reference internal" href="#module-distutils.log" title="distutils.log: A simple logging mechanism, :pep:`282`-style"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.log</span></code></a> — Simple <span class="target" id="index-7"></span><a class="pep reference external" href="https://peps.python.org/pep-0282/"><strong>PEP 282</strong></a>-style logging<a class="headerlink" href="#module-distutils.log" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-log-simple-pep-282-style-logging"></span><h2><span class="section-number">9.18. </span><a class="reference internal" href="#module-distutils.log" title="distutils.log: A simple logging mechanism, :pep:`282`-style"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.log</span></code></a> — Simple <span class="target" id="index-7"></span><a class="pep reference external" href="https://peps.python.org/pep-0282/"><strong>PEP 282</strong></a>-style logging<a class="headerlink" href="#module-distutils.log" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.spawn">
-<span id="distutils-spawn-spawn-a-sub-process"></span><h2><span class="section-number">9.19. </span><a class="reference internal" href="#module-distutils.spawn" title="distutils.spawn: Provides the spawn() function"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.spawn</span></code></a> — Spawn a sub-process<a class="headerlink" href="#module-distutils.spawn" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-spawn-spawn-a-sub-process"></span><h2><span class="section-number">9.19. </span><a class="reference internal" href="#module-distutils.spawn" title="distutils.spawn: Provides the spawn() function"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.spawn</span></code></a> — Spawn a sub-process<a class="headerlink" href="#module-distutils.spawn" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <code class="xref py py-func docutils literal notranslate"><span class="pre">spawn()</span></code> function, a front-end to  various
 platform-specific functions for launching another program in a  sub-process.
 Also provides <code class="xref py py-func docutils literal notranslate"><span class="pre">find_executable()</span></code> to search the path for a given executable
 name.</p>
 </section>
 <section id="module-distutils.sysconfig">
-<span id="distutils-sysconfig-system-configuration-information"></span><h2><span class="section-number">9.20. </span><a class="reference internal" href="#module-distutils.sysconfig" title="distutils.sysconfig: Low-level access to configuration information of the Python interpreter."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code></a> — System configuration information<a class="headerlink" href="#module-distutils.sysconfig" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-sysconfig-system-configuration-information"></span><h2><span class="section-number">9.20. </span><a class="reference internal" href="#module-distutils.sysconfig" title="distutils.sysconfig: Low-level access to configuration information of the Python interpreter."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code></a> — System configuration information<a class="headerlink" href="#module-distutils.sysconfig" title="Permalink to this heading">¶</a></h2>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">3.10 sürümünden beri kullanım dışı: </span><a class="reference internal" href="#module-distutils.sysconfig" title="distutils.sysconfig: Low-level access to configuration information of the Python interpreter."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code></a> has been merged into <a class="reference internal" href="../library/sysconfig.html#module-sysconfig" title="sysconfig: Python's configuration information"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sysconfig</span></code></a>.</p>
 </div>
@@ -1779,7 +1893,7 @@ Python.</p>
 
 </section>
 <section id="module-distutils.text_file">
-<span id="distutils-text-file-the-textfile-class"></span><h2><span class="section-number">9.21. </span><a class="reference internal" href="#module-distutils.text_file" title="distutils.text_file: Provides the TextFile class, a simple interface to text files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code></a> — The TextFile class<a class="headerlink" href="#module-distutils.text_file" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-text-file-the-textfile-class"></span><h2><span class="section-number">9.21. </span><a class="reference internal" href="#module-distutils.text_file" title="distutils.text_file: Provides the TextFile class, a simple interface to text files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code></a> — The TextFile class<a class="headerlink" href="#module-distutils.text_file" title="Permalink to this heading">¶</a></h2>
 <p>This module provides the <a class="reference internal" href="#distutils.text_file.TextFile" title="distutils.text_file.TextFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextFile</span></code></a> class, which gives an interface  to
 text files that (optionally) takes care of stripping comments, ignoring  blank
 lines, and joining lines with backslashes.</p>
@@ -1805,11 +1919,6 @@ and <a class="reference internal" href="#distutils.text_file.TextFile.close" tit
 <a class="reference internal" href="../library/functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> built-in function.</p>
 <p>The options are all boolean, and affect the values returned by <a class="reference internal" href="../library/readline.html#module-readline" title="readline: GNU readline support for Python. (Unix)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readline()</span></code></a></p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 31%" />
-<col style="width: 54%" />
-<col style="width: 15%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>option name</p></th>
 <th class="head"><p>description</p></th>
@@ -1936,10 +2045,10 @@ to <a class="reference internal" href="../library/readline.html#module-readline"
 
 </section>
 <section id="module-distutils.version">
-<span id="distutils-version-version-number-classes"></span><h2><span class="section-number">9.22. </span><a class="reference internal" href="#module-distutils.version" title="distutils.version: Implements classes that represent module version numbers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.version</span></code></a> — Version number classes<a class="headerlink" href="#module-distutils.version" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-version-version-number-classes"></span><h2><span class="section-number">9.22. </span><a class="reference internal" href="#module-distutils.version" title="distutils.version: Implements classes that represent module version numbers."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.version</span></code></a> — Version number classes<a class="headerlink" href="#module-distutils.version" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.cmd">
-<span id="distutils-cmd-abstract-base-class-for-distutils-commands"></span><h2><span class="section-number">9.23. </span><a class="reference internal" href="#module-distutils.cmd" title="distutils.cmd: Provides the abstract base class :class:`~distutils.cmd.Command`. This class is subclassed by the modules in the distutils.command subpackage."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code></a> — Abstract base class for Distutils commands<a class="headerlink" href="#module-distutils.cmd" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-cmd-abstract-base-class-for-distutils-commands"></span><h2><span class="section-number">9.23. </span><a class="reference internal" href="#module-distutils.cmd" title="distutils.cmd: Provides the abstract base class :class:`~distutils.cmd.Command`. This class is subclassed by the modules in the distutils.command subpackage."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code></a> — Abstract base class for Distutils commands<a class="headerlink" href="#module-distutils.cmd" title="Permalink to this heading">¶</a></h2>
 <p>This module supplies the abstract base class <a class="reference internal" href="#distutils.cmd.Command" title="distutils.cmd.Command"><code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code></a>.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="distutils.cmd.Command">
@@ -1962,7 +2071,7 @@ command class.</p>
 
 </section>
 <section id="creating-a-new-distutils-command">
-<h2><span class="section-number">9.24. </span>Creating a new Distutils command<a class="headerlink" href="#creating-a-new-distutils-command" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><span class="section-number">9.24. </span>Creating a new Distutils command<a class="headerlink" href="#creating-a-new-distutils-command" title="Permalink to this heading">¶</a></h2>
 <p>This section outlines the steps to create a new Distutils command.</p>
 <p>A new command lives in a module in the <a class="reference internal" href="#module-distutils.command" title="distutils.command: Contains one module for each standard Distutils command."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command</span></code></a> package. There
 is a sample template in that directory called <code class="file docutils literal notranslate"><span class="pre">command_template</span></code>.  Copy
@@ -2025,34 +2134,34 @@ defined.  The canonical example is the <strong class="command">install</strong> 
 
 </section>
 <section id="module-distutils.command">
-<span id="distutils-command-individual-distutils-commands"></span><h2><span class="section-number">9.25. </span><a class="reference internal" href="#module-distutils.command" title="distutils.command: Contains one module for each standard Distutils command."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command</span></code></a> — Individual Distutils commands<a class="headerlink" href="#module-distutils.command" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-individual-distutils-commands"></span><h2><span class="section-number">9.25. </span><a class="reference internal" href="#module-distutils.command" title="distutils.command: Contains one module for each standard Distutils command."><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command</span></code></a> — Individual Distutils commands<a class="headerlink" href="#module-distutils.command" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.bdist">
-<span id="distutils-command-bdist-build-a-binary-installer"></span><h2><span class="section-number">9.26. </span><a class="reference internal" href="#module-distutils.command.bdist" title="distutils.command.bdist: Build a binary installer for a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist</span></code></a> — Build a binary installer<a class="headerlink" href="#module-distutils.command.bdist" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-bdist-build-a-binary-installer"></span><h2><span class="section-number">9.26. </span><a class="reference internal" href="#module-distutils.command.bdist" title="distutils.command.bdist: Build a binary installer for a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist</span></code></a> — Build a binary installer<a class="headerlink" href="#module-distutils.command.bdist" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.bdist_packager">
-<span id="distutils-command-bdist-packager-abstract-base-class-for-packagers"></span><h2><span class="section-number">9.27. </span><a class="reference internal" href="#module-distutils.command.bdist_packager" title="distutils.command.bdist_packager: Abstract base class for packagers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_packager</span></code></a> — Abstract base class for packagers<a class="headerlink" href="#module-distutils.command.bdist_packager" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-bdist-packager-abstract-base-class-for-packagers"></span><h2><span class="section-number">9.27. </span><a class="reference internal" href="#module-distutils.command.bdist_packager" title="distutils.command.bdist_packager: Abstract base class for packagers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_packager</span></code></a> — Abstract base class for packagers<a class="headerlink" href="#module-distutils.command.bdist_packager" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.bdist_dumb">
-<span id="distutils-command-bdist-dumb-build-a-dumb-installer"></span><h2><span class="section-number">9.28. </span><a class="reference internal" href="#module-distutils.command.bdist_dumb" title="distutils.command.bdist_dumb: Build a &quot;dumb&quot; installer - a simple archive of files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_dumb</span></code></a> — Build a “dumb” installer<a class="headerlink" href="#module-distutils.command.bdist_dumb" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-bdist-dumb-build-a-dumb-installer"></span><h2><span class="section-number">9.28. </span><a class="reference internal" href="#module-distutils.command.bdist_dumb" title="distutils.command.bdist_dumb: Build a &quot;dumb&quot; installer - a simple archive of files"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_dumb</span></code></a> — Build a “dumb” installer<a class="headerlink" href="#module-distutils.command.bdist_dumb" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.bdist_rpm">
-<span id="distutils-command-bdist-rpm-build-a-binary-distribution-as-a-redhat-rpm-and-srpm"></span><h2><span class="section-number">9.29. </span><a class="reference internal" href="#module-distutils.command.bdist_rpm" title="distutils.command.bdist_rpm: Build a binary distribution as a Redhat RPM and SRPM"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_rpm</span></code></a> — Build a binary distribution as a Redhat RPM and SRPM<a class="headerlink" href="#module-distutils.command.bdist_rpm" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-bdist-rpm-build-a-binary-distribution-as-a-redhat-rpm-and-srpm"></span><h2><span class="section-number">9.29. </span><a class="reference internal" href="#module-distutils.command.bdist_rpm" title="distutils.command.bdist_rpm: Build a binary distribution as a Redhat RPM and SRPM"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_rpm</span></code></a> — Build a binary distribution as a Redhat RPM and SRPM<a class="headerlink" href="#module-distutils.command.bdist_rpm" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.sdist">
-<span id="distutils-command-sdist-build-a-source-distribution"></span><h2><span class="section-number">9.30. </span><a class="reference internal" href="#module-distutils.command.sdist" title="distutils.command.sdist: Build a source distribution"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.sdist</span></code></a> — Build a source distribution<a class="headerlink" href="#module-distutils.command.sdist" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-sdist-build-a-source-distribution"></span><h2><span class="section-number">9.30. </span><a class="reference internal" href="#module-distutils.command.sdist" title="distutils.command.sdist: Build a source distribution"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.sdist</span></code></a> — Build a source distribution<a class="headerlink" href="#module-distutils.command.sdist" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.build">
-<span id="distutils-command-build-build-all-files-of-a-package"></span><h2><span class="section-number">9.31. </span><a class="reference internal" href="#module-distutils.command.build" title="distutils.command.build: Build all files of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build</span></code></a> — Build all files of a package<a class="headerlink" href="#module-distutils.command.build" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-build-build-all-files-of-a-package"></span><h2><span class="section-number">9.31. </span><a class="reference internal" href="#module-distutils.command.build" title="distutils.command.build: Build all files of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build</span></code></a> — Build all files of a package<a class="headerlink" href="#module-distutils.command.build" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.build_clib">
-<span id="distutils-command-build-clib-build-any-c-libraries-in-a-package"></span><h2><span class="section-number">9.32. </span><a class="reference internal" href="#module-distutils.command.build_clib" title="distutils.command.build_clib: Build any C libraries in a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_clib</span></code></a> — Build any C libraries in a package<a class="headerlink" href="#module-distutils.command.build_clib" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-build-clib-build-any-c-libraries-in-a-package"></span><h2><span class="section-number">9.32. </span><a class="reference internal" href="#module-distutils.command.build_clib" title="distutils.command.build_clib: Build any C libraries in a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_clib</span></code></a> — Build any C libraries in a package<a class="headerlink" href="#module-distutils.command.build_clib" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.build_ext">
-<span id="distutils-command-build-ext-build-any-extensions-in-a-package"></span><h2><span class="section-number">9.33. </span><a class="reference internal" href="#module-distutils.command.build_ext" title="distutils.command.build_ext: Build any extensions in a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_ext</span></code></a> — Build any extensions in a package<a class="headerlink" href="#module-distutils.command.build_ext" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-build-ext-build-any-extensions-in-a-package"></span><h2><span class="section-number">9.33. </span><a class="reference internal" href="#module-distutils.command.build_ext" title="distutils.command.build_ext: Build any extensions in a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_ext</span></code></a> — Build any extensions in a package<a class="headerlink" href="#module-distutils.command.build_ext" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.build_py">
-<span id="distutils-command-build-py-build-the-py-pyc-files-of-a-package"></span><h2><span class="section-number">9.34. </span><a class="reference internal" href="#module-distutils.command.build_py" title="distutils.command.build_py: Build the .py/.pyc files of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code></a> — Build the .py/.pyc files of a package<a class="headerlink" href="#module-distutils.command.build_py" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-build-py-build-the-py-pyc-files-of-a-package"></span><h2><span class="section-number">9.34. </span><a class="reference internal" href="#module-distutils.command.build_py" title="distutils.command.build_py: Build the .py/.pyc files of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code></a> — Build the .py/.pyc files of a package<a class="headerlink" href="#module-distutils.command.build_py" title="Permalink to this heading">¶</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="distutils.command.build_py.build_py">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">distutils.command.build_py.</span></span><span class="sig-name descname"><span class="pre">build_py</span></span><a class="headerlink" href="#distutils.command.build_py.build_py" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2080,10 +2189,10 @@ that is designed to run with both Python 2.x and 3.x, add:</p>
 
 </section>
 <section id="module-distutils.command.build_scripts">
-<span id="distutils-command-build-scripts-build-the-scripts-of-a-package"></span><h2><span class="section-number">9.35. </span><a class="reference internal" href="#module-distutils.command.build_scripts" title="distutils.command.build_scripts: Build the scripts of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_scripts</span></code></a> — Build the scripts of a package<a class="headerlink" href="#module-distutils.command.build_scripts" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-build-scripts-build-the-scripts-of-a-package"></span><h2><span class="section-number">9.35. </span><a class="reference internal" href="#module-distutils.command.build_scripts" title="distutils.command.build_scripts: Build the scripts of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_scripts</span></code></a> — Build the scripts of a package<a class="headerlink" href="#module-distutils.command.build_scripts" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.clean">
-<span id="distutils-command-clean-clean-a-package-build-area"></span><h2><span class="section-number">9.36. </span><a class="reference internal" href="#module-distutils.command.clean" title="distutils.command.clean: Clean a package build area"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.clean</span></code></a> — Clean a package build area<a class="headerlink" href="#module-distutils.command.clean" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-clean-clean-a-package-build-area"></span><h2><span class="section-number">9.36. </span><a class="reference internal" href="#module-distutils.command.clean" title="distutils.command.clean: Clean a package build area"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.clean</span></code></a> — Clean a package build area<a class="headerlink" href="#module-distutils.command.clean" title="Permalink to this heading">¶</a></h2>
 <p>This command removes the temporary files created by <strong class="command">build</strong>
 and its subcommands, like intermediary compiled object files.  With
 the <code class="docutils literal notranslate"><span class="pre">--all</span></code> option, the complete build directory will be removed.</p>
@@ -2091,30 +2200,30 @@ the <code class="docutils literal notranslate"><span class="pre">--all</span></c
 will not be cleaned, as they are not in the build directory.</p>
 </section>
 <section id="module-distutils.command.config">
-<span id="distutils-command-config-perform-package-configuration"></span><h2><span class="section-number">9.37. </span><a class="reference internal" href="#module-distutils.command.config" title="distutils.command.config: Perform package configuration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.config</span></code></a> — Perform package configuration<a class="headerlink" href="#module-distutils.command.config" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-config-perform-package-configuration"></span><h2><span class="section-number">9.37. </span><a class="reference internal" href="#module-distutils.command.config" title="distutils.command.config: Perform package configuration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.config</span></code></a> — Perform package configuration<a class="headerlink" href="#module-distutils.command.config" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.install">
-<span id="distutils-command-install-install-a-package"></span><h2><span class="section-number">9.38. </span><a class="reference internal" href="#module-distutils.command.install" title="distutils.command.install: Install a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install</span></code></a> — Install a package<a class="headerlink" href="#module-distutils.command.install" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-install-install-a-package"></span><h2><span class="section-number">9.38. </span><a class="reference internal" href="#module-distutils.command.install" title="distutils.command.install: Install a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install</span></code></a> — Install a package<a class="headerlink" href="#module-distutils.command.install" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.install_data">
-<span id="distutils-command-install-data-install-data-files-from-a-package"></span><h2><span class="section-number">9.39. </span><a class="reference internal" href="#module-distutils.command.install_data" title="distutils.command.install_data: Install data files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_data</span></code></a> — Install data files from a package<a class="headerlink" href="#module-distutils.command.install_data" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-install-data-install-data-files-from-a-package"></span><h2><span class="section-number">9.39. </span><a class="reference internal" href="#module-distutils.command.install_data" title="distutils.command.install_data: Install data files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_data</span></code></a> — Install data files from a package<a class="headerlink" href="#module-distutils.command.install_data" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.install_headers">
-<span id="distutils-command-install-headers-install-c-c-header-files-from-a-package"></span><h2><span class="section-number">9.40. </span><a class="reference internal" href="#module-distutils.command.install_headers" title="distutils.command.install_headers: Install C/C++ header files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_headers</span></code></a> — Install C/C++ header files from a package<a class="headerlink" href="#module-distutils.command.install_headers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-install-headers-install-c-c-header-files-from-a-package"></span><h2><span class="section-number">9.40. </span><a class="reference internal" href="#module-distutils.command.install_headers" title="distutils.command.install_headers: Install C/C++ header files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_headers</span></code></a> — Install C/C++ header files from a package<a class="headerlink" href="#module-distutils.command.install_headers" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.install_lib">
-<span id="distutils-command-install-lib-install-library-files-from-a-package"></span><h2><span class="section-number">9.41. </span><a class="reference internal" href="#module-distutils.command.install_lib" title="distutils.command.install_lib: Install library files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_lib</span></code></a> — Install library files from a package<a class="headerlink" href="#module-distutils.command.install_lib" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-install-lib-install-library-files-from-a-package"></span><h2><span class="section-number">9.41. </span><a class="reference internal" href="#module-distutils.command.install_lib" title="distutils.command.install_lib: Install library files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_lib</span></code></a> — Install library files from a package<a class="headerlink" href="#module-distutils.command.install_lib" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.install_scripts">
-<span id="distutils-command-install-scripts-install-script-files-from-a-package"></span><h2><span class="section-number">9.42. </span><a class="reference internal" href="#module-distutils.command.install_scripts" title="distutils.command.install_scripts: Install script files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_scripts</span></code></a> — Install script files from a package<a class="headerlink" href="#module-distutils.command.install_scripts" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-install-scripts-install-script-files-from-a-package"></span><h2><span class="section-number">9.42. </span><a class="reference internal" href="#module-distutils.command.install_scripts" title="distutils.command.install_scripts: Install script files from a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.install_scripts</span></code></a> — Install script files from a package<a class="headerlink" href="#module-distutils.command.install_scripts" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-distutils.command.register">
-<span id="distutils-command-register-register-a-module-with-the-python-package-index"></span><h2><span class="section-number">9.43. </span><a class="reference internal" href="#module-distutils.command.register" title="distutils.command.register: Register a module with the Python Package Index"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.register</span></code></a> — Register a module with the Python Package Index<a class="headerlink" href="#module-distutils.command.register" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-register-register-a-module-with-the-python-package-index"></span><h2><span class="section-number">9.43. </span><a class="reference internal" href="#module-distutils.command.register" title="distutils.command.register: Register a module with the Python Package Index"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.register</span></code></a> — Register a module with the Python Package Index<a class="headerlink" href="#module-distutils.command.register" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">register</span></code> command registers the package with the Python Package  Index.
 This is described in more detail in <span class="target" id="index-8"></span><a class="pep reference external" href="https://peps.python.org/pep-0301/"><strong>PEP 301</strong></a>.</p>
 </section>
 <section id="module-distutils.command.check">
-<span id="distutils-command-check-check-the-meta-data-of-a-package"></span><h2><span class="section-number">9.44. </span><a class="reference internal" href="#module-distutils.command.check" title="distutils.command.check: Check the meta-data of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.check</span></code></a> — Check the meta-data of a package<a class="headerlink" href="#module-distutils.command.check" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="distutils-command-check-check-the-meta-data-of-a-package"></span><h2><span class="section-number">9.44. </span><a class="reference internal" href="#module-distutils.command.check" title="distutils.command.check: Check the meta-data of a package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.check</span></code></a> — Check the meta-data of a package<a class="headerlink" href="#module-distutils.command.check" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">check</span></code> command performs some tests on the meta-data of a package.
 For example, it verifies that all required meta-data are provided as
 the arguments passed to the <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code> function.</p>
@@ -2132,30 +2241,159 @@ the arguments passed to the <code class="xref py py-func docutils literal notran
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#">9. API Reference</a><ul>
-<li><a class="reference internal" href="#module-distutils.core">9.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code> — Core Distutils functionality</a></li>
-<li><a class="reference internal" href="#module-distutils.ccompiler">9.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code> — CCompiler base class</a></li>
+<li><a class="reference internal" href="#module-distutils.core">9.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.core</span></code> — Core Distutils functionality</a><ul>
+<li><a class="reference internal" href="#distutils.core.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.run_setup"><code class="docutils literal notranslate"><span class="pre">run_setup()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Extension"><code class="docutils literal notranslate"><span class="pre">Extension</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Distribution"><code class="docutils literal notranslate"><span class="pre">Distribution</span></code></a></li>
+<li><a class="reference internal" href="#distutils.core.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.ccompiler">9.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.ccompiler</span></code> — CCompiler base class</a><ul>
+<li><a class="reference internal" href="#distutils.ccompiler.gen_lib_options"><code class="docutils literal notranslate"><span class="pre">gen_lib_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.gen_preprocess_options"><code class="docutils literal notranslate"><span class="pre">gen_preprocess_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.get_default_compiler"><code class="docutils literal notranslate"><span class="pre">get_default_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.new_compiler"><code class="docutils literal notranslate"><span class="pre">new_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.show_compilers"><code class="docutils literal notranslate"><span class="pre">show_compilers()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler"><code class="docutils literal notranslate"><span class="pre">CCompiler</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_include_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_include_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_include_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_include_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_library"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_library()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_libraries"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_libraries()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_library_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_library_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_library_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_library_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_runtime_library_dir"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_runtime_library_dir()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_runtime_library_dirs"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_runtime_library_dirs()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.define_macro"><code class="docutils literal notranslate"><span class="pre">CCompiler.define_macro()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.undefine_macro"><code class="docutils literal notranslate"><span class="pre">CCompiler.undefine_macro()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.add_link_object"><code class="docutils literal notranslate"><span class="pre">CCompiler.add_link_object()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_link_objects"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_link_objects()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.detect_language"><code class="docutils literal notranslate"><span class="pre">CCompiler.detect_language()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.find_library_file"><code class="docutils literal notranslate"><span class="pre">CCompiler.find_library_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.has_function"><code class="docutils literal notranslate"><span class="pre">CCompiler.has_function()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_dir_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_dir_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.runtime_library_dir_option"><code class="docutils literal notranslate"><span class="pre">CCompiler.runtime_library_dir_option()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.set_executables"><code class="docutils literal notranslate"><span class="pre">CCompiler.set_executables()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.compile"><code class="docutils literal notranslate"><span class="pre">CCompiler.compile()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.create_static_lib"><code class="docutils literal notranslate"><span class="pre">CCompiler.create_static_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link"><code class="docutils literal notranslate"><span class="pre">CCompiler.link()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_executable"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_executable()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_shared_lib"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_shared_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.link_shared_object"><code class="docutils literal notranslate"><span class="pre">CCompiler.link_shared_object()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.preprocess"><code class="docutils literal notranslate"><span class="pre">CCompiler.preprocess()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.executable_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.executable_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.library_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.library_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.object_filenames"><code class="docutils literal notranslate"><span class="pre">CCompiler.object_filenames()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.shared_object_filename"><code class="docutils literal notranslate"><span class="pre">CCompiler.shared_object_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.execute"><code class="docutils literal notranslate"><span class="pre">CCompiler.execute()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.spawn"><code class="docutils literal notranslate"><span class="pre">CCompiler.spawn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.mkpath"><code class="docutils literal notranslate"><span class="pre">CCompiler.mkpath()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.move_file"><code class="docutils literal notranslate"><span class="pre">CCompiler.move_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.announce"><code class="docutils literal notranslate"><span class="pre">CCompiler.announce()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.warn"><code class="docutils literal notranslate"><span class="pre">CCompiler.warn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.ccompiler.CCompiler.debug_print"><code class="docutils literal notranslate"><span class="pre">CCompiler.debug_print()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.unixccompiler">9.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.unixccompiler</span></code> — Unix C Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.msvccompiler">9.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.msvccompiler</span></code> — Microsoft Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.bcppcompiler">9.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.bcppcompiler</span></code> — Borland Compiler</a></li>
 <li><a class="reference internal" href="#module-distutils.cygwinccompiler">9.6. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cygwincompiler</span></code> — Cygwin Compiler</a></li>
-<li><a class="reference internal" href="#module-distutils.archive_util">9.7. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code> —  Archiving utilities</a></li>
-<li><a class="reference internal" href="#module-distutils.dep_util">9.8. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code> — Dependency checking</a></li>
-<li><a class="reference internal" href="#module-distutils.dir_util">9.9. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code> — Directory tree operations</a></li>
-<li><a class="reference internal" href="#module-distutils.file_util">9.10. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code> — Single file operations</a></li>
-<li><a class="reference internal" href="#module-distutils.util">9.11. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code> — Miscellaneous other utility functions</a></li>
+<li><a class="reference internal" href="#module-distutils.archive_util">9.7. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.archive_util</span></code> —  Archiving utilities</a><ul>
+<li><a class="reference internal" href="#distutils.archive_util.make_archive"><code class="docutils literal notranslate"><span class="pre">make_archive()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.archive_util.make_tarball"><code class="docutils literal notranslate"><span class="pre">make_tarball()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.archive_util.make_zipfile"><code class="docutils literal notranslate"><span class="pre">make_zipfile()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.dep_util">9.8. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dep_util</span></code> — Dependency checking</a><ul>
+<li><a class="reference internal" href="#distutils.dep_util.newer"><code class="docutils literal notranslate"><span class="pre">newer()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dep_util.newer_pairwise"><code class="docutils literal notranslate"><span class="pre">newer_pairwise()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dep_util.newer_group"><code class="docutils literal notranslate"><span class="pre">newer_group()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.dir_util">9.9. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dir_util</span></code> — Directory tree operations</a><ul>
+<li><a class="reference internal" href="#distutils.dir_util.mkpath"><code class="docutils literal notranslate"><span class="pre">mkpath()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.create_tree"><code class="docutils literal notranslate"><span class="pre">create_tree()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.copy_tree"><code class="docutils literal notranslate"><span class="pre">copy_tree()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.dir_util.remove_tree"><code class="docutils literal notranslate"><span class="pre">remove_tree()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.file_util">9.10. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.file_util</span></code> — Single file operations</a><ul>
+<li><a class="reference internal" href="#distutils.file_util.copy_file"><code class="docutils literal notranslate"><span class="pre">copy_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.file_util.move_file"><code class="docutils literal notranslate"><span class="pre">move_file()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.file_util.write_file"><code class="docutils literal notranslate"><span class="pre">write_file()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.util">9.11. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.util</span></code> — Miscellaneous other utility functions</a><ul>
+<li><a class="reference internal" href="#distutils.util.get_platform"><code class="docutils literal notranslate"><span class="pre">get_platform()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.convert_path"><code class="docutils literal notranslate"><span class="pre">convert_path()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.change_root"><code class="docutils literal notranslate"><span class="pre">change_root()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.check_environ"><code class="docutils literal notranslate"><span class="pre">check_environ()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.subst_vars"><code class="docutils literal notranslate"><span class="pre">subst_vars()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.split_quoted"><code class="docutils literal notranslate"><span class="pre">split_quoted()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.strtobool"><code class="docutils literal notranslate"><span class="pre">strtobool()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.byte_compile"><code class="docutils literal notranslate"><span class="pre">byte_compile()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.util.rfc822_escape"><code class="docutils literal notranslate"><span class="pre">rfc822_escape()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.dist">9.12. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.dist</span></code> — The Distribution class</a></li>
 <li><a class="reference internal" href="#module-distutils.extension">9.13. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.extension</span></code> — The Extension class</a></li>
 <li><a class="reference internal" href="#module-distutils.debug">9.14. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.debug</span></code> — Distutils debug mode</a></li>
 <li><a class="reference internal" href="#module-distutils.errors">9.15. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.errors</span></code> — Distutils exceptions</a></li>
-<li><a class="reference internal" href="#module-distutils.fancy_getopt">9.16. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code> — Wrapper around the standard getopt module</a></li>
+<li><a class="reference internal" href="#module-distutils.fancy_getopt">9.16. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.fancy_getopt</span></code> — Wrapper around the standard getopt module</a><ul>
+<li><a class="reference internal" href="#distutils.fancy_getopt.fancy_getopt"><code class="docutils literal notranslate"><span class="pre">fancy_getopt()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.wrap_text"><code class="docutils literal notranslate"><span class="pre">wrap_text()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt"><code class="docutils literal notranslate"><span class="pre">FancyGetopt</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.getopt"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.getopt()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.get_option_order"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.get_option_order()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.fancy_getopt.FancyGetopt.generate_help"><code class="docutils literal notranslate"><span class="pre">FancyGetopt.generate_help()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.filelist">9.17. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.filelist</span></code> — The FileList class</a></li>
 <li><a class="reference internal" href="#module-distutils.log">9.18. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.log</span></code> — Simple <strong>PEP 282</strong>-style logging</a></li>
 <li><a class="reference internal" href="#module-distutils.spawn">9.19. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.spawn</span></code> — Spawn a sub-process</a></li>
-<li><a class="reference internal" href="#module-distutils.sysconfig">9.20. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> — System configuration information</a></li>
-<li><a class="reference internal" href="#module-distutils.text_file">9.21. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code> — The TextFile class</a></li>
+<li><a class="reference internal" href="#module-distutils.sysconfig">9.20. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> — System configuration information</a><ul>
+<li><a class="reference internal" href="#distutils.sysconfig.PREFIX"><code class="docutils literal notranslate"><span class="pre">PREFIX</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.EXEC_PREFIX"><code class="docutils literal notranslate"><span class="pre">EXEC_PREFIX</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_var"><code class="docutils literal notranslate"><span class="pre">get_config_var()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_vars"><code class="docutils literal notranslate"><span class="pre">get_config_vars()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_config_h_filename"><code class="docutils literal notranslate"><span class="pre">get_config_h_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_makefile_filename"><code class="docutils literal notranslate"><span class="pre">get_makefile_filename()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_python_inc"><code class="docutils literal notranslate"><span class="pre">get_python_inc()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.get_python_lib"><code class="docutils literal notranslate"><span class="pre">get_python_lib()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.customize_compiler"><code class="docutils literal notranslate"><span class="pre">customize_compiler()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.sysconfig.set_python_build"><code class="docutils literal notranslate"><span class="pre">set_python_build()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-distutils.text_file">9.21. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.text_file</span></code> — The TextFile class</a><ul>
+<li><a class="reference internal" href="#distutils.text_file.TextFile"><code class="docutils literal notranslate"><span class="pre">TextFile</span></code></a><ul>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.open"><code class="docutils literal notranslate"><span class="pre">TextFile.open()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.close"><code class="docutils literal notranslate"><span class="pre">TextFile.close()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.warn"><code class="docutils literal notranslate"><span class="pre">TextFile.warn()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.readline"><code class="docutils literal notranslate"><span class="pre">TextFile.readline()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.readlines"><code class="docutils literal notranslate"><span class="pre">TextFile.readlines()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.text_file.TextFile.unreadline"><code class="docutils literal notranslate"><span class="pre">TextFile.unreadline()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.version">9.22. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.version</span></code> — Version number classes</a></li>
-<li><a class="reference internal" href="#module-distutils.cmd">9.23. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code> — Abstract base class for Distutils commands</a></li>
-<li><a class="reference internal" href="#creating-a-new-distutils-command">9.24. Creating a new Distutils command</a></li>
+<li><a class="reference internal" href="#module-distutils.cmd">9.23. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.cmd</span></code> — Abstract base class for Distutils commands</a><ul>
+<li><a class="reference internal" href="#distutils.cmd.Command"><code class="docutils literal notranslate"><span class="pre">Command</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#creating-a-new-distutils-command">9.24. Creating a new Distutils command</a><ul>
+<li><a class="reference internal" href="#distutils.cmd.Command.initialize_options"><code class="docutils literal notranslate"><span class="pre">Command.initialize_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.finalize_options"><code class="docutils literal notranslate"><span class="pre">Command.finalize_options()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.run"><code class="docutils literal notranslate"><span class="pre">Command.run()</span></code></a></li>
+<li><a class="reference internal" href="#distutils.cmd.Command.sub_commands"><code class="docutils literal notranslate"><span class="pre">Command.sub_commands</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.command">9.25. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command</span></code> — Individual Distutils commands</a></li>
 <li><a class="reference internal" href="#module-distutils.command.bdist">9.26. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist</span></code> — Build a binary installer</a></li>
 <li><a class="reference internal" href="#module-distutils.command.bdist_packager">9.27. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.bdist_packager</span></code> — Abstract base class for packagers</a></li>
@@ -2165,7 +2403,11 @@ the arguments passed to the <code class="xref py py-func docutils literal notran
 <li><a class="reference internal" href="#module-distutils.command.build">9.31. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build</span></code> — Build all files of a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.build_clib">9.32. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_clib</span></code> — Build any C libraries in a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.build_ext">9.33. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_ext</span></code> — Build any extensions in a package</a></li>
-<li><a class="reference internal" href="#module-distutils.command.build_py">9.34. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code> — Build the .py/.pyc files of a package</a></li>
+<li><a class="reference internal" href="#module-distutils.command.build_py">9.34. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_py</span></code> — Build the .py/.pyc files of a package</a><ul>
+<li><a class="reference internal" href="#distutils.command.build_py.build_py"><code class="docutils literal notranslate"><span class="pre">build_py</span></code></a></li>
+<li><a class="reference internal" href="#distutils.command.build_py.build_py_2to3"><code class="docutils literal notranslate"><span class="pre">build_py_2to3</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#module-distutils.command.build_scripts">9.35. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.build_scripts</span></code> — Build the scripts of a package</a></li>
 <li><a class="reference internal" href="#module-distutils.command.clean">9.36. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.clean</span></code> — Clean a package build area</a></li>
 <li><a class="reference internal" href="#module-distutils.command.config">9.37. <code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils.command.config</span></code> — Perform package configuration</a></li>
@@ -2203,6 +2445,10 @@ the arguments passed to the <code class="xref py py-func docutils literal notran
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -2275,11 +2521,11 @@ the arguments passed to the <code class="xref py py-func docutils literal notran
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

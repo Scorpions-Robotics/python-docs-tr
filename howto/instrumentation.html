@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Instrumenting CPython with DTrace and SystemTap" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/howto/instrumentation.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -196,12 +195,12 @@
           <div class="body" role="main">
             
   <section id="instrumenting-cpython-with-dtrace-and-systemtap">
-<span id="instrumentation"></span><h1>Instrumenting CPython with DTrace and SystemTap<a class="headerlink" href="#instrumenting-cpython-with-dtrace-and-systemtap" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="instrumentation"></span><h1>Instrumenting CPython with DTrace and SystemTap<a class="headerlink" href="#instrumenting-cpython-with-dtrace-and-systemtap" title="Permalink to this heading">¶</a></h1>
 <dl class="field-list simple">
-<dt class="field-odd">author</dt>
+<dt class="field-odd">author<span class="colon">:</span></dt>
 <dd class="field-odd"><p>David Malcolm</p>
 </dd>
-<dt class="field-even">author</dt>
+<dt class="field-even">author<span class="colon">:</span></dt>
 <dd class="field-even"><p>Łukasz Langa</p>
 </dd>
 </dl>
@@ -226,7 +225,7 @@ CPython. DTrace scripts can stop working or work incorrectly without
 warning when changing CPython versions.</p>
 </div>
 <section id="enabling-the-static-markers">
-<h2>Enabling the static markers<a class="headerlink" href="#enabling-the-static-markers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Enabling the static markers<a class="headerlink" href="#enabling-the-static-markers" title="Permalink to this heading">¶</a></h2>
 <p>macOS comes with built-in support for DTrace.  On Linux, in order to
 build CPython with the embedded markers for SystemTap, the SystemTap
 development tools must be installed.</p>
@@ -314,7 +313,7 @@ can patch strategically placed machine code instructions to enable the
 tracing hooks used by a SystemTap script.</p>
 </section>
 <section id="static-dtrace-probes">
-<h2>Static DTrace probes<a class="headerlink" href="#static-dtrace-probes" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Static DTrace probes<a class="headerlink" href="#static-dtrace-probes" title="Permalink to this heading">¶</a></h2>
 <p>The following example DTrace script can be used to show the call/return
 hierarchy of a Python script, only tracing within the invocation of
 a function called “start”. In other words, import-time function
@@ -379,7 +378,7 @@ python$target:::function-return
 </div>
 </section>
 <section id="static-systemtap-markers">
-<h2>Static SystemTap markers<a class="headerlink" href="#static-systemtap-markers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Static SystemTap markers<a class="headerlink" href="#static-systemtap-markers" title="Permalink to this heading">¶</a></h2>
 <p>The low-level way to use the SystemTap integration is to use the static
 markers directly.  This requires you to explicitly state the binary file
 containing them.</p>
@@ -441,7 +440,7 @@ example, this line from the above example:</p>
 <p>(assuming a <a class="reference internal" href="../using/configure.html#debug-build"><span class="std std-ref">debug build</span></a> of CPython 3.6)</p>
 </section>
 <section id="available-static-markers">
-<h2>Available static markers<a class="headerlink" href="#available-static-markers" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Available static markers<a class="headerlink" href="#available-static-markers" title="Permalink to this heading">¶</a></h2>
 <dl class="object">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">function__entry(str</span> <span class="pre">filename,</span> <span class="pre">str</span> <span class="pre">funcname,</span> <span class="pre">int</span> <span class="pre">lineno)</span></span></dt>
@@ -526,7 +525,7 @@ pointer to a tuple object.</p>
 
 </section>
 <section id="systemtap-tapsets">
-<h2>SystemTap Tapsets<a class="headerlink" href="#systemtap-tapsets" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>SystemTap Tapsets<a class="headerlink" href="#systemtap-tapsets" title="Permalink to this heading">¶</a></h2>
 <p>The higher-level way to use the SystemTap integration is to use a “tapset”:
 SystemTap’s equivalent of a library, which hides some of the lower-level
 details of the static markers.</p>
@@ -572,7 +571,7 @@ indicates that execution of a Python function has ended (either via
 
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>This SystemTap script uses the tapset above to more cleanly implement the
 example given above of tracing the Python function-call hierarchy, without
 needing to directly name the static markers:</p>
@@ -659,6 +658,10 @@ probe timer.ms(1000) {
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -731,11 +734,11 @@ probe timer.ms(1000) {
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

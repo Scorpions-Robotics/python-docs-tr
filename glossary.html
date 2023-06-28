@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Sözlük" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/glossary.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/translations.js"></script>
     
     <script src="_static/sidebar.js"></script>
@@ -180,7 +179,7 @@
           <div class="body" role="main">
             
   <section id="glossary">
-<span id="id1"></span><h1>Sözlük<a class="headerlink" href="#glossary" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="id1"></span><h1>Sözlük<a class="headerlink" href="#glossary" title="Permalink to this heading">¶</a></h1>
 <dl class="glossary">
 <dt id="term-0"><code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code><a class="headerlink" href="#term-0" title="Permalink to this term">¶</a></dt><dd><p>Etkileşimli kabuğun varsayılan Python istemi. Genellikle yorumlayıcıda etkileşimli olarak yürütülebilen kod örnekleri için görülür.</p>
 </dd>
@@ -347,13 +346,13 @@
 </dd>
 <dt id="term-garbage-collection">çöp toplama<a class="headerlink" href="#term-garbage-collection" title="Permalink to this term">¶</a></dt><dd><p>Artık kullanılmadığında belleği boşaltma işlemi.  Python, referans sayımı ve referans döngülerini algılayıp kırabilen bir döngüsel çöp toplayıcı aracılığıyla çöp toplama gerçekleştirir.  Çöp toplayıcı <a class="reference internal" href="library/gc.html#module-gc" title="gc: Interface to the cycle-detecting garbage collector."><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code></a> modülü kullanılarak kontrol edilebilir.</p>
 </dd>
-<dt id="index-19"><span id="term-generator"></span>jeneratör<a class="headerlink" href="#index-19" title="Permalink to this term">¶</a></dt><dd><p>Bir <a class="reference internal" href="#term-generator-iterator"><span class="xref std std-term">generator iterator</span></a> döndüren bir işlev.  Bir for döngüsünde kullanılabilen bir dizi değer üretmek için <a class="reference internal" href="reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a> ifadeleri içermesi veya <a class="reference internal" href="library/functions.html#next" title="next"><code class="xref py py-func docutils literal notranslate"><span class="pre">next()</span></code></a> işleviyle birer birer alınabilmesi dışında normal bir işleve benziyor.</p>
+<dt id="term-generator">jeneratör<a class="headerlink" href="#term-generator" title="Permalink to this term">¶</a></dt><dd><p>Bir <a class="reference internal" href="#term-generator-iterator"><span class="xref std std-term">generator iterator</span></a> döndüren bir işlev.  Bir for döngüsünde kullanılabilen bir dizi değer üretmek için <a class="reference internal" href="reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a> ifadeleri içermesi veya <a class="reference internal" href="library/functions.html#next" title="next"><code class="xref py py-func docutils literal notranslate"><span class="pre">next()</span></code></a> işleviyle birer birer alınabilmesi dışında normal bir işleve benziyor.</p>
 <p>Genellikle bir üretici işlevine atıfta bulunur, ancak bazı bağlamlarda bir <em>jeneratör yineleyicisine</em> atıfta bulunabilir.  Amaçlanan anlamın net olmadığı durumlarda, tam terimlerin kullanılması belirsizliği önler.</p>
 </dd>
 <dt id="term-generator-iterator">jeneratör yineleyici<a class="headerlink" href="#term-generator-iterator" title="Permalink to this term">¶</a></dt><dd><p>Bir <a class="reference internal" href="#term-generator"><span class="xref std std-term">generator</span></a> işlevi tarafından oluşturulan bir nesne.</p>
 <p>Her <a class="reference internal" href="reference/simple_stmts.html#yield"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">yield</span></code></a>, konum yürütme durumunu hatırlayarak (yerel değişkenler ve bekleyen try ifadeleri dahil) işlemeyi geçici olarak askıya alır.  <em>jeneratör yineleyici</em> devam ettiğinde, kaldığı yerden devam eder (her çağrıda yeniden başlayan işlevlerin aksine).</p>
 </dd>
-<dt id="index-20"><span id="term-generator-expression"></span>jeneratör ifadesi<a class="headerlink" href="#index-20" title="Permalink to this term">¶</a></dt><dd><p>Yineleyici döndüren bir ifade.  Bir döngü değişkenini, aralığı ve isteğe bağlı bir <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> yan tümcesini tanımlayan bir <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> yan tümcesinin takip ettiği normal bir ifadeye benziyor.  Birleştirilmiş ifade, bir çevreleyen için değerler üretir:</p>
+<dt id="term-generator-expression">jeneratör ifadesi<a class="headerlink" href="#term-generator-expression" title="Permalink to this term">¶</a></dt><dd><p>Yineleyici döndüren bir ifade.  Bir döngü değişkenini, aralığı ve isteğe bağlı bir <code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code> yan tümcesini tanımlayan bir <code class="xref std std-keyword docutils literal notranslate"><span class="pre">for</span></code> yan tümcesinin takip ettiği normal bir ifadeye benziyor.  Birleştirilmiş ifade, bir çevreleyen için değerler üretir:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>         <span class="c1"># sum of squares 0, 1, 4, ... 81</span>
 <span class="go">285</span>
 </pre></div>
@@ -675,6 +674,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -746,11 +749,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="unittest — Unit testing framework" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/unittest.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -106,15 +105,151 @@
 <li><a class="reference internal" href="#test-discovery">Test Discovery</a></li>
 <li><a class="reference internal" href="#organizing-test-code">Organizing test code</a></li>
 <li><a class="reference internal" href="#re-using-old-test-code">Re-using old test code</a></li>
-<li><a class="reference internal" href="#skipping-tests-and-expected-failures">Skipping tests and expected failures</a></li>
+<li><a class="reference internal" href="#skipping-tests-and-expected-failures">Skipping tests and expected failures</a><ul>
+<li><a class="reference internal" href="#unittest.skip"><code class="docutils literal notranslate"><span class="pre">skip()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.skipIf"><code class="docutils literal notranslate"><span class="pre">skipIf()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.skipUnless"><code class="docutils literal notranslate"><span class="pre">skipUnless()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.expectedFailure"><code class="docutils literal notranslate"><span class="pre">expectedFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.SkipTest"><code class="docutils literal notranslate"><span class="pre">SkipTest</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#distinguishing-test-iterations-using-subtests">Distinguishing test iterations using subtests</a></li>
 <li><a class="reference internal" href="#classes-and-functions">Classes and functions</a><ul>
 <li><a class="reference internal" href="#test-cases">Test cases</a><ul>
+<li><a class="reference internal" href="#unittest.TestCase"><code class="docutils literal notranslate"><span class="pre">TestCase</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestCase.setUp"><code class="docutils literal notranslate"><span class="pre">TestCase.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">TestCase.tearDown()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.setUpClass"><code class="docutils literal notranslate"><span class="pre">TestCase.setUpClass()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.tearDownClass"><code class="docutils literal notranslate"><span class="pre">TestCase.tearDownClass()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.run"><code class="docutils literal notranslate"><span class="pre">TestCase.run()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.skipTest"><code class="docutils literal notranslate"><span class="pre">TestCase.skipTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.subTest"><code class="docutils literal notranslate"><span class="pre">TestCase.subTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.debug"><code class="docutils literal notranslate"><span class="pre">TestCase.debug()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertTrue"><code class="docutils literal notranslate"><span class="pre">TestCase.assertTrue()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertFalse"><code class="docutils literal notranslate"><span class="pre">TestCase.assertFalse()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNot"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNot()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNone"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNone()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNotNone"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNotNone()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIn"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIn()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotIn"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotIn()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsInstance"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotIsInstance"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRaises"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRaises()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRaisesRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRaisesRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertWarns"><code class="docutils literal notranslate"><span class="pre">TestCase.assertWarns()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertWarnsRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertWarnsRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLogs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLogs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.records"><code class="docutils literal notranslate"><span class="pre">TestCase.records</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.output"><code class="docutils literal notranslate"><span class="pre">TestCase.output</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNoLogs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNoLogs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertAlmostEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotAlmostEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertGreater"><code class="docutils literal notranslate"><span class="pre">TestCase.assertGreater()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertGreaterEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertGreaterEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLess"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLessEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLessEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertCountEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertCountEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addTypeEqualityFunc"><code class="docutils literal notranslate"><span class="pre">TestCase.addTypeEqualityFunc()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertMultiLineEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertMultiLineEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertSequenceEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertSequenceEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertListEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertListEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertTupleEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertTupleEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertSetEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertSetEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertDictEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertDictEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.fail"><code class="docutils literal notranslate"><span class="pre">TestCase.fail()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.failureException"><code class="docutils literal notranslate"><span class="pre">TestCase.failureException</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.longMessage"><code class="docutils literal notranslate"><span class="pre">TestCase.longMessage</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.maxDiff"><code class="docutils literal notranslate"><span class="pre">TestCase.maxDiff</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.countTestCases"><code class="docutils literal notranslate"><span class="pre">TestCase.countTestCases()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.defaultTestResult"><code class="docutils literal notranslate"><span class="pre">TestCase.defaultTestResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.id"><code class="docutils literal notranslate"><span class="pre">TestCase.id()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.shortDescription"><code class="docutils literal notranslate"><span class="pre">TestCase.shortDescription()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addCleanup"><code class="docutils literal notranslate"><span class="pre">TestCase.addCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.enterContext"><code class="docutils literal notranslate"><span class="pre">TestCase.enterContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.doCleanups"><code class="docutils literal notranslate"><span class="pre">TestCase.doCleanups()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addClassCleanup"><code class="docutils literal notranslate"><span class="pre">TestCase.addClassCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.enterClassContext"><code class="docutils literal notranslate"><span class="pre">TestCase.enterClassContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.doClassCleanups"><code class="docutils literal notranslate"><span class="pre">TestCase.doClassCleanups()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.asyncSetUp"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.asyncSetUp()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.asyncTearDown"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.asyncTearDown()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.addAsyncCleanup"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.addAsyncCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.enterAsyncContext"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.enterAsyncContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.run"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.FunctionTestCase"><code class="docutils literal notranslate"><span class="pre">FunctionTestCase</span></code></a></li>
 <li><a class="reference internal" href="#deprecated-aliases">Deprecated aliases</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#grouping-tests">Grouping tests</a></li>
+<li><a class="reference internal" href="#grouping-tests">Grouping tests</a><ul>
+<li><a class="reference internal" href="#unittest.TestSuite"><code class="docutils literal notranslate"><span class="pre">TestSuite</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestSuite.addTest"><code class="docutils literal notranslate"><span class="pre">TestSuite.addTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.addTests"><code class="docutils literal notranslate"><span class="pre">TestSuite.addTests()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.run"><code class="docutils literal notranslate"><span class="pre">TestSuite.run()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.debug"><code class="docutils literal notranslate"><span class="pre">TestSuite.debug()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.countTestCases"><code class="docutils literal notranslate"><span class="pre">TestSuite.countTestCases()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.__iter__"><code class="docutils literal notranslate"><span class="pre">TestSuite.__iter__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#loading-and-running-tests">Loading and running tests</a><ul>
+<li><a class="reference internal" href="#unittest.TestLoader"><code class="docutils literal notranslate"><span class="pre">TestLoader</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestLoader.errors"><code class="docutils literal notranslate"><span class="pre">TestLoader.errors</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromTestCase"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromTestCase()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromModule"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromModule()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromName"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromName()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromNames"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromNames()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.getTestCaseNames"><code class="docutils literal notranslate"><span class="pre">TestLoader.getTestCaseNames()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.discover"><code class="docutils literal notranslate"><span class="pre">TestLoader.discover()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.testMethodPrefix"><code class="docutils literal notranslate"><span class="pre">TestLoader.testMethodPrefix</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.sortTestMethodsUsing"><code class="docutils literal notranslate"><span class="pre">TestLoader.sortTestMethodsUsing</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.suiteClass"><code class="docutils literal notranslate"><span class="pre">TestLoader.suiteClass</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.testNamePatterns"><code class="docutils literal notranslate"><span class="pre">TestLoader.testNamePatterns</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.TestResult"><code class="docutils literal notranslate"><span class="pre">TestResult</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestResult.errors"><code class="docutils literal notranslate"><span class="pre">TestResult.errors</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.failures"><code class="docutils literal notranslate"><span class="pre">TestResult.failures</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.skipped"><code class="docutils literal notranslate"><span class="pre">TestResult.skipped</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.expectedFailures"><code class="docutils literal notranslate"><span class="pre">TestResult.expectedFailures</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.unexpectedSuccesses"><code class="docutils literal notranslate"><span class="pre">TestResult.unexpectedSuccesses</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.shouldStop"><code class="docutils literal notranslate"><span class="pre">TestResult.shouldStop</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.testsRun"><code class="docutils literal notranslate"><span class="pre">TestResult.testsRun</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.buffer"><code class="docutils literal notranslate"><span class="pre">TestResult.buffer</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.failfast"><code class="docutils literal notranslate"><span class="pre">TestResult.failfast</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.tb_locals"><code class="docutils literal notranslate"><span class="pre">TestResult.tb_locals</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.wasSuccessful"><code class="docutils literal notranslate"><span class="pre">TestResult.wasSuccessful()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stop"><code class="docutils literal notranslate"><span class="pre">TestResult.stop()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.startTest"><code class="docutils literal notranslate"><span class="pre">TestResult.startTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stopTest"><code class="docutils literal notranslate"><span class="pre">TestResult.stopTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.startTestRun"><code class="docutils literal notranslate"><span class="pre">TestResult.startTestRun()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stopTestRun"><code class="docutils literal notranslate"><span class="pre">TestResult.stopTestRun()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addError"><code class="docutils literal notranslate"><span class="pre">TestResult.addError()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addFailure"><code class="docutils literal notranslate"><span class="pre">TestResult.addFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSuccess"><code class="docutils literal notranslate"><span class="pre">TestResult.addSuccess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSkip"><code class="docutils literal notranslate"><span class="pre">TestResult.addSkip()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addExpectedFailure"><code class="docutils literal notranslate"><span class="pre">TestResult.addExpectedFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addUnexpectedSuccess"><code class="docutils literal notranslate"><span class="pre">TestResult.addUnexpectedSuccess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSubTest"><code class="docutils literal notranslate"><span class="pre">TestResult.addSubTest()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.TextTestResult"><code class="docutils literal notranslate"><span class="pre">TextTestResult</span></code></a></li>
+<li><a class="reference internal" href="#unittest.defaultTestLoader"><code class="docutils literal notranslate"><span class="pre">defaultTestLoader</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TextTestRunner"><code class="docutils literal notranslate"><span class="pre">TextTestRunner</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TextTestRunner._makeResult"><code class="docutils literal notranslate"><span class="pre">TextTestRunner._makeResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TextTestRunner.run"><code class="docutils literal notranslate"><span class="pre">TextTestRunner.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li><a class="reference internal" href="#load-tests-protocol">load_tests Protocol</a></li>
 </ul>
 </li>
@@ -122,10 +257,21 @@
 </li>
 <li><a class="reference internal" href="#class-and-module-fixtures">Class and Module Fixtures</a><ul>
 <li><a class="reference internal" href="#setupclass-and-teardownclass">setUpClass and tearDownClass</a></li>
-<li><a class="reference internal" href="#setupmodule-and-teardownmodule">setUpModule and tearDownModule</a></li>
+<li><a class="reference internal" href="#setupmodule-and-teardownmodule">setUpModule and tearDownModule</a><ul>
+<li><a class="reference internal" href="#unittest.addModuleCleanup"><code class="docutils literal notranslate"><span class="pre">addModuleCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.enterModuleContext"><code class="docutils literal notranslate"><span class="pre">enterModuleContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.doModuleCleanups"><code class="docutils literal notranslate"><span class="pre">doModuleCleanups()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#signal-handling">Signal Handling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signal-handling">Signal Handling</a><ul>
+<li><a class="reference internal" href="#unittest.installHandler"><code class="docutils literal notranslate"><span class="pre">installHandler()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.registerResult"><code class="docutils literal notranslate"><span class="pre">registerResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.removeResult"><code class="docutils literal notranslate"><span class="pre">removeResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.removeHandler"><code class="docutils literal notranslate"><span class="pre">removeHandler()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -219,7 +365,7 @@
           <div class="body" role="main">
             
   <section id="module-unittest">
-<span id="unittest-unit-testing-framework"></span><h1><a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a> — Unit testing framework<a class="headerlink" href="#module-unittest" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="unittest-unit-testing-framework"></span><h1><a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a> — Unit testing framework<a class="headerlink" href="#module-unittest" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/unittest/__init__.py">Lib/unittest/__init__.py</a></p>
 <hr class="docutils" />
 <p>(If you are already familiar with the basic concepts of testing, you might want
@@ -277,7 +423,7 @@ recommended that tests be driven by a continuous integration system such as
 <a class="reference external" href="https://www.appveyor.com/">AppVeyor</a>.</p>
 </div>
 <section id="basic-example">
-<span id="unittest-minimal-example"></span><h2>Basic example<a class="headerlink" href="#basic-example" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unittest-minimal-example"></span><h2>Basic example<a class="headerlink" href="#basic-example" title="Permalink to this heading">¶</a></h2>
 <p>The <a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a> module provides a rich set of tools for constructing and
 running tests.  This section demonstrates that a small subset of the tools
 suffice to meet the needs of most users.</p>
@@ -348,7 +494,7 @@ documentation explores the full feature set from first principles.</p>
 </div>
 </section>
 <section id="command-line-interface">
-<span id="unittest-command-line-interface"></span><h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unittest-command-line-interface"></span><h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this heading">¶</a></h2>
 <p>The unittest module can be used from the command line to run tests from
 modules, classes or even individual test methods:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">unittest</span> <span class="n">test_module1</span> <span class="n">test_module2</span>
@@ -384,7 +530,7 @@ execute the file directly instead.</p>
 not modules or classes.</p>
 </div>
 <section id="command-line-options">
-<h3>Command-line options<a class="headerlink" href="#command-line-options" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Command-line options<a class="headerlink" href="#command-line-options" title="Permalink to this heading">¶</a></h3>
 <p><strong class="program">unittest</strong> supports these command-line options:</p>
 <dl class="std cmdoption">
 <dt class="sig sig-object std" id="cmdoption-unittest-b">
@@ -444,7 +590,7 @@ tests in a project or just a subset.</p>
 </section>
 </section>
 <section id="test-discovery">
-<span id="unittest-test-discovery"></span><h2>Test Discovery<a class="headerlink" href="#test-discovery" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unittest-test-discovery"></span><h2>Test Discovery<a class="headerlink" href="#test-discovery" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
@@ -542,7 +688,7 @@ and target directory explicitly. For example:</p>
 </div>
 </section>
 <section id="organizing-test-code">
-<span id="organizing-tests"></span><h2>Organizing test code<a class="headerlink" href="#organizing-test-code" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="organizing-tests"></span><h2>Organizing test code<a class="headerlink" href="#organizing-test-code" title="Permalink to this heading">¶</a></h2>
 <p>The basic building blocks of unit testing are <em class="dfn">test cases</em> — single
 scenarios that must be set up and checked for correctness.  In <a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a>,
 test cases are represented by <a class="reference internal" href="#unittest.TestCase" title="unittest.TestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">unittest.TestCase</span></code></a> instances.
@@ -651,7 +797,7 @@ be consistent?</p></li>
 </ul>
 </section>
 <section id="re-using-old-test-code">
-<span id="legacy-unit-tests"></span><h2>Re-using old test code<a class="headerlink" href="#re-using-old-test-code" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="legacy-unit-tests"></span><h2>Re-using old test code<a class="headerlink" href="#re-using-old-test-code" title="Permalink to this heading">¶</a></h2>
 <p>Some users will find that they have existing test code that they would like to
 run from <a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a>, without converting every old test function to a
 <a class="reference internal" href="#unittest.TestCase" title="unittest.TestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a> subclass.</p>
@@ -685,7 +831,7 @@ automatically build <a class="reference internal" href="#unittest.TestSuite" tit
 <a class="reference internal" href="doctest.html#module-doctest" title="doctest: Test pieces of code within docstrings."><code class="xref py py-mod docutils literal notranslate"><span class="pre">doctest</span></code></a>-based tests.</p>
 </section>
 <section id="skipping-tests-and-expected-failures">
-<span id="unittest-skipping"></span><h2>Skipping tests and expected failures<a class="headerlink" href="#skipping-tests-and-expected-failures" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unittest-skipping"></span><h2>Skipping tests and expected failures<a class="headerlink" href="#skipping-tests-and-expected-failures" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.1 sürümünde geldi.</span></p>
 </div>
@@ -800,7 +946,7 @@ Skipped classes will not have <a class="reference internal" href="#unittest.Test
 Skipped modules will not have <code class="xref py py-func docutils literal notranslate"><span class="pre">setUpModule()</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">tearDownModule()</span></code> run.</p>
 </section>
 <section id="distinguishing-test-iterations-using-subtests">
-<span id="subtests"></span><h2>Distinguishing test iterations using subtests<a class="headerlink" href="#distinguishing-test-iterations-using-subtests" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="subtests"></span><h2>Distinguishing test iterations using subtests<a class="headerlink" href="#distinguishing-test-iterations-using-subtests" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.4 sürümünde geldi.</span></p>
 </div>
@@ -865,10 +1011,10 @@ wouldn’t be displayed:</p>
 </div>
 </section>
 <section id="classes-and-functions">
-<span id="unittest-contents"></span><h2>Classes and functions<a class="headerlink" href="#classes-and-functions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="unittest-contents"></span><h2>Classes and functions<a class="headerlink" href="#classes-and-functions" title="Permalink to this heading">¶</a></h2>
 <p>This section describes in depth the API of <a class="reference internal" href="#module-unittest" title="unittest: Unit testing framework for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unittest</span></code></a>.</p>
 <section id="test-cases">
-<span id="testcase-objects"></span><h3>Test cases<a class="headerlink" href="#test-cases" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="testcase-objects"></span><h3>Test cases<a class="headerlink" href="#test-cases" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="unittest.TestCase">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">unittest.</span></span><span class="sig-name descname"><span class="pre">TestCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">methodName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'runTest'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#unittest.TestCase" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1002,11 +1148,6 @@ running tests under a debugger.</p>
 report failures.  The following table lists the most commonly used methods
 (see the tables below for more assert methods):</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 48%" />
-<col style="width: 34%" />
-<col style="width: 18%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Checks that</p></th>
@@ -1157,11 +1298,6 @@ To check for the exact type, use <a class="reference internal" href="#unittest.T
 <p>It is also possible to check the production of exceptions, warnings, and
 log messages using the following methods:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 36%" />
-<col style="width: 11%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Checks that</p></th>
@@ -1407,11 +1543,6 @@ manager.</p>
 
 <p>There are also other methods used to perform more specific checks, such as:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 46%" />
-<col style="width: 38%" />
-<col style="width: 16%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Checks that</p></th>
@@ -1565,11 +1696,6 @@ message.</p>
 <a class="reference internal" href="#unittest.TestCase.assertEqual" title="unittest.TestCase.assertEqual"><code class="xref py py-meth docutils literal notranslate"><span class="pre">assertEqual()</span></code></a> are summarized in the following table.  Note
 that it’s usually not necessary to invoke these methods directly.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 49%" />
-<col style="width: 35%" />
-<col style="width: 17%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Used to compare</p></th>
@@ -1962,17 +2088,12 @@ test cases using legacy test code, allowing it to be integrated into a
 </dd></dl>
 
 <section id="deprecated-aliases">
-<span id="id1"></span><h4>Deprecated aliases<a class="headerlink" href="#deprecated-aliases" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<span id="id1"></span><h4>Deprecated aliases<a class="headerlink" href="#deprecated-aliases" title="Permalink to this heading">¶</a></h4>
 <p>For historical reasons, some of the <a class="reference internal" href="#unittest.TestCase" title="unittest.TestCase"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestCase</span></code></a> methods had one or more
 aliases that are now deprecated.  The following table lists the correct names
 along with their deprecated aliases:</p>
 <blockquote>
 <div><table class="docutils align-default">
-<colgroup>
-<col style="width: 40%" />
-<col style="width: 29%" />
-<col style="width: 31%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Method Name</p></th>
 <th class="head"><p>Deprecated alias</p></th>
@@ -2039,7 +2160,7 @@ along with their deprecated aliases:</p>
 </section>
 </section>
 <section id="grouping-tests">
-<span id="testsuite-objects"></span><h3>Grouping tests<a class="headerlink" href="#grouping-tests" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<span id="testsuite-objects"></span><h3>Grouping tests<a class="headerlink" href="#grouping-tests" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="unittest.TestSuite">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">unittest.</span></span><span class="sig-name descname"><span class="pre">TestSuite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#unittest.TestSuite" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2124,7 +2245,7 @@ is invoked by a <code class="xref py py-class docutils literal notranslate"><spa
 
 </section>
 <section id="loading-and-running-tests">
-<h3>Loading and running tests<a class="headerlink" href="#loading-and-running-tests" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>Loading and running tests<a class="headerlink" href="#loading-and-running-tests" title="Permalink to this heading">¶</a></h3>
 <dl class="py class">
 <dt class="sig sig-object py" id="unittest.TestLoader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">unittest.</span></span><span class="sig-name descname"><span class="pre">TestLoader</span></span><a class="headerlink" href="#unittest.TestLoader" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2700,7 +2821,7 @@ test names.</p>
 </dd></dl>
 
 <section id="load-tests-protocol">
-<h4>load_tests Protocol<a class="headerlink" href="#load-tests-protocol" title="Bu başlık için kalıcı bağlantı">¶</a></h4>
+<h4>load_tests Protocol<a class="headerlink" href="#load-tests-protocol" title="Permalink to this heading">¶</a></h4>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
@@ -2762,7 +2883,7 @@ impossibility of package names matching the default pattern.</p>
 </section>
 </section>
 <section id="class-and-module-fixtures">
-<h2>Class and Module Fixtures<a class="headerlink" href="#class-and-module-fixtures" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Class and Module Fixtures<a class="headerlink" href="#class-and-module-fixtures" title="Permalink to this heading">¶</a></h2>
 <p>Class and module level fixtures are implemented in <a class="reference internal" href="#unittest.TestSuite" title="unittest.TestSuite"><code class="xref py py-class docutils literal notranslate"><span class="pre">TestSuite</span></code></a>. When
 the test suite encounters a test from a new class then <code class="xref py py-meth docutils literal notranslate"><span class="pre">tearDownClass()</span></code>
 from the previous class (if there is one) is called, followed by
@@ -2790,7 +2911,7 @@ instance an <code class="docutils literal notranslate"><span class="pre">_ErrorH
 the standard unittest test runner then this detail doesn’t matter, but if you
 are a framework author it may be relevant.</p>
 <section id="setupclass-and-teardownclass">
-<h3>setUpClass and tearDownClass<a class="headerlink" href="#setupclass-and-teardownclass" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>setUpClass and tearDownClass<a class="headerlink" href="#setupclass-and-teardownclass" title="Permalink to this heading">¶</a></h3>
 <p>These must be implemented as class methods:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unittest</span>
 
@@ -2814,7 +2935,7 @@ have <code class="docutils literal notranslate"><span class="pre">setUpClass</sp
 instead of as an error.</p>
 </section>
 <section id="setupmodule-and-teardownmodule">
-<h3>setUpModule and tearDownModule<a class="headerlink" href="#setupmodule-and-teardownmodule" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3>setUpModule and tearDownModule<a class="headerlink" href="#setupmodule-and-teardownmodule" title="Permalink to this heading">¶</a></h3>
 <p>These should be implemented as functions:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">setUpModule</span><span class="p">():</span>
     <span class="n">createConnection</span><span class="p">()</span>
@@ -2875,7 +2996,7 @@ functions one at a time, so it can be called at any time.</p>
 </section>
 </section>
 <section id="signal-handling">
-<h2>Signal Handling<a class="headerlink" href="#signal-handling" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2>Signal Handling<a class="headerlink" href="#signal-handling" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
@@ -2957,15 +3078,151 @@ to temporarily remove the handler while the test is being executed:</p>
 <li><a class="reference internal" href="#test-discovery">Test Discovery</a></li>
 <li><a class="reference internal" href="#organizing-test-code">Organizing test code</a></li>
 <li><a class="reference internal" href="#re-using-old-test-code">Re-using old test code</a></li>
-<li><a class="reference internal" href="#skipping-tests-and-expected-failures">Skipping tests and expected failures</a></li>
+<li><a class="reference internal" href="#skipping-tests-and-expected-failures">Skipping tests and expected failures</a><ul>
+<li><a class="reference internal" href="#unittest.skip"><code class="docutils literal notranslate"><span class="pre">skip()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.skipIf"><code class="docutils literal notranslate"><span class="pre">skipIf()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.skipUnless"><code class="docutils literal notranslate"><span class="pre">skipUnless()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.expectedFailure"><code class="docutils literal notranslate"><span class="pre">expectedFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.SkipTest"><code class="docutils literal notranslate"><span class="pre">SkipTest</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#distinguishing-test-iterations-using-subtests">Distinguishing test iterations using subtests</a></li>
 <li><a class="reference internal" href="#classes-and-functions">Classes and functions</a><ul>
 <li><a class="reference internal" href="#test-cases">Test cases</a><ul>
+<li><a class="reference internal" href="#unittest.TestCase"><code class="docutils literal notranslate"><span class="pre">TestCase</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestCase.setUp"><code class="docutils literal notranslate"><span class="pre">TestCase.setUp()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.tearDown"><code class="docutils literal notranslate"><span class="pre">TestCase.tearDown()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.setUpClass"><code class="docutils literal notranslate"><span class="pre">TestCase.setUpClass()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.tearDownClass"><code class="docutils literal notranslate"><span class="pre">TestCase.tearDownClass()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.run"><code class="docutils literal notranslate"><span class="pre">TestCase.run()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.skipTest"><code class="docutils literal notranslate"><span class="pre">TestCase.skipTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.subTest"><code class="docutils literal notranslate"><span class="pre">TestCase.subTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.debug"><code class="docutils literal notranslate"><span class="pre">TestCase.debug()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertTrue"><code class="docutils literal notranslate"><span class="pre">TestCase.assertTrue()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertFalse"><code class="docutils literal notranslate"><span class="pre">TestCase.assertFalse()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNot"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNot()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNone"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNone()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsNotNone"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsNotNone()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIn"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIn()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotIn"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotIn()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertIsInstance"><code class="docutils literal notranslate"><span class="pre">TestCase.assertIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotIsInstance"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotIsInstance()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRaises"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRaises()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRaisesRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRaisesRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertWarns"><code class="docutils literal notranslate"><span class="pre">TestCase.assertWarns()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertWarnsRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertWarnsRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLogs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLogs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.records"><code class="docutils literal notranslate"><span class="pre">TestCase.records</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.output"><code class="docutils literal notranslate"><span class="pre">TestCase.output</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNoLogs"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNoLogs()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertAlmostEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotAlmostEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotAlmostEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertGreater"><code class="docutils literal notranslate"><span class="pre">TestCase.assertGreater()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertGreaterEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertGreaterEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLess"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertLessEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertLessEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertNotRegex"><code class="docutils literal notranslate"><span class="pre">TestCase.assertNotRegex()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertCountEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertCountEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addTypeEqualityFunc"><code class="docutils literal notranslate"><span class="pre">TestCase.addTypeEqualityFunc()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertMultiLineEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertMultiLineEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertSequenceEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertSequenceEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertListEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertListEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertTupleEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertTupleEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertSetEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertSetEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.assertDictEqual"><code class="docutils literal notranslate"><span class="pre">TestCase.assertDictEqual()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.fail"><code class="docutils literal notranslate"><span class="pre">TestCase.fail()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.failureException"><code class="docutils literal notranslate"><span class="pre">TestCase.failureException</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.longMessage"><code class="docutils literal notranslate"><span class="pre">TestCase.longMessage</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.maxDiff"><code class="docutils literal notranslate"><span class="pre">TestCase.maxDiff</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.countTestCases"><code class="docutils literal notranslate"><span class="pre">TestCase.countTestCases()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.defaultTestResult"><code class="docutils literal notranslate"><span class="pre">TestCase.defaultTestResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.id"><code class="docutils literal notranslate"><span class="pre">TestCase.id()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.shortDescription"><code class="docutils literal notranslate"><span class="pre">TestCase.shortDescription()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addCleanup"><code class="docutils literal notranslate"><span class="pre">TestCase.addCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.enterContext"><code class="docutils literal notranslate"><span class="pre">TestCase.enterContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.doCleanups"><code class="docutils literal notranslate"><span class="pre">TestCase.doCleanups()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.addClassCleanup"><code class="docutils literal notranslate"><span class="pre">TestCase.addClassCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.enterClassContext"><code class="docutils literal notranslate"><span class="pre">TestCase.enterClassContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestCase.doClassCleanups"><code class="docutils literal notranslate"><span class="pre">TestCase.doClassCleanups()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.asyncSetUp"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.asyncSetUp()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.asyncTearDown"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.asyncTearDown()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.addAsyncCleanup"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.addAsyncCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.enterAsyncContext"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.enterAsyncContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.IsolatedAsyncioTestCase.run"><code class="docutils literal notranslate"><span class="pre">IsolatedAsyncioTestCase.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.FunctionTestCase"><code class="docutils literal notranslate"><span class="pre">FunctionTestCase</span></code></a></li>
 <li><a class="reference internal" href="#deprecated-aliases">Deprecated aliases</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#grouping-tests">Grouping tests</a></li>
+<li><a class="reference internal" href="#grouping-tests">Grouping tests</a><ul>
+<li><a class="reference internal" href="#unittest.TestSuite"><code class="docutils literal notranslate"><span class="pre">TestSuite</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestSuite.addTest"><code class="docutils literal notranslate"><span class="pre">TestSuite.addTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.addTests"><code class="docutils literal notranslate"><span class="pre">TestSuite.addTests()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.run"><code class="docutils literal notranslate"><span class="pre">TestSuite.run()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.debug"><code class="docutils literal notranslate"><span class="pre">TestSuite.debug()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.countTestCases"><code class="docutils literal notranslate"><span class="pre">TestSuite.countTestCases()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestSuite.__iter__"><code class="docutils literal notranslate"><span class="pre">TestSuite.__iter__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#loading-and-running-tests">Loading and running tests</a><ul>
+<li><a class="reference internal" href="#unittest.TestLoader"><code class="docutils literal notranslate"><span class="pre">TestLoader</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestLoader.errors"><code class="docutils literal notranslate"><span class="pre">TestLoader.errors</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromTestCase"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromTestCase()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromModule"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromModule()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromName"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromName()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.loadTestsFromNames"><code class="docutils literal notranslate"><span class="pre">TestLoader.loadTestsFromNames()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.getTestCaseNames"><code class="docutils literal notranslate"><span class="pre">TestLoader.getTestCaseNames()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.discover"><code class="docutils literal notranslate"><span class="pre">TestLoader.discover()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.testMethodPrefix"><code class="docutils literal notranslate"><span class="pre">TestLoader.testMethodPrefix</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.sortTestMethodsUsing"><code class="docutils literal notranslate"><span class="pre">TestLoader.sortTestMethodsUsing</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.suiteClass"><code class="docutils literal notranslate"><span class="pre">TestLoader.suiteClass</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestLoader.testNamePatterns"><code class="docutils literal notranslate"><span class="pre">TestLoader.testNamePatterns</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.TestResult"><code class="docutils literal notranslate"><span class="pre">TestResult</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TestResult.errors"><code class="docutils literal notranslate"><span class="pre">TestResult.errors</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.failures"><code class="docutils literal notranslate"><span class="pre">TestResult.failures</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.skipped"><code class="docutils literal notranslate"><span class="pre">TestResult.skipped</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.expectedFailures"><code class="docutils literal notranslate"><span class="pre">TestResult.expectedFailures</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.unexpectedSuccesses"><code class="docutils literal notranslate"><span class="pre">TestResult.unexpectedSuccesses</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.shouldStop"><code class="docutils literal notranslate"><span class="pre">TestResult.shouldStop</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.testsRun"><code class="docutils literal notranslate"><span class="pre">TestResult.testsRun</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.buffer"><code class="docutils literal notranslate"><span class="pre">TestResult.buffer</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.failfast"><code class="docutils literal notranslate"><span class="pre">TestResult.failfast</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.tb_locals"><code class="docutils literal notranslate"><span class="pre">TestResult.tb_locals</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.wasSuccessful"><code class="docutils literal notranslate"><span class="pre">TestResult.wasSuccessful()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stop"><code class="docutils literal notranslate"><span class="pre">TestResult.stop()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.startTest"><code class="docutils literal notranslate"><span class="pre">TestResult.startTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stopTest"><code class="docutils literal notranslate"><span class="pre">TestResult.stopTest()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.startTestRun"><code class="docutils literal notranslate"><span class="pre">TestResult.startTestRun()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.stopTestRun"><code class="docutils literal notranslate"><span class="pre">TestResult.stopTestRun()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addError"><code class="docutils literal notranslate"><span class="pre">TestResult.addError()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addFailure"><code class="docutils literal notranslate"><span class="pre">TestResult.addFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSuccess"><code class="docutils literal notranslate"><span class="pre">TestResult.addSuccess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSkip"><code class="docutils literal notranslate"><span class="pre">TestResult.addSkip()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addExpectedFailure"><code class="docutils literal notranslate"><span class="pre">TestResult.addExpectedFailure()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addUnexpectedSuccess"><code class="docutils literal notranslate"><span class="pre">TestResult.addUnexpectedSuccess()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TestResult.addSubTest"><code class="docutils literal notranslate"><span class="pre">TestResult.addSubTest()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.TextTestResult"><code class="docutils literal notranslate"><span class="pre">TextTestResult</span></code></a></li>
+<li><a class="reference internal" href="#unittest.defaultTestLoader"><code class="docutils literal notranslate"><span class="pre">defaultTestLoader</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TextTestRunner"><code class="docutils literal notranslate"><span class="pre">TextTestRunner</span></code></a><ul>
+<li><a class="reference internal" href="#unittest.TextTestRunner._makeResult"><code class="docutils literal notranslate"><span class="pre">TextTestRunner._makeResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.TextTestRunner.run"><code class="docutils literal notranslate"><span class="pre">TextTestRunner.run()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unittest.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
 <li><a class="reference internal" href="#load-tests-protocol">load_tests Protocol</a></li>
 </ul>
 </li>
@@ -2973,10 +3230,21 @@ to temporarily remove the handler while the test is being executed:</p>
 </li>
 <li><a class="reference internal" href="#class-and-module-fixtures">Class and Module Fixtures</a><ul>
 <li><a class="reference internal" href="#setupclass-and-teardownclass">setUpClass and tearDownClass</a></li>
-<li><a class="reference internal" href="#setupmodule-and-teardownmodule">setUpModule and tearDownModule</a></li>
+<li><a class="reference internal" href="#setupmodule-and-teardownmodule">setUpModule and tearDownModule</a><ul>
+<li><a class="reference internal" href="#unittest.addModuleCleanup"><code class="docutils literal notranslate"><span class="pre">addModuleCleanup()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.enterModuleContext"><code class="docutils literal notranslate"><span class="pre">enterModuleContext()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.doModuleCleanups"><code class="docutils literal notranslate"><span class="pre">doModuleCleanups()</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#signal-handling">Signal Handling</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#signal-handling">Signal Handling</a><ul>
+<li><a class="reference internal" href="#unittest.installHandler"><code class="docutils literal notranslate"><span class="pre">installHandler()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.registerResult"><code class="docutils literal notranslate"><span class="pre">registerResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.removeResult"><code class="docutils literal notranslate"><span class="pre">removeResult()</span></code></a></li>
+<li><a class="reference internal" href="#unittest.removeHandler"><code class="docutils literal notranslate"><span class="pre">removeHandler()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3004,6 +3272,10 @@ to temporarily remove the handler while the test is being executed:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -3077,11 +3349,11 @@ to temporarily remove the handler while the test is being executed:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

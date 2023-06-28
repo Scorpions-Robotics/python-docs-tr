@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="telnetlib — Telnet client" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/telnetlib.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,29 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — Telnet client</a><ul>
-<li><a class="reference internal" href="#telnet-objects">Telnet Objects</a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet"><code class="docutils literal notranslate"><span class="pre">Telnet</span></code></a></li>
+<li><a class="reference internal" href="#telnet-objects">Telnet Objects</a><ul>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_until"><code class="docutils literal notranslate"><span class="pre">Telnet.read_until()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_all"><code class="docutils literal notranslate"><span class="pre">Telnet.read_all()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_some"><code class="docutils literal notranslate"><span class="pre">Telnet.read_some()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_very_eager"><code class="docutils literal notranslate"><span class="pre">Telnet.read_very_eager()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_eager"><code class="docutils literal notranslate"><span class="pre">Telnet.read_eager()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_lazy"><code class="docutils literal notranslate"><span class="pre">Telnet.read_lazy()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_very_lazy"><code class="docutils literal notranslate"><span class="pre">Telnet.read_very_lazy()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_sb_data"><code class="docutils literal notranslate"><span class="pre">Telnet.read_sb_data()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.open"><code class="docutils literal notranslate"><span class="pre">Telnet.open()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.msg"><code class="docutils literal notranslate"><span class="pre">Telnet.msg()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.set_debuglevel"><code class="docutils literal notranslate"><span class="pre">Telnet.set_debuglevel()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.close"><code class="docutils literal notranslate"><span class="pre">Telnet.close()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.get_socket"><code class="docutils literal notranslate"><span class="pre">Telnet.get_socket()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.fileno"><code class="docutils literal notranslate"><span class="pre">Telnet.fileno()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.write"><code class="docutils literal notranslate"><span class="pre">Telnet.write()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.interact"><code class="docutils literal notranslate"><span class="pre">Telnet.interact()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.mt_interact"><code class="docutils literal notranslate"><span class="pre">Telnet.mt_interact()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.expect"><code class="docutils literal notranslate"><span class="pre">Telnet.expect()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.set_option_negotiation_callback"><code class="docutils literal notranslate"><span class="pre">Telnet.set_option_negotiation_callback()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#telnet-example">Telnet Example</a></li>
 </ul>
 </li>
@@ -193,7 +214,7 @@
           <div class="body" role="main">
             
   <section id="module-telnetlib">
-<span id="telnetlib-telnet-client"></span><h1><a class="reference internal" href="#module-telnetlib" title="telnetlib: Telnet client class. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code></a> — Telnet client<a class="headerlink" href="#module-telnetlib" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="telnetlib-telnet-client"></span><h1><a class="reference internal" href="#module-telnetlib" title="telnetlib: Telnet client class. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code></a> — Telnet client<a class="headerlink" href="#module-telnetlib" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/telnetlib.py">Lib/telnetlib.py</a></p>
 <div class="deprecated-removed" id="index-0">
 <p><span class="versionmodified">Sürüm 3.11 ‘den beri kullanım dışı, sürüm 3.13 ‘da kaldırılacak: </span>The <a class="reference internal" href="#module-telnetlib" title="telnetlib: Telnet client class. (kullanım dışı)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code></a> module is deprecated
@@ -254,7 +275,7 @@ an empty string for other reasons.  See the individual descriptions below.</p>
 </dl>
 </div>
 <section id="telnet-objects">
-<span id="id1"></span><h2>Telnet Objects<a class="headerlink" href="#telnet-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Telnet Objects<a class="headerlink" href="#telnet-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#telnetlib.Telnet" title="telnetlib.Telnet"><code class="xref py py-class docutils literal notranslate"><span class="pre">Telnet</span></code></a> instances have the following methods:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="telnetlib.Telnet.read_until">
@@ -420,7 +441,7 @@ called with the following parameters: callback(telnet socket, command
 
 </section>
 <section id="telnet-example">
-<span id="id2"></span><h2>Telnet Example<a class="headerlink" href="#telnet-example" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id2"></span><h2>Telnet Example<a class="headerlink" href="#telnet-example" title="Permalink to this heading">¶</a></h2>
 <p>A simple example illustrating typical use:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">getpass</span>
 <span class="kn">import</span> <span class="nn">telnetlib</span>
@@ -457,7 +478,29 @@ called with the following parameters: callback(telnet socket, command
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — Telnet client</a><ul>
-<li><a class="reference internal" href="#telnet-objects">Telnet Objects</a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet"><code class="docutils literal notranslate"><span class="pre">Telnet</span></code></a></li>
+<li><a class="reference internal" href="#telnet-objects">Telnet Objects</a><ul>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_until"><code class="docutils literal notranslate"><span class="pre">Telnet.read_until()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_all"><code class="docutils literal notranslate"><span class="pre">Telnet.read_all()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_some"><code class="docutils literal notranslate"><span class="pre">Telnet.read_some()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_very_eager"><code class="docutils literal notranslate"><span class="pre">Telnet.read_very_eager()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_eager"><code class="docutils literal notranslate"><span class="pre">Telnet.read_eager()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_lazy"><code class="docutils literal notranslate"><span class="pre">Telnet.read_lazy()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_very_lazy"><code class="docutils literal notranslate"><span class="pre">Telnet.read_very_lazy()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.read_sb_data"><code class="docutils literal notranslate"><span class="pre">Telnet.read_sb_data()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.open"><code class="docutils literal notranslate"><span class="pre">Telnet.open()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.msg"><code class="docutils literal notranslate"><span class="pre">Telnet.msg()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.set_debuglevel"><code class="docutils literal notranslate"><span class="pre">Telnet.set_debuglevel()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.close"><code class="docutils literal notranslate"><span class="pre">Telnet.close()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.get_socket"><code class="docutils literal notranslate"><span class="pre">Telnet.get_socket()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.fileno"><code class="docutils literal notranslate"><span class="pre">Telnet.fileno()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.write"><code class="docutils literal notranslate"><span class="pre">Telnet.write()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.interact"><code class="docutils literal notranslate"><span class="pre">Telnet.interact()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.mt_interact"><code class="docutils literal notranslate"><span class="pre">Telnet.mt_interact()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.expect"><code class="docutils literal notranslate"><span class="pre">Telnet.expect()</span></code></a></li>
+<li><a class="reference internal" href="#telnetlib.Telnet.set_option_negotiation_callback"><code class="docutils literal notranslate"><span class="pre">Telnet.set_option_negotiation_callback()</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#telnet-example">Telnet Example</a></li>
 </ul>
 </li>
@@ -486,6 +529,10 @@ called with the following parameters: callback(telnet socket, command
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -559,11 +606,11 @@ called with the following parameters: callback(telnet socket, command
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

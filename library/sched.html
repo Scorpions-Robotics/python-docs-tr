@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="sched — Event scheduler" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/sched.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -98,7 +97,16 @@
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sched</span></code> — Event scheduler</a><ul>
-<li><a class="reference internal" href="#scheduler-objects">Scheduler Objects</a></li>
+<li><a class="reference internal" href="#sched.scheduler"><code class="docutils literal notranslate"><span class="pre">scheduler</span></code></a></li>
+<li><a class="reference internal" href="#scheduler-objects">Scheduler Objects</a><ul>
+<li><a class="reference internal" href="#sched.scheduler.enterabs"><code class="docutils literal notranslate"><span class="pre">scheduler.enterabs()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.enter"><code class="docutils literal notranslate"><span class="pre">scheduler.enter()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.cancel"><code class="docutils literal notranslate"><span class="pre">scheduler.cancel()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.empty"><code class="docutils literal notranslate"><span class="pre">scheduler.empty()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.run"><code class="docutils literal notranslate"><span class="pre">scheduler.run()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.queue"><code class="docutils literal notranslate"><span class="pre">scheduler.queue</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -192,7 +200,7 @@
           <div class="body" role="main">
             
   <section id="module-sched">
-<span id="sched-event-scheduler"></span><h1><a class="reference internal" href="#module-sched" title="sched: General purpose event scheduler."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sched</span></code></a> — Event scheduler<a class="headerlink" href="#module-sched" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="sched-event-scheduler"></span><h1><a class="reference internal" href="#module-sched" title="sched: General purpose event scheduler."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sched</span></code></a> — Event scheduler<a class="headerlink" href="#module-sched" title="Permalink to this heading">¶</a></h1>
 <p><strong>Source code:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.11/Lib/sched.py">Lib/sched.py</a></p>
 <hr class="docutils" id="index-0" />
 <p>The <a class="reference internal" href="#module-sched" title="sched: General purpose event scheduler."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sched</span></code></a> module defines a class which implements a general purpose event
@@ -245,7 +253,7 @@ environments.</p>
 </pre></div>
 </div>
 <section id="scheduler-objects">
-<span id="id1"></span><h2>Scheduler Objects<a class="headerlink" href="#scheduler-objects" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<span id="id1"></span><h2>Scheduler Objects<a class="headerlink" href="#scheduler-objects" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference internal" href="#sched.scheduler" title="sched.scheduler"><code class="xref py py-class docutils literal notranslate"><span class="pre">scheduler</span></code></a> instances have the following methods and attributes:</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sched.scheduler.enterabs">
@@ -338,7 +346,16 @@ following fields:  time, priority, action, argument, kwargs.</p>
     <h3><a href="../contents.html">İçindekiler</a></h3>
     <ul>
 <li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sched</span></code> — Event scheduler</a><ul>
-<li><a class="reference internal" href="#scheduler-objects">Scheduler Objects</a></li>
+<li><a class="reference internal" href="#sched.scheduler"><code class="docutils literal notranslate"><span class="pre">scheduler</span></code></a></li>
+<li><a class="reference internal" href="#scheduler-objects">Scheduler Objects</a><ul>
+<li><a class="reference internal" href="#sched.scheduler.enterabs"><code class="docutils literal notranslate"><span class="pre">scheduler.enterabs()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.enter"><code class="docutils literal notranslate"><span class="pre">scheduler.enter()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.cancel"><code class="docutils literal notranslate"><span class="pre">scheduler.cancel()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.empty"><code class="docutils literal notranslate"><span class="pre">scheduler.empty()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.run"><code class="docutils literal notranslate"><span class="pre">scheduler.run()</span></code></a></li>
+<li><a class="reference internal" href="#sched.scheduler.queue"><code class="docutils literal notranslate"><span class="pre">scheduler.queue</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -366,6 +383,10 @@ following fields:  time, priority, action, argument, kwargs.</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -439,11 +460,11 @@ following fields:  time, priority, action, argument, kwargs.</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

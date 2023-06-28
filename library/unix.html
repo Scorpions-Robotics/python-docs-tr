@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Unix Specific Services" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/library/unix.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -181,7 +180,7 @@
           <div class="body" role="main">
             
   <section id="unix-specific-services">
-<span id="unix"></span><h1>Unix Specific Services<a class="headerlink" href="#unix-specific-services" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
+<span id="unix"></span><h1>Unix Specific Services<a class="headerlink" href="#unix-specific-services" title="Permalink to this heading">¶</a></h1>
 <p>The modules described in this chapter provide interfaces to features that are
 unique to the Unix operating system, or in some cases to some or many variants
 of it.  Here’s an overview:</p>
@@ -189,27 +188,101 @@ of it.  Here’s an overview:</p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="posix.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">posix</span></code> — The most common POSIX system calls</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="posix.html#large-file-support">Large File Support</a></li>
-<li class="toctree-l2"><a class="reference internal" href="posix.html#notable-module-contents">Notable Module Contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="posix.html#notable-module-contents">Notable Module Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="posix.html#posix.environ"><code class="docutils literal notranslate"><span class="pre">environ</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pwd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pwd</span></code> — The password database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="grp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">grp</span></code> — The group database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pwd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pwd</span></code> — The password database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pwd.html#pwd.getpwuid"><code class="docutils literal notranslate"><span class="pre">getpwuid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pwd.html#pwd.getpwnam"><code class="docutils literal notranslate"><span class="pre">getpwnam()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pwd.html#pwd.getpwall"><code class="docutils literal notranslate"><span class="pre">getpwall()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">grp</span></code> — The group database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="grp.html#grp.getgrgid"><code class="docutils literal notranslate"><span class="pre">getgrgid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="grp.html#grp.getgrnam"><code class="docutils literal notranslate"><span class="pre">getgrnam()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="grp.html#grp.getgrall"><code class="docutils literal notranslate"><span class="pre">getgrall()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="termios.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code> — POSIX style tty control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcgetattr"><code class="docutils literal notranslate"><span class="pre">tcgetattr()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcsetattr"><code class="docutils literal notranslate"><span class="pre">tcsetattr()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcsendbreak"><code class="docutils literal notranslate"><span class="pre">tcsendbreak()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcdrain"><code class="docutils literal notranslate"><span class="pre">tcdrain()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcflush"><code class="docutils literal notranslate"><span class="pre">tcflush()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcflow"><code class="docutils literal notranslate"><span class="pre">tcflow()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcgetwinsize"><code class="docutils literal notranslate"><span class="pre">tcgetwinsize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="termios.html#termios.tcsetwinsize"><code class="docutils literal notranslate"><span class="pre">tcsetwinsize()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="termios.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tty.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tty</span></code> — Terminal control functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tty.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tty</span></code> — Terminal control functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tty.html#tty.setraw"><code class="docutils literal notranslate"><span class="pre">setraw()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tty.html#tty.setcbreak"><code class="docutils literal notranslate"><span class="pre">setcbreak()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="pty.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pty</span></code> — Pseudo-terminal utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pty.html#pty.fork"><code class="docutils literal notranslate"><span class="pre">fork()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pty.html#pty.openpty"><code class="docutils literal notranslate"><span class="pre">openpty()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pty.html#pty.spawn"><code class="docutils literal notranslate"><span class="pre">spawn()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="pty.html#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fcntl.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fcntl</span></code> — The <code class="docutils literal notranslate"><span class="pre">fcntl</span></code> and <code class="docutils literal notranslate"><span class="pre">ioctl</span></code> system calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fcntl.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fcntl</span></code> — The <code class="docutils literal notranslate"><span class="pre">fcntl</span></code> and <code class="docutils literal notranslate"><span class="pre">ioctl</span></code> system calls</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fcntl.html#fcntl.fcntl"><code class="docutils literal notranslate"><span class="pre">fcntl()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fcntl.html#fcntl.ioctl"><code class="docutils literal notranslate"><span class="pre">ioctl()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fcntl.html#fcntl.flock"><code class="docutils literal notranslate"><span class="pre">flock()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="fcntl.html#fcntl.lockf"><code class="docutils literal notranslate"><span class="pre">lockf()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="resource.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">resource</span></code> — Resource usage information</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#resource-limits">Resource Limits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="resource.html#resource-usage">Resource Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#resource.error"><code class="docutils literal notranslate"><span class="pre">error</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#resource-limits">Resource Limits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIM_INFINITY"><code class="docutils literal notranslate"><span class="pre">RLIM_INFINITY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.getrlimit"><code class="docutils literal notranslate"><span class="pre">getrlimit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.setrlimit"><code class="docutils literal notranslate"><span class="pre">setrlimit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.prlimit"><code class="docutils literal notranslate"><span class="pre">prlimit()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_CORE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CORE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_CPU"><code class="docutils literal notranslate"><span class="pre">RLIMIT_CPU</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_FSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_FSIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_DATA"><code class="docutils literal notranslate"><span class="pre">RLIMIT_DATA</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_STACK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_STACK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_RSS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RSS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_NPROC"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPROC</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_NOFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NOFILE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_OFILE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_OFILE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_MEMLOCK"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MEMLOCK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_VMEM"><code class="docutils literal notranslate"><span class="pre">RLIMIT_VMEM</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_AS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_AS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_MSGQUEUE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_MSGQUEUE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_NICE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NICE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_RTPRIO"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTPRIO</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_RTTIME"><code class="docutils literal notranslate"><span class="pre">RLIMIT_RTTIME</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_SIGPENDING"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SIGPENDING</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_SBSIZE"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SBSIZE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_SWAP"><code class="docutils literal notranslate"><span class="pre">RLIMIT_SWAP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_NPTS"><code class="docutils literal notranslate"><span class="pre">RLIMIT_NPTS</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RLIMIT_KQUEUES"><code class="docutils literal notranslate"><span class="pre">RLIMIT_KQUEUES</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="resource.html#resource-usage">Resource Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.getrusage"><code class="docutils literal notranslate"><span class="pre">getrusage()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.getpagesize"><code class="docutils literal notranslate"><span class="pre">getpagesize()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RUSAGE_SELF"><code class="docutils literal notranslate"><span class="pre">RUSAGE_SELF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RUSAGE_CHILDREN"><code class="docutils literal notranslate"><span class="pre">RUSAGE_CHILDREN</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RUSAGE_BOTH"><code class="docutils literal notranslate"><span class="pre">RUSAGE_BOTH</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource.html#resource.RUSAGE_THREAD"><code class="docutils literal notranslate"><span class="pre">RUSAGE_THREAD</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="syslog.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code> — Unix syslog library routines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="syslog.html#syslog.syslog"><code class="docutils literal notranslate"><span class="pre">syslog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="syslog.html#syslog.openlog"><code class="docutils literal notranslate"><span class="pre">openlog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="syslog.html#syslog.closelog"><code class="docutils literal notranslate"><span class="pre">closelog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="syslog.html#syslog.setlogmask"><code class="docutils literal notranslate"><span class="pre">setlogmask()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="syslog.html#examples">Examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="syslog.html#simple-example">Simple example</a></li>
 </ul>
@@ -249,6 +322,10 @@ of it.  Here’s an overview:</p>
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -321,11 +398,11 @@ of it.  Here’s an overview:</p>
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>

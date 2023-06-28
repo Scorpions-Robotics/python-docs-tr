@@ -4,7 +4,7 @@
 <html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <meta property="og:title" content="Grafik Kullanıcı Arayüzü SSS" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.python.org/3/faq/gui.html" />
@@ -24,9 +24,8 @@
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/translations.js"></script>
     
     <script src="../_static/sidebar.js"></script>
@@ -193,8 +192,8 @@
           <div class="body" role="main">
             
   <section id="graphic-user-interface-faq">
-<h1><a class="toc-backref" href="#id1">Grafik Kullanıcı Arayüzü SSS</a><a class="headerlink" href="#graphic-user-interface-faq" title="Bu başlık için kalıcı bağlantı">¶</a></h1>
-<div class="contents topic" id="contents">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">Grafik Kullanıcı Arayüzü SSS</a><a class="headerlink" href="#graphic-user-interface-faq" title="Permalink to this heading">¶</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">İçerikler</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#graphic-user-interface-faq" id="id1">Grafik Kullanıcı Arayüzü SSS</a></p>
@@ -211,30 +210,30 @@
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <section id="general-gui-questions">
-<h2><a class="toc-backref" href="#id2">Genel GKA Soruları</a><a class="headerlink" href="#general-gui-questions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Genel GKA Soruları</a><a class="headerlink" href="#general-gui-questions" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="what-gui-toolkits-exist-for-python">
-<h2><a class="toc-backref" href="#id3">Python için hangi GKA araç setleri var?</a><a class="headerlink" href="#what-gui-toolkits-exist-for-python" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Python için hangi GKA araç setleri var?</a><a class="headerlink" href="#what-gui-toolkits-exist-for-python" title="Permalink to this heading">¶</a></h2>
 <p>Python’un standart yapıları, <a class="reference internal" href="../library/tk.html#tkinter"><span class="std std-ref">tkinter</span></a> adlı Tcl/Tk pencere öğesi kümesine yönelik nesne yönelimli bir arayüz içerir. Bu muhtemelen kurulumu ve kullanımı en kolay olanıdır (çünkü çoğu Python’ın <a class="reference external" href="https://www.python.org/downloads/">ikili dağıtımlar</a> kısmında bulunur) ve kullanılandır. Kaynak işaretçiler de dahil olmak üzere Tk hakkında daha fazla bilgi için <a class="reference external" href="https://www.tcl.tk">Tcl/Tk ana sayfasına</a> bakın. Tcl/Tk, macOS, Windows ve Unix platformlarına tamamen taşınabilir.</p>
 <p>Hangi platformları hedeflediğinize bağlı olarak, birkaç alternatif de mevcuttur. Bir <a class="reference external" href="https://wiki.python.org/moin/GuiProgramming#Cross-Platform_Frameworks">cross-platform listesi</a> ve <a class="reference external" href="https://wiki.python.org/moin/GuiProgramming#Platform-specific_Frameworks">spesifik platform</a> GKA çerçeveleri Python Wiki’de bulunabilir.</p>
 </section>
 <section id="tkinter-questions">
-<h2><a class="toc-backref" href="#id4">Tkinter soruları</a><a class="headerlink" href="#tkinter-questions" title="Bu başlık için kalıcı bağlantı">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Tkinter soruları</a><a class="headerlink" href="#tkinter-questions" title="Permalink to this heading">¶</a></h2>
 <section id="how-do-i-freeze-tkinter-applications">
-<h3><a class="toc-backref" href="#id5">Tkinter uygulamalarını nasıl dondurabilirim?</a><a class="headerlink" href="#how-do-i-freeze-tkinter-applications" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Tkinter uygulamalarını nasıl dondurabilirim?</a><a class="headerlink" href="#how-do-i-freeze-tkinter-applications" title="Permalink to this heading">¶</a></h3>
 <p>Dondurma işlemi, tek başına bağımsız uygulamalar oluşturmak için bir araçtır. Tkinter uygulamalarını dondururken, uygulama hala Tcl ve Tk kütüphanelerine ihtiyaç duyacağından, uygulamalar gerçekten bağımsız olmayacaktır.</p>
 <p>Çözümlerden biri, uygulamayı Tcl ve Tk kütüphaneleri ile birlikte göndermek ve çalışma zamanında <span class="target" id="index-4"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TCL_LIBRARY</span></code> ve <span class="target" id="index-5"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">TK_LIBRARY</span></code> ortam değişkenlerini kullanarak onlara işaret etmektir.</p>
 <p>Gerçekten bağımsız uygulamalar elde etmek için kütüphaneyi oluşturan Tcl betiklerinin de uygulamaya entegre edilmesi gerekir. Bunu destekleyen araçlardan biri, Tix dağıtımının (<a class="reference external" href="http://tix.sourceforge.net/">http://tix.sourceforge.net/</a>) ‘in bir parçası olan SAM’dir (bağımsız modüller).</p>
 <p>SAM etkinken Tix oluşturun, Python’un <code class="file docutils literal notranslate"><span class="pre">Modules/tkappinit.c</span></code> içindeki <code class="xref c c-func docutils literal notranslate"><span class="pre">Tclsam_init()</span></code> vb. için uygun çağrıyı yapın ve libtclsam ve libtksam ile bağlantı kurun (Tix kütüphanelerini da dahil edebilirsiniz) ).</p>
 </section>
 <section id="can-i-have-tk-events-handled-while-waiting-for-i-o">
-<h3><a class="toc-backref" href="#id6">G/Ç’yi beklerken Tk olaylarını işleyebilir miyim?</a><a class="headerlink" href="#can-i-have-tk-events-handled-while-waiting-for-i-o" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">G/Ç’yi beklerken Tk olaylarını işleyebilir miyim?</a><a class="headerlink" href="#can-i-have-tk-events-handled-while-waiting-for-i-o" title="Permalink to this heading">¶</a></h3>
 <p>Windows dışındaki platformlarda, evet ve iş parçacığına bile ihtiyacınız yok! Ancak G/Ç kodunuzu tekrardan yapılandırmanız gerekecek. Tk, Xt’nin <code class="xref c c-func docutils literal notranslate"><span class="pre">XtAddInput()</span></code> çağrısına eş değerdir; bu, bir dosya tanıtıcısında G/Ç mümkün olduğunda Tk ana döngüsünden çağrılacak bir geri arama işlevini kaydetmenize olanak tanır. Bkz. <a class="reference internal" href="../library/tkinter.html#tkinter-file-handlers"><span class="std std-ref">File Handlers</span></a>.</p>
 </section>
 <section id="i-can-t-get-key-bindings-to-work-in-tkinter-why">
-<h3><a class="toc-backref" href="#id7">Tkinter’da çalışmak için anahtar bağlamalarını alamıyorum: neden?</a><a class="headerlink" href="#i-can-t-get-key-bindings-to-work-in-tkinter-why" title="Bu başlık için kalıcı bağlantı">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Tkinter’da çalışmak için anahtar bağlamalarını alamıyorum: neden?</a><a class="headerlink" href="#i-can-t-get-key-bindings-to-work-in-tkinter-why" title="Permalink to this heading">¶</a></h3>
 <p>Sıkça duyulan bir şikayet, <code class="xref py py-meth docutils literal notranslate"><span class="pre">bind()</span></code> yöntemiyle olaylara bağlanan işleyicilerin uygun tuşa basıldığında bile işlenmemesidir.</p>
 <p>En yaygın neden, bağlamanın uygulandığı pencere öğesinin “klavye odağına” sahip olmamasıdır. Focus komutu için Tk dokümantasyonuna bakın. Genellikle Wigdet’lara tıklanılarak klavye odağı verilir (ancak etiketler için değil; odak alma seçeneğine bakın).</p>
 </section>
@@ -282,6 +281,10 @@
     </ul>
   </div>
         </div>
+<div id="sidebarbutton" title="Yan çubuğu daralt">
+<span>«</span>
+</div>
+
       </div>
       <div class="clearer"></div>
     </div>  
@@ -354,11 +357,11 @@
 <br />
     <br />
 
-    Son güncelleme: May 20, 2023.
+    Son güncelleme: Haz 28, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.5.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
     </div>
 
   </body>
