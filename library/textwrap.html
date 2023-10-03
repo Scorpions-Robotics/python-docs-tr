@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/textwrap.py The textwrap module provides some convenience functions, as well as TextWrapper, the class that does all the work. If you’re just wrapping or filling one or two text st..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>textwrap — Text wrapping and filling &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textwrap — Text wrapping and filling &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -176,7 +176,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -251,7 +251,7 @@ wrapped paragraph.  <a class="reference internal" href="#textwrap.fill" title="t
 <p>First the whitespace in <em>text</em> is collapsed (all whitespace is replaced by
 single spaces).  If the result fits in the <em>width</em>, it is returned.
 Otherwise, enough words are dropped from the end so that the remaining words
-plus the <code class="xref py py-attr docutils literal notranslate"><span class="pre">placeholder</span></code> fit within <code class="xref py py-attr docutils literal notranslate"><span class="pre">width</span></code>:</p>
+plus the <em>placeholder</em> fit within <em>width</em>:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">textwrap</span><span class="o">.</span><span class="n">shorten</span><span class="p">(</span><span class="s2">&quot;Hello  world!&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 <span class="go">&#39;Hello world!&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">textwrap</span><span class="o">.</span><span class="n">shorten</span><span class="p">(</span><span class="s2">&quot;Hello  world!&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
@@ -362,7 +362,7 @@ are no individual words in the input text longer than <a class="reference intern
 <dt class="sig sig-object py" id="textwrap.TextWrapper.expand_tabs">
 <span class="sig-name descname"><span class="pre">expand_tabs</span></span><a class="headerlink" href="#textwrap.TextWrapper.expand_tabs" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>(default: <code class="docutils literal notranslate"><span class="pre">True</span></code>) If true, then all tab characters in <em>text</em> will be
-expanded to spaces using the <code class="xref py py-meth docutils literal notranslate"><span class="pre">expandtabs()</span></code> method of <em>text</em>.</p>
+expanded to spaces using the <a class="reference internal" href="stdtypes.html#str.expandtabs" title="str.expandtabs"><code class="xref py py-meth docutils literal notranslate"><span class="pre">expandtabs()</span></code></a> method of <em>text</em>.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -607,7 +607,7 @@ containing the wrapped paragraph.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -651,11 +651,11 @@ containing the wrapped paragraph.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

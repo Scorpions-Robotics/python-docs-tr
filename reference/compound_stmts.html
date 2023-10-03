@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Compound statements contain (groups of) other statements; they affect or control the execution of those other statements in some way. In general, compound statements span multiple lines, although i..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>8. Compound statements &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Compound statements &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -192,7 +192,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Python Language Reference</a> &#187;</li>
@@ -481,6 +481,9 @@ one <code class="xref std std-keyword docutils literal notranslate"><span class=
 <p>Any remaining exceptions that were not handled by any <code class="xref std std-keyword docutils literal notranslate"><span class="pre">except*</span></code>
 clause are re-raised at the end, combined into an exception group along with
 all exceptions that were raised from within <code class="xref std std-keyword docutils literal notranslate"><span class="pre">except*</span></code> clauses.</p>
+<p>From version 3.11.4, when the entire <a class="reference internal" href="../library/exceptions.html#ExceptionGroup" title="ExceptionGroup"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ExceptionGroup</span></code></a> is handled and
+only one exception is raised from an <code class="xref std std-keyword docutils literal notranslate"><span class="pre">except*</span></code> clause, this
+exception is no longer wrapped to form a new <a class="reference internal" href="../library/exceptions.html#ExceptionGroup" title="ExceptionGroup"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ExceptionGroup</span></code></a>.</p>
 <p>If the raised exception is not an exception group and its type matches
 one of the <code class="xref std std-keyword docutils literal notranslate"><span class="pre">except*</span></code> clauses, it is caught and wrapped by an
 exception group with an empty message string.</p>
@@ -845,7 +848,7 @@ keyword against a subject.  Syntax:</p>
 </pre>
 <p>If the OR pattern fails, the AS pattern fails.  Otherwise, the AS pattern binds
 the subject to the name on the right of the as keyword and succeeds.
-<code class="docutils literal notranslate"><span class="pre">capture_pattern</span></code> cannot be a a <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">capture_pattern</span></code> cannot be a <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
 <p>In simple terms <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">as</span> <span class="pre">NAME</span></code> will match with <code class="docutils literal notranslate"><span class="pre">P</span></code>, and on success it will
 set <code class="docutils literal notranslate"><span class="pre">NAME</span> <span class="pre">=</span> <span class="pre">&lt;subject&gt;</span></code>.</p>
 </section>
@@ -1485,7 +1488,7 @@ exception. That new exception causes the old one to be lost.</p>
 <div><ul class="simple">
 <li><p>a class that inherits from <a class="reference internal" href="../library/collections.abc.html#collections.abc.Sequence" title="collections.abc.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code></a></p></li>
 <li><p>a Python class that has been registered as <a class="reference internal" href="../library/collections.abc.html#collections.abc.Sequence" title="collections.abc.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code></a></p></li>
-<li><p>a builtin class that has its (CPython) <a class="reference internal" href="../c-api/typeobj.html#Py_TPFLAGS_SEQUENCE" title="Py_TPFLAGS_SEQUENCE"><code class="xref py py-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_SEQUENCE</span></code></a> bit set</p></li>
+<li><p>a builtin class that has its (CPython) <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_SEQUENCE" title="Py_TPFLAGS_SEQUENCE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_SEQUENCE</span></code></a> bit set</p></li>
 <li><p>a class that inherits from any of the above</p></li>
 </ul>
 </div></blockquote>
@@ -1513,7 +1516,7 @@ do not match sequence patterns.</p>
 <div><ul class="simple">
 <li><p>a class that inherits from <a class="reference internal" href="../library/collections.abc.html#collections.abc.Mapping" title="collections.abc.Mapping"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code></a></p></li>
 <li><p>a Python class that has been registered as <a class="reference internal" href="../library/collections.abc.html#collections.abc.Mapping" title="collections.abc.Mapping"><code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Mapping</span></code></a></p></li>
-<li><p>a builtin class that has its (CPython) <a class="reference internal" href="../c-api/typeobj.html#Py_TPFLAGS_MAPPING" title="Py_TPFLAGS_MAPPING"><code class="xref py py-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_MAPPING</span></code></a> bit set</p></li>
+<li><p>a builtin class that has its (CPython) <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_MAPPING" title="Py_TPFLAGS_MAPPING"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_MAPPING</span></code></a> bit set</p></li>
 <li><p>a class that inherits from any of the above</p></li>
 </ul>
 </div></blockquote>
@@ -1646,7 +1649,7 @@ transformed into the namespace’s <code class="docutils literal notranslate"><s
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Language Reference</a> &#187;</li>
@@ -1689,11 +1692,11 @@ transformed into the namespace’s <code class="docutils literal notranslate"><s
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

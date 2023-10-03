@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Author, A.M. Kuchling (amk at amk.ca),. This article explains the new features in Python 2.7. Python 2.7 was released on July 3, 2010. Numeric handling has been improved in many ways, for both floa..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New in Python 2.7 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New in Python 2.7 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -201,7 +201,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -310,7 +310,7 @@ maintenance releases where they were added, will be noted in the
 and framework developers wishing to support users on both Python 2 and
 Python 3, there are a variety of tools and guides available to help decide
 on a suitable approach and manage some of the technical details involved.
-The recommended starting point is the <a class="reference internal" href="../howto/pyporting.html#pyporting-howto"><span class="std std-ref">Porting Python 2 Code to Python 3</span></a> HOWTO guide.</p>
+The recommended starting point is the <a class="reference internal" href="../howto/pyporting.html#pyporting-howto"><span class="std std-ref">How to port Python 2 Code to Python 3</span></a> HOWTO guide.</p>
 </section>
 <section id="changes-to-the-handling-of-deprecation-warnings">
 <h2>Changes to the Handling of Deprecation Warnings<a class="headerlink" href="#changes-to-the-handling-of-deprecation-warnings" title="Permalink to this heading">¶</a></h2>
@@ -1570,9 +1570,9 @@ certificates couldn’t be verified, reporting an “unknown algorithm”
 error.  (Reported by Beda Kosata, and fixed by Antoine Pitrou;
 <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=8484">bpo-8484</a>.)</p>
 <p>The version of OpenSSL being used is now available as the module
-attributes <a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION" title="ssl.OPENSSL_VERSION"><code class="xref py py-data docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION</span></code></a> (a string),
-<a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION_INFO" title="ssl.OPENSSL_VERSION_INFO"><code class="xref py py-data docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION_INFO</span></code></a> (a 5-tuple), and
-<a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION_NUMBER" title="ssl.OPENSSL_VERSION_NUMBER"><code class="xref py py-data docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION_NUMBER</span></code></a> (an integer).  (Added by Antoine
+attributes <a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION" title="ssl.OPENSSL_VERSION"><code class="xref py py-const docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION</span></code></a> (a string),
+<a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION_INFO" title="ssl.OPENSSL_VERSION_INFO"><code class="xref py py-const docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION_INFO</span></code></a> (a 5-tuple), and
+<a class="reference internal" href="../library/ssl.html#ssl.OPENSSL_VERSION_NUMBER" title="ssl.OPENSSL_VERSION_NUMBER"><code class="xref py py-const docutils literal notranslate"><span class="pre">ssl.OPENSSL_VERSION_NUMBER</span></code></a> (an integer).  (Added by Antoine
 Pitrou; <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=8321">bpo-8321</a>.)</p>
 </li>
 <li><p>The <a class="reference internal" href="../library/struct.html#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a> module will no longer silently ignore overflow
@@ -2038,7 +2038,7 @@ Python, after discussions on python-dev and in <a class="reference external" hre
 <h2>Build and C API Changes<a class="headerlink" href="#build-and-c-api-changes" title="Permalink to this heading">¶</a></h2>
 <p>Changes to Python’s build process and to the C API include:</p>
 <ul>
-<li><p>The latest release of the GNU Debugger, GDB 7, can be <a class="reference external" href="https://sourceware.org/gdb/current/onlinedocs/gdb/Python.html">scripted
+<li><p>The latest release of the GNU Debugger, GDB 7, can be <a class="reference external" href="https://web.archive.org/web/20110715084810/http://sourceware.org/gdb/current/onlinedocs/gdb/Python.html">scripted
 using Python</a>.
 When you begin debugging an executable program P, GDB will look for
 a file named <code class="docutils literal notranslate"><span class="pre">P-gdb.py</span></code> and automatically read it.  Dave Malcolm
@@ -2116,12 +2116,12 @@ several places Python needs to analyze characters in a
 locale-independent way.  (Added by Eric Smith;
 <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=5793">bpo-5793</a>.)</p>
 </li>
-<li><p>Removed function: <code class="xref c c-macro docutils literal notranslate"><span class="pre">PyEval_CallObject</span></code> is now only available
+<li><p>Removed function: <code class="xref c c-func docutils literal notranslate"><span class="pre">PyEval_CallObject()</span></code> is now only available
 as a macro.  A function version was being kept around to preserve
 ABI linking compatibility, but that was in 1997; it can certainly be
 deleted by now.  (Removed by Antoine Pitrou; <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=8276">bpo-8276</a>.)</p></li>
-<li><p>New format codes: the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyFormat_FromString()</span></code>,
-<code class="xref c c-func docutils literal notranslate"><span class="pre">PyFormat_FromStringV()</span></code>, and <a class="reference internal" href="../c-api/exceptions.html#c.PyErr_Format" title="PyErr_Format"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Format()</span></code></a> functions now
+<li><p>New format codes: the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyString_FromFormat()</span></code>,
+<code class="xref c c-func docutils literal notranslate"><span class="pre">PyString_FromFormatV()</span></code>, and <a class="reference internal" href="../c-api/exceptions.html#c.PyErr_Format" title="PyErr_Format"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Format()</span></code></a> functions now
 accept <code class="docutils literal notranslate"><span class="pre">%lld</span></code> and <code class="docutils literal notranslate"><span class="pre">%llu</span></code> format codes for displaying
 C’s <span class="c-expr sig sig-inline c"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span> types.
 (Contributed by Mark Dickinson; <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=7228">bpo-7228</a>.)</p></li>
@@ -2147,7 +2147,7 @@ being raised when an interpreter shuts down.
 (Patch by Adam Olsen; <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=1722344">bpo-1722344</a>.)</p></li>
 <li><p>When using the <a class="reference internal" href="../c-api/structures.html#c.PyMemberDef" title="PyMemberDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyMemberDef</span></code></a> structure to define attributes
 of a type, Python will no longer let you try to delete or set a
-<code class="xref py py-const docutils literal notranslate"><span class="pre">T_STRING_INPLACE</span></code> attribute.</p>
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">T_STRING_INPLACE</span></code> attribute.</p>
 </li>
 <li><p>Global symbols defined by the <a class="reference internal" href="../library/ctypes.html#module-ctypes" title="ctypes: A foreign function library for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> module are now prefixed
 with <code class="docutils literal notranslate"><span class="pre">Py</span></code>, or with <code class="docutils literal notranslate"><span class="pre">_ctypes</span></code>.  (Implemented by Thomas
@@ -2212,7 +2212,7 @@ detect the mismatched name and return false.  Refer to
 <p>Python 2.7 now uses capsules internally to provide various
 extension-module APIs, but the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyCObject_AsVoidPtr()</span></code> was
 modified to handle capsules, preserving compile-time compatibility
-with the <code class="xref c c-type docutils literal notranslate"><span class="pre">CObject</span></code> interface.  Use of
+with the <code class="xref c c-type docutils literal notranslate"><span class="pre">PyCObject</span></code> interface.  Use of
 <code class="xref c c-func docutils literal notranslate"><span class="pre">PyCObject_AsVoidPtr()</span></code> will signal a
 <a class="reference internal" href="../library/exceptions.html#PendingDeprecationWarning" title="PendingDeprecationWarning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">PendingDeprecationWarning</span></code></a>, which is silent by default.</p>
 <p>Implemented in Python 3.1 and backported to 2.7 by Larry Hastings;
@@ -2744,7 +2744,7 @@ Hugh Secker-Walker.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -2787,11 +2787,11 @@ Hugh Secker-Walker.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

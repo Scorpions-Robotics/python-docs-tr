@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/xml/ Python’s interfaces for processing XML are grouped in the xml package. It is important to note that modules in the xml package require that there be at least one SAX-compliant..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>XML Processing Modules &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML Processing Modules &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -156,7 +156,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -283,12 +283,12 @@ the various modules are vulnerable to them.</p>
 <li><p>Expat 2.4.1 and newer is not vulnerable to the “billion laughs” and
 “quadratic blowup” vulnerabilities. Items still listed as vulnerable due to
 potential reliance on system-provided libraries. Check
-<code class="xref py py-data docutils literal notranslate"><span class="pre">pyexpat.EXPAT_VERSION</span></code>.</p></li>
+<code class="xref py py-const docutils literal notranslate"><span class="pre">pyexpat.EXPAT_VERSION</span></code>.</p></li>
 <li><p><a class="reference internal" href="xml.etree.elementtree.html#module-xml.etree.ElementTree" title="xml.etree.ElementTree: Implementation of the ElementTree API."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.etree.ElementTree</span></code></a> doesn’t expand external entities and raises a
-<code class="xref py py-exc docutils literal notranslate"><span class="pre">ParserError</span></code> when an entity occurs.</p></li>
+<a class="reference internal" href="xml.etree.elementtree.html#xml.etree.ElementTree.ParseError" title="xml.etree.ElementTree.ParseError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ParseError</span></code></a> when an entity occurs.</p></li>
 <li><p><a class="reference internal" href="xml.dom.minidom.html#module-xml.dom.minidom" title="xml.dom.minidom: Minimal Document Object Model (DOM) implementation."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xml.dom.minidom</span></code></a> doesn’t expand external entities and simply returns
 the unexpanded entity verbatim.</p></li>
-<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpclib</span></code> doesn’t expand external entities and omits them.</p></li>
+<li><p><a class="reference internal" href="xmlrpc.client.html#module-xmlrpc.client" title="xmlrpc.client: XML-RPC client access."><code class="xref py py-mod docutils literal notranslate"><span class="pre">xmlrpc.client</span></code></a> doesn’t expand external entities and omits them.</p></li>
 <li><p>Since Python 3.7.1, external general entities are no longer processed by
 default.</p></li>
 </ol>
@@ -406,7 +406,7 @@ XML exploits such as XPath injection.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -450,11 +450,11 @@ XML exploits such as XPath injection.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

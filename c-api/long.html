@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="All integers are implemented as “long” integer objects of arbitrary size. On error, most PyLong_As* APIs return(return type)-1 which cannot be distinguished from a number. Use PyErr_Occurred() to d..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Integer Objects &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integer Objects &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -145,7 +145,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -304,16 +304,16 @@ retrieved from the resulting value using <a class="reference internal" href="#c.
 <dt class="sig sig-object c" id="c.PyLong_AsLong">
 <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsLong</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLong" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-1">Return a C <span class="c-expr sig sig-inline c"><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em> is not an
-instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> method
 (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
 <p>Raise <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> if the value of <em>obj</em> is out of range for a
 <span class="c-expr sig sig-inline c"><span class="kt">long</span></span>.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> to disambiguate.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -321,18 +321,18 @@ instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongOb
 <dt class="sig sig-object c" id="c.PyLong_AsLongAndOverflow">
 <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsLongAndOverflow</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">overflow</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongAndOverflow" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="c-expr sig sig-inline c"><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em> is not an
-instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a>
 method (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
-<p>If the value of <em>obj</em> is greater than <code class="xref py py-const docutils literal notranslate"><span class="pre">LONG_MAX</span></code> or less than
-<code class="xref py py-const docutils literal notranslate"><span class="pre">LONG_MIN</span></code>, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectively, and
+<p>If the value of <em>obj</em> is greater than <code class="xref c c-macro docutils literal notranslate"><span class="pre">LONG_MAX</span></code> or less than
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">LONG_MIN</span></code>, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectively, and
 return <code class="docutils literal notranslate"><span class="pre">-1</span></code>; otherwise, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">0</span></code>.  If any other exception
 occurs set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and return <code class="docutils literal notranslate"><span class="pre">-1</span></code> as usual.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> to disambiguate.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -340,16 +340,16 @@ occurs set <em>*overflow</em> to <code class="docutils literal notranslate"><spa
 <dt class="sig sig-object c" id="c.PyLong_AsLongLong">
 <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsLongLong</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongLong" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-2">Return a C <span class="c-expr sig sig-inline c"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em> is not an
-instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> method
 (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
 <p>Raise <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> if the value of <em>obj</em> is out of range for a
 <span class="c-expr sig sig-inline c"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span>.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> to disambiguate.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -357,10 +357,10 @@ instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongOb
 <dt class="sig sig-object c" id="c.PyLong_AsLongLongAndOverflow">
 <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsLongLongAndOverflow</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">overflow</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongLongAndOverflow" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="c-expr sig sig-inline c"><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em> is not an
-instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> method
 (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
-<p>If the value of <em>obj</em> is greater than <code class="xref py py-const docutils literal notranslate"><span class="pre">LLONG_MAX</span></code> or less than
-<code class="xref py py-const docutils literal notranslate"><span class="pre">LLONG_MIN</span></code>, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectively,
+<p>If the value of <em>obj</em> is greater than <code class="xref c c-macro docutils literal notranslate"><span class="pre">LLONG_MAX</span></code> or less than
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">LLONG_MIN</span></code>, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectively,
 and return <code class="docutils literal notranslate"><span class="pre">-1</span></code>; otherwise, set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">0</span></code>.  If any other
 exception occurs set <em>*overflow</em> to <code class="docutils literal notranslate"><span class="pre">0</span></code> and return <code class="docutils literal notranslate"><span class="pre">-1</span></code> as usual.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> to disambiguate.</p>
@@ -368,10 +368,10 @@ exception occurs set <em>*overflow</em> to <code class="docutils literal notrans
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -425,17 +425,17 @@ Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title=
 <dt class="sig sig-object c" id="c.PyLong_AsUnsignedLongMask">
 <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsUnsignedLongMask</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLongMask" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em> is not
-an instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>
+an instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a>
 method (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
 <p>If the value of <em>obj</em> is out of range for an <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span></span>,
 return the reduction of that value modulo <code class="docutils literal notranslate"><span class="pre">ULONG_MAX</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long)-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> to
 disambiguate.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -444,17 +444,17 @@ disambiguate.</p>
 <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyLong_AsUnsignedLongLongMask</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLongLongMask" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span> representation of <em>obj</em>.  If <em>obj</em>
 is not an instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method (if present) to convert it to a
+<a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> method (if present) to convert it to a
 <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
 <p>If the value of <em>obj</em> is out of range for an <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span>,
 return the reduction of that value modulo <code class="docutils literal notranslate"><span class="pre">ULLONG_MAX</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long</span> <span class="pre">long)-1</span></code> on error.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a>
 to disambiguate.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> if available.</p>
+<p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Use <a class="reference internal" href="../reference/datamodel.html#object.__index__" title="object.__index__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code></a> if available.</p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span>This function will no longer use <a class="reference internal" href="../reference/datamodel.html#object.__int__" title="object.__int__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code></a>.</p>
 </div>
 </dd></dl>
 
@@ -542,7 +542,7 @@ with <a class="reference internal" href="#c.PyLong_FromVoidPtr" title="PyLong_Fr
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -586,11 +586,11 @@ with <a class="reference internal" href="#c.PyLong_FromVoidPtr" title="PyLong_Fr
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

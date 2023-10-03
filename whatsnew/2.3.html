@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Author, A.M. Kuchling,. This article explains the new features in Python 2.3. Python 2.3 was released on July 29, 2003. The main themes for Python 2.3 are polishing some of the features added in 2...." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New in Python 2.3 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New in Python 2.3 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -187,7 +187,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -418,10 +418,10 @@ the N-Queens problem (placing $N$ queens on an $NxN$ chess board so that no
 queen threatens another) and the Knight’s Tour (a route that takes a knight to
 every square of an $NxN$ chessboard without visiting any square twice).</p>
 <p>The idea of generators comes from other programming languages, especially Icon
-(<a class="reference external" href="https://www.cs.arizona.edu/icon/">https://www.cs.arizona.edu/icon/</a>), where the idea of generators is central.  In
+(<a class="reference external" href="https://www2.cs.arizona.edu/icon/">https://www2.cs.arizona.edu/icon/</a>), where the idea of generators is central.  In
 Icon, every expression and function call behaves like a generator.  One example
 from “An Overview of the Icon Programming Language” at
-<a class="reference external" href="https://www.cs.arizona.edu/icon/docs/ipd266.htm">https://www.cs.arizona.edu/icon/docs/ipd266.htm</a> gives an idea of what this looks
+<a class="reference external" href="https://www2.cs.arizona.edu/icon/docs/ipd266.htm">https://www2.cs.arizona.edu/icon/docs/ipd266.htm</a> gives an idea of what this looks
 like:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">:=</span> <span class="s2">&quot;Store it in the neighboring harbor&quot;</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">:=</span> <span class="n">find</span><span class="p">(</span><span class="s2">&quot;or&quot;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="n">then</span> <span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -1394,7 +1394,7 @@ other mutable Python sequence type.  Here’s an example that uses a Python list
 <p>(Contributed by Kevin O’Connor.)</p>
 </li>
 <li><p>The IDLE integrated development environment has been updated using the code
-from the IDLEfork project (<a class="reference external" href="http://idlefork.sourceforge.net">http://idlefork.sourceforge.net</a>).  The most notable feature is
+from the IDLEfork project (<a class="reference external" href="https://idlefork.sourceforge.net">https://idlefork.sourceforge.net</a>).  The most notable feature is
 that the code being developed is now executed in a subprocess, meaning that
 there’s no longer any need for manual <code class="docutils literal notranslate"><span class="pre">reload()</span></code> operations. IDLE’s core code
 has been incorporated into the standard library as the <a class="reference internal" href="../library/idle.html#module-idlelib" title="idlelib: Implementation package for the IDLE shell/editor."><code class="xref py py-mod docutils literal notranslate"><span class="pre">idlelib</span></code></a> package.</p></li>
@@ -1517,7 +1517,7 @@ action.)</p>
 </li>
 <li><p>On Windows, the <a class="reference internal" href="../library/socket.html#module-socket" title="socket: Low-level networking interface."><code class="xref py py-mod docutils literal notranslate"><span class="pre">socket</span></code></a> module now ships with Secure  Sockets Layer
 (SSL) support.</p></li>
-<li><p>The value of the C <code class="xref py py-const docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code> macro is now exposed at the
+<li><p>The value of the C <code class="xref c c-macro docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code> macro is now exposed at the
 Python level as <code class="docutils literal notranslate"><span class="pre">sys.api_version</span></code>.  The current exception can be cleared by
 calling the new <code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exc_clear()</span></code> function.</p></li>
 <li><p>The new <a class="reference internal" href="../library/tarfile.html#module-tarfile" title="tarfile: Read and write tar-format archive files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tarfile</span></code></a> module  allows reading from and writing to
@@ -1849,7 +1849,7 @@ family: <a class="reference internal" href="../c-api/memory.html#c.PyMem_Malloc"
 above and is biased towards a large number of “small” allocations:
 <a class="reference internal" href="../c-api/memory.html#c.PyObject_Malloc" title="PyObject_Malloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_Malloc()</span></code></a>, <a class="reference internal" href="../c-api/memory.html#c.PyObject_Realloc" title="PyObject_Realloc"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_Realloc()</span></code></a>, and <a class="reference internal" href="../c-api/memory.html#c.PyObject_Free" title="PyObject_Free"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_Free()</span></code></a>.</p></li>
 <li><p>To allocate and free Python objects, use the “object” family
-<a class="reference internal" href="../c-api/allocation.html#c.PyObject_New" title="PyObject_New"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_New()</span></code></a>, <a class="reference internal" href="../c-api/allocation.html#c.PyObject_NewVar" title="PyObject_NewVar"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_NewVar()</span></code></a>, and <a class="reference internal" href="../c-api/allocation.html#c.PyObject_Del" title="PyObject_Del"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_Del()</span></code></a>.</p></li>
+<a class="reference internal" href="../c-api/allocation.html#c.PyObject_New" title="PyObject_New"><code class="xref c c-macro docutils literal notranslate"><span class="pre">PyObject_New</span></code></a>, <a class="reference internal" href="../c-api/allocation.html#c.PyObject_NewVar" title="PyObject_NewVar"><code class="xref c c-macro docutils literal notranslate"><span class="pre">PyObject_NewVar</span></code></a>, and <a class="reference internal" href="../c-api/allocation.html#c.PyObject_Del" title="PyObject_Del"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_Del()</span></code></a>.</p></li>
 </ul>
 <p>Thanks to lots of work by Tim Peters, pymalloc in 2.3 also provides debugging
 features to catch memory overwrites and doubled frees in both extension modules
@@ -1893,10 +1893,10 @@ but will also mean that you can’t get help for Python’s built-ins.  (Contrib
 by Gustavo Niemeyer.)</p></li>
 <li><p>The <code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_NoArgs()</span></code> macro is now deprecated, and code that uses it
 should be changed.  For Python 2.2 and later, the method definition table can
-specify the <a class="reference internal" href="../c-api/structures.html#METH_NOARGS" title="METH_NOARGS"><code class="xref py py-const docutils literal notranslate"><span class="pre">METH_NOARGS</span></code></a> flag, signalling that there are no arguments,
+specify the <a class="reference internal" href="../c-api/structures.html#c.METH_NOARGS" title="METH_NOARGS"><code class="xref c c-macro docutils literal notranslate"><span class="pre">METH_NOARGS</span></code></a> flag, signalling that there are no arguments,
 and the argument checking can then be removed.  If compatibility with pre-2.2
 versions of Python is important, the code could use <code class="docutils literal notranslate"><span class="pre">PyArg_ParseTuple(args,</span>
-<span class="pre">&quot;&quot;)</span></code> instead, but this will be slower than using <a class="reference internal" href="../c-api/structures.html#METH_NOARGS" title="METH_NOARGS"><code class="xref py py-const docutils literal notranslate"><span class="pre">METH_NOARGS</span></code></a>.</p></li>
+<span class="pre">&quot;&quot;)</span></code> instead, but this will be slower than using <a class="reference internal" href="../c-api/structures.html#c.METH_NOARGS" title="METH_NOARGS"><code class="xref c c-macro docutils literal notranslate"><span class="pre">METH_NOARGS</span></code></a>.</p></li>
 <li><p><a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a> accepts new format characters for various sizes of
 unsigned integers: <code class="docutils literal notranslate"><span class="pre">B</span></code> for <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span></span>, <code class="docutils literal notranslate"><span class="pre">H</span></code> for <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">short</span><span class="w"> </span><span class="kt">int</span></span>,  <code class="docutils literal notranslate"><span class="pre">I</span></code> for <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span></span>,  and <code class="docutils literal notranslate"><span class="pre">K</span></code> for <span class="c-expr sig sig-inline c"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span></span>.</p></li>
 <li><p>A new function, <code class="docutils literal notranslate"><span class="pre">PyObject_DelItemString(mapping,</span> <span class="pre">char</span> <span class="pre">*key)</span></code> was added
@@ -1906,7 +1906,7 @@ it exponentially when needed.  This results in the benchmark tests in
 <code class="file docutils literal notranslate"><span class="pre">Lib/test/test_bufio.py</span></code> speeding up considerably (from 57 seconds to 1.7
 seconds, according to one measurement).</p></li>
 <li><p>It’s now possible to define class and static methods for a C extension type by
-setting either the <a class="reference internal" href="../c-api/structures.html#METH_CLASS" title="METH_CLASS"><code class="xref py py-const docutils literal notranslate"><span class="pre">METH_CLASS</span></code></a> or <a class="reference internal" href="../c-api/structures.html#METH_STATIC" title="METH_STATIC"><code class="xref py py-const docutils literal notranslate"><span class="pre">METH_STATIC</span></code></a> flags in a
+setting either the <a class="reference internal" href="../c-api/structures.html#c.METH_CLASS" title="METH_CLASS"><code class="xref c c-macro docutils literal notranslate"><span class="pre">METH_CLASS</span></code></a> or <a class="reference internal" href="../c-api/structures.html#c.METH_STATIC" title="METH_STATIC"><code class="xref c c-macro docutils literal notranslate"><span class="pre">METH_STATIC</span></code></a> flags in a
 method’s <a class="reference internal" href="../c-api/structures.html#c.PyMethodDef" title="PyMethodDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyMethodDef</span></code></a> structure.</p></li>
 <li><p>Python now includes a copy of the Expat XML parser’s source code, removing any
 dependence on a system version or local installation of Expat.</p></li>
@@ -2144,7 +2144,7 @@ Suzi, Jason Tishler, Just van Rossum.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -2187,11 +2187,11 @@ Suzi, Jason Tishler, Just van Rossum.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

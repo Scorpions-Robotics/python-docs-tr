@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Python yorumlayıcısından çıkıp tekrar girerseniz, yaptığınız tanımlar (fonksiyonlar ve değişkenler) kaybolur. Bu nedenle, daha uzun bir program yazmak istiyorsanız, girdiyi yorumlayıcıya hazırlarke..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>6. Modüller &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Modüller &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -168,7 +168,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Öğreticisi</a> &#187;</li>
@@ -307,7 +307,11 @@
 </section>
 <section id="the-module-search-path">
 <span id="tut-searchpath"></span><h3><span class="section-number">6.1.2. </span>Modül Arama Yolu<a class="headerlink" href="#the-module-search-path" title="Permalink to this heading">¶</a></h3>
-<p id="index-0"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spam</span></code> adlı bir modül içe aktarıldığında, yorumlayıcı önce bu ada sahip yerleşik bir modül arar. Bu modül adları <a class="reference internal" href="../library/sys.html#sys.builtin_module_names" title="sys.builtin_module_names"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.builtin_module_names</span></code></a> içinde listelenmiştir. Bulunamazsa, <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> değişkeni tarafından verilen dizin listesinde <code class="file docutils literal notranslate"><span class="pre">spam.py</span></code> adlı bir dosyayı arar. <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> şu konumlardan başlatılır:</p>
+<p id="index-0">When a module named <code class="xref py py-mod docutils literal notranslate"><span class="pre">spam</span></code> is imported, the interpreter first searches for
+a built-in module with that name. These module names are listed in
+<a class="reference internal" href="../library/sys.html#sys.builtin_module_names" title="sys.builtin_module_names"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.builtin_module_names</span></code></a>. If not found, it then searches for a file
+named <code class="file docutils literal notranslate"><span class="pre">spam.py</span></code> in a list of directories given by the variable
+<a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.  <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> is initialized from these locations:</p>
 <ul class="simple">
 <li><p>Girdi komut dosyasını içeren dizin (veya dosya belirtilmediğinde geçerli dizin).</p></li>
 <li><p><span class="target" id="index-14"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a> (kabuk değişkeni <span class="target" id="index-15"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> ile aynı sözdizimine sahip dizin adlarının listesi).</p></li>
@@ -431,7 +435,13 @@
 </section>
 <section id="packages">
 <span id="tut-packages"></span><h2><span class="section-number">6.4. </span>Paketler<a class="headerlink" href="#packages" title="Permalink to this heading">¶</a></h2>
-<p>Paketler, “noktalı modül adlarını” kullanarak Python’un modül ad alanını yapılandırmanın bir yoludur. Örneğin, modül adı <code class="xref py py-mod docutils literal notranslate"><span class="pre">A.B</span></code>, “A” adlı bir pakette “B” adlı bir alt modülü belirtir. Modüllerin kullanılması, farklı modüllerin yazarlarını birbirlerinin global değişken adları hakkında endişelenmekten kurtardığı gibi, noktalı modül adlarının kullanılması, NumPy veya Pillow gibi çok modüllü paketlerin yazarlarını birbirlerinin modül adları hakkında endişelenmekten kurtarır.</p>
+<p>Packages are a way of structuring Python’s module namespace by using “dotted
+module names”.  For example, the module name <code class="xref py py-mod docutils literal notranslate"><span class="pre">A.B</span></code> designates a submodule
+named <code class="docutils literal notranslate"><span class="pre">B</span></code> in a package named <code class="docutils literal notranslate"><span class="pre">A</span></code>.  Just like the use of modules saves the
+authors of different modules from having to worry about each other’s global
+variable names, the use of dotted module names saves the authors of multi-module
+packages like NumPy or Pillow from having to worry about
+each other’s module names.</p>
 <p>Ses dosyalarının ve ses verilerinin tek tip işlenmesi için bir modül koleksiyonu (“paket”) tasarlamak istediğinizi varsayalım. Birçok farklı ses dosyası biçimi vardır (genellikle uzantılarıyla tanınır, örneğin: <code class="file docutils literal notranslate"><span class="pre">.wav</span></code>, <code class="file docutils literal notranslate"><span class="pre">.aiff</span></code>, <code class="file docutils literal notranslate"><span class="pre">.au</span></code>) bu nedenle, çeşitli dosya biçimleri arasında dönüşüm için büyüyen bir modül koleksiyonu oluşturmanız ve sürdürmeniz gerekebilir. Ses verileri üzerinde gerçekleştirmek isteyebileceğiniz birçok farklı işlem de vardır (karıştırma, eko ekleme, ekolayzır işlevi uygulama, yapay bir stereo efekti oluşturma gibi) bu nedenle ek olarak, bu işlemleri gerçekleştirmek için hiç bitmeyen bir modül akışı yazıyor olacaksınız. İşte paketiniz için olası bir yapı (hiyerarşik bir dosya sistemi cinsinden ifade edilir):</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sound/                          Top-level package
       __init__.py               Initialize the sound package
@@ -459,12 +469,18 @@
 </pre></div>
 </div>
 <p>Paketi içe aktarırken Python, paket alt dizinini arayan <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> üzerindeki dizinleri arar.</p>
-<p>Python’un dosyayı içeren dizinleri paketler olarak ele alması için <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> dosyaları gereklidir. Bu, <code class="docutils literal notranslate"><span class="pre">string</span></code> gibi ortak bir ada sahip dizinlerin, daha sonra modül arama yolunda oluşan geçerli modülleri istemeden gizlemesini önler. En basit durumda, <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> yalnızca boş bir dosya olabilir, ancak aynı zamanda paket için başlatma kodunu çalıştırabilir veya daha sonra açıklanacak olan <code class="docutils literal notranslate"><span class="pre">__all__</span></code> değişkenini ayarlayabilir.</p>
+<p>The <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> files are required to make Python treat directories
+containing the file as packages.  This prevents directories with a common name,
+such as <code class="docutils literal notranslate"><span class="pre">string</span></code>, from unintentionally hiding valid modules that occur later
+on the module search path. In the simplest case, <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> can just be
+an empty file, but it can also execute initialization code for the package or
+set the <code class="docutils literal notranslate"><span class="pre">__all__</span></code> variable, described later.</p>
 <p>Paketin kullanıcıları, paketin içindeki ayrı modülleri içe aktarabilir, örneğin:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
 </pre></div>
 </div>
-<p>Bu, <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects.echo</span></code> alt modülünü yükler. Tam adı ile referans gösterilmelidir.</p>
+<p>This loads the submodule <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects.echo</span></code>.  It must be referenced with
+its full name.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">sound</span><span class="o">.</span><span class="n">effects</span><span class="o">.</span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -472,7 +488,8 @@
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="n">echo</span>
 </pre></div>
 </div>
-<p>Bu ayrıca <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> alt modülünü yükler ve paket öneki olmadan kullanılabilir hale getirir, böylece aşağıdaki gibi kullanılabilir:</p>
+<p>This also loads the submodule <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code>, and makes it available without its
+package prefix, so it can be used as follows:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span><span class="o">.</span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -480,7 +497,8 @@
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sound.effects.echo</span> <span class="kn">import</span> <span class="n">echofilter</span>
 </pre></div>
 </div>
-<p>Yine, bu, <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> alt modülünü yükler, ancak bu, <code class="xref py py-func docutils literal notranslate"><span class="pre">echofilter()</span></code> fonksiyonunu doğrudan kullanılabilir hale getirir:</p>
+<p>Again, this loads the submodule <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code>, but this makes its function
+<code class="xref py py-func docutils literal notranslate"><span class="pre">echofilter()</span></code> directly available:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">echofilter</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">atten</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -493,21 +511,55 @@
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;echo&quot;</span><span class="p">,</span> <span class="s2">&quot;surround&quot;</span><span class="p">,</span> <span class="s2">&quot;reverse&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Bu, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> öğesinin <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound</span></code> paketinin adlandırılmış üç alt modülünü içe aktaracağı anlamına gelir.</p>
-<p><code class="docutils literal notranslate"><span class="pre">__all__</span></code> tanımlı değilse, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> ifadesi <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> paketindeki tüm alt modülleri geçerli ad alanına <em>almaz</em>; yalnızca <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> paketinin içe aktarılmasını sağlar (mümkünse herhangi bir başlatma kodunu <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> içinde çalıştırır) ve ardından pakette tanımlanan adları içe aktarır. Bu, <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code> tarafından tanımlanan tüm adları (ve açıkça yüklenen alt modülleri) içerir. Ayrıca, önceki <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> ifadeleri tarafından açıkça yüklenen paketin tüm alt modüllerini de içerir. Bu kodu dikkate alın</p>
+<p>This would mean that <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code> would import the three
+named submodules of the <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> package.</p>
+<p>Be aware that submodules might become shadowed by locally defined names. For
+example, if you added a <code class="docutils literal notranslate"><span class="pre">reverse</span></code> function to the
+<code class="file docutils literal notranslate"><span class="pre">sound/effects/__init__.py</span></code> file, the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code>
+would only import the two submodules <code class="docutils literal notranslate"><span class="pre">echo</span></code> and <code class="docutils literal notranslate"><span class="pre">surround</span></code>, but <em>not</em> the
+<code class="docutils literal notranslate"><span class="pre">reverse</span></code> submodule, because it is shadowed by the locally defined
+<code class="docutils literal notranslate"><span class="pre">reverse</span></code> function:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;echo&quot;</span><span class="p">,</span>      <span class="c1"># refers to the &#39;echo.py&#39; file</span>
+    <span class="s2">&quot;surround&quot;</span><span class="p">,</span>  <span class="c1"># refers to the &#39;surround.py&#39; file</span>
+    <span class="s2">&quot;reverse&quot;</span><span class="p">,</span>   <span class="c1"># !!! refers to the &#39;reverse&#39; function now !!!</span>
+<span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">reverse</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>  <span class="c1"># &lt;-- this name shadows the &#39;reverse.py&#39; submodule</span>
+    <span class="k">return</span> <span class="n">msg</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>    <span class="c1">#     in the case of a &#39;from sound.effects import *&#39;</span>
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">__all__</span></code> is not defined, the statement <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">*</span></code>
+does <em>not</em> import all submodules from the package <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> into the
+current namespace; it only ensures that the package <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> has
+been imported (possibly running any initialization code in <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>)
+and then imports whatever names are defined in the package.  This includes any
+names defined (and submodules explicitly loaded) by <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>.  It
+also includes any submodules of the package that were explicitly loaded by
+previous <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> statements.  Consider this code:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sound.effects.echo</span>
 <span class="kn">import</span> <span class="nn">sound.effects.surround</span>
 <span class="kn">from</span> <span class="nn">sound.effects</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>Bu örnekte, <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> ve <code class="xref py py-mod docutils literal notranslate"><span class="pre">surround</span></code> modülleri geçerli ad alanına aktarılır, çünkü bunlar <code class="docutils literal notranslate"><span class="pre">from...import</span></code> ifadesi yürütüldüğünde <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> paketinde tanımlanmışlardır. (Bu aynı zamanda <code class="docutils literal notranslate"><span class="pre">__all__</span></code> tanımlandığında da çalışır.)</p>
+<p>In this example, the <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">surround</span></code> modules are imported in the
+current namespace because they are defined in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> package
+when the <code class="docutils literal notranslate"><span class="pre">from...import</span></code> statement is executed.  (This also works when
+<code class="docutils literal notranslate"><span class="pre">__all__</span></code> is defined.)</p>
 <p>Bazı modüller, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> kullandığınızda yalnızca belirli kalıpları takip eden adları dışa aktarmak üzere tasarlanmış olsa da, üretim kodunda yine de kötü uygulama olarak kabul edilir.</p>
 <p>Unutmayın, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">package</span> <span class="pre">import</span> <span class="pre">specific_submodule</span></code> kullanmanın yanlış bir tarafı yok! Aslında, içe aktarma modülünün farklı paketlerden aynı ada sahip alt modülleri kullanması gerekmedikçe, önerilen gösterim budur.</p>
 </section>
 <section id="intra-package-references">
 <span id="id2"></span><h3><span class="section-number">6.4.2. </span>Paket İçi Referanslar<a class="headerlink" href="#intra-package-references" title="Permalink to this heading">¶</a></h3>
-<p>Paketler alt paketler halinde yapılandırıldığında (örnekteki <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound</span></code> paketinde olduğu gibi), kardeş paketlerin alt modüllerine atıfta bulunmak için mutlak içe aktarma kullanabilirsiniz. Örneğin, <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.filters.vocoder</span></code> modülünün <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> paketindeki <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> modülünü kullanması gerekiyorsa, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">echo</span></code> ‘yu kullanabilir.</p>
-<p>Ayrıca, içe aktarma ifadesinin <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">name</span></code> formuyla göreli içe aktarmaları da yazabilirsiniz. Bu içe aktarmalar, göreli içe aktarmada yer alan mevcut ve ana paketleri belirtmek için baştaki noktaları kullanır. Örneğin <code class="xref py py-mod docutils literal notranslate"><span class="pre">surround</span></code> modülünden şunları kullanabilirsiniz:</p>
+<p>When packages are structured into subpackages (as with the <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound</span></code> package
+in the example), you can use absolute imports to refer to submodules of siblings
+packages.  For example, if the module <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.filters.vocoder</span></code> needs to use
+the <code class="xref py py-mod docutils literal notranslate"><span class="pre">echo</span></code> module in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">sound.effects</span></code> package, it can use <code class="docutils literal notranslate"><span class="pre">from</span>
+<span class="pre">sound.effects</span> <span class="pre">import</span> <span class="pre">echo</span></code>.</p>
+<p>You can also write relative imports, with the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">module</span> <span class="pre">import</span> <span class="pre">name</span></code> form
+of import statement.  These imports use leading dots to indicate the current and
+parent packages involved in the relative import.  From the <code class="xref py py-mod docutils literal notranslate"><span class="pre">surround</span></code>
+module for example, you might use:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">echo</span>
 <span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">formats</span>
 <span class="kn">from</span> <span class="nn">..filters</span> <span class="kn">import</span> <span class="n">equalizer</span>
@@ -615,7 +667,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Öğreticisi</a> &#187;</li>
@@ -658,11 +710,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

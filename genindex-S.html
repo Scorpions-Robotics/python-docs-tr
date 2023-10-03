@@ -6,10 +6,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dizin &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dizin &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -20,7 +20,7 @@
     <script src="_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="about.html" />
     <link rel="index" title="Dizin" href="genindex.html" />
@@ -105,7 +105,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="index.html">3.11.2 Documentation</a> &#187;
+      <a href="index.html">3.11.5 Documentation</a> &#187;
     </li>
 
         <li class="nav-item nav-item-this"><a href="">Dizin</a></li>
@@ -228,6 +228,8 @@
       <li><a href="library/stat.html#stat.S_IXUSR">S_IXUSR (stat modülü içinde)</a>
 </li>
       <li><a href="library/uuid.html#uuid.SafeUUID.safe">safe (uuid.SafeUUID özniteliği)</a>
+</li>
+      <li><a href="library/sys.html#sys.flags.safe_path">safe_path (sys.flags özniteliği)</a>
 </li>
       <li><a href="library/string.html#string.Template.safe_substitute">safe_substitute() (string.Template yöntemi)</a>
 </li>
@@ -380,7 +382,7 @@
     sdterr
 
       <ul>
-        <li><a href="c-api/init.html#index-17">stdin stdout</a>
+        <li><a href="c-api/init.html#index-16">stdin stdout</a>
 </li>
       </ul></li>
       <li><a href="library/unittest.mock.html#unittest.mock.seal">seal() (unittest.mock modülü içinde)</a>
@@ -389,7 +391,7 @@
     search
 
       <ul>
-        <li><a href="c-api/init.html#index-16">path, module</a>, <a href="c-api/init.html#index-23">[1]</a>, <a href="c-api/init.html#index-24">[2]</a>, <a href="c-api/intro.html#index-23">[3]</a>, <a href="library/linecache.html#index-0">[4]</a>, <a href="library/site.html#index-0">[5]</a>, <a href="library/sys.html#index-21">[6]</a>, <a href="tutorial/modules.html#index-0">[7]</a>
+        <li><a href="c-api/init.html#index-15">path, module</a>, <a href="c-api/init.html#index-22">[1]</a>, <a href="c-api/init.html#index-23">[2]</a>, <a href="c-api/intro.html#index-18">[3]</a>, <a href="library/linecache.html#index-0">[4]</a>, <a href="library/site.html#index-0">[5]</a>, <a href="library/sys.html#index-21">[6]</a>, <a href="tutorial/modules.html#index-0">[7]</a>
 </li>
       </ul></li>
       <li><a href="library/imaplib.html#imaplib.IMAP4.search">search() (imaplib.IMAP4 yöntemi)</a>
@@ -406,8 +408,6 @@
         <li><a href="library/datetime.html#datetime.time.second">(datetime.time özniteliği)</a>
 </li>
       </ul></li>
-      <li><a href="library/time.html#index-1">seconds since the epoch</a>
-</li>
       <li>
     secrets
 
@@ -421,7 +421,7 @@
 </li>
       <li><a href="library/http.cookiejar.html#http.cookiejar.Cookie.secure">secure (http.cookiejar.Cookie özniteliği)</a>
 </li>
-      <li><a href="library/hashlib.html#index-0">secure hash algorithm, SHA1, SHA224, SHA256, SHA384, SHA512</a>
+      <li><a href="library/hashlib.html#index-0">secure hash algorithm, SHA1, SHA2, SHA224, SHA256, SHA384, SHA512, SHA3, Shake, Blake2</a>
 </li>
       <li><a href="library/ssl.html#index-1">Secure Sockets Layer</a>
 </li>
@@ -442,12 +442,16 @@
 </li>
       <li><a href="library/random.html#random.seed">seed() (random modülü içinde)</a>
 </li>
+      <li><a href="library/sys.html#sys.hash_info.seed_bits">seed_bits (sys.hash_info özniteliği)</a>
+</li>
       <li><a href="library/chunk.html#chunk.Chunk.seek">seek() (chunk.Chunk yöntemi)</a>
 
       <ul>
         <li><a href="library/io.html#io.IOBase.seek">(io.IOBase yöntemi)</a>
 </li>
         <li><a href="library/io.html#io.TextIOBase.seek">(io.TextIOBase yöntemi)</a>
+</li>
+        <li><a href="library/io.html#io.TextIOWrapper.seek">(io.TextIOWrapper yöntemi)</a>
 </li>
         <li><a href="library/mmap.html#mmap.mmap.seek">(mmap.mmap yöntemi)</a>
 </li>
@@ -456,7 +460,11 @@
       </ul></li>
       <li><a href="library/os.html#os.SEEK_CUR">SEEK_CUR (os modülü içinde)</a>
 </li>
+      <li><a href="library/os.html#os.SEEK_DATA">SEEK_DATA (os modülü içinde)</a>
+</li>
       <li><a href="library/os.html#os.SEEK_END">SEEK_END (os modülü içinde)</a>
+</li>
+      <li><a href="library/os.html#os.SEEK_HOLE">SEEK_HOLE (os modülü içinde)</a>
 </li>
       <li><a href="library/os.html#os.SEEK_SET">SEEK_SET (os modülü içinde)</a>
 </li>
@@ -618,7 +626,7 @@
 </li>
         <li><a href="library/stdtypes.html#index-17">iteration</a>
 </li>
-        <li><a href="c-api/concrete.html#index-1">nesne</a>, <a href="library/stdtypes.html#index-18">[1]</a>, <a href="reference/compound_stmts.html#index-6">[2]</a>, <a href="reference/datamodel.html#index-15">[3]</a>, <a href="reference/datamodel.html#index-51">[4]</a>, <a href="reference/expressions.html#index-42">[5]</a>, <a href="reference/expressions.html#index-45">[6]</a>, <a href="reference/expressions.html#index-80">[7]</a>, <a href="reference/simple_stmts.html#index-10">[8]</a>
+        <li><a href="c-api/concrete.html#index-1">object</a>, <a href="library/stdtypes.html#index-18">[1]</a>, <a href="reference/compound_stmts.html#index-6">[2]</a>, <a href="reference/datamodel.html#index-15">[3]</a>, <a href="reference/datamodel.html#index-52">[4]</a>, <a href="reference/expressions.html#index-42">[5]</a>, <a href="reference/expressions.html#index-45">[6]</a>, <a href="reference/expressions.html#index-80">[7]</a>, <a href="reference/simple_stmts.html#index-10">[8]</a>
 </li>
         <li><a href="library/stdtypes.html#index-21">types, immutable</a>
 </li>
@@ -699,7 +707,7 @@
 </li>
         <li><a href="reference/expressions.html#index-16">display</a>
 </li>
-        <li><a href="c-api/set.html#index-0">nesne</a>, <a href="library/stdtypes.html#index-50">[1]</a>, <a href="reference/datamodel.html#index-27">[2]</a>, <a href="reference/expressions.html#index-16">[3]</a>
+        <li><a href="c-api/set.html#index-0">object</a>, <a href="library/stdtypes.html#index-50">[1]</a>, <a href="reference/datamodel.html#index-28">[2]</a>, <a href="reference/expressions.html#index-16">[3]</a>
 </li>
       </ul></li>
       <li><a href="library/ast.html#ast.Set">Set (ast içindeki sınıf)</a>
@@ -718,7 +726,7 @@
     set type
 
       <ul>
-        <li><a href="reference/datamodel.html#index-26">nesne</a>
+        <li><a href="reference/datamodel.html#index-27">object</a>
 </li>
       </ul></li>
       <li><a href="library/asyncio-sync.html#asyncio.Event.set">set() (asyncio.Event yöntemi)</a>
@@ -749,7 +757,7 @@
       </ul></li>
       <li><a href="library/dis.html#opcode-SET_ADD">SET_ADD (opcode)</a>
 </li>
-      <li><a href="c-api/intro.html#index-11">set_all()</a>
+      <li><a href="c-api/intro.html#index-6">set_all()</a>
 </li>
       <li><a href="library/http.cookiejar.html#http.cookiejar.DefaultCookiePolicy.set_allowed_domains">set_allowed_domains() (http.cookiejar.DefaultCookiePolicy yöntemi)</a>
 </li>
@@ -1314,7 +1322,7 @@
 </li>
       <li><a href="library/msilib.html#msilib.Record.SetString">SetString() (msilib.Record yöntemi)</a>
 </li>
-      <li><a href="c-api/init.html#index-34">setswitchinterval() (in module sys)</a>
+      <li><a href="c-api/init.html#index-33">setswitchinterval() (in module sys)</a>
 
       <ul>
         <li><a href="library/sys.html#sys.setswitchinterval">(sys modülü içinde)</a>
@@ -1398,6 +1406,28 @@
 </li>
       <li><a href="library/os.html#os.SF_SYNC">SF_SYNC (os modülü içinde)</a>
 </li>
+      <li><a href="library/hashlib.html#hashlib.sha1">sha1() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha224">sha224() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha256">sha256() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha384">sha384() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha3_224">sha3_224() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha3_256">sha3_256() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha3_384">sha3_384() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha3_512">sha3_512() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.sha512">sha512() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.shake_128">shake_128() (hashlib modülü içinde)</a>
+</li>
+      <li><a href="library/hashlib.html#hashlib.shake_256">shake_256() (hashlib modülü içinde)</a>
+</li>
       <li><a href="library/stdtypes.html#memoryview.shape">shape (memoryview özniteliği)</a>
 </li>
       <li><a href="library/turtle.html#turtle.Shape">Shape (turtle içindeki sınıf)</a>
@@ -1418,6 +1448,8 @@
 </li>
       <li><a href="library/ssl.html#ssl.SSLSocket.shared_ciphers">shared_ciphers() (ssl.SSLSocket yöntemi)</a>
 </li>
+      <li><a href="library/sys.html#sys._emscripten_info.shared_memory">shared_memory (sys._emscripten_info özniteliği)</a>
+</li>
       <li><a href="distutils/apiref.html#distutils.ccompiler.CCompiler.shared_object_filename">shared_object_filename() (distutils.ccompiler.CCompiler yöntemi)</a>
 </li>
       <li><a href="library/multiprocessing.shared_memory.html#multiprocessing.shared_memory.SharedMemory">SharedMemory (multiprocessing.shared_memory içindeki sınıf)</a>
@@ -1434,7 +1466,9 @@
     shelve
 
       <ul>
-        <li><a href="library/marshal.html#index-0">modülü</a>, <a href="library/shelve.html#module-shelve">[1]</a>
+        <li><a href="library/marshal.html#index-0">module</a>
+</li>
+        <li><a href="library/shelve.html#module-shelve">modülü</a>
 </li>
       </ul></li>
       <li><a href="library/asyncio-task.html#asyncio.shield">shield() (asyncio modülü içinde)</a>
@@ -1536,6 +1570,8 @@
         <li><a href="library/shutil.html#module-shutil">modülü</a>
 </li>
       </ul></li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SI">SI (curses.ascii modülü içinde)</a>
+</li>
       <li><a href="library/unittest.mock.html#unittest.mock.Mock.side_effect">side_effect (unittest.mock.Mock özniteliği)</a>
 </li>
       <li><a href="library/signal.html#signal.SIG_BLOCK">SIG_BLOCK (signal modülü içinde)</a>
@@ -1584,7 +1620,9 @@
     signal
 
       <ul>
-        <li><a href="c-api/exceptions.html#index-1">modülü</a>, <a href="c-api/exceptions.html#index-2">[1]</a>, <a href="c-api/exceptions.html#index-3">[2]</a>, <a href="library/_thread.html#index-2">[3]</a>, <a href="library/signal.html#module-signal">[4]</a>
+        <li><a href="c-api/exceptions.html#index-1">module</a>, <a href="c-api/exceptions.html#index-2">[1]</a>, <a href="c-api/exceptions.html#index-3">[2]</a>, <a href="library/_thread.html#index-2">[3]</a>
+</li>
+        <li><a href="library/signal.html#module-signal">modülü</a>
 </li>
       </ul></li>
       <li><a href="library/signal.html#signal.signal">signal() (signal modülü içinde)</a>
@@ -1619,6 +1657,8 @@
 </li>
       <li><a href="library/signal.html#signal.SIGWINCH">SIGWINCH (signal modülü içinde)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="glossary.html#term-magic-method"><strong>sihirli yöntem</strong></a>
 </li>
       <li>
@@ -1630,8 +1670,6 @@
       </ul></li>
       <li><a href="library/smtplib.html#index-0">Simple Mail Transfer Protocol</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="library/http.cookies.html#http.cookies.SimpleCookie">SimpleCookie (http.cookies içindeki sınıf)</a>
 </li>
       <li><a href="library/warnings.html#warnings.simplefilter">simplefilter() (warnings modülü içinde)</a>
@@ -1708,11 +1746,10 @@
       </ul></li>
       <li><a href="library/urllib.robotparser.html#urllib.robotparser.RobotFileParser.site_maps">site_maps() (urllib.robotparser.RobotFileParser yöntemi)</a>
 </li>
-      <li>
-    sitecustomize
+      <li><a href="tutorial/appendix.html#index-2">sitecustomize</a>, <a href="tutorial/appendix.html#index-4">[1]</a>
 
       <ul>
-        <li><a href="library/site.html#index-5">modülü</a>
+        <li><a href="library/site.html#index-5">module</a>
 </li>
       </ul></li>
       <li><a href="library/ipaddress.html#ipaddress.IPv6Address.sixtofour">sixtofour (ipaddress.IPv6Address özniteliği)</a>
@@ -1748,6 +1785,8 @@
 </li>
       </ul></li>
       <li><a href="library/ctypes.html#ctypes.sizeof">sizeof() (ctypes modülü içinde)</a>
+</li>
+      <li><a href="library/sys.html#sys.int_info.sizeof_digit">sizeof_digit (sys.int_info özniteliği)</a>
 </li>
       <li><a href="library/doctest.html#doctest.SKIP">SKIP (doctest modülü içinde)</a>
 </li>
@@ -1796,11 +1835,11 @@
       <ul>
         <li><a href="library/stdtypes.html#index-23">assignment</a>
 </li>
-        <li><a href="reference/datamodel.html#index-96">nesne</a>
+        <li><a href="library/dis.html#index-1">built-in function</a>, <a href="reference/datamodel.html#index-67">[1]</a>
+</li>
+        <li><a href="reference/datamodel.html#index-97">object</a>
 </li>
         <li><a href="library/stdtypes.html#index-19">operation</a>
-</li>
-        <li><a href="library/dis.html#index-1">yerleşik işlev</a>, <a href="reference/datamodel.html#index-66">[1]</a>
 </li>
       </ul></li>
       <li><a href="library/ast.html#ast.Slice">Slice (ast içindeki sınıf)</a>
@@ -1909,6 +1948,8 @@
 </li>
       <li><a href="library/csv.html#csv.Sniffer">Sniffer (csv içindeki sınıf)</a>
 </li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SO">SO (curses.ascii modülü içinde)</a>
+</li>
       <li><a href="library/socket.html#socket.SO_INCOMING_CPU">SO_INCOMING_CPU (socket modülü içinde)</a>
 </li>
       <li><a href="library/asyncio-eventloop.html#asyncio.loop.sock_accept">sock_accept() (asyncio.loop yöntemi)</a>
@@ -1949,9 +1990,11 @@
     socket
 
       <ul>
-        <li><a href="library/internet.html#index-1">modülü</a>, <a href="library/socket.html#module-socket">[1]</a>
+        <li><a href="library/internet.html#index-1">module</a>
 </li>
-        <li><a href="library/socket.html#index-0">nesne</a>
+        <li><a href="library/socket.html#module-socket">modülü</a>
+</li>
+        <li><a href="library/socket.html#index-0">object</a>
 </li>
       </ul></li>
       <li><a href="library/socket.html#socket.socket">socket (socket içindeki sınıf)</a>
@@ -1989,6 +2032,8 @@
 </li>
       <li><a href="library/keyword.html#keyword.softkwlist">softkwlist (keyword modülü içinde)</a>
 </li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SOH">SOH (curses.ascii modülü içinde)</a>
+</li>
       <li><a href="library/socket.html#socket.SOL_ALG">SOL_ALG (socket modülü içinde)</a>
 </li>
       <li><a href="library/socket.html#socket.SOL_RDS">SOL_RDS (socket modülü içinde)</a>
@@ -2024,7 +2069,7 @@
       </ul></li>
       <li><a href="reference/lexical_analysis.html#index-5">source character set</a>
 </li>
-      <li><a href="library/compileall.html#index-1">SOURCE_DATE_EPOCH</a>, <a href="library/py_compile.html#index-3">[1]</a>, <a href="library/py_compile.html#index-6">[2]</a>, <a href="library/py_compile.html#index-7">[3]</a>, <a href="whatsnew/3.7.html#index-31">[4]</a>, <a href="whatsnew/changelog.html#index-175">[5]</a>, <a href="whatsnew/changelog.html#index-191">[6]</a>
+      <li><a href="library/compileall.html#index-1">SOURCE_DATE_EPOCH</a>, <a href="library/py_compile.html#index-3">[1]</a>, <a href="library/py_compile.html#index-6">[2]</a>, <a href="library/py_compile.html#index-7">[3]</a>, <a href="whatsnew/3.7.html#index-31">[4]</a>, <a href="whatsnew/changelog.html#index-176">[5]</a>, <a href="whatsnew/changelog.html#index-192">[6]</a>
 </li>
       <li><a href="library/imp.html#imp.source_from_cache">source_from_cache() (imp modülü içinde)</a>
 
@@ -2053,6 +2098,8 @@
       <li><a href="glossary.html#term-dictionary-comprehension"><strong>sözlük anlama</strong></a>
 </li>
       <li><a href="glossary.html#term-dictionary-view"><strong>sözlük görünümü</strong></a>
+</li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SP">SP (curses.ascii modülü içinde)</a>
 </li>
       <li><a href="reference/lexical_analysis.html#index-8">space</a>
 
@@ -2100,9 +2147,11 @@
 </li>
         <li><a href="reference/datamodel.html#index-5">attribute, generic</a>
 </li>
-        <li><a href="glossary.html#index-34">method</a>
+        <li><a href="glossary.html#index-34">metot</a>
 </li>
       </ul></li>
+      <li><a href="library/tarfile.html#tarfile.SpecialFileError">SpecialFileError</a>
+</li>
       <li><a href="library/pyexpat.html#xml.parsers.expat.xmlparser.specified_attributes">specified_attributes (xml.parsers.expat.xmlparser özniteliği)</a>
 </li>
       <li><a href="library/ossaudiodev.html#ossaudiodev.oss_audio_device.speed">speed() (ossaudiodev.oss_audio_device yöntemi)</a>
@@ -2322,9 +2371,9 @@
     stack
 
       <ul>
-        <li><a href="reference/datamodel.html#index-63">execution</a>
+        <li><a href="reference/datamodel.html#index-64">execution</a>
 </li>
-        <li><a href="reference/datamodel.html#index-63">trace</a>
+        <li><a href="reference/datamodel.html#index-64">trace</a>
 </li>
       </ul></li>
       <li><a href="library/traceback.html#traceback.TracebackException.stack">stack (traceback.TracebackException özniteliği)</a>
@@ -2390,11 +2439,13 @@
       <li><a href="library/stdtypes.html#range.start">start (range özniteliği)</a>
 
       <ul>
-        <li><a href="reference/datamodel.html#index-67">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
+        <li><a href="reference/datamodel.html#index-68">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
 </li>
         <li><a href="library/exceptions.html#UnicodeError.start">(UnicodeError özniteliği)</a>
 </li>
       </ul></li>
+      <li><a href="howto/clinic.html#term-start-line"><strong>start line</strong></a>
+</li>
       <li><a href="library/logging.handlers.html#logging.handlers.QueueListener.start">start() (logging.handlers.QueueListener yöntemi)</a>
 
       <ul>
@@ -2489,7 +2540,9 @@
     stat
 
       <ul>
-        <li><a href="library/os.html#index-30">modülü</a>, <a href="library/stat.html#module-stat">[1]</a>
+        <li><a href="library/os.html#index-30">module</a>
+</li>
+        <li><a href="library/stat.html#module-stat">modülü</a>
 </li>
       </ul></li>
       <li><a href="library/nntplib.html#nntplib.NNTP.stat">stat() (nntplib.NNTP yöntemi)</a>
@@ -2512,21 +2565,67 @@
     statement
 
       <ul>
+        <li><a href="reference/simple_stmts.html#index-18"><strong>assert</strong></a>, <a href="library/exceptions.html#index-3">[1]</a>
+</li>
         <li><a href="reference/datamodel.html#index-22">assignment</a>, <a href="reference/simple_stmts.html#index-4">[1]</a>
 </li>
         <li><a href="reference/simple_stmts.html#index-15">assignment, annotated</a>
 </li>
         <li><a href="reference/simple_stmts.html#index-14">assignment, augmented</a>
 </li>
+        <li><a href="reference/compound_stmts.html#index-46">async def</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-48">async for</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-49">async with</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-30"><strong>break</strong></a>, <a href="reference/compound_stmts.html#index-13">[1]</a>, <a href="reference/compound_stmts.html#index-15">[2]</a>, <a href="reference/compound_stmts.html#index-5">[3]</a>, <a href="reference/compound_stmts.html#index-7">[4]</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-40">class</a>
+</li>
         <li><a href="reference/compound_stmts.html#index-0">compound</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-33"><strong>continue</strong></a>, <a href="reference/compound_stmts.html#index-13">[1]</a>, <a href="reference/compound_stmts.html#index-15">[2]</a>, <a href="reference/compound_stmts.html#index-5">[3]</a>, <a href="reference/compound_stmts.html#index-7">[4]</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-28">def</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-21"><strong>del</strong></a>, <a href="library/stdtypes.html#index-23">[1]</a>, <a href="library/stdtypes.html#index-51">[2]</a>, <a href="reference/datamodel.html#index-72">[3]</a>
+</li>
+        <li><a href="library/exceptions.html#index-0">except</a>
 </li>
         <li><a href="reference/simple_stmts.html#index-1">expression</a>
 </li>
+        <li><a href="reference/compound_stmts.html#index-6"><strong>for</strong></a>, <a href="reference/simple_stmts.html#index-30">[1]</a>, <a href="reference/simple_stmts.html#index-33">[2]</a>, <a href="tutorial/controlflow.html#index-0">[3]</a>
+</li>
         <li><a href="reference/simple_stmts.html#index-40">future</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-43"><strong>global</strong></a>, <a href="reference/simple_stmts.html#index-22">[1]</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-3"><strong>if</strong></a>, <a href="library/stdtypes.html#index-1">[1]</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-34"><strong>import</strong></a>, <a href="library/functions.html#index-13">[1]</a>, <a href="library/imp.html#index-0">[2]</a>, <a href="library/site.html#index-2">[3]</a>, <a href="reference/datamodel.html#index-43">[4]</a>
 </li>
         <li><a href="reference/compound_stmts.html#index-4">loop</a>, <a href="reference/compound_stmts.html#index-6">[1]</a>, <a href="reference/simple_stmts.html#index-30">[2]</a>, <a href="reference/simple_stmts.html#index-33">[3]</a>
 </li>
+        <li><a href="reference/compound_stmts.html#index-18"><strong>match</strong></a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-45">nonlocal</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-20">pass</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-27"><strong>raise</strong></a>, <a href="library/exceptions.html#index-1">[1]</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-24"><strong>return</strong></a>, <a href="reference/compound_stmts.html#index-13">[1]</a>, <a href="reference/compound_stmts.html#index-15">[2]</a>
+</li>
         <li><a href="reference/simple_stmts.html#index-0">simple</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-9"><strong>try</strong></a>, <a href="library/exceptions.html#index-0">[1]</a>, <a href="reference/datamodel.html#index-65">[2]</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-4"><strong>while</strong></a>, <a href="library/stdtypes.html#index-1">[1]</a>, <a href="reference/simple_stmts.html#index-30">[2]</a>, <a href="reference/simple_stmts.html#index-33">[3]</a>
+</li>
+        <li><a href="reference/compound_stmts.html#index-16"><strong>with</strong></a>, <a href="reference/datamodel.html#index-104">[1]</a>
+</li>
+        <li><a href="reference/simple_stmts.html#index-26">yield</a>
 </li>
       </ul></li>
       <li><a href="reference/lexical_analysis.html#index-8">statement grouping</a>
@@ -2537,7 +2636,7 @@
     staticmethod
 
       <ul>
-        <li><a href="c-api/structures.html#index-1">yerleşik işlev</a>
+        <li><a href="c-api/structures.html#index-1">built-in function</a>
 </li>
       </ul></li>
       <li>
@@ -2585,7 +2684,7 @@
       <li><a href="library/asyncio-subprocess.html#asyncio.subprocess.Process.stderr">stderr (asyncio.subprocess.Process özniteliği)</a>
 
       <ul>
-        <li><a href="c-api/init.html#index-42">(in module sys)</a>, <a href="reference/datamodel.html#index-53">[1]</a>
+        <li><a href="c-api/init.html#index-41">(in module sys)</a>, <a href="reference/datamodel.html#index-54">[1]</a>
 </li>
         <li><a href="library/subprocess.html#subprocess.CalledProcessError.stderr">(subprocess.CalledProcessError özniteliği)</a>
 </li>
@@ -2606,20 +2705,20 @@
     stdin
 
       <ul>
-        <li><a href="c-api/init.html#index-17">stdout sdterr</a>
+        <li><a href="c-api/init.html#index-16">stdout sdterr</a>
 </li>
       </ul></li>
       <li><a href="library/asyncio-subprocess.html#asyncio.subprocess.Process.stdin">stdin (asyncio.subprocess.Process özniteliği)</a>
 
       <ul>
-        <li><a href="c-api/init.html#index-42">(in module sys)</a>, <a href="reference/datamodel.html#index-53">[1]</a>
+        <li><a href="c-api/init.html#index-41">(in module sys)</a>, <a href="reference/datamodel.html#index-54">[1]</a>
 </li>
         <li><a href="library/subprocess.html#subprocess.Popen.stdin">(subprocess.Popen özniteliği)</a>
 </li>
         <li><a href="library/sys.html#sys.stdin">(sys modülü içinde)</a>
 </li>
       </ul></li>
-      <li><a href="reference/datamodel.html#index-53">stdio</a>
+      <li><a href="reference/datamodel.html#index-54">stdio</a>
 </li>
       <li><a href="library/sys.html#sys.stdlib_module_names">stdlib_module_names (sys modülü içinde)</a>
 </li>
@@ -2627,13 +2726,13 @@
     stdout
 
       <ul>
-        <li><a href="c-api/init.html#index-17">sdterr, stdin</a>
+        <li><a href="c-api/init.html#index-16">sdterr, stdin</a>
 </li>
       </ul></li>
       <li><a href="library/asyncio-subprocess.html#asyncio.subprocess.Process.stdout">stdout (asyncio.subprocess.Process özniteliği)</a>
 
       <ul>
-        <li><a href="c-api/init.html#index-42">(in module sys)</a>, <a href="reference/datamodel.html#index-53">[1]</a>
+        <li><a href="c-api/init.html#index-41">(in module sys)</a>, <a href="reference/datamodel.html#index-54">[1]</a>
 </li>
       </ul></li>
       <li><a href="library/subprocess.html#subprocess.STDOUT">STDOUT (subprocess modülü içinde)</a>
@@ -2657,7 +2756,7 @@
       <ul>
         <li><a href="library/stdtypes.html#range.step">(range özniteliği)</a>
 </li>
-        <li><a href="reference/datamodel.html#index-67">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
+        <li><a href="reference/datamodel.html#index-68">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
 </li>
       </ul></li>
       <li><a href="library/tkinter.ttk.html#tkinter.ttk.Progressbar.step">step() (tkinter.ttk.Progressbar yöntemi)</a>
@@ -2669,7 +2768,7 @@
       <li><a href="library/stdtypes.html#range.stop">stop (range özniteliği)</a>
 
       <ul>
-        <li><a href="reference/datamodel.html#index-67">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
+        <li><a href="reference/datamodel.html#index-68">(slice object attribute)</a>, <a href="reference/expressions.html#index-46">[1]</a>
 </li>
       </ul></li>
       <li><a href="library/asyncio-eventloop.html#asyncio.loop.stop">stop() (asyncio.loop yöntemi)</a>
@@ -2689,13 +2788,13 @@
       <li><a href="library/exceptions.html#StopAsyncIteration">StopAsyncIteration</a>
 
       <ul>
-        <li><a href="reference/expressions.html#index-36">özel durum</a>
+        <li><a href="reference/expressions.html#index-36">exception</a>
 </li>
       </ul></li>
       <li><a href="library/exceptions.html#StopIteration">StopIteration</a>
 
       <ul>
-        <li><a href="reference/expressions.html#index-32">özel durum</a>, <a href="reference/simple_stmts.html#index-26">[1]</a>
+        <li><a href="reference/expressions.html#index-32">exception</a>, <a href="reference/simple_stmts.html#index-26">[1]</a>
 </li>
       </ul></li>
       <li><a href="library/logging.config.html#logging.config.stopListening">stopListening() (logging.config modülü içinde)</a>
@@ -2736,6 +2835,8 @@
       <li><a href="library/stdtypes.html#str">str (yerleşik sınıf)</a>
 </li>
       <li><a href="library/locale.html#locale.str">str() (locale modülü içinde)</a>
+</li>
+      <li><a href="library/sys.html#sys.int_info.str_digits_check_threshold">str_digits_check_threshold (sys.int_info özniteliği)</a>
 </li>
       <li><a href="library/locale.html#locale.strcoll">strcoll() (locale modülü içinde)</a>
 </li>
@@ -2826,13 +2927,13 @@
     string
 
       <ul>
-        <li><a href="reference/datamodel.html#index-75">__format__() (object method)</a>
+        <li><a href="reference/datamodel.html#index-76">__format__() (object method)</a>
 </li>
-        <li><a href="reference/datamodel.html#index-73">__str__() (object method)</a>
+        <li><a href="reference/datamodel.html#index-74">__str__() (object method)</a>
 </li>
-        <li><a href="reference/datamodel.html#index-75">conversion</a>, <a href="reference/simple_stmts.html#index-3">[1]</a>
+        <li><a href="reference/datamodel.html#index-76">conversion</a>, <a href="reference/simple_stmts.html#index-3">[1]</a>
 </li>
-        <li><a href="library/functions.html#index-3">format() (built-in function)</a>
+        <li><a href="library/functions.html#index-4">format() (built-in function)</a>
 </li>
         <li><a href="reference/lexical_analysis.html#index-25">formatted literal</a>
 </li>
@@ -2848,9 +2949,11 @@
 </li>
         <li><a href="library/stdtypes.html#index-31">methods</a>
 </li>
-        <li><a href="library/locale.html#index-6">modülü</a>, <a href="library/string.html#module-string">[1]</a>
+        <li><a href="library/locale.html#index-6">module</a>
 </li>
-        <li><a href="library/stdtypes.html#index-27">nesne</a>, <a href="reference/expressions.html#index-42">[1]</a>, <a href="reference/expressions.html#index-45">[2]</a>
+        <li><a href="library/string.html#module-string">modülü</a>
+</li>
+        <li><a href="library/stdtypes.html#index-27">object</a>, <a href="reference/expressions.html#index-42">[1]</a>, <a href="reference/expressions.html#index-45">[2]</a>
 </li>
         <li><a href="extending/newtypes.html#index-3">object representation</a>
 </li>
@@ -2858,7 +2961,7 @@
 </li>
         <li><a href="library/stdtypes.html#index-29">str (built-in class)</a>
 </li>
-        <li><a href="library/functions.html#index-10">str() (built-in function)</a>
+        <li><a href="library/functions.html#index-11">str() (built-in function)</a>
 </li>
         <li><a href="library/stdtypes.html#index-27">text sequence type</a>
 </li>
@@ -2908,7 +3011,9 @@
     struct
 
       <ul>
-        <li><a href="library/socket.html#index-14">modülü</a>, <a href="library/struct.html#module-struct">[1]</a>
+        <li><a href="library/socket.html#index-14">module</a>
+</li>
+        <li><a href="library/struct.html#module-struct">modülü</a>
 </li>
       </ul></li>
       <li><a href="library/struct.html#struct.Struct">Struct (struct içindeki sınıf)</a>
@@ -2926,6 +3031,8 @@
       </ul></li>
       <li><a href="library/locale.html#locale.strxfrm">strxfrm() (locale modülü içinde)</a>
 </li>
+      <li><a href="library/curses.ascii.html#curses.ascii.STX">STX (curses.ascii modülü içinde)</a>
+</li>
       <li>
     style
 
@@ -2936,6 +3043,8 @@
       <li><a href="library/tkinter.ttk.html#tkinter.ttk.Style">Style (tkinter.ttk içindeki sınıf)</a>
 </li>
       <li><a href="library/ast.html#ast.Sub">Sub (ast içindeki sınıf)</a>
+</li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SUB">SUB (curses.ascii modülü içinde)</a>
 </li>
       <li><a href="library/operator.html#operator.sub">sub() (operator modülü içinde)</a>
 
@@ -2951,7 +3060,7 @@
     subclassing
 
       <ul>
-        <li><a href="reference/datamodel.html#index-69">immutable types</a>
+        <li><a href="reference/datamodel.html#index-70">immutable types</a>
 </li>
       </ul></li>
       <li><a href="library/filecmp.html#filecmp.dircmp.subdirs">subdirs (filecmp.dircmp özniteliği)</a>
@@ -3018,7 +3127,7 @@
       </ul></li>
       <li><a href="library/ast.html#ast.Subscript">Subscript (ast içindeki sınıf)</a>
 </li>
-      <li><a href="reference/datamodel.html#index-15">subscription</a>, <a href="reference/datamodel.html#index-22">[1]</a>, <a href="reference/datamodel.html#index-29">[2]</a>, <a href="reference/expressions.html#index-41">[3]</a>
+      <li><a href="reference/datamodel.html#index-15">subscription</a>, <a href="reference/datamodel.html#index-22">[1]</a>, <a href="reference/datamodel.html#index-30">[2]</a>, <a href="reference/expressions.html#index-41">[3]</a>
 
       <ul>
         <li><a href="reference/simple_stmts.html#index-9">assignment</a>
@@ -3067,9 +3176,9 @@
         <li><a href="library/functions.html#sum">yerleşik işlev</a>
 </li>
       </ul></li>
-      <li><a href="c-api/intro.html#index-13">sum_list()</a>
+      <li><a href="c-api/intro.html#index-8">sum_list()</a>
 </li>
-      <li><a href="c-api/intro.html#index-14">sum_sequence()</a>, <a href="c-api/intro.html#index-19">[1]</a>
+      <li><a href="c-api/intro.html#index-14">sum_sequence()</a>, <a href="c-api/intro.html#index-9">[1]</a>
 </li>
       <li><a href="library/doctest.html#doctest.DocTestRunner.summarize">summarize() (doctest.DocTestRunner yöntemi)</a>
 </li>
@@ -3185,6 +3294,8 @@
       </ul></li>
       <li><a href="library/symtable.html#symtable.symtable">symtable() (symtable modülü içinde)</a>
 </li>
+      <li><a href="library/curses.ascii.html#curses.ascii.SYN">SYN (curses.ascii modülü içinde)</a>
+</li>
       <li><a href="library/dbm.html#dbm.dumb.dumbdbm.sync">sync() (dbm.dumb.dumbdbm yöntemi)</a>
 
       <ul>
@@ -3219,14 +3330,16 @@
     sys
 
       <ul>
-        <li><a href="c-api/init.html#index-16">modülü</a>, <a href="c-api/init.html#index-42">[1]</a>, <a href="c-api/intro.html#index-23">[2]</a>, <a href="library/functions.html#index-7">[3]</a>, <a href="library/sys.html#module-sys">[4]</a>, <a href="reference/compound_stmts.html#index-11">[5]</a>, <a href="reference/toplevel_components.html#index-2">[6]</a>, <a href="tutorial/modules.html#index-4">[7]</a>
+        <li><a href="c-api/init.html#index-15">module</a>, <a href="c-api/init.html#index-41">[1]</a>, <a href="c-api/intro.html#index-18">[2]</a>, <a href="library/functions.html#index-8">[3]</a>, <a href="reference/compound_stmts.html#index-11">[4]</a>, <a href="reference/toplevel_components.html#index-2">[5]</a>, <a href="tutorial/modules.html#index-4">[6]</a>
+</li>
+        <li><a href="library/sys.html#module-sys">modülü</a>
 </li>
       </ul></li>
-      <li><a href="reference/datamodel.html#index-63">sys.exc_info</a>
+      <li><a href="reference/datamodel.html#index-64">sys.exc_info</a>
 </li>
-      <li><a href="reference/datamodel.html#index-63">sys.exception</a>
+      <li><a href="reference/datamodel.html#index-64">sys.exception</a>
 </li>
-      <li><a href="reference/datamodel.html#index-63">sys.last_traceback</a>
+      <li><a href="reference/datamodel.html#index-64">sys.last_traceback</a>
 </li>
       <li><a href="reference/import.html#index-10">sys.meta_path</a>
 </li>
@@ -3238,11 +3351,11 @@
 </li>
       <li><a href="reference/import.html#index-17">sys.path_importer_cache</a>
 </li>
-      <li><a href="reference/datamodel.html#index-53">sys.stderr</a>
+      <li><a href="reference/datamodel.html#index-54">sys.stderr</a>
 </li>
-      <li><a href="reference/datamodel.html#index-53">sys.stdin</a>
+      <li><a href="reference/datamodel.html#index-54">sys.stdin</a>
 </li>
-      <li><a href="reference/datamodel.html#index-53">sys.stdout</a>
+      <li><a href="reference/datamodel.html#index-54">sys.stdout</a>
 </li>
       <li><a href="library/2to3.html#to3fixer-sys_exc">sys_exc (2to3 fixer)</a>
 </li>
@@ -3344,7 +3457,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="index.html">3.11.2 Documentation</a> &#187;
+      <a href="index.html">3.11.5 Documentation</a> &#187;
     </li>
 
         <li class="nav-item nav-item-this"><a href="">Dizin</a></li>
@@ -3386,11 +3499,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

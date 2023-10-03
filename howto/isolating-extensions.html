@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Abstract: Traditionally, state belonging to Python extension modules was kept in C static variables, which have process-wide scope. This document describes problems of such per-process state and sh..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Isolating Extension Modules &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolating Extension Modules &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -183,7 +183,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python NASIL’ları</a> &#187;</li>
@@ -473,10 +473,10 @@ Always test the details that are important to you.</p>
 a comprehensive list):</p>
 <ul class="simple">
 <li><p>Unlike static types, heap type objects are mutable by default.
-Use the <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code> flag to prevent mutability.</p></li>
+Use the <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_IMMUTABLETYPE" title="Py_TPFLAGS_IMMUTABLETYPE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a> flag to prevent mutability.</p></li>
 <li><p>Heap types inherit <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_new" title="PyTypeObject.tp_new"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_new</span></code></a> by default,
 so it may become possible to instantiate them from Python code.
-You can prevent this with the <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code> flag.</p></li>
+You can prevent this with the <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_DISALLOW_INSTANTIATION" title="Py_TPFLAGS_DISALLOW_INSTANTIATION"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code></a> flag.</p></li>
 </ul>
 </section>
 <section id="defining-heap-types">
@@ -504,12 +504,12 @@ garbage collector.</p>
 garbage collection protocol.
 That is, heap types should:</p>
 <ul class="simple">
-<li><p>Have the <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code> flag.</p></li>
+<li><p>Have the <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_HAVE_GC" title="Py_TPFLAGS_HAVE_GC"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code></a> flag.</p></li>
 <li><p>Define a traverse function using <code class="docutils literal notranslate"><span class="pre">Py_tp_traverse</span></code>, which
 visits the type (e.g. using <span class="c-expr sig sig-inline c"><a class="reference internal" href="../c-api/gcsupport.html#c.Py_VISIT" title="Py_VISIT"><span class="n">Py_VISIT</span></a><span class="p">(</span><a class="reference internal" href="../c-api/structures.html#c.Py_TYPE" title="Py_TYPE"><span class="n">Py_TYPE</span></a><span class="p">(</span><span class="n">self</span><span class="p">)</span><span class="p">)</span></span>).</p></li>
 </ul>
 <p>Please refer to the <a class="reference internal" href="../c-api/typeobj.html#type-structs"><span class="std std-ref">the documentation</span></a> of
-<code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code> and <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_traverse" title="PyTypeObject.tp_traverse"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_traverse</span></code></a>
+<a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_HAVE_GC" title="Py_TPFLAGS_HAVE_GC"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_HAVE_GC</span></code></a> and <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_traverse" title="PyTypeObject.tp_traverse"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_traverse</span></code></a>
 for additional considerations.</p>
 <p>If your traverse function delegates to the <code class="docutils literal notranslate"><span class="pre">tp_traverse</span></code> of its base class
 (or another type), ensure that <code class="docutils literal notranslate"><span class="pre">Py_TYPE(self)</span></code> is visited only once.
@@ -573,7 +573,7 @@ if <code class="docutils literal notranslate"><span class="pre">type(self)</span
 </div>
 </div>
 <p>For a method to get its “defining class”, it must use the
-<code class="xref py py-data docutils literal notranslate"><span class="pre">METH_METHOD</span> <span class="pre">|</span> <span class="pre">METH_FASTCALL</span> <span class="pre">|</span> <span class="pre">METH_KEYWORDS</span></code>
+<a class="reference internal" href="../c-api/structures.html#meth-method-meth-fastcall-meth-keywords"><span class="std std-ref">METH_METHOD | METH_FASTCALL | METH_KEYWORDS</span></a>
 <a class="reference internal" href="../c-api/structures.html#c.PyMethodDef" title="PyMethodDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">calling</span> <span class="pre">convention</span></code></a>
 and the corresponding <a class="reference internal" href="../c-api/structures.html#c.PyCMethod" title="PyCMethod"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyCMethod</span></code></a> signature:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">PyCMethod</span><span class="p">(</span>
@@ -621,7 +621,7 @@ the state of its associated module.</p>
 </div>
 <p>Slot methods—the fast C equivalents for special methods, such as
 <a class="reference internal" href="../c-api/typeobj.html#c.PyNumberMethods.nb_add" title="PyNumberMethods.nb_add"><code class="xref c c-member docutils literal notranslate"><span class="pre">nb_add</span></code></a> for <a class="reference internal" href="../reference/datamodel.html#object.__add__" title="object.__add__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__add__</span></code></a> or
-<code class="xref c c-member docutils literal notranslate"><span class="pre">tp_new</span></code> for initialization—have a very simple API that
+<a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_new" title="PyTypeObject.tp_new"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_new</span></code></a> for initialization—have a very simple API that
 doesn’t allow passing in the defining class, unlike with <a class="reference internal" href="../c-api/structures.html#c.PyCMethod" title="PyCMethod"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyCMethod</span></code></a>.
 The same goes for getters and setters defined with
 <a class="reference internal" href="../c-api/structures.html#c.PyGetSetDef" title="PyGetSetDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyGetSetDef</span></code></a>.</p>
@@ -636,13 +636,13 @@ to get the state:</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">PyType_GetModuleByDef</span></code> works by searching the
+<p><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_GetModuleByDef()</span></code> works by searching the
 <a class="reference internal" href="../glossary.html#term-method-resolution-order"><span class="xref std std-term">method resolution order</span></a> (i.e. all superclasses) for the first
 superclass that has a corresponding module.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>In very exotic cases (inheritance chains spanning multiple modules
-created from the same definition), <code class="docutils literal notranslate"><span class="pre">PyType_GetModuleByDef</span></code> might not
+created from the same definition), <code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_GetModuleByDef()</span></code> might not
 return the module of the true defining class. However, it will always
 return a module with the same definition, ensuring a compatible
 C memory layout.</p>
@@ -781,7 +781,7 @@ that is, creating a type that works exactly like a given static type.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python NASIL’ları</a> &#187;</li>
@@ -824,11 +824,11 @@ that is, creating a type that works exactly like a given static type.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

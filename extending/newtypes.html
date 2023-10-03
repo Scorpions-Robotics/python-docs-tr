@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="This section aims to give a quick fly-by on the various type methods you can implement and what they do. Here is the definition of PyTypeObject, with some fields only used in debug builds omitted: ..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>3. Defining Extension Types: Assorted Topics &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. Defining Extension Types: Assorted Topics &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -165,7 +165,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Yorumlayıcısını Genişletme ve Gömme</a> &#187;</li>
@@ -509,7 +509,7 @@ structure:</p>
 <p>One entry should be defined for each method provided by the type; no entries are
 needed for methods inherited from a base type.  One additional entry is needed
 at the end; it is a sentinel that marks the end of the array.  The
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">ml_name</span></code> field of the sentinel must be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<a class="reference internal" href="../c-api/structures.html#c.PyMethodDef.ml_name" title="PyMethodDef.ml_name"><code class="xref c c-member docutils literal notranslate"><span class="pre">ml_name</span></code></a> field of the sentinel must be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <p>The second table is used to define attributes which map directly to data stored
 in the instance.  A variety of primitive C types are supported, and access may
 be read-only or read-write.  The structures in the table are defined as:</p>
@@ -524,9 +524,9 @@ be read-only or read-write.  The structures in the table are defined as:</p>
 </div>
 <p>For each entry in the table, a <a class="reference internal" href="../glossary.html#term-descriptor"><span class="xref std std-term">descriptor</span></a> will be constructed and added to the
 type which will be able to extract a value from the instance structure.  The
-<a class="reference internal" href="../library/functions.html#type" title="type"><code class="xref py py-attr docutils literal notranslate"><span class="pre">type</span></code></a> field should contain one of the type codes defined in the
+<code class="xref c c-member docutils literal notranslate"><span class="pre">type</span></code> field should contain one of the type codes defined in the
 <code class="file docutils literal notranslate"><span class="pre">structmember.h</span></code> header; the value will be used to determine how to
-convert Python values to and from C values.  The <code class="xref py py-attr docutils literal notranslate"><span class="pre">flags</span></code> field is used to
+convert Python values to and from C values.  The <code class="xref c c-member docutils literal notranslate"><span class="pre">flags</span></code> field is used to
 store flags which control how the attribute can be accessed.</p>
 <p>The following flag constants are defined in <code class="file docutils literal notranslate"><span class="pre">structmember.h</span></code>; they may be
 combined using bitwise-OR.</p>
@@ -548,17 +548,17 @@ reading.</p></td>
 </tbody>
 </table>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.10 sürümünde değişti: </span><code class="xref py py-const docutils literal notranslate"><span class="pre">RESTRICTED</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> and <code class="xref py py-const docutils literal notranslate"><span class="pre">WRITE_RESTRICTED</span></code>
-are deprecated. However, <code class="xref py py-const docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> is an alias for
-<code class="xref py py-const docutils literal notranslate"><span class="pre">PY_AUDIT_READ</span></code>, so fields that specify either <code class="xref py py-const docutils literal notranslate"><span class="pre">RESTRICTED</span></code>
-or <code class="xref py py-const docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> will also raise an audit event.</p>
+<p><span class="versionmodified changed">3.10 sürümünde değişti: </span><code class="xref c c-macro docutils literal notranslate"><span class="pre">RESTRICTED</span></code>, <code class="xref c c-macro docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> and <code class="xref c c-macro docutils literal notranslate"><span class="pre">WRITE_RESTRICTED</span></code>
+are deprecated. However, <code class="xref c c-macro docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> is an alias for
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">PY_AUDIT_READ</span></code>, so fields that specify either <code class="xref c c-macro docutils literal notranslate"><span class="pre">RESTRICTED</span></code>
+or <code class="xref c c-macro docutils literal notranslate"><span class="pre">READ_RESTRICTED</span></code> will also raise an audit event.</p>
 </div>
 <p id="index-4">An interesting advantage of using the <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_members" title="PyTypeObject.tp_members"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_members</span></code></a> table to build
 descriptors that are used at runtime is that any attribute defined this way can
 have an associated doc string simply by providing the text in the table.  An
 application can use the introspection API to retrieve the descriptor from the
 class object, and get the doc string using its <code class="xref py py-attr docutils literal notranslate"><span class="pre">__doc__</span></code> attribute.</p>
-<p>As with the <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_methods" title="PyTypeObject.tp_methods"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_methods</span></code></a> table, a sentinel entry with a <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code> value
+<p>As with the <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_methods" title="PyTypeObject.tp_methods"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_methods</span></code></a> table, a sentinel entry with a <a class="reference internal" href="../c-api/structures.html#c.PyMethodDef.ml_name" title="PyMethodDef.ml_name"><code class="xref c c-member docutils literal notranslate"><span class="pre">ml_name</span></code></a> value
 of <code class="docutils literal notranslate"><span class="pre">NULL</span></code> is required.</p>
 </section>
 <section id="type-specific-attribute-management">
@@ -571,7 +571,7 @@ support added in Python 2.2.  It explains how the handler functions are
 called, so that if you do need to extend their functionality, you’ll understand
 what needs to be done.</p>
 <p>The <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_getattr" title="PyTypeObject.tp_getattr"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_getattr</span></code></a> handler is called when the object requires an attribute
-look-up.  It is called in the same situations where the <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code>
+look-up.  It is called in the same situations where the <a class="reference internal" href="../reference/datamodel.html#object.__getattr__" title="object.__getattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code></a>
 method of a class would be called.</p>
 <p>Here is an example:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span>
@@ -589,8 +589,8 @@ method of a class would be called.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_setattr" title="PyTypeObject.tp_setattr"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_setattr</span></code></a> handler is called when the <code class="xref py py-meth docutils literal notranslate"><span class="pre">__setattr__()</span></code> or
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__delattr__()</span></code> method of a class instance would be called.  When an
+<p>The <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_setattr" title="PyTypeObject.tp_setattr"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_setattr</span></code></a> handler is called when the <a class="reference internal" href="../reference/datamodel.html#object.__setattr__" title="object.__setattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__setattr__()</span></code></a> or
+<a class="reference internal" href="../reference/datamodel.html#object.__delattr__" title="object.__delattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__delattr__()</span></code></a> method of a class instance would be called.  When an
 attribute should be deleted, the third parameter will be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  Here is an
 example that simply raises an exception; if this were really all you wanted, the
 <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_setattr" title="PyTypeObject.tp_setattr"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_setattr</span></code></a> handler should be set to <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
@@ -741,7 +741,7 @@ do not want to support keyword arguments and this is non-<code class="docutils l
 take exactly one parameter, the instance for which they are being called,
 and return a new reference.  In the case of an error, they should set an
 exception and return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_iter" title="PyTypeObject.tp_iter"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_iter</span></code></a> corresponds
-to the Python <code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code> method, while <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_iternext" title="PyTypeObject.tp_iternext"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_iternext</span></code></a>
+to the Python <a class="reference internal" href="../reference/datamodel.html#object.__iter__" title="object.__iter__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__iter__()</span></code></a> method, while <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_iternext" title="PyTypeObject.tp_iternext"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_iternext</span></code></a>
 corresponds to the Python <a class="reference internal" href="../library/stdtypes.html#iterator.__next__" title="iterator.__next__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__next__()</span></code></a> method.</p>
 <p>Any <a class="reference internal" href="../glossary.html#term-iterable"><span class="xref std std-term">iterable</span></a> object must implement the <a class="reference internal" href="../c-api/typeobj.html#c.PyTypeObject.tp_iter" title="PyTypeObject.tp_iter"><code class="xref c c-member docutils literal notranslate"><span class="pre">tp_iter</span></code></a>
 handler, which must return an <a class="reference internal" href="../glossary.html#term-iterator"><span class="xref std std-term">iterator</span></a> object.  Here the same guidelines
@@ -803,7 +803,7 @@ with the required field:</p>
 </pre></div>
 </div>
 <p>The only further addition is that <code class="docutils literal notranslate"><span class="pre">tp_dealloc</span></code> needs to clear any weak
-references (by calling <code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_ClearWeakRefs()</span></code>) if the field is
+references (by calling <a class="reference internal" href="../c-api/weakref.html#c.PyObject_ClearWeakRefs" title="PyObject_ClearWeakRefs"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_ClearWeakRefs()</span></code></a>) if the field is
 non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code>:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">void</span>
 <span class="nf">Trivial_dealloc</span><span class="p">(</span><span class="n">TrivialObject</span><span class="w"> </span><span class="o">*</span><span class="n">self</span><span class="p">)</span>
@@ -927,7 +927,7 @@ its use might be something like the following:</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Yorumlayıcısını Genişletme ve Gömme</a> &#187;</li>
@@ -970,11 +970,11 @@ its use might be something like the following:</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

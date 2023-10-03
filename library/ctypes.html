@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/ctypes ctypes is a foreign function library for Python. It provides C compatible data types, and allows calling functions in DLLs or shared libraries. It can be used to wrap these ..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>ctypes — A foreign function library for Python &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ctypes — A foreign function library for Python &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -103,7 +103,7 @@
 <li><a class="reference internal" href="#calling-functions">Calling functions</a></li>
 <li><a class="reference internal" href="#fundamental-data-types">Fundamental data types</a></li>
 <li><a class="reference internal" href="#calling-functions-continued">Calling functions, continued</a></li>
-<li><a class="reference internal" href="#calling-varadic-functions">Calling varadic functions</a></li>
+<li><a class="reference internal" href="#calling-variadic-functions">Calling variadic functions</a></li>
 <li><a class="reference internal" href="#calling-functions-with-your-own-custom-data-types">Calling functions with your own custom data types</a></li>
 <li><a class="reference internal" href="#specifying-the-required-argument-types-function-prototypes">Specifying the required argument types (function prototypes)</a></li>
 <li><a class="reference internal" href="#return-types">Return types</a></li>
@@ -320,7 +320,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -549,7 +549,7 @@ more about <a class="reference internal" href="#module-ctypes" title="ctypes: A 
 <td><p>1-character bytes object</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ctypes.c_wchar" title="ctypes.c_wchar"><code class="xref py py-class docutils literal notranslate"><span class="pre">c_wchar</span></code></a></p></td>
-<td><p><span class="c-expr sig sig-inline c"><span class="n">wchar_t</span></span></p></td>
+<td><p><code class="xref c c-type docutils literal notranslate"><span class="pre">wchar_t</span></code></p></td>
 <td><p>1-character string</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ctypes.c_byte" title="ctypes.c_byte"><code class="xref py py-class docutils literal notranslate"><span class="pre">c_byte</span></code></a></p></td>
@@ -594,11 +594,11 @@ more about <a class="reference internal" href="#module-ctypes" title="ctypes: A 
 <td><p>int</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#ctypes.c_size_t" title="ctypes.c_size_t"><code class="xref py py-class docutils literal notranslate"><span class="pre">c_size_t</span></code></a></p></td>
-<td><p><span class="c-expr sig sig-inline c"><span class="n">size_t</span></span></p></td>
+<td><p><code class="xref c c-type docutils literal notranslate"><span class="pre">size_t</span></code></p></td>
 <td><p>int</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#ctypes.c_ssize_t" title="ctypes.c_ssize_t"><code class="xref py py-class docutils literal notranslate"><span class="pre">c_ssize_t</span></code></a></p></td>
-<td><p><span class="c-expr sig sig-inline c"><span class="n">ssize_t</span></span> or
+<td><p><code class="xref c c-type docutils literal notranslate"><span class="pre">ssize_t</span></code> or
 <span class="c-expr sig sig-inline c"><a class="reference internal" href="../c-api/intro.html#c.Py_ssize_t" title="Py_ssize_t"><span class="n">Py_ssize_t</span></a></span></p></td>
 <td><p>int</p></td>
 </tr>
@@ -700,7 +700,7 @@ property:</p>
 </div>
 <p>The <a class="reference internal" href="#ctypes.create_string_buffer" title="ctypes.create_string_buffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_string_buffer()</span></code></a> function replaces the old <code class="xref py py-func docutils literal notranslate"><span class="pre">c_buffer()</span></code>
 function (which is still available as an alias).  To create a mutable memory
-block containing unicode characters of the C type <span class="c-expr sig sig-inline c"><span class="n">wchar_t</span></span>, use the
+block containing unicode characters of the C type <code class="xref c c-type docutils literal notranslate"><span class="pre">wchar_t</span></code>, use the
 <a class="reference internal" href="#ctypes.create_unicode_buffer" title="ctypes.create_unicode_buffer"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_unicode_buffer()</span></code></a> function.</p>
 </section>
 <section id="calling-functions-continued">
@@ -735,8 +735,8 @@ that they can be converted to the required C data type:</p>
 </pre></div>
 </div>
 </section>
-<section id="calling-varadic-functions">
-<span id="ctypes-calling-variadic-functions"></span><h3>Calling varadic functions<a class="headerlink" href="#calling-varadic-functions" title="Permalink to this heading">¶</a></h3>
+<section id="calling-variadic-functions">
+<span id="ctypes-calling-variadic-functions"></span><h3>Calling variadic functions<a class="headerlink" href="#calling-variadic-functions" title="Permalink to this heading">¶</a></h3>
 <p>On a lot of platforms calling variadic functions through ctypes is exactly the same
 as calling functions with a fixed number of parameters. On some platforms, and in
 particular ARM64 for Apple Platforms, the calling convention for variadic functions
@@ -746,15 +746,16 @@ regular, non-variadic, function arguments:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">libc</span><span class="o">.</span><span class="n">printf</span><span class="o">.</span><span class="n">argtypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">ctypes</span><span class="o">.</span><span class="n">c_char_p</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Because specifying the attribute does inhibit portability it is advised to always
+<p>Because specifying the attribute does not inhibit portability it is advised to always
 specify <code class="docutils literal notranslate"><span class="pre">argtypes</span></code> for all variadic functions.</p>
 </section>
 <section id="calling-functions-with-your-own-custom-data-types">
 <span id="ctypes-calling-functions-with-own-custom-data-types"></span><h3>Calling functions with your own custom data types<a class="headerlink" href="#calling-functions-with-your-own-custom-data-types" title="Permalink to this heading">¶</a></h3>
 <p>You can also customize <a class="reference internal" href="#module-ctypes" title="ctypes: A foreign function library for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> argument conversion to allow instances of
-your own classes be used as function arguments.  <a class="reference internal" href="#module-ctypes" title="ctypes: A foreign function library for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> looks for an
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">_as_parameter_</span></code> attribute and uses this as the function argument.  Of
-course, it must be one of integer, string, or bytes:</p>
+your own classes be used as function arguments. <a class="reference internal" href="#module-ctypes" title="ctypes: A foreign function library for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> looks for an
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">_as_parameter_</span></code> attribute and uses this as the function argument. The
+attribute must be an integer, string, bytes, a <a class="reference internal" href="#module-ctypes" title="ctypes: A foreign function library for Python."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ctypes</span></code></a> instance, or an
+object with an <code class="xref py py-attr docutils literal notranslate"><span class="pre">_as_parameter_</span></code> attribute:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">Bottles</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
 <span class="gp">... </span>        <span class="bp">self</span><span class="o">.</span><span class="n">_as_parameter_</span> <span class="o">=</span> <span class="n">number</span>
@@ -2218,17 +2219,17 @@ specifying an address, or a ctypes instance.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ctypes.POINTER">
-<span class="sig-prename descclassname"><span class="pre">ctypes.</span></span><span class="sig-name descname"><span class="pre">POINTER</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctypes.POINTER" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>This factory function creates and returns a new ctypes pointer type. Pointer
-types are cached and reused internally, so calling this function repeatedly is
-cheap. <em>type</em> must be a ctypes type.</p>
+<span class="sig-prename descclassname"><span class="pre">ctypes.</span></span><span class="sig-name descname"><span class="pre">POINTER</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctypes.POINTER" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Create and return a new ctypes pointer type. Pointer types are cached and
+reused internally, so calling this function repeatedly is cheap.
+<em>type</em> must be a ctypes type.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="ctypes.pointer">
-<span class="sig-prename descclassname"><span class="pre">ctypes.</span></span><span class="sig-name descname"><span class="pre">pointer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctypes.pointer" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>This function creates a new pointer instance, pointing to <em>obj</em>. The returned
-object is of the type <code class="docutils literal notranslate"><span class="pre">POINTER(type(obj))</span></code>.</p>
+<span class="sig-prename descclassname"><span class="pre">ctypes.</span></span><span class="sig-name descname"><span class="pre">pointer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ctypes.pointer" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Create a new pointer instance, pointing to <em>obj</em>.
+The returned object is of the type <code class="docutils literal notranslate"><span class="pre">POINTER(type(obj))</span></code>.</p>
 <p>Note: If you just want to pass a pointer to an object to a foreign function
 call, you should use <code class="docutils literal notranslate"><span class="pre">byref(obj)</span></code> which is much faster.</p>
 </dd></dl>
@@ -2624,7 +2625,7 @@ The constructor accepts an optional integer initializer.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="ctypes.c_wchar">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ctypes.</span></span><span class="sig-name descname"><span class="pre">c_wchar</span></span><a class="headerlink" href="#ctypes.c_wchar" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Represents the C <span class="c-expr sig sig-inline c"><span class="n">wchar_t</span></span> datatype, and interprets the value as a
+<dd><p>Represents the C <code class="xref c c-type docutils literal notranslate"><span class="pre">wchar_t</span></code> datatype, and interprets the value as a
 single character unicode string.  The constructor accepts an optional string
 initializer, the length of the string must be exactly one character.</p>
 </dd></dl>
@@ -2877,7 +2878,7 @@ attribute changes the pointer to point to the assigned object.</p>
 <li><a class="reference internal" href="#calling-functions">Calling functions</a></li>
 <li><a class="reference internal" href="#fundamental-data-types">Fundamental data types</a></li>
 <li><a class="reference internal" href="#calling-functions-continued">Calling functions, continued</a></li>
-<li><a class="reference internal" href="#calling-varadic-functions">Calling varadic functions</a></li>
+<li><a class="reference internal" href="#calling-variadic-functions">Calling variadic functions</a></li>
 <li><a class="reference internal" href="#calling-functions-with-your-own-custom-data-types">Calling functions with your own custom data types</a></li>
 <li><a class="reference internal" href="#specifying-the-required-argument-types-function-prototypes">Specifying the required argument types (function prototypes)</a></li>
 <li><a class="reference internal" href="#return-types">Return types</a></li>
@@ -3097,7 +3098,7 @@ attribute changes the pointer to point to the assigned object.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -3141,11 +3142,11 @@ attribute changes the pointer to point to the assigned object.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

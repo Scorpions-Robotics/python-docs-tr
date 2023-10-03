@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Contents: Library and Extension FAQ- General Library Questions- How do I find a module or application to perform task X?, Where is the math.py (socket.py, regex.py, etc.) source file?, How do I mak..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Library and Extension FAQ &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library and Extension FAQ &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -161,7 +161,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Sıkça Sorulan Sorular</a> &#187;</li>
@@ -564,7 +564,7 @@ D1, D2 are dicts, x, y are objects, i, j are ints):</p>
 </pre></div>
 </div>
 <p>Operations that replace other objects may invoke those other objects’
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__del__()</span></code> method when their reference count reaches zero, and that can
+<a class="reference internal" href="../reference/datamodel.html#object.__del__" title="object.__del__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__del__()</span></code></a> method when their reference count reaches zero, and that can
 affect things.  This is especially true for the mass updates to dictionaries and
 lists.  When in doubt, use a mutex!</p>
 </section>
@@ -806,13 +806,16 @@ some sample code:</p>
 <p>The <a class="reference internal" href="../library/select.html#module-select" title="select: Wait for I/O completion on multiple streams."><code class="xref py py-mod docutils literal notranslate"><span class="pre">select</span></code></a> module is commonly used to help with asynchronous I/O on
 sockets.</p>
 <p>To prevent the TCP connect from blocking, you can set the socket to non-blocking
-mode.  Then when you do the <code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.connect()</span></code>, you will either connect immediately
+mode.  Then when you do the <a class="reference internal" href="../library/socket.html#socket.socket.connect" title="socket.socket.connect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect()</span></code></a>,
+you will either connect immediately
 (unlikely) or get an exception that contains the error number as <code class="docutils literal notranslate"><span class="pre">.errno</span></code>.
 <code class="docutils literal notranslate"><span class="pre">errno.EINPROGRESS</span></code> indicates that the connection is in progress, but hasn’t
 finished yet.  Different OSes will return different values, so you’re going to
 have to check what’s returned on your system.</p>
-<p>You can use the <code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.connect_ex()</span></code> method to avoid creating an exception.  It will
-just return the errno value.  To poll, you can call <code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.connect_ex()</span></code> again later
+<p>You can use the <a class="reference internal" href="../library/socket.html#socket.socket.connect_ex" title="socket.socket.connect_ex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect_ex()</span></code></a> method
+to avoid creating an exception.
+It will just return the errno value.
+To poll, you can call <a class="reference internal" href="../library/socket.html#socket.socket.connect_ex" title="socket.socket.connect_ex"><code class="xref py py-meth docutils literal notranslate"><span class="pre">connect_ex()</span></code></a> again later
 – <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">errno.EISCONN</span></code> indicate that you’re connected – or you can pass this
 socket to <a class="reference internal" href="../library/select.html#select.select" title="select.select"><code class="xref py py-meth docutils literal notranslate"><span class="pre">select.select()</span></code></a> to check if it’s writable.</p>
 <div class="admonition note">
@@ -820,7 +823,7 @@ socket to <a class="reference internal" href="../library/select.html#select.sele
 <p>The <a class="reference internal" href="../library/asyncio.html#module-asyncio" title="asyncio: Asynchronous I/O."><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a> module provides a general purpose single-threaded and
 concurrent asynchronous library, which can be used for writing non-blocking
 network code.
-The third-party <a class="reference external" href="https://twistedmatrix.com/trac/">Twisted</a> library is
+The third-party <a class="reference external" href="https://twisted.org/">Twisted</a> library is
 a popular and feature-rich alternative.</p>
 </div>
 </section>
@@ -950,7 +953,7 @@ multiple random number generators.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Sıkça Sorulan Sorular</a> &#187;</li>
@@ -993,11 +996,11 @@ multiple random number generators.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

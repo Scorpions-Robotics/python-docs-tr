@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/datetime.py The datetime module supplies classes for manipulating dates and times. While date and time arithmetic is supported, the focus of the implementation is on efficient attr..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>datetime — Basic date and time types &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>datetime — Basic date and time types &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -306,7 +306,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -348,6 +348,10 @@
 <p>The <a class="reference internal" href="#module-datetime" title="datetime: Basic date and time types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a> module supplies classes for manipulating dates and times.</p>
 <p>While date and time arithmetic is supported, the focus of the implementation is
 on efficient attribute extraction for output formatting and manipulation.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tüyo</p>
+<p>Skip to <a class="reference internal" href="#format-codes"><span class="std std-ref">the format codes</span></a>.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">Ayrıca bakınız</p>
 <dl class="simple">
@@ -358,6 +362,9 @@ on efficient attribute extraction for output formatting and manipulation.</p>
 <dt>Module <a class="reference internal" href="zoneinfo.html#module-zoneinfo" title="zoneinfo: IANA time zone support"><code class="xref py py-mod docutils literal notranslate"><span class="pre">zoneinfo</span></code></a></dt><dd><p>Concrete time zones representing the IANA time zone database.</p>
 </dd>
 <dt>Package <a class="reference external" href="https://dateutil.readthedocs.io/en/stable/">dateutil</a></dt><dd><p>Third-party library with expanded time zone and parsing support.</p>
+</dd>
+<dt>Package <a class="reference external" href="https://pypi.org/project/datetype/">DateType</a></dt><dd><p>Third-party library that introduces distinct static types to e.g. allow static type checkers
+to differentiate between naive and aware datetimes.</p>
 </dd>
 </dl>
 </div>
@@ -1085,9 +1092,8 @@ begins on Monday, 29 Dec 2003 and ends on Sunday, 4 Jan 2004:</p>
 <dt class="sig sig-object py" id="datetime.date.strftime">
 <span class="sig-prename descclassname"><span class="pre">date.</span></span><span class="sig-name descname"><span class="pre">strftime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.date.strftime" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return a string representing the date, controlled by an explicit format string.
-Format codes referring to hours, minutes or seconds will see 0 values. For a
-complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+Format codes referring to hours, minutes or seconds will see 0 values.
+See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.date.isoformat" title="datetime.date.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">date.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1095,9 +1101,8 @@ complete list of formatting directives, see
 <span class="sig-prename descclassname"><span class="pre">date.</span></span><span class="sig-name descname"><span class="pre">__format__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.date.__format__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#datetime.date.strftime" title="datetime.date.strftime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">date.strftime()</span></code></a>. This makes it possible to specify a format
 string for a <a class="reference internal" href="#datetime.date" title="datetime.date"><code class="xref py py-class docutils literal notranslate"><span class="pre">date</span></code></a> object in <a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">formatted string
-literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>. For a
-complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>.
+See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.date.isoformat" title="datetime.date.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">date.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <section id="examples-of-usage-date">
@@ -1393,14 +1398,14 @@ with their normal default values. This is the inverse of the function
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">datetime.</span></span><span class="sig-name descname"><span class="pre">strptime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.datetime.strptime" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return a <a class="reference internal" href="#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> corresponding to <em>date_string</em>, parsed according to
 <em>format</em>.</p>
-<p>This is equivalent to:</p>
+<p>If <em>format</em> does not contain microseconds or timezone information, this is equivalent to:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="nb">format</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]))</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> is raised if the date_string and format
 can’t be parsed by <a class="reference internal" href="time.html#time.strptime" title="time.strptime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.strptime()</span></code></a> or if it returns a value which isn’t a
-time tuple. For a complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+time tuple.  See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and
+<a class="reference internal" href="#datetime.datetime.fromisoformat" title="datetime.datetime.fromisoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.fromisoformat()</span></code></a>.</p>
 </dd></dl>
 
 <p>Class attributes:</p>
@@ -1885,9 +1890,9 @@ of whether the input is aware or naive.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="datetime.datetime.strftime">
 <span class="sig-prename descclassname"><span class="pre">datetime.</span></span><span class="sig-name descname"><span class="pre">strftime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.datetime.strftime" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return a string representing the date and time, controlled by an explicit format
-string. For a complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+<dd><p>Return a string representing the date and time,
+controlled by an explicit format string.
+See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.datetime.isoformat" title="datetime.datetime.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1895,9 +1900,8 @@ string. For a complete list of formatting directives, see
 <span class="sig-prename descclassname"><span class="pre">datetime.</span></span><span class="sig-name descname"><span class="pre">__format__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.datetime.__format__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Same as <a class="reference internal" href="#datetime.datetime.strftime" title="datetime.datetime.strftime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.strftime()</span></code></a>. This makes it possible to specify a format
 string for a <a class="reference internal" href="#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> object in <a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">formatted string
-literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>. For a
-complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>.
+See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.datetime.isoformat" title="datetime.datetime.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <section id="examples-of-usage-datetime">
@@ -2248,18 +2252,16 @@ part to milliseconds. <code class="docutils literal notranslate"><span class="pr
 <dt class="sig sig-object py" id="datetime.time.strftime">
 <span class="sig-prename descclassname"><span class="pre">time.</span></span><span class="sig-name descname"><span class="pre">strftime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.time.strftime" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return a string representing the time, controlled by an explicit format
-string. For a complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+string.  See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.time.isoformat" title="datetime.time.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">time.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="datetime.time.__format__">
 <span class="sig-prename descclassname"><span class="pre">time.</span></span><span class="sig-name descname"><span class="pre">__format__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#datetime.time.__format__" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Same as <a class="reference internal" href="#datetime.time.strftime" title="datetime.time.strftime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">time.strftime()</span></code></a>. This makes it possible to specify a format string
-for a <a class="reference internal" href="#datetime.time" title="datetime.time"><code class="xref py py-class docutils literal notranslate"><span class="pre">time</span></code></a> object in <a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">formatted string
-literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>. For a
-complete list of formatting directives, see
-<a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a>.</p>
+<dd><p>Same as <a class="reference internal" href="#datetime.time.strftime" title="datetime.time.strftime"><code class="xref py py-meth docutils literal notranslate"><span class="pre">time.strftime()</span></code></a>. This makes it possible to specify
+a format string for a <a class="reference internal" href="#datetime.time" title="datetime.time"><code class="xref py py-class docutils literal notranslate"><span class="pre">time</span></code></a> object in <a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">formatted string
+literals</span></a> and when using <a class="reference internal" href="stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>.
+See also <a class="reference internal" href="#strftime-strptime-behavior"><span class="std std-ref">strftime() and strptime() Behavior</span></a> and <a class="reference internal" href="#datetime.time.isoformat" title="datetime.time.isoformat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">time.isoformat()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -2867,8 +2869,18 @@ versus <code class="xref py py-meth docutils literal notranslate"><span class="p
 </tr>
 </tbody>
 </table>
+<blockquote>
+<div></div></blockquote>
 <section id="strftime-and-strptime-format-codes">
-<h3><code class="xref py py-meth docutils literal notranslate"><span class="pre">strftime()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">strptime()</span></code> Format Codes<a class="headerlink" href="#strftime-and-strptime-format-codes" title="Permalink to this heading">¶</a></h3>
+<span id="format-codes"></span><h3><code class="xref py py-meth docutils literal notranslate"><span class="pre">strftime()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">strptime()</span></code> Format Codes<a class="headerlink" href="#strftime-and-strptime-format-codes" title="Permalink to this heading">¶</a></h3>
+<p>These methods accept format codes that can be used to parse and format dates:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;31/01/22 23:59:59.999999&#39;</span><span class="p">,</span>
+<span class="gp">... </span>                  <span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%y %H:%M:%S.</span><span class="si">%f</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">datetime.datetime(2022, 1, 31, 23, 59, 59, 999999)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1"> </span><span class="si">%d</span><span class="s1"> %b %Y, %I:%M%p&#39;</span><span class="p">)</span>
+<span class="go">&#39;Mon 31 Jan 2022, 11:59PM&#39;</span>
+</pre></div>
+</div>
 <p>The following is a list of all the format codes that the 1989 C standard
 requires, and these work on all platforms with a standard C implementation.</p>
 <table class="docutils align-default">
@@ -3171,10 +3183,7 @@ an empty string instead.</p>
 <li><p>Because the format depends on the current locale, care should be taken when
 making assumptions about the output value. Field orderings will vary (for
 example, “month/day/year” versus “day/month/year”), and the output may
-contain Unicode characters encoded using the locale’s default encoding (for
-example, if the current locale is <code class="docutils literal notranslate"><span class="pre">ja_JP</span></code>, the default encoding could be
-any one of <code class="docutils literal notranslate"><span class="pre">eucJP</span></code>, <code class="docutils literal notranslate"><span class="pre">SJIS</span></code>, or <code class="docutils literal notranslate"><span class="pre">utf-8</span></code>; use <a class="reference internal" href="locale.html#locale.getlocale" title="locale.getlocale"><code class="xref py py-meth docutils literal notranslate"><span class="pre">locale.getlocale()</span></code></a>
-to determine the current locale’s encoding).</p></li>
+contain non-ASCII characters.</p></li>
 <li><p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">strptime()</span></code> method can parse years in the full [1, 9999] range, but
 years &lt; 1000 must be zero-filled to 4-digit width.</p>
 <div class="versionchanged">
@@ -3503,7 +3512,7 @@ for a good explanation.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -3547,11 +3556,11 @@ for a good explanation.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

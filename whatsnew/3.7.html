@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Editor, Elvis Pranskevichus < elvis@magic.io>,. This article explains the new features in Python 3.7, compared to 3.6. Python 3.7 was released on June 27, 2018. For full details, see the changelog...." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New In Python 3.7 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New In Python 3.7 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -283,7 +283,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -1301,7 +1301,7 @@ new <code class="docutils literal notranslate"><span class="pre">-n</span></code
 </section>
 <section id="re">
 <h3>re<a class="headerlink" href="#re" title="Permalink to this heading">¶</a></h3>
-<p>The flags <a class="reference internal" href="../library/re.html#re.ASCII" title="re.ASCII"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.ASCII</span></code></a>, <a class="reference internal" href="../library/re.html#re.LOCALE" title="re.LOCALE"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.LOCALE</span></code></a> and <code class="xref py py-const docutils literal notranslate"><span class="pre">re.UNICODE</span></code>
+<p>The flags <a class="reference internal" href="../library/re.html#re.ASCII" title="re.ASCII"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.ASCII</span></code></a>, <a class="reference internal" href="../library/re.html#re.LOCALE" title="re.LOCALE"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.LOCALE</span></code></a> and <a class="reference internal" href="../library/re.html#re.UNICODE" title="re.UNICODE"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.UNICODE</span></code></a>
 can be set within the scope of a group.
 (Contributed by Serhiy Storchaka in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=31690">bpo-31690</a>.)</p>
 <p><a class="reference internal" href="../library/re.html#re.split" title="re.split"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.split()</span></code></a> now supports splitting on a pattern like <code class="docutils literal notranslate"><span class="pre">r'\b'</span></code>,
@@ -1335,12 +1335,12 @@ returns <code class="docutils literal notranslate"><span class="pre">True</span>
 This function should be used instead of <a class="reference internal" href="../library/os.html#os.close" title="os.close"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.close()</span></code></a> for better
 compatibility across platforms.
 (Contributed by Christian Heimes in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=32454">bpo-32454</a>.)</p>
-<p>The <a class="reference internal" href="../library/socket.html#module-socket" title="socket: Low-level networking interface."><code class="xref py py-mod docutils literal notranslate"><span class="pre">socket</span></code></a> module now exposes the <code class="xref py py-data docutils literal notranslate"><span class="pre">socket.TCP_CONGESTION</span></code>
-(Linux 2.6.13), <code class="xref py py-data docutils literal notranslate"><span class="pre">socket.TCP_USER_TIMEOUT</span></code> (Linux 2.6.37), and
-<code class="xref py py-data docutils literal notranslate"><span class="pre">socket.TCP_NOTSENT_LOWAT</span></code> (Linux 3.12) constants.
+<p>The <a class="reference internal" href="../library/socket.html#module-socket" title="socket: Low-level networking interface."><code class="xref py py-mod docutils literal notranslate"><span class="pre">socket</span></code></a> module now exposes the <code class="xref py py-const docutils literal notranslate"><span class="pre">socket.TCP_CONGESTION</span></code>
+(Linux 2.6.13), <code class="xref py py-const docutils literal notranslate"><span class="pre">socket.TCP_USER_TIMEOUT</span></code> (Linux 2.6.37), and
+<code class="xref py py-const docutils literal notranslate"><span class="pre">socket.TCP_NOTSENT_LOWAT</span></code> (Linux 3.12) constants.
 (Contributed by Omar Sandoval in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=26273">bpo-26273</a> and
 Nathaniel J. Smith in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=29728">bpo-29728</a>.)</p>
-<p>Support for <a class="reference internal" href="../library/socket.html#socket.AF_VSOCK" title="socket.AF_VSOCK"><code class="xref py py-data docutils literal notranslate"><span class="pre">socket.AF_VSOCK</span></code></a> sockets has been added to allow
+<p>Support for <a class="reference internal" href="../library/socket.html#socket.AF_VSOCK" title="socket.AF_VSOCK"><code class="xref py py-const docutils literal notranslate"><span class="pre">socket.AF_VSOCK</span></code></a> sockets has been added to allow
 communication between virtual machines and their hosts.
 (Contributed by Cathy Avery in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=27584">bpo-27584</a>.)</p>
 <p>Sockets now auto-detect family, type and protocol from file descriptor
@@ -1429,7 +1429,7 @@ separately.  (Contributed by Barry Warsaw in <a class="reference external" href=
 <h3>subprocess<a class="headerlink" href="#subprocess" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="../library/subprocess.html#subprocess.run" title="subprocess.run"><code class="xref py py-func docutils literal notranslate"><span class="pre">subprocess.run()</span></code></a> function accepts the new <em>capture_output</em>
 keyword argument.  When true, stdout and stderr will be captured.
-This is equivalent to passing <a class="reference internal" href="../library/subprocess.html#subprocess.PIPE" title="subprocess.PIPE"><code class="xref py py-data docutils literal notranslate"><span class="pre">subprocess.PIPE</span></code></a> as <em>stdout</em> and
+This is equivalent to passing <a class="reference internal" href="../library/subprocess.html#subprocess.PIPE" title="subprocess.PIPE"><code class="xref py py-const docutils literal notranslate"><span class="pre">subprocess.PIPE</span></code></a> as <em>stdout</em> and
 <em>stderr</em> arguments.
 (Contributed by Bo Bayles in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=32102">bpo-32102</a>.)</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">subprocess.run</span></code> function and the <a class="reference internal" href="../library/subprocess.html#subprocess.Popen" title="subprocess.Popen"><code class="xref py py-class docutils literal notranslate"><span class="pre">subprocess.Popen</span></code></a> constructor
@@ -1479,12 +1479,12 @@ the deprecated <code class="xref py py-func docutils literal notranslate"><span 
 </ul>
 <p>New clock identifiers have been added:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_BOOTTIME" title="time.CLOCK_BOOTTIME"><code class="xref py py-data docutils literal notranslate"><span class="pre">time.CLOCK_BOOTTIME</span></code></a> (Linux): Identical to
-<a class="reference internal" href="../library/time.html#time.CLOCK_MONOTONIC" title="time.CLOCK_MONOTONIC"><code class="xref py py-data docutils literal notranslate"><span class="pre">time.CLOCK_MONOTONIC</span></code></a>, except it also includes any time that the
+<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_BOOTTIME" title="time.CLOCK_BOOTTIME"><code class="xref py py-const docutils literal notranslate"><span class="pre">time.CLOCK_BOOTTIME</span></code></a> (Linux): Identical to
+<a class="reference internal" href="../library/time.html#time.CLOCK_MONOTONIC" title="time.CLOCK_MONOTONIC"><code class="xref py py-const docutils literal notranslate"><span class="pre">time.CLOCK_MONOTONIC</span></code></a>, except it also includes any time that the
 system is suspended.</p></li>
-<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_PROF" title="time.CLOCK_PROF"><code class="xref py py-data docutils literal notranslate"><span class="pre">time.CLOCK_PROF</span></code></a> (FreeBSD, NetBSD and OpenBSD): High-resolution
+<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_PROF" title="time.CLOCK_PROF"><code class="xref py py-const docutils literal notranslate"><span class="pre">time.CLOCK_PROF</span></code></a> (FreeBSD, NetBSD and OpenBSD): High-resolution
 per-process CPU timer.</p></li>
-<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_UPTIME" title="time.CLOCK_UPTIME"><code class="xref py py-data docutils literal notranslate"><span class="pre">time.CLOCK_UPTIME</span></code></a> (FreeBSD, OpenBSD): Time whose absolute value is
+<li><p><a class="reference internal" href="../library/time.html#time.CLOCK_UPTIME" title="time.CLOCK_UPTIME"><code class="xref py py-const docutils literal notranslate"><span class="pre">time.CLOCK_UPTIME</span></code></a> (FreeBSD, OpenBSD): Time whose absolute value is
 the time the system has been running and not suspended, providing accurate
 uptime measurement.</p></li>
 </ul>
@@ -1644,7 +1644,7 @@ exposes a number of <a class="reference internal" href="../c-api/contextvars.htm
 <p>The new <a class="reference internal" href="../c-api/import.html#c.PyImport_GetModule" title="PyImport_GetModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_GetModule()</span></code></a> function returns the previously
 imported module with the given name.
 (Contributed by Eric Snow in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=28411">bpo-28411</a>.)</p>
-<p>The new <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_RETURN_RICHCOMPARE</span></code> macro eases writing rich
+<p>The new <a class="reference internal" href="../c-api/typeobj.html#c.Py_RETURN_RICHCOMPARE" title="Py_RETURN_RICHCOMPARE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_RETURN_RICHCOMPARE</span></code></a> macro eases writing rich
 comparison functions.
 (Contributed by Petr Victorin in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=23699">bpo-23699</a>.)</p>
 <p>The new <a class="reference internal" href="../c-api/intro.html#c.Py_UNREACHABLE" title="Py_UNREACHABLE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_UNREACHABLE</span></code></a> macro can be used to mark unreachable
@@ -1661,7 +1661,7 @@ module imports.
 <p>The fields <code class="xref c c-member docutils literal notranslate"><span class="pre">name</span></code> and <code class="xref c c-member docutils literal notranslate"><span class="pre">doc</span></code> of structures
 <a class="reference internal" href="../c-api/structures.html#c.PyMemberDef" title="PyMemberDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyMemberDef</span></code></a>, <a class="reference internal" href="../c-api/structures.html#c.PyGetSetDef" title="PyGetSetDef"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyGetSetDef</span></code></a>,
 <a class="reference internal" href="../c-api/tuple.html#c.PyStructSequence_Field" title="PyStructSequence_Field"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyStructSequence_Field</span></code></a>, <a class="reference internal" href="../c-api/tuple.html#c.PyStructSequence_Desc" title="PyStructSequence_Desc"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyStructSequence_Desc</span></code></a>,
-and <code class="xref c c-type docutils literal notranslate"><span class="pre">wrapperbase</span></code> are now of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></code> rather of
+and <code class="xref c c-struct docutils literal notranslate"><span class="pre">wrapperbase</span></code> are now of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></code> rather of
 <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code>.  (Contributed by Serhiy Storchaka in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=28761">bpo-28761</a>.)</p>
 <p>The result of <a class="reference internal" href="../c-api/unicode.html#c.PyUnicode_AsUTF8AndSize" title="PyUnicode_AsUTF8AndSize"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyUnicode_AsUTF8AndSize()</span></code></a> and <a class="reference internal" href="../c-api/unicode.html#c.PyUnicode_AsUTF8" title="PyUnicode_AsUTF8"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyUnicode_AsUTF8()</span></code></a>
 is now of type <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></code> rather of <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span></code>. (Contributed by Serhiy
@@ -2588,7 +2588,7 @@ documentation.
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -2631,11 +2631,11 @@ documentation.
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

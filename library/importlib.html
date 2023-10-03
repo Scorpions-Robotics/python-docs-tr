@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/importlib/__init__.py Introduction: The purpose of the importlib package is three-fold. One is to provide the implementation of the import statement (and thus, by extension, the__i..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>importlib — The implementation of import &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>importlib — The implementation of import &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,13 +31,13 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="copyright" title="Telif Hakkı" href="../copyright.html" />
-    <link rel="next" title="importlib.resources – Resources" href="importlib.resources.html" />
+    <link rel="next" title="importlib.resources – Package resource reading, opening and access" href="importlib.resources.html" />
     <link rel="prev" title="runpy — Locating and executing Python modules" href="runpy.html" />
     <link rel="canonical" href="https://docs.python.org/3/library/importlib.html" />
     
@@ -277,7 +277,7 @@
   <div>
     <h4>Sonraki konu</h4>
     <p class="topless"><a href="importlib.resources.html"
-                          title="sonraki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> – Resources</a></p>
+                          title="sonraki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> – Package resource reading, opening and access</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
@@ -305,7 +305,7 @@
           <a href="../py-modindex.html" title="Python Modül Dizini"
              >modülleri</a> |</li>
         <li class="right" >
-          <a href="importlib.resources.html" title="importlib.resources – Resources"
+          <a href="importlib.resources.html" title="importlib.resources – Package resource reading, opening and access"
              accesskey="N">sonraki</a> |</li>
         <li class="right" >
           <a href="runpy.html" title="runpy — Locating and executing Python modules"
@@ -321,7 +321,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -378,7 +378,7 @@ generically as an <a class="reference internal" href="../glossary.html#term-impo
 <p>Three, the package contains modules exposing additional functionality for
 managing aspects of Python packages:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="importlib.metadata.html#module-importlib.metadata" title="importlib.metadata: The implementation of the importlib metadata."><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.metadata</span></code></a> presents access to metadata from third-party
+<li><p><a class="reference internal" href="importlib.metadata.html#module-importlib.metadata" title="importlib.metadata: Accessing package metadata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.metadata</span></code></a> presents access to metadata from third-party
 distributions.</p></li>
 <li><p><a class="reference internal" href="importlib.resources.html#module-importlib.resources" title="importlib.resources: Package resource reading, opening, and access"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code></a> provides routines for accessing non-code
 “resources” from Python packages.</p></li>
@@ -824,7 +824,7 @@ It is not set on all modules (e.g. built-in modules).</p>
 <dt><a class="reference internal" href="../reference/import.html#path__" title="__path__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__path__</span></code></a></dt><dd><p>The list of locations where the package’s submodules will be found.
 Most of the time this is a single directory.
 The import system passes this attribute to <code class="docutils literal notranslate"><span class="pre">__import__()</span></code> and to finders
-in the same way as <a class="reference internal" href="sys.html#sys.path" title="sys.path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.path</span></code></a> but just for the package.
+in the same way as <a class="reference internal" href="sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> but just for the package.
 It is not set on non-package modules so it can be used
 as an indicator that the module is a package.</p>
 </dd>
@@ -1122,7 +1122,7 @@ purposes. Raise <a class="reference internal" href="exceptions.html#OSError" tit
 path. Any intermediate directories which do not exist are to be created
 automatically.</p>
 <p>When writing to the path fails because the path is read-only
-(<a class="reference internal" href="errno.html#errno.EACCES" title="errno.EACCES"><code class="xref py py-attr docutils literal notranslate"><span class="pre">errno.EACCES</span></code></a>/<a class="reference internal" href="exceptions.html#PermissionError" title="PermissionError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">PermissionError</span></code></a>), do not propagate the
+(<a class="reference internal" href="errno.html#errno.EACCES" title="errno.EACCES"><code class="xref py py-const docutils literal notranslate"><span class="pre">errno.EACCES</span></code></a>/<a class="reference internal" href="exceptions.html#PermissionError" title="PermissionError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">PermissionError</span></code></a>), do not propagate the
 exception.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.4 sürümünde değişti: </span>No longer raises <a class="reference internal" href="exceptions.html#NotImplementedError" title="NotImplementedError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a> when called.</p>
@@ -1409,7 +1409,7 @@ to call <a class="reference internal" href="#importlib.invalidate_caches" title=
 <dl class="py method">
 <dt class="sig sig-object py" id="importlib.machinery.FileFinder.path_hook">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path_hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">loader_details</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importlib.machinery.FileFinder.path_hook" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>A class method which returns a closure for use on <a class="reference internal" href="sys.html#sys.path_hooks" title="sys.path_hooks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.path_hooks</span></code></a>.
+<dd><p>A class method which returns a closure for use on <a class="reference internal" href="sys.html#sys.path_hooks" title="sys.path_hooks"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path_hooks</span></code></a>.
 An instance of <a class="reference internal" href="#importlib.machinery.FileFinder" title="importlib.machinery.FileFinder"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileFinder</span></code></a> is returned by the closure using the
 path argument given to the closure directly and <em>loader_details</em>
 indirectly.</p>
@@ -1817,10 +1817,10 @@ import attempts.</p>
 <dt class="sig sig-object py" id="importlib.util.find_spec">
 <span class="sig-prename descclassname"><span class="pre">importlib.util.</span></span><span class="sig-name descname"><span class="pre">find_spec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">package</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#importlib.util.find_spec" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Find the <a class="reference internal" href="../glossary.html#term-module-spec"><span class="xref std std-term">spec</span></a> for a module, optionally relative to
-the specified <strong>package</strong> name. If the module is in <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a>,
+the specified <strong>package</strong> name. If the module is in <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a>,
 then <code class="docutils literal notranslate"><span class="pre">sys.modules[name].__spec__</span></code> is returned (unless the spec would be
 <code class="docutils literal notranslate"><span class="pre">None</span></code> or is not set, in which case <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> is raised).
-Otherwise a search using <a class="reference internal" href="sys.html#sys.meta_path" title="sys.meta_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a> is done. <code class="docutils literal notranslate"><span class="pre">None</span></code> is
+Otherwise a search using <a class="reference internal" href="sys.html#sys.meta_path" title="sys.meta_path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a> is done. <code class="docutils literal notranslate"><span class="pre">None</span></code> is
 returned if no spec is found.</p>
 <p>If <strong>name</strong> is for a submodule (contains a dot), the parent module is
 automatically imported.</p>
@@ -1967,7 +1967,7 @@ is used for the module is required. For those same reasons, the loader’s
 <a class="reference internal" href="#importlib.abc.Loader.create_module" title="importlib.abc.Loader.create_module"><code class="xref py py-meth docutils literal notranslate"><span class="pre">create_module()</span></code></a> method must return <code class="docutils literal notranslate"><span class="pre">None</span></code> or a
 type for which its <code class="docutils literal notranslate"><span class="pre">__class__</span></code> attribute can be mutated along with not
 using <a class="reference internal" href="../glossary.html#term-__slots__"><span class="xref std std-term">slots</span></a>. Finally, modules which substitute the object
-placed into <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> will not work as there is no way to properly
+placed into <a class="reference internal" href="sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a> will not work as there is no way to properly
 replace the module references throughout the interpreter safely;
 <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> is raised if such a substitution is detected.</p>
 <div class="admonition note">
@@ -2085,9 +2085,9 @@ import, then you should use <a class="reference internal" href="#importlib.util.
 <a class="reference internal" href="../glossary.html#term-importer"><span class="xref std std-term">importer</span></a>. This means managing both the <a class="reference internal" href="../glossary.html#term-finder"><span class="xref std std-term">finder</span></a> and <a class="reference internal" href="../glossary.html#term-loader"><span class="xref std std-term">loader</span></a>
 side of things. For finders there are two flavours to choose from depending on
 your needs: a <a class="reference internal" href="../glossary.html#term-meta-path-finder"><span class="xref std std-term">meta path finder</span></a> or a <a class="reference internal" href="../glossary.html#term-path-entry-finder"><span class="xref std std-term">path entry finder</span></a>. The
-former is what you would put on <a class="reference internal" href="sys.html#sys.meta_path" title="sys.meta_path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a> while the latter is what
-you create using a <a class="reference internal" href="../glossary.html#term-path-entry-hook"><span class="xref std std-term">path entry hook</span></a> on <a class="reference internal" href="sys.html#sys.path_hooks" title="sys.path_hooks"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.path_hooks</span></code></a> which works
-with <a class="reference internal" href="sys.html#sys.path" title="sys.path"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.path</span></code></a> entries to potentially create a finder. This example will
+former is what you would put on <a class="reference internal" href="sys.html#sys.meta_path" title="sys.meta_path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.meta_path</span></code></a> while the latter is what
+you create using a <a class="reference internal" href="../glossary.html#term-path-entry-hook"><span class="xref std std-term">path entry hook</span></a> on <a class="reference internal" href="sys.html#sys.path_hooks" title="sys.path_hooks"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path_hooks</span></code></a> which works
+with <a class="reference internal" href="sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> entries to potentially create a finder. This example will
 show you how to register your own importers so that import will use them (for
 creating an importer for yourself, read the documentation for the appropriate
 classes defined within this package):</p>
@@ -2345,7 +2345,7 @@ approximate implementation of
   <div>
     <h4>Sonraki konu</h4>
     <p class="topless"><a href="importlib.resources.html"
-                          title="sonraki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> – Resources</a></p>
+                          title="sonraki bölüm"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> – Package resource reading, opening and access</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>Bu Sayfa</h3>
@@ -2376,7 +2376,7 @@ approximate implementation of
           <a href="../py-modindex.html" title="Python Modül Dizini"
              >modülleri</a> |</li>
         <li class="right" >
-          <a href="importlib.resources.html" title="importlib.resources – Resources"
+          <a href="importlib.resources.html" title="importlib.resources – Package resource reading, opening and access"
              >sonraki</a> |</li>
         <li class="right" >
           <a href="runpy.html" title="runpy — Locating and executing Python modules"
@@ -2392,7 +2392,7 @@ approximate implementation of
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -2436,11 +2436,11 @@ approximate implementation of
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

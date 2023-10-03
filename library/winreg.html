@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="These functions expose the Windows registry API to Python. Instead of using an integer as the registry handle, a handle object is used to ensure that the handles are closed correctly, even if the p..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>winreg — Windows registry access &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>winreg — Windows registry access &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -235,7 +235,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -511,7 +511,7 @@ from a specified file into that subkey.</p>
 have been created with the <a class="reference internal" href="#winreg.SaveKey" title="winreg.SaveKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">SaveKey()</span></code></a> function. Under the file allocation
 table (FAT) file system, the filename may not have an extension.</p>
 <p>A call to <a class="reference internal" href="#winreg.LoadKey" title="winreg.LoadKey"><code class="xref py py-func docutils literal notranslate"><span class="pre">LoadKey()</span></code></a> fails if the calling process does not have the
-<code class="xref py py-const docutils literal notranslate"><span class="pre">SE_RESTORE_PRIVILEGE</span></code> privilege.  Note that privileges are different
+<code class="xref c c-data docutils literal notranslate"><span class="pre">SE_RESTORE_PRIVILEGE</span></code> privilege.  Note that privileges are different
 from permissions – see the <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms724889%28v=VS.85%29.aspx">RegLoadKey documentation</a> for
 more details.</p>
 <p>If <em>key</em> is a handle returned by <a class="reference internal" href="#winreg.ConnectRegistry" title="winreg.ConnectRegistry"><code class="xref py py-func docutils literal notranslate"><span class="pre">ConnectRegistry()</span></code></a>, then the path
@@ -633,7 +633,7 @@ used on file allocation table (FAT) file systems by the <a class="reference inte
 method.</p>
 <p>If <em>key</em> represents a key on a remote computer, the path described by
 <em>file_name</em> is relative to the remote computer. The caller of this method must
-possess the <code class="xref py py-const docutils literal notranslate"><span class="pre">SeBackupPrivilege</span></code> security privilege.  Note that
+possess the <strong>SeBackupPrivilege</strong> security privilege.  Note that
 privileges are different than permissions – see the
 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms724878%28v=VS.85%29.aspx">Conflicts Between User Rights and Permissions documentation</a>
 for more details.</p>
@@ -724,7 +724,7 @@ operating system.</p>
 </section>
 <section id="constants">
 <span id="id2"></span><h2>Constants<a class="headerlink" href="#constants" title="Permalink to this heading">¶</a></h2>
-<p>The following constants are defined for use in many <code class="xref py py-mod docutils literal notranslate"><span class="pre">_winreg</span></code> functions.</p>
+<p>The following constants are defined for use in many <a class="reference internal" href="#module-winreg" title="winreg: Routines and objects for manipulating the Windows registry. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winreg</span></code></a> functions.</p>
 <section id="hkey-constants">
 <span id="id3"></span><h3>HKEY_* Constants<a class="headerlink" href="#hkey-constants" title="Permalink to this heading">¶</a></h3>
 <dl class="py data">
@@ -976,7 +976,7 @@ object is destroyed.  To guarantee cleanup, you can call either the
 <p>All registry functions in this module return one of these objects.</p>
 <p>All registry functions in this module which accept a handle object also accept
 an integer, however, use of the handle object is encouraged.</p>
-<p>Handle objects provide semantics for <code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code> – thus</p>
+<p>Handle objects provide semantics for <a class="reference internal" href="../reference/datamodel.html#object.__bool__" title="object.__bool__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code></a> – thus</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">handle</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1179,7 +1179,7 @@ underlying Win32 handle to exist beyond the lifetime of the handle object.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1223,11 +1223,11 @@ underlying Win32 handle to exist beyond the lifetime of the handle object.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

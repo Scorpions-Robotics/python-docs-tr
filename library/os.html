@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/os.py This module provides a portable way of using operating system dependent functionality. If you just want to read or write a file see open(), if you want to manipulate paths, s..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>os — Miscellaneous operating system interfaces &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>os — Miscellaneous operating system interfaces &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -186,6 +186,8 @@
 <li><a class="reference internal" href="#os.SEEK_SET"><code class="docutils literal notranslate"><span class="pre">SEEK_SET</span></code></a></li>
 <li><a class="reference internal" href="#os.SEEK_CUR"><code class="docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></a></li>
 <li><a class="reference internal" href="#os.SEEK_END"><code class="docutils literal notranslate"><span class="pre">SEEK_END</span></code></a></li>
+<li><a class="reference internal" href="#os.SEEK_HOLE"><code class="docutils literal notranslate"><span class="pre">SEEK_HOLE</span></code></a></li>
+<li><a class="reference internal" href="#os.SEEK_DATA"><code class="docutils literal notranslate"><span class="pre">SEEK_DATA</span></code></a></li>
 <li><a class="reference internal" href="#os.open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
 <li><a class="reference internal" href="#os.O_RDONLY"><code class="docutils literal notranslate"><span class="pre">O_RDONLY</span></code></a></li>
 <li><a class="reference internal" href="#os.O_WRONLY"><code class="docutils literal notranslate"><span class="pre">O_WRONLY</span></code></a></li>
@@ -243,11 +245,11 @@
 <li><a class="reference internal" href="#os.RWF_APPEND"><code class="docutils literal notranslate"><span class="pre">RWF_APPEND</span></code></a></li>
 <li><a class="reference internal" href="#os.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
 <li><a class="reference internal" href="#os.sendfile"><code class="docutils literal notranslate"><span class="pre">sendfile()</span></code></a></li>
-<li><a class="reference internal" href="#os.set_blocking"><code class="docutils literal notranslate"><span class="pre">set_blocking()</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_NODISKIO"><code class="docutils literal notranslate"><span class="pre">SF_NODISKIO</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_MNOWAIT"><code class="docutils literal notranslate"><span class="pre">SF_MNOWAIT</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_SYNC"><code class="docutils literal notranslate"><span class="pre">SF_SYNC</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_NOCACHE"><code class="docutils literal notranslate"><span class="pre">SF_NOCACHE</span></code></a></li>
+<li><a class="reference internal" href="#os.set_blocking"><code class="docutils literal notranslate"><span class="pre">set_blocking()</span></code></a></li>
 <li><a class="reference internal" href="#os.splice"><code class="docutils literal notranslate"><span class="pre">splice()</span></code></a></li>
 <li><a class="reference internal" href="#os.SPLICE_F_MOVE"><code class="docutils literal notranslate"><span class="pre">SPLICE_F_MOVE</span></code></a></li>
 <li><a class="reference internal" href="#os.SPLICE_F_NONBLOCK"><code class="docutils literal notranslate"><span class="pre">SPLICE_F_NONBLOCK</span></code></a></li>
@@ -607,7 +609,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -694,7 +696,7 @@ names have currently been registered: <code class="docutils literal notranslate"
 <code class="docutils literal notranslate"><span class="pre">'java'</span></code>.</p>
 <div class="admonition seealso">
 <p class="admonition-title">Ayrıca bakınız</p>
-<p><a class="reference internal" href="sys.html#sys.platform" title="sys.platform"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.platform</span></code></a> has a finer granularity.  <a class="reference internal" href="#os.uname" title="os.uname"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.uname()</span></code></a> gives
+<p><a class="reference internal" href="sys.html#sys.platform" title="sys.platform"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.platform</span></code></a> has a finer granularity.  <a class="reference internal" href="#os.uname" title="os.uname"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.uname()</span></code></a> gives
 system-dependent version information.</p>
 <p>The <a class="reference internal" href="platform.html#module-platform" title="platform: Retrieves as much platform identifying data as possible."><code class="xref py py-mod docutils literal notranslate"><span class="pre">platform</span></code></a> module provides detailed checks for the
 system’s identity.</p>
@@ -709,7 +711,7 @@ and from bytes is necessary before passing them to the operating system. Python
 uses the <a class="reference internal" href="../glossary.html#term-filesystem-encoding-and-error-handler"><span class="xref std std-term">filesystem encoding and error handler</span></a> to perform this
 conversion (see <a class="reference internal" href="sys.html#sys.getfilesystemencoding" title="sys.getfilesystemencoding"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.getfilesystemencoding()</span></code></a>).</p>
 <p>The <a class="reference internal" href="../glossary.html#term-filesystem-encoding-and-error-handler"><span class="xref std std-term">filesystem encoding and error handler</span></a> are configured at Python
-startup by the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyConfig_Read()</span></code> function: see
+startup by the <a class="reference internal" href="../c-api/init_config.html#c.PyConfig_Read" title="PyConfig_Read"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyConfig_Read()</span></code></a> function: see
 <a class="reference internal" href="../c-api/init_config.html#c.PyConfig.filesystem_encoding" title="PyConfig.filesystem_encoding"><code class="xref c c-member docutils literal notranslate"><span class="pre">filesystem_encoding</span></code></a> and
 <a class="reference internal" href="../c-api/init_config.html#c.PyConfig.filesystem_errors" title="PyConfig.filesystem_errors"><code class="xref c c-member docutils literal notranslate"><span class="pre">filesystem_errors</span></code></a> members of <a class="reference internal" href="../c-api/init_config.html#c.PyConfig" title="PyConfig"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyConfig</span></code></a>.</p>
 <div class="versionchanged">
@@ -759,7 +761,7 @@ default so that attempting to open a binary file in text mode is likely
 to raise an exception rather than producing nonsense data.</p></li>
 </ul>
 <p>The <a class="reference internal" href="#utf8-mode"><span class="std std-ref">Python UTF-8 Mode</span></a> is enabled if the LC_CTYPE locale is
-<code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">POSIX</span></code> at Python startup (see the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyConfig_Read()</span></code>
+<code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">POSIX</span></code> at Python startup (see the <a class="reference internal" href="../c-api/init_config.html#c.PyConfig_Read" title="PyConfig_Read"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyConfig_Read()</span></code></a>
 function).</p>
 <p>It can be enabled or disabled using the <a class="reference internal" href="../using/cmdline.html#cmdoption-X"><code class="xref std std-option docutils literal notranslate"><span class="pre">-X</span> <span class="pre">utf8</span></code></a> command line
 option and the <span class="target" id="index-2"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONUTF8"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONUTF8</span></code></a> environment variable.</p>
@@ -811,6 +813,10 @@ is modified.</p>
 <p>On Unix, keys and values use <a class="reference internal" href="sys.html#sys.getfilesystemencoding" title="sys.getfilesystemencoding"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.getfilesystemencoding()</span></code></a> and
 <code class="docutils literal notranslate"><span class="pre">'surrogateescape'</span></code> error handler. Use <a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">environb</span></code></a> if you would like
 to use a different encoding.</p>
+<p>On Windows, the keys are converted to uppercase. This also applies when
+getting, setting, or deleting an item. For example,
+<code class="docutils literal notranslate"><span class="pre">environ['monty']</span> <span class="pre">=</span> <span class="pre">'python'</span></code> maps the key <code class="docutils literal notranslate"><span class="pre">'MONTY'</span></code> to the value
+<code class="docutils literal notranslate"><span class="pre">'python'</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Calling <a class="reference internal" href="#os.putenv" title="os.putenv"><code class="xref py py-func docutils literal notranslate"><span class="pre">putenv()</span></code></a> directly does not change <a class="reference internal" href="#os.environ" title="os.environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.environ</span></code></a>, so it’s better
@@ -838,7 +844,7 @@ called.</p>
 and values are <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> objects representing the process environment.
 <a class="reference internal" href="#os.environ" title="os.environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">environ</span></code></a> and <a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">environb</span></code></a> are synchronized (modifying
 <a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">environb</span></code></a> updates <a class="reference internal" href="#os.environ" title="os.environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">environ</span></code></a>, and vice versa).</p>
-<p><a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">environb</span></code></a> is only available if <a class="reference internal" href="#os.supports_bytes_environ" title="os.supports_bytes_environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">supports_bytes_environ</span></code></a> is
+<p><a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">environb</span></code></a> is only available if <a class="reference internal" href="#os.supports_bytes_environ" title="os.supports_bytes_environ"><code class="xref py py-const docutils literal notranslate"><span class="pre">supports_bytes_environ</span></code></a> is
 <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.2 sürümünde geldi.</span></p>
@@ -945,7 +951,7 @@ would like to use a different encoding.</p>
 since <a class="reference internal" href="#os.getenvb" title="os.getenvb"><code class="xref py py-func docutils literal notranslate"><span class="pre">getenvb()</span></code></a> uses <a class="reference internal" href="#os.environb" title="os.environb"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.environb</span></code></a>, the mapping of <a class="reference internal" href="#os.getenvb" title="os.getenvb"><code class="xref py py-func docutils literal notranslate"><span class="pre">getenvb()</span></code></a> is
 similarly also captured on import, and the function may not reflect
 future environment changes.</p>
-<p><a class="reference internal" href="#os.getenvb" title="os.getenvb"><code class="xref py py-func docutils literal notranslate"><span class="pre">getenvb()</span></code></a> is only available if <a class="reference internal" href="#os.supports_bytes_environ" title="os.supports_bytes_environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">supports_bytes_environ</span></code></a>
+<p><a class="reference internal" href="#os.getenvb" title="os.getenvb"><code class="xref py py-func docutils literal notranslate"><span class="pre">getenvb()</span></code></a> is only available if <a class="reference internal" href="#os.supports_bytes_environ" title="os.supports_bytes_environ"><code class="xref py py-const docutils literal notranslate"><span class="pre">supports_bytes_environ</span></code></a>
 is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <div class="availability docutils container">
 <p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix.</p>
@@ -1024,11 +1030,11 @@ otherwise be potentially omitted.</p>
 <p class="admonition-title">Not</p>
 <p>On macOS, <a class="reference internal" href="#os.getgroups" title="os.getgroups"><code class="xref py py-func docutils literal notranslate"><span class="pre">getgroups()</span></code></a> behavior differs somewhat from
 other Unix platforms. If the Python interpreter was built with a
-deployment target of <code class="xref py py-const docutils literal notranslate"><span class="pre">10.5</span></code> or earlier, <a class="reference internal" href="#os.getgroups" title="os.getgroups"><code class="xref py py-func docutils literal notranslate"><span class="pre">getgroups()</span></code></a> returns
+deployment target of <code class="docutils literal notranslate"><span class="pre">10.5</span></code> or earlier, <a class="reference internal" href="#os.getgroups" title="os.getgroups"><code class="xref py py-func docutils literal notranslate"><span class="pre">getgroups()</span></code></a> returns
 the list of effective group ids associated with the current user process;
 this list is limited to a system-defined number of entries, typically 16,
 and may be modified by calls to <a class="reference internal" href="#os.setgroups" title="os.setgroups"><code class="xref py py-func docutils literal notranslate"><span class="pre">setgroups()</span></code></a> if suitably privileged.
-If built with a deployment target greater than <code class="xref py py-const docutils literal notranslate"><span class="pre">10.5</span></code>,
+If built with a deployment target greater than <code class="docutils literal notranslate"><span class="pre">10.5</span></code>,
 <a class="reference internal" href="#os.getgroups" title="os.getgroups"><code class="xref py py-func docutils literal notranslate"><span class="pre">getgroups()</span></code></a> returns the current group access list for the user
 associated with the effective user id of the process; the group access
 list may change over the lifetime of the process, it is not affected by
@@ -1489,7 +1495,7 @@ ignoring errors. Equivalent to (but much faster than):</p>
 If <em>offset_src</em> is None, then <em>src</em> is read from the current position;
 respectively for <em>offset_dst</em>. The files pointed by <em>src</em> and <em>dst</em>
 must reside in the same filesystem, otherwise an <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> is
-raised with <a class="reference internal" href="exceptions.html#OSError.errno" title="OSError.errno"><code class="xref py py-attr docutils literal notranslate"><span class="pre">errno</span></code></a> set to <a class="reference internal" href="errno.html#errno.EXDEV" title="errno.EXDEV"><code class="xref py py-data docutils literal notranslate"><span class="pre">errno.EXDEV</span></code></a>.</p>
+raised with <a class="reference internal" href="exceptions.html#OSError.errno" title="OSError.errno"><code class="xref py py-attr docutils literal notranslate"><span class="pre">errno</span></code></a> set to <a class="reference internal" href="errno.html#errno.EXDEV" title="errno.EXDEV"><code class="xref py py-const docutils literal notranslate"><span class="pre">errno.EXDEV</span></code></a>.</p>
 <p>This copy is done without the additional cost of transferring data
 from the kernel to user space and then back into the kernel. Additionally,
 some filesystems could implement extra optimizations. The copy is done as if
@@ -1736,12 +1742,21 @@ the stdin, the stdout, and the stderr of the calling process; close fd.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="os.lseek">
-<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">lseek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">how</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.lseek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">lseek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whence</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.lseek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Set the current position of file descriptor <em>fd</em> to position <em>pos</em>, modified
-by <em>how</em>: <a class="reference internal" href="#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_SET</span></code></a> or <code class="docutils literal notranslate"><span class="pre">0</span></code> to set the position relative to the
-beginning of the file; <a class="reference internal" href="#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></a> or <code class="docutils literal notranslate"><span class="pre">1</span></code> to set it relative to the
-current position; <a class="reference internal" href="#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_END</span></code></a> or <code class="docutils literal notranslate"><span class="pre">2</span></code> to set it relative to the end of
-the file. Return the new cursor position in bytes, starting from the beginning.</p>
+by <em>whence</em>, and return the new position in bytes relative to
+the start of the file.
+Valid values for <em>whence</em> are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_SET</span></code></a> or <code class="docutils literal notranslate"><span class="pre">0</span></code> – set <em>pos</em> relative to the beginning of the file</p></li>
+<li><p><a class="reference internal" href="#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></a> or <code class="docutils literal notranslate"><span class="pre">1</span></code> – set <em>pos</em> relative to the current file position</p></li>
+<li><p><a class="reference internal" href="#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_END</span></code></a> or <code class="docutils literal notranslate"><span class="pre">2</span></code> – set <em>pos</em> relative to the end of the file</p></li>
+<li><p><a class="reference internal" href="#os.SEEK_HOLE" title="os.SEEK_HOLE"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_HOLE</span></code></a> – set <em>pos</em> to the next data location, relative to <em>pos</em></p></li>
+<li><p><a class="reference internal" href="#os.SEEK_DATA" title="os.SEEK_DATA"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_DATA</span></code></a> – set <em>pos</em> to the next data hole, relative to <em>pos</em></p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">3.3 sürümünde değişti: </span>Add support for <code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_HOLE</span></code> and <code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_DATA</span></code>.</p>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -1751,11 +1766,46 @@ the file. Return the new cursor position in bytes, starting from the beginning.<
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">SEEK_CUR</span></span><a class="headerlink" href="#os.SEEK_CUR" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dt class="sig sig-object py" id="os.SEEK_END">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">SEEK_END</span></span><a class="headerlink" href="#os.SEEK_END" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Parameters to the <a class="reference internal" href="#os.lseek" title="os.lseek"><code class="xref py py-func docutils literal notranslate"><span class="pre">lseek()</span></code></a> function. Their values are 0, 1, and 2,
-respectively.</p>
+<dd><p>Parameters to the <a class="reference internal" href="#os.lseek" title="os.lseek"><code class="xref py py-func docutils literal notranslate"><span class="pre">lseek()</span></code></a> function and the <a class="reference internal" href="io.html#io.IOBase.seek" title="io.IOBase.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a>
+method on <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">file-like objects</span></a>,
+for whence to adjust the file position indicator.</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_SET</span></code></a></dt><dd><p>Adjust the file position relative to the beginning of the file.</p>
+</dd>
+<dt><a class="reference internal" href="#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></a></dt><dd><p>Adjust the file position relative to the current file position.</p>
+</dd>
+<dt><a class="reference internal" href="#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-const docutils literal notranslate"><span class="pre">SEEK_END</span></code></a></dt><dd><p>Adjust the file position relative to the end of the file.</p>
+</dd>
+</dl>
+<p>Their values are 0, 1, and 2, respectively.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="os.SEEK_HOLE">
+<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">SEEK_HOLE</span></span><a class="headerlink" href="#os.SEEK_HOLE" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dt class="sig sig-object py" id="os.SEEK_DATA">
+<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">SEEK_DATA</span></span><a class="headerlink" href="#os.SEEK_DATA" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Parameters to the <a class="reference internal" href="#os.lseek" title="os.lseek"><code class="xref py py-func docutils literal notranslate"><span class="pre">lseek()</span></code></a> function and the <a class="reference internal" href="io.html#io.IOBase.seek" title="io.IOBase.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a>
+method on <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">file-like objects</span></a>,
+for seeking file data and holes on sparsely allocated files.</p>
+<dl class="simple">
+<dt><code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_DATA</span></code></dt><dd><p>Adjust the file offset to the next location containing data,
+relative to the seek position.</p>
+</dd>
+<dt><code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_HOLE</span></code></dt><dd><p>Adjust the file offset to the next location containing a hole,
+relative to the seek position.
+A hole is defined as a sequence of zeros.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>These operations only make sense for filesystems that support them.</p>
+</div>
+<div class="availability docutils container">
+<p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Linux &gt;= 3.1, macOS, Unix</p>
+</div>
 <div class="versionadded">
-<p><span class="versionmodified added">3.3 sürümünde geldi: </span>Some operating systems could support additional values, like
-<code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_HOLE</span></code> or <code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_DATA</span></code>.</p>
+<p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
 </dd></dl>
 
@@ -2050,7 +2100,7 @@ specified, the system call will return instantly if it would have to read
 data from the backing storage or wait for a lock.</p>
 <p>If some data was successfully read, it will return the number of bytes read.
 If no bytes were read, it will return <code class="docutils literal notranslate"><span class="pre">-1</span></code> and set errno to
-<a class="reference internal" href="errno.html#errno.EAGAIN" title="errno.EAGAIN"><code class="xref py py-data docutils literal notranslate"><span class="pre">errno.EAGAIN</span></code></a>.</p>
+<a class="reference internal" href="errno.html#errno.EAGAIN" title="errno.EAGAIN"><code class="xref py py-const docutils literal notranslate"><span class="pre">errno.EAGAIN</span></code></a>.</p>
 <div class="availability docutils container">
 <p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Linux &gt;= 4.14.</p>
 </div>
@@ -2218,22 +2268,6 @@ arguments.</p>
 </div>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="os.set_blocking">
-<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">set_blocking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.set_blocking" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Set the blocking mode of the specified file descriptor. Set the
-<a class="reference internal" href="#os.O_NONBLOCK" title="os.O_NONBLOCK"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_NONBLOCK</span></code></a> flag if blocking is <code class="docutils literal notranslate"><span class="pre">False</span></code>, clear the flag otherwise.</p>
-<p>See also <a class="reference internal" href="#os.get_blocking" title="os.get_blocking"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_blocking()</span></code></a> and <a class="reference internal" href="socket.html#socket.socket.setblocking" title="socket.socket.setblocking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.socket.setblocking()</span></code></a>.</p>
-<div class="availability docutils container">
-<p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix.</p>
-<p>The function is limited on Emscripten and WASI, see
-<a class="reference internal" href="intro.html#wasm-availability"><span class="std std-ref">WebAssembly platforms</span></a> for more information.</p>
-</div>
-<div class="versionadded">
-<p><span class="versionmodified added">3.5 sürümünde geldi.</span></p>
-</div>
-</dd></dl>
-
 <dl class="py data">
 <dt class="sig sig-object py" id="os.SF_NODISKIO">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">SF_NODISKIO</span></span><a class="headerlink" href="#os.SF_NODISKIO" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -2265,6 +2299,22 @@ it. The data won’t be cached in the virtual memory and will be freed afterward
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="os.set_blocking">
+<span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">set_blocking</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blocking</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.set_blocking" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Set the blocking mode of the specified file descriptor. Set the
+<a class="reference internal" href="#os.O_NONBLOCK" title="os.O_NONBLOCK"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_NONBLOCK</span></code></a> flag if blocking is <code class="docutils literal notranslate"><span class="pre">False</span></code>, clear the flag otherwise.</p>
+<p>See also <a class="reference internal" href="#os.get_blocking" title="os.get_blocking"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_blocking()</span></code></a> and <a class="reference internal" href="socket.html#socket.socket.setblocking" title="socket.socket.setblocking"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.socket.setblocking()</span></code></a>.</p>
+<div class="availability docutils container">
+<p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix.</p>
+<p>The function is limited on Emscripten and WASI, see
+<a class="reference internal" href="intro.html#wasm-availability"><span class="std std-ref">WebAssembly platforms</span></a> for more information.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">3.5 sürümünde geldi.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="os.splice">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">splice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_src</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_dst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.splice" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Transfer <em>count</em> bytes from file descriptor <em>src</em>, starting from offset
@@ -2274,7 +2324,7 @@ is None, then <em>src</em> is read from the current position; respectively for
 <em>offset_dst</em>. The offset associated to the file descriptor that refers to a
 pipe must be <code class="docutils literal notranslate"><span class="pre">None</span></code>. The files pointed by <em>src</em> and <em>dst</em> must reside in
 the same filesystem, otherwise an <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> is raised with
-<a class="reference internal" href="exceptions.html#OSError.errno" title="OSError.errno"><code class="xref py py-attr docutils literal notranslate"><span class="pre">errno</span></code></a> set to <a class="reference internal" href="errno.html#errno.EXDEV" title="errno.EXDEV"><code class="xref py py-data docutils literal notranslate"><span class="pre">errno.EXDEV</span></code></a>.</p>
+<a class="reference internal" href="exceptions.html#OSError.errno" title="OSError.errno"><code class="xref py py-attr docutils literal notranslate"><span class="pre">errno</span></code></a> set to <a class="reference internal" href="errno.html#errno.EXDEV" title="errno.EXDEV"><code class="xref py py-const docutils literal notranslate"><span class="pre">errno.EXDEV</span></code></a>.</p>
 <p>This copy is done without the additional cost of transferring data
 from the kernel to user space and then back into the kernel. Additionally,
 some filesystems could implement extra optimizations. The copy is done as if
@@ -2621,18 +2671,18 @@ on some platforms.</p>
 <dd><p>Set the flags of <em>path</em> to the numeric <em>flags</em>. <em>flags</em> may take a combination
 (bitwise OR) of the following values (as defined in the <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> module):</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="stat.html#stat.UF_NODUMP" title="stat.UF_NODUMP"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_NODUMP</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_IMMUTABLE" title="stat.UF_IMMUTABLE"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_IMMUTABLE</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_APPEND" title="stat.UF_APPEND"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_APPEND</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_OPAQUE" title="stat.UF_OPAQUE"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_OPAQUE</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_NOUNLINK" title="stat.UF_NOUNLINK"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_NOUNLINK</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_COMPRESSED" title="stat.UF_COMPRESSED"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_COMPRESSED</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.UF_HIDDEN" title="stat.UF_HIDDEN"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.UF_HIDDEN</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.SF_ARCHIVED" title="stat.SF_ARCHIVED"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.SF_ARCHIVED</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.SF_IMMUTABLE" title="stat.SF_IMMUTABLE"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.SF_IMMUTABLE</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.SF_APPEND" title="stat.SF_APPEND"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.SF_APPEND</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.SF_NOUNLINK" title="stat.SF_NOUNLINK"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.SF_NOUNLINK</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.SF_SNAPSHOT" title="stat.SF_SNAPSHOT"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.SF_SNAPSHOT</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_NODUMP" title="stat.UF_NODUMP"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_NODUMP</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_IMMUTABLE" title="stat.UF_IMMUTABLE"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_IMMUTABLE</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_APPEND" title="stat.UF_APPEND"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_APPEND</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_OPAQUE" title="stat.UF_OPAQUE"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_OPAQUE</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_NOUNLINK" title="stat.UF_NOUNLINK"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_NOUNLINK</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_COMPRESSED" title="stat.UF_COMPRESSED"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_COMPRESSED</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.UF_HIDDEN" title="stat.UF_HIDDEN"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.UF_HIDDEN</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.SF_ARCHIVED" title="stat.SF_ARCHIVED"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.SF_ARCHIVED</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.SF_IMMUTABLE" title="stat.SF_IMMUTABLE"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.SF_IMMUTABLE</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.SF_APPEND" title="stat.SF_APPEND"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.SF_APPEND</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.SF_NOUNLINK" title="stat.SF_NOUNLINK"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.SF_NOUNLINK</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.SF_SNAPSHOT" title="stat.SF_SNAPSHOT"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.SF_SNAPSHOT</span></code></a></p></li>
 </ul>
 <p>This function can support <a class="reference internal" href="#follow-symlinks"><span class="std std-ref">not following symlinks</span></a>.</p>
 <p class="audit-hook">Raises an <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">auditing event</span></a> <code class="docutils literal notranslate"><span class="pre">os.chflags</span></code> with arguments <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">flags</span></code>.</p>
@@ -2654,25 +2704,25 @@ on some platforms.</p>
 following values (as defined in the <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> module) or bitwise ORed
 combinations of them:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="stat.html#stat.S_ISUID" title="stat.S_ISUID"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_ISUID</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_ISGID" title="stat.S_ISGID"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_ISGID</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_ENFMT" title="stat.S_ENFMT"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_ENFMT</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_ISVTX" title="stat.S_ISVTX"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_ISVTX</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IREAD" title="stat.S_IREAD"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IREAD</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IWRITE" title="stat.S_IWRITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IWRITE</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IEXEC" title="stat.S_IEXEC"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IEXEC</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IRWXU" title="stat.S_IRWXU"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IRWXU</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IRUSR" title="stat.S_IRUSR"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IRUSR</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IWUSR" title="stat.S_IWUSR"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IWUSR</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IXUSR" title="stat.S_IXUSR"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IXUSR</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IRWXG" title="stat.S_IRWXG"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IRWXG</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IRGRP" title="stat.S_IRGRP"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IRGRP</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IWGRP" title="stat.S_IWGRP"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IWGRP</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IXGRP" title="stat.S_IXGRP"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IXGRP</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IRWXO" title="stat.S_IRWXO"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IRWXO</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IROTH" title="stat.S_IROTH"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IROTH</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IWOTH" title="stat.S_IWOTH"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IWOTH</span></code></a></p></li>
-<li><p><a class="reference internal" href="stat.html#stat.S_IXOTH" title="stat.S_IXOTH"><code class="xref py py-data docutils literal notranslate"><span class="pre">stat.S_IXOTH</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_ISUID" title="stat.S_ISUID"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_ISUID</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_ISGID" title="stat.S_ISGID"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_ISGID</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_ENFMT" title="stat.S_ENFMT"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_ENFMT</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_ISVTX" title="stat.S_ISVTX"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_ISVTX</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IREAD" title="stat.S_IREAD"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IREAD</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IWRITE" title="stat.S_IWRITE"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IWRITE</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IEXEC" title="stat.S_IEXEC"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IEXEC</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IRWXU" title="stat.S_IRWXU"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IRWXU</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IRUSR" title="stat.S_IRUSR"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IRUSR</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IWUSR" title="stat.S_IWUSR"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IWUSR</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IXUSR" title="stat.S_IXUSR"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IXUSR</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IRWXG" title="stat.S_IRWXG"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IRWXG</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IRGRP" title="stat.S_IRGRP"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IRGRP</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IWGRP" title="stat.S_IWGRP"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IWGRP</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IXGRP" title="stat.S_IXGRP"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IXGRP</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IRWXO" title="stat.S_IRWXO"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IRWXO</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IROTH" title="stat.S_IROTH"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IROTH</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IWOTH" title="stat.S_IWOTH"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IWOTH</span></code></a></p></li>
+<li><p><a class="reference internal" href="stat.html#stat.S_IXOTH" title="stat.S_IXOTH"><code class="xref py py-const docutils literal notranslate"><span class="pre">stat.S_IXOTH</span></code></a></p></li>
 </ul>
 <p>This function can support <a class="reference internal" href="#path-fd"><span class="std std-ref">specifying a file descriptor</span></a>,
 <a class="reference internal" href="#dir-fd"><span class="std std-ref">paths relative to directory descriptors</span></a> and <a class="reference internal" href="#follow-symlinks"><span class="std std-ref">not
@@ -2816,7 +2866,7 @@ supply <a class="reference internal" href="#dir-fd"><span class="std std-ref">pa
 following symlinks</span></a>.</p>
 <p class="audit-hook">Raises an <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">auditing event</span></a> <code class="docutils literal notranslate"><span class="pre">os.link</span></code> with arguments <code class="docutils literal notranslate"><span class="pre">src</span></code>, <code class="docutils literal notranslate"><span class="pre">dst</span></code>, <code class="docutils literal notranslate"><span class="pre">src_dir_fd</span></code>, <code class="docutils literal notranslate"><span class="pre">dst_dir_fd</span></code>.</p>
 <div class="availability docutils container">
-<p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix, Windows.</p>
+<p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix, Windows, not Emscripten.</p>
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.2 sürümünde değişti: </span>Added Windows support.</p>
@@ -3004,14 +3054,14 @@ available in <a class="reference internal" href="stat.html#module-stat" title="s
 <dt class="sig sig-object py" id="os.major">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">major</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.major" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Extract the device major number from a raw device number (usually the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">st_dev</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">st_rdev</span></code> field from <code class="xref c c-type docutils literal notranslate"><span class="pre">stat</span></code>).</p>
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">st_dev</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">st_rdev</span></code> field from <code class="xref c c-struct docutils literal notranslate"><span class="pre">stat</span></code>).</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="os.minor">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">minor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.minor" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Extract the device minor number from a raw device number (usually the
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">st_dev</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">st_rdev</span></code> field from <code class="xref c c-type docutils literal notranslate"><span class="pre">stat</span></code>).</p>
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">st_dev</span></code> or <code class="xref py py-attr docutils literal notranslate"><span class="pre">st_rdev</span></code> field from <code class="xref c c-struct docutils literal notranslate"><span class="pre">stat</span></code>).</p>
 </dd></dl>
 
 <dl class="py function">
@@ -3482,7 +3532,7 @@ returns the information for the original path as if
 <dt class="sig sig-object py" id="os.stat_result">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">stat_result</span></span><a class="headerlink" href="#os.stat_result" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Object whose attributes correspond roughly to the members of the
-<code class="xref c c-type docutils literal notranslate"><span class="pre">stat</span></code> structure. It is used for the result of <a class="reference internal" href="#os.stat" title="os.stat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.stat()</span></code></a>,
+<code class="xref c c-struct docutils literal notranslate"><span class="pre">stat</span></code> structure. It is used for the result of <a class="reference internal" href="#os.stat" title="os.stat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.stat()</span></code></a>,
 <a class="reference internal" href="#os.fstat" title="os.fstat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.fstat()</span></code></a> and <a class="reference internal" href="#os.lstat" title="os.lstat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.lstat()</span></code></a>.</p>
 <p>Attributes:</p>
 <dl class="py attribute">
@@ -3675,24 +3725,26 @@ contains the file.</p>
 <span class="sig-name descname"><span class="pre">st_file_attributes</span></span><a class="headerlink" href="#os.stat_result.st_file_attributes" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Windows file attributes: <code class="docutils literal notranslate"><span class="pre">dwFileAttributes</span></code> member of the
 <code class="docutils literal notranslate"><span class="pre">BY_HANDLE_FILE_INFORMATION</span></code> structure returned by
-<code class="xref c c-func docutils literal notranslate"><span class="pre">GetFileInformationByHandle()</span></code>. See the <code class="docutils literal notranslate"><span class="pre">FILE_ATTRIBUTE_*</span></code>
+<code class="xref c c-func docutils literal notranslate"><span class="pre">GetFileInformationByHandle()</span></code>.
+See the <code class="xref py py-const docutils literal notranslate"><span class="pre">FILE_ATTRIBUTE_*</span> <span class="pre">&lt;stat.FILE_ATTRIBUTE_ARCHIVE&gt;</span></code>
 constants in the <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> module.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="os.stat_result.st_reparse_tag">
 <span class="sig-name descname"><span class="pre">st_reparse_tag</span></span><a class="headerlink" href="#os.stat_result.st_reparse_tag" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>When <a class="reference internal" href="#os.stat_result.st_file_attributes" title="os.stat_result.st_file_attributes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_file_attributes</span></code></a> has the <code class="docutils literal notranslate"><span class="pre">FILE_ATTRIBUTE_REPARSE_POINT</span></code>
+<dd><p>When <a class="reference internal" href="#os.stat_result.st_file_attributes" title="os.stat_result.st_file_attributes"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_file_attributes</span></code></a> has the <a class="reference internal" href="stat.html#stat.FILE_ATTRIBUTE_REPARSE_POINT" title="stat.FILE_ATTRIBUTE_REPARSE_POINT"><code class="xref py py-const docutils literal notranslate"><span class="pre">FILE_ATTRIBUTE_REPARSE_POINT</span></code></a>
 set, this field contains the tag identifying the type of reparse point.
-See the <code class="docutils literal notranslate"><span class="pre">IO_REPARSE_TAG_*</span></code> constants in the <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> module.</p>
+See the <a class="reference internal" href="stat.html#stat.IO_REPARSE_TAG_SYMLINK" title="stat.IO_REPARSE_TAG_SYMLINK"><code class="xref py py-const docutils literal notranslate"><span class="pre">IO_REPARSE_TAG_*</span></code></a>
+constants in the <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> module.</p>
 </dd></dl>
 
 <p>The standard module <a class="reference internal" href="stat.html#module-stat" title="stat: Utilities for interpreting the results of os.stat(), os.lstat() and os.fstat()."><code class="xref py py-mod docutils literal notranslate"><span class="pre">stat</span></code></a> defines functions and constants that are
-useful for extracting information from a <code class="xref c c-type docutils literal notranslate"><span class="pre">stat</span></code> structure. (On
+useful for extracting information from a <code class="xref c c-struct docutils literal notranslate"><span class="pre">stat</span></code> structure. (On
 Windows, some items are filled with dummy values.)</p>
 <p>For backward compatibility, a <a class="reference internal" href="#os.stat_result" title="os.stat_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">stat_result</span></code></a> instance is also
 accessible as a tuple of at least 10 integers giving the most important (and
-portable) members of the <code class="xref c c-type docutils literal notranslate"><span class="pre">stat</span></code> structure, in the order
+portable) members of the <code class="xref c c-struct docutils literal notranslate"><span class="pre">stat</span></code> structure, in the order
 <a class="reference internal" href="#os.stat_result.st_mode" title="os.stat_result.st_mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_mode</span></code></a>, <a class="reference internal" href="#os.stat_result.st_ino" title="os.stat_result.st_ino"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_ino</span></code></a>, <a class="reference internal" href="#os.stat_result.st_dev" title="os.stat_result.st_dev"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_dev</span></code></a>, <a class="reference internal" href="#os.stat_result.st_nlink" title="os.stat_result.st_nlink"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_nlink</span></code></a>,
 <a class="reference internal" href="#os.stat_result.st_uid" title="os.stat_result.st_uid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_uid</span></code></a>, <a class="reference internal" href="#os.stat_result.st_gid" title="os.stat_result.st_gid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_gid</span></code></a>, <a class="reference internal" href="#os.stat_result.st_size" title="os.stat_result.st_size"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_size</span></code></a>, <a class="reference internal" href="#os.stat_result.st_atime" title="os.stat_result.st_atime"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_atime</span></code></a>,
 <a class="reference internal" href="#os.stat_result.st_mtime" title="os.stat_result.st_mtime"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_mtime</span></code></a>, <a class="reference internal" href="#os.stat_result.st_ctime" title="os.stat_result.st_ctime"><code class="xref py py-attr docutils literal notranslate"><span class="pre">st_ctime</span></code></a>. More items may be added at the end by
@@ -3727,7 +3779,7 @@ as appropriate.</p>
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">statvfs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.statvfs" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Perform a <code class="xref c c-func docutils literal notranslate"><span class="pre">statvfs()</span></code> system call on the given path.  The return value is
 an object whose attributes describe the filesystem on the given path, and
-correspond to the members of the <code class="xref c c-type docutils literal notranslate"><span class="pre">statvfs</span></code> structure, namely:
+correspond to the members of the <code class="xref c c-struct docutils literal notranslate"><span class="pre">statvfs</span></code> structure, namely:
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_bsize</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_frsize</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_blocks</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_bfree</span></code>,
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_bavail</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_files</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_ffree</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_favail</span></code>,
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_flag</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_namemax</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">f_fsid</span></code>.</p>
@@ -4533,7 +4585,7 @@ for <a class="reference internal" href="#os.execve" title="os.execve"><code clas
 stdio buffers, etc.</p>
 <div class="admonition note">
 <p class="admonition-title">Not</p>
-<p>The standard way to exit is <code class="docutils literal notranslate"><span class="pre">sys.exit(n)</span></code>.  <a class="reference internal" href="#os._exit" title="os._exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">_exit()</span></code></a> should
+<p>The standard way to exit is <a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit(n)</span></code></a>.  <code class="xref py py-func docutils literal notranslate"><span class="pre">_exit()</span></code> should
 normally only be used in the child process after a <a class="reference internal" href="#os.fork" title="os.fork"><code class="xref py py-func docutils literal notranslate"><span class="pre">fork()</span></code></a>.</p>
 </div>
 </dd></dl>
@@ -4752,8 +4804,8 @@ master end of the pseudo-terminal.  For a more portable approach, use the
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">kill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sig</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.kill" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p id="index-37">Send signal <em>sig</em> to the process <em>pid</em>.  Constants for the specific signals
 available on the host platform are defined in the <a class="reference internal" href="signal.html#module-signal" title="signal: Set handlers for asynchronous events."><code class="xref py py-mod docutils literal notranslate"><span class="pre">signal</span></code></a> module.</p>
-<p>Windows: The <a class="reference internal" href="signal.html#signal.CTRL_C_EVENT" title="signal.CTRL_C_EVENT"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.CTRL_C_EVENT</span></code></a> and
-<a class="reference internal" href="signal.html#signal.CTRL_BREAK_EVENT" title="signal.CTRL_BREAK_EVENT"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.CTRL_BREAK_EVENT</span></code></a> signals are special signals which can
+<p>Windows: The <a class="reference internal" href="signal.html#signal.CTRL_C_EVENT" title="signal.CTRL_C_EVENT"><code class="xref py py-const docutils literal notranslate"><span class="pre">signal.CTRL_C_EVENT</span></code></a> and
+<a class="reference internal" href="signal.html#signal.CTRL_BREAK_EVENT" title="signal.CTRL_BREAK_EVENT"><code class="xref py py-const docutils literal notranslate"><span class="pre">signal.CTRL_BREAK_EVENT</span></code></a> signals are special signals which can
 only be sent to console processes which share a common console window,
 e.g., some subprocesses. Any other value for <em>sig</em> will cause the process
 to be unconditionally killed by the TerminateProcess API, and the exit code
@@ -4898,30 +4950,30 @@ for the <code class="xref c c-func docutils literal notranslate"><span class="pr
 specified. If the value specified is 0, the child’s process group ID will be
 made the same as its process ID. If the value of <em>setpgroup</em> is not set, the
 child will inherit the parent’s process group ID. This argument corresponds
-to the C library <code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETPGROUP</span></code> flag.</p>
+to the C library <code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETPGROUP</span></code> flag.</p>
 <p>If the <em>resetids</em> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code> it will reset the effective UID and
 GID of the child to the real UID and GID of the parent process. If the
 argument is <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the child retains the effective UID and GID of
 the parent. In either case, if the set-user-ID and set-group-ID permission
 bits are enabled on the executable file, their effect will override the
 setting of the effective UID and GID. This argument corresponds to the C
-library <code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_RESETIDS</span></code> flag.</p>
+library <code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_RESETIDS</span></code> flag.</p>
 <p>If the <em>setsid</em> argument is <code class="docutils literal notranslate"><span class="pre">True</span></code>, it will create a new session ID
-for <code class="docutils literal notranslate"><span class="pre">posix_spawn</span></code>. <em>setsid</em> requires <code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSID</span></code>
-or <code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSID_NP</span></code> flag. Otherwise, <a class="reference internal" href="exceptions.html#NotImplementedError" title="NotImplementedError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a>
+for <code class="docutils literal notranslate"><span class="pre">posix_spawn</span></code>. <em>setsid</em> requires <code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSID</span></code>
+or <code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSID_NP</span></code> flag. Otherwise, <a class="reference internal" href="exceptions.html#NotImplementedError" title="NotImplementedError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">NotImplementedError</span></code></a>
 is raised.</p>
 <p>The <em>setsigmask</em> argument will set the signal mask to the signal set
 specified. If the parameter is not used, then the child inherits the
 parent’s signal mask. This argument corresponds to the C library
-<code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSIGMASK</span></code> flag.</p>
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSIGMASK</span></code> flag.</p>
 <p>The <em>sigdef</em> argument will reset the disposition of all signals in the set
 specified. This argument corresponds to the C library
-<code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSIGDEF</span></code> flag.</p>
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSIGDEF</span></code> flag.</p>
 <p>The <em>scheduler</em> argument must be a tuple containing the (optional) scheduler
 policy and an instance of <a class="reference internal" href="#os.sched_param" title="os.sched_param"><code class="xref py py-class docutils literal notranslate"><span class="pre">sched_param</span></code></a> with the scheduler parameters.
 A value of <code class="docutils literal notranslate"><span class="pre">None</span></code> in the place of the scheduler policy indicates that is
 not being provided. This argument is a combination of the C library
-<code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSCHEDPARAM</span></code> and <code class="xref c c-data docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSCHEDULER</span></code>
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSCHEDPARAM</span></code> and <code class="xref c c-macro docutils literal notranslate"><span class="pre">POSIX_SPAWN_SETSCHEDULER</span></code>
 flags.</p>
 <p class="audit-hook">Raises an <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">auditing event</span></a> <code class="docutils literal notranslate"><span class="pre">os.posix_spawn</span></code> with arguments <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">argv</span></code>, <code class="docutils literal notranslate"><span class="pre">env</span></code>.</p>
 <div class="versionadded">
@@ -5187,7 +5239,7 @@ The return value is an object with five attributes:</p>
 containing <code class="xref py py-attr docutils literal notranslate"><span class="pre">user</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">system</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">children_user</span></code>,
 <code class="xref py py-attr docutils literal notranslate"><span class="pre">children_system</span></code>, and <code class="xref py py-attr docutils literal notranslate"><span class="pre">elapsed</span></code> in that order.</p>
 <p>See the Unix manual page
-<em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/times(2)">times(2)</a></em> and <a class="reference external" href="https://www.freebsd.org/cgi/man.cgi?time(3)">times(3)</a> manual page on Unix or <a class="reference external" href="https://docs.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes">the GetProcessTimes MSDN</a>
+<em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/times(2)">times(2)</a></em> and <a class="reference external" href="https://man.freebsd.org/cgi/man.cgi?time(3)">times(3)</a> manual page on Unix or <a class="reference external" href="https://docs.microsoft.com/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocesstimes">the GetProcessTimes MSDN</a>
 on Windows. On Windows, only <code class="xref py py-attr docutils literal notranslate"><span class="pre">user</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">system</span></code> are known; the other attributes are zero.</p>
 <div class="availability docutils container">
 <p><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Availability</span></a>: Unix, Windows.</p>
@@ -5235,7 +5287,7 @@ The interpretation of <em>id</em> depends on it; see their individual descriptio
 <ul class="simple">
 <li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_pid</span></code> (process ID)</p></li>
 <li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_uid</span></code> (real user ID of the child)</p></li>
-<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_signo</span></code> (always <a class="reference internal" href="signal.html#signal.SIGCHLD" title="signal.SIGCHLD"><code class="xref py py-data docutils literal notranslate"><span class="pre">SIGCHLD</span></code></a>)</p></li>
+<li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_signo</span></code> (always <a class="reference internal" href="signal.html#signal.SIGCHLD" title="signal.SIGCHLD"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIGCHLD</span></code></a>)</p></li>
 <li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_status</span></code> (the exit status or signal number, depending on <code class="xref py py-attr docutils literal notranslate"><span class="pre">si_code</span></code>)</p></li>
 <li><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">si_code</span></code> (see <a class="reference internal" href="#os.CLD_EXITED" title="os.CLD_EXITED"><code class="xref py py-data docutils literal notranslate"><span class="pre">CLD_EXITED</span></code></a> for possible values)</p></li>
 </ul>
@@ -5504,7 +5556,7 @@ return <code class="docutils literal notranslate"><span class="pre">False</span>
 <dt class="sig sig-object py" id="os.WIFCONTINUED">
 <span class="sig-prename descclassname"><span class="pre">os.</span></span><span class="sig-name descname"><span class="pre">WIFCONTINUED</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#os.WIFCONTINUED" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if a stopped child has been resumed by delivery of
-<a class="reference internal" href="signal.html#signal.SIGCONT" title="signal.SIGCONT"><code class="xref py py-data docutils literal notranslate"><span class="pre">SIGCONT</span></code></a> (if the process has been continued from a job
+<a class="reference internal" href="signal.html#signal.SIGCONT" title="signal.SIGCONT"><code class="xref py py-const docutils literal notranslate"><span class="pre">SIGCONT</span></code></a> (if the process has been continued from a job
 control stop), otherwise return <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>See <a class="reference internal" href="#os.WCONTINUED" title="os.WCONTINUED"><code class="xref py py-data docutils literal notranslate"><span class="pre">WCONTINUED</span></code></a> option.</p>
 <div class="availability docutils container">
@@ -5919,7 +5971,7 @@ sources of environmental noise. Unnecessarily reading large quantities of
 data will have a negative impact on  other users  of the <code class="docutils literal notranslate"><span class="pre">/dev/random</span></code> and
 <code class="docutils literal notranslate"><span class="pre">/dev/urandom</span></code> devices.</p>
 <p>The flags argument is a bit mask that can contain zero or more of the
-following values ORed together: <a class="reference internal" href="#os.GRND_RANDOM" title="os.GRND_RANDOM"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.GRND_RANDOM</span></code></a> and
+following values ORed together: <a class="reference internal" href="#os.GRND_RANDOM" title="os.GRND_RANDOM"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.GRND_RANDOM</span></code></a> and
 <a class="reference internal" href="#os.GRND_NONBLOCK" title="os.GRND_NONBLOCK"><code class="xref py py-data docutils literal notranslate"><span class="pre">GRND_NONBLOCK</span></code></a>.</p>
 <p>See also the <a class="reference external" href="https://man7.org/linux/man-pages/man2/getrandom.2.html">Linux getrandom() manual page</a>.</p>
 <div class="availability docutils container">
@@ -6099,6 +6151,8 @@ block in these cases, but instead immediately raises <a class="reference interna
 <li><a class="reference internal" href="#os.SEEK_SET"><code class="docutils literal notranslate"><span class="pre">SEEK_SET</span></code></a></li>
 <li><a class="reference internal" href="#os.SEEK_CUR"><code class="docutils literal notranslate"><span class="pre">SEEK_CUR</span></code></a></li>
 <li><a class="reference internal" href="#os.SEEK_END"><code class="docutils literal notranslate"><span class="pre">SEEK_END</span></code></a></li>
+<li><a class="reference internal" href="#os.SEEK_HOLE"><code class="docutils literal notranslate"><span class="pre">SEEK_HOLE</span></code></a></li>
+<li><a class="reference internal" href="#os.SEEK_DATA"><code class="docutils literal notranslate"><span class="pre">SEEK_DATA</span></code></a></li>
 <li><a class="reference internal" href="#os.open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
 <li><a class="reference internal" href="#os.O_RDONLY"><code class="docutils literal notranslate"><span class="pre">O_RDONLY</span></code></a></li>
 <li><a class="reference internal" href="#os.O_WRONLY"><code class="docutils literal notranslate"><span class="pre">O_WRONLY</span></code></a></li>
@@ -6156,11 +6210,11 @@ block in these cases, but instead immediately raises <a class="reference interna
 <li><a class="reference internal" href="#os.RWF_APPEND"><code class="docutils literal notranslate"><span class="pre">RWF_APPEND</span></code></a></li>
 <li><a class="reference internal" href="#os.read"><code class="docutils literal notranslate"><span class="pre">read()</span></code></a></li>
 <li><a class="reference internal" href="#os.sendfile"><code class="docutils literal notranslate"><span class="pre">sendfile()</span></code></a></li>
-<li><a class="reference internal" href="#os.set_blocking"><code class="docutils literal notranslate"><span class="pre">set_blocking()</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_NODISKIO"><code class="docutils literal notranslate"><span class="pre">SF_NODISKIO</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_MNOWAIT"><code class="docutils literal notranslate"><span class="pre">SF_MNOWAIT</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_SYNC"><code class="docutils literal notranslate"><span class="pre">SF_SYNC</span></code></a></li>
 <li><a class="reference internal" href="#os.SF_NOCACHE"><code class="docutils literal notranslate"><span class="pre">SF_NOCACHE</span></code></a></li>
+<li><a class="reference internal" href="#os.set_blocking"><code class="docutils literal notranslate"><span class="pre">set_blocking()</span></code></a></li>
 <li><a class="reference internal" href="#os.splice"><code class="docutils literal notranslate"><span class="pre">splice()</span></code></a></li>
 <li><a class="reference internal" href="#os.SPLICE_F_MOVE"><code class="docutils literal notranslate"><span class="pre">SPLICE_F_MOVE</span></code></a></li>
 <li><a class="reference internal" href="#os.SPLICE_F_NONBLOCK"><code class="docutils literal notranslate"><span class="pre">SPLICE_F_NONBLOCK</span></code></a></li>
@@ -6523,7 +6577,7 @@ block in these cases, but instead immediately raises <a class="reference interna
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -6567,11 +6621,11 @@ block in these cases, but instead immediately raises <a class="reference interna
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

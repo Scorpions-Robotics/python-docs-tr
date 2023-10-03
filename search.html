@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ara &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ara &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="_static/pygments_dark.css" />
     
     
@@ -22,7 +22,7 @@
     <script src="_static/searchtools.js"></script>
     <script src="_static/language_data.js"></script>
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="about.html" />
     <link rel="index" title="Dizin" href="genindex.html" />
@@ -51,47 +51,61 @@
             <script type="text/javascript" src="_static/themetoggle.js"></script> 
 
 
+    <meta name="robots" content="noindex">
     <script type="text/javascript">
-        var GLOSSARY_PAGE = 'glossary.html';
+        const GLOSSARY_PAGE = 'glossary.html';
 
-        jQuery(function() {
-            $.getJSON("_static/glossary.json", function(glossary) {
-                var RESULT_TEMPLATE = '<div style="display: none" class="admonition seealso" id="glossary-result">' +
+        document.addEventListener('DOMContentLoaded', function() {
+          fetch('_static/glossary.json')
+            .then(function(response) {
+              if (response.ok) {
+                return response.json();
+              } else {
+                throw new Error('Failed to fetch glossary.json');
+              }
+            })
+            .then(function(glossary) {
+              const RESULT_TEMPLATE = '<div style="display: none" class="admonition seealso" id="glossary-result">' +
                                       '  <p class="topic-title">' +
                                       '    <a class="glossary-title" href="#"></a>' +
                                       '  </p>' +
                                       '  <div class="glossary-body"></div>' +
                                       '</div>';
-                $("#search-results").prepend(RESULT_TEMPLATE);
+              let searchResults = document.getElementById('search-results');
+              searchResults.insertAdjacentHTML('afterbegin', RESULT_TEMPLATE);
 
-                var params = $.getQueryParameters();
-                if (params.q) {
-                    var search_param = params.q[0].toLowerCase();
-                    var glossary_item = glossary[search_param];
-                    if (glossary_item) {
-                        var resultDiv = $("#glossary-result");
+              const params = new URLSearchParams(document.location.search).get("q");
+              if (params) {
+                const searchParam = params.toLowerCase();
+                const glossaryItem = glossary[searchParam];
+                if (glossaryItem) {
+                  let resultDiv = document.getElementById('glossary-result');
 
-                        // set up the title text with a link to the glossary page
-                        resultDiv.find(".glossary-title").text('Glossary: ' + glossary_item.title);
-                        var link_target = search_param.replace(/ /g, '-');
-                        resultDiv.find(".glossary-title").attr(
-                            'href', GLOSSARY_PAGE + '#term-' + link_target
-                        );
+                  // set up the title text with a link to the glossary page
+                  let glossaryTitle = resultDiv.querySelector('.glossary-title');
+                  glossaryTitle.textContent = 'Glossary: ' + glossaryItem.title;
+                  const linkTarget = searchParam.replace(/ /g, '-');
+                  glossaryTitle.href = GLOSSARY_PAGE + '#term-' + linkTarget;
 
-                        // rewrite any anchor links (to other glossary terms)
-                        // to have a full reference to the glossary page
-                        var body = $(glossary_item.body).children();
-                        body.find("a[href^='#']").each(function() {
-                            var current_url = $(this).attr('href');
-                            $(this).attr('href', GLOSSARY_PAGE + current_url);
-                        });
-                        resultDiv.find(".glossary-body").html(body);
+                  // rewrite any anchor links (to other glossary terms)
+                  // to have a full reference to the glossary page
+                  let body = document.createElement('div');
+                  body.innerHTML = glossaryItem.body;
+                  const anchorLinks = body.querySelectorAll('a[href^="#"]');
+                  anchorLinks.forEach(function(link) {
+                    const currentUrl = link.getAttribute('href');
+                    link.href = GLOSSARY_PAGE + currentUrl;
+                  });
+                  resultDiv.querySelector('.glossary-body').appendChild(body);
 
-                        resultDiv.show();
-                    } else {
-                        $("#glossary-result").hide('');
-                    }
+                  resultDiv.style.display = '';
+                } else {
+                  document.getElementById('glossary-result').style.display = 'none';
                 }
+              }
+            })
+            .catch(function(error) {
+              console.error(error);
             });
         });
     </script>
@@ -149,7 +163,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="index.html">3.11.2 Documentation</a> &#187;
+      <a href="index.html">3.11.5 Documentation</a> &#187;
     </li>
 
         <li class="nav-item nav-item-this"><a href="">Ara</a></li>
@@ -236,7 +250,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="index.html">3.11.2 Documentation</a> &#187;
+      <a href="index.html">3.11.5 Documentation</a> &#187;
     </li>
 
         <li class="nav-item nav-item-this"><a href="">Ara</a></li>
@@ -267,11 +281,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

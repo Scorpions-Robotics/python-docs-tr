@@ -11,14 +11,14 @@
 <meta property="og:site_name" content="Python documentation" />
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Object Protocol &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Protocol &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -143,7 +143,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -191,8 +191,8 @@ not implemented for the given type combination.</p>
 <dt class="sig sig-object c" id="c.Py_RETURN_NOTIMPLEMENTED">
 <span class="sig-name descname"><span class="n"><span class="pre">Py_RETURN_NOTIMPLEMENTED</span></span></span><a class="headerlink" href="#c.Py_RETURN_NOTIMPLEMENTED" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><p>Properly handle returning <a class="reference internal" href="#c.Py_NotImplemented" title="Py_NotImplemented"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_NotImplemented</span></code></a> from within a C
-function (that is, increment the reference count of NotImplemented and
-return it).</p>
+function (that is, create a new <a class="reference internal" href="../glossary.html#term-strong-reference"><span class="xref std std-term">strong reference</span></a>
+to NotImplemented and return it).</p>
 </dd></dl>
 
 <dl class="c function">
@@ -200,7 +200,7 @@ return it).</p>
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_Print</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span>, <span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fp</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_Print" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><p>Print an object <em>o</em>, on file <em>fp</em>.  Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error.  The flags argument
 is used to enable certain printing options.  The only option currently supported
-is <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_PRINT_RAW</span></code>; if given, the <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> of the object is written
+is <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_PRINT_RAW</span></code>; if given, the <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> of the object is written
 instead of the <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a>.</p>
 </dd></dl>
 
@@ -210,21 +210,27 @@ instead of the <a class="reference internal" href="../library/functions.html#rep
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Returns <code class="docutils literal notranslate"><span class="pre">1</span></code> if <em>o</em> has the attribute <em>attr_name</em>, and <code class="docutils literal notranslate"><span class="pre">0</span></code> otherwise.  This
 is equivalent to the Python expression <code class="docutils literal notranslate"><span class="pre">hasattr(o,</span> <span class="pre">attr_name)</span></code>.  This function
 always succeeds.</p>
-<p>Note that exceptions which occur while calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattribute__()</span></code> methods will get suppressed.
-To get error reporting use <a class="reference internal" href="#c.PyObject_GetAttr" title="PyObject_GetAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetAttr()</span></code></a> instead.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Exceptions that occur when this calls <a class="reference internal" href="../reference/datamodel.html#object.__getattr__" title="object.__getattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code></a> and
+<a class="reference internal" href="../reference/datamodel.html#object.__getattribute__" title="object.__getattribute__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattribute__()</span></code></a> methods are silently ignored.
+For proper error handling, use <a class="reference internal" href="#c.PyObject_GetAttr" title="PyObject_GetAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetAttr()</span></code></a> instead.</p>
+</div>
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyObject_HasAttrString">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_HasAttrString</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">attr_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_HasAttrString" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Returns <code class="docutils literal notranslate"><span class="pre">1</span></code> if <em>o</em> has the attribute <em>attr_name</em>, and <code class="docutils literal notranslate"><span class="pre">0</span></code> otherwise.  This
-is equivalent to the Python expression <code class="docutils literal notranslate"><span class="pre">hasattr(o,</span> <span class="pre">attr_name)</span></code>.  This function
-always succeeds.</p>
-<p>Note that exceptions which occur while calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code> and
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattribute__()</span></code> methods and creating a temporary string object
-will get suppressed.
-To get error reporting use <a class="reference internal" href="#c.PyObject_GetAttrString" title="PyObject_GetAttrString"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetAttrString()</span></code></a> instead.</p>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>This is the same as <a class="reference internal" href="#c.PyObject_HasAttr" title="PyObject_HasAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_HasAttr()</span></code></a>, but <em>attr_name</em> is
+specified as a <span class="c-expr sig sig-inline c"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="p">*</span></span> UTF-8 encoded bytes string,
+rather than a <span class="c-expr sig sig-inline c"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n">PyObject</span></a><span class="p">*</span></span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Exceptions that occur when this calls <a class="reference internal" href="../reference/datamodel.html#object.__getattr__" title="object.__getattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code></a> and
+<a class="reference internal" href="../reference/datamodel.html#object.__getattribute__" title="object.__getattribute__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattribute__()</span></code></a> methods or while creating the temporary
+<a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> object are silently ignored.
+For proper error handling, use <a class="reference internal" href="#c.PyObject_GetAttrString" title="PyObject_GetAttrString"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetAttrString()</span></code></a> instead.</p>
+</div>
 </dd></dl>
 
 <dl class="c function">
@@ -238,9 +244,9 @@ expression <code class="docutils literal notranslate"><span class="pre">o.attr_n
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyObject_GetAttrString">
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_GetAttrString</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">attr_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_GetAttrString" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retrieve an attribute named <em>attr_name</em> from object <em>o</em>. Returns the attribute
-value on success, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure. This is the equivalent of the Python
-expression <code class="docutils literal notranslate"><span class="pre">o.attr_name</span></code>.</p>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>This is the same as <a class="reference internal" href="#c.PyObject_GetAttr" title="PyObject_GetAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetAttr()</span></code></a>, but <em>attr_name</em> is
+specified as a <span class="c-expr sig sig-inline c"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="p">*</span></span> UTF-8 encoded bytes string,
+rather than a <span class="c-expr sig sig-inline c"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n">PyObject</span></a><span class="p">*</span></span>.</p>
 </dd></dl>
 
 <dl class="c function">
@@ -269,10 +275,9 @@ plans to remove it.</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyObject_SetAttrString">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_SetAttrString</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">attr_name</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">v</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_SetAttrString" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Set the value of the attribute named <em>attr_name</em>, for object <em>o</em>, to the value
-<em>v</em>. Raise an exception and return <code class="docutils literal notranslate"><span class="pre">-1</span></code> on failure;
-return <code class="docutils literal notranslate"><span class="pre">0</span></code> on success.  This is the equivalent of the Python statement
-<code class="docutils literal notranslate"><span class="pre">o.attr_name</span> <span class="pre">=</span> <span class="pre">v</span></code>.</p>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>This is the same as <a class="reference internal" href="#c.PyObject_SetAttr" title="PyObject_SetAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_SetAttr()</span></code></a>, but <em>attr_name</em> is
+specified as a <span class="c-expr sig sig-inline c"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="p">*</span></span> UTF-8 encoded bytes string,
+rather than a <span class="c-expr sig sig-inline c"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n">PyObject</span></a><span class="p">*</span></span>.</p>
 <p>If <em>v</em> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, the attribute is deleted, but this feature is
 deprecated in favour of using <a class="reference internal" href="#c.PyObject_DelAttrString" title="PyObject_DelAttrString"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_DelAttrString()</span></code></a>.</p>
 </dd></dl>
@@ -300,8 +305,9 @@ This is the equivalent of the Python statement <code class="docutils literal not
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyObject_DelAttrString">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_DelAttrString</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">attr_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_DelAttrString" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><p>Delete attribute named <em>attr_name</em>, for object <em>o</em>. Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on failure.
-This is the equivalent of the Python statement <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">o.attr_name</span></code>.</p>
+<dd><p>This is the same as <a class="reference internal" href="#c.PyObject_DelAttr" title="PyObject_DelAttr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_DelAttr()</span></code></a>, but <em>attr_name</em> is
+specified as a <span class="c-expr sig sig-inline c"><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="p">*</span></span> UTF-8 encoded bytes string,
+rather than a <span class="c-expr sig sig-inline c"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n">PyObject</span></a><span class="p">*</span></span>.</p>
 </dd></dl>
 
 <dl class="c function">
@@ -344,8 +350,8 @@ when accessing an attribute on the object.</p>
 <dt class="sig sig-object c" id="c.PyObject_RichCompare">
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_RichCompare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o1</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o2</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">opid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_RichCompare" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Compare the values of <em>o1</em> and <em>o2</em> using the operation specified by <em>opid</em>,
-which must be one of <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_LT</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_LE</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_EQ</span></code>,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">Py_NE</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_GT</span></code>, or <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_GE</span></code>, corresponding to <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>,
+which must be one of <a class="reference internal" href="typeobj.html#c.Py_LT" title="Py_LT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_LT</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_LE" title="Py_LE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_LE</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_EQ" title="Py_EQ"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_EQ</span></code></a>,
+<a class="reference internal" href="typeobj.html#c.Py_NE" title="Py_NE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_NE</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_GT" title="Py_GT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_GT</span></code></a>, or <a class="reference internal" href="typeobj.html#c.Py_GE" title="Py_GE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_GE</span></code></a>, corresponding to <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> respectively. This is the equivalent of
 the Python expression <code class="docutils literal notranslate"><span class="pre">o1</span> <span class="pre">op</span> <span class="pre">o2</span></code>, where <code class="docutils literal notranslate"><span class="pre">op</span></code> is the operator corresponding
 to <em>opid</em>. Returns the value of the comparison on success, or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure.</p>
@@ -355,8 +361,8 @@ to <em>opid</em>. Returns the value of the comparison on success, or <code class
 <dt class="sig sig-object c" id="c.PyObject_RichCompareBool">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_RichCompareBool</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o1</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o2</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">opid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_RichCompareBool" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Compare the values of <em>o1</em> and <em>o2</em> using the operation specified by <em>opid</em>,
-which must be one of <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_LT</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_LE</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_EQ</span></code>,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">Py_NE</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_GT</span></code>, or <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_GE</span></code>, corresponding to <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>,
+which must be one of <a class="reference internal" href="typeobj.html#c.Py_LT" title="Py_LT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_LT</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_LE" title="Py_LE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_LE</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_EQ" title="Py_EQ"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_EQ</span></code></a>,
+<a class="reference internal" href="typeobj.html#c.Py_NE" title="Py_NE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_NE</span></code></a>, <a class="reference internal" href="typeobj.html#c.Py_GT" title="Py_GT"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_GT</span></code></a>, or <a class="reference internal" href="typeobj.html#c.Py_GE" title="Py_GE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_GE</span></code></a>, corresponding to <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>,
 <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> respectively. Returns <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error,
 <code class="docutils literal notranslate"><span class="pre">0</span></code> if the result is false, <code class="docutils literal notranslate"><span class="pre">1</span></code> otherwise. This is the equivalent of the
 Python expression <code class="docutils literal notranslate"><span class="pre">o1</span> <span class="pre">op</span> <span class="pre">o2</span></code>, where <code class="docutils literal notranslate"><span class="pre">op</span></code> is the operator corresponding to
@@ -366,8 +372,18 @@ Python expression <code class="docutils literal notranslate"><span class="pre">o
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>If <em>o1</em> and <em>o2</em> are the same object, <a class="reference internal" href="#c.PyObject_RichCompareBool" title="PyObject_RichCompareBool"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_RichCompareBool()</span></code></a>
-will always return <code class="docutils literal notranslate"><span class="pre">1</span></code> for <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_EQ</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span></code> for <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_NE</span></code>.</p>
+will always return <code class="docutils literal notranslate"><span class="pre">1</span></code> for <a class="reference internal" href="typeobj.html#c.Py_EQ" title="Py_EQ"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_EQ</span></code></a> and <code class="docutils literal notranslate"><span class="pre">0</span></code> for <a class="reference internal" href="typeobj.html#c.Py_NE" title="Py_NE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_NE</span></code></a>.</p>
 </div>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.PyObject_Format">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_Format</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">format_spec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_Format" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Format <em>obj</em> using <em>format_spec</em>. This is equivalent to the Python
+expression <code class="docutils literal notranslate"><span class="pre">format(obj,</span> <span class="pre">format_spec)</span></code>.</p>
+<p><em>format_spec</em> may be <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. In this case the call is equivalent
+to <code class="docutils literal notranslate"><span class="pre">format(obj)</span></code>.
+Returns the formatted string on success, <code class="docutils literal notranslate"><span class="pre">NULL</span></code> on failure.</p>
+</dd></dl>
+
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyObject_Repr">
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_Repr</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_Repr" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
@@ -427,7 +443,7 @@ determine the subclass status as described in <span class="target" id="index-4">
 i.e. contained in <code class="docutils literal notranslate"><span class="pre">cls.__mro__</span></code>.</p>
 <p>Normally only class objects, i.e. instances of <a class="reference internal" href="../library/functions.html#type" title="type"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a> or a derived
 class, are considered classes.  However, objects can override this by having
-a <code class="xref py py-attr docutils literal notranslate"><span class="pre">__bases__</span></code> attribute (which must be a tuple of base classes).</p>
+a <a class="reference internal" href="../library/stdtypes.html#class.__bases__" title="class.__bases__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__bases__</span></code></a> attribute (which must be a tuple of base classes).</p>
 </dd></dl>
 
 <dl class="c function">
@@ -442,9 +458,9 @@ otherwise it will be <code class="docutils literal notranslate"><span class="pre
 determine the subclass status as described in <span class="target" id="index-5"></span><a class="pep reference external" href="https://peps.python.org/pep-3119/"><strong>PEP 3119</strong></a>.  Otherwise, <em>inst</em>
 is an instance of <em>cls</em> if its class is a subclass of <em>cls</em>.</p>
 <p>An instance <em>inst</em> can override what is considered its class by having a
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">__class__</span></code> attribute.</p>
+<a class="reference internal" href="../library/stdtypes.html#instance.__class__" title="instance.__class__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__class__</span></code></a> attribute.</p>
 <p>An object <em>cls</em> can override if it is considered a class, and what its base
-classes are, by having a <code class="xref py py-attr docutils literal notranslate"><span class="pre">__bases__</span></code> attribute (which must be a tuple
+classes are, by having a <a class="reference internal" href="../library/stdtypes.html#class.__bases__" title="class.__bases__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__bases__</span></code></a> attribute (which must be a tuple
 of base classes).</p>
 </dd></dl>
 
@@ -489,11 +505,12 @@ This is equivalent to the Python expression <code class="docutils literal notran
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyObject_Type</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">o</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_Type" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-7">When <em>o</em> is non-<code class="docutils literal notranslate"><span class="pre">NULL</span></code>, returns a type object corresponding to the object type
 of object <em>o</em>. On failure, raises <a class="reference internal" href="../library/exceptions.html#SystemError" title="SystemError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemError</span></code></a> and returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.  This
-is equivalent to the Python expression <code class="docutils literal notranslate"><span class="pre">type(o)</span></code>. This function increments the
-reference count of the return value. There’s really no reason to use this
+is equivalent to the Python expression <code class="docutils literal notranslate"><span class="pre">type(o)</span></code>.
+This function creates a new <a class="reference internal" href="../glossary.html#term-strong-reference"><span class="xref std std-term">strong reference</span></a> to the return value.
+There’s really no reason to use this
 function instead of the <a class="reference internal" href="structures.html#c.Py_TYPE" title="Py_TYPE"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_TYPE()</span></code></a> function, which returns a
-pointer of type <span class="c-expr sig sig-inline c"><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n">PyTypeObject</span></a><span class="p">*</span></span>, except when the incremented reference
-count is needed.</p>
+pointer of type <span class="c-expr sig sig-inline c"><a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><span class="n">PyTypeObject</span></a><span class="p">*</span></span>, except when a new
+<a class="reference internal" href="../glossary.html#term-strong-reference"><span class="xref std std-term">strong reference</span></a> is needed.</p>
 </dd></dl>
 
 <dl class="c function">
@@ -644,7 +661,7 @@ returns <code class="docutils literal notranslate"><span class="pre">NULL</span>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -688,11 +705,11 @@ returns <code class="docutils literal notranslate"><span class="pre">NULL</span>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

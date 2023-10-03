@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/urllib/parse.py This module defines a standard interface to break Uniform Resource Locator (URL) strings up in components (addressing scheme, network location, path etc.), to combi..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>urllib.parse — Parse URLs into components &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>urllib.parse — Parse URLs into components &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -109,6 +109,7 @@
 <li><a class="reference internal" href="#urllib.parse.unwrap"><code class="docutils literal notranslate"><span class="pre">unwrap()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#url-parsing-security">URL parsing security</a></li>
 <li><a class="reference internal" href="#parsing-ascii-encoded-bytes">Parsing ASCII Encoded Bytes</a></li>
 <li><a class="reference internal" href="#structured-parse-results">Structured Parse Results</a><ul>
 <li><a class="reference internal" href="#urllib.parse.urllib.parse.SplitResult.geturl"><code class="docutils literal notranslate"><span class="pre">urllib.parse.SplitResult.geturl()</span></code></a></li>
@@ -187,7 +188,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -233,9 +234,9 @@ to an absolute URL given a “base URL.”</p>
 <p>The module has been designed to match the internet RFC on Relative Uniform
 Resource Locators. It supports the following URL schemes: <code class="docutils literal notranslate"><span class="pre">file</span></code>, <code class="docutils literal notranslate"><span class="pre">ftp</span></code>,
 <code class="docutils literal notranslate"><span class="pre">gopher</span></code>, <code class="docutils literal notranslate"><span class="pre">hdl</span></code>, <code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code>, <code class="docutils literal notranslate"><span class="pre">imap</span></code>, <code class="docutils literal notranslate"><span class="pre">mailto</span></code>, <code class="docutils literal notranslate"><span class="pre">mms</span></code>,
-<code class="docutils literal notranslate"><span class="pre">news</span></code>, <code class="docutils literal notranslate"><span class="pre">nntp</span></code>, <code class="docutils literal notranslate"><span class="pre">prospero</span></code>, <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, <code class="docutils literal notranslate"><span class="pre">rtsp</span></code>, <code class="docutils literal notranslate"><span class="pre">rtspu</span></code>, <code class="docutils literal notranslate"><span class="pre">sftp</span></code>,
-<code class="docutils literal notranslate"><span class="pre">shttp</span></code>, <code class="docutils literal notranslate"><span class="pre">sip</span></code>, <code class="docutils literal notranslate"><span class="pre">sips</span></code>, <code class="docutils literal notranslate"><span class="pre">snews</span></code>, <code class="docutils literal notranslate"><span class="pre">svn</span></code>, <code class="docutils literal notranslate"><span class="pre">svn+ssh</span></code>, <code class="docutils literal notranslate"><span class="pre">telnet</span></code>,
-<code class="docutils literal notranslate"><span class="pre">wais</span></code>, <code class="docutils literal notranslate"><span class="pre">ws</span></code>, <code class="docutils literal notranslate"><span class="pre">wss</span></code>.</p>
+<code class="docutils literal notranslate"><span class="pre">news</span></code>, <code class="docutils literal notranslate"><span class="pre">nntp</span></code>, <code class="docutils literal notranslate"><span class="pre">prospero</span></code>, <code class="docutils literal notranslate"><span class="pre">rsync</span></code>, <code class="docutils literal notranslate"><span class="pre">rtsp</span></code>, <code class="docutils literal notranslate"><span class="pre">rtsps</span></code>, <code class="docutils literal notranslate"><span class="pre">rtspu</span></code>,
+<code class="docutils literal notranslate"><span class="pre">sftp</span></code>, <code class="docutils literal notranslate"><span class="pre">shttp</span></code>, <code class="docutils literal notranslate"><span class="pre">sip</span></code>, <code class="docutils literal notranslate"><span class="pre">sips</span></code>, <code class="docutils literal notranslate"><span class="pre">snews</span></code>, <code class="docutils literal notranslate"><span class="pre">svn</span></code>, <code class="docutils literal notranslate"><span class="pre">svn+ssh</span></code>,
+<code class="docutils literal notranslate"><span class="pre">telnet</span></code>, <code class="docutils literal notranslate"><span class="pre">wais</span></code>, <code class="docutils literal notranslate"><span class="pre">ws</span></code>, <code class="docutils literal notranslate"><span class="pre">wss</span></code>.</p>
 <p>The <a class="reference internal" href="#module-urllib.parse" title="urllib.parse: Parse URLs into or assemble them from components."><code class="xref py py-mod docutils literal notranslate"><span class="pre">urllib.parse</span></code></a> module defines functions that fall into two broad
 categories: URL parsing and URL quoting. These are covered in detail in
 the following sections.</p>
@@ -387,6 +388,11 @@ fields with new values.</p>
 <span class="go">ParseResult(scheme=&#39;http&#39;, netloc=&#39;www.cwi.nl:80&#39;, path=&#39;/%7Eguido/Python.html&#39;,</span>
 <span class="go">            params=&#39;&#39;, query=&#39;&#39;, fragment=&#39;&#39;)</span>
 </pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p><a class="reference internal" href="#urllib.parse.urlparse" title="urllib.parse.urlparse"><code class="xref py py-func docutils literal notranslate"><span class="pre">urlparse()</span></code></a> does not perform validation.  See <a class="reference internal" href="#url-parsing-security"><span class="std std-ref">URL parsing
+security</span></a> for details.</p>
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.2 sürümünde değişti: </span>Added IPv6 URL parsing capabilities.</p>
@@ -574,8 +580,14 @@ an invalid port is specified in the URL.  See section
 normalization (as used by the IDNA encoding) into any of <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>,
 <code class="docutils literal notranslate"><span class="pre">#</span></code>, <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, or <code class="docutils literal notranslate"><span class="pre">:</span></code> will raise a <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>. If the URL is
 decomposed before parsing, no error will be raised.</p>
-<p>Following the <a class="reference external" href="https://url.spec.whatwg.org/#concept-basic-url-parser">WHATWG spec</a> that updates RFC 3986, ASCII newline
-<code class="docutils literal notranslate"><span class="pre">\n</span></code>, <code class="docutils literal notranslate"><span class="pre">\r</span></code> and tab <code class="docutils literal notranslate"><span class="pre">\t</span></code> characters are stripped from the URL.</p>
+<p>Following some of the <a class="reference external" href="https://url.spec.whatwg.org/#concept-basic-url-parser">WHATWG spec</a> that updates RFC 3986, leading C0
+control and space characters are stripped from the URL. <code class="docutils literal notranslate"><span class="pre">\n</span></code>,
+<code class="docutils literal notranslate"><span class="pre">\r</span></code> and tab <code class="docutils literal notranslate"><span class="pre">\t</span></code> characters are removed from the URL at any position.</p>
+<div class="admonition warning">
+<p class="admonition-title">Uyarı</p>
+<p><a class="reference internal" href="#urllib.parse.urlsplit" title="urllib.parse.urlsplit"><code class="xref py py-func docutils literal notranslate"><span class="pre">urlsplit()</span></code></a> does not perform validation.  See <a class="reference internal" href="#url-parsing-security"><span class="std std-ref">URL parsing
+security</span></a> for details.</p>
+</div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.6 sürümünde değişti: </span>Out-of-range port numbers now raise <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>, instead of
 returning <a class="reference internal" href="constants.html#None" title="None"><code class="xref py py-const docutils literal notranslate"><span class="pre">None</span></code></a>.</p>
@@ -586,6 +598,9 @@ now raise <a class="reference internal" href="exceptions.html#ValueError" title=
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.10 sürümünde değişti: </span>ASCII newline and tab characters are stripped from the URL.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">3.11.4 sürümünde değişti: </span>Leading WHATWG C0 control and space characters are stripped from the URL.</p>
 </div>
 </dd></dl>
 
@@ -677,8 +692,31 @@ without changes.</p>
 </dd></dl>
 
 </section>
+<section id="url-parsing-security">
+<span id="id1"></span><h2>URL parsing security<a class="headerlink" href="#url-parsing-security" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="#urllib.parse.urlsplit" title="urllib.parse.urlsplit"><code class="xref py py-func docutils literal notranslate"><span class="pre">urlsplit()</span></code></a> and <a class="reference internal" href="#urllib.parse.urlparse" title="urllib.parse.urlparse"><code class="xref py py-func docutils literal notranslate"><span class="pre">urlparse()</span></code></a> APIs do not perform <strong>validation</strong> of
+inputs.  They may not raise errors on inputs that other applications consider
+invalid.  They may also succeed on some inputs that might not be considered
+URLs elsewhere.  Their purpose is for practical functionality rather than
+purity.</p>
+<p>Instead of raising an exception on unusual input, they may instead return some
+component parts as empty strings. Or components may contain more than perhaps
+they should.</p>
+<p>We recommend that users of these APIs where the values may be used anywhere
+with security implications code defensively. Do some verification within your
+code before trusting a returned component part.  Does that <code class="docutils literal notranslate"><span class="pre">scheme</span></code> make
+sense?  Is that a sensible <code class="docutils literal notranslate"><span class="pre">path</span></code>?  Is there anything strange about that
+<code class="docutils literal notranslate"><span class="pre">hostname</span></code>?  etc.</p>
+<p>What constitutes a URL is not universally well defined.  Different applications
+have different needs and desired constraints.  For instance the living <a class="reference external" href="https://url.spec.whatwg.org/#concept-basic-url-parser">WHATWG
+spec</a> describes what user facing web clients such as a web browser require.
+While <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a> is more general.  These functions incorporate some aspects of
+both, but cannot be claimed compliant with either.  The APIs and existing user
+code with expectations on specific behaviors predate both standards leading us
+to be very cautious about making API behavior changes.</p>
+</section>
 <section id="parsing-ascii-encoded-bytes">
-<span id="id1"></span><h2>Parsing ASCII Encoded Bytes<a class="headerlink" href="#parsing-ascii-encoded-bytes" title="Permalink to this heading">¶</a></h2>
+<span id="id2"></span><h2>Parsing ASCII Encoded Bytes<a class="headerlink" href="#parsing-ascii-encoded-bytes" title="Permalink to this heading">¶</a></h2>
 <p>The URL parsing functions were originally designed to operate on character
 strings only. In practice, it is useful to be able to manipulate properly
 quoted and encoded URLs as sequences of ASCII bytes. Accordingly, the
@@ -825,7 +863,7 @@ function is intended for quoting the path section of a URL. The optional
 quoted — its default value is <code class="docutils literal notranslate"><span class="pre">'/'</span></code>.</p>
 <p><em>string</em> may be either a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> or a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> object.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.7 sürümünde değişti: </span>Moved from <span class="target" id="index-5"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2396.html"><strong>RFC 2396</strong></a> to <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a> for quoting URL strings. “~” is now
+<p><span class="versionmodified changed">3.7 sürümünde değişti: </span>Moved from <span class="target" id="index-6"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2396.html"><strong>RFC 2396</strong></a> to <span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a> for quoting URL strings. “~” is now
 included in the set of unreserved characters.</p>
 </div>
 <p>The optional <em>encoding</em> and <em>errors</em> parameters specify how to deal with
@@ -943,23 +981,23 @@ string of a URL or data for a POST request.</p>
 <dt><a class="reference external" href="https://url.spec.whatwg.org/">WHATWG</a> -  URL Living standard</dt><dd><p>Working Group for the URL Standard that defines URLs, domains, IP addresses, the
 application/x-www-form-urlencoded format, and their API.</p>
 </dd>
-<dt><span class="target" id="index-7"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a> - Uniform Resource Identifiers</dt><dd><p>This is the current standard (STD66). Any changes to urllib.parse module
+<dt><span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc3986.html"><strong>RFC 3986</strong></a> - Uniform Resource Identifiers</dt><dd><p>This is the current standard (STD66). Any changes to urllib.parse module
 should conform to this. Certain deviations could be observed, which are
 mostly for backward compatibility purposes and for certain de-facto
 parsing requirements as commonly observed in major browsers.</p>
 </dd>
-<dt><span class="target" id="index-8"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2732.html"><strong>RFC 2732</strong></a> - Format for Literal IPv6 Addresses in URL’s.</dt><dd><p>This specifies the parsing requirements of IPv6 URLs.</p>
+<dt><span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2732.html"><strong>RFC 2732</strong></a> - Format for Literal IPv6 Addresses in URL’s.</dt><dd><p>This specifies the parsing requirements of IPv6 URLs.</p>
 </dd>
-<dt><span class="target" id="index-9"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2396.html"><strong>RFC 2396</strong></a> - Uniform Resource Identifiers (URI): Generic Syntax</dt><dd><p>Document describing the generic syntactic requirements for both Uniform Resource
+<dt><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2396.html"><strong>RFC 2396</strong></a> - Uniform Resource Identifiers (URI): Generic Syntax</dt><dd><p>Document describing the generic syntactic requirements for both Uniform Resource
 Names (URNs) and Uniform Resource Locators (URLs).</p>
 </dd>
-<dt><span class="target" id="index-10"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2368.html"><strong>RFC 2368</strong></a> - The mailto URL scheme.</dt><dd><p>Parsing requirements for mailto URL schemes.</p>
+<dt><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc2368.html"><strong>RFC 2368</strong></a> - The mailto URL scheme.</dt><dd><p>Parsing requirements for mailto URL schemes.</p>
 </dd>
-<dt><span class="target" id="index-11"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1808.html"><strong>RFC 1808</strong></a> - Relative Uniform Resource Locators</dt><dd><p>This Request For Comments includes the rules for joining an absolute and a
+<dt><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1808.html"><strong>RFC 1808</strong></a> - Relative Uniform Resource Locators</dt><dd><p>This Request For Comments includes the rules for joining an absolute and a
 relative URL, including a fair number of “Abnormal Examples” which govern the
 treatment of border cases.</p>
 </dd>
-<dt><span class="target" id="index-12"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1738.html"><strong>RFC 1738</strong></a> - Uniform Resource Locators (URL)</dt><dd><p>This specifies the formal syntax and semantics of absolute URLs.</p>
+<dt><span class="target" id="index-13"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc1738.html"><strong>RFC 1738</strong></a> - Uniform Resource Locators (URL)</dt><dd><p>This specifies the formal syntax and semantics of absolute URLs.</p>
 </dd>
 </dl>
 </div>
@@ -989,6 +1027,7 @@ treatment of border cases.</p>
 <li><a class="reference internal" href="#urllib.parse.unwrap"><code class="docutils literal notranslate"><span class="pre">unwrap()</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#url-parsing-security">URL parsing security</a></li>
 <li><a class="reference internal" href="#parsing-ascii-encoded-bytes">Parsing ASCII Encoded Bytes</a></li>
 <li><a class="reference internal" href="#structured-parse-results">Structured Parse Results</a><ul>
 <li><a class="reference internal" href="#urllib.parse.urllib.parse.SplitResult.geturl"><code class="docutils literal notranslate"><span class="pre">urllib.parse.SplitResult.geturl()</span></code></a></li>
@@ -1070,7 +1109,7 @@ treatment of border cases.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1114,11 +1153,11 @@ treatment of border cases.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

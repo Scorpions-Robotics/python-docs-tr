@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="The functions in this chapter will let you execute Python source code given in a file or a buffer, but they will not let you interact in a more detailed way with the interpreter. Several of these f..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>The Very High Level Layer &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Very High Level Layer &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -145,7 +145,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -185,11 +185,11 @@
 file or a buffer, but they will not let you interact in a more detailed way with
 the interpreter.</p>
 <p>Several of these functions accept a start symbol from the grammar as a
-parameter.  The available start symbols are <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_eval_input</span></code>,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">Py_file_input</span></code>, and <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_single_input</span></code>.  These are described
+parameter.  The available start symbols are <a class="reference internal" href="#c.Py_eval_input" title="Py_eval_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_eval_input</span></code></a>,
+<a class="reference internal" href="#c.Py_file_input" title="Py_file_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_file_input</span></code></a>, and <a class="reference internal" href="#c.Py_single_input" title="Py_single_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_single_input</span></code></a>.  These are described
 following the functions which accept them as parameters.</p>
 <p>Note also that several of these functions take <span class="c-expr sig sig-inline c"><span class="n">FILE</span><span class="p">*</span></span> parameters.  One
-particular issue which needs to be handled carefully is that the <span class="c-expr sig sig-inline c"><span class="n">FILE</span></span>
+particular issue which needs to be handled carefully is that the <code class="xref c c-type docutils literal notranslate"><span class="pre">FILE</span></code>
 structure for different C libraries can be different and incompatible.  Under
 Windows (at least), it is possible for dynamically linked extensions to actually
 use different libraries, so care should be taken that <span class="c-expr sig sig-inline c"><span class="n">FILE</span><span class="p">*</span></span> parameters
@@ -442,8 +442,8 @@ returns.</p>
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">Py_CompileStringObject</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">str</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">filename</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">start</span></span>, <a class="reference internal" href="#c.PyCompilerFlags" title="PyCompilerFlags"><span class="n"><span class="pre">PyCompilerFlags</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">flags</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">optimize</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_CompileStringObject" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="refcount">Return value: New reference.</em><p>Parse and compile the Python source code in <em>str</em>, returning the resulting code
 object.  The start token is given by <em>start</em>; this can be used to constrain the
-code which can be compiled and should be <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_eval_input</span></code>,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">Py_file_input</span></code>, or <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_single_input</span></code>.  The filename specified by
+code which can be compiled and should be <a class="reference internal" href="#c.Py_eval_input" title="Py_eval_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_eval_input</span></code></a>,
+<a class="reference internal" href="#c.Py_file_input" title="Py_file_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_file_input</span></code></a>, or <a class="reference internal" href="#c.Py_single_input" title="Py_single_input"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_single_input</span></code></a>.  The filename specified by
 <em>filename</em> is used to construct the code object and may appear in tracebacks or
 <a class="reference internal" href="../library/exceptions.html#SyntaxError" title="SyntaxError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SyntaxError</span></code></a> exception messages.  This returns <code class="docutils literal notranslate"><span class="pre">NULL</span></code> if the code
 cannot be parsed or compiled.</p>
@@ -543,7 +543,7 @@ interpreter loop.</p>
 being compiled, it is passed as <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">flags</span></code>, and in cases where code is being
 executed, it is passed as <code class="docutils literal notranslate"><span class="pre">PyCompilerFlags</span> <span class="pre">*flags</span></code>.  In this case, <code class="docutils literal notranslate"><span class="pre">from</span>
 <span class="pre">__future__</span> <span class="pre">import</span></code> can modify <em>flags</em>.</p>
-<p>Whenever <code class="docutils literal notranslate"><span class="pre">PyCompilerFlags</span> <span class="pre">*flags</span></code> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <code class="xref py py-attr docutils literal notranslate"><span class="pre">cf_flags</span></code> is treated as
+<p>Whenever <code class="docutils literal notranslate"><span class="pre">PyCompilerFlags</span> <span class="pre">*flags</span></code> is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <a class="reference internal" href="#c.PyCompilerFlags.cf_flags" title="PyCompilerFlags.cf_flags"><code class="xref c c-member docutils literal notranslate"><span class="pre">cf_flags</span></code></a> is treated as
 equal to <code class="docutils literal notranslate"><span class="pre">0</span></code>, and any modification due to <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">__future__</span> <span class="pre">import</span></code> is
 discarded.</p>
 <dl class="c member">
@@ -558,7 +558,7 @@ discarded.</p>
 <dd><p><em>cf_feature_version</em> is the minor Python version. It should be
 initialized to <code class="docutils literal notranslate"><span class="pre">PY_MINOR_VERSION</span></code>.</p>
 <p>The field is ignored by default, it is used if and only if
-<code class="docutils literal notranslate"><span class="pre">PyCF_ONLY_AST</span></code> flag is set in <em>cf_flags</em>.</p>
+<code class="docutils literal notranslate"><span class="pre">PyCF_ONLY_AST</span></code> flag is set in <a class="reference internal" href="#c.PyCompilerFlags.cf_flags" title="PyCompilerFlags.cf_flags"><code class="xref c c-member docutils literal notranslate"><span class="pre">cf_flags</span></code></a>.</p>
 </dd></dl>
 
 <div class="versionchanged">
@@ -637,7 +637,7 @@ interpreted as “true division” according to <span class="target" id="index-3
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -680,11 +680,11 @@ interpreted as “true division” according to <span class="target" id="index-3
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

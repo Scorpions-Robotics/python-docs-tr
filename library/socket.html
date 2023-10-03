@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/socket.py This module provides access to the BSD socket interface. It is available on all modern Unix systems, Windows, MacOS, and probably additional platforms. Availability: not ..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>socket — Low-level networking interface &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>socket — Low-level networking interface &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -303,7 +303,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1336,7 +1336,7 @@ interface. <a class="reference internal" href="#socket.gethostbyname" title="soc
 <dt class="sig sig-object py" id="socket.gethostbyname_ex">
 <span class="sig-prename descclassname"><span class="pre">socket.</span></span><span class="sig-name descname"><span class="pre">gethostbyname_ex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hostname</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#socket.gethostbyname_ex" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Translate a host name to IPv4 address format, extended interface. Return a
-triple <code class="docutils literal notranslate"><span class="pre">(hostname,</span> <span class="pre">aliaslist,</span> <span class="pre">ipaddrlist)</span></code> where <em>hostname</em> is the host’s
+3-tuple <code class="docutils literal notranslate"><span class="pre">(hostname,</span> <span class="pre">aliaslist,</span> <span class="pre">ipaddrlist)</span></code> where <em>hostname</em> is the host’s
 primary host name, <em>aliaslist</em> is a (possibly
 empty) list of alternative host names for the same address, and <em>ipaddrlist</em> is
 a list of IPv4 addresses for the same interface on the same host (often but not
@@ -1365,7 +1365,7 @@ name; use <a class="reference internal" href="#socket.getfqdn" title="socket.get
 <dl class="py function">
 <dt class="sig sig-object py" id="socket.gethostbyaddr">
 <span class="sig-prename descclassname"><span class="pre">socket.</span></span><span class="sig-name descname"><span class="pre">gethostbyaddr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip_address</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#socket.gethostbyaddr" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return a triple <code class="docutils literal notranslate"><span class="pre">(hostname,</span> <span class="pre">aliaslist,</span> <span class="pre">ipaddrlist)</span></code> where <em>hostname</em> is the
+<dd><p>Return a 3-tuple <code class="docutils literal notranslate"><span class="pre">(hostname,</span> <span class="pre">aliaslist,</span> <span class="pre">ipaddrlist)</span></code> where <em>hostname</em> is the
 primary host name responding to the given <em>ip_address</em>, <em>aliaslist</em> is a
 (possibly empty) list of alternative host names for the same address, and
 <em>ipaddrlist</em> is a list of IPv4/v6 addresses for the same interface on the same
@@ -1919,7 +1919,7 @@ to decode C structures encoded as byte strings).</p>
 <span class="sig-prename descclassname"><span class="pre">socket.</span></span><span class="sig-name descname"><span class="pre">getblocking</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.socket.getblocking" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if socket is in blocking mode, <code class="docutils literal notranslate"><span class="pre">False</span></code> if in
 non-blocking.</p>
-<p>This is equivalent to checking <code class="docutils literal notranslate"><span class="pre">socket.gettimeout()</span> <span class="pre">==</span> <span class="pre">0</span></code>.</p>
+<p>This is equivalent to checking <code class="docutils literal notranslate"><span class="pre">socket.gettimeout()</span> <span class="pre">!=</span> <span class="pre">0</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.7 sürümünde geldi.</span></p>
 </div>
@@ -2187,7 +2187,7 @@ either all data has been sent or an error occurs.  <code class="docutils literal
 success.  On error, an exception is raised, and there is no way to determine how
 much data, if any, was successfully sent.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.5 sürümünde değişti: </span>The socket timeout is no more reset each time data is sent successfully.
+<p><span class="versionmodified changed">3.5 sürümünde değişti: </span>The socket timeout is no longer reset each time data is sent successfully.
 The socket timeout is now the maximum total duration to send all data.</p>
 </div>
 <div class="versionchanged">
@@ -2430,8 +2430,8 @@ can be changed by calling <a class="reference internal" href="#socket.setdefault
 an error (such as connection timed out).</p></li>
 <li><p>In <em>non-blocking mode</em>, operations fail (with an error that is unfortunately
 system-dependent) if they cannot be completed immediately: functions from the
-<a class="reference internal" href="select.html#module-select" title="select: Wait for I/O completion on multiple streams."><code class="xref py py-mod docutils literal notranslate"><span class="pre">select</span></code></a> can be used to know when and whether a socket is available for
-reading or writing.</p></li>
+<a class="reference internal" href="select.html#module-select" title="select: Wait for I/O completion on multiple streams."><code class="xref py py-mod docutils literal notranslate"><span class="pre">select</span></code></a> module can be used to know when and whether a socket is available
+for reading or writing.</p></li>
 <li><p>In <em>timeout mode</em>, operations fail if they cannot be completed within the
 timeout specified for the socket (they raise a <a class="reference internal" href="#socket.timeout" title="socket.timeout"><code class="xref py py-exc docutils literal notranslate"><span class="pre">timeout</span></code></a> exception)
 or if the system returns an error.</p></li>
@@ -2612,7 +2612,7 @@ manager protocol instead, open a socket with:</p>
 </pre></div>
 </div>
 <p>After binding (<code class="xref py py-const docutils literal notranslate"><span class="pre">CAN_RAW</span></code>) or connecting (<a class="reference internal" href="#socket.CAN_BCM" title="socket.CAN_BCM"><code class="xref py py-const docutils literal notranslate"><span class="pre">CAN_BCM</span></code></a>) the socket, you
-can use the <a class="reference internal" href="#socket.socket.send" title="socket.socket.send"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.send()</span></code></a>, and the <a class="reference internal" href="#socket.socket.recv" title="socket.socket.recv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.recv()</span></code></a> operations (and
+can use the <a class="reference internal" href="#socket.socket.send" title="socket.socket.send"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.send()</span></code></a> and <a class="reference internal" href="#socket.socket.recv" title="socket.socket.recv"><code class="xref py py-meth docutils literal notranslate"><span class="pre">socket.recv()</span></code></a> operations (and
 their counterparts) on the socket object as usual.</p>
 <p>This last example might require special privileges:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">socket</span>
@@ -2662,7 +2662,7 @@ lead to this error:</p>
 <p>This is because the previous execution has left the socket in a <code class="docutils literal notranslate"><span class="pre">TIME_WAIT</span></code>
 state, and can’t be immediately reused.</p>
 <p>There is a <a class="reference internal" href="#module-socket" title="socket: Low-level networking interface."><code class="xref py py-mod docutils literal notranslate"><span class="pre">socket</span></code></a> flag to set, in order to prevent this,
-<code class="xref py py-data docutils literal notranslate"><span class="pre">socket.SO_REUSEADDR</span></code>:</p>
+<code class="xref py py-const docutils literal notranslate"><span class="pre">socket.SO_REUSEADDR</span></code>:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">((</span><span class="n">HOST</span><span class="p">,</span> <span class="n">PORT</span><span class="p">))</span>
@@ -2908,7 +2908,7 @@ want to refer to <span class="target" id="index-15"></span><a class="rfc referen
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -2952,11 +2952,11 @@ want to refer to <span class="target" id="index-15"></span><a class="rfc referen
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/types.py This module defines utility functions to assist in dynamic creation of new types. It also defines names for some object types that are used by the standard Python interpre..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>types — Dynamic type creation and names for built-in types &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>types — Dynamic type creation and names for built-in types &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -214,7 +214,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -316,9 +316,9 @@ used when the metaclass does not have a <code class="docutils literal notranslat
 <dd><p>Resolve MRO entries dynamically as specified by <span class="target" id="index-1"></span><a class="pep reference external" href="https://peps.python.org/pep-0560/"><strong>PEP 560</strong></a>.</p>
 <p>This function looks for items in <em>bases</em> that are not instances of
 <a class="reference internal" href="functions.html#type" title="type"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>, and returns a tuple where each such object that has
-an <code class="docutils literal notranslate"><span class="pre">__mro_entries__</span></code> method is replaced with an unpacked result of
+an <a class="reference internal" href="../reference/datamodel.html#object.__mro_entries__" title="object.__mro_entries__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__mro_entries__()</span></code></a> method is replaced with an unpacked result of
 calling this method.  If a <em>bases</em> item is an instance of <a class="reference internal" href="functions.html#type" title="type"><code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></a>,
-or it doesn’t have an <code class="docutils literal notranslate"><span class="pre">__mro_entries__</span></code> method, then it is included in
+or it doesn’t have an <code class="xref py py-meth docutils literal notranslate"><span class="pre">__mro_entries__()</span></code> method, then it is included in
 the return tuple unchanged.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.7 sürümünde geldi.</span></p>
@@ -588,6 +588,15 @@ length 1) of types which parameterize <code class="docutils literal notranslate"
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.9.2 sürümünde değişti: </span>This type can now be subclassed.</p>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">Ayrıca bakınız</p>
+<dl class="simple">
+<dt><a class="reference internal" href="stdtypes.html#types-genericalias"><span class="std std-ref">Generic Alias Types</span></a></dt><dd><p>In-depth documentation on instances of <code class="xref py py-class docutils literal notranslate"><span class="pre">types.GenericAlias</span></code></p>
+</dd>
+<dt><span class="target" id="index-4"></span><a class="pep reference external" href="https://peps.python.org/pep-0585/"><strong>PEP 585</strong></a> - Type Hinting Generics In Standard Collections</dt><dd><p>Introducing the <code class="xref py py-class docutils literal notranslate"><span class="pre">types.GenericAlias</span></code> class</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py class">
@@ -649,7 +658,7 @@ changes.</p>
 <p><span class="versionmodified added">3.3 sürümünde geldi.</span></p>
 </div>
 <div class="versionchanged">
-<p><span class="versionmodified changed">3.9 sürümünde değişti: </span>Updated to support the new union (<code class="docutils literal notranslate"><span class="pre">|</span></code>) operator from <span class="target" id="index-4"></span><a class="pep reference external" href="https://peps.python.org/pep-0584/"><strong>PEP 584</strong></a>, which
+<p><span class="versionmodified changed">3.9 sürümünde değişti: </span>Updated to support the new union (<code class="docutils literal notranslate"><span class="pre">|</span></code>) operator from <span class="target" id="index-5"></span><a class="pep reference external" href="https://peps.python.org/pep-0584/"><strong>PEP 584</strong></a>, which
 simply delegates to the underlying mapping.</p>
 </div>
 <dl class="describe">
@@ -932,7 +941,7 @@ of objects will be returned as is.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -976,11 +985,11 @@ of objects will be returned as is.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Author, A.M. Kuchling,. This article explains the new features in Python 2.5. The final release of Python 2.5 is scheduled for August 2006; PEP 356 describes the planned release schedule. Python 2...." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New in Python 2.5 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New in Python 2.5 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -188,7 +188,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -1044,7 +1044,7 @@ arguments and returns an integer giving the slice index to use.  For example:</p
 <p>The return value must be either a Python integer or long integer. The
 interpreter will check that the type returned is correct, and raises a
 <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> if this requirement isn’t met.</p>
-<p>A corresponding <code class="xref py py-attr docutils literal notranslate"><span class="pre">nb_index</span></code> slot was added to the C-level
+<p>A corresponding <a class="reference internal" href="../c-api/typeobj.html#c.PyNumberMethods.nb_index" title="PyNumberMethods.nb_index"><code class="xref c c-member docutils literal notranslate"><span class="pre">nb_index</span></code></a> slot was added to the C-level
 <a class="reference internal" href="../c-api/typeobj.html#c.PyNumberMethods" title="PyNumberMethods"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyNumberMethods</span></code></a> structure to let C extensions implement this protocol.
 <code class="docutils literal notranslate"><span class="pre">PyNumber_Index(obj)</span></code> can be used in extension code to call the
 <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> function and retrieve its result.</p>
@@ -1464,10 +1464,10 @@ variable now defaults to true, meaning that <a class="reference internal" href="
 values as floats.  (This doesn’t necessarily mean that <a class="reference internal" href="../library/os.html#os.stat" title="os.stat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.stat()</span></code></a> will
 return times that are precise to fractions of a second; not all systems support
 such precision.)</p>
-<p>Constants named <a class="reference internal" href="../library/os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-attr docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a>, <a class="reference internal" href="../library/os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-attr docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a>, and
-<a class="reference internal" href="../library/os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-attr docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a> have been added; these are the parameters to the
+<p>Constants named <a class="reference internal" href="../library/os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a>, <a class="reference internal" href="../library/os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a>, and
+<a class="reference internal" href="../library/os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a> have been added; these are the parameters to the
 <a class="reference internal" href="../library/os.html#os.lseek" title="os.lseek"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.lseek()</span></code></a> function.  Two new constants for locking are
-<a class="reference internal" href="../library/os.html#os.O_SHLOCK" title="os.O_SHLOCK"><code class="xref py py-attr docutils literal notranslate"><span class="pre">os.O_SHLOCK</span></code></a> and <a class="reference internal" href="../library/os.html#os.O_EXLOCK" title="os.O_EXLOCK"><code class="xref py py-attr docutils literal notranslate"><span class="pre">os.O_EXLOCK</span></code></a>.</p>
+<a class="reference internal" href="../library/os.html#os.O_SHLOCK" title="os.O_SHLOCK"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_SHLOCK</span></code></a> and <a class="reference internal" href="../library/os.html#os.O_EXLOCK" title="os.O_EXLOCK"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_EXLOCK</span></code></a>.</p>
 <p>Two new functions, <code class="xref py py-func docutils literal notranslate"><span class="pre">wait3()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">wait4()</span></code>, were added.  They’re similar
 the <code class="xref py py-func docutils literal notranslate"><span class="pre">waitpid()</span></code> function which waits for a child process to exit and returns
 a tuple of the process ID and its exit status, but <code class="xref py py-func docutils literal notranslate"><span class="pre">wait3()</span></code> and
@@ -1590,7 +1590,7 @@ Windows, POSIX threading, and OS/2 all do. (Contributed by Andrew MacIntyre.)</p
 </li>
 <li><p>The <a class="reference internal" href="../library/unicodedata.html#module-unicodedata" title="unicodedata: Access the Unicode Database."><code class="xref py py-mod docutils literal notranslate"><span class="pre">unicodedata</span></code></a> module has been updated to use version 4.1.0 of the
 Unicode character database.  Version 3.2.0 is required  by some specifications,
-so it’s still available as  <a class="reference internal" href="../library/unicodedata.html#unicodedata.ucd_3_2_0" title="unicodedata.ucd_3_2_0"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unicodedata.ucd_3_2_0</span></code></a>.</p></li>
+so it’s still available as  <a class="reference internal" href="../library/unicodedata.html#unicodedata.ucd_3_2_0" title="unicodedata.ucd_3_2_0"><code class="xref py py-data docutils literal notranslate"><span class="pre">unicodedata.ucd_3_2_0</span></code></a>.</p></li>
 <li><p>New module: the  <a class="reference internal" href="../library/uuid.html#module-uuid" title="uuid: UUID objects (universally unique identifiers) according to RFC 4122"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uuid</span></code></a> module generates  universally unique identifiers
 (UUIDs) according to <span class="target" id="index-22"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4122.html"><strong>RFC 4122</strong></a>.  The RFC defines several different UUID
 versions that are generated from a starting string, from system properties, or
@@ -2079,8 +2079,8 @@ raw memory, while <a class="reference internal" href="../c-api/memory.html#c.PyO
 creating Python objects.</p>
 <p>Previously these different families all reduced to the platform’s
 <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> and <code class="xref c c-func docutils literal notranslate"><span class="pre">free()</span></code> functions.  This meant  it didn’t matter if
-you got things wrong and allocated memory with the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyMem()</span></code> function but
-freed it with the <a class="reference internal" href="../c-api/structures.html#c.PyObject" title="PyObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject()</span></code></a> function.  With 2.5’s changes to obmalloc,
+you got things wrong and allocated memory with the <code class="docutils literal notranslate"><span class="pre">PyMem</span></code> function but
+freed it with the <code class="docutils literal notranslate"><span class="pre">PyObject</span></code> function.  With 2.5’s changes to obmalloc,
 these families now do different things and mismatches will probably result in a
 segfault.  You should carefully test your C extension modules with Python 2.5.</p>
 </li>
@@ -2098,7 +2098,7 @@ current file so that a faster calling convention can be used.
 <code class="docutils literal notranslate"><span class="pre">Py_LOCAL(type)</span></code> declares the function as returning a value of the
 specified <em>type</em> and uses a fast-calling qualifier.
 <code class="docutils literal notranslate"><span class="pre">Py_LOCAL_INLINE(type)</span></code> does the same thing and also requests the
-function be inlined.  If <code class="xref c c-func docutils literal notranslate"><span class="pre">PY_LOCAL_AGGRESSIVE()</span></code> is defined before
+function be inlined.  If macro <code class="xref c c-macro docutils literal notranslate"><span class="pre">PY_LOCAL_AGGRESSIVE</span></code> is defined before
 <code class="file docutils literal notranslate"><span class="pre">python.h</span></code> is included, a set of more aggressive optimizations are enabled
 for the module; you should benchmark the results to find out if these
 optimizations actually make the code faster.  (Contributed by Fredrik Lundh at
@@ -2296,7 +2296,7 @@ Rovner, Scott Weikart, Barry Warsaw, Thomas Wouters.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -2339,11 +2339,11 @@ Rovner, Scott Weikart, Barry Warsaw, Thomas Wouters.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

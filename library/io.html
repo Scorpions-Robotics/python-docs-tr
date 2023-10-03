@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/io.py Overview: The io module provides Python’s main facilities for dealing with various types of I/O. There are three main types of I/O: text I/O, binary I/O and raw I/O. These ar..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>io — Core tools for working with streams &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>io — Core tools for working with streams &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -204,6 +204,8 @@
 <li><a class="reference internal" href="#io.TextIOWrapper.line_buffering"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.line_buffering</span></code></a></li>
 <li><a class="reference internal" href="#io.TextIOWrapper.write_through"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.write_through</span></code></a></li>
 <li><a class="reference internal" href="#io.TextIOWrapper.reconfigure"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.reconfigure()</span></code></a></li>
+<li><a class="reference internal" href="#io.TextIOWrapper.seek"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.seek()</span></code></a></li>
+<li><a class="reference internal" href="#io.TextIOWrapper.tell"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.tell()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#io.StringIO"><code class="docutils literal notranslate"><span class="pre">StringIO</span></code></a><ul>
@@ -279,7 +281,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -332,9 +334,9 @@ also allow arbitrary random access (seeking forwards or backwards to any
 location), or only sequential access (for example in the case of a socket or
 pipe).</p>
 <p>All streams are careful about the type of data you give to them.  For example
-giving a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> object to the <code class="docutils literal notranslate"><span class="pre">write()</span></code> method of a binary stream
+giving a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> object to the <code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> method of a binary stream
 will raise a <a class="reference internal" href="exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>.  So will giving a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> object to the
-<code class="docutils literal notranslate"><span class="pre">write()</span></code> method of a text stream.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> method of a text stream.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.3 sürümünde değişti: </span>Operations that used to raise <a class="reference internal" href="exceptions.html#IOError" title="IOError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> now raise <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>, since
 <a class="reference internal" href="exceptions.html#IOError" title="IOError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> is now an alias of <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>.</p>
@@ -423,7 +425,7 @@ UTF-8 from locale-specific encoding.</p>
 <p><span class="versionmodified added">3.10 sürümünde geldi: </span>See <span class="target" id="index-2"></span><a class="pep reference external" href="https://peps.python.org/pep-0597/"><strong>PEP 597</strong></a> for more details.</p>
 </div>
 <p>To find where the default locale encoding is used, you can enable
-the <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">warn_default_encoding</span></code> command line option or set the
+the <a class="reference internal" href="../using/cmdline.html#cmdoption-X"><code class="xref std std-option docutils literal notranslate"><span class="pre">-X</span> <span class="pre">warn_default_encoding</span></code></a> command line option or set the
 <span class="target" id="index-3"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONWARNDEFAULTENCODING"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONWARNDEFAULTENCODING</span></code></a> environment variable, which will
 emit an <a class="reference internal" href="exceptions.html#EncodingWarning" title="EncodingWarning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EncodingWarning</span></code></a> when the default encoding is used.</p>
 <p>If you are providing an API that uses <a class="reference internal" href="functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> or
@@ -449,7 +451,7 @@ classes.  <a class="reference internal" href="functions.html#open" title="open">
 <span class="sig-prename descclassname"><span class="pre">io.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffering</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">closefd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opener</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.open" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>This is an alias for the builtin <a class="reference internal" href="functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> function.</p>
 <p class="audit-hook"><p>This function raises an <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">auditing event</span></a> <code class="docutils literal notranslate"><span class="pre">open</span></code> with
-arguments <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">flags</span></code>. The <code class="docutils literal notranslate"><span class="pre">mode</span></code> and <code class="docutils literal notranslate"><span class="pre">flags</span></code>
+arguments <em>path</em>, <em>mode</em> and <em>flags</em>. The <em>mode</em> and <em>flags</em>
 arguments may have been modified or inferred from the original call.</p>
 </p>
 </dd></dl>
@@ -459,9 +461,9 @@ arguments may have been modified or inferred from the original call.</p>
 <span class="sig-prename descclassname"><span class="pre">io.</span></span><span class="sig-name descname"><span class="pre">open_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.open_code" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Opens the provided file with mode <code class="docutils literal notranslate"><span class="pre">'rb'</span></code>. This function should be used
 when the intent is to treat the contents as executable code.</p>
-<p><code class="docutils literal notranslate"><span class="pre">path</span></code> should be a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> and an absolute path.</p>
+<p><em>path</em> should be a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> and an absolute path.</p>
 <p>The behavior of this function may be overridden by an earlier call to the
-<a class="reference internal" href="../c-api/file.html#c.PyFile_SetOpenCodeHook" title="PyFile_SetOpenCodeHook"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyFile_SetOpenCodeHook()</span></code></a>. However, assuming that <code class="docutils literal notranslate"><span class="pre">path</span></code> is a
+<a class="reference internal" href="../c-api/file.html#c.PyFile_SetOpenCodeHook" title="PyFile_SetOpenCodeHook"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyFile_SetOpenCodeHook()</span></code></a>. However, assuming that <em>path</em> is a
 <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> and an absolute path, <code class="docutils literal notranslate"><span class="pre">open_code(path)</span></code> should always behave
 the same as <code class="docutils literal notranslate"><span class="pre">open(path,</span> <span class="pre">'rb')</span></code>. Overriding the behavior is intended for
 additional validation or preprocessing of the file.</p>
@@ -535,7 +537,7 @@ standard stream implementations.</p>
 <p>The abstract base classes also provide default implementations of some
 methods in order to help implementation of concrete stream classes.  For
 example, <a class="reference internal" href="#io.BufferedIOBase" title="io.BufferedIOBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedIOBase</span></code></a> provides unoptimized implementations of
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">readinto()</span></code> and <a class="reference internal" href="#io.IOBase.readline" title="io.IOBase.readline"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readline()</span></code></a>.</p>
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">readinto()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">readline()</span></code>.</p>
 </div>
 </div></blockquote>
 <p>At the top of the I/O hierarchy is the abstract base class <a class="reference internal" href="#io.IOBase" title="io.IOBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">IOBase</span></code></a>.  It
@@ -677,8 +679,8 @@ a terminal/tty device).</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="io.IOBase.readable">
 <span class="sig-name descname"><span class="pre">readable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#io.IOBase.readable" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the stream can be read from.  If <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code>
-will raise <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>.</p>
+<dd><p>Return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the stream can be read from.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code> will raise <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -700,30 +702,30 @@ total size (in bytes/characters) of all lines so far exceeds <em>hint</em>.</p>
 <p><em>hint</em> values of <code class="docutils literal notranslate"><span class="pre">0</span></code> or less, as well as <code class="docutils literal notranslate"><span class="pre">None</span></code>, are treated as no
 hint.</p>
 <p>Note that it’s already possible to iterate on file objects using <code class="docutils literal notranslate"><span class="pre">for</span>
-<span class="pre">line</span> <span class="pre">in</span> <span class="pre">file:</span> <span class="pre">...</span></code> without calling <code class="docutils literal notranslate"><span class="pre">file.readlines()</span></code>.</p>
+<span class="pre">line</span> <span class="pre">in</span> <span class="pre">file:</span> <span class="pre">...</span></code> without calling <code class="xref py py-meth docutils literal notranslate"><span class="pre">file.readlines()</span></code>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="io.IOBase.seek">
-<span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">SEEK_SET</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.IOBase.seek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Change the stream position to the given byte <em>offset</em>.  <em>offset</em> is
-interpreted relative to the position indicated by <em>whence</em>.  The default
-value for <em>whence</em> is <code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_SET</span></code>.  Values for <em>whence</em> are:</p>
+<span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">os.SEEK_SET</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.IOBase.seek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Change the stream position to the given byte <em>offset</em>,
+interpreted relative to the position indicated by <em>whence</em>,
+and return the new absolute position.
+Values for <em>whence</em> are:</p>
 <ul class="simple">
-<li><p><code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_SET</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code> – start of the stream (the default);
+<li><p><a class="reference internal" href="os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a> or <code class="docutils literal notranslate"><span class="pre">0</span></code> – start of the stream (the default);
 <em>offset</em> should be zero or positive</p></li>
-<li><p><code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_CUR</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code> – current stream position; <em>offset</em> may
-be negative</p></li>
-<li><p><code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_END</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code> – end of the stream; <em>offset</em> is usually
-negative</p></li>
+<li><p><a class="reference internal" href="os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a> or <code class="docutils literal notranslate"><span class="pre">1</span></code> – current stream position;
+<em>offset</em> may be negative</p></li>
+<li><p><a class="reference internal" href="os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a> or <code class="docutils literal notranslate"><span class="pre">2</span></code> – end of the stream;
+<em>offset</em> is usually negative</p></li>
 </ul>
-<p>Return the new absolute position.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">3.1 sürümünde geldi: </span>The <code class="docutils literal notranslate"><span class="pre">SEEK_*</span></code> constants.</p>
+<p><span class="versionmodified added">3.1 sürümünde geldi: </span>The <code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_*</span></code> constants.</p>
 </div>
 <div class="versionadded">
 <p><span class="versionmodified added">3.3 sürümünde geldi: </span>Some operating systems could support additional values, like
-<code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_HOLE</span></code> or <code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_DATA</span></code>. The valid values
+<a class="reference internal" href="os.html#os.SEEK_HOLE" title="os.SEEK_HOLE"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_HOLE</span></code></a> or <a class="reference internal" href="os.html#os.SEEK_DATA" title="os.SEEK_DATA"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_DATA</span></code></a>. The valid values
 for a file could depend on it being open in text or binary mode.</p>
 </div>
 </dd></dl>
@@ -975,8 +977,9 @@ truncated when opened for writing. <a class="reference internal" href="exception
 it already exists when opened for creating. Opening a file for creating
 implies writing, so this mode behaves in a similar way to <code class="docutils literal notranslate"><span class="pre">'w'</span></code>. Add a
 <code class="docutils literal notranslate"><span class="pre">'+'</span></code> to the mode to allow simultaneous reading and writing.</p>
-<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code> (when called with a positive argument), <code class="xref py py-meth docutils literal notranslate"><span class="pre">readinto()</span></code>
-and <code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> methods on this class will only make one system call.</p>
+<p>The <a class="reference internal" href="#io.RawIOBase.read" title="io.RawIOBase.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a> (when called with a positive argument),
+<a class="reference internal" href="#io.RawIOBase.readinto" title="io.RawIOBase.readinto"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readinto()</span></code></a> and <a class="reference internal" href="#io.RawIOBase.write" title="io.RawIOBase.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> methods on this
+class will only make one system call.</p>
 <p>A custom opener can be used by passing a callable as <em>opener</em>. The underlying
 file descriptor for the file object is then obtained by calling <em>opener</em> with
 (<em>name</em>, <em>flags</em>). <em>opener</em> must return an open file descriptor (passing
@@ -1127,7 +1130,7 @@ object under various conditions, including:</p>
 <ul class="simple">
 <li><p>when the buffer gets too small for all pending data;</p></li>
 <li><p>when <a class="reference internal" href="#io.BufferedWriter.flush" title="io.BufferedWriter.flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flush()</span></code></a> is called;</p></li>
-<li><p>when a <code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code> is requested (for <a class="reference internal" href="#io.BufferedRandom" title="io.BufferedRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedRandom</span></code></a> objects);</p></li>
+<li><p>when a <a class="reference internal" href="#io.IOBase.seek" title="io.IOBase.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a> is requested (for <a class="reference internal" href="#io.BufferedRandom" title="io.BufferedRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedRandom</span></code></a> objects);</p></li>
 <li><p>when the <a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedWriter</span></code></a> object is closed or destroyed.</p></li>
 </ul>
 <p>The constructor creates a <a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedWriter</span></code></a> for the given writeable
@@ -1163,8 +1166,8 @@ and <a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWr
 in the first argument.  If the <em>buffer_size</em> is omitted it defaults to
 <a class="reference internal" href="#io.DEFAULT_BUFFER_SIZE" title="io.DEFAULT_BUFFER_SIZE"><code class="xref py py-data docutils literal notranslate"><span class="pre">DEFAULT_BUFFER_SIZE</span></code></a>.</p>
 <p><a class="reference internal" href="#io.BufferedRandom" title="io.BufferedRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedRandom</span></code></a> is capable of anything <a class="reference internal" href="#io.BufferedReader" title="io.BufferedReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedReader</span></code></a> or
-<a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedWriter</span></code></a> can do.  In addition, <code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">tell()</span></code>
-are guaranteed to be implemented.</p>
+<a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedWriter</span></code></a> can do.  In addition, <a class="reference internal" href="#io.IOBase.seek" title="io.IOBase.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a> and
+<a class="reference internal" href="#io.IOBase.tell" title="io.IOBase.tell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tell()</span></code></a> are guaranteed to be implemented.</p>
 </dd></dl>
 
 <dl class="py class">
@@ -1251,7 +1254,7 @@ raise <a class="reference internal" href="#io.UnsupportedOperation" title="io.Un
 <dl class="py method">
 <dt class="sig sig-object py" id="io.TextIOBase.readline">
 <span class="sig-name descname"><span class="pre">readline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.TextIOBase.readline" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Read until newline or EOF and return a single <code class="docutils literal notranslate"><span class="pre">str</span></code>.  If the stream is
+<dd><p>Read until newline or EOF and return a single <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>.  If the stream is
 already at EOF, an empty string is returned.</p>
 <p>If <em>size</em> is specified, at most <em>size</em> characters will be read.</p>
 </dd></dl>
@@ -1275,7 +1278,7 @@ are unsupported).</p></li>
 </ul>
 <p>Return the new absolute position as an opaque number.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">3.1 sürümünde geldi: </span>The <code class="docutils literal notranslate"><span class="pre">SEEK_*</span></code> constants.</p>
+<p><span class="versionmodified added">3.1 sürümünde geldi: </span>The <code class="xref py py-data docutils literal notranslate"><span class="pre">SEEK_*</span></code> constants.</p>
 </div>
 </dd></dl>
 
@@ -1335,9 +1338,9 @@ characters written are translated to the system default line separator,
 takes place.  If <em>newline</em> is any of the other legal values, any <code class="docutils literal notranslate"><span class="pre">'\n'</span></code>
 characters written are translated to the given string.</p></li>
 </ul>
-<p>If <em>line_buffering</em> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">flush()</span></code> is implied when a call to
+<p>If <em>line_buffering</em> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, <a class="reference internal" href="#io.IOBase.flush" title="io.IOBase.flush"><code class="xref py py-meth docutils literal notranslate"><span class="pre">flush()</span></code></a> is implied when a call to
 write contains a newline character or a carriage return.</p>
-<p>If <em>write_through</em> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, calls to <code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> are guaranteed
+<p>If <em>write_through</em> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, calls to <a class="reference internal" href="#io.BufferedIOBase.write" title="io.BufferedIOBase.write"><code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code></a> are guaranteed
 not to be buffered: any data written on the <a class="reference internal" href="#io.TextIOWrapper" title="io.TextIOWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextIOWrapper</span></code></a>
 object is immediately handled to its underlying binary <em>buffer</em>.</p>
 <div class="versionchanged">
@@ -1391,6 +1394,36 @@ new parameters.</p>
 </div>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="io.TextIOWrapper.seek">
+<span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cookie</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">whence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">os.SEEK_SET</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#io.TextIOWrapper.seek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Set the stream position.
+Return the new stream position as an <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>.</p>
+<p>Four operations are supported,
+given by the following argument combinations:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">seek(0,</span> <span class="pre">SEEK_SET)</span></code>: Rewind to the start of the stream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seek(cookie,</span> <span class="pre">SEEK_SET)</span></code>: Restore a previous position;
+<em>cookie</em> <strong>must be</strong> a number returned by <a class="reference internal" href="#io.TextIOWrapper.tell" title="io.TextIOWrapper.tell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tell()</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seek(0,</span> <span class="pre">SEEK_END)</span></code>: Fast-forward to the end of the stream.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seek(0,</span> <span class="pre">SEEK_CUR)</span></code>: Leave the current stream position unchanged.</p></li>
+</ul>
+<p>Any other argument combinations are invalid,
+and may raise exceptions.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ayrıca bakınız</p>
+<p><a class="reference internal" href="os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a>, <a class="reference internal" href="os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a>, and <a class="reference internal" href="os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="io.TextIOWrapper.tell">
+<span class="sig-name descname"><span class="pre">tell</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#io.TextIOWrapper.tell" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Return the stream position as an opaque number.
+The return value of <code class="xref py py-meth docutils literal notranslate"><span class="pre">tell()</span></code> can be given as input to <a class="reference internal" href="#io.TextIOWrapper.seek" title="io.TextIOWrapper.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a>,
+to restore a previous stream position.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1416,7 +1449,7 @@ newlines are written as <code class="docutils literal notranslate"><span class="
 <dl class="py method">
 <dt class="sig sig-object py" id="io.StringIO.getvalue">
 <span class="sig-name descname"><span class="pre">getvalue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#io.StringIO.getvalue" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return a <code class="docutils literal notranslate"><span class="pre">str</span></code> containing the entire contents of the buffer.
+<dd><p>Return a <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> containing the entire contents of the buffer.
 Newlines are decoded as if by <a class="reference internal" href="#io.TextIOBase.read" title="io.TextIOBase.read"><code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code></a>, although
 the stream position is not changed.</p>
 </dd></dl>
@@ -1469,7 +1502,7 @@ buffered I/O rather than unbuffered I/O for binary data.</p>
 binary I/O over the same storage, because it requires conversions between
 unicode and binary data using a character codec.  This can become noticeable
 handling huge amounts of text data like large log files.  Also,
-<code class="xref py py-meth docutils literal notranslate"><span class="pre">TextIOWrapper.tell()</span></code> and <code class="xref py py-meth docutils literal notranslate"><span class="pre">TextIOWrapper.seek()</span></code> are both quite slow
+<a class="reference internal" href="#io.TextIOBase.tell" title="io.TextIOBase.tell"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tell()</span></code></a> and <a class="reference internal" href="#io.TextIOBase.seek" title="io.TextIOBase.seek"><code class="xref py py-meth docutils literal notranslate"><span class="pre">seek()</span></code></a> are both quite slow
 due to the reconstruction algorithm used.</p>
 <p><a class="reference internal" href="#io.StringIO" title="io.StringIO"><code class="xref py py-class docutils literal notranslate"><span class="pre">StringIO</span></code></a>, however, is a native in-memory unicode container and will
 exhibit similar speed to <a class="reference internal" href="#io.BytesIO" title="io.BytesIO"><code class="xref py py-class docutils literal notranslate"><span class="pre">BytesIO</span></code></a>.</p>
@@ -1477,7 +1510,7 @@ exhibit similar speed to <a class="reference internal" href="#io.BytesIO" title=
 <section id="multi-threading">
 <h3>Multi-threading<a class="headerlink" href="#multi-threading" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="#io.FileIO" title="io.FileIO"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileIO</span></code></a> objects are thread-safe to the extent that the operating system
-calls (such as <code class="docutils literal notranslate"><span class="pre">read(2)</span></code> under Unix) they wrap are thread-safe too.</p>
+calls (such as <em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/read(2)">read(2)</a></em> under Unix) they wrap are thread-safe too.</p>
 <p>Binary buffered objects (instances of <a class="reference internal" href="#io.BufferedReader" title="io.BufferedReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedReader</span></code></a>,
 <a class="reference internal" href="#io.BufferedWriter" title="io.BufferedWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedWriter</span></code></a>, <a class="reference internal" href="#io.BufferedRandom" title="io.BufferedRandom"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedRandom</span></code></a> and <a class="reference internal" href="#io.BufferedRWPair" title="io.BufferedRWPair"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferedRWPair</span></code></a>)
 protect their internal structures using a lock; it is therefore safe to call
@@ -1619,6 +1652,8 @@ well.</p>
 <li><a class="reference internal" href="#io.TextIOWrapper.line_buffering"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.line_buffering</span></code></a></li>
 <li><a class="reference internal" href="#io.TextIOWrapper.write_through"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.write_through</span></code></a></li>
 <li><a class="reference internal" href="#io.TextIOWrapper.reconfigure"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.reconfigure()</span></code></a></li>
+<li><a class="reference internal" href="#io.TextIOWrapper.seek"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.seek()</span></code></a></li>
+<li><a class="reference internal" href="#io.TextIOWrapper.tell"><code class="docutils literal notranslate"><span class="pre">TextIOWrapper.tell()</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#io.StringIO"><code class="docutils literal notranslate"><span class="pre">StringIO</span></code></a><ul>
@@ -1697,7 +1732,7 @@ well.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1741,11 +1776,11 @@ well.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

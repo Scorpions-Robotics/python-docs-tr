@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/sqlite3/ SQLite is a C library that provides a lightweight disk-based database that doesn’t require a separate server process and allows accessing the database using a nonstandard ..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>sqlite3 — DB-API 2.0 interface for SQLite databases &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sqlite3 — DB-API 2.0 interface for SQLite databases &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -297,7 +297,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -373,7 +373,7 @@ It assumes a fundamental understanding of database concepts,
 including <a class="reference external" href="https://en.wikipedia.org/wiki/Cursor_(databases)">cursors</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Database_transaction">transactions</a>.</p>
 <p>First, we need to create a new database and open
 a database connection to allow <code class="xref py py-mod docutils literal notranslate"><span class="pre">sqlite3</span></code> to work with it.
-Call <a class="reference internal" href="#sqlite3.connect" title="sqlite3.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlite3.connect()</span></code></a> to to create a connection to
+Call <a class="reference internal" href="#sqlite3.connect" title="sqlite3.connect"><code class="xref py py-func docutils literal notranslate"><span class="pre">sqlite3.connect()</span></code></a> to create a connection to
 the database <code class="file docutils literal notranslate"><span class="pre">tutorial.db</span></code> in the current working directory,
 implicitly creating it if it does not exist:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sqlite3</span>
@@ -525,12 +525,13 @@ inserted data and retrieved values from it in multiple ways.</p>
 <dt class="field-odd">Parametreler<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>database</strong> (<a class="reference internal" href="../glossary.html#term-path-like-object"><span class="xref std std-term">path-like object</span></a>) – The path to the database file to be opened.
-Pass <code class="docutils literal notranslate"><span class="pre">&quot;:memory:&quot;</span></code> to open a connection to a database that is
-in RAM instead of on disk.</p></li>
+You can pass <code class="docutils literal notranslate"><span class="pre">&quot;:memory:&quot;</span></code> to create an <a class="reference external" href="https://sqlite.org/inmemorydb.html">SQLite database existing only
+in memory</a>, and open a connection
+to it.</p></li>
 <li><p><strong>timeout</strong> (<a class="reference internal" href="functions.html#float" title="float"><em>float</em></a>) – How many seconds the connection should wait before raising
-an exception, if the database is locked by another connection.
-If another connection opens a transaction to modify the database,
-it will be locked until that transaction is committed.
+an <a class="reference internal" href="#sqlite3.OperationalError" title="sqlite3.OperationalError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OperationalError</span></code></a> when a table is locked.
+If another connection opens a transaction to modify a table,
+that table will be locked until the transaction is committed.
 Default five seconds.</p></li>
 <li><p><strong>detect_types</strong> (<a class="reference internal" href="functions.html#int" title="int"><em>int</em></a>) – Control whether and how data types not
 <a class="reference internal" href="#sqlite3-types"><span class="std std-ref">natively supported by SQLite</span></a>
@@ -571,7 +572,7 @@ enabling various <a class="reference internal" href="#sqlite3-uri-tricks"><span 
 </ul>
 </dd>
 <dt class="field-even">Dönüş türü<span class="colon">:</span></dt>
-<dd class="field-even"><p><a class="reference internal" href="#sqlite3.Connection" title="sqlite3.Connection">Connection</a></p>
+<dd class="field-even"><p><a class="reference internal" href="#sqlite3.Connection" title="sqlite3.Connection"><em>Connection</em></a></p>
 </dd>
 </dl>
 <p class="audit-hook">Raises an <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">auditing event</span></a> <code class="docutils literal notranslate"><span class="pre">sqlite3.connect</span></code> with argument <code class="docutils literal notranslate"><span class="pre">database</span></code>.</p>
@@ -638,8 +639,8 @@ improved debug experience:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="sqlite3.register_adapter">
 <span class="sig-prename descclassname"><span class="pre">sqlite3.</span></span><span class="sig-name descname"><span class="pre">register_adapter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adapter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.register_adapter" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Register an <em>adapter</em> callable to adapt the Python type <em>type</em> into an
-SQLite type.
+<dd><p>Register an <em>adapter</em> <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> to adapt the Python type <em>type</em>
+into an SQLite type.
 The adapter is called with a Python object of type <em>type</em> as its sole
 argument, and must return a value of a
 <a class="reference internal" href="#sqlite3-types"><span class="std std-ref">type that SQLite natively understands</span></a>.</p>
@@ -648,7 +649,7 @@ argument, and must return a value of a
 <dl class="py function">
 <dt class="sig sig-object py" id="sqlite3.register_converter">
 <span class="sig-prename descclassname"><span class="pre">sqlite3.</span></span><span class="sig-name descname"><span class="pre">register_converter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">converter</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.register_converter" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Register the <em>converter</em> callable to convert SQLite objects of type
+<dd><p>Register the <em>converter</em> <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> to convert SQLite objects of type
 <em>typename</em> into a Python object of a specific type.
 The converter is invoked for all SQLite values of type <em>typename</em>;
 it is passed a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> object and should return an object of the
@@ -705,7 +706,7 @@ For example:</p>
 <span class="sig-prename descclassname"><span class="pre">sqlite3.</span></span><span class="sig-name descname"><span class="pre">SQLITE_DENY</span></span><a class="headerlink" href="#sqlite3.SQLITE_DENY" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dt class="sig sig-object py" id="sqlite3.SQLITE_IGNORE">
 <span class="sig-prename descclassname"><span class="pre">sqlite3.</span></span><span class="sig-name descname"><span class="pre">SQLITE_IGNORE</span></span><a class="headerlink" href="#sqlite3.SQLITE_IGNORE" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Flags that should be returned by the <em>authorizer_callback</em> callable
+<dd><p>Flags that should be returned by the <em>authorizer_callback</em> <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a>
 passed to <a class="reference internal" href="#sqlite3.Connection.set_authorizer" title="sqlite3.Connection.set_authorizer"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Connection.set_authorizer()</span></code></a>, to indicate whether:</p>
 <ul class="simple">
 <li><p>Access is allowed (<code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_OK</span></code>),</p></li>
@@ -838,8 +839,8 @@ and <a class="reference internal" href="#sqlite3-controlling-transactions"><span
 <span class="sig-name descname"><span class="pre">cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">Cursor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.cursor" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Create and return a <a class="reference internal" href="#sqlite3.Cursor" title="sqlite3.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cursor</span></code></a> object.
 The cursor method accepts a single optional parameter <em>factory</em>. If
-supplied, this must be a callable returning an instance of <a class="reference internal" href="#sqlite3.Cursor" title="sqlite3.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cursor</span></code></a>
-or its subclasses.</p>
+supplied, this must be a <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> returning
+an instance of <a class="reference internal" href="#sqlite3.Cursor" title="sqlite3.Cursor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cursor</span></code></a> or its subclasses.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -934,7 +935,7 @@ Return the new cursor object.</p>
 <li><p><strong>name</strong> (<a class="reference internal" href="stdtypes.html#str" title="str"><em>str</em></a>) – The name of the SQL function.</p></li>
 <li><p><strong>narg</strong> (<a class="reference internal" href="functions.html#int" title="int"><em>int</em></a>) – The number of arguments the SQL function can accept.
 If <code class="docutils literal notranslate"><span class="pre">-1</span></code>, it may take any number of arguments.</p></li>
-<li><p><strong>func</strong> (<a class="reference internal" href="../glossary.html#term-callback"><span class="xref std std-term">callback</span></a> | None) – A callable that is called when the SQL function is invoked.
+<li><p><strong>func</strong> (<a class="reference internal" href="../glossary.html#term-callback"><span class="xref std std-term">callback</span></a> | None) – A <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> that is called when the SQL function is invoked.
 The callable must return <a class="reference internal" href="#sqlite3-types"><span class="std std-ref">a type natively supported by SQLite</span></a>.
 Set to <code class="docutils literal notranslate"><span class="pre">None</span></code> to remove an existing SQL function.</p></li>
 <li><p><strong>deterministic</strong> (<a class="reference internal" href="functions.html#bool" title="bool"><em>bool</em></a>) – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the created SQL function is marked as
@@ -964,7 +965,7 @@ which allows SQLite to perform additional optimizations.</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sqlite3.Connection.create_aggregate">
-<span class="sig-name descname"><span class="pre">create_aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.create_aggregate" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_arg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aggregate_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.create_aggregate" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Create or remove a user-defined SQL aggregate function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parametreler<span class="colon">:</span></dt>
@@ -1091,7 +1092,7 @@ which does not support aggregate window functions.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sqlite3.Connection.create_collation">
-<span class="sig-name descname"><span class="pre">create_collation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.create_collation" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<span class="sig-name descname"><span class="pre">create_collation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.create_collation" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Create a collation named <em>name</em> using the collating function <em>callable</em>.
 <em>callable</em> is passed two <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">string</span></code></a> arguments,
 and it should return an <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">integer</span></code></a>:</p>
@@ -1132,15 +1133,16 @@ ASCII characters were allowed.</p>
 <span class="sig-name descname"><span class="pre">interrupt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.interrupt" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Call this method from a different thread to abort any queries that might
 be executing on the connection.
-Aborted queries will raise an exception.</p>
+Aborted queries will raise an <a class="reference internal" href="#sqlite3.OperationalError" title="sqlite3.OperationalError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OperationalError</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sqlite3.Connection.set_authorizer">
 <span class="sig-name descname"><span class="pre">set_authorizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">authorizer_callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.set_authorizer" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Register callable <em>authorizer_callback</em> to be invoked for each attempt to
-access a column of a table in the database. The callback should return
-one of <a class="reference internal" href="#sqlite3.SQLITE_OK" title="sqlite3.SQLITE_OK"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_OK</span></code></a>, <a class="reference internal" href="#sqlite3.SQLITE_DENY" title="sqlite3.SQLITE_DENY"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_DENY</span></code></a>, or <a class="reference internal" href="#sqlite3.SQLITE_IGNORE" title="sqlite3.SQLITE_IGNORE"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_IGNORE</span></code></a>
+<dd><p>Register <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> <em>authorizer_callback</em> to be invoked
+for each attempt to access a column of a table in the database.
+The callback should return one of <a class="reference internal" href="#sqlite3.SQLITE_OK" title="sqlite3.SQLITE_OK"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_OK</span></code></a>,
+<a class="reference internal" href="#sqlite3.SQLITE_DENY" title="sqlite3.SQLITE_DENY"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_DENY</span></code></a>, or <a class="reference internal" href="#sqlite3.SQLITE_IGNORE" title="sqlite3.SQLITE_IGNORE"><code class="xref py py-const docutils literal notranslate"><span class="pre">SQLITE_IGNORE</span></code></a>
 to signal how access to the column should be handled
 by the underlying SQLite library.</p>
 <p>The first argument to the callback signifies what kind of operation is to be
@@ -1161,7 +1163,7 @@ one. All necessary constants are available in the <code class="xref py py-mod do
 <dl class="py method">
 <dt class="sig sig-object py" id="sqlite3.Connection.set_progress_handler">
 <span class="sig-name descname"><span class="pre">set_progress_handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress_handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.set_progress_handler" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Register callable <em>progress_handler</em> to be invoked for every <em>n</em>
+<dd><p>Register <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> <em>progress_handler</em> to be invoked for every <em>n</em>
 instructions of the SQLite virtual machine. This is useful if you want to
 get called from SQLite during long-running operations, for example to update
 a GUI.</p>
@@ -1175,8 +1177,8 @@ exception.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sqlite3.Connection.set_trace_callback">
 <span class="sig-name descname"><span class="pre">set_trace_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trace_callback</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Connection.set_trace_callback" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Register callable <em>trace_callback</em> to be invoked for each SQL statement
-that is actually executed by the SQLite backend.</p>
+<dd><p>Register <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> <em>trace_callback</em> to be invoked
+for each SQL statement that is actually executed by the SQLite backend.</p>
 <p>The only argument passed to the callback is the statement (as
 <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) that is being executed. The return value of the callback is
 ignored. Note that the backend does not only run statements passed to the
@@ -1295,8 +1297,8 @@ or concurrently by the same connection.</p>
 If equal to or less than <code class="docutils literal notranslate"><span class="pre">0</span></code>,
 the entire database is copied in a single step.
 Defaults to <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p></li>
-<li><p><strong>progress</strong> (<a class="reference internal" href="../glossary.html#term-callback"><span class="xref std std-term">callback</span></a> | None) – If set to a callable, it is invoked with three integer arguments for
-every backup iteration:
+<li><p><strong>progress</strong> (<a class="reference internal" href="../glossary.html#term-callback"><span class="xref std std-term">callback</span></a> | None) – If set to a <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a>,
+it is invoked with three integer arguments for every backup iteration:
 the <em>status</em> of the last iteration,
 the <em>remaining</em> number of pages still to be copied,
 and the <em>total</em> number of pages.
@@ -1496,8 +1498,8 @@ meaning each row is returned as a <a class="reference internal" href="stdtypes.h
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sqlite3.Connection.text_factory">
 <span class="sig-name descname"><span class="pre">text_factory</span></span><a class="headerlink" href="#sqlite3.Connection.text_factory" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>A callable that accepts a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> parameter and returns a text
-representation of it.
+<dd><p>A <a class="reference internal" href="../glossary.html#term-callable"><span class="xref std std-term">callable</span></a> that accepts a <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> parameter
+and returns a text representation of it.
 The callable is invoked for SQLite values with the <code class="docutils literal notranslate"><span class="pre">TEXT</span></code> data type.
 By default, this attribute is set to <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>.
 If you want to return <code class="docutils literal notranslate"><span class="pre">bytes</span></code> instead, set <em>text_factory</em> to <code class="docutils literal notranslate"><span class="pre">bytes</span></code>.</p>
@@ -1595,12 +1597,12 @@ a transaction is implicitly opened before executing <em>sql</em>.</p>
 <span class="sig-name descname"><span class="pre">executemany</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Cursor.executemany" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>For every item in <em>parameters</em>,
 repeatedly execute the <a class="reference internal" href="#sqlite3-placeholders"><span class="std std-ref">parameterized</span></a>
-SQL statement <em>sql</em>.</p>
+<abbr title="Data Manipulation Language">DML</abbr> SQL statement <em>sql</em>.</p>
 <p>Uses the same implicit transaction handling as <a class="reference internal" href="#sqlite3.Cursor.execute" title="sqlite3.Cursor.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parametreler<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>sql</strong> (<a class="reference internal" href="stdtypes.html#str" title="str"><em>str</em></a>) – A single SQL <abbr title="Data Manipulation Language">DML</abbr> statement.</p></li>
+<li><p><strong>sql</strong> (<a class="reference internal" href="stdtypes.html#str" title="str"><em>str</em></a>) – A single SQL DML statement.</p></li>
 <li><p><strong>parameters</strong> (<a class="reference internal" href="../glossary.html#term-iterable"><span class="xref std std-term">iterable</span></a>) – An <span class="xref std std-term">iterable</span> of parameters to bind with
 the placeholders in <em>sql</em>.
 See <a class="reference internal" href="#sqlite3-placeholders"><span class="std std-ref">How to use placeholders to bind values in SQL queries</span></a>.</p></li>
@@ -1608,7 +1610,7 @@ See <a class="reference internal" href="#sqlite3-placeholders"><span class="std 
 </dd>
 <dt class="field-even">Harekete geçirir<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#sqlite3.ProgrammingError" title="sqlite3.ProgrammingError"><strong>ProgrammingError</strong></a> – If <em>sql</em> contains more than one SQL statement,
-or is not a DML statment.</p>
+or is not a DML statement.</p>
 </dd>
 </dl>
 <p>Example:</p>
@@ -1619,6 +1621,11 @@ or is not a DML statment.</p>
 <span class="c1"># cur is an sqlite3.Cursor object</span>
 <span class="n">cur</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO data VALUES(?)&quot;</span><span class="p">,</span> <span class="n">rows</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>Any resulting rows are discarded,
+including DML statements with <a class="reference external" href="https://www.sqlite.org/lang_returning.html">RETURNING clauses</a>.</p>
 </div>
 </dd></dl>
 
@@ -1754,7 +1761,10 @@ the value of <code class="docutils literal notranslate"><span class="pre">lastro
 <code class="docutils literal notranslate"><span class="pre">INSERT</span></code>, <code class="docutils literal notranslate"><span class="pre">UPDATE</span></code>, <code class="docutils literal notranslate"><span class="pre">DELETE</span></code>, and <code class="docutils literal notranslate"><span class="pre">REPLACE</span></code> statements;
 is <code class="docutils literal notranslate"><span class="pre">-1</span></code> for other statements,
 including <abbr title="Common Table Expression">CTE</abbr> queries.
-It is only updated by the <a class="reference internal" href="#sqlite3.Cursor.execute" title="sqlite3.Cursor.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> and <a class="reference internal" href="#sqlite3.Cursor.executemany" title="sqlite3.Cursor.executemany"><code class="xref py py-meth docutils literal notranslate"><span class="pre">executemany()</span></code></a> methods.</p>
+It is only updated by the <a class="reference internal" href="#sqlite3.Cursor.execute" title="sqlite3.Cursor.execute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">execute()</span></code></a> and <a class="reference internal" href="#sqlite3.Cursor.executemany" title="sqlite3.Cursor.executemany"><code class="xref py py-meth docutils literal notranslate"><span class="pre">executemany()</span></code></a> methods,
+after the statement has run to completion.
+This means that any resulting rows must be fetched in order for
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">rowcount</span></code> to be updated.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1872,9 +1882,9 @@ change the blob length.  Writing beyond the end of the blob will raise
 <dt class="sig sig-object py" id="sqlite3.Blob.seek">
 <span class="sig-name descname"><span class="pre">seek</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">os.SEEK_SET</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">/</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sqlite3.Blob.seek" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Set the current access position of the blob to <em>offset</em>.  The <em>origin</em>
-argument defaults to <a class="reference internal" href="os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a> (absolute blob positioning).
-Other values for <em>origin</em> are <a class="reference internal" href="os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a> (seek relative to the
-current position) and <a class="reference internal" href="os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a> (seek relative to the blob’s
+argument defaults to <a class="reference internal" href="os.html#os.SEEK_SET" title="os.SEEK_SET"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_SET</span></code></a> (absolute blob positioning).
+Other values for <em>origin</em> are <a class="reference internal" href="os.html#os.SEEK_CUR" title="os.SEEK_CUR"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_CUR</span></code></a> (seek relative to the
+current position) and <a class="reference internal" href="os.html#os.SEEK_END" title="os.SEEK_END"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.SEEK_END</span></code></a> (seek relative to the blob’s
 end).</p>
 </dd></dl>
 
@@ -2475,6 +2485,13 @@ assign it to the <code class="xref py py-attr docutils literal notranslate"><spa
 <span class="go">6378</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">FROM</span></code> clause can be omitted in the <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> statement, as in the
+above example. In such cases, SQLite returns a single row with columns
+defined by expressions, e.g. literals, with the given aliases
+<code class="docutils literal notranslate"><span class="pre">expr</span> <span class="pre">AS</span> <span class="pre">alias</span></code>.</p>
+</div>
 <p>You can create a custom <a class="reference internal" href="#sqlite3.Cursor.row_factory" title="sqlite3.Cursor.row_factory"><code class="xref py py-attr docutils literal notranslate"><span class="pre">row_factory</span></code></a>
 that returns each row as a <a class="reference internal" href="stdtypes.html#dict" title="dict"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a>, with column names mapped to values:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dict_factory</span><span class="p">(</span><span class="n">cursor</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
@@ -2767,7 +2784,7 @@ statements.  This is no longer the case.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -2811,11 +2828,11 @@ statements.  This is no longer the case.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

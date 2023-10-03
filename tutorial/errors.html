@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Şimdiye kadar hata mesajlarından fazla bahsedilmedi, ancak örnekleri denediyseniz muhtemelen bazılarını görmüşsünüzdür. (En azından) iki ayırt edilebilir hata türü vardır: söz dizimi hataları( synt..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>8. Hatalar ve Özel Durumlar &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. Hatalar ve Özel Durumlar &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -164,7 +164,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Öğreticisi</a> &#187;</li>
@@ -282,11 +282,15 @@
 </div>
 <p><em>except yan tümceleri</em> tersine çevrilmişse (ilk olarak <code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">B</span></code> ile) B, B, B şeklinde yazdırılacaktır — ilk eşleşen <em>except yan tümcesi</em> tetiklenir.</p>
 <p>Bir istisna oluştuğunda, istisnanın <em>argümanı</em> olarak da bilinen ilişkili bir değeri olabilir. Argümanın varlığı ve türü, istisna türüne bağlıdır.</p>
-<p><em>except yan tümcesi</em>, istisna adından sonra bir değişken belirtebilir.  Değişken, genellikle bağımsız değişkenleri depolayan bir <code class="docutils literal notranslate"><span class="pre">args</span></code> özniteliğine sahip istisna örneğine bağlıdır. Kolaylık sağlamak için, yerleşik istisna türleri <code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code>, <code class="docutils literal notranslate"><span class="pre">.args</span></code> öğesine açıkça erişmeden tüm argümanları yazdırmak için tanımlar.</p>
+<p>The <em>except clause</em> may specify a variable after the exception name.  The
+variable is bound to the exception instance which typically has an <code class="docutils literal notranslate"><span class="pre">args</span></code>
+attribute that stores the arguments. For convenience, builtin exception
+types define <a class="reference internal" href="../reference/datamodel.html#object.__str__" title="object.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a> to print all the arguments without explicitly
+accessing <code class="docutils literal notranslate"><span class="pre">.args</span></code>.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">inst</span><span class="p">:</span>
-<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception instance</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">inst</span><span class="p">))</span>    <span class="c1"># the exception type</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>     <span class="c1"># arguments stored in .args</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">inst</span><span class="p">)</span>          <span class="c1"># __str__ allows args to be printed directly,</span>
 <span class="gp">... </span>                         <span class="c1"># but may be overridden in exception subclasses</span>
@@ -301,7 +305,8 @@
 <span class="go">y = eggs</span>
 </pre></div>
 </div>
-<p>İstisnanın <code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code> çıktısı, işlenmeyen istisnalar için mesajın son kısmı (‘ayrıntı’) olarak yazdırılır.</p>
+<p>The exception’s <a class="reference internal" href="../reference/datamodel.html#object.__str__" title="object.__str__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__str__()</span></code></a> output is printed as the last part (‘detail’)
+of the message for unhandled exceptions.</p>
 <p><a class="reference internal" href="../library/exceptions.html#BaseException" title="BaseException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">BaseException</span></code></a>, tüm istisnaların ortak temel sınıfıdır. Alt sınıflarından biri olan <a class="reference internal" href="../library/exceptions.html#Exception" title="Exception"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a>, tüm önemli olmayan istisnaların temel sınıfıdır. <a class="reference internal" href="../library/exceptions.html#Exception" title="Exception"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> öğesinin alt sınıfları olmayan istisnalar genellikle işlenmez, çünkü bunlar programın sona ermesi gerektiğini belirtmek için kullanılır. Bunlar <a class="reference internal" href="../library/sys.html#sys.exit" title="sys.exit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sys.exit()</span></code></a> tarafından oluşturulan <a class="reference internal" href="../library/exceptions.html#SystemExit" title="SystemExit"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a> ve bir kullanıcı programı kesmek istediğinde ortaya çıkan <a class="reference internal" href="../library/exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a> içerir.</p>
 <p><a class="reference internal" href="../library/exceptions.html#Exception" title="Exception"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> (neredeyse) her şeyi yakalayan bir joker karakter (wildcard) olarak kullanılabilir. Ancak, işlemeyi amaçladığımız istisna türleri konusunda mümkün olduğunca spesifik olmak ve beklenmeyen istisnaların yayılmasına izin vermek iyi bir uygulamadır.</p>
 <p><a class="reference internal" href="../library/exceptions.html#Exception" title="Exception"><code class="xref py py-exc docutils literal notranslate"><span class="pre">Exception</span></code></a> işlemek için en yaygın model, istisnayı yazdırmak veya log’a kaydetmek ve ardından yeniden yükseltmektir (arayanın istisnayı da işlemesine izin verir):</p>
@@ -542,11 +547,20 @@
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">except</span></code> yerine <code class="docutils literal notranslate"><span class="pre">except*</span></code> kullanarak, yalnızca gruptaki belirli bir türle eşleşen istisnaları seçerek işleyebiliriz. İç içe geçmiş bir istisna grubunu gösteren aşağıdaki örnekte, her bir <code class="docutils literal notranslate"><span class="pre">except*</span></code> yan tümcesi, diğer tüm istisnaların diğer yan tümcelere yayılmasına ve sonunda yeniden ortaya çıkmasına izin verirken, belirli bir türdeki grup istisnalarını çıkarır.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="k">raise</span> <span class="n">ExceptionGroup</span><span class="p">(</span><span class="s2">&quot;group1&quot;</span><span class="p">,</span>
-<span class="gp">... </span>                         <span class="p">[</span><span class="ne">OSError</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="gp">... </span>                          <span class="ne">SystemError</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="gp">... </span>                          <span class="n">ExceptionGroup</span><span class="p">(</span><span class="s2">&quot;group2&quot;</span><span class="p">,</span>
-<span class="gp">... </span>                                         <span class="p">[</span><span class="ne">OSError</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="ne">RecursionError</span><span class="p">(</span><span class="mi">4</span><span class="p">)])])</span>
+<span class="gp">... </span>    <span class="k">raise</span> <span class="n">ExceptionGroup</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="s2">&quot;group1&quot;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="p">[</span>
+<span class="gp">... </span>            <span class="ne">OSError</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>            <span class="ne">SystemError</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="gp">... </span>            <span class="n">ExceptionGroup</span><span class="p">(</span>
+<span class="gp">... </span>                <span class="s2">&quot;group2&quot;</span><span class="p">,</span>
+<span class="gp">... </span>                <span class="p">[</span>
+<span class="gp">... </span>                    <span class="ne">OSError</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="gp">... </span>                    <span class="ne">RecursionError</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">... </span>                <span class="p">]</span>
+<span class="gp">... </span>            <span class="p">)</span>
+<span class="gp">... </span>        <span class="p">]</span>
+<span class="gp">... </span>    <span class="p">)</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">f</span><span class="p">()</span>
@@ -584,7 +598,7 @@
 </div>
 </section>
 <section id="enriching-exceptions-with-notes">
-<h2><span class="section-number">8.10. </span>İstisnaları Notlarla Zenginleştirme<a class="headerlink" href="#enriching-exceptions-with-notes" title="Permalink to this heading">¶</a></h2>
+<span id="tut-exception-notes"></span><h2><span class="section-number">8.10. </span>İstisnaları Notlarla Zenginleştirme<a class="headerlink" href="#enriching-exceptions-with-notes" title="Permalink to this heading">¶</a></h2>
 <p>Yükseltilmek üzere bir istisna oluşturulduğunda, genellikle meydana gelen hatayı açıklayan bilgilerle başlatılır. İstisna yakalandıktan sonra bilgi eklemenin yararlı olduğu durumlar vardır. Bu amaçla, istisnaların bir dizgiyi kabul eden ve onu istisnanın notlar listesine ekleyen <code class="docutils literal notranslate"><span class="pre">add_note(note)</span></code> metodu vardır. Standart geri işleme (traceback) oluşturma, tüm notları istisnadan sonra eklendikleri sırayla içerir.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;bad type&#39;</span><span class="p">)</span>
@@ -723,7 +737,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Öğreticisi</a> &#187;</li>
@@ -766,11 +780,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

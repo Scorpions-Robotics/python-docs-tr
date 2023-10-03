@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/bisect.py This module provides support for maintaining a list in sorted order without having to sort the list after each insertion. For long lists of items with expensive compariso..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>bisect — Array bisection algorithm &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bisect — Array bisection algorithm &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -163,7 +163,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -208,7 +208,7 @@ expensive comparison operations, this can be an improvement over the more common
 approach.  The module is called <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code></a> because it uses a basic bisection
 algorithm to do its work.  The source code may be most useful as a working
 example of the algorithm (the boundary conditions are already right!).</p>
-<p>The following functions are provided:</p>
+<p id="bisect-functions">The following functions are provided:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="bisect.bisect_left">
 <span class="sig-prename descclassname"><span class="pre">bisect.</span></span><span class="sig-name descname"><span class="pre">bisect_left</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">len(a)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bisect.bisect_left" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -317,7 +317,7 @@ unnecessary calls to the key function during searches.</p></li>
 </section>
 <section id="searching-sorted-lists">
 <h2>Searching Sorted Lists<a class="headerlink" href="#searching-sorted-lists" title="Permalink to this heading">¶</a></h2>
-<p>The above <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> functions are useful for finding insertion points but
+<p>The above <a class="reference internal" href="#bisect-functions">bisect functions</a> are useful for finding insertion points but
 can be tricky or awkward to use for common searching tasks. The following five
 functions show how to transform them into the standard lookups for sorted
 lists:</p>
@@ -360,8 +360,8 @@ lists:</p>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<p id="bisect-example">The <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> function can be useful for numeric table lookups. This
-example uses <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> to look up a letter grade for an exam score (say)
+<p id="bisect-example">The <a class="reference internal" href="#bisect.bisect" title="bisect.bisect"><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> function can be useful for numeric table lookups. This
+example uses <a class="reference internal" href="#bisect.bisect" title="bisect.bisect"><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> to look up a letter grade for an exam score (say)
 based on a set of ordered numeric breakpoints: 90 and up is an ‘A’, 80 to 89 is
 a ‘B’, and so on:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">grade</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">breakpoints</span><span class="o">=</span><span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="n">grades</span><span class="o">=</span><span class="s1">&#39;FDCBA&#39;</span><span class="p">):</span>
@@ -372,8 +372,8 @@ a ‘B’, and so on:</p>
 <span class="go">[&#39;F&#39;, &#39;A&#39;, &#39;C&#39;, &#39;C&#39;, &#39;B&#39;, &#39;A&#39;, &#39;A&#39;]</span>
 </pre></div>
 </div>
-<p>The <a class="reference internal" href="#module-bisect" title="bisect: Array bisection algorithms for binary searching."><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> and <a class="reference internal" href="#bisect.insort" title="bisect.insort"><code class="xref py py-func docutils literal notranslate"><span class="pre">insort()</span></code></a> functions also work with lists of
-tuples.  The <em>key</em> argument can serve to extract the field used for ordering
+<p>The <a class="reference internal" href="#bisect.bisect" title="bisect.bisect"><code class="xref py py-func docutils literal notranslate"><span class="pre">bisect()</span></code></a> and <a class="reference internal" href="#bisect.insort" title="bisect.insort"><code class="xref py py-func docutils literal notranslate"><span class="pre">insort()</span></code></a> functions also work with
+lists of tuples.  The <em>key</em> argument can serve to extract the field used for ordering
 records in a table:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">attrgetter</span>
@@ -383,10 +383,10 @@ records in a table:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Movie</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Movie&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;released&#39;</span><span class="p">,</span> <span class="s1">&#39;director&#39;</span><span class="p">))</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">movies</span> <span class="o">=</span> <span class="p">[</span>
-<span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;Jaws&#39;</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="s1">&#39;Speilberg&#39;</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;Jaws&#39;</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="s1">&#39;Spielberg&#39;</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;Titanic&#39;</span><span class="p">,</span> <span class="mi">1997</span><span class="p">,</span> <span class="s1">&#39;Cameron&#39;</span><span class="p">),</span>
 <span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;The Birds&#39;</span><span class="p">,</span> <span class="mi">1963</span><span class="p">,</span> <span class="s1">&#39;Hitchcock&#39;</span><span class="p">),</span>
-<span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;Aliens&#39;</span><span class="p">,</span> <span class="mi">1986</span><span class="p">,</span> <span class="s1">&#39;Scott&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">Movie</span><span class="p">(</span><span class="s1">&#39;Aliens&#39;</span><span class="p">,</span> <span class="mi">1986</span><span class="p">,</span> <span class="s1">&#39;Cameron&#39;</span><span class="p">)</span>
 <span class="gp">... </span><span class="p">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find the first movie released after 1960</span>
@@ -401,8 +401,8 @@ records in a table:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">movies</span><span class="p">)</span>
 <span class="go">[Movie(name=&#39;The Birds&#39;, released=1963, director=&#39;Hitchcock&#39;),</span>
 <span class="go"> Movie(name=&#39;Love Story&#39;, released=1970, director=&#39;Hiller&#39;),</span>
-<span class="go"> Movie(name=&#39;Jaws&#39;, released=1975, director=&#39;Speilberg&#39;),</span>
-<span class="go"> Movie(name=&#39;Aliens&#39;, released=1986, director=&#39;Scott&#39;),</span>
+<span class="go"> Movie(name=&#39;Jaws&#39;, released=1975, director=&#39;Spielberg&#39;),</span>
+<span class="go"> Movie(name=&#39;Aliens&#39;, released=1986, director=&#39;Cameron&#39;),</span>
 <span class="go"> Movie(name=&#39;Titanic&#39;, released=1997, director=&#39;Cameron&#39;)]</span>
 </pre></div>
 </div>
@@ -504,7 +504,7 @@ calls by searching a list of precomputed keys to find the index of a record:</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -548,11 +548,11 @@ calls by searching a list of precomputed keys to find the index of a record:</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

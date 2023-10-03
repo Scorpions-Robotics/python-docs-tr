@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Author, A.M. Kuchling,. Introduction: This article explains the new features in Python 2.1. While there aren’t as many changes in 2.1 as there were in Python 2.0, there are still some pleasant surp..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New in Python 2.1 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New in Python 2.1 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -169,7 +169,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -755,7 +755,7 @@ The <a class="reference internal" href="../library/doctest.html#module-doctest" 
 framework based on running embedded examples in docstrings and comparing the
 results against the expected output.  PyUnit, contributed by Steve Purcell, is a
 unit testing framework inspired by JUnit, which was in turn an adaptation of
-Kent Beck’s Smalltalk testing framework.  See <a class="reference external" href="http://pyunit.sourceforge.net/">http://pyunit.sourceforge.net/</a> for
+Kent Beck’s Smalltalk testing framework.  See <a class="reference external" href="https://pyunit.sourceforge.net/">https://pyunit.sourceforge.net/</a> for
 more information about PyUnit.</p></li>
 <li><p>The <a class="reference internal" href="../library/difflib.html#module-difflib" title="difflib: Helpers for computing differences between objects."><code class="xref py py-mod docutils literal notranslate"><span class="pre">difflib</span></code></a> module contains a class, <code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceMatcher</span></code>, which
 compares two sequences and computes the changes required to transform one
@@ -822,21 +822,21 @@ applied, and 136 bugs fixed; both figures are likely to be underestimates.  Some
 of the more notable changes are:</p>
 <ul>
 <li><p>A specialized object allocator is now optionally available, that should be
-faster than the system <code class="xref py py-func docutils literal notranslate"><span class="pre">malloc()</span></code> and have less memory overhead.  The
-allocator uses C’s <code class="xref py py-func docutils literal notranslate"><span class="pre">malloc()</span></code> function to get large pools of memory, and
+faster than the system <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> and have less memory overhead.  The
+allocator uses C’s <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> function to get large pools of memory, and
 then fulfills smaller memory requests from these pools.  It can be enabled by
 providing the <code class="xref std std-option docutils literal notranslate"><span class="pre">--with-pymalloc</span></code> option to the <strong class="program">configure</strong>
 script; see <code class="file docutils literal notranslate"><span class="pre">Objects/obmalloc.c</span></code> for the implementation details.</p>
 <p>Authors of C extension modules should test their code with the object allocator
 enabled, because some incorrect code may break, causing core dumps at runtime.
 There are a bunch of memory allocation functions in Python’s C API that have
-previously been just aliases for the C library’s <code class="xref py py-func docutils literal notranslate"><span class="pre">malloc()</span></code> and
-<code class="xref py py-func docutils literal notranslate"><span class="pre">free()</span></code>, meaning that if you accidentally called mismatched functions, the
+previously been just aliases for the C library’s <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> and
+<code class="xref c c-func docutils literal notranslate"><span class="pre">free()</span></code>, meaning that if you accidentally called mismatched functions, the
 error wouldn’t be noticeable.  When the object allocator is enabled, these
-functions aren’t aliases of <code class="xref py py-func docutils literal notranslate"><span class="pre">malloc()</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">free()</span></code> any more, and
+functions aren’t aliases of <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> and <code class="xref c c-func docutils literal notranslate"><span class="pre">free()</span></code> any more, and
 calling the wrong function to free memory will get you a core dump.  For
-example, if memory was allocated using <code class="xref py py-func docutils literal notranslate"><span class="pre">PyMem_New()</span></code>, it has to be freed
-using <code class="xref py py-func docutils literal notranslate"><span class="pre">PyMem_Del()</span></code>, not <code class="xref py py-func docutils literal notranslate"><span class="pre">free()</span></code>.  A few modules included with Python
+example, if memory was allocated using <a class="reference internal" href="../c-api/memory.html#c.PyMem_New" title="PyMem_New"><code class="xref c c-macro docutils literal notranslate"><span class="pre">PyMem_New</span></code></a>, it has to be freed
+using <a class="reference internal" href="../c-api/memory.html#c.PyMem_Del" title="PyMem_Del"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyMem_Del()</span></code></a>, not <code class="xref c c-func docutils literal notranslate"><span class="pre">free()</span></code>.  A few modules included with Python
 fell afoul of this and had to be fixed; doubtless there are more third-party
 modules that will have the same problem.</p>
 <p>The object allocator was contributed by Vladimir Marangozov.</p>
@@ -845,7 +845,7 @@ modules that will have the same problem.</p>
 complain about its lack of speed, and because it’s often been used as a naïve
 benchmark.  The <a class="reference internal" href="../library/readline.html#module-readline" title="readline: GNU readline support for Python. (Unix)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readline()</span></code></a> method of file objects has therefore been
 rewritten to be much faster.  The exact amount of the speedup will vary from
-platform to platform depending on how slow the C library’s <code class="xref py py-func docutils literal notranslate"><span class="pre">getc()</span></code> was, but
+platform to platform depending on how slow the C library’s <code class="xref c c-func docutils literal notranslate"><span class="pre">getc()</span></code> was, but
 is around 66%, and potentially much faster on some particular operating systems.
 Tim Peters did much of the benchmarking and coding for this change, motivated by
 a discussion in comp.lang.python.</p>
@@ -894,7 +894,7 @@ and implemented this new formatting.</p></li>
 filename and line number of the error, a pleasant side effect of the compiler
 reorganization done by Jeremy Hylton.</p></li>
 <li><p>C extensions which import other modules have been changed to use
-<code class="xref py py-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code>, which means that they will use any import hooks
+<a class="reference internal" href="../c-api/import.html#c.PyImport_ImportModule" title="PyImport_ImportModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code></a>, which means that they will use any import hooks
 that have been installed.  This is also encouraged for third-party extensions
 that need to import some other module from C code.</p></li>
 <li><p>The size of the Unicode character database was shrunk by another 340K thanks
@@ -1001,7 +1001,7 @@ Hudson, Marc-André Lemburg, Fredrik Lundh, Neil Schemenauer, Thomas Wouters.</p
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -1044,11 +1044,11 @@ Hudson, Marc-André Lemburg, Fredrik Lundh, Neil Schemenauer, Thomas Wouters.</p
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

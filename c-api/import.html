@@ -11,14 +11,14 @@
 <meta property="og:site_name" content="Python documentation" />
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Importing Modules &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importing Modules &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -29,7 +29,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -143,7 +143,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -299,17 +299,17 @@ encoded string instead of a Unicode object.</p>
 read from a Python bytecode file or obtained from the built-in function
 <a class="reference internal" href="../library/functions.html#compile" title="compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a>, load the module.  Return a new reference to the module object,
 or <code class="docutils literal notranslate"><span class="pre">NULL</span></code> with an exception set if an error occurred.  <em>name</em>
-is removed from <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> in error cases, even if <em>name</em> was already
-in <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> on entry to <a class="reference internal" href="#c.PyImport_ExecCodeModule" title="PyImport_ExecCodeModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModule()</span></code></a>.  Leaving
-incompletely initialized modules in <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> is dangerous, as imports of
+is removed from <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a> in error cases, even if <em>name</em> was already
+in <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a> on entry to <a class="reference internal" href="#c.PyImport_ExecCodeModule" title="PyImport_ExecCodeModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModule()</span></code></a>.  Leaving
+incompletely initialized modules in <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a> is dangerous, as imports of
 such modules have no way to know that the module object is an unknown (and
 probably damaged with respect to the module author’s intents) state.</p>
 <p>The module’s <a class="reference internal" href="../reference/import.html#spec__" title="__spec__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__spec__</span></code></a> and <a class="reference internal" href="../reference/import.html#loader__" title="__loader__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__loader__</span></code></a> will be set, if
 not set already, with the appropriate values.  The spec’s loader will
 be set to the module’s <code class="docutils literal notranslate"><span class="pre">__loader__</span></code> (if set) and to an instance of
-<code class="xref py py-class docutils literal notranslate"><span class="pre">SourceFileLoader</span></code> otherwise.</p>
+<a class="reference internal" href="../library/importlib.html#importlib.machinery.SourceFileLoader" title="importlib.machinery.SourceFileLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">SourceFileLoader</span></code></a> otherwise.</p>
 <p>The module’s <a class="reference internal" href="../reference/import.html#file__" title="__file__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__file__</span></code></a> attribute will be set to the code object’s
-<code class="xref c c-member docutils literal notranslate"><span class="pre">co_filename</span></code>.  If applicable, <a class="reference internal" href="../reference/import.html#cached__" title="__cached__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__cached__</span></code></a> will also
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">co_filename</span></code>.  If applicable, <a class="reference internal" href="../reference/import.html#cached__" title="__cached__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__cached__</span></code></a> will also
 be set.</p>
 <p>This function will reload the module if it was already imported.  See
 <a class="reference internal" href="#c.PyImport_ReloadModule" title="PyImport_ReloadModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ReloadModule()</span></code></a> for the intended way to reload a module.</p>
@@ -473,25 +473,24 @@ on the first attempted import.  This should be called before
 <dl class="c struct">
 <dt class="sig sig-object c" id="c._inittab">
 <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">_inittab</span></span></span><a class="headerlink" href="#c._inittab" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><p>Structure describing a single entry in the list of built-in modules.  Each of
-these structures gives the name and initialization function for a module built
-into the interpreter.  The name is an ASCII encoded string.  Programs which
+<dd><p>Structure describing a single entry in the list of built-in modules.
+Programs which
 embed Python may use an array of these structures in conjunction with
 <a class="reference internal" href="#c.PyImport_ExtendInittab" title="PyImport_ExtendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExtendInittab()</span></code></a> to provide additional built-in modules.
-The structure is defined in <code class="file docutils literal notranslate"><span class="pre">Include/import.h</span></code> as:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">_inittab</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w">           </span><span class="cm">/* ASCII encoded string */</span>
-<span class="w">    </span><span class="n">PyObject</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">initfunc</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
-<span class="p">};</span>
-</pre></div>
-</div>
+The structure consists of two members:</p>
+<dl class="c member">
+<dt class="sig sig-object c" id="c._inittab.name">
+<span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#c._inittab.name" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<dd><p>The module name, as an ASCII encoded string.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.PyImport_ExtendInittab">
 <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyImport_ExtendInittab</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c._inittab" title="_inittab"><span class="n"><span class="pre">_inittab</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">newtab</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExtendInittab" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><p>Add a collection of modules to the table of built-in modules.  The <em>newtab</em>
-array must end with a sentinel entry which contains <code class="docutils literal notranslate"><span class="pre">NULL</span></code> for the <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code>
+array must end with a sentinel entry which contains <code class="docutils literal notranslate"><span class="pre">NULL</span></code> for the <a class="reference internal" href="#c._inittab.name" title="_inittab.name"><code class="xref c c-member docutils literal notranslate"><span class="pre">name</span></code></a>
 field; failure to provide the sentinel value can result in a memory fault.
 Returns <code class="docutils literal notranslate"><span class="pre">0</span></code> on success or <code class="docutils literal notranslate"><span class="pre">-1</span></code> if insufficient memory could be allocated to
 extend the internal table.  In the event of failure, no modules are added to the
@@ -565,7 +564,7 @@ initialization.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -609,11 +608,11 @@ initialization.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

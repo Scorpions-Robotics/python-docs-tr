@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/re/ This module provides regular expression matching operations similar to those found in Perl. Both patterns and strings to be searched can be Unicode strings ( str) as well as 8-..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>re — Regular expression operations &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>re — Regular expression operations &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -113,6 +113,8 @@
 <li><a class="reference internal" href="#re.NOFLAG"><code class="docutils literal notranslate"><span class="pre">NOFLAG</span></code></a></li>
 <li><a class="reference internal" href="#re.S"><code class="docutils literal notranslate"><span class="pre">S</span></code></a></li>
 <li><a class="reference internal" href="#re.DOTALL"><code class="docutils literal notranslate"><span class="pre">DOTALL</span></code></a></li>
+<li><a class="reference internal" href="#re.U"><code class="docutils literal notranslate"><span class="pre">U</span></code></a></li>
+<li><a class="reference internal" href="#re.UNICODE"><code class="docutils literal notranslate"><span class="pre">UNICODE</span></code></a></li>
 <li><a class="reference internal" href="#re.X"><code class="docutils literal notranslate"><span class="pre">X</span></code></a></li>
 <li><a class="reference internal" href="#re.VERBOSE"><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></a></li>
 </ul>
@@ -145,6 +147,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#regular-expression-objects">Regular Expression Objects</a><ul>
+<li><a class="reference internal" href="#re.Pattern"><code class="docutils literal notranslate"><span class="pre">Pattern</span></code></a><ul>
 <li><a class="reference internal" href="#re.Pattern.search"><code class="docutils literal notranslate"><span class="pre">Pattern.search()</span></code></a></li>
 <li><a class="reference internal" href="#re.Pattern.match"><code class="docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a></li>
 <li><a class="reference internal" href="#re.Pattern.fullmatch"><code class="docutils literal notranslate"><span class="pre">Pattern.fullmatch()</span></code></a></li>
@@ -159,7 +162,10 @@
 <li><a class="reference internal" href="#re.Pattern.pattern"><code class="docutils literal notranslate"><span class="pre">Pattern.pattern</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><a class="reference internal" href="#match-objects">Match Objects</a><ul>
+<li><a class="reference internal" href="#re.Match"><code class="docutils literal notranslate"><span class="pre">Match</span></code></a><ul>
 <li><a class="reference internal" href="#re.Match.expand"><code class="docutils literal notranslate"><span class="pre">Match.expand()</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.group"><code class="docutils literal notranslate"><span class="pre">Match.group()</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.__getitem__"><code class="docutils literal notranslate"><span class="pre">Match.__getitem__()</span></code></a></li>
@@ -174,6 +180,8 @@
 <li><a class="reference internal" href="#re.Match.lastgroup"><code class="docutils literal notranslate"><span class="pre">Match.lastgroup</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.re"><code class="docutils literal notranslate"><span class="pre">Match.re</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.string"><code class="docutils literal notranslate"><span class="pre">Match.string</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#regular-expression-examples">Regular Expression Examples</a><ul>
@@ -245,7 +253,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -552,7 +560,7 @@ currently supported extensions.</p>
 letters set the corresponding flags: <a class="reference internal" href="#re.A" title="re.A"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.A</span></code></a> (ASCII-only matching),
 <a class="reference internal" href="#re.I" title="re.I"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.I</span></code></a> (ignore case), <a class="reference internal" href="#re.L" title="re.L"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.L</span></code></a> (locale dependent),
 <a class="reference internal" href="#re.M" title="re.M"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.M</span></code></a> (multi-line), <a class="reference internal" href="#re.S" title="re.S"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.S</span></code></a> (dot matches all),
-<code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code> (Unicode matching), and <a class="reference internal" href="#re.X" title="re.X"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.X</span></code></a> (verbose),
+<a class="reference internal" href="#re.U" title="re.U"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code></a> (Unicode matching), and <a class="reference internal" href="#re.X" title="re.X"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.X</span></code></a> (verbose),
 for the entire regular expression.
 (The flags are described in <a class="reference internal" href="#contents-of-module-re"><span class="std std-ref">Module Contents</span></a>.)
 This is useful if you wish to include the flags as part of the
@@ -576,7 +584,7 @@ one or more letters from the <code class="docutils literal notranslate"><span cl
 The letters set or remove the corresponding flags:
 <a class="reference internal" href="#re.A" title="re.A"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.A</span></code></a> (ASCII-only matching), <a class="reference internal" href="#re.I" title="re.I"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.I</span></code></a> (ignore case),
 <a class="reference internal" href="#re.L" title="re.L"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.L</span></code></a> (locale dependent), <a class="reference internal" href="#re.M" title="re.M"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.M</span></code></a> (multi-line),
-<a class="reference internal" href="#re.S" title="re.S"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.S</span></code></a> (dot matches all), <code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code> (Unicode matching),
+<a class="reference internal" href="#re.S" title="re.S"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.S</span></code></a> (dot matches all), <a class="reference internal" href="#re.U" title="re.U"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code></a> (Unicode matching),
 and <a class="reference internal" href="#re.X" title="re.X"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.X</span></code></a> (verbose), for the part of the expression.
 (The flags are described in <a class="reference internal" href="#contents-of-module-re"><span class="std std-ref">Module Contents</span></a>.)</p>
 <p>The letters <code class="docutils literal notranslate"><span class="pre">'a'</span></code>, <code class="docutils literal notranslate"><span class="pre">'L'</span></code> and <code class="docutils literal notranslate"><span class="pre">'u'</span></code> are mutually exclusive when used
@@ -653,7 +661,8 @@ argument of <code class="docutils literal notranslate"><span class="pre">re.sub(
 </tbody>
 </table>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">3.11 sürümünden beri kullanım dışı: </span>Group names containing non-ASCII characters in bytes patterns.</p>
+<p><span class="versionmodified deprecated">3.11 sürümünden beri kullanım dışı: </span>Group <em>name</em> containing characters outside the ASCII range
+(<code class="docutils literal notranslate"><span class="pre">b'\x00'</span></code>-<code class="docutils literal notranslate"><span class="pre">b'\x7f'</span></code>) in <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> patterns.</p>
 </div>
 </dd>
 </dl>
@@ -721,11 +730,13 @@ optional and can be omitted. For example,
 will match with <code class="docutils literal notranslate"><span class="pre">'&lt;user&#64;host.com&gt;'</span></code> as well as <code class="docutils literal notranslate"><span class="pre">'user&#64;host.com'</span></code>, but
 not with <code class="docutils literal notranslate"><span class="pre">'&lt;user&#64;host.com'</span></code> nor <code class="docutils literal notranslate"><span class="pre">'user&#64;host.com&gt;'</span></code>.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">3.11 sürümünden beri kullanım dışı: </span>Group <em>id</em> containing anything except ASCII digits.</p>
+<p><span class="versionmodified deprecated">3.11 sürümünden beri kullanım dışı: </span>Group <em>id</em> containing anything except ASCII digits.
+Group <em>name</em> containing characters outside the ASCII range
+(<code class="docutils literal notranslate"><span class="pre">b'\x00'</span></code>-<code class="docutils literal notranslate"><span class="pre">b'\x7f'</span></code>) in <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> replacement strings.</p>
 </div>
 </dd>
 </dl>
-<p>The special sequences consist of <code class="docutils literal notranslate"><span class="pre">'\'</span></code> and a character from the list below.
+<p id="re-special-sequences">The special sequences consist of <code class="docutils literal notranslate"><span class="pre">'\'</span></code> and a character from the list below.
 If the ordinary character is not an ASCII digit or an ASCII letter, then the
 resulting RE will match the second character.  For example, <code class="docutils literal notranslate"><span class="pre">\$</span></code> matches the
 character <code class="docutils literal notranslate"><span class="pre">'$'</span></code>.</p>
@@ -889,8 +900,8 @@ form.</p>
 perform ASCII-only matching instead of full Unicode matching.  This is only
 meaningful for Unicode patterns, and is ignored for byte patterns.
 Corresponds to the inline flag <code class="docutils literal notranslate"><span class="pre">(?a)</span></code>.</p>
-<p>Note that for backward compatibility, the <code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code> flag still
-exists (as well as its synonym <code class="xref py py-const docutils literal notranslate"><span class="pre">re.UNICODE</span></code> and its embedded
+<p>Note that for backward compatibility, the <a class="reference internal" href="#re.U" title="re.U"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.U</span></code></a> flag still
+exists (as well as its synonym <a class="reference internal" href="#re.UNICODE" title="re.UNICODE"><code class="xref py py-const docutils literal notranslate"><span class="pre">re.UNICODE</span></code></a> and its embedded
 counterpart <code class="docutils literal notranslate"><span class="pre">(?u)</span></code>), but these are redundant in Python 3 since
 matches are Unicode by default for strings (and Unicode matching
 isn’t allowed for bytes).</p>
@@ -988,6 +999,18 @@ Corresponds to the inline flag <code class="docutils literal notranslate"><span 
 </dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="re.U">
+<span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">U</span></span><a class="headerlink" href="#re.U" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dt class="sig sig-object py" id="re.UNICODE">
+<span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">UNICODE</span></span><a class="headerlink" href="#re.UNICODE" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>In Python 2, this flag made <a class="reference internal" href="#re-special-sequences"><span class="std std-ref">special sequences</span></a>
+include Unicode characters in matches. Since Python 3, Unicode characters
+are matched by default.</p>
+<p>See <a class="reference internal" href="#re.A" title="re.A"><code class="xref py py-const docutils literal notranslate"><span class="pre">A</span></code></a> for restricting matching on ASCII characters instead.</p>
+<p>This flag is only kept for backward compatibility.</p>
+</dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="re.X">
 <span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">X</span></span><a class="headerlink" href="#re.X" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dt class="sig sig-object py" id="re.VERBOSE">
@@ -1049,17 +1072,18 @@ about compiling regular expressions.</p>
 <dt class="sig sig-object py" id="re.search">
 <span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#re.search" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Scan through <em>string</em> looking for the first location where the regular expression
-<em>pattern</em> produces a match, and return a corresponding <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if no position in the string matches the
-pattern; note that this is different from finding a zero-length match at some
-point in the string.</p>
+<em>pattern</em> produces a match, and return a corresponding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>. Return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if no position in the string matches the pattern; note that this is
+different from finding a zero-length match at some point in the string.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="re.match">
 <span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#re.match" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>If zero or more characters at the beginning of <em>string</em> match the regular
-expression <em>pattern</em>, return a corresponding <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not match the pattern;
-note that this is different from a zero-length match.</p>
+expression <em>pattern</em>, return a corresponding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>.  Return
+<code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not match the pattern; note that this is
+different from a zero-length match.</p>
 <p>Note that even in <a class="reference internal" href="#re.MULTILINE" title="re.MULTILINE"><code class="xref py py-const docutils literal notranslate"><span class="pre">MULTILINE</span></code></a> mode, <a class="reference internal" href="#re.match" title="re.match"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.match()</span></code></a> will only match
 at the beginning of the string and not at the beginning of each line.</p>
 <p>If you want to locate a match anywhere in <em>string</em>, use <a class="reference internal" href="#re.search" title="re.search"><code class="xref py py-func docutils literal notranslate"><span class="pre">search()</span></code></a>
@@ -1070,9 +1094,8 @@ instead (see also <a class="reference internal" href="#search-vs-match"><span cl
 <dt class="sig sig-object py" id="re.fullmatch">
 <span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">fullmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#re.fullmatch" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>If the whole <em>string</em> matches the regular expression <em>pattern</em>, return a
-corresponding <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the
-string does not match the pattern; note that this is different from a
-zero-length match.</p>
+corresponding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not match
+the pattern; note that this is different from a zero-length match.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.4 sürümünde geldi.</span></p>
 </div>
@@ -1149,7 +1172,7 @@ affect the form of the result.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="re.finditer">
 <span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">finditer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#re.finditer" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>Return an <a class="reference internal" href="../glossary.html#term-iterator"><span class="xref std std-term">iterator</span></a> yielding <a class="reference internal" href="#match-objects"><span class="std std-ref">match objects</span></a> over
+<dd><p>Return an <a class="reference internal" href="../glossary.html#term-iterator"><span class="xref std std-term">iterator</span></a> yielding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a> objects over
 all non-overlapping matches for the RE <em>pattern</em> in <em>string</em>.  The <em>string</em>
 is scanned left-to-right, and matches are returned in the order found.  Empty
 matches are included in the result.</p>
@@ -1178,8 +1201,8 @@ For example:</p>
 </pre></div>
 </div>
 <p>If <em>repl</em> is a function, it is called for every non-overlapping occurrence of
-<em>pattern</em>.  The function takes a single <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>
-argument, and returns the replacement string.  For example:</p>
+<em>pattern</em>.  The function takes a single <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a> argument, and returns
+the replacement string.  For example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">dashrepl</span><span class="p">(</span><span class="n">matchobj</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="n">matchobj</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39; &#39;</span>
 <span class="gp">... </span>    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="s1">&#39;-&#39;</span>
@@ -1189,7 +1212,7 @@ argument, and returns the replacement string.  For example:</p>
 <span class="go">&#39;Baked Beans &amp; Spam&#39;</span>
 </pre></div>
 </div>
-<p>The pattern may be a string or a <a class="reference internal" href="#re-objects"><span class="std std-ref">pattern object</span></a>.</p>
+<p>The pattern may be a string or a <a class="reference internal" href="#re.Pattern" title="re.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pattern</span></code></a>.</p>
 <p>The optional argument <em>count</em> is the maximum number of pattern occurrences to be
 replaced; <em>count</em> must be a non-negative integer.  If omitted or zero, all
 occurrences will be replaced. Empty matches for the pattern are replaced only
@@ -1224,7 +1247,8 @@ non-empty match.</p>
 </div>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">3.11 sürümünden beri kullanım dışı: </span>Group <em>id</em> containing anything except ASCII digits.
-Group names containing non-ASCII characters in bytes replacement strings.</p>
+Group <em>name</em> containing characters outside the ASCII range
+(<code class="docutils literal notranslate"><span class="pre">b'\x00'</span></code>-<code class="docutils literal notranslate"><span class="pre">b'\x7f'</span></code>) in <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> replacement strings.</p>
 </div>
 </dd></dl>
 
@@ -1334,15 +1358,23 @@ the following additional attributes:</p>
 </section>
 <section id="regular-expression-objects">
 <span id="re-objects"></span><h2>Regular Expression Objects<a class="headerlink" href="#regular-expression-objects" title="Permalink to this heading">¶</a></h2>
-<p>Compiled regular expression objects support the following methods and
-attributes:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="re.Pattern">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">Pattern</span></span><a class="headerlink" href="#re.Pattern" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Compiled regular expression object returned by <a class="reference internal" href="#re.compile" title="re.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">re.compile()</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">3.9 sürümünde değişti: </span><a class="reference internal" href="#re.Pattern" title="re.Pattern"><code class="xref py py-class docutils literal notranslate"><span class="pre">re.Pattern</span></code></a> supports <code class="docutils literal notranslate"><span class="pre">[]</span></code> to indicate a Unicode (str) or bytes pattern.
+See <a class="reference internal" href="stdtypes.html#types-genericalias"><span class="std std-ref">Genel Takma Ad Türü</span></a>.</p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="re.Pattern.search">
 <span class="sig-prename descclassname"><span class="pre">Pattern.</span></span><span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">endpos</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#re.Pattern.search" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Scan through <em>string</em> looking for the first location where this regular
-expression produces a match, and return a corresponding <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if no position in the string matches the
-pattern; note that this is different from finding a zero-length match at some
-point in the string.</p>
+expression produces a match, and return a corresponding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>.
+Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if no position in the string matches the pattern; note that
+this is different from finding a zero-length match at some point in the string.</p>
 <p>The optional second parameter <em>pos</em> gives an index in the string where the
 search is to start; it defaults to <code class="docutils literal notranslate"><span class="pre">0</span></code>.  This is not completely equivalent to
 slicing the string; the <code class="docutils literal notranslate"><span class="pre">'^'</span></code> pattern character matches at the real beginning
@@ -1366,9 +1398,9 @@ expression object, <code class="docutils literal notranslate"><span class="pre">
 <dt class="sig sig-object py" id="re.Pattern.match">
 <span class="sig-prename descclassname"><span class="pre">Pattern.</span></span><span class="sig-name descname"><span class="pre">match</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">endpos</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#re.Pattern.match" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>If zero or more characters at the <em>beginning</em> of <em>string</em> match this regular
-expression, return a corresponding <a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.
-Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not match the pattern; note that this is
-different from a zero-length match.</p>
+expression, return a corresponding <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>. Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the
+string does not match the pattern; note that this is different from a
+zero-length match.</p>
 <p>The optional <em>pos</em> and <em>endpos</em> parameters have the same meaning as for the
 <a class="reference internal" href="#re.Pattern.search" title="re.Pattern.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search()</span></code></a> method.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
@@ -1385,8 +1417,8 @@ different from a zero-length match.</p>
 <dt class="sig sig-object py" id="re.Pattern.fullmatch">
 <span class="sig-prename descclassname"><span class="pre">Pattern.</span></span><span class="sig-name descname"><span class="pre">fullmatch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">endpos</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#re.Pattern.fullmatch" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>If the whole <em>string</em> matches this regular expression, return a corresponding
-<a class="reference internal" href="#match-objects"><span class="std std-ref">match object</span></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not
-match the pattern; note that this is different from a zero-length match.</p>
+<a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a>.  Return <code class="docutils literal notranslate"><span class="pre">None</span></code> if the string does not match the pattern;
+note that this is different from a zero-length match.</p>
 <p>The optional <em>pos</em> and <em>endpos</em> parameters have the same meaning as for the
 <a class="reference internal" href="#re.Pattern.search" title="re.Pattern.search"><code class="xref py py-meth docutils literal notranslate"><span class="pre">search()</span></code></a> method.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;o[gh]&quot;</span><span class="p">)</span>
@@ -1440,7 +1472,7 @@ region like for <a class="reference internal" href="#re.search" title="re.search
 <span class="sig-prename descclassname"><span class="pre">Pattern.</span></span><span class="sig-name descname"><span class="pre">flags</span></span><a class="headerlink" href="#re.Pattern.flags" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>The regex matching flags.  This is a combination of the flags given to
 <a class="reference internal" href="#re.compile" title="re.compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a>, any <code class="docutils literal notranslate"><span class="pre">(?...)</span></code> inline flags in the pattern, and implicit
-flags such as <code class="xref py py-data docutils literal notranslate"><span class="pre">UNICODE</span></code> if the pattern is a Unicode string.</p>
+flags such as <a class="reference internal" href="#re.UNICODE" title="re.UNICODE"><code class="xref py py-data docutils literal notranslate"><span class="pre">UNICODE</span></code></a> if the pattern is a Unicode string.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -1479,7 +1511,16 @@ when there is no match, you can test whether there was a match with a simple
     <span class="n">process</span><span class="p">(</span><span class="n">match</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Match objects support the following methods and attributes:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="re.Match">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">re.</span></span><span class="sig-name descname"><span class="pre">Match</span></span><a class="headerlink" href="#re.Match" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dd><p>Match object returned by successful <code class="docutils literal notranslate"><span class="pre">match</span></code>es and <code class="docutils literal notranslate"><span class="pre">search</span></code>es.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">3.9 sürümünde değişti: </span><a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">re.Match</span></code></a> supports <code class="docutils literal notranslate"><span class="pre">[]</span></code> to indicate a Unicode (str) or bytes match.
+See <a class="reference internal" href="stdtypes.html#types-genericalias"><span class="std std-ref">Genel Takma Ad Türü</span></a>.</p>
+</div>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="re.Match.expand">
 <span class="sig-prename descclassname"><span class="pre">Match.</span></span><span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#re.Match.expand" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
@@ -1921,9 +1962,10 @@ the following manner:</p>
 <section id="finding-all-adverbs-and-their-positions">
 <h3>Finding all Adverbs and their Positions<a class="headerlink" href="#finding-all-adverbs-and-their-positions" title="Permalink to this heading">¶</a></h3>
 <p>If one wants more information about all matches of a pattern than the matched
-text, <a class="reference internal" href="#re.finditer" title="re.finditer"><code class="xref py py-func docutils literal notranslate"><span class="pre">finditer()</span></code></a> is useful as it provides <a class="reference internal" href="#match-objects"><span class="std std-ref">match objects</span></a> instead of strings.  Continuing with the previous example, if
-a writer wanted to find all of the adverbs <em>and their positions</em> in
-some text, they would use <a class="reference internal" href="#re.finditer" title="re.finditer"><code class="xref py py-func docutils literal notranslate"><span class="pre">finditer()</span></code></a> in the following manner:</p>
+text, <a class="reference internal" href="#re.finditer" title="re.finditer"><code class="xref py py-func docutils literal notranslate"><span class="pre">finditer()</span></code></a> is useful as it provides <a class="reference internal" href="#re.Match" title="re.Match"><code class="xref py py-class docutils literal notranslate"><span class="pre">Match</span></code></a> objects
+instead of strings.  Continuing with the previous example, if a writer wanted
+to find all of the adverbs <em>and their positions</em> in some text, they would use
+<a class="reference internal" href="#re.finditer" title="re.finditer"><code class="xref py py-func docutils literal notranslate"><span class="pre">finditer()</span></code></a> in the following manner:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;He was carefully disguised but captured quickly by police.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\w+ly\b&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">-</span><span class="si">%02d</span><span class="s1">: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">start</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
@@ -2078,6 +2120,8 @@ great detail.</p>
 <li><a class="reference internal" href="#re.NOFLAG"><code class="docutils literal notranslate"><span class="pre">NOFLAG</span></code></a></li>
 <li><a class="reference internal" href="#re.S"><code class="docutils literal notranslate"><span class="pre">S</span></code></a></li>
 <li><a class="reference internal" href="#re.DOTALL"><code class="docutils literal notranslate"><span class="pre">DOTALL</span></code></a></li>
+<li><a class="reference internal" href="#re.U"><code class="docutils literal notranslate"><span class="pre">U</span></code></a></li>
+<li><a class="reference internal" href="#re.UNICODE"><code class="docutils literal notranslate"><span class="pre">UNICODE</span></code></a></li>
 <li><a class="reference internal" href="#re.X"><code class="docutils literal notranslate"><span class="pre">X</span></code></a></li>
 <li><a class="reference internal" href="#re.VERBOSE"><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></a></li>
 </ul>
@@ -2110,6 +2154,7 @@ great detail.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#regular-expression-objects">Regular Expression Objects</a><ul>
+<li><a class="reference internal" href="#re.Pattern"><code class="docutils literal notranslate"><span class="pre">Pattern</span></code></a><ul>
 <li><a class="reference internal" href="#re.Pattern.search"><code class="docutils literal notranslate"><span class="pre">Pattern.search()</span></code></a></li>
 <li><a class="reference internal" href="#re.Pattern.match"><code class="docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a></li>
 <li><a class="reference internal" href="#re.Pattern.fullmatch"><code class="docutils literal notranslate"><span class="pre">Pattern.fullmatch()</span></code></a></li>
@@ -2124,7 +2169,10 @@ great detail.</p>
 <li><a class="reference internal" href="#re.Pattern.pattern"><code class="docutils literal notranslate"><span class="pre">Pattern.pattern</span></code></a></li>
 </ul>
 </li>
+</ul>
+</li>
 <li><a class="reference internal" href="#match-objects">Match Objects</a><ul>
+<li><a class="reference internal" href="#re.Match"><code class="docutils literal notranslate"><span class="pre">Match</span></code></a><ul>
 <li><a class="reference internal" href="#re.Match.expand"><code class="docutils literal notranslate"><span class="pre">Match.expand()</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.group"><code class="docutils literal notranslate"><span class="pre">Match.group()</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.__getitem__"><code class="docutils literal notranslate"><span class="pre">Match.__getitem__()</span></code></a></li>
@@ -2139,6 +2187,8 @@ great detail.</p>
 <li><a class="reference internal" href="#re.Match.lastgroup"><code class="docutils literal notranslate"><span class="pre">Match.lastgroup</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.re"><code class="docutils literal notranslate"><span class="pre">Match.re</span></code></a></li>
 <li><a class="reference internal" href="#re.Match.string"><code class="docutils literal notranslate"><span class="pre">Match.string</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#regular-expression-examples">Regular Expression Examples</a><ul>
@@ -2213,7 +2263,7 @@ great detail.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -2257,11 +2307,11 @@ great detail.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

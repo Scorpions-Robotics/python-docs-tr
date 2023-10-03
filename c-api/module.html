@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Initializing C modules: Modules objects are usually created from extension modules (shared libraries which export an initialization function), or compiled-in modules (where the initialization funct..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Module Objects &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Objects &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -162,7 +162,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -305,7 +305,7 @@ a reference to a Unicode object.</p>
 <dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Similar to <a class="reference internal" href="#c.PyModule_GetFilenameObject" title="PyModule_GetFilenameObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetFilenameObject()</span></code></a> but return the filename
 encoded to ‘utf-8’.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">3.2 sürümünden beri kullanım dışı: </span><a class="reference internal" href="#c.PyModule_GetFilename" title="PyModule_GetFilename"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetFilename()</span></code></a> raises <code class="xref c c-type docutils literal notranslate"><span class="pre">UnicodeEncodeError</span></code> on
+<p><span class="versionmodified deprecated">3.2 sürümünden beri kullanım dışı: </span><a class="reference internal" href="#c.PyModule_GetFilename" title="PyModule_GetFilename"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetFilename()</span></code></a> raises <a class="reference internal" href="../library/exceptions.html#UnicodeEncodeError" title="UnicodeEncodeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UnicodeEncodeError</span></code></a> on
 unencodable filenames, use <a class="reference internal" href="#c.PyModule_GetFilenameObject" title="PyModule_GetFilenameObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetFilenameObject()</span></code></a> instead.</p>
 </div>
 </dd></dl>
@@ -328,7 +328,7 @@ of this type for each module.</p>
 <dl class="c member">
 <dt class="sig sig-object c" id="c.PyModuleDef.m_base">
 <span class="n"><span class="pre">PyModuleDef_Base</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">m_base</span></span></span><a class="headerlink" href="#c.PyModuleDef.m_base" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
-<dd><p>Always initialize this member to <code class="xref py py-const docutils literal notranslate"><span class="pre">PyModuleDef_HEAD_INIT</span></code>.</p>
+<dd><p>Always initialize this member to <code class="xref c c-macro docutils literal notranslate"><span class="pre">PyModuleDef_HEAD_INIT</span></code>.</p>
 </dd></dl>
 
 <dl class="c member">
@@ -352,7 +352,7 @@ retrieved with <a class="reference internal" href="#c.PyModule_GetState" title="
 This makes modules safe for use in multiple sub-interpreters.</p>
 <p>This memory area is allocated based on <em>m_size</em> on module creation,
 and freed when the module object is deallocated, after the
-<a class="reference internal" href="#c.PyModuleDef.m_free" title="m_free"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_free</span></code></a> function has been called, if present.</p>
+<a class="reference internal" href="#c.PyModuleDef.m_free" title="PyModuleDef.m_free"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_free</span></code></a> function has been called, if present.</p>
 <p>Setting <code class="docutils literal notranslate"><span class="pre">m_size</span></code> to <code class="docutils literal notranslate"><span class="pre">-1</span></code> means that the module does not support
 sub-interpreters, because it has global state.</p>
 <p>Setting it to a non-negative value means that the module can be
@@ -396,7 +396,7 @@ and was defined as:</p>
 <p>This function is not called if the module state was requested but is not
 allocated yet. This is the case immediately after the module is created
 and before the module is executed (<a class="reference internal" href="#c.Py_mod_exec" title="Py_mod_exec"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_mod_exec</span></code></a> function). More
-precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
+precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="PyModuleDef.m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
 than 0 and the module state (as returned by <a class="reference internal" href="#c.PyModule_GetState" title="PyModule_GetState"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetState()</span></code></a>)
 is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <div class="versionchanged">
@@ -412,7 +412,7 @@ is <code class="docutils literal notranslate"><span class="pre">NULL</span></cod
 <p>This function is not called if the module state was requested but is not
 allocated yet. This is the case immediately after the module is created
 and before the module is executed (<a class="reference internal" href="#c.Py_mod_exec" title="Py_mod_exec"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_mod_exec</span></code></a> function). More
-precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
+precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="PyModuleDef.m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
 than 0 and the module state (as returned by <a class="reference internal" href="#c.PyModule_GetState" title="PyModule_GetState"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetState()</span></code></a>)
 is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <p>Like <a class="reference internal" href="typeobj.html#c.PyTypeObject.tp_clear" title="PyTypeObject.tp_clear"><code class="xref c c-member docutils literal notranslate"><span class="pre">PyTypeObject.tp_clear</span></code></a>, this function is not <em>always</em>
@@ -433,7 +433,7 @@ if not needed.</p>
 <p>This function is not called if the module state was requested but is not
 allocated yet. This is the case immediately after the module is created
 and before the module is executed (<a class="reference internal" href="#c.Py_mod_exec" title="Py_mod_exec"><code class="xref c c-data docutils literal notranslate"><span class="pre">Py_mod_exec</span></code></a> function). More
-precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
+precisely, this function is not called if <a class="reference internal" href="#c.PyModuleDef.m_size" title="PyModuleDef.m_size"><code class="xref c c-member docutils literal notranslate"><span class="pre">m_size</span></code></a> is greater
 than 0 and the module state (as returned by <a class="reference internal" href="#c.PyModule_GetState" title="PyModule_GetState"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetState()</span></code></a>)
 is <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
 <div class="versionchanged">
@@ -453,7 +453,7 @@ of the following two module creation functions:</p>
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_Create</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.PyModuleDef" title="PyModuleDef"><span class="n"><span class="pre">PyModuleDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">def</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_Create" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="refcount">Return value: New reference.</em><p>Create a new module object, given the definition in <em>def</em>.  This behaves
 like <a class="reference internal" href="#c.PyModule_Create2" title="PyModule_Create2"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_Create2()</span></code></a> with <em>module_api_version</em> set to
-<code class="xref py py-const docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code>.</p>
+<code class="xref c c-macro docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code>.</p>
 </dd></dl>
 
 <dl class="c function">
@@ -488,7 +488,7 @@ By default, multiple modules created from the same definition should be
 independent: changes to one should not affect the others.
 This means that all state should be specific to the module object (using e.g.
 using <a class="reference internal" href="#c.PyModule_GetState" title="PyModule_GetState"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetState()</span></code></a>), or its contents (such as the module’s
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code> or individual classes created with <a class="reference internal" href="type.html#c.PyType_FromSpec" title="PyType_FromSpec"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_FromSpec()</span></code></a>).</p>
+<a class="reference internal" href="../library/stdtypes.html#object.__dict__" title="object.__dict__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__dict__</span></code></a> or individual classes created with <a class="reference internal" href="type.html#c.PyType_FromSpec" title="PyType_FromSpec"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyType_FromSpec()</span></code></a>).</p>
 <p>All modules created using multi-phase initialization are expected to support
 <a class="reference internal" href="init.html#sub-interpreter-support"><span class="std std-ref">sub-interpreters</span></a>. Making sure multiple modules
 are independent is typically enough to achieve this.</p>
@@ -537,8 +537,8 @@ correctly reports its type and reference count.</p>
 <dd><p>Specifies a function that is called to create the module object itself.
 The <em>value</em> pointer of this slot must point to a function of the signature:</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.Py_mod_create.create_module">
-<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">create_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">spec</span></span>, <a class="reference internal" href="#c.PyModuleDef" title="PyModuleDef"><span class="n"><span class="pre">PyModuleDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">def</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_mod_create.create_module" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<dt class="sig sig-object c">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">create_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">spec</span></span>, <a class="reference internal" href="#c.PyModuleDef" title="PyModuleDef"><span class="n"><span class="pre">PyModuleDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">def</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <p>The function receives a <a class="reference internal" href="../library/importlib.html#importlib.machinery.ModuleSpec" title="importlib.machinery.ModuleSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModuleSpec</span></code></a>
@@ -571,8 +571,8 @@ This is equivalent to executing the code of a Python module: typically,
 this function adds classes and constants to the module.
 The signature of the function is:</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.Py_mod_exec.exec_module">
-<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exec_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_mod_exec.exec_module" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<dt class="sig sig-object c">
+<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">exec_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <p>If multiple <code class="docutils literal notranslate"><span class="pre">Py_mod_exec</span></code> slots are specified, they are processed in the
@@ -592,7 +592,7 @@ objects dynamically. Note that both <code class="docutils literal notranslate"><
 <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_FromDefAndSpec</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.PyModuleDef" title="PyModuleDef"><span class="n"><span class="pre">PyModuleDef</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">def</span></span>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">spec</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_FromDefAndSpec" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><em class="refcount">Return value: New reference.</em><p>Create a new module object, given the definition in <em>def</em> and the
 ModuleSpec <em>spec</em>.  This behaves like <a class="reference internal" href="#c.PyModule_FromDefAndSpec2" title="PyModule_FromDefAndSpec2"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_FromDefAndSpec2()</span></code></a>
-with <em>module_api_version</em> set to <code class="xref py py-const docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code>.</p>
+with <em>module_api_version</em> set to <code class="xref c c-macro docutils literal notranslate"><span class="pre">PYTHON_API_VERSION</span></code>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 sürümünde geldi.</span></p>
 </div>
@@ -711,7 +711,7 @@ easy to introduce reference leaks by misusing the
 <div class="admonition note">
 <p class="admonition-title">Not</p>
 <p>Unlike other functions that steal references, <code class="docutils literal notranslate"><span class="pre">PyModule_AddObject()</span></code>
-only decrements the reference count of <em>value</em> <strong>on success</strong>.</p>
+only releases the reference to <em>value</em> <strong>on success</strong>.</p>
 <p>This means that its return value must be checked, and calling code must
 <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> <em>value</em> manually on error.</p>
 </div>
@@ -769,18 +769,18 @@ used from the module’s initialization function.  The string <em>value</em> mus
 <code class="docutils literal notranslate"><span class="pre">NULL</span></code>-terminated.  Return <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error, <code class="docutils literal notranslate"><span class="pre">0</span></code> on success.</p>
 </dd></dl>
 
-<dl class="c function">
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.PyModule_AddIntMacro">
-<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddIntMacro</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span>, <span class="n"><span class="pre">macro</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddIntMacro" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddIntMacro</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">module</span></span>, <span class="n"><span class="pre">macro</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddIntMacro" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><p>Add an int constant to <em>module</em>. The name and the value are taken from
 <em>macro</em>. For example <code class="docutils literal notranslate"><span class="pre">PyModule_AddIntMacro(module,</span> <span class="pre">AF_INET)</span></code> adds the int
 constant <em>AF_INET</em> with the value of <em>AF_INET</em> to <em>module</em>.
 Return <code class="docutils literal notranslate"><span class="pre">-1</span></code> on error, <code class="docutils literal notranslate"><span class="pre">0</span></code> on success.</p>
 </dd></dl>
 
-<dl class="c function">
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.PyModule_AddStringMacro">
-<span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddStringMacro</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><span class="n"><span class="pre">PyObject</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module</span></span>, <span class="n"><span class="pre">macro</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddStringMacro" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
+<span class="sig-name descname"><span class="n"><span class="pre">PyModule_AddStringMacro</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">module</span></span>, <span class="n"><span class="pre">macro</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyModule_AddStringMacro" title="Bu tanım için kalıcı bağlantı">¶</a><br /></dt>
 <dd><p>Add a string constant to <em>module</em>.</p>
 </dd></dl>
 
@@ -928,7 +928,7 @@ Return 0 on success or -1 on failure.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python/C API Referans Kılavuzu</a> &#187;</li>
@@ -972,11 +972,11 @@ Return 0 on success or -1 on failure.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

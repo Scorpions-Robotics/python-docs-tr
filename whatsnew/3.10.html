@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Editor, Pablo Galindo Salgado,. This article explains the new features in Python 3.10, compared to 3.9. Python 3.10 was released on October 4, 2021. For full details, see the changelog. Summary – R..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New In Python 3.10 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New In Python 3.10 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -271,7 +271,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -1067,7 +1067,7 @@ the <a class="reference internal" href="../library/constants.html#debug__" title
 <section id="new-modules">
 <h2>New Modules<a class="headerlink" href="#new-modules" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>None yet.</p></li>
+<li><p>None.</p></li>
 </ul>
 </section>
 <section id="improved-modules">
@@ -1371,8 +1371,8 @@ also now un-stringize stringized annotations.
 descriptors without copying between kernel address space and user
 address space, where one of the file descriptors must refer to a
 pipe. (Contributed by Pablo Galindo in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=41625">bpo-41625</a>.)</p>
-<p>Add <a class="reference internal" href="../library/os.html#os.O_EVTONLY" title="os.O_EVTONLY"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_EVTONLY</span></code></a>, <a class="reference internal" href="../library/os.html#os.O_FSYNC" title="os.O_FSYNC"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_FSYNC</span></code></a>, <a class="reference internal" href="../library/os.html#os.O_SYMLINK" title="os.O_SYMLINK"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_SYMLINK</span></code></a>
-and <a class="reference internal" href="../library/os.html#os.O_NOFOLLOW_ANY" title="os.O_NOFOLLOW_ANY"><code class="xref py py-data docutils literal notranslate"><span class="pre">O_NOFOLLOW_ANY</span></code></a> for macOS.
+<p>Add <a class="reference internal" href="../library/os.html#os.O_EVTONLY" title="os.O_EVTONLY"><code class="xref py py-const docutils literal notranslate"><span class="pre">O_EVTONLY</span></code></a>, <a class="reference internal" href="../library/os.html#os.O_FSYNC" title="os.O_FSYNC"><code class="xref py py-const docutils literal notranslate"><span class="pre">O_FSYNC</span></code></a>, <a class="reference internal" href="../library/os.html#os.O_SYMLINK" title="os.O_SYMLINK"><code class="xref py py-const docutils literal notranslate"><span class="pre">O_SYMLINK</span></code></a>
+and <a class="reference internal" href="../library/os.html#os.O_NOFOLLOW_ANY" title="os.O_NOFOLLOW_ANY"><code class="xref py py-const docutils literal notranslate"><span class="pre">O_NOFOLLOW_ANY</span></code></a> for macOS.
 (Contributed by Dong-hee Na in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43106">bpo-43106</a>.)</p>
 </section>
 <section id="os-path">
@@ -1424,7 +1424,7 @@ objects in the tree returned by <code class="xref py py-func docutils literal no
 </section>
 <section id="shelve">
 <h3>shelve<a class="headerlink" href="#shelve" title="Permalink to this heading">¶</a></h3>
-<p>The <a class="reference internal" href="../library/shelve.html#module-shelve" title="shelve: Python object persistence."><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> module now uses <a class="reference internal" href="../library/pickle.html#pickle.DEFAULT_PROTOCOL" title="pickle.DEFAULT_PROTOCOL"><code class="xref py py-data docutils literal notranslate"><span class="pre">pickle.DEFAULT_PROTOCOL</span></code></a> by default
+<p>The <a class="reference internal" href="../library/shelve.html#module-shelve" title="shelve: Python object persistence."><code class="xref py py-mod docutils literal notranslate"><span class="pre">shelve</span></code></a> module now uses <a class="reference internal" href="../library/pickle.html#pickle.DEFAULT_PROTOCOL" title="pickle.DEFAULT_PROTOCOL"><code class="xref py py-const docutils literal notranslate"><span class="pre">pickle.DEFAULT_PROTOCOL</span></code></a> by default
 instead of <a class="reference internal" href="../library/pickle.html#module-pickle" title="pickle: Convert Python objects to streams of bytes and back."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> protocol <code class="docutils literal notranslate"><span class="pre">3</span></code> when creating shelves.
 (Contributed by Zackery Spytz in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=34204">bpo-34204</a>.)</p>
 </section>
@@ -1454,7 +1454,7 @@ instead of <a class="reference internal" href="../library/pickle.html#module-pic
 <p>The ssl module requires OpenSSL 1.1.1 or newer.
 (Contributed by Christian Heimes in <span class="target" id="index-30"></span><a class="pep reference external" href="https://peps.python.org/pep-0644/"><strong>PEP 644</strong></a> and <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43669">bpo-43669</a>.)</p>
 <p>The ssl module has preliminary support for OpenSSL 3.0.0 and new option
-<a class="reference internal" href="../library/ssl.html#ssl.OP_IGNORE_UNEXPECTED_EOF" title="ssl.OP_IGNORE_UNEXPECTED_EOF"><code class="xref py py-data docutils literal notranslate"><span class="pre">OP_IGNORE_UNEXPECTED_EOF</span></code></a>.
+<a class="reference internal" href="../library/ssl.html#ssl.OP_IGNORE_UNEXPECTED_EOF" title="ssl.OP_IGNORE_UNEXPECTED_EOF"><code class="xref py py-const docutils literal notranslate"><span class="pre">OP_IGNORE_UNEXPECTED_EOF</span></code></a>.
 (Contributed by Christian Heimes in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=38820">bpo-38820</a>, <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43794">bpo-43794</a>,
 <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43788">bpo-43788</a>, <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43791">bpo-43791</a>, <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43799">bpo-43799</a>, <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43920">bpo-43920</a>,
 <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43789">bpo-43789</a>, and <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43811">bpo-43811</a>.)</p>
@@ -1479,7 +1479,7 @@ suites may prevent a successful handshake.</p>
 (Contributed by Zackery Spytz in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=31870">bpo-31870</a>.)</p>
 <p>The ssl module uses heap-types and multi-phase initialization.
 (Contributed by Christian Heimes in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=42333">bpo-42333</a>.)</p>
-<p>A new verify flag <a class="reference internal" href="../library/ssl.html#ssl.VERIFY_X509_PARTIAL_CHAIN" title="ssl.VERIFY_X509_PARTIAL_CHAIN"><code class="xref py py-data docutils literal notranslate"><span class="pre">VERIFY_X509_PARTIAL_CHAIN</span></code></a> has been added.
+<p>A new verify flag <a class="reference internal" href="../library/ssl.html#ssl.VERIFY_X509_PARTIAL_CHAIN" title="ssl.VERIFY_X509_PARTIAL_CHAIN"><code class="xref py py-const docutils literal notranslate"><span class="pre">VERIFY_X509_PARTIAL_CHAIN</span></code></a> has been added.
 (Contributed by l0x in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=40849">bpo-40849</a>.)</p>
 </section>
 <section id="sqlite3">
@@ -1501,7 +1501,7 @@ module names.
 <section id="thread">
 <h3>_thread<a class="headerlink" href="#thread" title="Permalink to this heading">¶</a></h3>
 <p><a class="reference internal" href="../library/_thread.html#thread.interrupt_main" title="_thread.interrupt_main"><code class="xref py py-func docutils literal notranslate"><span class="pre">_thread.interrupt_main()</span></code></a> now takes an optional signal number to
-simulate (the default is still <a class="reference internal" href="../library/signal.html#signal.SIGINT" title="signal.SIGINT"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.SIGINT</span></code></a>).
+simulate (the default is still <a class="reference internal" href="../library/signal.html#signal.SIGINT" title="signal.SIGINT"><code class="xref py py-const docutils literal notranslate"><span class="pre">signal.SIGINT</span></code></a>).
 (Contributed by Antoine Pitrou in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43356">bpo-43356</a>.)</p>
 </section>
 <section id="threading">
@@ -1796,8 +1796,8 @@ Python 3.7, or OpenSSL 1.1.0 and will be removed in 3.11:</p>
 <li><p><a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_SSLv2" title="ssl.PROTOCOL_SSLv2"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_SSLv2</span></code></a>, <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_SSLv3" title="ssl.PROTOCOL_SSLv3"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_SSLv3</span></code></a>,
 <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_SSLv23" title="ssl.PROTOCOL_SSLv23"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_SSLv23</span></code></a>, <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLSv1" title="ssl.PROTOCOL_TLSv1"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLSv1</span></code></a>,
 <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLSv1_1" title="ssl.PROTOCOL_TLSv1_1"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLSv1_1</span></code></a>, <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLSv1_2" title="ssl.PROTOCOL_TLSv1_2"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLSv1_2</span></code></a>, and
-<a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS" title="ssl.PROTOCOL_TLS"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLS</span></code></a> are deprecated in favor of
-<a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS_CLIENT" title="ssl.PROTOCOL_TLS_CLIENT"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLS_CLIENT</span></code></a> and <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS_SERVER" title="ssl.PROTOCOL_TLS_SERVER"><code class="xref py py-data docutils literal notranslate"><span class="pre">PROTOCOL_TLS_SERVER</span></code></a></p></li>
+<a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS" title="ssl.PROTOCOL_TLS"><code class="xref py py-const docutils literal notranslate"><span class="pre">PROTOCOL_TLS</span></code></a> are deprecated in favor of
+<a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS_CLIENT" title="ssl.PROTOCOL_TLS_CLIENT"><code class="xref py py-const docutils literal notranslate"><span class="pre">PROTOCOL_TLS_CLIENT</span></code></a> and <a class="reference internal" href="../library/ssl.html#ssl.PROTOCOL_TLS_SERVER" title="ssl.PROTOCOL_TLS_SERVER"><code class="xref py py-const docutils literal notranslate"><span class="pre">PROTOCOL_TLS_SERVER</span></code></a></p></li>
 <li><p><a class="reference internal" href="../library/ssl.html#ssl.wrap_socket" title="ssl.wrap_socket"><code class="xref py py-func docutils literal notranslate"><span class="pre">wrap_socket()</span></code></a> is replaced by <a class="reference internal" href="../library/ssl.html#ssl.SSLContext.wrap_socket" title="ssl.SSLContext.wrap_socket"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ssl.SSLContext.wrap_socket()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../library/ssl.html#ssl.match_hostname" title="ssl.match_hostname"><code class="xref py py-func docutils literal notranslate"><span class="pre">match_hostname()</span></code></a></p></li>
 <li><p><a class="reference internal" href="../library/ssl.html#ssl.RAND_pseudo_bytes" title="ssl.RAND_pseudo_bytes"><code class="xref py py-func docutils literal notranslate"><span class="pre">RAND_pseudo_bytes()</span></code></a>, <code class="xref py py-func docutils literal notranslate"><span class="pre">RAND_egd()</span></code></p></li>
@@ -1848,7 +1848,7 @@ after Python 2.7 EOL. Existing users should copy whatever classes they use
 into their code.
 (Contributed by Dong-hee Na and Terry J. Reedy in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=42299">bpo-42299</a>.)</p></li>
 <li><p>Removed the <code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_GetWarningsModule()</span></code> function that was useless
-now due to the _warnings module was converted to a builtin module in 2.6.
+now due to the <code class="xref py py-mod docutils literal notranslate"><span class="pre">_warnings</span></code> module was converted to a builtin module in 2.6.
 (Contributed by Hai Shi in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=42599">bpo-42599</a>.)</p></li>
 <li><p>Remove deprecated aliases to <a class="reference internal" href="../library/collections.abc.html#collections-abstract-base-classes"><span class="std std-ref">Collections Abstract Base Classes</span></a> from
 the <a class="reference internal" href="../library/collections.html#module-collections" title="collections: Container datatypes"><code class="xref py py-mod docutils literal notranslate"><span class="pre">collections</span></code></a> module.
@@ -2113,10 +2113,10 @@ singleton or the <code class="docutils literal notranslate"><span class="pre">Fa
 <a class="reference internal" href="../c-api/gcsupport.html#c.PyGC_IsEnabled" title="PyGC_IsEnabled"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyGC_IsEnabled()</span></code></a>.
 These functions allow to activate, deactivate and query the state of the garbage collector from C code without
 having to import the <a class="reference internal" href="../library/gc.html#module-gc" title="gc: Interface to the cycle-detecting garbage collector."><code class="xref py py-mod docutils literal notranslate"><span class="pre">gc</span></code></a> module.</p></li>
-<li><p>Add a new <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code> type flag to disallow
+<li><p>Add a new <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_DISALLOW_INSTANTIATION" title="Py_TPFLAGS_DISALLOW_INSTANTIATION"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_DISALLOW_INSTANTIATION</span></code></a> type flag to disallow
 creating type instances.
 (Contributed by Victor Stinner in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43916">bpo-43916</a>.)</p></li>
-<li><p>Add a new <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code> type flag for creating immutable
+<li><p>Add a new <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_IMMUTABLETYPE" title="Py_TPFLAGS_IMMUTABLETYPE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a> type flag for creating immutable
 type objects: type attributes cannot be set nor deleted.
 (Contributed by Victor Stinner and Erlend E. Aasland in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43908">bpo-43908</a>.)</p></li>
 </ul>
@@ -2169,9 +2169,9 @@ directory. These files must not be included directly, as they are already
 included in <code class="docutils literal notranslate"><span class="pre">Python.h</span></code>; see <a class="reference internal" href="../c-api/intro.html#api-includes"><span class="std std-ref">Include Files</span></a>. If they have
 been included directly, consider including <code class="docutils literal notranslate"><span class="pre">Python.h</span></code> instead.
 (Contributed by Nicholas Sim in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=35134">bpo-35134</a>.)</p></li>
-<li><p>Use the <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code> type flag to create immutable type
-objects. Do not rely on <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code> to decide if a type
-object is mutable or not; check if <code class="xref c c-data docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code> is set
+<li><p>Use the <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_IMMUTABLETYPE" title="Py_TPFLAGS_IMMUTABLETYPE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a> type flag to create immutable type
+objects. Do not rely on <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_HEAPTYPE" title="Py_TPFLAGS_HEAPTYPE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_HEAPTYPE</span></code></a> to decide if a type
+object is mutable or not; check if <a class="reference internal" href="../c-api/typeobj.html#c.Py_TPFLAGS_IMMUTABLETYPE" title="Py_TPFLAGS_IMMUTABLETYPE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TPFLAGS_IMMUTABLETYPE</span></code></a> is set
 instead.
 (Contributed by Victor Stinner and Erlend E. Aasland in <a class="reference external" href="https://bugs.python.org/issue?&#64;action=redirect&amp;bpo=43908">bpo-43908</a>.)</p></li>
 <li><p>The undocumented function <code class="docutils literal notranslate"><span class="pre">Py_FrozenMain</span></code> has been removed from the
@@ -2480,7 +2480,7 @@ only used internally by the compiler.
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -2523,11 +2523,11 @@ only used internally by the compiler.
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

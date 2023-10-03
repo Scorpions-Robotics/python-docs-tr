@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Bu bölüm, daha önce öğrendiğiniz bazı şeyleri daha ayrıntılı olarak açıklamakta ve bazı yeni şeyler de eklemektedir. Listeler Üzerine: Liste veri türünün bazı yöntemleri daha vardır. Liste nesneler..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>5. Veri Yapıları &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. Veri Yapıları &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -168,7 +168,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Öğreticisi</a> &#187;</li>
@@ -302,7 +302,10 @@
 <p>Fark edebileceğiniz bir başka şey de tüm verilerin sıralanamayacağı veya karşılaştırılamayacağıdır.  Örneğin, <code class="docutils literal notranslate"><span class="pre">[None,</span> <span class="pre">'hello',</span> <span class="pre">10]</span></code> sıralanamaz çünkü tamsayılar dizelerle karşılaştırılamaz ve <em>None</em> diğer türlerle karşılaştırılamaz.  Ayrıca, tanımlanmış bir sıralama ilişkisine sahip olmayan bazı türler de vardır.  Örneğin, <code class="docutils literal notranslate"><span class="pre">3+4j</span> <span class="pre">&lt;</span> <span class="pre">5+7j</span></code> geçerli bir karşılaştırma değildir.</p>
 <section id="using-lists-as-stacks">
 <span id="tut-lists-as-stacks"></span><h3><span class="section-number">5.1.1. </span>Listeleri Yığın Olarak Kullanma<a class="headerlink" href="#using-lists-as-stacks" title="Permalink to this heading">¶</a></h3>
-<p>Liste yöntemleri, bir listeyi, eklenen son öğenin alınan ilk öğe olduğu bir yığın olarak kullanmayı çok kolaylaştırır (“son giren ilk çıkar”).  Yığının en üstüne bir öğe eklemek için <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> kullanın.  Yığının en üstünden bir öğe almak için, açık bir indeks olmadan <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> kullanın.  Örneğin:</p>
+<p>The list methods make it very easy to use a list as a stack, where the last
+element added is the first element retrieved (“last-in, first-out”).  To add an
+item to the top of the stack, use <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code>.  To retrieve an item from the
+top of the stack, use <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> without an explicit index.  For example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
@@ -461,7 +464,11 @@
 </section>
 <section id="the-del-statement">
 <span id="tut-del"></span><h2><span class="section-number">5.2. </span><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> ifadesi<a class="headerlink" href="#the-del-statement" title="Permalink to this heading">¶</a></h2>
-<p>Değer yerine indeksi verilen bir öğeyi listeden kaldırmanın bir yolu vardır: <a class="reference internal" href="../reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> ifadesi.  Bu, bir değer döndüren <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> yönteminden farklıdır. <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> ifadesi ayrıca bir listeden dilimleri kaldırmak veya tüm listeyi temizlemek için de kullanılabilir (bunu daha önce dilime boş bir liste atayarak yapmıştık).  Örneğin:</p>
+<p>There is a way to remove an item from a list given its index instead of its
+value: the <a class="reference internal" href="../reference/simple_stmts.html#del"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code></a> statement.  This differs from the <code class="xref py py-meth docutils literal notranslate"><span class="pre">pop()</span></code> method
+which returns a value.  The <code class="xref std std-keyword docutils literal notranslate"><span class="pre">del</span></code> statement can also be used to remove
+slices from a list or clear the entire list (which we did earlier by assignment
+of an empty list to the slice).  For example:</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">66.25</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mi">333</span><span class="p">,</span> <span class="mf">1234.5</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
@@ -561,7 +568,16 @@
 </section>
 <section id="dictionaries">
 <span id="tut-dictionaries"></span><h2><span class="section-number">5.5. </span>Sözlükler<a class="headerlink" href="#dictionaries" title="Permalink to this heading">¶</a></h2>
-<p>Python’da yerleşik olarak bulunan bir başka kullanışlı veri türü de <em>sözlüktür</em> (bkz <a class="reference internal" href="../library/stdtypes.html#typesmapping"><span class="std std-ref">Mapping Types — dict</span></a>). Sözlükler bazen diğer dillerde “ilişkisel bellekler” veya “ilişkisel diziler” olarak bulunur.  Bir sayı aralığı ile indekslenen dizilerin aksine, sözlükler herhangi bir değişmez tip olabilen <em>anahtarlar</em> ile indekslenir, ki dizgiler ve sayılar her zaman birer anahtar olabilir.  Veri grupları yalnızca dizgi, sayı ya da veri grubu içeriyorsa anahtar olarak kullanılabilir. Ancak bir veri grubu doğrudan ya da dolaylı olarak değişebilir herhangi bir nesne içeriyorsa anahtar olarak kullanılamaz. Listeler; dizin atamaları, dilim atamaları veya <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> ve <code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code> gibi yöntemler kullanılarak yerinde değiştirilebildiğinden listeleri anahtar olarak kullanamazsınız.</p>
+<p>Another useful data type built into Python is the <em>dictionary</em> (see
+<a class="reference internal" href="../library/stdtypes.html#typesmapping"><span class="std std-ref">Mapping Types — dict</span></a>). Dictionaries are sometimes found in other languages as
+“associative memories” or “associative arrays”.  Unlike sequences, which are
+indexed by a range of numbers, dictionaries are indexed by <em>keys</em>, which can be
+any immutable type; strings and numbers can always be keys.  Tuples can be used
+as keys if they contain only strings, numbers, or tuples; if a tuple contains
+any mutable object either directly or indirectly, it cannot be used as a key.
+You can’t use lists as keys, since lists can be modified in place using index
+assignments, slice assignments, or methods like <code class="xref py py-meth docutils literal notranslate"><span class="pre">append()</span></code> and
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code>.</p>
 <p>Bir sözlüğü <em>anahtar: değer</em> çiftleri olarak düşünmek en iyisidir. Bir sözlük içerisindeki her anahtarın benzersiz olması gerektiğini ise unutmayın. Bir çift parantez boş bir sözlük oluşturur: <code class="docutils literal notranslate"><span class="pre">{}</span></code>. Anahtar:değer çiftlerinin virgülle ayrılmış bir listesini parantezler içine yerleştirmek sözlüğe ilk anahtar:değer çiftlerini ekler; sözlükler çıktıda da aynı bu şekilde görünürler.</p>
 <p>Bir sözlük üzerindeki ana işlemler, bir değeri bir anahtarla depolamak ve anahtarı verilen değeri geri çıkarmaktır.  Ayrıca <code class="docutils literal notranslate"><span class="pre">del</span></code> ile bir anahtar:değer çiftini silmek de mümkündür. Zaten bir değeri kullanımda olan bir anahtar kullanarak saklarsanız, bu anahtarla ilişkili eski değer unutulur.  Var olmayan bir anahtar kullanarak değer çıkarmak bir hatadır.</p>
 <p>Bir sözlük üzerinde <code class="docutils literal notranslate"><span class="pre">list(d)</span></code> işlemini gerçekleştirmek, sözlükte kullanılan tüm anahtarların bir listesini eklenme sırasına göre döndürür (başka bir düzenle sıralanmasını istiyorsanız, bunun yerine <code class="docutils literal notranslate"><span class="pre">sorted(d)</span></code> kullanın). Tek bir anahtarın sözlükte olup olmadığını kontrol etmek için <a class="reference internal" href="../reference/expressions.html#in"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">in</span></code></a> anahtar sözcüğünü kullanın.</p>
@@ -604,7 +620,8 @@
 </section>
 <section id="looping-techniques">
 <span id="tut-loopidioms"></span><h2><span class="section-number">5.6. </span>Döngü Teknikleri<a class="headerlink" href="#looping-techniques" title="Permalink to this heading">¶</a></h2>
-<p>Sözlükler arasında döngü yaparken, <code class="xref py py-meth docutils literal notranslate"><span class="pre">items()</span></code> yöntemi kullanılarak anahtar ve karşılık gelen değer aynı anda alınabilir.</p>
+<p>When looping through dictionaries, the key and corresponding value can be
+retrieved at the same time using the <a class="reference internal" href="../library/stdtypes.html#dict.items" title="dict.items"><code class="xref py py-meth docutils literal notranslate"><span class="pre">items()</span></code></a> method.</p>
 <div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">knights</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;gallahad&#39;</span><span class="p">:</span> <span class="s1">&#39;the pure&#39;</span><span class="p">,</span> <span class="s1">&#39;robin&#39;</span><span class="p">:</span> <span class="s1">&#39;the brave&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">knights</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
@@ -805,7 +822,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Öğreticisi</a> &#187;</li>
@@ -848,11 +865,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

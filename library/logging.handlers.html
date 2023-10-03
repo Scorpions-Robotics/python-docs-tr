@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/logging/handlers.py Important: This page contains only reference information. For tutorials, please see Basic Tutorial, Advanced Tutorial, Logging Cookbook. The following useful ha..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>logging.handlers — Logging handlers &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>logging.handlers — Logging handlers &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -313,7 +313,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -439,7 +439,7 @@ sends logging output to a disk file.  It inherits the output functionality from
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logging.</span></span><span class="sig-name descname"><span class="pre">FileHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logging.FileHandler" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Returns a new instance of the <a class="reference internal" href="#logging.FileHandler" title="logging.FileHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">FileHandler</span></code></a> class. The specified file is
 opened and used as the stream for logging. If <em>mode</em> is not specified,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">'a'</span></code> is used.  If <em>encoding</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is used to open the file
+<code class="docutils literal notranslate"><span class="pre">'a'</span></code> is used.  If <em>encoding</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is used to open the file
 with that encoding.  If <em>delay</em> is true, then file opening is deferred until the
 first call to <a class="reference internal" href="#logging.FileHandler.emit" title="logging.FileHandler.emit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">emit()</span></code></a>. By default, the file grows indefinitely. If
 <em>errors</em> is specified, it’s used to determine how encoding errors are handled.</p>
@@ -524,7 +524,7 @@ for this value.</p>
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">logging.handlers.</span></span><span class="sig-name descname"><span class="pre">WatchedFileHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'a'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delay</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">errors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#logging.handlers.WatchedFileHandler" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
 <dd><p>Returns a new instance of the <a class="reference internal" href="#logging.handlers.WatchedFileHandler" title="logging.handlers.WatchedFileHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">WatchedFileHandler</span></code></a> class. The specified
 file is opened and used as the stream for logging. If <em>mode</em> is not specified,
-<code class="xref py py-const docutils literal notranslate"><span class="pre">'a'</span></code> is used.  If <em>encoding</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is used to open the file
+<code class="docutils literal notranslate"><span class="pre">'a'</span></code> is used.  If <em>encoding</em> is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, it is used to open the file
 with that encoding.  If <em>delay</em> is true, then file opening is deferred until the
 first call to <a class="reference internal" href="#logging.handlers.WatchedFileHandler.emit" title="logging.handlers.WatchedFileHandler.emit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">emit()</span></code></a>.  By default, the file grows indefinitely. If
 <em>errors</em> is provided, it determines how encoding errors are handled.</p>
@@ -1337,8 +1337,9 @@ call <a class="reference internal" href="#logging.handlers.BufferingHandler.flus
 <dl class="py method">
 <dt class="sig sig-object py" id="logging.handlers.BufferingHandler.flush">
 <span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logging.handlers.BufferingHandler.flush" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>You can override this to implement custom flushing behavior. This version
-just zaps the buffer to empty.</p>
+<dd><p>For a <a class="reference internal" href="#logging.handlers.BufferingHandler" title="logging.handlers.BufferingHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">BufferingHandler</span></code></a> instance, flushing means that it sets the
+buffer to an empty list. This method can be overwritten to implement more useful
+flushing behavior.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1374,9 +1375,9 @@ buffer.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="logging.handlers.MemoryHandler.flush">
 <span class="sig-name descname"><span class="pre">flush</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#logging.handlers.MemoryHandler.flush" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
-<dd><p>For a <a class="reference internal" href="#logging.handlers.MemoryHandler" title="logging.handlers.MemoryHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryHandler</span></code></a>, flushing means just sending the buffered
+<dd><p>For a <a class="reference internal" href="#logging.handlers.MemoryHandler" title="logging.handlers.MemoryHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MemoryHandler</span></code></a> instance, flushing means just sending the buffered
 records to the target, if there is one. The buffer is also cleared when
-this happens. Override if you want different behavior.</p>
+buffered records are sent to the target. Override if you want different behavior.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1481,8 +1482,8 @@ have the task tracking API, which means that you can use
 occur (e.g. because a bounded queue has filled up), the
 <a class="reference internal" href="logging.html#logging.Handler.handleError" title="logging.Handler.handleError"><code class="xref py py-meth docutils literal notranslate"><span class="pre">handleError()</span></code></a> method is called to handle the
 error. This can result in the record silently being dropped (if
-<code class="xref py py-attr docutils literal notranslate"><span class="pre">logging.raiseExceptions</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>) or a message printed to
-<code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> (if <code class="xref py py-attr docutils literal notranslate"><span class="pre">logging.raiseExceptions</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+<code class="xref py py-data docutils literal notranslate"><span class="pre">logging.raiseExceptions</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>) or a message printed to
+<code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> (if <code class="xref py py-data docutils literal notranslate"><span class="pre">logging.raiseExceptions</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1869,7 +1870,7 @@ implementations.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1913,11 +1914,11 @@ implementations.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="This chapter explains the meaning of the elements of expressions in Python. Syntax Notes: In this and the following chapters, extended BNF notation will be used to describe syntax, not lexical anal..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>6. Expressions &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. Expressions &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -211,7 +211,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Python Language Reference</a> &#187;</li>
@@ -422,24 +422,24 @@ dictionary.</p>
 </section>
 <section id="dictionary-displays">
 <span id="dict"></span><h3><span class="section-number">6.2.7. </span>Dictionary displays<a class="headerlink" href="#dictionary-displays" title="Permalink to this heading">¶</a></h3>
-<p id="index-17">A dictionary display is a possibly empty series of key/datum pairs enclosed in
-curly braces:</p>
+<p id="index-17">A dictionary display is a possibly empty series of dict items (key/value pairs)
+enclosed in curly braces:</p>
 <pre>
-<strong id="grammar-token-python-grammar-dict_display">dict_display      </strong> ::=  &quot;{&quot; [<a class="reference internal" href="#grammar-token-python-grammar-key_datum_list"><code class="xref docutils literal notranslate"><span class="pre">key_datum_list</span></code></a> | <a class="reference internal" href="#grammar-token-python-grammar-dict_comprehension"><code class="xref docutils literal notranslate"><span class="pre">dict_comprehension</span></code></a>] &quot;}&quot;
-<strong id="grammar-token-python-grammar-key_datum_list">key_datum_list    </strong> ::=  <a class="reference internal" href="#grammar-token-python-grammar-key_datum"><code class="xref docutils literal notranslate"><span class="pre">key_datum</span></code></a> (&quot;,&quot; <a class="reference internal" href="#grammar-token-python-grammar-key_datum"><code class="xref docutils literal notranslate"><span class="pre">key_datum</span></code></a>)* [&quot;,&quot;]
-<strong id="grammar-token-python-grammar-key_datum">key_datum         </strong> ::=  <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> &quot;:&quot; <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> | &quot;**&quot; <a class="reference internal" href="#grammar-token-python-grammar-or_expr"><code class="xref docutils literal notranslate"><span class="pre">or_expr</span></code></a>
+<strong id="grammar-token-python-grammar-dict_display">dict_display      </strong> ::=  &quot;{&quot; [<a class="reference internal" href="#grammar-token-python-grammar-dict_item_list"><code class="xref docutils literal notranslate"><span class="pre">dict_item_list</span></code></a> | <a class="reference internal" href="#grammar-token-python-grammar-dict_comprehension"><code class="xref docutils literal notranslate"><span class="pre">dict_comprehension</span></code></a>] &quot;}&quot;
+<strong id="grammar-token-python-grammar-dict_item_list">dict_item_list    </strong> ::=  <a class="reference internal" href="#grammar-token-python-grammar-dict_item"><code class="xref docutils literal notranslate"><span class="pre">dict_item</span></code></a> (&quot;,&quot; <a class="reference internal" href="#grammar-token-python-grammar-dict_item"><code class="xref docutils literal notranslate"><span class="pre">dict_item</span></code></a>)* [&quot;,&quot;]
+<strong id="grammar-token-python-grammar-dict_item">dict_item         </strong> ::=  <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> &quot;:&quot; <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> | &quot;**&quot; <a class="reference internal" href="#grammar-token-python-grammar-or_expr"><code class="xref docutils literal notranslate"><span class="pre">or_expr</span></code></a>
 <strong id="grammar-token-python-grammar-dict_comprehension">dict_comprehension</strong> ::=  <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> &quot;:&quot; <a class="reference internal" href="#grammar-token-python-grammar-expression"><code class="xref docutils literal notranslate"><span class="pre">expression</span></code></a> <a class="reference internal" href="#grammar-token-python-grammar-comp_for"><code class="xref docutils literal notranslate"><span class="pre">comp_for</span></code></a>
 </pre>
 <p>A dictionary display yields a new dictionary object.</p>
-<p>If a comma-separated sequence of key/datum pairs is given, they are evaluated
+<p>If a comma-separated sequence of dict items is given, they are evaluated
 from left to right to define the entries of the dictionary: each key object is
-used as a key into the dictionary to store the corresponding datum.  This means
-that you can specify the same key multiple times in the key/datum list, and the
+used as a key into the dictionary to store the corresponding value.  This means
+that you can specify the same key multiple times in the dict item list, and the
 final dictionary’s value for that key will be the last one given.</p>
 <p id="index-18">A double asterisk <code class="docutils literal notranslate"><span class="pre">**</span></code> denotes <em class="dfn">dictionary unpacking</em>.
 Its operand must be a <a class="reference internal" href="../glossary.html#term-mapping"><span class="xref std std-term">mapping</span></a>.  Each mapping item is added
 to the new dictionary.  Later values replace values already set by
-earlier key/datum pairs and earlier dictionary unpackings.</p>
+earlier dict items and earlier dictionary unpackings.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">3.5 sürümünde geldi: </span>Unpacking into dictionary displays, originally proposed by <span class="target" id="index-19"></span><a class="pep reference external" href="https://peps.python.org/pep-0448/"><strong>PEP 448</strong></a>.</p>
 </div>
@@ -450,7 +450,7 @@ in the new dictionary in the order they are produced.</p>
 <p id="index-20">Restrictions on the types of the key values are listed earlier in section
 <a class="reference internal" href="datamodel.html#types"><span class="std std-ref">The standard type hierarchy</span></a>.  (To summarize, the key type should be <a class="reference internal" href="../glossary.html#term-hashable"><span class="xref std std-term">hashable</span></a>, which excludes
 all mutable objects.)  Clashes between duplicate keys are not detected; the last
-datum (textually rightmost in the display) stored for a given key value
+value (textually rightmost in the display) stored for a given key value
 prevails.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">3.8 sürümünde değişti: </span>Prior to Python 3.8, in dict comprehensions, the evaluation order of key
@@ -786,7 +786,9 @@ because there is no yield expression that could receive the value.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="agen.athrow">
-<em class="property"><span class="pre">coroutine</span> </em><span class="sig-prename descclassname"><span class="pre">agen.</span></span><span class="sig-name descname"><span class="pre">athrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#agen.athrow" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<em class="property"><span class="pre">coroutine</span> </em><span class="sig-prename descclassname"><span class="pre">agen.</span></span><span class="sig-name descname"><span class="pre">athrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#agen.athrow" title="Bu tanım için kalıcı bağlantı">¶</a></dt>
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">coroutine</span> </em><span class="sig-prename descclassname"><span class="pre">agen.</span></span><span class="sig-name descname"><span class="pre">athrow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">traceback</span></span></em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span></dt>
 <dd><p>Returns an awaitable that raises an exception of type <code class="docutils literal notranslate"><span class="pre">type</span></code> at the point
 where the asynchronous generator was paused, and returns the next value
 yielded by the generator function as the value of the raised
@@ -1407,7 +1409,7 @@ control flow statements, the following values are interpreted as false:
 <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, numeric zero of all types, and empty strings and containers
 (including strings, tuples, lists, dictionaries, sets and frozensets).  All
 other values are interpreted as true.  User-defined objects can customize their
-truth value by providing a <code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code> method.</p>
+truth value by providing a <a class="reference internal" href="datamodel.html#object.__bool__" title="object.__bool__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__bool__()</span></code></a> method.</p>
 <p id="index-83">The operator <a class="reference internal" href="#not"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">not</span></code></a> yields <code class="docutils literal notranslate"><span class="pre">True</span></code> if its argument is false, <code class="docutils literal notranslate"><span class="pre">False</span></code>
 otherwise.</p>
 <p id="index-84">The expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">and</span> <span class="pre">y</span></code> first evaluates <em>x</em>; if <em>x</em> is false, its value is
@@ -1796,7 +1798,7 @@ precedence applies.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Language Reference</a> &#187;</li>
@@ -1839,11 +1841,11 @@ precedence applies.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

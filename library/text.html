@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="The modules described in this chapter provide a wide range of string manipulation operations and other text processing services. The codecs module described under Binary Data Services is also highl..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Text Processing Services &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Processing Services &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -145,7 +145,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">The Python Standard Library</a> &#187;</li>
@@ -254,6 +254,8 @@ Python’s built-in string type in <a class="reference internal" href="stdtypes.
 <li class="toctree-l4"><a class="reference internal" href="re.html#re.NOFLAG"><code class="docutils literal notranslate"><span class="pre">NOFLAG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="re.html#re.S"><code class="docutils literal notranslate"><span class="pre">S</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="re.html#re.DOTALL"><code class="docutils literal notranslate"><span class="pre">DOTALL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.U"><code class="docutils literal notranslate"><span class="pre">U</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.UNICODE"><code class="docutils literal notranslate"><span class="pre">UNICODE</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="re.html#re.X"><code class="docutils literal notranslate"><span class="pre">X</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="re.html#re.VERBOSE"><code class="docutils literal notranslate"><span class="pre">VERBOSE</span></code></a></li>
 </ul>
@@ -286,35 +288,41 @@ Python’s built-in string type in <a class="reference internal" href="stdtypes.
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="re.html#regular-expression-objects">Regular Expression Objects</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.search"><code class="docutils literal notranslate"><span class="pre">Pattern.search()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.match"><code class="docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.fullmatch"><code class="docutils literal notranslate"><span class="pre">Pattern.fullmatch()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.split"><code class="docutils literal notranslate"><span class="pre">Pattern.split()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.findall"><code class="docutils literal notranslate"><span class="pre">Pattern.findall()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.finditer"><code class="docutils literal notranslate"><span class="pre">Pattern.finditer()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.sub"><code class="docutils literal notranslate"><span class="pre">Pattern.sub()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.subn"><code class="docutils literal notranslate"><span class="pre">Pattern.subn()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.flags"><code class="docutils literal notranslate"><span class="pre">Pattern.flags</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.groups"><code class="docutils literal notranslate"><span class="pre">Pattern.groups</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.groupindex"><code class="docutils literal notranslate"><span class="pre">Pattern.groupindex</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern.pattern"><code class="docutils literal notranslate"><span class="pre">Pattern.pattern</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="re.html#re.Pattern"><code class="docutils literal notranslate"><span class="pre">Pattern</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.search"><code class="docutils literal notranslate"><span class="pre">Pattern.search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.match"><code class="docutils literal notranslate"><span class="pre">Pattern.match()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.fullmatch"><code class="docutils literal notranslate"><span class="pre">Pattern.fullmatch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.split"><code class="docutils literal notranslate"><span class="pre">Pattern.split()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.findall"><code class="docutils literal notranslate"><span class="pre">Pattern.findall()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.finditer"><code class="docutils literal notranslate"><span class="pre">Pattern.finditer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.sub"><code class="docutils literal notranslate"><span class="pre">Pattern.sub()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.subn"><code class="docutils literal notranslate"><span class="pre">Pattern.subn()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.flags"><code class="docutils literal notranslate"><span class="pre">Pattern.flags</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.groups"><code class="docutils literal notranslate"><span class="pre">Pattern.groups</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.groupindex"><code class="docutils literal notranslate"><span class="pre">Pattern.groupindex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Pattern.pattern"><code class="docutils literal notranslate"><span class="pre">Pattern.pattern</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="re.html#match-objects">Match Objects</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.expand"><code class="docutils literal notranslate"><span class="pre">Match.expand()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.group"><code class="docutils literal notranslate"><span class="pre">Match.group()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.__getitem__"><code class="docutils literal notranslate"><span class="pre">Match.__getitem__()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.groups"><code class="docutils literal notranslate"><span class="pre">Match.groups()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.groupdict"><code class="docutils literal notranslate"><span class="pre">Match.groupdict()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.start"><code class="docutils literal notranslate"><span class="pre">Match.start()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.end"><code class="docutils literal notranslate"><span class="pre">Match.end()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.span"><code class="docutils literal notranslate"><span class="pre">Match.span()</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.pos"><code class="docutils literal notranslate"><span class="pre">Match.pos</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.endpos"><code class="docutils literal notranslate"><span class="pre">Match.endpos</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.lastindex"><code class="docutils literal notranslate"><span class="pre">Match.lastindex</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.lastgroup"><code class="docutils literal notranslate"><span class="pre">Match.lastgroup</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.re"><code class="docutils literal notranslate"><span class="pre">Match.re</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match.string"><code class="docutils literal notranslate"><span class="pre">Match.string</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="re.html#re.Match"><code class="docutils literal notranslate"><span class="pre">Match</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.expand"><code class="docutils literal notranslate"><span class="pre">Match.expand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.group"><code class="docutils literal notranslate"><span class="pre">Match.group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.__getitem__"><code class="docutils literal notranslate"><span class="pre">Match.__getitem__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.groups"><code class="docutils literal notranslate"><span class="pre">Match.groups()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.groupdict"><code class="docutils literal notranslate"><span class="pre">Match.groupdict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.start"><code class="docutils literal notranslate"><span class="pre">Match.start()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.end"><code class="docutils literal notranslate"><span class="pre">Match.end()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.span"><code class="docutils literal notranslate"><span class="pre">Match.span()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.pos"><code class="docutils literal notranslate"><span class="pre">Match.pos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.endpos"><code class="docutils literal notranslate"><span class="pre">Match.endpos</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.lastindex"><code class="docutils literal notranslate"><span class="pre">Match.lastindex</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.lastgroup"><code class="docutils literal notranslate"><span class="pre">Match.lastgroup</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.re"><code class="docutils literal notranslate"><span class="pre">Match.re</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="re.html#re.Match.string"><code class="docutils literal notranslate"><span class="pre">Match.string</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="re.html#regular-expression-examples">Regular Expression Examples</a><ul>
@@ -559,7 +567,7 @@ Python’s built-in string type in <a class="reference internal" href="stdtypes.
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -602,11 +610,11 @@ Python’s built-in string type in <a class="reference internal" href="stdtypes.
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

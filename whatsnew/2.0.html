@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Author, A.M. Kuchling and Moshe Zadka,. Introduction: A new release of Python, version 2.0, was released on October 16, 2000. This article covers the exciting new features in 2.0, highlights some o..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>What’s New in Python 2.0 &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What’s New in Python 2.0 &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -181,7 +181,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">What’s New in Python</a> &#187;</li>
@@ -780,7 +780,7 @@ a list, <code class="docutils literal notranslate"><span class="pre">L.append(</
 extra set of parentheses to pass both values as a tuple:  <code class="docutils literal notranslate"><span class="pre">L.append(</span> <span class="pre">(1,2)</span> <span class="pre">)</span></code>.</p>
 <p>The earlier versions of these methods were more forgiving because they used an
 old function in Python’s C interface to parse their arguments; 2.0 modernizes
-them to use <code class="xref py py-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code>, the current argument parsing function,
+them to use <a class="reference internal" href="../c-api/arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a>, the current argument parsing function,
 which provides more helpful error messages and treats multi-argument calls as
 errors.  If you absolutely must use 2.0 but can’t fix your code, you can edit
 <code class="file docutils literal notranslate"><span class="pre">Objects/listobject.c</span></code> and define the preprocessor symbol
@@ -861,7 +861,7 @@ directory that held various portability hacks; they’ve been merged into a sing
 file, <code class="file docutils literal notranslate"><span class="pre">Include/pyport.h</span></code>.</p>
 <p>Vladimir Marangozov’s long-awaited malloc restructuring was completed, to make
 it easy to have the Python interpreter use a custom allocator instead of C’s
-standard <code class="xref py py-func docutils literal notranslate"><span class="pre">malloc()</span></code>.  For documentation, read the comments in
+standard <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code>.  For documentation, read the comments in
 <code class="file docutils literal notranslate"><span class="pre">Include/pymem.h</span></code> and <code class="file docutils literal notranslate"><span class="pre">Include/objimpl.h</span></code>.  For the lengthy
 discussions during which the interface was hammered out, see the web archives of
 the ‘patches’ and ‘python-dev’ lists at python.org.</p>
@@ -884,14 +884,14 @@ size of literal lists and dictionaries in Python source; occasionally people who
 are generating Python code would run into this limit.  A patch by Charles G.
 Waldman raises the limit from <code class="docutils literal notranslate"><span class="pre">2**16</span></code> to <code class="docutils literal notranslate"><span class="pre">2**32</span></code>.</p>
 <p>Three new convenience functions intended for adding constants to a module’s
-dictionary at module initialization time were added: <code class="xref py py-func docutils literal notranslate"><span class="pre">PyModule_AddObject()</span></code>,
-<code class="xref py py-func docutils literal notranslate"><span class="pre">PyModule_AddIntConstant()</span></code>, and <code class="xref py py-func docutils literal notranslate"><span class="pre">PyModule_AddStringConstant()</span></code>.  Each
+dictionary at module initialization time were added: <a class="reference internal" href="../c-api/module.html#c.PyModule_AddObject" title="PyModule_AddObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_AddObject()</span></code></a>,
+<a class="reference internal" href="../c-api/module.html#c.PyModule_AddIntConstant" title="PyModule_AddIntConstant"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_AddIntConstant()</span></code></a>, and <a class="reference internal" href="../c-api/module.html#c.PyModule_AddStringConstant" title="PyModule_AddStringConstant"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyModule_AddStringConstant()</span></code></a>.  Each
 of these functions takes a module object, a null-terminated C string containing
 the name to be added, and a third argument for the value to be assigned to the
 name.  This third argument is, respectively, a Python object, a C long, or a C
 string.</p>
-<p>A wrapper API was added for Unix-style signal handlers. <code class="xref py py-func docutils literal notranslate"><span class="pre">PyOS_getsig()</span></code> gets
-a signal handler and <code class="xref py py-func docutils literal notranslate"><span class="pre">PyOS_setsig()</span></code> will set a new handler.</p>
+<p>A wrapper API was added for Unix-style signal handlers. <a class="reference internal" href="../c-api/sys.html#c.PyOS_getsig" title="PyOS_getsig"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyOS_getsig()</span></code></a> gets
+a signal handler and <a class="reference internal" href="../c-api/sys.html#c.PyOS_setsig" title="PyOS_setsig"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyOS_setsig()</span></code></a> will set a new handler.</p>
 </section>
 <section id="distutils-making-modules-easy-to-install">
 <h2>Distutils: Making Modules Easy to Install<a class="headerlink" href="#distutils-making-modules-easy-to-install" title="Permalink to this heading">¶</a></h2>
@@ -1006,7 +1006,7 @@ using it:</p>
 </pre></div>
 </div>
 <p>For more information, consult the Python documentation, or the XML HOWTO at
-<a class="reference external" href="http://pyxml.sourceforge.net/topics/howto/xml-howto.html">http://pyxml.sourceforge.net/topics/howto/xml-howto.html</a>.</p>
+<a class="reference external" href="https://pyxml.sourceforge.net/topics/howto/xml-howto.html">https://pyxml.sourceforge.net/topics/howto/xml-howto.html</a>.</p>
 </section>
 <section id="dom-support">
 <h3>DOM Support<a class="headerlink" href="#dom-support" title="Permalink to this heading">¶</a></h3>
@@ -1326,7 +1326,7 @@ Marangozov, Tobias Polzin, Guido van Rossum, Neil Schemenauer, and Russ Schmidt.
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >What’s New in Python</a> &#187;</li>
@@ -1369,11 +1369,11 @@ Marangozov, Tobias Polzin, Guido van Rossum, Neil Schemenauer, and Russ Schmidt.
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Source code: Lib/configparser.py This module provides the ConfigParser class which implements a basic configuration language which provides a structure similar to what’s found in Microsoft Windows ..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>configparser — Configuration file parser &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>configparser — Configuration file parser &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -220,7 +220,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1086,8 +1086,10 @@ values are accepted; the value held for these is <code class="docutils literal n
 serialized without the trailing delimiter.</p>
 <p>When <em>default_section</em> is given, it specifies the name for the special
 section holding default values for other sections and interpolation purposes
-(normally named <code class="docutils literal notranslate"><span class="pre">&quot;DEFAULT&quot;</span></code>).  This value can be retrieved and changed on
-runtime using the <code class="docutils literal notranslate"><span class="pre">default_section</span></code> instance attribute.</p>
+(normally named <code class="docutils literal notranslate"><span class="pre">&quot;DEFAULT&quot;</span></code>).  This value can be retrieved and changed at
+runtime using the <code class="docutils literal notranslate"><span class="pre">default_section</span></code> instance attribute. This won’t
+re-evaluate an already parsed config file, but will be used when writing
+parsed settings to a new config file.</p>
 <p>Interpolation behaviour may be customized by providing a custom handler
 through the <em>interpolation</em> argument. <code class="docutils literal notranslate"><span class="pre">None</span></code> can be used to turn off
 interpolation completely, <code class="docutils literal notranslate"><span class="pre">ExtendedInterpolation()</span></code> provides a more
@@ -1692,7 +1694,7 @@ changing the behaviour outlined by the footnote reference, consult the
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >The Python Standard Library</a> &#187;</li>
@@ -1736,11 +1738,11 @@ changing the behaviour outlined by the footnote reference, consult the
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

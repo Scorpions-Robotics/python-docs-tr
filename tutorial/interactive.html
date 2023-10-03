@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="Python yorumlayıcısının bazı sürümleri, Korn kabuğunda ve GNU Bash kabuğunda bulunan tesislere benzer şekilde, mevcut girdi satırının ve geçmiş ikamesinin düzenlenmesini destekler. Bu, çeşitli düze..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>14. Etkileşimli Girdi Düzenleme ve Geçmiş İkame &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14. Etkileşimli Girdi Düzenleme ve Geçmiş İkame &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -156,7 +156,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python Öğreticisi</a> &#187;</li>
@@ -195,7 +195,18 @@
 <p>Python yorumlayıcısının bazı sürümleri, Korn kabuğunda ve GNU Bash kabuğunda bulunan tesislere benzer şekilde, mevcut girdi satırının ve geçmiş ikamesinin düzenlenmesini destekler. Bu, çeşitli düzenleme stillerini destekleyen <a class="reference external" href="https://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a> kütüphanesi kullanılarak gerçekleştirilir. Bu kütüphanenin burada kopyalamayacağımız kendi belgeleri vardır.</p>
 <section id="tab-completion-and-history-editing">
 <span id="tut-keybindings"></span><h2><span class="section-number">14.1. </span>Tab Tamamlama ve Geçmiş Düzenleme<a class="headerlink" href="#tab-completion-and-history-editing" title="Permalink to this heading">¶</a></h2>
-<p>Değişken ve modül adlarının tamamlanması, yorumlayıcı başlangıcında <a class="reference internal" href="../library/site.html#rlcompleter-config"><span class="std std-ref">otomatik olarak etkinleştirilir</span></a>, böylece <kbd class="kbd docutils literal notranslate">Tab</kbd> tuşu tamamlama işlevini çağırır; Python deyim adlarına, mevcut yerel değişkenlere ve kullanılabilir modül adlarına bakar. <code class="docutils literal notranslate"><span class="pre">string.a</span></code> gibi noktalı ifadeler için, ifadeyi <code class="docutils literal notranslate"><span class="pre">'.'</span></code> sonuna kadar değerlendirecek ve ardından ortaya çıkan nesnenin niteliklerinden tamamlamalar önerecektir. <code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code> yöntemine sahip bir nesne ifadenin bir parçasıysa bunun uygulama tanımlı kodu çalıştırabileceğini unutmayın. Varsayılan yapılandırma aynı zamanda geçmişinizi kullanıcı dizininizdeki <code class="file docutils literal notranslate"><span class="pre">.python_history</span></code> adlı bir dosyaya da kaydeder. Geçmiş, bir sonraki interaktif tercüman oturumu sırasında tekrar kullanılabilir olacaktır.</p>
+<p>Completion of variable and module names is
+<a class="reference internal" href="../library/site.html#rlcompleter-config"><span class="std std-ref">automatically enabled</span></a> at interpreter startup so
+that the <kbd class="kbd docutils literal notranslate">Tab</kbd> key invokes the completion function; it looks at
+Python statement names, the current local variables, and the available
+module names.  For dotted expressions such as <code class="docutils literal notranslate"><span class="pre">string.a</span></code>, it will evaluate
+the expression up to the final <code class="docutils literal notranslate"><span class="pre">'.'</span></code> and then suggest completions from
+the attributes of the resulting object.  Note that this may execute
+application-defined code if an object with a <a class="reference internal" href="../reference/datamodel.html#object.__getattr__" title="object.__getattr__"><code class="xref py py-meth docutils literal notranslate"><span class="pre">__getattr__()</span></code></a> method
+is part of the expression.  The default configuration also saves your
+history into a file named <code class="file docutils literal notranslate"><span class="pre">.python_history</span></code> in your user directory.
+The history will be available again during the next interactive interpreter
+session.</p>
 </section>
 <section id="alternatives-to-the-interactive-interpreter">
 <span id="tut-commentary"></span><h2><span class="section-number">14.2. </span>Etkileşimli Yorumlayıcıya Alternatifler<a class="headerlink" href="#alternatives-to-the-interactive-interpreter" title="Permalink to this heading">¶</a></h2>
@@ -277,7 +288,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python Öğreticisi</a> &#187;</li>
@@ -320,11 +331,11 @@
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>

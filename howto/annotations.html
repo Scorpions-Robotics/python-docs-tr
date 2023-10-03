@@ -13,14 +13,14 @@
 <meta property="og:image" content="https://docs.python.org/3/_static/og-image.png" />
 <meta property="og:image:alt" content="Python documentation" />
 <meta name="description" content="author, Larry Hastings,. Abstract: This document is designed to encapsulate the best practices for working with annotations dicts. If you write Python code that examines__annotations__ on Python ob..." />
-<meta property="og:image:width" content="200">
-<meta property="og:image:height" content="200">
-<meta name="theme-color" content="#3776ab">
+<meta property="og:image:width" content="200" />
+<meta property="og:image:height" content="200" />
+<meta name="theme-color" content="#3776ab" />
 
-    <title>Annotations Best Practices &#8212; Python 3.11.2 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annotations Best Practices &#8212; Python 3.11.5 belgelendirmesi</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=845a48175c3935ba0d7ff16b8ed0072d62fd099f" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydoctheme.css?digest=b37c26da2f7529d09fe70b41c4b2133fe4931a90" />
     <link id="pygments_dark_css" media="(prefers-color-scheme: dark)" rel="stylesheet" type="text/css" href="../_static/pygments_dark.css" />
     
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
@@ -31,7 +31,7 @@
     <script src="../_static/sidebar.js"></script>
     
     <link rel="search" type="application/opensearchdescription+xml"
-          title="Python 3.11.2 belgelendirmesi içinde ara"
+          title="Python 3.11.5 belgelendirmesi içinde ara"
           href="../_static/opensearch.xml"/>
     <link rel="author" title="Bu belgeler hakkında" href="../about.html" />
     <link rel="index" title="Dizin" href="../genindex.html" />
@@ -159,7 +159,7 @@
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Python NASIL’ları</a> &#187;</li>
@@ -222,8 +222,7 @@ in your code, please see the <a class="reference internal" href="../library/typi
 </aside>
 <section id="accessing-the-annotations-dict-of-an-object-in-python-3-10-and-newer">
 <h2>Accessing The Annotations Dict Of An Object In Python 3.10 And Newer<a class="headerlink" href="#accessing-the-annotations-dict-of-an-object-in-python-3-10-and-newer" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><p>Python 3.10 adds a new function to the standard library:
+<p>Python 3.10 adds a new function to the standard library:
 <a class="reference internal" href="../library/inspect.html#inspect.get_annotations" title="inspect.get_annotations"><code class="xref py py-func docutils literal notranslate"><span class="pre">inspect.get_annotations()</span></code></a>.  In Python versions 3.10
 and newer, calling this function is the best practice for
 accessing the annotations dict of any object that supports
@@ -250,12 +249,10 @@ defines no annotations but that has a parent class with
 annotations would return the parent’s <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code>.
 In Python 3.10 and newer, the child class’s annotations
 will be an empty dict instead.</p>
-</div></blockquote>
 </section>
 <section id="accessing-the-annotations-dict-of-an-object-in-python-3-9-and-older">
 <h2>Accessing The Annotations Dict Of An Object In Python 3.9 And Older<a class="headerlink" href="#accessing-the-annotations-dict-of-an-object-in-python-3-9-and-older" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><p>In Python 3.9 and older, accessing the annotations dict
+<p>In Python 3.9 and older, accessing the annotations dict
 of an object is much more complicated than in newer versions.
 The problem is a design flaw in these older versions of Python,
 specifically to do with class annotations.</p>
@@ -306,12 +303,10 @@ examination.</p>
 <p>Note that some exotic or malformed type objects may not have
 a <code class="docutils literal notranslate"><span class="pre">__dict__</span></code> attribute, so for extra safety you may also wish
 to use <a class="reference internal" href="../library/functions.html#getattr" title="getattr"><code class="xref py py-func docutils literal notranslate"><span class="pre">getattr()</span></code></a> to access <code class="docutils literal notranslate"><span class="pre">__dict__</span></code>.</p>
-</div></blockquote>
 </section>
 <section id="manually-un-stringizing-stringized-annotations">
 <h2>Manually Un-Stringizing Stringized Annotations<a class="headerlink" href="#manually-un-stringizing-stringized-annotations" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><p>In situations where some annotations may be “stringized”,
+<p>In situations where some annotations may be “stringized”,
 and you wish to evaluate those strings to produce the
 Python values they represent, it really is best to
 call <a class="reference internal" href="../library/inspect.html#inspect.get_annotations" title="inspect.get_annotations"><code class="xref py py-func docutils literal notranslate"><span class="pre">inspect.get_annotations()</span></code></a> to do this work
@@ -353,12 +348,10 @@ fail and raise an exception.  So, when designing a library
 API that works with annotations, it’s recommended to only
 attempt to evaluate string values when explicitly requested
 to by the caller.</p>
-</div></blockquote>
 </section>
 <section id="best-practices-for-annotations-in-any-python-version">
 <h2>Best Practices For <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> In Any Python Version<a class="headerlink" href="#best-practices-for-annotations-in-any-python-version" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>You should avoid assigning to the <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> member
 of objects directly.  Let Python manage setting <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code>.</p></li>
 <li><p>If you do assign directly to the <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> member
@@ -370,12 +363,10 @@ dictionary before attempting to examine its contents.</p></li>
 <li><p>You should avoid deleting the <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> attribute
 of an object.</p></li>
 </ul>
-</div></blockquote>
 </section>
 <section id="annotations-quirks">
 <h2><code class="docutils literal notranslate"><span class="pre">__annotations__</span></code> Quirks<a class="headerlink" href="#annotations-quirks" title="Permalink to this heading">¶</a></h2>
-<blockquote>
-<div><p>In all versions of Python 3, function
+<p>In all versions of Python 3, function
 objects lazy-create an annotations dict if no annotations
 are defined on that object.  You can delete the <code class="docutils literal notranslate"><span class="pre">__annotations__</span></code>
 attribute using <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">fn.__annotations__</span></code>, but if you then
@@ -406,7 +397,6 @@ itself be quoted.  In effect the annotation is quoted
 </div>
 <p>This prints <code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">&quot;'str'&quot;}</span></code>.  This shouldn’t really be considered
 a “quirk”; it’s mentioned here simply because it might be surprising.</p>
-</div></blockquote>
 </section>
 </section>
 
@@ -486,7 +476,7 @@ a “quirk”; it’s mentioned here simply because it might be surprising.</p>
               
           </li>
     <li id="cpython-language-and-version">
-      <a href="../index.html">3.11.2 Documentation</a> &#187;
+      <a href="../index.html">3.11.5 Documentation</a> &#187;
     </li>
 
           <li class="nav-item nav-item-1"><a href="index.html" >Python NASIL’ları</a> &#187;</li>
@@ -529,11 +519,11 @@ a “quirk”; it’s mentioned here simply because it might be surprising.</p>
 <br />
     <br />
 
-    Son güncelleme: Haz 28, 2023.
+    Son güncelleme: Eki 03, 2023.
     <a href="/bugs.html">Found a bug</a>?
     <br />
 
-    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.2.1.
     </div>
 
   </body>
